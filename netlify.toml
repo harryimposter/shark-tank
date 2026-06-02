@@ -1,0 +1,12 @@
+# Netlify deploy config for Market Map.
+# Static site — no build step. Publishes the repo root as-is.
+
+[build]
+  publish = "."
+  command = ""
+
+# Serve the brief at the site root.
+[[redirects]]
+  from = "/"
+  to = "/output.html"
+  status = 200

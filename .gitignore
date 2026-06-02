@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+charts_demo.html
+.DS_Store
+.claude/
