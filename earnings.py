@@ -297,7 +297,7 @@ def render_earnings_section(ideas: list) -> str:
         f'<p style="font-size:10px;color:{_P["ink_mute"]};margin-top:8px">'
         f'Universe: large cap ($10bn+) · US &amp; Korea · '
         f'Tech / Financials / Industrials / Utilities · '
-        f'Data sourced from FactSet (earnings_data.md) where available. '
+        f'Data sourced from Finnhub (earnings_data.md) where available. '
         f'Low conviction ideas excluded.</p>'
         f'</div>'
     )

@@ -1,4 +1,4 @@
-name: Fetch FactSet earnings data
+name: Fetch Finnhub earnings data
 
 on:
   schedule:
@@ -22,10 +22,9 @@ jobs:
 
       # No pip installs — fetch_earnings.py uses stdlib only
 
-      - name: Fetch FactSet earnings data
+      - name: Fetch Finnhub earnings data
         env:
-          FACTSET_USERNAME: ${{ secrets.FACTSET_USERNAME }}
-          FACTSET_PASSWORD: ${{ secrets.FACTSET_PASSWORD }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
         run: python fetch_earnings.py
 
       - name: Commit earnings_data.md

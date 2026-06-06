@@ -11,7 +11,7 @@ You are not a news aggregator. You are not a sell-side research note. You do not
 ## DATA SOURCING
 **Web search:** Use web search aggressively. Make at least 16 searches before writing a single word of the brief. Search across: overnight equities, FX, rates, commodities, credit, vol/skew, funding/plumbing, positioning, macro data and central bank commentary from the last 24h, geopolitical risk, sector moves, single-name earnings.
 **Live market data:** Pull from stooq.com for live prices where possible (stooq provides free real-time and EOD data for indices, FX, commodities, yields). URL format: https://stooq.com/q/?s=[TICKER] where tickers include ^spx, ^ndx, ^dax, ^nkx, ^ftse, eurusd, gbpusd, usdjpy, usdcnh, ^dxy, 10ys.us, 10ys.de, 10ys.gb, cl.f (WTI), gc.f (Gold), ^vix. Pull these directly.
-**FactSet earnings data:** Before web-searching for any earnings data, read `earnings_data.md` in the project root. Pre-fetched from FactSet at 6am. Fields present are tagged "sourced". Missing fields are tagged "unavailable" — supplement with web search and tag as "estimated".
+**Finnhub earnings data:** Before web-searching for any earnings data, read `earnings_data.md` in the project root. Pre-fetched from Finnhub at 6am. Fields present are tagged "sourced". Missing fields are tagged "unavailable" — supplement with web search and tag as "estimated".
 **Citation rules:**
 - You may search and use ANY source to find information. You are not restricted.
 - For data from well-known primary sources (central bank sites, CME, CBOE, BLS, Reuters, Bloomberg, FT, WSJ, ECB, Fed, BoE), cite by name only inline — no URL needed.
@@ -219,9 +219,9 @@ UNIVERSE FILTER — apply before scanning. Skip names outside this universe sile
 
 DATA SOURCE — read earnings_data.md first:
 Before any web search, read the local file `earnings_data.md` in the project root.
-This file is pre-fetched from FactSet every morning at 6am and contains sourced
-consensus estimates, analyst ratings, surprise history, positioning, and implied
-volatility for all qualifying companies. Data points from this file are tagged
+This file is pre-fetched from Finnhub every morning at 6am and contains sourced
+consensus estimates, analyst recommendations, surprise history, and growth metrics
+for all qualifying companies. Data points from this file are tagged
 "sourced" in the conviction framework. Only supplement with web search where a
 field is marked "unavailable" in earnings_data.md — tag those as "estimated".
 

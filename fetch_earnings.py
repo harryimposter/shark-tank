@@ -1,160 +1,131 @@
 #!/usr/bin/env python3
-"""fetch_earnings.py — FactSet earnings data fetcher.
+"""fetch_earnings.py — Finnhub earnings data fetcher.
 
 Runs via GitHub Actions every weekday at 6am UTC.
 Writes earnings_data.md to the repo root.
 Claude Code reads this file locally during the daily Market Map run.
 
-Requires env vars: FACTSET_USERNAME, FACTSET_PASSWORD
+Requires env var: FINNHUB_API_KEY
 Standard library only — no pip installs needed.
+Rate limit: ~60 req/min on free tier; 0.25s sleep between calls.
 """
 
 import os
 import json
-import base64
 import urllib.request
 import urllib.error
+import time
 from datetime import date, timedelta
 
 # ── Auth ──────────────────────────────────────────────────────────────────────
-USERNAME = os.environ.get("FACTSET_USERNAME", "")
-PASSWORD = os.environ.get("FACTSET_PASSWORD", "")
-
-if not USERNAME or not PASSWORD:
-    print("ERROR: FACTSET_USERNAME and FACTSET_PASSWORD env vars required.")
+API_KEY = os.environ.get("FINNHUB_API_KEY", "")
+if not API_KEY:
+    print("ERROR: FINNHUB_API_KEY env var required.")
     raise SystemExit(1)
 
-_auth = base64.b64encode(f"{USERNAME}:{PASSWORD}".encode()).decode()
-HEADERS = {
-    "Authorization": f"Basic {_auth}",
-    "Content-Type":  "application/json",
-    "Accept":        "application/json",
-}
-BASE = "https://api.factset.com/content"
+BASE = "https://finnhub.io/api/v1"
 
 # ── Universe filter ───────────────────────────────────────────────────────────
-SECTORS         = {"Technology", "Financials", "Industrials", "Utilities"}
-MIN_MKT_CAP_BN  = 10
+# Finnhub uses its own industry strings — map to our sector buckets
+SECTOR_KEYWORDS = {
+    "Technology":   ["semiconductor", "software", "technology", "electronic",
+                     "hardware", "internet", "telecom", "communication"],
+    "Financials":   ["bank", "financial", "insurance", "asset management",
+                     "capital markets", "diversified financial", "mortgage", "reit"],
+    "Industrials":  ["aerospace", "defense", "industrial", "machinery",
+                     "transport", "logistics", "construction", "engineering"],
+    "Utilities":    ["utility", "utilities", "electric", "gas", "water", "power"],
+}
+MIN_MKT_CAP_BN  = 10          # market cap in $bn (Finnhub returns $millions)
 GEOGRAPHIES     = {"US", "KR"}
 
 # ── Date windows ──────────────────────────────────────────────────────────────
 TODAY      = date.today()
-PRE_START  = TODAY.isoformat()
 PRE_END    = (TODAY + timedelta(days=5)).isoformat()
 POST_START = (TODAY - timedelta(days=3)).isoformat()
-POST_END   = TODAY.isoformat()
 
 
-# ── HTTP helper (stdlib only) ─────────────────────────────────────────────────
-def _post(path: str, body: dict) -> dict:
-    url  = BASE + path
-    data = json.dumps(body).encode()
-    req  = urllib.request.Request(url, data=data, headers=HEADERS, method="POST")
-    try:
-        with urllib.request.urlopen(req, timeout=20) as r:
-            return json.loads(r.read())
-    except urllib.error.HTTPError as exc:
-        print(f"  HTTP {exc.code} on {path}: {exc.read().decode()[:300]}")
-        return {}
-    except Exception as exc:
-        print(f"  Error on {path}: {exc}")
-        return {}
+# ── HTTP helper ───────────────────────────────────────────────────────────────
+def _get(path: str, params: dict = None, _retries: int = 3):
+    qs = "&".join(f"{k}={v}" for k, v in (params or {}).items())
+    url = f"{BASE}{path}?token={API_KEY}" + (f"&{qs}" if qs else "")
+    for attempt in range(_retries):
+        try:
+            with urllib.request.urlopen(url, timeout=15) as r:
+                return json.loads(r.read())
+        except urllib.error.HTTPError as exc:
+            if exc.code == 429:
+                wait = 60 * (attempt + 1)
+                print(f"  Rate limited — sleeping {wait}s...")
+                time.sleep(wait)
+                continue
+            if exc.code != 403:
+                print(f"  HTTP {exc.code} on {path}")
+            return None
+        except Exception as exc:
+            print(f"  Error on {path}: {exc}")
+            return None
+    return None
 
 
-# ── FactSet calls ─────────────────────────────────────────────────────────────
+# ── Sector classifier ─────────────────────────────────────────────────────────
+def classify_sector(finnhub_industry: str):
+    ind = (finnhub_industry or "").lower()
+    for sector, keywords in SECTOR_KEYWORDS.items():
+        if any(kw in ind for kw in keywords):
+            return sector
+    return None
+
+
+# ── Finnhub calls ─────────────────────────────────────────────────────────────
 def fetch_calendar() -> list:
-    resp = _post("/factset-estimates/v2/calendar/events", {
-        "startDate":    POST_START,
-        "endDate":      PRE_END,
-        "eventTypes":   ["Earnings"],
-        "universeType": "EQUITY",
-    })
-    return resp.get("data", [])
+    data = _get("/calendar/earnings", {"from": POST_START, "to": PRE_END})
+    return (data or {}).get("earningsCalendar", [])
 
 
-def fetch_entity_id(ticker: str):
-    resp = _post("/symbology/v2/identifier", {
-        "ids":               [ticker],
-        "inputSymbolType":   "TICKER",
-        "outputSymbolTypes": ["FSYM_ID"],
-    })
-    items = resp.get("data", [])
-    return items[0].get("fsymId") if items else None
+def fetch_profile(symbol: str) -> dict:
+    return _get("/stock/profile2", {"symbol": symbol}) or {}
 
 
-def fetch_estimates(fsym_id: str) -> dict:
-    resp = _post("/factset-estimates/v2/consensus/estimates", {
-        "ids":               [fsym_id],
-        "metrics":           ["EPS", "SALES"],
-        "periodicity":       "QTR",
-        "fiscalPeriodStart": "NOW",
-        "fiscalPeriodEnd":   "NOW",
-    })
-    items = resp.get("data", [])
-    eps = next((i for i in items if i.get("metric") == "EPS"),  {})
-    rev = next((i for i in items if i.get("metric") == "SALES"), {})
+def fetch_recommendations(symbol: str) -> dict:
+    data = _get("/stock/recommendation", {"symbol": symbol})
+    if not data:
+        return {}
+    r = data[0]  # most recent period
     return {
-        "eps_mean":     eps.get("mean"),
-        "eps_high":     eps.get("high"),
-        "eps_low":      eps.get("low"),
-        "eps_count":    eps.get("numEstimates"),
-        "eps_revision": eps.get("revisionDirection"),
-        "rev_mean":     rev.get("mean"),
+        "buy_count":  (r.get("buy") or 0) + (r.get("strongBuy") or 0),
+        "hold_count":  r.get("hold"),
+        "sell_count": (r.get("sell") or 0) + (r.get("strongSell") or 0),
+        "rec_period":  r.get("period"),
     }
 
 
-def fetch_ratings(fsym_id: str) -> dict:
-    resp = _post("/factset-estimates/v2/consensus/ratings", {"ids": [fsym_id]})
-    r = (resp.get("data") or [{}])[0]
-    return {
-        "buy_count":     r.get("buyCount"),
-        "hold_count":    r.get("holdCount"),
-        "sell_count":    r.get("sellCount"),
-        "consensus_pt":  r.get("priceTarget"),
-        "current_price": r.get("price"),
-    }
-
-
-def fetch_surprises(fsym_id: str) -> list:
-    resp = _post("/factset-estimates/v2/surprise", {
-        "ids":               [fsym_id],
-        "metrics":           ["EPS"],
-        "periodicity":       "QTR",
-        "fiscalPeriodStart": "NOW-4",
-        "fiscalPeriodEnd":   "NOW-1",
-    })
+def fetch_surprises(symbol: str) -> list:
+    data = _get("/stock/earnings", {"symbol": symbol, "limit": "4"})
+    if not data:
+        return []
     return [
         {
-            "period":       i.get("fiscalPeriod"),
+            "period":       f"{i.get('year')} Q{i.get('quarter')}",
             "actual":       i.get("actual"),
             "estimate":     i.get("estimate"),
-            "surprise_pct": i.get("surprisePercent"),
+            "surprise_pct": round(i["surprisePercent"], 2) if i.get("surprisePercent") else None,
         }
-        for i in resp.get("data", [])
+        for i in data
     ]
 
 
-def fetch_ownership(fsym_id: str) -> dict:
-    resp = _post("/factset-ownership/v1/holders/shares", {
-        "ids":        [fsym_id],
-        "date":       TODAY.isoformat(),
-        "holderType": "INSTITUTIONS",
-    })
-    r = (resp.get("data") or [{}])[0]
+def fetch_metrics(symbol: str) -> dict:
+    data = _get("/stock/metric", {"symbol": symbol, "metric": "all"})
+    m = (data or {}).get("metric", {})
     return {
-        "short_interest_pct":    r.get("shortInterestPct"),
-        "inst_ownership_change": r.get("changePercent"),
+        "week52_high":          m.get("52WeekHigh"),
+        "week52_low":           m.get("52WeekLow"),
+        "revenue_growth_yoy":   m.get("revenueGrowthTTMYoy"),
+        "eps_growth_yoy":       m.get("epsGrowthTTMYoy"),
+        "short_ratio":          m.get("shortRatio"),
+        "short_interest":       m.get("shortInterest"),
     }
-
-
-def fetch_options(fsym_id: str) -> dict:
-    resp = _post("/factset-options/v1/options/prices", {
-        "ids":      [fsym_id],
-        "date":     TODAY.isoformat(),
-        "exchange": "USA",
-    })
-    r = (resp.get("data") or [{}])[0]
-    return {"implied_vol": r.get("impliedVolatility")}
 
 
 # ── Markdown writer ───────────────────────────────────────────────────────────
@@ -162,14 +133,19 @@ def _val(v) -> str:
     return str(v) if v is not None else "unavailable"
 
 
+HOUR_MAP = {"bmo": "BMO (before open)", "amc": "AMC (after close)",
+            "dmh": "DMH (during hours)"}
+
+
 def write_markdown(rows: list) -> None:
     lines = [
-        "# FactSet Earnings Data",
+        "# Finnhub Earnings Data",
         f"Generated: {TODAY.isoformat()} 06:00 UTC",
-        f"Pre-earnings window:  {PRE_START} to {PRE_END}",
-        f"Post-earnings window: {POST_START} to {POST_END}",
+        f"Pre-earnings window:  {TODAY.isoformat()} to {PRE_END}",
+        f"Post-earnings window: {POST_START} to {TODAY.isoformat()}",
         "Universe: large cap (>$10bn) · US + Korea · "
         "Tech / Financials / Industrials / Utilities",
+        "Source: Finnhub.io",
         "",
     ]
 
@@ -179,50 +155,54 @@ def write_markdown(rows: list) -> None:
         for d in rows:
             mode = "POST-EARNINGS" if d["report_date"] <= TODAY.isoformat() \
                    else "PRE-EARNINGS"
+            timing = HOUR_MAP.get(d.get("report_timing", ""), d.get("report_timing", "TBD"))
             lines += [
-                f"## {d['ticker']} — {d['company']}",
+                f"## {d['symbol']} — {d['company']}",
                 f"- **Mode:** {mode}",
                 f"- **Report date:** {d['report_date']}",
-                f"- **Report timing:** {_val(d.get('report_timing'))}",
+                f"- **Report timing:** {timing}",
                 f"- **Sector:** {_val(d.get('sector'))}",
-                f"- **Market cap:** ${_val(d.get('market_cap_bn'))}bn",
+                f"- **Market cap:** ${round(d['market_cap_mn'] / 1000, 1)}bn",
                 "",
-                "### Consensus estimates (FactSet — sourced)",
-                f"- EPS mean:           {_val(d.get('eps_mean'))}",
-                f"- EPS high:           {_val(d.get('eps_high'))}",
-                f"- EPS low:            {_val(d.get('eps_low'))}",
-                f"- EPS estimate count: {_val(d.get('eps_count'))}",
-                f"- EPS revision (30d): {_val(d.get('eps_revision'))}",
-                f"- Revenue mean:       {_val(d.get('rev_mean'))}",
+                "### Consensus estimates (Finnhub — sourced)",
+                f"- EPS estimate:     {_val(d.get('eps_estimate'))}",
+                f"- Revenue estimate: {_val(d.get('rev_estimate'))}",
+            ]
+            if mode == "POST-EARNINGS":
+                lines += [
+                    f"- EPS actual:      {_val(d.get('eps_actual'))}",
+                    f"- Revenue actual:  {_val(d.get('rev_actual'))}",
+                ]
+            lines += [
                 "",
-                "### Analyst ratings (FactSet — sourced)",
-                f"- Buy/OW:        {_val(d.get('buy_count'))}",
-                f"- Hold:          {_val(d.get('hold_count'))}",
-                f"- Sell/UW:       {_val(d.get('sell_count'))}",
-                f"- Consensus PT:  {_val(d.get('consensus_pt'))}",
-                f"- Current price: {_val(d.get('current_price'))}",
+                "### Analyst recommendations (Finnhub — sourced)",
+                f"- Buy/Strong buy: {_val(d.get('buy_count'))}",
+                f"- Hold:           {_val(d.get('hold_count'))}",
+                f"- Sell/Strong sell: {_val(d.get('sell_count'))}",
+                f"- Period:         {_val(d.get('rec_period'))}",
                 "",
-                "### Earnings surprise history — last 4 quarters (FactSet — sourced)",
+                "### Earnings surprise history — last 4 quarters (Finnhub — sourced)",
             ]
             surprises = d.get("surprises", [])
             if surprises:
                 for s in surprises:
+                    surp = f" ({s['surprise_pct']}%)" if s.get("surprise_pct") is not None else ""
                     lines.append(
-                        f"- {_val(s.get('period'))}: actual {_val(s.get('actual'))} "
-                        f"vs est {_val(s.get('estimate'))} "
-                        f"({_val(s.get('surprise_pct'))}%)"
+                        f"- {s['period']}: actual {_val(s.get('actual'))} "
+                        f"vs est {_val(s.get('estimate'))}{surp}"
                     )
             else:
                 lines.append("- unavailable")
 
             lines += [
                 "",
-                "### Positioning (FactSet — sourced)",
-                f"- Short interest % of float:            {_val(d.get('short_interest_pct'))}",
-                f"- Institutional ownership change (qtr): {_val(d.get('inst_ownership_change'))}",
-                "",
-                "### Options / implied move (FactSet — sourced if available)",
-                f"- Implied volatility (ATM): {_val(d.get('implied_vol'))}",
+                "### Growth & technicals (Finnhub — sourced)",
+                f"- Revenue growth YoY (TTM): {_val(d.get('revenue_growth_yoy'))}%",
+                f"- EPS growth YoY (TTM):     {_val(d.get('eps_growth_yoy'))}%",
+                f"- 52-week high:             {_val(d.get('week52_high'))}",
+                f"- 52-week low:              {_val(d.get('week52_low'))}",
+                f"- Short ratio:              {_val(d.get('short_ratio'))}",
+                f"- Short interest:           {_val(d.get('short_interest'))}",
                 "",
                 "---",
                 "",
@@ -235,43 +215,62 @@ def write_markdown(rows: list) -> None:
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 def main():
-    print("Fetching earnings calendar from FactSet...")
+    print("Fetching earnings calendar from Finnhub...")
     calendar = fetch_calendar()
-    print(f"  {len(calendar)} events returned")
-
-    qualifying = []
-    for ev in calendar:
-        if ev.get("sector") not in SECTORS:
-            continue
-        if float(ev.get("marketCapBn") or 0) < MIN_MKT_CAP_BN:
-            continue
-        if ev.get("isoCountry") not in GEOGRAPHIES:
-            continue
-        qualifying.append(ev)
-
-    print(f"  {len(qualifying)} pass universe filter")
+    print(f"  {len(calendar)} events in window")
 
     results = []
-    for ev in qualifying:
-        ticker = ev.get("ticker", "")
-        print(f"  Fetching {ticker}...")
-        fsym_id = fetch_entity_id(ticker)
-        if not fsym_id:
-            print(f"    No FactSet ID for {ticker} — skipping")
+    seen = set()
+
+    for ev in calendar:
+        symbol = ev.get("symbol", "")
+        if not symbol or symbol in seen:
+            continue
+        seen.add(symbol)
+
+        # Fetch profile to apply universe filter
+        time.sleep(1.1)
+        profile = fetch_profile(symbol)
+        if not profile:
             continue
 
+        country = profile.get("country", "")
+        if country not in GEOGRAPHIES:
+            continue
+
+        mkt_cap_mn = profile.get("marketCapitalization") or 0
+        if mkt_cap_mn < MIN_MKT_CAP_BN * 1000:
+            continue
+
+        sector = classify_sector(profile.get("finnhubIndustry", ""))
+        if not sector:
+            continue
+
+        print(f"  {symbol} ({profile.get('finnhubIndustry')}) — ${mkt_cap_mn/1000:.0f}bn")
+
+        time.sleep(1.1)
+        recs = fetch_recommendations(symbol)
+
+        time.sleep(1.1)
+        surprises = fetch_surprises(symbol)
+
+        time.sleep(1.1)
+        metrics = fetch_metrics(symbol)
+
         results.append({
-            "ticker":        ticker,
-            "company":       ev.get("companyName", ticker),
-            "report_date":   ev.get("eventDate", ""),
-            "report_timing": ev.get("eventTime", "TBD"),
-            "sector":        ev.get("sector", ""),
-            "market_cap_bn": ev.get("marketCapBn"),
-            **fetch_estimates(fsym_id),
-            **fetch_ratings(fsym_id),
-            "surprises": fetch_surprises(fsym_id),
-            **fetch_ownership(fsym_id),
-            **fetch_options(fsym_id),
+            "symbol":        symbol,
+            "company":       profile.get("name", symbol),
+            "report_date":   ev.get("date", ""),
+            "report_timing": ev.get("hour", ""),
+            "sector":        sector,
+            "market_cap_mn": mkt_cap_mn,
+            "eps_estimate":  ev.get("epsEstimate"),
+            "rev_estimate":  ev.get("revenueEstimate"),
+            "eps_actual":    ev.get("epsActual"),
+            "rev_actual":    ev.get("revenueActual"),
+            **recs,
+            "surprises": surprises,
+            **metrics,
         })
 
     write_markdown(results)

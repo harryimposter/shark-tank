@@ -12,7 +12,7 @@ WIRES = {
     "ft.com": "Financial Times",
     "wsj.com": "Wall Street Journal",
     "apnews.com":        "AP",
-    "factset.com":       "FactSet",
+    "finnhub.io":        "Finnhub",
     "lseg.com":          "LSEG",
     "visible-alpha.com": "Visible Alpha",
     "telegraph.co.uk": "The Telegraph",
