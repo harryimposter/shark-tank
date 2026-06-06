@@ -28,6 +28,7 @@ import html
 from datetime import datetime, date
 
 import charts
+import earnings
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TRADES_PATH = os.path.join(HERE, "trades.json")
@@ -668,17 +669,22 @@ def build_html(brief, trades, regime_log):
     parts.append(sec("14", "Catalyst Calendar (5 trading days)",
                      render_catalyst(d.get("catalyst_calendar", [])), wide=True))
 
-    # 15 WHAT CHANGES MY MIND
-    parts.append(sec("15", "What Changes My Mind", d.get("what_changes_mind", "")))
+    # 15 EARNINGS INTELLIGENCE
+    _earnings_html = earnings.render_earnings_section(d.get("earnings_ideas", []))
+    if _earnings_html:
+        parts.append(sec("15", "Earnings Intelligence", _earnings_html, wide=True))
 
-    # 16 CLIENT-CALL AMMO
-    parts.append(sec("16", "Client-Call Ammo", render_client_ammo(d.get("client_ammo", []))))
+    # 16 WHAT CHANGES MY MIND
+    parts.append(sec("16", "What Changes My Mind", d.get("what_changes_mind", "")))
 
-    # 17 REGIME TIMELINE
-    parts.append(sec("17", "Regime Timeline", render_regime_timeline(regime_log)))
+    # 17 CLIENT-CALL AMMO
+    parts.append(sec("17", "Client-Call Ammo", render_client_ammo(d.get("client_ammo", []))))
 
-    # 18 STALENESS CHECK
-    parts.append(sec("18", "Staleness Check", render_staleness(d.get("staleness", []))))
+    # 18 REGIME TIMELINE
+    parts.append(sec("18", "Regime Timeline", render_regime_timeline(regime_log)))
+
+    # 19 STALENESS CHECK
+    parts.append(sec("19", "Staleness Check", render_staleness(d.get("staleness", []))))
 
     body = "".join(parts)
     return (

@@ -11,7 +11,10 @@ WIRES = {
     "bloomberg.com": "Bloomberg",
     "ft.com": "Financial Times",
     "wsj.com": "Wall Street Journal",
-    "apnews.com": "AP",
+    "apnews.com":        "AP",
+    "factset.com":       "FactSet",
+    "lseg.com":          "LSEG",
+    "visible-alpha.com": "Visible Alpha",
     "telegraph.co.uk": "The Telegraph",
     "theguardian.com": "The Guardian",
     "aljazeera.com": "Al Jazeera",
@@ -35,7 +38,9 @@ OFFICIAL = {
 EXCHANGES = {
     "cmegroup.com": "CME",
     "cboe.com": "Cboe",
-    "ice.com": "ICE",
+    "ice.com":               "ICE",
+    "marketchameleon.com":   "Market Chameleon",
+    "optionstrat.com":       "OptionStrat",
 }
 
 # Independent macro (cited by author name)
