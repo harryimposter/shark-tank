@@ -153,8 +153,7 @@ def write_markdown(rows: list) -> None:
         lines.append("_No qualifying companies in this window._")
     else:
         for d in rows:
-            mode = "POST-EARNINGS" if d["report_date"] <= TODAY.isoformat() \
-                   else "PRE-EARNINGS"
+            mode   = d["mode"]
             timing = HOUR_MAP.get(d.get("report_timing", ""), d.get("report_timing", "TBD"))
             lines += [
                 f"## {d['symbol']} — {d['company']}",
@@ -246,7 +245,27 @@ def main():
         if not sector:
             continue
 
-        print(f"  {symbol} ({profile.get('finnhubIndustry')}) — ${mkt_cap_mn/1000:.0f}bn")
+        # ── Mode check: epsActual presence is authoritative ──────────────────
+        # Finnhub calendar dates can be mis-stated; treat a non-null epsActual
+        # as proof the company has already printed regardless of date field.
+        has_reported = ev.get("epsActual") is not None
+        report_date  = ev.get("date", "")
+
+        if has_reported:
+            # Post-earnings: must have reported within the lookback window
+            if report_date < POST_START or report_date > TODAY.isoformat():
+                print(f"  {symbol} — skipped (reported {report_date}, outside post window)")
+                continue
+            mode = "POST-EARNINGS"
+        else:
+            # Pre-earnings: date must be in the future
+            if report_date < TODAY.isoformat():
+                # Calendar date is in the past but no actual yet — data lag, skip
+                print(f"  {symbol} — skipped (date {report_date} is past but no actual reported)")
+                continue
+            mode = "PRE-EARNINGS"
+
+        print(f"  {symbol} ({profile.get('finnhubIndustry')}) — ${mkt_cap_mn/1000:.0f}bn [{mode}]")
 
         time.sleep(1.1)
         recs = fetch_recommendations(symbol)
@@ -260,8 +279,9 @@ def main():
         results.append({
             "symbol":        symbol,
             "company":       profile.get("name", symbol),
-            "report_date":   ev.get("date", ""),
+            "report_date":   report_date,
             "report_timing": ev.get("hour", ""),
+            "mode":          mode,
             "sector":        sector,
             "market_cap_mn": mkt_cap_mn,
             "eps_estimate":  ev.get("epsEstimate"),
