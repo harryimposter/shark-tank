@@ -1,0 +1,7 @@
+# Vercel: this is a static site (output.html). The Python files below are
+# local generators run via Claude Code, not part of the deployment. Excluding
+# them (and requirements.txt) stops Vercel from trying to build a Python function.
+*.py
+requirements.txt
+run.sh
+PROMPT.md
