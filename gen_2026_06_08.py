@@ -11,6 +11,7 @@ ECB, Yahoo Finance. See the Staleness Check section for per-datum timestamps.
 """
 
 import book
+import shark_format
 
 
 # ---------------------------------------------------------------------------
@@ -18,10 +19,10 @@ import book
 # ---------------------------------------------------------------------------
 LEVELS = {
     "MM-2026-001": 1.648,    # EURAUD = EURUSD 1.16 / AUDUSD 0.7041 — round-tripped
-    "MM-2026-002": 93.09,    # Brent settle
-    "MM-2026-003": 2.55,     # Brent-WTI spread (93.09 - 90.54)
+    "MM-2026-002": 96.05,    # Brent — +3.2% Mon as Hormuz re-escalates (Israel strikes Iran)
+    "MM-2026-003": 2.38,     # Brent-WTI spread (96.05 - 93.67) — both rallied, stayed compressed
     "MM-2026-004": 4.544,    # US 10Y yield
-    "MM-2026-005": 4339.61,  # Gold spot
+    "MM-2026-005": 4350.0,   # Gold — modest safe-haven bid into the strikes vs hawkish-rate drag
     "MM-2026-006": 216.0,    # AVGO — gapped through 228 stop on guide miss (~-13.6%)
     "MM-2026-007": 160.32,   # USDJPY
     "MM-2026-008": 80.0,     # SPX 7300/7000 put spread — re-marked up on the selloff
@@ -33,19 +34,72 @@ LEVELS = {
 # 2) The brief
 # ---------------------------------------------------------------------------
 brief = {
-    "regime": "Hawkish Repricing, AI Derating",
+    "regime": "Two-Front Tape: Hawkish Repricing Meets a Live Hormuz",
     "regime_note": (
-        "A 172k May payroll and Broadcom's soft AI guide repriced the disinflation "
-        "the melt-up had already spent — fed funds now prices a ~70% hike by year-end "
-        "and the AI bid broke. Europe decoupled, and that divergence is the trade."
+        "Friday's 172k payroll repriced fed funds to a ~70% hike by year-end and broke the AI "
+        "and long-duration bids together. Over the weekend the Gulf re-escalated — US strikes on "
+        "Iranian radar sites, Iranian missiles at Kuwait/Bahrain, Israeli strikes on Iran Monday — "
+        "and crude gapped +3%. The disinflation the melt-up borrowed is now a stagflation impulse."
     ),
 
     "dominant_theme": (
-        "Two shocks in 48 hours — Broadcom's guide on Wednesday and a 172k payroll on "
-        "Friday — repossessed the disinflation the tape had already spent. The AI bid "
-        "and the long-duration bid broke together; the dollar and yields broke higher. "
-        "Europe never got the memo. That divergence is the cleanest trade on the board."
+        "Two fronts, one tape: a hawkish Fed repricing (172k jobs → ~70% hike-by-year-end) and a "
+        "live Hormuz re-escalation that put crude back to ~$96. Higher rates and higher oil at once "
+        "is the stagflation box — bad for bonds and equities together, and the reason the AI dip "
+        "isn't yet the gift the bulls want it to be."
     ),
+
+    "summary_narrative": """
+<p>The melt-up wasn't killed by one thing — it was caught in a pincer. On Friday a 172,000 payroll
+print, more than double the 80,000 consensus with unemployment steady at 4.3%, repriced the front
+end of the curve toward a <em>hike</em> and broke the two crowded trades of the year at once: long
+AI and long duration. The Nasdaq fell 4.2%, the 2-year jumped to 4.16%, gold dropped 3.3%, and CME
+FedWatch flipped from pricing cuts to a 70% chance of a hike by year-end. Then the weekend delivered
+the second jaw of the vice.</p>
+
+<p>The Gulf re-escalated for real. US forces struck Iranian coastal radar sites Friday evening after
+downing four drones aimed at the Strait of Hormuz; Iran fired seven ballistic missiles at Kuwait and
+Bahrain on Saturday; Israel hit military targets in western and central Iran on Monday. Pakistani
+mediators are in Tehran, but the talks are deadlocked over $24bn of frozen Iranian assets. Crude
+gapped — Brent +3.2% to ~$96, WTI +3.5% to ~$93.7 — even as OPEC+ added 188k b/d for July. The
+disinflation the tape borrowed in May has become a stagflation impulse: rates up <em>and</em> oil up
+at the same time.</p>
+
+<p>That combination is why this is not a clean buy-the-dip. Every prior AI dip was rescued by easing
+liquidity; this one arrives with the discount rate rising and an oil-driven inflation tax landing on
+the same consumer that funds hyperscaler capex. The one genuine divergence to lean on is regional:
+the selloff was a single-factor US event and Europe decoupled outright — DAX and FTSE closed green
+Friday while the Nasdaq bled. Long the continent, short the US tech beta, fade a front end that has
+over-extrapolated one payroll into a hiking cycle, and own the Hormuz tail that is now firing in real
+time. Keep the put spread on; it is the only reason last week was a flesh wound.</p>
+""",
+
+    "takeaways": [
+        "Two-front tape: hot jobs (Fed → ~70% hike-by-year-end) AND a live Hormuz re-escalation (crude +3%). Rates up and oil up together = stagflation box.",
+        "AVGO's guide miss + the payroll broke long-AI and long-duration at once; Nasdaq −4.2%, 2Y to 4.16%, VIX +40% to 21.5.",
+        "The cleanest trade is the regional divergence — Europe (DAX/FTSE green) decoupled from a US-specific AI-concentration unwind.",
+        "Crude back to ~$96 on Israeli strikes into Iran; the Brent war premium is re-pricing while the MoU stays unsigned.",
+        "Fade the 70% hike — one 172k print with unemployment at 4.3% does not start a hiking cycle. The 17 Jun dot plot is the catalyst.",
+        "Book: AVGO stopped −13.6%; the SPX put spread (+128%) and 2s10s steepener (+155%) are carrying the drawdown.",
+    ],
+
+    "scenarios": [
+        {"kind": "bull", "label": "Bull", "pct": "25%",
+         "headline": "MoU signed, CPI cools, AI dip is the gift",
+         "body": "A Hormuz de-escalation pulls crude back under $90, May CPI prints soft, the 2Y fails "
+                 "below 4.00% and the AI leaders rip as the dip-buyers are vindicated. Risk up, rates "
+                 "down, dollar down, gold up. The pincer releases."},
+        {"kind": "base", "label": "Base", "pct": "50%",
+         "headline": "Stagflation chop — US lags, Europe leads",
+         "body": "FOMC holds, dots drift hawkish but stop short of a 2026 hike; crude stays $90–98 on "
+                 "an unresolved Strait; the US chops while Europe outperforms. Risk mixed, rates range, "
+                 "dollar firm, gold and oil bid. Trade the divergence, not the index."},
+        {"kind": "bear", "label": "Bear", "pct": "25%",
+         "headline": "Strait closes / CPI hot — both jaws bite",
+         "body": "A confirmed mine or tanker hit spikes Brent through $110 as CPI runs hot and the dots "
+                 "show a hike; AI derating becomes a sector-wide de-gross. Risk down hard, rates up, "
+                 "dollar up, gold $4,800+, the put spread pays in full."},
+    ],
 
     "yesterday_graded": """
 <p><strong>MM-2026-006 · Long AVGO into Q2 earnings — <span class="r">✗ STOPPED</span>.</strong>
@@ -138,21 +192,25 @@ trade now, not two trades. Broadcom grew AI revenue 143% year-over-year, guided 
 the whisper baked into a stock at 30-times-plus sales. When a cohort is priced for perfection, "very
 good" is a sell, and a rising discount rate turns "a sell" into "a stampede." The two shocks rhyme.</p>
 
-<p><strong>Layer 1 — the regime.</strong> Name it: <em>Hawkish Repricing</em>. One driver explains
-60–70% of Friday's cross-asset map — the repricing of the front-end of the US curve. It pushed the
-dollar up 0.65%, gold down 3.3%, the Nasdaq down 4.2%, and the 2-year to a sixteen-month high, all in
-one session. When a single factor moves everything, you trade the factor, not the symptoms.</p>
+<p><strong>Layer 1 — the regime.</strong> Name it: <em>Two-Front Tape</em>. Friday had one driver —
+the repricing of the front-end of the US curve, which pushed the dollar up 0.65%, gold down 3.3%, the
+Nasdaq down 4.2%, and the 2-year to a sixteen-month high in a single session. The weekend added a
+second: a live Hormuz re-escalation — US strikes on Iranian radar sites, Iranian missiles at Kuwait
+and Bahrain, Israeli strikes into Iran on Monday — that gapped Brent +3% to ~$96. Higher rates and
+higher oil at the same time is the stagflation box, and it is the configuration the disinflation
+melt-up was least prepared for.</p>
 
 <p><strong>Layer 2 — the counter-intuitive hook.</strong> Consensus expected a soft payroll to validate
 the cuts already in the strip. It got the reverse, and the reaction function inverted: good news for
 the economy became bad news for the assets that had front-run easing. The tape that cheered every weak
 number for a year just learned that the trade only worked while the Fed was the buyer of last resort.</p>
 
-<p><strong>Layer 3 — the gap.</strong> Ground truth: the labor market is resilient and oil sits near
-$93, a forward-inflation impulse the disinflation bet needed lower. What's priced: a 70% year-end hike
-and a full AI valuation reset. The consensus narrative: "buy the dip, the AI secular story is intact."
-The gap between a market pricing a hike and a Fed that will not hike on one print with unemployment at
-4.3% — that gap is where the alpha lives this week.</p>
+<p><strong>Layer 3 — the gap.</strong> Ground truth: the labor market is resilient and oil is back to
+~$96 and <em>rising</em> on the Hormuz re-escalation — a forward-inflation impulse running the wrong
+way for the disinflation bet. What's priced: a 70% year-end hike and a full AI valuation reset. The
+consensus narrative: "buy the dip, the AI secular story is intact." The gap between a market pricing a
+hike and a Fed that will not hike on one print with unemployment at 4.3% — yet now faces an oil-driven
+inflation tax it cannot cut into — is where the alpha and the danger both live this week.</p>
 
 <p><strong>Layer 4 — Bull / Base / Bear.</strong> <em>Bull (30%):</em> May CPI cools, the 2-year fails
 back under 4.00%, AI rips as the dip-buyers are proven right — risk up, rates down, dollar down, gold
@@ -293,6 +351,9 @@ window — the market's 70% hike probability is the single thing most likely to 
     ],
 
     "catalyst_calendar": [
+        {"day": "Live", "date": "now", "event": "Hormuz re-escalation · Iran–Israel strikes",
+         "consensus": "Fragile ceasefire holds; oil mean-reverts", "view": "Strait unresolved, MoU deadlocked on $24bn frozen assets; each strike re-bids the war premium",
+         "asymmetry": "Long crude / Brent calls on any tanker hit or confirmed mine", "dir": "up"},
         {"day": "Tue", "date": "9 Jun", "event": "SailPoint (SAIL) — BMO",
          "consensus": "Beat (26/30 buy)", "view": "Wide-dispersion beat history off a washed-out base",
          "asymmetry": "Long the small-cap identity-security tail", "dir": "up"},
@@ -454,17 +515,17 @@ the $8–10 war premium evaporates and the call spread expires worthless. That i
         },
         {
             "asset_class": "Commodity (options)",
-            "trade": "Buy Brent $100/$110 call spread (own the Hormuz tail)",
+            "trade": "Buy Brent $100/$115 call spread (own the Hormuz tail)",
             "structure": "call spread",
-            "entry": 2.2, "stop": 0.8, "target": 7.5,
-            "conviction": 6,
-            "conviction_breakdown": {"gap": 1, "catalyst": 2, "positioning": 1, "confirmation": 1, "stop_quality": 1},
+            "entry": 3.0, "stop": 1.0, "target": 11.0,
+            "conviction": 7,
+            "conviction_breakdown": {"gap": 2, "catalyst": 2, "positioning": 1, "confirmation": 1, "stop_quality": 1},
             "horizon": "1 month",
             "thesis": (
-                "Crude implied vol fell back to ~51% from 68% into an unsigned MoU while US strikes on radar "
-                "sites and Iranian drone activity keep the ceasefire fragile. Trump says a Strait-reopening deal "
-                "is reachable 'next week' — binary either way. Defined-risk way to own the re-escalation tail; "
-                "max loss is the $2.2 premium if the Strait reopens."
+                "The tail is firing: Israel struck western and central Iran Monday, US hit Iranian radar sites "
+                "Friday, Iran fired missiles at Kuwait/Bahrain — and Brent gapped +3% to ~$96 with the MoU "
+                "deadlocked on $24bn of frozen assets. A confirmed mine or tanker hit takes the Strait premium "
+                "to $110+. Defined-risk momentum entry above spot; max loss the ~$3 premium if the Strait calms."
             ),
         },
         {
@@ -523,14 +584,16 @@ def main():
     book.ingest_ideas(trades, brief["new_ideas"], "reactive")
     book.ingest_ideas(trades, brief["pre_position_ideas"], "pre-position")
 
-    book.step("Building output.html")
-    html = book.build_html(brief, trades, regime_log)
+    book.step("Rendering shark tank format (4 pages + fragments)")
+    shark_format.render_all(brief, trades, regime_log)
+
+    # legacy single-page output (kept, no longer the site root)
     with open(book.OUTPUT_PATH, "w", encoding="utf-8") as f:
-        f.write(html)
+        f.write(book.build_html(brief, trades, regime_log))
 
     book.save_json(book.TRADES_PATH, trades)
     book.save_json(book.REGIME_PATH, regime_log)
-    book.step(f"Done — wrote {book.OUTPUT_PATH}")
+    book.step("Done — wrote index/insights/earnings/trades + frag/* (+ legacy output.html)")
 
 
 if __name__ == "__main__":

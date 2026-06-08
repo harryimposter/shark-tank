@@ -5,8 +5,5 @@
   publish = "."
   command = ""
 
-# Serve the brief at the site root.
-[[redirects]]
-  from = "/"
-  to = "/output.html"
-  status = 200
+# index.html (Summary) is the site root; sub-pages resolve directly
+# (/insights.html, /earnings.html, /trades.html, /frag/*).

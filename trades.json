@@ -89,8 +89,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "The war premium has been removed from crude before the war risk has been removed from the Gulf. Tehran rejected the Friday MoU terms, US forces are staged to re-engage, and specs have cut net length from 191.9k to 178.8k — leaving squeeze fuel. Asymmetric: $7 of downside to the recent floor against $13 to a re-escalation reprice. This is the right-tail hedge on the book's barbell, not a directional call on peace.",
-      "current": 93.09,
-      "current_pnl_pct": 2.3,
+      "current": 96.05,
+      "current_pnl_pct": 5.55,
       "history": [
         {
           "date": "2026-05-31",
@@ -124,8 +124,8 @@
         },
         {
           "date": "2026-06-08",
-          "level": 93.09,
-          "pnl_pct": 2.3,
+          "level": 96.05,
+          "pnl_pct": 5.55,
           "status": "open"
         }
       ]
@@ -151,8 +151,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "The Hormuz premium is Brent-specific — it prices the waterway, WTI prices Cushing. If the MoU frays, the Atlantic-basin grade reprices the de-mining risk and the spread widens; if it holds, physical caps the downside near current carry. A cleaner, lower-beta way to own the same re-escalation tail with defined spread risk.",
-      "current": 2.55,
-      "current_pnl_pct": -22.73,
+      "current": 2.38,
+      "current_pnl_pct": -27.88,
       "history": [
         {
           "date": "2026-05-31",
@@ -186,8 +186,8 @@
         },
         {
           "date": "2026-06-08",
-          "level": 2.55,
-          "pnl_pct": -22.73,
+          "level": 2.38,
+          "pnl_pct": -27.88,
           "status": "open"
         }
       ]
@@ -275,8 +275,8 @@
       "horizon": "months",
       "min_hold_days": 45,
       "thesis": "Pre-position into the 5 June payrolls / 16–17 June FOMC window. Gold has already decoupled from a 4.98% long bond, which means it is pricing both MoU tails at once. It wins if oil-disinflation forces a dovish Fed and real yields fall, AND it wins if the MoU fails and the geopolitical bid returns. It loses only on the narrow path of strong-growth + stable-oil + hawkish-Fed together. That is the asymmetry pre-positioning is built for; minimum 45-day hold, not an event-day scalp.",
-      "current": 4339.61,
-      "current_pnl_pct": -4.05,
+      "current": 4350.0,
+      "current_pnl_pct": -3.82,
       "history": [
         {
           "date": "2026-05-31",
@@ -310,8 +310,8 @@
         },
         {
           "date": "2026-06-08",
-          "level": 4339.61,
-          "pnl_pct": -4.05,
+          "level": 4350.0,
+          "pnl_pct": -3.82,
           "status": "open"
         }
       ]
@@ -491,14 +491,14 @@
       "opened": "2026-06-08",
       "type": "reactive",
       "asset_class": "Commodity (options)",
-      "trade": "Buy Brent $100/$110 call spread (own the Hormuz tail)",
+      "trade": "Buy Brent $100/$115 call spread (own the Hormuz tail)",
       "structure": "call spread",
-      "entry": 2.2,
-      "stop": 0.8,
-      "target": 7.5,
-      "conviction": 6,
+      "entry": 3.0,
+      "stop": 1.0,
+      "target": 11.0,
+      "conviction": 7,
       "conviction_breakdown": {
-        "gap": 1,
+        "gap": 2,
         "catalyst": 2,
         "positioning": 1,
         "confirmation": 1,
@@ -506,13 +506,13 @@
       },
       "horizon": "1 month",
       "min_hold_days": 0,
-      "thesis": "Crude implied vol fell back to ~51% from 68% into an unsigned MoU while US strikes on radar sites and Iranian drone activity keep the ceasefire fragile. Trump says a Strait-reopening deal is reachable 'next week' — binary either way. Defined-risk way to own the re-escalation tail; max loss is the $2.2 premium if the Strait reopens.",
-      "current": 2.2,
+      "thesis": "The tail is firing: Israel struck western and central Iran Monday, US hit Iranian radar sites Friday, Iran fired missiles at Kuwait/Bahrain — and Brent gapped +3% to ~$96 with the MoU deadlocked on $24bn of frozen assets. A confirmed mine or tanker hit takes the Strait premium to $110+. Defined-risk momentum entry above spot; max loss the ~$3 premium if the Strait calms.",
+      "current": 3.0,
       "current_pnl_pct": 0.0,
       "history": [
         {
           "date": "2026-06-08",
-          "level": 2.2,
+          "level": 3.0,
           "pnl_pct": 0.0,
           "status": "open"
         }

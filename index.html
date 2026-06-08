@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Market Map / Summary · Shark Tank Market Map</title><style>
+:root{--bg:#fff;--surface:#f7f7f5;--ink:#1a1a1a;--ink-soft:#6b6b6b;--ink-mute:#9a9a9a;
+--gold:#b8960c;--red:#c0392b;--green:#1a7a45;--line:rgba(0,0,0,.1);--rad:8px;--rad-lg:12px;
+--font:-apple-system,"Helvetica Neue",sans-serif;--serif:Georgia,"Times New Roman",serif}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.65;margin:0;padding:0;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:.5px solid var(--line);display:flex;align-items:center;gap:14px;padding:.7rem 1.2rem}
+.burger{cursor:pointer;border:none;background:none;padding:6px;display:flex;flex-direction:column;gap:4px}
+.burger span{width:20px;height:2px;background:var(--ink);display:block}
+.brand{font-family:var(--serif);font-size:18px;font-weight:400}
+.brand b{color:var(--gold);font-weight:400}
+.navwrap{margin-left:auto;font-size:11px;color:var(--ink-mute);letter-spacing:.08em;text-transform:uppercase}
+.menu{display:none;position:fixed;top:0;left:0;height:100%;width:260px;background:var(--bg);border-right:.5px solid var(--line);box-shadow:2px 0 24px rgba(0,0,0,.06);z-index:60;padding:1.4rem 1.1rem}
+.menu.open{display:block}
+.menu .mh{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 1rem}
+.menu a{display:block;padding:.7rem .6rem;border-radius:var(--rad);text-decoration:none;font-size:15px;margin-bottom:2px}
+.menu a:hover{background:var(--surface)}
+.menu a.active{background:var(--surface);color:var(--gold);font-weight:500}
+.scrim{display:none;position:fixed;inset:0;background:rgba(0,0,0,.18);z-index:55}
+.scrim.open{display:block}
+.page{max-width:1400px;margin:0 auto;padding:1.6rem 2rem 4rem}
+.masthead{border-bottom:.5px solid var(--line);padding-bottom:1rem;margin-bottom:1.5rem}
+.regime-tag{display:inline-block;font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:.5px solid var(--gold);border-radius:20px;padding:2px 10px;margin-bottom:.7rem}
+.article-title{font-family:var(--serif);font-size:2rem;font-weight:400;line-height:1.25;margin:0 0 .4rem}
+.meta{font-size:11px;color:var(--ink-mute);letter-spacing:.08em;text-transform:uppercase}
+.two-col{display:grid;grid-template-columns:1fr 380px;gap:2.5rem;align-items:start}
+@media(max-width:960px){.two-col{grid-template-columns:1fr}}
+.lhs{min-width:0}.rhs{min-width:0;position:sticky;top:4.2rem}
+.section-label{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin:1.9rem 0 .8rem}
+.wrap-body{font-family:var(--serif);font-size:16px;line-height:1.8}
+.wrap-body p{margin:0 0 1rem}.wrap-body strong{font-weight:700}
+.theme-line{border-left:2px solid var(--gold);padding:.6rem .9rem;background:var(--surface);border-radius:0 var(--rad) var(--rad) 0;margin:1rem 0;font-size:13px;font-weight:500;line-height:1.5}
+.takeaways{list-style:none;padding:0;margin:0}
+.takeaways li{position:relative;padding:.45rem 0 .45rem 1.2rem;border-bottom:.5px solid var(--line);font-size:14px;line-height:1.55}
+.takeaways li:before{content:"";position:absolute;left:0;top:.95rem;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.scen-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:.5rem 0}
+@media(max-width:760px){.scen-grid{grid-template-columns:1fr}}
+.scen{border:.5px solid var(--line);border-top:2px solid var(--line);border-radius:var(--rad);padding:.9rem 1rem;background:var(--bg)}
+.scen.bull{border-top-color:var(--green)}.scen.base{border-top-color:var(--gold)}.scen.bear{border-top-color:var(--red)}
+.scen .sh{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);display:flex;justify-content:space-between;margin-bottom:.5rem}
+.scen .st{font-size:13px;font-weight:600;margin-bottom:.4rem;line-height:1.4}
+.scen .sb{font-size:12px;color:var(--ink-soft);line-height:1.55}
+.cardgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.trade-card{background:var(--bg);border:.5px solid var(--line);border-radius:var(--rad-lg);padding:1rem 1.1rem}
+.tc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:.7rem}
+.tc-name{font-size:14px;font-weight:600;line-height:1.35}
+.tc-class{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);margin-top:3px}
+.conv-badge{font-size:11px;font-weight:500;background:var(--surface);border:.5px solid var(--line);border-radius:20px;padding:2px 10px;white-space:nowrap}
+.tc-row{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:.5px solid var(--line)}
+.tc-row:last-of-type{border-bottom:none}.tc-k{color:var(--ink-mute)}.tc-v{font-weight:500}
+.conv-bar{display:flex;gap:3px;align-items:center;margin:.6rem 0}
+.pip{width:16px;height:4px;border-radius:2px;background:var(--line)}.pip.on{background:var(--gold)}
+.conv-detail{font-size:10px;color:var(--ink-mute);margin-left:6px}
+.tc-thesis{font-size:12px;color:var(--ink-soft);line-height:1.6;margin-top:.6rem;padding-top:.6rem;border-top:.5px solid var(--line)}
+.iframe-2col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:.5rem}
+@media(max-width:760px){.iframe-2col{grid-template-columns:1fr}}
+.iframe-2col iframe{width:100%;height:340px;border:.5px solid var(--line);border-radius:var(--rad);background:var(--bg)}
+.bookframe{width:100%;height:520px;border:.5px solid var(--line);border-radius:var(--rad);background:var(--bg)}
+table.cal{border-collapse:collapse;width:100%;font-size:13px}
+table.cal th,table.cal td{text-align:left;padding:7px 9px;border-bottom:.5px solid var(--line);vertical-align:top}
+table.cal th{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);font-weight:500}
+.cal .ev{color:var(--gold);font-weight:500}.g{color:var(--green)}.r{color:var(--red)}.mute{color:var(--ink-mute)}
+.one-chart{background:var(--surface);border-radius:var(--rad);padding:1rem 1.2rem;font-family:var(--serif);font-size:15px;line-height:1.7}
+.foot{font-size:11px;color:var(--ink-mute);margin-top:3rem;padding-top:1rem;border-top:.5px solid var(--line);line-height:1.8}
+.tv-wrap{border:.5px solid var(--line);border-radius:var(--rad);overflow:hidden}
+.rhs .section-label{margin-top:0}
+</style></head><body><div class="scrim" id="scrim" onclick="closeMenu()"></div><nav class="menu" id="menu"><div class="mh">Shark Tank · Market Map</div><a href="index.html" class="active">Summary</a><a href="insights.html">Insights</a><a href="earnings.html">Earnings</a><a href="trades.html">Trade Ideas</a></nav><div class="topbar"><button class="burger" onclick="openMenu()" aria-label="menu"><span></span><span></span><span></span></button><div class="brand">Market Map <b>· Shark Tank</b></div><div class="navwrap">Summary</div></div><div class="page"><div class="masthead"><div class="regime-tag">Two-Front Tape: Hawkish Repricing Meets a Live Hormuz</div><h1 class="article-title">Market Map / Summary</h1><p class="meta">Pre-market intelligence brief &middot; 2026-06-08 &middot; generated 06:25 local &middot; self-graded book</p><p style="font-size:13px;color:var(--ink-soft);margin:.6rem 0 0">Friday&#x27;s 172k payroll repriced fed funds to a ~70% hike by year-end and broke the AI and long-duration bids together. Over the weekend the Gulf re-escalated — US strikes on Iranian radar sites, Iranian missiles at Kuwait/Bahrain, Israeli strikes on Iran Monday — and crude gapped +3%. The disinflation the melt-up borrowed is now a stagflation impulse.</p></div><div class="two-col"><div class="lhs"><div class="section-label">The overnight read</div><div class="wrap-body">
+<p>The melt-up wasn't killed by one thing — it was caught in a pincer. On Friday a 172,000 payroll
+print, more than double the 80,000 consensus with unemployment steady at 4.3%, repriced the front
+end of the curve toward a <em>hike</em> and broke the two crowded trades of the year at once: long
+AI and long duration. The Nasdaq fell 4.2%, the 2-year jumped to 4.16%, gold dropped 3.3%, and CME
+FedWatch flipped from pricing cuts to a 70% chance of a hike by year-end. Then the weekend delivered
+the second jaw of the vice.</p>
+
+<p>The Gulf re-escalated for real. US forces struck Iranian coastal radar sites Friday evening after
+downing four drones aimed at the Strait of Hormuz; Iran fired seven ballistic missiles at Kuwait and
+Bahrain on Saturday; Israel hit military targets in western and central Iran on Monday. Pakistani
+mediators are in Tehran, but the talks are deadlocked over $24bn of frozen Iranian assets. Crude
+gapped — Brent +3.2% to ~$96, WTI +3.5% to ~$93.7 — even as OPEC+ added 188k b/d for July. The
+disinflation the tape borrowed in May has become a stagflation impulse: rates up <em>and</em> oil up
+at the same time.</p>
+
+<p>That combination is why this is not a clean buy-the-dip. Every prior AI dip was rescued by easing
+liquidity; this one arrives with the discount rate rising and an oil-driven inflation tax landing on
+the same consumer that funds hyperscaler capex. The one genuine divergence to lean on is regional:
+the selloff was a single-factor US event and Europe decoupled outright — DAX and FTSE closed green
+Friday while the Nasdaq bled. Long the continent, short the US tech beta, fade a front end that has
+over-extrapolated one payroll into a hiking cycle, and own the Hormuz tail that is now firing in real
+time. Keep the put spread on; it is the only reason last week was a flesh wound.</p>
+</div><div class="section-label">Today's takeaways</div><ul class="takeaways"><li>Two-front tape: hot jobs (Fed → ~70% hike-by-year-end) AND a live Hormuz re-escalation (crude +3%). Rates up and oil up together = stagflation box.</li><li>AVGO&#x27;s guide miss + the payroll broke long-AI and long-duration at once; Nasdaq −4.2%, 2Y to 4.16%, VIX +40% to 21.5.</li><li>The cleanest trade is the regional divergence — Europe (DAX/FTSE green) decoupled from a US-specific AI-concentration unwind.</li><li>Crude back to ~$96 on Israeli strikes into Iran; the Brent war premium is re-pricing while the MoU stays unsigned.</li><li>Fade the 70% hike — one 172k print with unemployment at 4.3% does not start a hiking cycle. The 17 Jun dot plot is the catalyst.</li><li>Book: AVGO stopped −13.6%; the SPX put spread (+128%) and 2s10s steepener (+155%) are carrying the drawdown.</li></ul><div class="section-label">Scenarios · Bull / Base / Bear</div><div class="scen-grid"><div class="scen bull"><div class="sh"><span>Bull</span><span>25%</span></div><div class="st">MoU signed, CPI cools, AI dip is the gift</div><div class="sb">A Hormuz de-escalation pulls crude back under $90, May CPI prints soft, the 2Y fails below 4.00% and the AI leaders rip as the dip-buyers are vindicated. Risk up, rates down, dollar down, gold up. The pincer releases.</div></div><div class="scen base"><div class="sh"><span>Base</span><span>50%</span></div><div class="st">Stagflation chop — US lags, Europe leads</div><div class="sb">FOMC holds, dots drift hawkish but stop short of a 2026 hike; crude stays $90–98 on an unresolved Strait; the US chops while Europe outperforms. Risk mixed, rates range, dollar firm, gold and oil bid. Trade the divergence, not the index.</div></div><div class="scen bear"><div class="sh"><span>Bear</span><span>25%</span></div><div class="st">Strait closes / CPI hot — both jaws bite</div><div class="sb">A confirmed mine or tanker hit spikes Brent through $110 as CPI runs hot and the dots show a hike; AI derating becomes a sector-wide de-gross. Risk down hard, rates up, dollar up, gold $4,800+, the put spread pays in full.</div></div></div><div class="section-label">What the Tape Is Missing</div><div class="wrap-body" style="font-size:14px">
+<p><strong>1.</strong> The two-month payroll revision was +93k — the labor market the Fed is reacting to
+is stronger than even Friday's headline. The disinflation bet needed lower oil to work, and oil sits at
+$93. Tell: core services CPI above 0.35% m/m on Wednesday confirms the trap.</p>
+<p><strong>2.</strong> Gold fell 3.3% yet sits only 4% off its high with real 10Y yields up ~30bp on the
+week — the structural bid is absorbing the rate shock. If gold holds $4,300 through a hawkish FOMC, the
+de-dollarization bid is real and the dip is a gift, not a top.</p>
+<p><strong>3 · Burry tell.</strong> Hyperscaler capex is now large enough that the marginal AI-revenue
+beat must accelerate just to hold the multiple — Broadcom grew AI 143% and lost a seventh of its cap.
+The cohort is hedged for a revenue miss; nobody is hedged for a growth-<em>rate</em> disappointment. When
+the second derivative rolls, the whole group de-rates at once. This resolves over two quarters, not this
+week — which is exactly why it is mispriced.</p>
+</div></div><div class="rhs"><div class="section-label">Live Levels</div>
+<div class="tv-wrap">
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+  {
+  "width":"100%","height":640,"colorTheme":"light","isTransparent":false,"locale":"en","showSymbolLogo":true,
+  "symbolsGroups":[
+    {"name":"Equities","symbols":[
+      {"name":"SP:SPX","displayName":"S&P 500"},
+      {"name":"NASDAQ:NDX","displayName":"Nasdaq 100"},
+      {"name":"DJ:DJI","displayName":"Dow"},
+      {"name":"XETR:DAX","displayName":"DAX"},
+      {"name":"TVC:UKX","displayName":"FTSE 100"},
+      {"name":"TVC:NI225","displayName":"Nikkei 225"},
+      {"name":"NASDAQ:SOX","displayName":"PHLX Semis"},
+      {"name":"NASDAQ:AVGO","displayName":"Broadcom"}]},
+    {"name":"FX","symbols":[
+      {"name":"FX:EURUSD","displayName":"EUR/USD"},
+      {"name":"FX:GBPUSD","displayName":"GBP/USD"},
+      {"name":"FX:USDJPY","displayName":"USD/JPY"},
+      {"name":"FX:AUDUSD","displayName":"AUD/USD"},
+      {"name":"TVC:DXY","displayName":"Dollar Index"}]},
+    {"name":"Rates","symbols":[
+      {"name":"TVC:US02Y","displayName":"US 2Y"},
+      {"name":"TVC:US10Y","displayName":"US 10Y"},
+      {"name":"TVC:US30Y","displayName":"US 30Y"},
+      {"name":"TVC:DE10Y","displayName":"Bund 10Y"}]},
+    {"name":"Commodities","symbols":[
+      {"name":"TVC:USOIL","displayName":"WTI"},
+      {"name":"TVC:UKOIL","displayName":"Brent"},
+      {"name":"TVC:GOLD","displayName":"Gold"},
+      {"name":"TVC:SILVER","displayName":"Silver"},
+      {"name":"CBOE:VIX","displayName":"VIX"},
+      {"name":"BINANCE:BTCUSDT","displayName":"Bitcoin"}]}
+  ]}
+  </script>
+</div>
+</div>
+<div class="theme-line">Two fronts, one tape: a hawkish Fed repricing (172k jobs → ~70% hike-by-year-end) and a live Hormuz re-escalation that put crude back to ~$96. Higher rates and higher oil at once is the stagflation box — bad for bonds and equities together, and the reason the AI dip isn&#x27;t yet the gift the bulls want it to be.</div></div></div><div class="foot">Shark Tank format · live levels via TradingView · earnings via Finnhub · book self-graded. Not investment advice.</div></div><script>function openMenu(){document.getElementById('menu').classList.add('open');document.getElementById('scrim').classList.add('open');}function closeMenu(){document.getElementById('menu').classList.remove('open');document.getElementById('scrim').classList.remove('open');}</script></body></html>
