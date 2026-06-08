@@ -10,7 +10,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-11
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $101.6bn
+- **Market cap:** $98.9bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     5.9385
@@ -43,7 +43,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-10
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $614.6bn
+- **Market cap:** $608.6bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     2.0011
