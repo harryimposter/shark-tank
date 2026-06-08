@@ -127,8 +127,18 @@ TV_WIDGET = """
   <div class="tradingview-widget-container__widget"></div>
   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
   {
-  "width":"100%","height":528,"colorTheme":"light","isTransparent":true,"locale":"en","showSymbolLogo":false,
+  "width":"100%","height":864,"colorTheme":"light","isTransparent":true,"locale":"en","showSymbolLogo":false,
   "symbolsGroups":[
+    {"name":"Equities (live · 24h CFD)","symbols":[
+      {"name":"CAPITALCOM:US500","displayName":"S&P 500"},
+      {"name":"CAPITALCOM:US100","displayName":"Nasdaq 100"},
+      {"name":"CAPITALCOM:US30","displayName":"Dow"},
+      {"name":"CAPITALCOM:DE40","displayName":"DAX"},
+      {"name":"CAPITALCOM:UK100","displayName":"FTSE 100"},
+      {"name":"CAPITALCOM:J225","displayName":"Nikkei 225"},
+      {"name":"KRX:KOSPI","displayName":"KOSPI"},
+      {"name":"NASDAQ:SOX","displayName":"PHLX Semis"},
+      {"name":"NASDAQ:AVGO","displayName":"Broadcom"}]},
     {"name":"FX","symbols":[
       {"name":"FX:EURUSD","displayName":"EUR/USD"},
       {"name":"FX:GBPUSD","displayName":"GBP/USD"},
@@ -195,17 +205,13 @@ def _level_block(label, items, note=None):
 
 
 def _rhs(brief):
-    parts = []
-    eq = brief.get("equity_levels", [])
-    if eq:
-        note = f'as of {eq[0]["asof"]} · refreshed each run' if eq[0].get("asof") else None
-        parts.append(_level_block("Equities · last close", eq, note))
+    # Live 24h widget on top (equities via CFD, FX, commodities); rates baked below
+    # (no free 24h cash-yield feed). KOSPI/SOX are live in-session, last close otherwise.
+    parts = ['<div class="section-label">Live levels · equities · FX · commodities</div>', TV_WIDGET]
     rt = brief.get("rates_levels", [])
     if rt:
         note = f'as of {rt[0]["asof"]} · SOFR auto-updates (NY Fed)' if rt[0].get("asof") else None
         parts.append(_level_block("Rates &amp; funding · last close", rt, note))
-    parts.append('<div class="section-label">Live · FX &amp; commodities (24h)</div>')
-    parts.append(TV_WIDGET)
     theme = brief.get("dominant_theme", "")
     if theme:
         parts.append(f'<div class="theme-line">{e(theme)}</div>')
