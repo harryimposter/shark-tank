@@ -142,7 +142,7 @@ def mark_to_market(trades, levels):
     Appends a dated history entry with directional P&L%, and rolls stopped/
     target trades into `closed`."""
     still_open = []
-    for t in trades["open"]:
+    for t in list(trades["open"]):  # iterate a copy — close_trade mutates trades["open"]
         level = levels.get(t["id"]) if levels else None
         if level is None:
             log(f"   {t['id']} level unverified — holding last mark")
