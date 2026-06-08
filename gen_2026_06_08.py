@@ -36,17 +36,17 @@ LEVELS = {
 brief = {
     "regime": "Two-Front Tape: Hawkish Repricing Meets a Live Hormuz",
     "regime_note": (
-        "Friday's 172k payroll repriced fed funds to a ~70% hike by year-end and broke the AI "
-        "and long-duration bids together. Over the weekend the Gulf re-escalated — US strikes on "
-        "Iranian radar sites, Iranian missiles at Kuwait/Bahrain, Israeli strikes on Iran Monday — "
-        "and crude gapped +3%. The disinflation the melt-up borrowed is now a stagflation impulse."
+        "Friday's 172k payroll repriced fed funds to a ~70% hike by year-end; the Gulf re-escalated "
+        "over the weekend (US/Israeli strikes on Iran, crude +3% to ~$96); and Monday the AI rout "
+        "went global — Korea's KOSPI fell 8.4% and tripped its circuit breaker, Samsung and SK Hynix "
+        "−10%, Nikkei −4.2%. Hawkish rates, higher oil, and a cracking AI complex, all at once."
     ),
 
     "dominant_theme": (
-        "Two fronts, one tape: a hawkish Fed repricing (172k jobs → ~70% hike-by-year-end) and a "
-        "live Hormuz re-escalation that put crude back to ~$96. Higher rates and higher oil at once "
-        "is the stagflation box — bad for bonds and equities together, and the reason the AI dip "
-        "isn't yet the gift the bulls want it to be."
+        "Three shocks, one tape: a hawkish Fed (172k jobs → ~70% hike-by-year-end), a live Hormuz "
+        "re-escalation (crude ~$96), and an Asia AI rout that tripped Korea's circuit breaker "
+        "(KOSPI −8.4%, Samsung/Hynix −10%). Higher rates + higher oil + a de-rating AI complex = "
+        "the stagflation box with a concentration accelerant."
     ),
 
     "summary_narrative": """
@@ -65,6 +65,18 @@ gapped — Brent +3.2% to ~$96, WTI +3.5% to ~$93.7 — even as OPEC+ added 188k
 disinflation the tape borrowed in May has become a stagflation impulse: rates up <em>and</em> oil up
 at the same time.</p>
 
+<p>By Monday the AI complex cracked in Asia — and it cracked through the floor. Korea's KOSPI fell
+8.4% at the open, broke below 8,000 and tripped its circuit breaker for the third time this year;
+Samsung and SK Hynix, together roughly 55% of the index, both fell 10%. Japan's Nikkei lost 4.2%
+(¥48tn / ~$335bn) and Taiwan's TAIEX fell 3% with TSMC alone 41.5% of it. This is the Broadcom guide
+and the Friday payroll transmitted through the most concentrated equity indices on earth: when two
+stocks are half your market, a de-rating in one sector becomes a market-wide trading halt. The
+structural tell — that nobody is hedged for an AI growth-<em>rate</em> disappointment — printed in
+Seoul before New York had its coffee, and Korean retail margin debt at a record ₩37.7tn is turning
+the move into forced liquidation. Note the irony: SK Hynix has sold out its entire 2026 memory
+output to Nvidia and Jensen Huang is in Seoul today — the demand is real; it is the <em>price</em>
+that was wrong.</p>
+
 <p>That combination is why this is not a clean buy-the-dip. Every prior AI dip was rescued by easing
 liquidity; this one arrives with the discount rate rising and an oil-driven inflation tax landing on
 the same consumer that funds hyperscaler capex. The one genuine divergence to lean on is regional:
@@ -75,9 +87,11 @@ time. Keep the put spread on; it is the only reason last week was a flesh wound.
 """,
 
     "takeaways": [
-        "Two-front tape: hot jobs (Fed → ~70% hike-by-year-end) AND a live Hormuz re-escalation (crude +3%). Rates up and oil up together = stagflation box.",
+        "Asia led the rout overnight: KOSPI −8.4% tripped a circuit breaker (3rd this year) — Samsung & SK Hynix −10%, together ~55% of the index; Nikkei −4.2% (¥48tn), TAIEX −3% (TSMC = 41.5%).",
+        "The Burry tell went live: when two chip names are half an index, there's no diversification to cushion a de-rating. Korea/Taiwan are leveraged single-stock bets, and ₩37.7tn record retail margin is forcing liquidation.",
+        "Three shocks, one tape: hot jobs (Fed → ~70% hike-by-year-end), a live Hormuz re-escalation (crude +3% to ~$96), and the global AI de-rating. Rates up + oil up + AI down = stagflation box.",
         "AVGO's guide miss + the payroll broke long-AI and long-duration at once; Nasdaq −4.2%, 2Y to 4.16%, VIX +40% to 21.5.",
-        "The cleanest trade is the regional divergence — Europe (DAX/FTSE green) decoupled from a US-specific AI-concentration unwind.",
+        "Demand isn't the problem, price is: SK Hynix sold out its entire 2026 memory to Nvidia and Jensen is in Seoul today — this is a valuation reset, not a demand reset.",
         "Crude back to ~$96 on Israeli strikes into Iran; the Brent war premium is re-pricing while the MoU stays unsigned.",
         "Fade the 70% hike — one 172k print with unemployment at 4.3% does not start a hiking cycle. The 17 Jun dot plot is the catalyst.",
         "Book: AVGO stopped −13.6%; the SPX put spread (+128%) and 2s10s steepener (+155%) are carrying the drawdown.",
@@ -161,12 +175,29 @@ outran supply risk. Stop $1.50 intact; the trade needs a Hormuz headline to work
         {"name": "VIX",                 "level": "21.51",     "chg": "+39.7%", "dir": "up"},
     ],
 
+    "equity_levels": [
+        {"name": "S&P 500", "level": "7,383", "chg": "−2.6% (Fri)", "dir": "down",
+         "asof": "Fri 5 Jun (US/EU) · Mon 8 Jun (Asia)"},
+        {"name": "Nasdaq 100", "level": "28,939", "chg": "−4.2% (Fri)", "dir": "down"},
+        {"name": "Dow", "level": "50,867", "chg": "−1.3% (Fri)", "dir": "down"},
+        {"name": "DAX", "level": "24,995", "chg": "+0.2% (Fri)", "dir": "up"},
+        {"name": "FTSE 100", "level": "10,401", "chg": "+0.4% (Fri)", "dir": "up"},
+        {"name": "Nikkei 225", "level": "~63,800", "chg": "−4.2% (Mon)", "dir": "down"},
+        {"name": "KOSPI", "level": "<8,000", "chg": "−8.4% · HALT", "dir": "warn"},
+        {"name": "TAIEX", "level": "Mon", "chg": "−3% (TSMC-led)", "dir": "down"},
+        {"name": "SOX semis", "level": "~12,220", "chg": "−10% (2 sess)", "dir": "down"},
+        {"name": "Broadcom", "level": "~$386", "chg": "−14% · the catalyst", "dir": "down"},
+    ],
+
     "rates_levels": [
-        {"name": "US 2Y", "level": "4.16%", "chg": "+11bp", "dir": "up", "asof": "Fri 5 Jun close"},
+        {"name": "SOFR (o/n)", "level": "3.62%", "chg": "funding", "dir": "mute",
+         "asof": "Fri 5 Jun close", "vid": "sofr-v", "cid": "sofr-c"},
+        {"name": "US 2Y", "level": "4.16%", "chg": "+11bp", "dir": "up"},
         {"name": "US 10Y", "level": "4.54%", "chg": "+6bp", "dir": "up"},
         {"name": "US 30Y", "level": ">5.00%", "chg": "term premium", "dir": "up"},
         {"name": "2s10s", "level": "+38bp", "chg": "steeper", "dir": "up"},
         {"name": "Bund 10Y", "level": "~2.9%", "chg": "ECB hiking (est)", "dir": "mute"},
+        {"name": "MOVE", "level": "~110", "chg": "rates vol bid (est)", "dir": "up"},
         {"name": "Fed odds", "level": "~70%", "chg": "hike by year-end", "dir": "up"},
     ],
 
@@ -232,12 +263,18 @@ de-gross — risk down hard, rates up, dollar up, gold down then up as the growt
 too hawkish for one payroll. Half-priced: European equity outperformance. Fairly priced: a firm
 dollar. Fully priced: the ECB's Thursday hike at 99% on the strip.</p>
 
-<p><strong>The Burry tell.</strong> Hyperscaler capex is now so large that the marginal AI-revenue beat
-has to <em>accelerate</em> just to hold the multiple. Broadcom grew AI 143% and the market took a
-seventh of its cap. The whole cohort is hedged for a revenue <em>miss</em> and not one name is hedged
-for a revenue-<em>growth-rate</em> disappointment. When the second derivative of AI revenue rolls — and
-it rolls within two quarters — the de-rating is simultaneous and there is no offsetting bid. That is the
-structural risk nobody is looking at while they argue about this week's dip.</p>
+<p><strong>The Burry tell — now live.</strong> Hyperscaler capex is now so large that the marginal
+AI-revenue beat has to <em>accelerate</em> just to hold the multiple. Broadcom grew AI 143% and the
+market took a seventh of its cap; the whole cohort is hedged for a revenue <em>miss</em> and not one
+name is hedged for a revenue-<em>growth-rate</em> disappointment. That stopped being hypothetical on
+Monday — it printed in Asia. Korea's KOSPI, roughly 55% Samsung and SK Hynix, fell 8.4% and tripped
+its circuit breaker; Taiwan's TAIEX, 41.5% TSMC, fell 3%. Index concentration is the amplifier: when a
+handful of chip names <em>are</em> the index, a sector de-rating has no internal hedge and becomes a
+market-wide halt — with Korean retail margin debt at a record ₩37.7tn converting it into forced
+liquidation. The same concentration sits in the S&P's top ten; Seoul just demonstrated what its
+unwind looks like. The cruel detail: SK Hynix has pre-sold all of its 2026 HBM to Nvidia and Jensen
+Huang is in Seoul today — demand is intact, so this is a multiple event, not a cycle top. When the
+second derivative of AI revenue rolls, the de-rating is simultaneous and there is no offsetting bid.</p>
 
 <p><strong>The Pozsar mechanic.</strong> Trace Friday back to the plumbing: the payroll did not just move
 rate expectations, it pulled dollars home. The DXY's 0.65% pop and a modestly wider cross-currency basis
@@ -261,10 +298,11 @@ reason last week was a flesh wound.</p>
 
     "correlation_regime": """
 <p>Three breaks worth trading.</p>
-<p><strong>1 · US and European equities decorrelated outright.</strong> Nasdaq −4.2% against DAX +0.2%
-and FTSE +0.4% on the same session. The dominant driver flipped from "global liquidity" to "US AI
-concentration," and when the driver changes the correlation breaks. That is the signal to go
-cross-region RV, not to wait for re-convergence.</p>
+<p><strong>1 · The AI-tech bloc decoupled from value — globally.</strong> Nasdaq −4.2%, Korea's KOSPI
+−8.4% (halted) and Japan's Nikkei −4.2% broke lower together while Germany's DAX (+0.2%) and the FTSE
+(+0.4%) held green. The split is not regional, it is factor: anything AI-concentrated sold, anything
+value/financials/old-economy held. The dominant driver flipped from "global liquidity" to
+"AI-concentration risk" — long European value, short the global AI beta is the cleaner RV than ever.</p>
 <p><strong>2 · Gold and real yields decoupled.</strong> Real 10Y yields rose ~30bp on the week and gold
 held within 4% of its high. The marginal gold buyer is price-insensitive to rates — central banks and
 de-dollarization flow, not macro funds. A rate-driven dip in gold is therefore shallower than the move
@@ -289,9 +327,11 @@ sourced, the rest of the curve is a labeled estimate.</p>
 
     "sector_rv": """
 <p>Two strongest overnight: European banks and the UK value/defensive complex (FTSE +0.4%, DAX +0.2%) —
-the ECB-hike beneficiaries and the names with no AI capex cycle to give back. Two weakest: US semis and
-US megacap tech (Nasdaq −4.2%), the AI-capex cohort Broadcom just repriced.</p>
-<p>This is not a global risk-off; it is a US-concentration unwind. The cross-region RV writes itself:
+the ECB-hike beneficiaries and the names with no AI capex cycle to give back. Two weakest: Asian memory
+and foundry (Samsung & SK Hynix −10%, TSMC-led TAIEX −3%) and US semis/megacap tech (SOX −10% over two
+sessions, Nasdaq −4.2%) — the global AI-capex cohort Broadcom repriced, hit hardest where index
+concentration is most extreme.</p>
+<p>This is not a global risk-off; it is an AI-concentration unwind. The cross-region RV writes itself:
 <strong>long DAX, short Nasdaq</strong>, into a Thursday ECB hike that widens both the policy and the
 earnings-mix divergence. Exhausted or legs? Legs — precisely because the divergence is structural, not
 sentiment. Europe cannot give back an AI capex cycle it never ran.</p>

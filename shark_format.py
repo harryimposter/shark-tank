@@ -127,16 +127,8 @@ TV_WIDGET = """
   <div class="tradingview-widget-container__widget"></div>
   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
   {
-  "width":"100%","height":792,"colorTheme":"light","isTransparent":true,"locale":"en","showSymbolLogo":false,
+  "width":"100%","height":528,"colorTheme":"light","isTransparent":true,"locale":"en","showSymbolLogo":false,
   "symbolsGroups":[
-    {"name":"Equities","symbols":[
-      {"name":"CAPITALCOM:US500","displayName":"S&P 500"},
-      {"name":"CAPITALCOM:US100","displayName":"Nasdaq 100"},
-      {"name":"CAPITALCOM:US30","displayName":"Dow"},
-      {"name":"CAPITALCOM:DE40","displayName":"DAX"},
-      {"name":"CAPITALCOM:UK100","displayName":"FTSE 100"},
-      {"name":"CAPITALCOM:J225","displayName":"Nikkei 225"},
-      {"name":"NASDAQ:AVGO","displayName":"Broadcom"}]},
     {"name":"FX","symbols":[
       {"name":"FX:EURUSD","displayName":"EUR/USD"},
       {"name":"FX:GBPUSD","displayName":"GBP/USD"},
@@ -157,31 +149,67 @@ TV_WIDGET = """
 """
 
 
-def _rates_tiles(rates):
-    """Baked rates block — TradingView's free widget can't stream cash yields when
-    the bond market is shut, so we render yields as last-close tiles (refreshed each run)."""
-    if not rates:
+# Live SOFR from the NY Fed public API (CORS-friendly); falls back to the baked
+# value if the fetch fails. The rest of the rate tiles are last-close (no free feed).
+RATES_JS = """
+<script>
+(function(){
+  function set(id,v){var el=document.getElementById(id);if(el)el.textContent=v;}
+  function pull(){
+    fetch('https://markets.newyorkfed.org/api/rates/secured/sofr/last/1.json')
+      .then(function(r){return r.json();})
+      .then(function(j){
+        var rr=(j.refRates||[])[0]||{};var p=rr.percentRate;
+        if(typeof p==='number'&&p>0.5&&p<8){
+          set('sofr-v',p.toFixed(2)+'%');
+          set('sofr-c','live · NY Fed '+(rr.effectiveDate||''));
+        }
+      }).catch(function(){});
+  }
+  pull(); setInterval(pull,600000);
+})();
+</script>
+"""
+
+
+def _level_block(label, items, note=None):
+    """Baked last-close tiles (used for equities + rates — the asset classes the free
+    TradingView widget can't reliably show when their cash market is shut)."""
+    if not items:
         return ""
     cells = []
-    for r in rates:
-        cls = {"up": "g", "down": "r"}.get(r.get("dir", ""), "mute")
+    for r in items:
+        cls = {"up": "g", "down": "r", "warn": "r"}.get(r.get("dir", ""), "mute")
+        vid = f' id="{e(r["vid"])}"' if r.get("vid") else ""
+        cid = f' id="{e(r["cid"])}"' if r.get("cid") else ""
         cells.append(
             f'<div class="rtile"><div class="rl">{e(r.get("name",""))}</div>'
-            f'<div class="rv">{e(r.get("level",""))}</div>'
-            f'<div class="rc {cls}">{e(r.get("chg",""))}</div></div>'
+            f'<div class="rv"{vid}>{e(r.get("level",""))}</div>'
+            f'<div class="rc {cls}"{cid}>{e(r.get("chg",""))}</div></div>'
         )
-    asof = rates[0].get("asof", "") if rates else ""
-    return ('<div class="section-label">Rates · yields (last close)</div>'
-            '<div class="rates-grid">' + "".join(cells) + '</div>'
-            + (f'<div class="asof">as of {e(asof)} · refreshed each run</div>' if asof else ""))
+    out = (f'<div class="section-label">{e(label)}</div>'
+           '<div class="rates-grid">' + "".join(cells) + '</div>')
+    if note:
+        out += f'<div class="asof">{e(note)}</div>'
+    return out
 
 
 def _rhs(brief):
+    parts = []
+    eq = brief.get("equity_levels", [])
+    if eq:
+        note = f'as of {eq[0]["asof"]} · refreshed each run' if eq[0].get("asof") else None
+        parts.append(_level_block("Equities · last close", eq, note))
+    rt = brief.get("rates_levels", [])
+    if rt:
+        note = f'as of {rt[0]["asof"]} · SOFR auto-updates (NY Fed)' if rt[0].get("asof") else None
+        parts.append(_level_block("Rates &amp; funding · last close", rt, note))
+    parts.append('<div class="section-label">Live · FX &amp; commodities (24h)</div>')
+    parts.append(TV_WIDGET)
     theme = brief.get("dominant_theme", "")
-    parts = ['<div class="section-label">Live Levels</div>', TV_WIDGET]
-    parts.append(_rates_tiles(brief.get("rates_levels", [])))
     if theme:
         parts.append(f'<div class="theme-line">{e(theme)}</div>')
+    parts.append(RATES_JS)
     return "".join(parts)
 
 
