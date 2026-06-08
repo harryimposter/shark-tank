@@ -61,7 +61,7 @@ a{color:inherit}
 .meta{font-size:11px;color:var(--ink-mute);letter-spacing:.08em;text-transform:uppercase}
 .two-col{display:grid;grid-template-columns:1fr 380px;gap:2.5rem;align-items:start}
 @media(max-width:960px){.two-col{grid-template-columns:1fr}}
-.lhs{min-width:0}.rhs{min-width:0;position:sticky;top:4.2rem}
+.lhs{min-width:0}.rhs{min-width:0}
 .section-label{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin:1.9rem 0 .8rem}
 .wrap-body{font-family:var(--serif);font-size:16px;line-height:1.8}
 .wrap-body p{margin:0 0 1rem}.wrap-body strong{font-weight:700}
@@ -112,29 +112,31 @@ NAV = [
 # --------------------------------------------------------------------------
 # TradingView live right rail (market-quotes widget — no key, live, all classes)
 # --------------------------------------------------------------------------
+# Symbols chosen to quote ~24h (CFD / continuous / TVC index) so cells are never
+# blank when a cash market is shut — the widget then shows the last/prev-close level.
+# showSymbolLogo:false (no icons); height sized to fit every row (no internal scroll).
 TV_WIDGET = """
 <div class="tv-wrap">
 <div class="tradingview-widget-container">
   <div class="tradingview-widget-container__widget"></div>
   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
   {
-  "width":"100%","height":640,"colorTheme":"light","isTransparent":false,"locale":"en","showSymbolLogo":true,
+  "width":"100%","height":928,"colorTheme":"light","isTransparent":true,"locale":"en","showSymbolLogo":false,
   "symbolsGroups":[
     {"name":"Equities","symbols":[
-      {"name":"SP:SPX","displayName":"S&P 500"},
-      {"name":"NASDAQ:NDX","displayName":"Nasdaq 100"},
-      {"name":"DJ:DJI","displayName":"Dow"},
-      {"name":"XETR:DAX","displayName":"DAX"},
-      {"name":"TVC:UKX","displayName":"FTSE 100"},
-      {"name":"TVC:NI225","displayName":"Nikkei 225"},
-      {"name":"NASDAQ:SOX","displayName":"PHLX Semis"},
+      {"name":"CAPITALCOM:US500","displayName":"S&P 500"},
+      {"name":"CAPITALCOM:US100","displayName":"Nasdaq 100"},
+      {"name":"CAPITALCOM:US30","displayName":"Dow"},
+      {"name":"CAPITALCOM:DE40","displayName":"DAX"},
+      {"name":"CAPITALCOM:UK100","displayName":"FTSE 100"},
+      {"name":"CAPITALCOM:J225","displayName":"Nikkei 225"},
       {"name":"NASDAQ:AVGO","displayName":"Broadcom"}]},
     {"name":"FX","symbols":[
       {"name":"FX:EURUSD","displayName":"EUR/USD"},
       {"name":"FX:GBPUSD","displayName":"GBP/USD"},
       {"name":"FX:USDJPY","displayName":"USD/JPY"},
       {"name":"FX:AUDUSD","displayName":"AUD/USD"},
-      {"name":"TVC:DXY","displayName":"Dollar Index"}]},
+      {"name":"CAPITALCOM:DXY","displayName":"Dollar Index"}]},
     {"name":"Rates","symbols":[
       {"name":"TVC:US02Y","displayName":"US 2Y"},
       {"name":"TVC:US10Y","displayName":"US 10Y"},
@@ -145,7 +147,7 @@ TV_WIDGET = """
       {"name":"TVC:UKOIL","displayName":"Brent"},
       {"name":"TVC:GOLD","displayName":"Gold"},
       {"name":"TVC:SILVER","displayName":"Silver"},
-      {"name":"CBOE:VIX","displayName":"VIX"},
+      {"name":"TVC:VIX","displayName":"VIX"},
       {"name":"BINANCE:BTCUSDT","displayName":"Bitcoin"}]}
   ]}
   </script>
