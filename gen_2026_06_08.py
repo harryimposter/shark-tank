@@ -161,6 +161,15 @@ outran supply risk. Stop $1.50 intact; the trade needs a Hormuz headline to work
         {"name": "VIX",                 "level": "21.51",     "chg": "+39.7%", "dir": "up"},
     ],
 
+    "rates_levels": [
+        {"name": "US 2Y", "level": "4.16%", "chg": "+11bp", "dir": "up", "asof": "Fri 5 Jun close"},
+        {"name": "US 10Y", "level": "4.54%", "chg": "+6bp", "dir": "up"},
+        {"name": "US 30Y", "level": ">5.00%", "chg": "term premium", "dir": "up"},
+        {"name": "2s10s", "level": "+38bp", "chg": "steeper", "dir": "up"},
+        {"name": "Bund 10Y", "level": "~2.9%", "chg": "ECB hiking (est)", "dir": "mute"},
+        {"name": "Fed odds", "level": "~70%", "chg": "hike by year-end", "dir": "up"},
+    ],
+
     "one_chart": """
 <p class="theme">The 2-year Treasury yield at 4.16%.</p>
 <p>It carries the entire Fed repricing in a single number. It broke to its highest since February 2025

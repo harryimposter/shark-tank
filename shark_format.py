@@ -99,7 +99,13 @@ table.cal th{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:v
 .one-chart{background:var(--surface);border-radius:var(--rad);padding:1rem 1.2rem;font-family:var(--serif);font-size:15px;line-height:1.7}
 .foot{font-size:11px;color:var(--ink-mute);margin-top:3rem;padding-top:1rem;border-top:.5px solid var(--line);line-height:1.8}
 .tv-wrap{border:.5px solid var(--line);border-radius:var(--rad);overflow:hidden}
-.rhs .section-label{margin-top:0}
+.rhs .section-label{margin-top:1.4rem}.rhs .section-label:first-child{margin-top:0}
+.rates-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.rtile{background:var(--surface);border:.5px solid var(--line);border-radius:8px;padding:.5rem .7rem}
+.rtile .rl{font-size:10px;color:var(--ink-mute);margin-bottom:2px}
+.rtile .rv{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.rtile .rc{font-size:11px}
+.asof{font-size:10px;color:var(--ink-mute);margin-top:.5rem;letter-spacing:.04em}
 """
 
 NAV = [
@@ -121,7 +127,7 @@ TV_WIDGET = """
   <div class="tradingview-widget-container__widget"></div>
   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
   {
-  "width":"100%","height":928,"colorTheme":"light","isTransparent":true,"locale":"en","showSymbolLogo":false,
+  "width":"100%","height":792,"colorTheme":"light","isTransparent":true,"locale":"en","showSymbolLogo":false,
   "symbolsGroups":[
     {"name":"Equities","symbols":[
       {"name":"CAPITALCOM:US500","displayName":"S&P 500"},
@@ -137,11 +143,6 @@ TV_WIDGET = """
       {"name":"FX:USDJPY","displayName":"USD/JPY"},
       {"name":"FX:AUDUSD","displayName":"AUD/USD"},
       {"name":"CAPITALCOM:DXY","displayName":"Dollar Index"}]},
-    {"name":"Rates","symbols":[
-      {"name":"TVC:US02Y","displayName":"US 2Y"},
-      {"name":"TVC:US10Y","displayName":"US 10Y"},
-      {"name":"TVC:US30Y","displayName":"US 30Y"},
-      {"name":"TVC:DE10Y","displayName":"Bund 10Y"}]},
     {"name":"Commodities","symbols":[
       {"name":"TVC:USOIL","displayName":"WTI"},
       {"name":"TVC:UKOIL","displayName":"Brent"},
@@ -156,9 +157,29 @@ TV_WIDGET = """
 """
 
 
+def _rates_tiles(rates):
+    """Baked rates block — TradingView's free widget can't stream cash yields when
+    the bond market is shut, so we render yields as last-close tiles (refreshed each run)."""
+    if not rates:
+        return ""
+    cells = []
+    for r in rates:
+        cls = {"up": "g", "down": "r"}.get(r.get("dir", ""), "mute")
+        cells.append(
+            f'<div class="rtile"><div class="rl">{e(r.get("name",""))}</div>'
+            f'<div class="rv">{e(r.get("level",""))}</div>'
+            f'<div class="rc {cls}">{e(r.get("chg",""))}</div></div>'
+        )
+    asof = rates[0].get("asof", "") if rates else ""
+    return ('<div class="section-label">Rates · yields (last close)</div>'
+            '<div class="rates-grid">' + "".join(cells) + '</div>'
+            + (f'<div class="asof">as of {e(asof)} · refreshed each run</div>' if asof else ""))
+
+
 def _rhs(brief):
     theme = brief.get("dominant_theme", "")
     parts = ['<div class="section-label">Live Levels</div>', TV_WIDGET]
+    parts.append(_rates_tiles(brief.get("rates_levels", [])))
     if theme:
         parts.append(f'<div class="theme-line">{e(theme)}</div>')
     return "".join(parts)
