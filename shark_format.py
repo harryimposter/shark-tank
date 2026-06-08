@@ -211,7 +211,7 @@ def _rhs(brief):
     rt = brief.get("rates_levels", [])
     if rt:
         note = f'as of {rt[0]["asof"]} · SOFR auto-updates (NY Fed)' if rt[0].get("asof") else None
-        parts.append(_level_block("Rates &amp; funding · last close", rt, note))
+        parts.append(_level_block("Rates & funding · last close", rt, note))
     theme = brief.get("dominant_theme", "")
     if theme:
         parts.append(f'<div class="theme-line">{e(theme)}</div>')
