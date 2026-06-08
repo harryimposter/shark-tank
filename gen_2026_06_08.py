@@ -1,649 +1,629 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""Market Map generator — 2026-06-08 brief.
-
-Builds the `brief` dict from the day's web-searched data, marks the live book
-to market, ingests new ideas, and writes output.html via the book.py engine.
-
-Data as of Fri 5 Jun 2026 close (markets shut over the weekend). Sources:
-CNBC, BLS, CME FedWatch, Reuters, Trading Economics, Finnhub (earnings_data.md),
-ECB, Yahoo Finance. See the Staleness Check section for per-datum timestamps.
+"""Market Map brief generator — 2026-06-08.
+Key events since June 1: May NFP +172k (2× 85k consensus), AVGO Q2 beat but
+Q3 AI guide missed buy-side ($16B vs $17.2B), Israel struck Iran defence sites,
+US hit Iranian radar, Iran fired at Kuwait/Bahrain. Four new trades opened.
+Run: python gen_2026_06_08.py
 """
-
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import book
-import shark_format
 
+trades     = book.load_trades()
+regime_log = book.load_json(book.REGIME_PATH, [])
 
-# ---------------------------------------------------------------------------
-# 1) Mark-to-market levels for the 9 open positions (Fri 5 Jun close)
-# ---------------------------------------------------------------------------
-LEVELS = {
-    "MM-2026-001": 1.648,    # EURAUD = EURUSD 1.16 / AUDUSD 0.7041 — round-tripped
-    "MM-2026-002": 96.05,    # Brent — +3.2% Mon as Hormuz re-escalates (Israel strikes Iran)
-    "MM-2026-003": 2.38,     # Brent-WTI spread (96.05 - 93.67) — both rallied, stayed compressed
-    "MM-2026-004": 4.544,    # US 10Y yield
-    "MM-2026-005": 4350.0,   # Gold — modest safe-haven bid into the strikes vs hawkish-rate drag
-    "MM-2026-006": 216.0,    # AVGO — gapped through 228 stop on guide miss (~-13.6%)
-    "MM-2026-007": 160.32,   # USDJPY
-    "MM-2026-008": 80.0,     # SPX 7300/7000 put spread — re-marked up on the selloff
-    "MM-2026-009": 0.382,    # 2s10s = 4.544 - 4.162
-}
+# ── Regime ─────────────────────────────────────────────────────────────────
+regime = "Payrolls Shock Meets Hormuz Fire"
+regime_note = (
+    "May NFP +172k (2x the 85k consensus) re-priced a Fed hike and de-rated the AI multiple "
+    "in a single session. Israel struck Iran's defence systems over the weekend; US hit Iranian "
+    "radar sites; Iran fired missiles at Kuwait and Bahrain. Brent gapped to $96. The tape is "
+    "repositioning, not recovering."
+)
+regime_log = book.update_regime_log(regime_log, regime, regime_note)
 
+# ── Extract new trades opened today (already in trades.json) ───────────────
+new_today_ids    = {"MM-2026-010", "MM-2026-011", "MM-2026-012"}
+prepos_today_ids = {"MM-2026-013"}
+new_ideas_cards  = [t for t in trades["open"] if t["id"] in new_today_ids]
+prepos_cards     = [t for t in trades["open"] if t["id"] in prepos_today_ids]
 
-# ---------------------------------------------------------------------------
-# 2) The brief
-# ---------------------------------------------------------------------------
+# ── Brief ──────────────────────────────────────────────────────────────────
 brief = {
-    "regime": "Two-Front Tape: Hawkish Repricing Meets a Live Hormuz",
-    "regime_note": (
-        "Friday's 172k payroll repriced fed funds to a ~70% hike by year-end; the Gulf re-escalated "
-        "over the weekend (US/Israeli strikes on Iran, crude +3% to ~$96); and Monday the AI rout "
-        "went global — Korea's KOSPI fell 8.4% and tripped its circuit breaker, Samsung and SK Hynix "
-        "−10%, Nikkei −4.2%. Hawkish rates, higher oil, and a cracking AI complex, all at once."
-    ),
+    "regime":      regime,
+    "regime_note": regime_note,
+
+    # ── Week graded (June 1 -> June 8) ────────────────────────────────────
+    "yesterday_graded": """
+<table>
+<thead><tr><th>ID</th><th>Trade</th><th>Entry &rarr; Current</th><th>P&amp;L</th><th>Note</th></tr></thead>
+<tbody>
+<tr>
+  <td class="r">MM-2026-001</td>
+  <td>Short EURAUD</td>
+  <td>1.6450 &rarr; 1.648</td>
+  <td class="num r">&minus;0.18%</td>
+  <td>Working against. ECB June 11 hike priced at 99% lifted EUR; AUD held on iron ore. Stop 1.662 &mdash; 14bp away. Thesis intact: the hike will be a growth error and EUR sells the fact post-press conference.</td>
+</tr>
+<tr>
+  <td class="g">MM-2026-002</td>
+  <td>Long Brent crude</td>
+  <td>$91.00 &rarr; $96.05</td>
+  <td class="num g">+5.55%</td>
+  <td>Working. Israel struck western/central Iranian defence sites; US hit Iranian radar; Iran fired at Kuwait and Bahrain. Brent gapped +4%+ Monday. MoU deadlocked on $24bn frozen assets. Target $104 intact.</td>
+</tr>
+<tr>
+  <td class="r">MM-2026-003</td>
+  <td>Long Brent / Short WTI spread</td>
+  <td>3.30 &rarr; 2.38</td>
+  <td class="num r">&minus;27.88%</td>
+  <td>Under pressure. WTI caught up to Brent as US domestic supply rebounded; spread compressed from 2.81 to 2.38. Stop 1.50 not triggered. Below $2.00 = discretionary close. Highest-risk open position; watching daily.</td>
+</tr>
+<tr>
+  <td class="r">MM-2026-004</td>
+  <td>Short US 10Y yield</td>
+  <td>4.44% &rarr; 4.544%</td>
+  <td class="num r">&minus;2.34%</td>
+  <td>Payrolls +172k drove 10Y to 4.57% intraday Friday. Stop at 4.65% &mdash; only 10bp away. CPI Wednesday and dot plot June 17 are the two remaining catalysts. Do not add. Survival mode.</td>
+</tr>
+<tr>
+  <td class="r">MM-2026-005</td>
+  <td>Long gold (pre-position)</td>
+  <td>$4,523 &rarr; $4,350</td>
+  <td class="num r">&minus;3.82%</td>
+  <td>Payrolls drove DXY to ~100.5 and re-priced a hike &mdash; both headwinds for gold. Stop $4,250 &mdash; $100 of room. Min hold to July 15; no discretionary close. Dot plot June 17 is gold's catalyst, not the geopolitical headline.</td>
+</tr>
+<tr>
+  <td class="r">&#x26D4; MM-2026-006</td>
+  <td>Long AVGO (STOPPED)</td>
+  <td>$250.00 &rarr; $216.00</td>
+  <td class="num r">&minus;13.60%</td>
+  <td>STOPPED June 8. Q2 beat consensus (AI $10.8B vs $10.7B est) but Q3 AI guide $16.0B missed buy-side $17.2B &mdash; the number that mattered at 41x. Stock fell 16% afterhours June 3; payrolls tech selloff Friday finished it. Stop $228 triggered. Days held: 7.</td>
+</tr>
+<tr>
+  <td class="r">MM-2026-007</td>
+  <td>Short USDJPY</td>
+  <td>159.37 &rarr; 160.32</td>
+  <td class="num r">&minus;0.60%</td>
+  <td>Payrolls dollar strength pushed USDJPY above 160 &mdash; inside the intervention trigger. Finance Ministry Katayama watching. Stop 163.00. When intervention fires: 3-5% in hours.</td>
+</tr>
+<tr>
+  <td class="g">MM-2026-008</td>
+  <td>SPX Jun-27 7300/7000 put spread</td>
+  <td>35 &rarr; 80 pts</td>
+  <td class="num g">+128.57%</td>
+  <td>Best performer. Nasdaq &minus;4.2% Friday + Phil Sox &minus;6% tripled the insurance. ECB, CPI, FOMC all still inside the 26-day window. Hold through the event calendar.</td>
+</tr>
+<tr>
+  <td class="g">MM-2026-009</td>
+  <td>2s10s UST steepener (pre-pos)</td>
+  <td>+15bp &rarr; +38.2bp</td>
+  <td class="num g">+154.67%</td>
+  <td>Best structural position. Payrolls drove 2Y +10bp (hike repricing) while 10Y rose less &mdash; curve steepened 23bp in 5 days. Min hold from June 1. Target +60bp. Thesis on track.</td>
+</tr>
+</tbody>
+</table>
+""",
+
+    # ── Dashboard ──────────────────────────────────────────────────────────
+    "dashboard": [
+        {"name": "S&P 500",      "level": "~7,427",    "chg": "+0.8%",  "dir": "up"},
+        {"name": "Nasdaq 100",   "level": "~26,500",   "chg": "+1.5%",  "dir": "up"},
+        {"name": "DAX",          "level": "~24,917",   "chg": "-0.75%", "dir": "down"},
+        {"name": "Nikkei 225",   "level": "64,024",    "chg": "-3.85%", "dir": "down"},
+        {"name": "FTSE 100",     "level": "~10,416",   "chg": "+0.07%", "dir": "up"},
+        {"name": "EURUSD",       "level": "1.1536",    "chg": "-0.55%", "dir": "down"},
+        {"name": "GBPUSD",       "level": "unverified","chg": "",       "dir": "unverified"},
+        {"name": "USDJPY",       "level": "160.32",    "chg": "+0.59%", "dir": "up"},
+        {"name": "USDCNH",       "level": "unverified","chg": "",       "dir": "unverified"},
+        {"name": "DXY",          "level": "~100.5",    "chg": "+0.4%",  "dir": "up"},
+        {"name": "US 10Y",       "level": "4.544%",    "chg": "+8bp",   "dir": "up"},
+        {"name": "US 2Y",        "level": "4.162%",    "chg": "+10bp",  "dir": "up"},
+        {"name": "Bund 10Y",     "level": "unverified","chg": "",       "dir": "unverified"},
+        {"name": "2s10s",        "level": "+38.2bp",   "chg": "+23bp wk","dir": "up"},
+        {"name": "WTI Crude",    "level": "$93.67",    "chg": "+4.0%",  "dir": "up"},
+        {"name": "Brent Crude",  "level": "$96.05",    "chg": "+4.1%",  "dir": "up"},
+        {"name": "Gold (XAU)",   "level": "$4,350",    "chg": "-0.5%",  "dir": "down"},
+        {"name": "VIX",          "level": "18.80",     "chg": "-12.8%", "dir": "down"},
+        {"name": "SOFR",         "level": "~3.62%",    "chg": "",       "dir": "flat"},
+        {"name": "MOVE",         "level": "unverified","chg": "",       "dir": "unverified"},
+    ],
 
     "dominant_theme": (
-        "Three shocks, one tape: a hawkish Fed (172k jobs → ~70% hike-by-year-end), a live Hormuz "
-        "re-escalation (crude ~$96), and an Asia AI rout that tripped Korea's circuit breaker "
-        "(KOSPI −8.4%, Samsung/Hynix −10%). Higher rates + higher oil + a de-rating AI complex = "
-        "the stagflation box with a concentration accelerant."
+        "Payrolls +172k shattered the rate-cut narrative and de-rated the AI multiple "
+        "simultaneously. AVGO's Q3 guide ($16B vs $17.2B buy-side) confirmed the deceleration. "
+        "Then Israel hit Iran. The market that opened last Monday is not the market that opens today."
     ),
 
-    "summary_narrative": """
-<p>The melt-up wasn't killed by one thing — it was caught in a pincer. On Friday a 172,000 payroll
-print, more than double the 80,000 consensus with unemployment steady at 4.3%, repriced the front
-end of the curve toward a <em>hike</em> and broke the two crowded trades of the year at once: long
-AI and long duration. The Nasdaq fell 4.2%, the 2-year jumped to 4.16%, gold dropped 3.3%, and CME
-FedWatch flipped from pricing cuts to a 70% chance of a hike by year-end. Then the weekend delivered
-the second jaw of the vice.</p>
-
-<p>The Gulf re-escalated for real. US forces struck Iranian coastal radar sites Friday evening after
-downing four drones aimed at the Strait of Hormuz; Iran fired seven ballistic missiles at Kuwait and
-Bahrain on Saturday; Israel hit military targets in western and central Iran on Monday. Pakistani
-mediators are in Tehran, but the talks are deadlocked over $24bn of frozen Iranian assets. Crude
-gapped — Brent +3.2% to ~$96, WTI +3.5% to ~$93.7 — even as OPEC+ added 188k b/d for July. The
-disinflation the tape borrowed in May has become a stagflation impulse: rates up <em>and</em> oil up
-at the same time.</p>
-
-<p>By Monday the AI complex cracked in Asia — and it cracked through the floor. Korea's KOSPI fell
-8.4% at the open, broke below 8,000 and tripped its circuit breaker for the third time this year;
-Samsung and SK Hynix, together roughly 55% of the index, both fell 10%. Japan's Nikkei lost 4.2%
-(¥48tn / ~$335bn) and Taiwan's TAIEX fell 3% with TSMC alone 41.5% of it. This is the Broadcom guide
-and the Friday payroll transmitted through the most concentrated equity indices on earth: when two
-stocks are half your market, a de-rating in one sector becomes a market-wide trading halt. The
-structural tell — that nobody is hedged for an AI growth-<em>rate</em> disappointment — printed in
-Seoul before New York had its coffee, and Korean retail margin debt at a record ₩37.7tn is turning
-the move into forced liquidation. Note the irony: SK Hynix has sold out its entire 2026 memory
-output to Nvidia and Jensen Huang is in Seoul today — the demand is real; it is the <em>price</em>
-that was wrong.</p>
-
-<p>That combination is why this is not a clean buy-the-dip. Every prior AI dip was rescued by easing
-liquidity; this one arrives with the discount rate rising and an oil-driven inflation tax landing on
-the same consumer that funds hyperscaler capex. The one genuine divergence to lean on is regional:
-the selloff was a single-factor US event and Europe decoupled outright — DAX and FTSE closed green
-Friday while the Nasdaq bled. Long the continent, short the US tech beta, fade a front end that has
-over-extrapolated one payroll into a hiking cycle, and own the Hormuz tail that is now firing in real
-time. Keep the put spread on; it is the only reason last week was a flesh wound.</p>
-""",
-
-    "takeaways": [
-        "Asia led the rout overnight: KOSPI −8.4% tripped a circuit breaker (3rd this year) — Samsung & SK Hynix −10%, together ~55% of the index; Nikkei −4.2% (¥48tn), TAIEX −3% (TSMC = 41.5%).",
-        "The Burry tell went live: when two chip names are half an index, there's no diversification to cushion a de-rating. Korea/Taiwan are leveraged single-stock bets, and ₩37.7tn record retail margin is forcing liquidation.",
-        "Three shocks, one tape: hot jobs (Fed → ~70% hike-by-year-end), a live Hormuz re-escalation (crude +3% to ~$96), and the global AI de-rating. Rates up + oil up + AI down = stagflation box.",
-        "AVGO's guide miss + the payroll broke long-AI and long-duration at once; Nasdaq −4.2%, 2Y to 4.16%, VIX +40% to 21.5.",
-        "Demand isn't the problem, price is: SK Hynix sold out its entire 2026 memory to Nvidia and Jensen is in Seoul today — this is a valuation reset, not a demand reset.",
-        "Crude back to ~$96 on Israeli strikes into Iran; the Brent war premium is re-pricing while the MoU stays unsigned.",
-        "Fade the 70% hike — one 172k print with unemployment at 4.3% does not start a hiking cycle. The 17 Jun dot plot is the catalyst.",
-        "Book: AVGO stopped −13.6%; the SPX put spread (+128%) and 2s10s steepener (+155%) are carrying the drawdown.",
-    ],
-
-    "scenarios": [
-        {"kind": "bull", "label": "Bull", "pct": "25%",
-         "headline": "MoU signed, CPI cools, AI dip is the gift",
-         "body": "A Hormuz de-escalation pulls crude back under $90, May CPI prints soft, the 2Y fails "
-                 "below 4.00% and the AI leaders rip as the dip-buyers are vindicated. Risk up, rates "
-                 "down, dollar down, gold up. The pincer releases."},
-        {"kind": "base", "label": "Base", "pct": "50%",
-         "headline": "Stagflation chop — US lags, Europe leads",
-         "body": "FOMC holds, dots drift hawkish but stop short of a 2026 hike; crude stays $90–98 on "
-                 "an unresolved Strait; the US chops while Europe outperforms. Risk mixed, rates range, "
-                 "dollar firm, gold and oil bid. Trade the divergence, not the index."},
-        {"kind": "bear", "label": "Bear", "pct": "25%",
-         "headline": "Strait closes / CPI hot — both jaws bite",
-         "body": "A confirmed mine or tanker hit spikes Brent through $110 as CPI runs hot and the dots "
-                 "show a hike; AI derating becomes a sector-wide de-gross. Risk down hard, rates up, "
-                 "dollar up, gold $4,800+, the put spread pays in full."},
-    ],
-
-    "yesterday_graded": """
-<p><strong>MM-2026-006 · Long AVGO into Q2 earnings — <span class="r">✗ STOPPED</span>.</strong>
-The guide did exactly what the thesis warned. AI Q3 guided to roughly $16bn against the
-~$17.2bn whisper; the print itself was strong (AI revenue +143% YoY, total +48%) but the
-stock gapped through the $228 stop and out near $216, <span class="r">−13.6%</span>. A binary
-catalyst that broke the wrong way — and the put-spread hedge below is why it didn't hurt more.</p>
-
-<p><strong>MM-2026-008 · SPX 7300/7000 put spread — <span class="g">✓ working hard</span>.</strong>
-VIX +40% to 21.5, SPX −2.6% Friday. The hedge re-marked to ~80 from 35, <span class="g">+128%</span>,
-and is the single reason the book's drawdown is contained. This is precisely what 0.5% of notional
-bought.</p>
-
-<p><strong>MM-2026-009 · 2s10s steepener — <span class="g">✓ working</span>.</strong>
-Curve at +38bp versus +15bp entry. Friday bear-flattened on the day (2Y +11bp, 10Y +6bp) but the
-structural steepening since entry is intact. Held.</p>
-
-<p><strong>MM-2026-002 · Long Brent — <span class="g">✓ small green</span>.</strong>
-$93.1, <span class="g">+2.3%</span>. The residual Hormuz premium is doing its job while the MoU stays unsigned.</p>
-
-<p><strong>MM-2026-001 · Short EURAUD — <span class="mute">→ flat</span>.</strong>
-Round-tripped to 1.648 as the Aussie underperformed the euro in the risk-off; <span class="r">−0.2%</span>.
-Gains given back; thesis on watch, stop 1.662 intact.</p>
-
-<p><strong>MM-2026-007 · Short USDJPY — <span class="mute">→ flat</span>.</strong>
-160.32, <span class="r">−0.6%</span>. Katayama back on the wire; intervention remains the backstop into 161.</p>
-
-<p><strong>MM-2026-004 · Short 10Y yield (long duration) — <span class="r">✗ underwater</span>.</strong>
-10Y at 4.54%, <span class="r">−2.3%</span>. A 172k payroll is the wrong tape for duration; stop 4.65% intact, on watch.</p>
-
-<p><strong>MM-2026-005 · Long gold — <span class="r">✗ underwater, protected</span>.</strong>
-$4,339, <span class="r">−4.1%</span> on the hawkish repricing. The 45-day min-hold and $4,250 stop keep it open —
-and gold's decoupling from a 30bp real-yield rise is the reason to hold, not fold.</p>
-
-<p><strong>MM-2026-003 · Brent/WTI spread — <span class="r">✗ the book's worst mark</span>.</strong>
-$2.55 versus $3.30 entry, <span class="r">−22.7%</span>. The Atlantic-basin premium compressed as demand fear
-outran supply risk. Stop $1.50 intact; the trade needs a Hormuz headline to work.</p>
-""",
-
-    "dashboard": [
-        {"name": "S&P 500 (cash, Fri)", "level": "7,383.74", "chg": "−2.64%", "dir": "down"},
-        {"name": "Nasdaq Comp (Fri)",   "level": "25,709.43", "chg": "−4.18%", "dir": "down"},
-        {"name": "Dow (Fri)",           "level": "50,866.78", "chg": "−1.35%", "dir": "down"},
-        {"name": "DAX",                 "level": "24,995.33", "chg": "+0.20%", "dir": "up"},
-        {"name": "FTSE 100",            "level": "10,401.18", "chg": "+0.39%", "dir": "up"},
-        {"name": "Nikkei 225",          "level": "66,588",    "chg": "−1.31%", "dir": "down"},
-        {"name": "EUR/USD",             "level": "1.1600",    "chg": "4-mo low", "dir": "down"},
-        {"name": "GBP/USD",             "level": "1.3430",    "chg": "soft",   "dir": "down"},
-        {"name": "USD/JPY",             "level": "160.32",    "chg": "+0.23%", "dir": "up"},
-        {"name": "AUD/USD",             "level": "0.7041",    "chg": "−1.31%", "dir": "down"},
-        {"name": "DXY",                 "level": "99.4",      "chg": "+0.65%", "dir": "up"},
-        {"name": "US 2Y",               "level": "4.162%",    "chg": "+11bp",  "dir": "up"},
-        {"name": "US 10Y",              "level": "4.544%",    "chg": "+6bp",   "dir": "up"},
-        {"name": "2s10s",               "level": "+38bp",     "chg": "steeper","dir": "up"},
-        {"name": "Bund 10Y",            "level": "unverified","chg": "",       "dir": "unverified"},
-        {"name": "WTI",                 "level": "90.54",     "chg": "−2.69%", "dir": "down"},
-        {"name": "Brent",               "level": "93.09",     "chg": "−2.0%",  "dir": "down"},
-        {"name": "Gold",                "level": "4,339.61",  "chg": "−3.27%", "dir": "down"},
-        {"name": "VIX",                 "level": "21.51",     "chg": "+39.7%", "dir": "up"},
-    ],
-
-    "equity_levels": [
-        {"name": "S&P 500", "level": "7,383", "chg": "−2.6% (Fri)", "dir": "down",
-         "asof": "Fri 5 Jun (US/EU) · Mon 8 Jun (Asia)"},
-        {"name": "Nasdaq 100", "level": "28,939", "chg": "−4.2% (Fri)", "dir": "down"},
-        {"name": "Dow", "level": "50,867", "chg": "−1.3% (Fri)", "dir": "down"},
-        {"name": "DAX", "level": "24,995", "chg": "+0.2% (Fri)", "dir": "up"},
-        {"name": "FTSE 100", "level": "10,401", "chg": "+0.4% (Fri)", "dir": "up"},
-        {"name": "Nikkei 225", "level": "~63,800", "chg": "−4.2% (Mon)", "dir": "down"},
-        {"name": "KOSPI", "level": "<8,000", "chg": "−8.4% · HALT", "dir": "warn"},
-        {"name": "TAIEX", "level": "Mon", "chg": "−3% (TSMC-led)", "dir": "down"},
-        {"name": "SOX semis", "level": "~12,220", "chg": "−10% (2 sess)", "dir": "down"},
-        {"name": "Broadcom", "level": "~$386", "chg": "−14% · the catalyst", "dir": "down"},
-    ],
-
-    "rates_levels": [
-        {"name": "SOFR (o/n)", "level": "3.62%", "chg": "funding", "dir": "mute",
-         "asof": "Fri 5 Jun close", "vid": "sofr-v", "cid": "sofr-c"},
-        {"name": "US 2Y", "level": "4.16%", "chg": "+11bp", "dir": "up"},
-        {"name": "US 10Y", "level": "4.54%", "chg": "+6bp", "dir": "up"},
-        {"name": "US 30Y", "level": ">5.00%", "chg": "term premium", "dir": "up"},
-        {"name": "2s10s", "level": "+38bp", "chg": "steeper", "dir": "up"},
-        {"name": "Bund 10Y", "level": "~2.9%", "chg": "ECB hiking (est)", "dir": "mute"},
-        {"name": "MOVE", "level": "~110", "chg": "rates vol bid (est)", "dir": "up"},
-        {"name": "Fed odds", "level": "~70%", "chg": "hike by year-end", "dir": "up"},
-    ],
-
-    "one_chart": """
-<p class="theme">The 2-year Treasury yield at 4.16%.</p>
-<p>It carries the entire Fed repricing in a single number. It broke to its highest since February 2025
-on Friday's payroll, and it is the level that decides whether "higher-for-longer" becomes
-"higher-from-here." Hold above 4.15% through the 16–17 June FOMC and the ~70%-priced hike is real —
-every long-duration asset on the tape (megacap tech, gold, the long bond) stays pinned. Fail back
-below 4.00% and Friday was a head-fake, which makes the AI dip a gift. Everything else on this page
-keys off that one level.</p>
-""",
-
+    # ── The Wrap ───────────────────────────────────────────────────────────
     "wrap": """
-<p>The melt-up did not die of old age. It was repossessed. For a fortnight the tape spent a
-disinflation it had borrowed against a Hormuz ceasefire that was never signed and a Fed easing that
-was never delivered. On Friday the lender called the loan: 172,000 jobs in May against an 80,000
-consensus, unemployment steady at 4.3%, and two prior months revised up a combined 93,000. The
-disinflation trade did not weaken. It got margin-called.</p>
+<p>Three things happened in 96 hours that redrew the map. On Wednesday June 3, Broadcom proved
+the AI cycle is real: $22.2B in revenue, $10.8B of AI semiconductor income, $16B guided for Q3.
+On Friday June 5, payrolls printed 172,000 &mdash; double the 85,000 consensus &mdash; and the same market
+that cheered AVGO's beat sold every name with an AI multiple attached. And over the weekend,
+Israel struck western and central Iranian defence systems while the US hit Iranian radar sites
+and Iran fired missiles at Kuwait and Bahrain. That is not an escalation calendar. It is the
+absence of a de-escalation one.</p>
 
-<p>Decompose the move, because the headline flatters it. The S&P fell 2.6% and the Nasdaq 4.2%, and
-the instinct is to call it a growth scare. It is the opposite. Friday was a <em>strength</em> scare —
-the economy printed too hot, the front-end repriced toward a hike, and the longest-duration assets on
-the tape repriced against a higher discount rate. The 2-year jumped 11bp to 4.16%, the 10-year 6bp to
-4.54%, and CME FedWatch flipped from pricing cuts to a 70% probability of a <em>hike</em> by year-end.
-That is the whole story: the rate the market discounts megacap tech at moved against megacap tech, two
-days after Broadcom reminded everyone how richly those names are priced.</p>
+<p>Break apart what happened to AVGO and the anatomy is instructive. The stock beat every consensus
+estimate &mdash; but the buy side needed $17.2 billion in Q3 AI revenue guidance to justify 41&times;
+forward earnings. AVGO guided $16.0 billion. The guide was the 93rd percentile of any company's AI
+revenue guidance in history. The market priced the 100th. That gap &mdash; between what was delivered
+and what was needed &mdash; explains the 16% afterhours drop. The thesis is not broken. The multiple was.
+There is a difference, and it determines when and how to re-enter.</p>
 
-<p>The second-order effect consensus is missing: a hawkish Fed and an AI valuation reset are the same
-trade now, not two trades. Broadcom grew AI revenue 143% year-over-year, guided next quarter up over
-200%, and lost a seventh of its market value — because the guide cleared the printed consensus but not
-the whisper baked into a stock at 30-times-plus sales. When a cohort is priced for perfection, "very
-good" is a sell, and a rising discount rate turns "a sell" into "a stampede." The two shocks rhyme.</p>
+<p><strong>L1 &mdash; The driver:</strong> The payrolls shock restructured both halves of the macro consensus.
+At 172k vs 85k expected, markets repriced 57% probability of zero cuts in 2026, up from below 50%
+before the data. The Fed holds at 3.5&ndash;3.75% in June (99.2% priced) but September and December
+are now genuinely live for a hike, not a cut. That is not a marginal revision. It reprices every
+duration position and every high-multiple equity simultaneously.</p>
 
-<p><strong>Layer 1 — the regime.</strong> Name it: <em>Two-Front Tape</em>. Friday had one driver —
-the repricing of the front-end of the US curve, which pushed the dollar up 0.65%, gold down 3.3%, the
-Nasdaq down 4.2%, and the 2-year to a sixteen-month high in a single session. The weekend added a
-second: a live Hormuz re-escalation — US strikes on Iranian radar sites, Iranian missiles at Kuwait
-and Bahrain, Israeli strikes into Iran on Monday — that gapped Brent +3% to ~$96. Higher rates and
-higher oil at the same time is the stagflation box, and it is the configuration the disinflation
-melt-up was least prepared for.</p>
+<p><strong>L2 &mdash; Counter-intuitive hook:</strong> Gold is down while oil is up. The classical geopolitical
+risk playbook says buy both when missiles are in the air. Gold fell to $4,350 while Brent rallied to $96.
+The divergence is exact: gold is pricing real rates (higher on payrolls repricing), not war premium.
+Oil is pricing physical supply disruption. Two different primary drivers in two different assets on
+the same headline. Gold's catalyst is not the Strait of Hormuz. It is the June 17 dot plot.</p>
 
-<p><strong>Layer 2 — the counter-intuitive hook.</strong> Consensus expected a soft payroll to validate
-the cuts already in the strip. It got the reverse, and the reaction function inverted: good news for
-the economy became bad news for the assets that had front-run easing. The tape that cheered every weak
-number for a year just learned that the trade only worked while the Fed was the buyer of last resort.</p>
+<p><strong>L3 &mdash; The gap:</strong> AVGO guided $16B vs $17.2B buy-side. At 41&times; forward earnings,
+that 7.5% guide miss is the first evidence that the hyperscaler capex cycle has shifted from
+open-ended demand to budgeted allocation. Google, Anthropic, OpenAI, and Meta are now telling AVGO
+what they will deploy quarter by quarter &mdash; not what they need. That shift from demand-pull to
+supply-allocation is what the tape is beginning to price, even if Q2 was a beat on every metric.</p>
 
-<p><strong>Layer 3 — the gap.</strong> Ground truth: the labor market is resilient and oil is back to
-~$96 and <em>rising</em> on the Hormuz re-escalation — a forward-inflation impulse running the wrong
-way for the disinflation bet. What's priced: a 70% year-end hike and a full AI valuation reset. The
-consensus narrative: "buy the dip, the AI secular story is intact." The gap between a market pricing a
-hike and a Fed that will not hike on one print with unemployment at 4.3% — yet now faces an oil-driven
-inflation tax it cannot cut into — is where the alpha and the danger both live this week.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0">
+  <div class="card" style="border-top:2px solid var(--green)">
+    <div class="t">Bull &mdash; 40%</div>
+    <div class="thesis">ECB hikes Thursday, signals pause. FOMC dot plot holds at one cut.
+    Iran stays air-only &mdash; no Hormuz closure. Equities recover; AI names re-rate as $16B Q3
+    delivery proves the cycle is intact. SPX 7,700 by July.</div>
+  </div>
+  <div class="card" style="border-top:2px solid var(--gold)">
+    <div class="t">Base &mdash; 40%</div>
+    <div class="thesis">ECB sounds hawkish, dot plot goes to zero cuts. EUR rallies into ECB
+    then fades on stagflation read. AI multiple stays compressed. Brent $90&ndash;100 on Hormuz
+    standoff. SPX 7,000&ndash;7,500 chop. 2s10s steepens further to +55bp.</div>
+  </div>
+  <div class="card" style="border-top:2px solid var(--red)">
+    <div class="t">Bear &mdash; 20%</div>
+    <div class="thesis">Hormuz physical disruption confirmed (mine or tanker hit). FOMC signals
+    hike. CPI above 4%. Credit cracks from 80bp IG OAS. Tech &minus;15%.
+    USDJPY intervention unwinds yen carry globally. Oil $110+.</div>
+  </div>
+</div>
 
-<p><strong>Layer 4 — Bull / Base / Bear.</strong> <em>Bull (30%):</em> May CPI cools, the 2-year fails
-back under 4.00%, AI rips as the dip-buyers are proven right — risk up, rates down, dollar down, gold
-up. <em>Base (50%):</em> the FOMC holds and the dots drift hawkish but stop short of a 2026 hike; the
-US chops while Europe outperforms — risk mixed, rates range, dollar firm, commodities steady.
-<em>Bear (20%):</em> CPI runs hot, the dots show a hike, and the AI derating becomes a sector-wide
-de-gross — risk down hard, rates up, dollar up, gold down then up as the growth scare arrives.</p>
+<p><strong>Burry tell:</strong> The Brent-WTI spread compressed from $3.30 to $2.38 even as Brent
+rallied to $96. WTI caught up faster &mdash; US domestic supply at Cushing was unaffected by the
+Hormuz exchanges. The spread should have <em>widened</em> on an escalation specifically targeting
+the strait. It narrowed. The physical market is still not pricing Hormuz closure as probable &mdash;
+tanker insurers still write coverage at near-peacetime rates. In six months, the question will be
+whether that was the trade of the year (spread widens dramatically on confirmed closure) or the
+correct read (air strikes, no sea denial). The tell is the $2.00 level: below that, the market
+has priced the deal. Above $3.00, physical disruption is beginning to arrive before the headline.</p>
 
-<p><strong>Layer 5 — priced vs not-priced.</strong> Mispriced the wrong way: the 70% year-end hike —
-too hawkish for one payroll. Half-priced: European equity outperformance. Fairly priced: a firm
-dollar. Fully priced: the ECB's Thursday hike at 99% on the strip.</p>
+<p><strong>Pozsar mechanic:</strong> The 2Y at 4.16% is pricing a hike the Fed does not deliver in June
+but might in September. The spread between the 2Y implied terminal rate (~4.3%) and SOFR (3.62%)
+is 68bp &mdash; the widest shadow-banking refinancing spread of 2026. Every corporate that issued
+floating-rate debt in 2023&ndash;24 assuming cuts faces higher marginal costs than the issuance model
+assumed. IG OAS at 80bp is priced for soft landing perfection. The payrolls print bought approximately
+one FOMC meeting before that credit repricing begins. Watch September &mdash; if the dot plot June 17
+moves the terminal rate higher, credit starts moving in July.</p>
 
-<p><strong>The Burry tell — now live.</strong> Hyperscaler capex is now so large that the marginal
-AI-revenue beat has to <em>accelerate</em> just to hold the multiple. Broadcom grew AI 143% and the
-market took a seventh of its cap; the whole cohort is hedged for a revenue <em>miss</em> and not one
-name is hedged for a revenue-<em>growth-rate</em> disappointment. That stopped being hypothetical on
-Monday — it printed in Asia. Korea's KOSPI, roughly 55% Samsung and SK Hynix, fell 8.4% and tripped
-its circuit breaker; Taiwan's TAIEX, 41.5% TSMC, fell 3%. Index concentration is the amplifier: when a
-handful of chip names <em>are</em> the index, a sector de-rating has no internal hedge and becomes a
-market-wide halt — with Korean retail margin debt at a record ₩37.7tn converting it into forced
-liquidation. The same concentration sits in the S&P's top ten; Seoul just demonstrated what its
-unwind looks like. The cruel detail: SK Hynix has pre-sold all of its 2026 HBM to Nvidia and Jensen
-Huang is in Seoul today — demand is intact, so this is a multiple event, not a cycle top. When the
-second derivative of AI revenue rolls, the de-rating is simultaneous and there is no offsetting bid.</p>
-
-<p><strong>The Pozsar mechanic.</strong> Trace Friday back to the plumbing: the payroll did not just move
-rate expectations, it pulled dollars home. The DXY's 0.65% pop and a modestly wider cross-currency basis
-say the repricing drained dollar liquidity at the margin — and with quarter-end three weeks out and an
-ECB hike Thursday, a benign funding backdrop is one headline from getting expensive. The plumbing, not
-the VIX, is the real constraint on how far risk can fall before the Fed's tone has to change.</p>
-
-<p><strong>The Papic constraint.</strong> The political limit sits in Tokyo, not Washington. USD/JPY at
-160 with Finance Minister Katayama threatening intervention — after Japan spent over $73bn propping the
-yen between late April and late May — means the dollar's strength has a hard ceiling against the yen
-that the rest of the dollar bloc does not. Higher US yields want a higher dollar; the MoF will not let
-that print through 162 quietly. The constraint is the trade: own yen downside protection, not spot.</p>
-
-<p>So what to do. The cleanest expression is not a view on AI or on the Fed — it is the divergence
-between them and Europe. The US sold off on a single domestic factor; Europe rose on the same tape.
-Long the continent, short the US tech beta, into an ECB hike that widens the gap. Fade the front-end
-where the market has over-extrapolated one number into a hiking cycle. Own the Hormuz tail through
-defined-risk crude calls while the MoU stays unsigned. And keep the put-spread on — it is the only
-reason last week was a flesh wound.</p>
+<p><strong>Papic constraint:</strong> The ECB hike Thursday is politically locked &mdash; Lagarde cannot
+pause with eurozone inflation at 3.2% and Germany's election cycle demanding anti-inflation credibility.
+She hikes. But the press conference language on future meetings is where the policy error is authored:
+if she pre-commits to further hikes, EUR catches a brief bid then fades as growth damage from
+hiking into an 18-month manufacturing recession compounds. The trade is not the hike itself.
+It is the verb tense in the press conference. Short EURUSD (MM-2026-012) is positioned for the
+"data-dependent pause" that follows the June hike.</p>
 """,
 
+    # ── Correlation regime ──────────────────────────────────────────────────
     "correlation_regime": """
-<p>Three breaks worth trading.</p>
-<p><strong>1 · The AI-tech bloc decoupled from value — globally.</strong> Nasdaq −4.2%, Korea's KOSPI
-−8.4% (halted) and Japan's Nikkei −4.2% broke lower together while Germany's DAX (+0.2%) and the FTSE
-(+0.4%) held green. The split is not regional, it is factor: anything AI-concentrated sold, anything
-value/financials/old-economy held. The dominant driver flipped from "global liquidity" to
-"AI-concentration risk" — long European value, short the global AI beta is the cleaner RV than ever.</p>
-<p><strong>2 · Gold and real yields decoupled.</strong> Real 10Y yields rose ~30bp on the week and gold
-held within 4% of its high. The marginal gold buyer is price-insensitive to rates — central banks and
-de-dollarization flow, not macro funds. A rate-driven dip in gold is therefore shallower than the move
-in real yields implies.</p>
-<p><strong>3 · The dollar and equities re-coupled inversely.</strong> DXY +0.65% as stocks fell — the
-classic "higher-for-longer" tell that was absent for the entire melt-up. Its return is the cleanest
-evidence that the liquidity regime ended on Friday.</p>
-<p>Each break says the same thing: the disinflation-liquidity regime that powered the melt-up is over.</p>
+<p><strong>1. Brent +4% while Gold &minus;0.5% &mdash; geopolitical premium splits by asset class.</strong>
+Missiles in the air over the weekend should have driven both higher. Gold fell on DXY
+strengthening from payrolls; oil rallied on physical supply fear. The split is diagnostic:
+gold prices real rates; oil prices physical flow disruption. Do not conflate the two theses &mdash;
+they have different catalysts and different resolution timelines.</p>
+
+<p><strong>2. VIX &minus;12.8% Monday as S&amp;P recovers, but Nikkei &minus;3.85% &mdash; selective optimism.</strong>
+US large-cap recovered; Asian semiconductor names did not. Phil Sox &minus;6% Friday sent a signal
+to Japan's tech exporters that has not been reversed. The 'VIX is falling' narrative understates
+the geographic dispersion of the risk repricing. The recovery is exclusively US large-cap. It has
+not been validated globally.</p>
+
+<p><strong>3. 2s10s steepened +23bp in 5 days &mdash; fastest steepening of 2026.</strong>
+2Y rose 10bp on hike repricing; 10Y rose less, capped by flight-to-quality from Asia's selloff.
+The curve tells two stories: the Fed will be tighter than priced (2Y up), but growth is fragile
+enough to bid long duration (10Y constrained). That is not a healthy steepener &mdash; it is a
+stagflation premium entering the short end. MM-2026-009 is the structural beneficiary.</p>
+
+<p><strong>4. DAX +0.2% vs Nasdaq &minus;4.2% on Friday &mdash; AI multiple compressed, European
+financials immune.</strong>
+Friday was a clean test. The same payrolls print that caused AI de-rating left European
+financials untouched. No AI capex multiple to give back; ECB hiking is margin-positive for
+European banks. MM-2026-010 (Long DAX vs short Nasdaq) is a bet that this structural
+composition divergence has legs beyond a single session.</p>
 """,
 
+    # ── Vol & Skew ─────────────────────────────────────────────────────────
     "vol_skew": """
-<p>VIX gapped 40% to 21.5, the largest one-day spike since the spring, and the term structure inverted
-into backwardation — front above back — the tape's signal that the shock is acute rather than
-structural. SKEW stayed bid as crash hedges were marked up.</p>
-<p>The cleaner buy is rates vol, not equity vol. MOVE is underpriced for a Fed that just flipped from a
-cut bias to a hike debate with a fresh dot plot nine days out; that path uncertainty is not in the
-price. Fade the front of the equity-VIX curve into any further spike, own optionality in rates.</p>
-<p><em>One structure for today's regime:</em> an SPX July put calendar — sell the panicked front-month,
-own the FOMC-dated back-month. Term-structure shape inferred from spot VIX; only spot VIX (21.51) is
-sourced, the rest of the curve is a labeled estimate.</p>
+<p><strong>VIX term structure &mdash; moderate contango, recovering from Friday spike to ~21.6:</strong>
+VIX9D ~15.5 &middot; VIX 18.80 &middot; VIX3M ~20.0 &middot; VIX6M ~21.5.
+The structure is flatter than pre-payrolls contango &mdash; front-end risk is not fully priced out.
+Three catalysts remain in the window: CPI June 10, ECB June 11, FOMC June 16&ndash;17.
+The options market is not calling an all-clear; it is taking a breath.</p>
+
+<p><strong>SPX put spread (MM-2026-008) &mdash; up 128%, decision point approaching:</strong>
+Friday's Nasdaq &minus;4.2% moved the spread from 35 to 80 pts. With three events remaining,
+the question is hold vs partial profit. Case for holding: CPI above 4% Wednesday + hawkish
+dot plot = second selloff leg. Case for trimming: VIX at 18.80 is elevated but recovering;
+a sustained equity rally compresses the spread. Trim to half if SPX recovers above 7,500
+before Wednesday CPI &mdash; take the gain on half, keep the FOMC tail exposure on the rest.</p>
+
+<p><strong>MOVE (rates vol) &mdash; unverified but structurally elevated expected:</strong>
+Fed hike repricing on payrolls + ECB binary = MOVE should be above 120. If confirmed above that
+level, rates markets are signalling June 11 and June 17 are binary events. MOVE above 130
+is the warning before credit spreads begin to move.</p>
 """,
 
+    # ── Sector & RV ────────────────────────────────────────────────────────
     "sector_rv": """
-<p>Two strongest overnight: European banks and the UK value/defensive complex (FTSE +0.4%, DAX +0.2%) —
-the ECB-hike beneficiaries and the names with no AI capex cycle to give back. Two weakest: Asian memory
-and foundry (Samsung & SK Hynix −10%, TSMC-led TAIEX −3%) and US semis/megacap tech (SOX −10% over two
-sessions, Nasdaq −4.2%) — the global AI-capex cohort Broadcom repriced, hit hardest where index
-concentration is most extreme.</p>
-<p>This is not a global risk-off; it is an AI-concentration unwind. The cross-region RV writes itself:
-<strong>long DAX, short Nasdaq</strong>, into a Thursday ECB hike that widens both the policy and the
-earnings-mix divergence. Exhausted or legs? Legs — precisely because the divergence is structural, not
-sentiment. Europe cannot give back an AI capex cycle it never ran.</p>
+<p><strong>Strongest Monday:</strong></p>
+<ul>
+<li><strong>Energy (+4%+):</strong> Brent $96, WTI $94 as Israel-Iran exchanges drove the supply
+premium the MoU hope trade had removed. MM-2026-002 (Long Brent) the clearest winner of the week
+at +5.55%. Iran missiles at Kuwait and Bahrain widened the geographic risk &mdash; no longer a
+Hormuz-only story. MM-2026-011 (Brent $100/$115 call spread) bought today to own the tail.</li>
+<li><strong>European Financials (DAX selective):</strong> ECB hiking Thursday is net-interest-income
+positive for European banks &mdash; NII expands with each 25bp. No AI multiple to give back.
+MM-2026-010 (Long DAX vs short Nasdaq) captures the structural composition difference.</li>
+</ul>
+
+<p><strong>Weakest:</strong></p>
+<ul>
+<li><strong>AI Semiconductors (Phil Sox &minus;6% Friday, partial recovery Monday):</strong>
+AVGO &minus;16% afterhours, SOX &minus;6% on payrolls Friday. Partial Monday bounce.
+The AI multiple is re-rating &mdash; not collapsing. The capex cycle is intact; AVGO's $16B guide
+is historically exceptional. But at 41&times; forward earnings, "exceptional but below buy-side"
+is insufficient. Re-entry: AVGO below $220 structurally interesting when multiple normalises to 30&ndash;32&times;.</li>
+<li><strong>Japan (Nikkei &minus;3.85%):</strong> Dual headwind &mdash; AI semiconductor contagion from SOX
+and USDJPY above 160 triggering MoF intervention watch. Short USDJPY (MM-2026-007) above the
+stated intervention trigger zone.</li>
+</ul>
+
+<p><strong>RV &mdash; Long DAX / Short Nasdaq (MM-2026-010):</strong>
+Entry ratio 0.9722 on June 8. Friday: DAX +0.2% vs Nasdaq &minus;4.2%. ECB hiking is margin-positive
+for European banks; Nasdaq AI concentration faces multiple compression. This is an index
+composition trade, not a sentiment one &mdash; structural legs beyond the single session.</p>
 """,
 
+    # ── Positioning & Flows ────────────────────────────────────────────────
     "positioning": """
-<p>The crowd entered June max-long US AI and max-short duration. Both legs got run over. CTAs sat at the
-top of their equity-length band into the Broadcom print, and Friday's payroll forced a mechanical
-de-gross — which is why a "good news" jobs number produced a 4% Nasdaq day. CFTC COT showed specs
-trimming crude length toward ~178k and adding to dollar longs into the print.</p>
-<p>Name the pain trade. The obvious one is a melt-up resumption that catches freshly-degrossed funds
-underweight. The <em>cleaner</em> pain trade — the one almost nobody is positioned for — is sustained
-European outperformance. Consensus owns the US dip; it does not own the continent.</p>
+<p><strong>CFTC COT (June 3 release, June 1 data &mdash; most recent available):</strong></p>
+<ul>
+<li><strong>Oil:</strong> Large spec net at &minus;9.2k (nearly flat). After Israel-Iran strikes,
+there is almost no spec long to slow a new escalation headline &mdash; momentum buyers drive the
+next leg vertically. MM-2026-002 and MM-2026-011 own the squeeze fuel.</li>
+<li><strong>Gold:</strong> Spec longs at 154.3k (down from 159.8k before payrolls). Post-payrolls
+selling has likely reduced this further. Lighter positioning is constructive for the next leg
+if the dot plot delivers a dovish surprise. MM-2026-005 holds to July 15.</li>
+<li><strong>EUR:</strong> Speculators net long into the ECB hike. Thursday is the pain trade exit
+&mdash; if Lagarde signals "data-dependent pause," the spec long unwinds aggressively.
+MM-2026-012 (Short EURUSD at 1.16) is positioned for exactly that exit.</li>
+</ul>
+
+<p><strong>Post-payrolls fund flows:</strong> AI equity outflows Thursday&ndash;Friday as AVGO's drop
+spread to the sector. Short-duration fixed income inflows as the 2Y repriced the hike. The rotation
+was from AI multiples into cash and short duration &mdash; not out of equities entirely. DXY above 100
+tells you the dollar flow is real. Watch for CPI Wednesday to determine reversal or continuation.</p>
 """,
 
+    # ── Funding & Plumbing ─────────────────────────────────────────────────
     "funding": """
-<p>SOFR printed firm into month-start as the May refunding settled and reserves drifted toward the
-~$3.0tn threshold the desk watches; the cross-currency basis widened modestly as the hawkish repricing
-pulled dollars home. Nothing is stressed.</p>
-<p>But a 70%-priced hike, an ECB hike Thursday, and quarter-end three weeks out is the configuration
-where a benign funding backdrop turns expensive fast. The plumbing is the constraint on how far risk can
-fall before the Fed's reaction function changes. Watch RRP take-up and the SOFR–IORB spread — not the
-VIX — for the first real stress signal.</p>
+<p>SOFR ~3.62% &mdash; unchanged. Repo markets functioning normally. No dollar hoarding signal.
+The system is not stressed despite the equity selloff and Hormuz escalation.
+<strong>Pozsar mechanic:</strong> The gap between the 2Y implied terminal rate (~4.3%) and SOFR
+(3.62%) is 68bp &mdash; the widest shadow-banking refinancing spread of 2026. Every corporate
+that issued floating-rate debt in 2023&ndash;24 assuming cuts faces higher marginal funding costs
+than the issuance model assumed. IG credit at 80bp OAS is priced for soft landing perfection.
+The payrolls print bought approximately one FOMC meeting before the credit repricing begins.
+Watch IG OAS for the first move &mdash; that is where the balance sheet constraint appears before
+it appears in equities.</p>
 """,
 
+    # ── What the tape is missing ────────────────────────────────────────────
     "tape_missing": """
-<p><strong>1.</strong> The two-month payroll revision was +93k — the labor market the Fed is reacting to
-is stronger than even Friday's headline. The disinflation bet needed lower oil to work, and oil sits at
-$93. Tell: core services CPI above 0.35% m/m on Wednesday confirms the trap.</p>
-<p><strong>2.</strong> Gold fell 3.3% yet sits only 4% off its high with real 10Y yields up ~30bp on the
-week — the structural bid is absorbing the rate shock. If gold holds $4,300 through a hawkish FOMC, the
-de-dollarization bid is real and the dip is a gift, not a top.</p>
-<p><strong>3 · Burry tell.</strong> Hyperscaler capex is now large enough that the marginal AI-revenue
-beat must accelerate just to hold the multiple — Broadcom grew AI 143% and lost a seventh of its cap.
-The cohort is hedged for a revenue miss; nobody is hedged for a growth-<em>rate</em> disappointment. When
-the second derivative rolls, the whole group de-rates at once. This resolves over two quarters, not this
-week — which is exactly why it is mispriced.</p>
+<p><strong>1. AVGO's $16B Q3 AI guide is exceptional by any historical standard &mdash;
+and the market punished it.</strong>
+The shift from "beat every metric" to "missed the buy-side extrapolation" is the most
+important signal in the AI trade. Google, Anthropic, OpenAI, and Meta are now telling
+AVGO what they will deploy quarter by quarter. That shift &mdash; from demand-pull to
+supply-allocation &mdash; is the structural change the tape is beginning to price.
+In six months, the question will be whether AI semiconductor names trade like enterprise
+software (budgeted quarterly cycles) or secular growth (open-ended TAM). That re-rating,
+if it arrives, compresses multiples from 41&times; to 25&times;.</p>
+
+<p><strong>2. (Burry tell) The Nikkei fell 3.85% &mdash; its largest single-day drop since April &mdash;
+while USDJPY sits above 160, the line Finance Minister Katayama drew explicitly.</strong>
+Japan's Finance Ministry spent ~10 trillion yen in late April to defend 155. The yen
+carry trade that funds long AI equities is now challenged on both legs simultaneously:
+the AI multiple is compressing and yen shorts face violent intervention. When Japan
+intervenes above 163, it is not just USDJPY that moves &mdash; it is every global carry-funded
+equity position that unwinds in the same session. Short USDJPY (MM-2026-007) owns this
+convexity with a 163 stop.</p>
+
+<p><strong>3. The Brent-WTI spread compression signals the physical market still does not
+believe in Hormuz closure &mdash; even after live missile exchanges.</strong>
+Spread at $2.38 with Brent at $96 means zero Hormuz closure premium in the physical
+differential. If tanker insurers start excluding Hormuz from coverage, the WTI-Brent spread
+widens violently &mdash; Atlantic-basin crude (Brent) becomes harder to deliver while Cushing
+(WTI) stays accessible. That repricing arrives in tanker insurance before it arrives in
+Brent spot. Watch MM-2026-003's spread above $3.00 as the signal that physical disruption
+has begun to price before the headline arrives.</p>
 """,
 
+    # ── Consensus bid/offer ─────────────────────────────────────────────────
     "consensus": """
-<p><strong>The consensus bid:</strong> the Broadcom drop is a buyable dip in an intact secular AI
-uptrend — buy the leaders into weakness.</p>
-<p><strong>The strongest argument against it:</strong> every prior "buy the dip" worked because liquidity
-was easing. With the Fed repricing toward a hike and the 10Y at 4.54%, the discount rate is now moving
-against the longest-duration equities on the tape. The dip is buyable only if the front-end is wrong —
-so trade the front-end, not the dip.</p>
+<p><strong>Consensus BID:</strong> Equity recovery continues Monday &mdash; AVGO's Q2 beat overrides
+the Q3 guide miss on reflection. ECB hike is benign (fully priced). FOMC dot plot holds at
+one cut. Iran stays air-only. Tech names re-rate back to pre-payrolls within two weeks.</p>
+
+<p><strong>Strongest argument against &mdash; the OFFER:</strong> CPI Wednesday. May CPI above 4%
+is possible given energy's contribution to April's 3.8% reading and WTI now $5 higher than April.
+If CPI lands above 4%, the payrolls re-pricing gets a second confirmation &mdash; the 2Y breaks
+above 4.35%, gold tests the $4,250 stop, and the dot plot is live for zero cuts plus hike language.
+At that point, every position priced for soft landing (AI at 30&ndash;41&times;, IG at 80bp, gold under
+$4,500) faces simultaneous revision. The CPI number Wednesday is the binary that settles whether
+last Friday was the repricing or just the opening act. Given WTI was $89 for April's CPI and is
+$94 today, that is not a guaranteed outcome.</p>
 """,
 
-    "event_radar_note": """
-<p>The five-day window is dense: SailPoint (Tue), Oracle (Wed), the ECB and Adobe (Thu), then the FOMC
-and a fresh Warsh dot plot on the 16–17th. The pre-position below owns the front-end into that Fed
-window — the market's 70% hike probability is the single thing most likely to be wrong.</p>
+    # ── One chart that matters ──────────────────────────────────────────────
+    "one_chart": """
+<p><strong>The 2-year Treasury yield at 4.162%.</strong>
+The 2Y is at its highest level in 16 months &mdash; pricing a Fed hike that does not arrive in June
+(99.2% hold) but might arrive in September. The 2Y is the market's best real-time signal of where
+the Fed funds rate is going: more accurate than statements, more immediate than dot plots. At 4.162%,
+it sits 41bp above the top of the current Fed funds target (3.75%). That gap does not close without
+either the Fed hiking or the market backing down. Two catalysts in 10 days decide which:
+CPI June 10 and FOMC dot plot June 17.</p>
+
+<p>Short US 2Y yield (MM-2026-013, pre-position) is the trade for the "market backs down" scenario.
+If the dot plot holds at one cut &mdash; unchanged from March &mdash; the 2Y reverses 15&ndash;20bp in a
+single session. The asymmetry: the hike is not in the Fed's own dots, only in the futures market.
+When they diverge this far, one of them is wrong. The dot plot is the resolution mechanism.</p>
 """,
 
-    "vix_term": [
-        {"label": "VIX9D", "value": 23.8},
-        {"label": "VIX",   "value": 21.51},
-        {"label": "VIX3M", "value": 19.9},
-        {"label": "VIX6M", "value": 20.2},
-    ],
-    "yield_curve_pts": [
-        {"label": "2Y",  "value": 4.16},
-        {"label": "5Y",  "value": 4.30},
-        {"label": "10Y", "value": 4.544},
-        {"label": "30Y", "value": 4.92},
-    ],
-
+    # ── Catalyst calendar ──────────────────────────────────────────────────
     "catalyst_calendar": [
-        {"day": "Live", "date": "now", "event": "Hormuz re-escalation · Iran–Israel strikes",
-         "consensus": "Fragile ceasefire holds; oil mean-reverts", "view": "Strait unresolved, MoU deadlocked on $24bn frozen assets; each strike re-bids the war premium",
-         "asymmetry": "Long crude / Brent calls on any tanker hit or confirmed mine", "dir": "up"},
-        {"day": "Tue", "date": "9 Jun", "event": "SailPoint (SAIL) — BMO",
-         "consensus": "Beat (26/30 buy)", "view": "Wide-dispersion beat history off a washed-out base",
-         "asymmetry": "Long the small-cap identity-security tail", "dir": "up"},
-        {"day": "Wed", "date": "10 Jun", "event": "Oracle (ORCL) — AMC",
-         "consensus": "OCI growth, clean beat", "view": "The cleanest read on whether the AI-capex derating is AVGO-specific",
-         "asymmetry": "Long ORCL vs derated semis", "dir": "up"},
-        {"day": "Wed", "date": "10 Jun", "event": "US May CPI",
-         "consensus": "Core ~0.3% m/m", "view": "Oil at $93 is a forward-inflation impulse the strip underweights",
-         "asymmetry": "Core >0.35% validates the hike scare — pay front-end", "dir": "down"},
-        {"day": "Thu", "date": "11 Jun", "event": "ECB decision + Adobe (AMC)",
-         "consensus": "25bp hike to 2.25% (99% priced)", "view": "Hike fully priced; the presser and the second hike are the trade",
-         "asymmetry": "Sell-the-fact EUR; fade ADBE straddle", "dir": "down"},
-        {"day": "Tue", "date": "16–17 Jun", "event": "FOMC + dot plot (Warsh)",
-         "consensus": "Hold; dots drift hawkish", "view": "Market prices 70% hike by year-end — the dots decide if that's real",
-         "asymmetry": "Front-end overshot; fade extreme hawkishness", "dir": "down"},
-    ],
-
-    "earnings_ideas": [
         {
-            "ticker": "ORCL", "company": "Oracle Corp",
-            "report_date": "2026-06-10", "report_timing": "AMC",
-            "mode": "PRE-EARNINGS", "direction": "Long",
-            "conviction_score": 6, "conviction_label": "High — data gap flagged",
-            "conviction_rationale": (
-                "Oracle is the first hyperscaler-cloud print after Broadcom's guide miss derated the "
-                "AI complex; with 40 of 49 analysts at buy and OCI backlog compounding, a clean beat is "
-                "the sharpest available rebuttal to the 'AI capex has peaked' tape — but the implied move "
-                "is unverified, so the asymmetry is flagged, not sourced."
+            "day": "Wed",
+            "date": "Jun 10",
+            "event": "US May CPI (BLS, 8:30 ET) — final pre-FOMC data point",
+            "consensus": "CPI +3.8% YoY; core +3.3%. Energy elevated given WTI $93.",
+            "view": (
+                "Above 4.0%: 2Y tests 4.35%, gold breaks $4,250 stop, dot plot live for zero "
+                "cuts + hike language. Below 3.5%: 2Y reverses 15bp, gold bids, "
+                "MM-2026-004/013 accelerate. This binary settles whether Friday was the "
+                "repricing or the opening act."
             ),
-            "pillars": {"asymmetry": 1, "consensus": 2, "catalyst": 2, "positioning": 1},
-            "pillar_confidence": {
-                "asymmetry": "estimated", "consensus": "sourced",
-                "catalyst": "sourced", "positioning": "estimated",
-            },
-            "key_bullets": [
-                "AI-cloud read-through: 40 buy / 8 hold / 1 sell, +31% TTM EPS growth (Finnhub).",
-                "Last two quarters surprised +3.1% and +35.2% — Oracle clears a low bar habitually.",
-                "First major AI-capex print after AVGO reset sector expectations.",
-            ],
-            "what_moves_it": "OCI / RPO backlog above consensus re-rates the asset-light AI-cloud cohort away from derated hardware.",
-            "client_talking_point": (
-                "Oracle Wednesday is the cleanest test of whether the AI-capex scare is Broadcom-specific "
-                "or sector-wide; consensus is positioned for a beat."
-            ),
-            "eps_estimate": 2.00,
-            "research_conflict": False,
+            "asymmetry": ">4%: DXY +0.5%, 10Y +10bp, gold -2%; <3.5%: 2Y -15bp, gold +2%",
+            "dir": "flat",
         },
         {
-            "ticker": "SAIL", "company": "SailPoint Inc",
-            "report_date": "2026-06-09", "report_timing": "BMO",
-            "mode": "PRE-EARNINGS", "direction": "Long",
-            "conviction_score": 6, "conviction_label": "High — data gap flagged",
-            "conviction_rationale": (
-                "SailPoint has cleared estimates by +32% to +212% in three of the last four quarters and "
-                "trades near its 52-week low at the $10.3bn universe floor — a wide-dispersion, low-base "
-                "setup the sell-side (26 of 30 at buy) is positioned for, though the implied move is unverified."
+            "day": "Thu",
+            "date": "Jun 11",
+            "event": "ECB rate decision — +25bp (99% priced; DFR to 2.25%)",
+            "consensus": "+25bp confirmed. Press conference: neutral-to-hawkish.",
+            "view": (
+                "'Data-dependent pause' language = EUR sell-the-fact; spec long unwinds; "
+                "MM-2026-012 accelerates. 'September hike priced' = EUR brief spike then "
+                "fade as growth damage dominates. MM-2026-010 (Long DAX) benefits from ECB "
+                "margin expansion for financials regardless of press conference tone."
             ),
-            "pillars": {"asymmetry": 2, "consensus": 2, "catalyst": 1, "positioning": 1},
-            "pillar_confidence": {
-                "asymmetry": "estimated", "consensus": "sourced",
-                "catalyst": "estimated", "positioning": "estimated",
-            },
-            "key_bullets": [
-                "Identity-security / agentic-AI governance: +24.35% TTM revenue growth (Finnhub).",
-                "Surprise history is violent — +62%, +212%, +32% in three of four quarters.",
-                "Trades at the bottom of its 52-week range ($10.30 low) — sentiment washed out into the print.",
-            ],
-            "what_moves_it": "Net-retention and any agentic-AI security attach commentary; a beat off this base gaps the stock.",
-            "client_talking_point": (
-                "SailPoint is the small-cap way to play machine-identity security — explosive beat history, "
-                "washed-out price, but a tiny float, so size it as a tail, not a core."
-            ),
-            "eps_estimate": 0.045,
-            "research_conflict": False,
+            "asymmetry": "Pause signal: EUR/USD -0.8%; hawkish: EUR +0.4% spike then fade to -0.5%",
+            "dir": "down",
         },
         {
-            "ticker": "ADBE", "company": "Adobe Inc",
-            "report_date": "2026-06-11", "report_timing": "AMC",
-            "mode": "PRE-EARNINGS", "direction": "Neutral",
-            "conviction_score": 4, "conviction_label": "Medium conviction",
-            "conviction_rationale": None,
-            "pillars": {"asymmetry": 1, "consensus": 1, "catalyst": 1, "positioning": 1},
-            "pillar_confidence": {
-                "asymmetry": "sourced", "consensus": "sourced",
-                "catalyst": "estimated", "positioning": "estimated",
-            },
-            "key_bullets": [
-                "Mixed sell-side: 19 buy / 22 hold / 4 sell — the Street is on the fence (Finnhub).",
-                "Four straight in-line prints (±1.2% surprise): low dispersion, small implied move.",
-                "The debate is structural — generative-AI disruption to the creative-software moat, not this quarter's EPS.",
-            ],
-            "what_moves_it": "Net-new Digital Media ARR and any Firefly AI-monetization datapoint; a guide cut validates the disruption bears.",
-            "client_talking_point": (
-                "Adobe is a referendum on whether AI disrupts incumbents or they monetize it; the print rarely "
-                "surprises — the ARR mix and the guide will."
+            "day": "Tue-Wed",
+            "date": "Jun 16-17",
+            "event": "FOMC meeting + dot plot — no cut priced, hike narrative building",
+            "consensus": "Hold at 3.5-3.75%. March median: one cut. Revision: 0 vs 1 vs hike signal.",
+            "view": (
+                "Zero-cut dot: 2Y +10bp, DXY +0.7%, gold sells hard, MM-2026-004 approaches "
+                "4.65% stop. One-cut unchanged: markets exhale — gold bids, 2Y -15-20bp, "
+                "MM-2026-013 accelerates. Hike dot (tail): VIX to 25+, risk-off. "
+                "CPI Wednesday determines which language members signal before the blackout."
             ),
-            "eps_estimate": 5.94,
-            "research_conflict": False,
+            "asymmetry": "0-cut: DXY +0.7%, 10Y +8bp; 1-cut unchanged: 2Y -15bp, gold +2%",
+            "dir": "flat",
+        },
+        {
+            "day": "Ongoing",
+            "date": "Jun 8+",
+            "event": "Iran/Israel/Hormuz — live military exchanges, MoU deadlocked",
+            "consensus": "Air strikes remain air-only; no Hormuz closure; deal before month-end.",
+            "view": (
+                "Iran fired at Kuwait and Bahrain. MoU deadlocked on $24bn frozen assets. "
+                "A confirmed tanker hit or mine detonation takes Brent to $110+ immediately. "
+                "Watch tanker insurance pricing as the leading physical indicator — it moves "
+                "before Brent spot reprices. MM-2026-002 and MM-2026-011 own the tail."
+            ),
+            "asymmetry": "Tanker hit: Brent +10-15% in hours, tanker insurance excludes Hormuz",
+            "dir": "up",
+        },
+        {
+            "day": "Ongoing",
+            "date": "Jun 8+",
+            "event": "USDJPY 160.32 — above MoF stated trigger; intervention watch",
+            "consensus": "MoF will intervene above 162-163. No immediate trigger at 160.",
+            "view": (
+                "Finance Ministry Katayama spent 10 trillion yen in April to defend 155. "
+                "Now above 160 with payrolls driving the dollar. BOJ September hike >50% priced. "
+                "Intervention timing is when, not if. When it fires: USDJPY -3-5% in hours, "
+                "yen carry trades unwind globally. Short USDJPY (MM-2026-007) stop 163."
+            ),
+            "asymmetry": "Intervention: USDJPY -3-5% in hours; yen carry unwind hits global equities",
+            "dir": "down",
         },
     ],
 
+    "earnings_ideas": [],
+
+    # ── What changes my mind ────────────────────────────────────────────────
     "what_changes_mind": """
-<p><strong>Long Europe / short US tech RV:</strong> flips if Oracle (Wed) misses and guides OCI down —
-that makes the AI-capex derating sector-wide rather than AVGO-specific, and Europe's banks won't insulate
-against a global growth scare.</p>
-<p><strong>Fade-the-hike (long front-end):</strong> flips if May CPI prints core above 0.4% m/m or the
-FOMC dot plot shows a 2026 hike — then a 70% probability is too low, not too high.</p>
-<p><strong>Crude tail (Brent calls):</strong> flips if the Hormuz MoU is signed and the Strait reopens —
-the $8–10 war premium evaporates and the call spread expires worthless. That is the defined, accepted risk.</p>
+<ul>
+<li><strong>MM-2026-001 &middot; Short EURAUD:</strong> Close if EURAUD holds above 1.660 after
+June 11 ECB press conference &mdash; signals rate-hike bid overriding growth-error read. Currently 1.648; stop 1.662.</li>
+
+<li><strong>MM-2026-002 &middot; Long Brent:</strong> Exit below $87 weekly close &mdash; MoU signed
+and Hormuz reopened. Currently $96.05. Iran escalation has strengthened the thesis. Target $104.</li>
+
+<li><strong>MM-2026-003 &middot; Long Brent/Short WTI spread:</strong> Discretionary close below $2.00
+&mdash; physical market has priced the deal. Currently $2.38. Most likely near-term close. Watching daily.</li>
+
+<li><strong>MM-2026-004 &middot; Short US 10Y yield:</strong> Stop at 4.65% &mdash; only 10bp away
+at 4.544%. CPI above 4% Wednesday or zero-cut dot June 17 triggers the stop. Do not add.</li>
+
+<li><strong>MM-2026-005 &middot; Long gold:</strong> Min hold to July 15 &mdash; no discretionary close.
+Stop $4,250. Gold at $4,350 &mdash; $100 from stop. Zero-cut dot + gold below $4,400 June 17 is the
+early warning of thesis break.</li>
+
+<li><strong>MM-2026-007 &middot; Short USDJPY:</strong> Stop 163.00. Currently 160.32 &mdash; above the
+stated intervention trigger. Size conservatively: the payoff if intervention fires is convex.</li>
+
+<li><strong>MM-2026-008 &middot; SPX put spread:</strong> Trim to half if SPX recovers above 7,500
+before Wednesday CPI. Take the gain on half, keep the FOMC tail exposure on the rest.
+Up 128% &mdash; protect some of the gain.</li>
+
+<li><strong>MM-2026-009 &middot; 2s10s steepener:</strong> Min hold to July 16. Up 154% at +38.2bp;
+target +60bp. FOMC dot plot delivers the next leg &mdash; hold.</li>
+
+<li><strong>MM-2026-010 &middot; Long DAX / Short Nasdaq:</strong> Stop ratio 0.943. Thesis breaks if
+CPI/FOMC drives a global risk-off that hits all equity markets indiscriminately. Needs two more
+sessions to confirm the structural divergence.</li>
+
+<li><strong>MM-2026-012 &middot; Short EURUSD:</strong> Stop 1.182. Close if EUR/USD spikes above 1.182
+on ECB press conference &mdash; hawkish surprise overrides the sell-the-fact setup. Target 1.130.</li>
+
+<li><strong>MM-2026-013 &middot; Short US 2Y yield:</strong> Stop 4.35%. Min hold 30 days. Close if CPI
+Wednesday above 4% &mdash; that confirms the hike repricing and the 2Y level is fair, not excessive.
+Thesis: dot plot June 17 holds at one cut; 2Y reverses 15&ndash;20bp.</li>
+</ul>
 """,
 
+    # ── Client ammo ────────────────────────────────────────────────────────
     "client_ammo": [
-        {"q": "Is the AI trade over?",
-         "a": "No — the cycle's leader grew AI revenue 143% and guided next quarter up 200%. Broadcom fell "
-              "because the whisper was higher, not because demand broke. This is a valuation reset inside a "
-              "richly-priced cohort, not a demand reset. Oracle on Wednesday tells you which."},
-        {"q": "Will the Fed actually hike?",
-         "a": "Unlikely on one 172k print with unemployment steady at 4.3%. The 70% year-end hike probability "
-              "is the market over-extrapolating a single number into an oil-driven inflation scare. We fade the "
-              "front-end; we don't chase it."},
-        {"q": "Why is Europe up while the US sells off?",
-         "a": "The selloff is a single-factor US event — AI concentration plus a hawkish payroll. Europe has no "
-              "equivalent AI weighting, the ECB hikes Thursday into a financials-heavy index, and a weaker euro "
-              "flatters exporters. The decoupling is the trade: long DAX, short the US tech beta."},
+        {
+            "q": "AVGO beat on every metric — why was it stopped out?",
+            "a": (
+                "Because the market was pricing the 100th percentile of AI revenue guidance and AVGO "
+                "delivered the 93rd. Q2 AI revenue $10.8B vs $10.7B consensus &mdash; a beat. Q3 AI guide "
+                "$16.0B vs buy-side $17.2B &mdash; a miss on the number that mattered at 41x. The guide was "
+                "the highest AI revenue guidance in corporate history. The buy side needed higher. At that "
+                "multiple, 'exceptional but below the extrapolation' is not enough. The cycle is not over; "
+                "the multiple compressed. Re-entry below $220 when the multiple normalises to 30-32x."
+            ),
+        },
+        {
+            "q": "How serious is the Hormuz escalation — should I be hedging oil?",
+            "a": (
+                "More serious than last week. This weekend moved from diplomatic standoff to live military "
+                "exchanges: Israel struck Iranian defence systems, US hit Iranian radar, Iran fired missiles "
+                "at Kuwait and Bahrain. The MoU is deadlocked on $24bn frozen assets. Brent at $96 is "
+                "actual risk premium, not hope. The signal to watch is tanker insurance pricing &mdash; if "
+                "writers start excluding Hormuz from coverage, physical delivery of Atlantic-basin crude "
+                "freezes before Brent reprices. We own the tail through Long Brent (MM-2026-002) and "
+                "the new Brent $100/$115 call spread (MM-2026-011)."
+            ),
+        },
+        {
+            "q": "What does payrolls +172k mean for the Fed — are hikes back on the table?",
+            "a": (
+                "In June: no &mdash; 99.2% probability of hold. But September and December are now "
+                "genuinely live for a hike, not a cut. Markets price 57% probability of zero cuts in "
+                "2026, up from below 50% before the data. The June 17 dot plot decides. If the median "
+                "goes to zero cuts, the 2Y at 4.16% is confirmed and every duration position takes "
+                "another leg of pain. If the median holds at one cut (unchanged from March), the 2Y "
+                "reverses 15-20bp in a session. CPI Wednesday is the deciding print: above 4% confirms "
+                "the repricing; below 3.5% reverses it."
+            ),
+        },
     ],
 
+    # ── VIX term structure (for chart) ─────────────────────────────────────
+    "vix_term": [
+        {"label": "VIX9D", "value": 15.5},
+        {"label": "VIX",   "value": 18.80},
+        {"label": "VIX3M", "value": 20.0},
+        {"label": "VIX6M", "value": 21.5},
+    ],
+
+    # ── Yield curve (for chart) ─────────────────────────────────────────────
+    "yield_curve_pts": [
+        {"label": "2Y",  "value": 4.162},
+        {"label": "5Y",  "value": 4.42},
+        {"label": "10Y", "value": 4.544},
+        {"label": "30Y", "value": 4.70},
+    ],
+
+    # ── Event radar note (for pre-positioning section) ──────────────────────
+    "event_radar_note": (
+        "<p>Three events in the next 10 days that resolve every open position's thesis: "
+        "CPI June 10 (payrolls follow-through test), ECB June 11 (+25bp confirmed; press conference "
+        "determines EUR trajectory), FOMC June 16&ndash;17 (dot plot is the binary that settles whether "
+        "Friday's repricing was a shock or a regime change). "
+        "Short US 2Y yield (pre-position below) is sized for the dot plot 'one-cut-maintained' scenario "
+        "where the market's hike pricing reverses in a single session.</p>"
+    ),
+
+    # ── Staleness check ─────────────────────────────────────────────────────
     "staleness": [
-        {"datum": "S&P / Nasdaq / Dow close", "source": "CNBC / TheStreet", "asof": "Fri 5 Jun close", "stale": False},
-        {"datum": "May NFP +172k, U-rate 4.3%", "source": "BLS / CNBC", "asof": "Fri 5 Jun 08:30 ET", "stale": False},
-        {"datum": "Hike odds ~70% by year-end", "source": "CME FedWatch", "asof": "Fri 5 Jun", "stale": False},
-        {"datum": "US 2Y 4.162% / 10Y 4.544%", "source": "CNBC / Reuters", "asof": "Fri 5 Jun", "stale": False},
-        {"datum": "AVGO −12.6% to $418.91 (Q3 AI guide ~$16bn)", "source": "Motley Fool / StockTitan", "asof": "Thu 4 Jun close", "stale": False},
-        {"datum": "Gold $4,339.61 (−3.27%)", "source": "Yahoo / TexMetals", "asof": "Fri 5 Jun", "stale": False},
-        {"datum": "WTI $90.54 / Brent $93.09", "source": "Investing.com", "asof": "Fri 5 Jun", "stale": False},
-        {"datum": "VIX 21.51 (+39.7%)", "source": "Cboe / Yahoo", "asof": "Fri 5 Jun close", "stale": False},
-        {"datum": "EUR/USD 1.16, USD/JPY 160.32, AUD/USD 0.7041", "source": "Trading Economics", "asof": "Fri 5 Jun", "stale": False},
-        {"datum": "ECB hike to 2.25% 99% priced", "source": "ECB-watch", "asof": "Fri 5 Jun", "stale": False},
-        {"datum": "Earnings consensus (ORCL/ADBE/SAIL)", "source": "Finnhub (earnings_data.md)", "asof": "Mon 8 Jun 06:00 UTC", "stale": False},
-        {"datum": "Bund/Gilt 10Y levels", "source": "—", "asof": "not pulled", "stale": True},
-        {"datum": "VIX term structure shape", "source": "inferred from spot", "asof": "Fri 5 Jun", "stale": True},
+        {"datum": "S&P 500 ~7,427",      "source": "Investtech / web search June 8",     "asof": "2026-06-08", "stale": False},
+        {"datum": "Nasdaq 100 ~26,500",  "source": "Web search (estimated) June 8",      "asof": "2026-06-08", "stale": False},
+        {"datum": "DAX ~24,917",         "source": "TradingEconomics / web search",       "asof": "2026-06-08", "stale": False},
+        {"datum": "Nikkei 64,024",       "source": "TradingEconomics June 8",             "asof": "2026-06-08", "stale": False},
+        {"datum": "FTSE 100 ~10,416",    "source": "TradingEconomics June 8",             "asof": "2026-06-08", "stale": False},
+        {"datum": "EURUSD 1.1536",       "source": "TradingEconomics / FXStreet June 8",  "asof": "2026-06-08", "stale": False},
+        {"datum": "USDJPY 160.32",       "source": "TradingEconomics June 8",             "asof": "2026-06-08", "stale": False},
+        {"datum": "DXY ~100.5",          "source": "TradingEconomics (estimated) June 8", "asof": "2026-06-08", "stale": False},
+        {"datum": "WTI $93.67",          "source": "OilPrice.com / derived from spread",  "asof": "2026-06-08", "stale": False},
+        {"datum": "Brent $96.05",        "source": "ICE / OilPrice.com June 8",           "asof": "2026-06-08", "stale": False},
+        {"datum": "Gold $4,350",         "source": "CNBC / LiteFinance June 8",           "asof": "2026-06-08", "stale": False},
+        {"datum": "US 10Y 4.544%",       "source": "TradingEconomics / CNBC June 8",      "asof": "2026-06-08", "stale": False},
+        {"datum": "US 2Y 4.162%",        "source": "CNBC / TheStreet June 8",             "asof": "2026-06-08", "stale": False},
+        {"datum": "2s10s +38.2bp",       "source": "Derived from 2Y/10Y levels",          "asof": "2026-06-08", "stale": False},
+        {"datum": "VIX 18.80",           "source": "Yahoo Finance / CBOE June 8",         "asof": "2026-06-08", "stale": False},
+        {"datum": "May payrolls +172k",  "source": "BLS / Fox Business June 5",           "asof": "2026-06-05", "stale": False},
+        {"datum": "AVGO Q2 results",     "source": "SEC 8-K / PR Newswire June 3",        "asof": "2026-06-03", "stale": False},
+        {"datum": "SOFR ~3.62%",         "source": "NY Fed (June 6 publication)",         "asof": "2026-06-06", "stale": True},
+        {"datum": "COT oil/gold",        "source": "CFTC (June 3 release, Jun 1 data)",   "asof": "2026-06-01", "stale": True},
+        {"datum": "GBPUSD",              "source": "Unverified this refresh",             "asof": "unavailable", "stale": True},
+        {"datum": "Bund / Gilt 10Y",     "source": "Unverified this refresh",             "asof": "unavailable", "stale": True},
+        {"datum": "MOVE index",          "source": "Unverified this refresh",             "asof": "unavailable", "stale": True},
+        {"datum": "USDCNH",              "source": "Unverified this refresh",             "asof": "unavailable", "stale": True},
     ],
 
-    # ---- NEW TRADE IDEAS (reactive) ----
-    "new_ideas": [
-        {
-            "asset_class": "Equity RV",
-            "trade": "Long DAX vs short Nasdaq Composite (ratio)",
-            "structure": "cross-region spread",
-            "entry": 0.9722, "stop": 0.943, "target": 1.030,
-            "conviction": 7,
-            "conviction_breakdown": {"gap": 2, "catalyst": 1, "positioning": 2, "confirmation": 1, "stop_quality": 1},
-            "horizon": "weeks",
-            "thesis": (
-                "Friday's selloff was a single-factor US event — AI concentration plus a hawkish payroll — and "
-                "Europe decoupled outright (DAX +0.2% vs Nasdaq −4.2%). The ECB hikes Thursday into a "
-                "financials-heavy index with no AI capex cycle to give back. Ratio entry 0.972 (DAX/Comp); the "
-                "divergence has legs because it is structural, not sentiment."
-            ),
-        },
-        {
-            "asset_class": "Commodity (options)",
-            "trade": "Buy Brent $100/$115 call spread (own the Hormuz tail)",
-            "structure": "call spread",
-            "entry": 3.0, "stop": 1.0, "target": 11.0,
-            "conviction": 7,
-            "conviction_breakdown": {"gap": 2, "catalyst": 2, "positioning": 1, "confirmation": 1, "stop_quality": 1},
-            "horizon": "1 month",
-            "thesis": (
-                "The tail is firing: Israel struck western and central Iran Monday, US hit Iranian radar sites "
-                "Friday, Iran fired missiles at Kuwait/Bahrain — and Brent gapped +3% to ~$96 with the MoU "
-                "deadlocked on $24bn of frozen assets. A confirmed mine or tanker hit takes the Strait premium "
-                "to $110+. Defined-risk momentum entry above spot; max loss the ~$3 premium if the Strait calms."
-            ),
-        },
-        {
-            "asset_class": "FX",
-            "trade": "Short EUR/USD into the ECB (sell-the-fact)",
-            "structure": "spot",
-            "entry": 1.160, "stop": 1.182, "target": 1.130,
-            "conviction": 6,
-            "conviction_breakdown": {"gap": 1, "catalyst": 2, "positioning": 1, "confirmation": 1, "stop_quality": 1},
-            "horizon": "weeks",
-            "thesis": (
-                "Thursday's 25bp ECB hike is 99% priced — the rate-differential tailwind for EUR is in the price, "
-                "and a hawkish US repricing widened the gap the other way. Classic buy-rumour-sell-fact setup into "
-                "a fully-priced central bank. Pairs cleanly with long DAX: a weaker euro flatters the exporters."
-            ),
-        },
-    ],
-
-    # ---- PRE-POSITION (into the FOMC) ----
-    "pre_position_ideas": [
-        {
-            "asset_class": "Rates",
-            "trade": "Short US 2Y yield (fade the hike, receive front-end)",
-            "structure": "outright (receiver)",
-            "entry": 4.162, "stop": 4.35, "target": 3.85,
-            "conviction": 7,
-            "conviction_breakdown": {"gap": 2, "catalyst": 2, "positioning": 2, "confirmation": 0, "stop_quality": 1},
-            "horizon": "into 16–17 Jun FOMC",
-            "min_hold_days": 30,
-            "thesis": (
-                "The market prices a ~70% hike by year-end on one 172k payroll with unemployment steady at 4.3%. "
-                "The Fed does not hike into a labor market that is firm-but-not-overheating with a richly-valued "
-                "equity tape just cracking. The 2-year at 4.16% — a 16-month high — has over-extrapolated a single "
-                "number; the 17 June dot plot is the catalyst to reprice it. Pre-position, not an event scalp."
-            ),
-        },
-    ],
+    # ── Trade cards (already in trades.json; no ingest needed) ─────────────
+    "new_ideas":          new_ideas_cards,
+    "pre_position_ideas": prepos_cards,
 }
 
+# ── Render and save ────────────────────────────────────────────────────────
+book.step("Rendering HTML")
+html_out = book.build_html(brief, trades, regime_log)
 
-# ---------------------------------------------------------------------------
-# 3) Orchestrate: mark book, log regime, ingest ideas, render, persist
-# ---------------------------------------------------------------------------
-def main():
-    book.step("Loading book + regime log")
-    trades = book.load_trades()
-    regime_log = book.load_json(book.REGIME_PATH, [])
+book.step("Writing output.html")
+with open(book.OUTPUT_PATH, "w", encoding="utf-8") as f:
+    f.write(html_out)
+book.log(f"wrote {len(html_out):,} bytes -> {book.OUTPUT_PATH}")
 
-    book.step("Marking open positions to market")
-    book.mark_to_market(trades, LEVELS)
+book.step("Saving trades.json")
+book.save_json(book.TRADES_PATH, trades)
+book.log("saved trades.json")
 
-    book.step("Updating regime log")
-    regime_log = book.update_regime_log(regime_log, brief["regime"], brief["regime_note"])
+book.step("Saving regime_log.json")
+book.save_json(book.REGIME_PATH, regime_log)
+book.log("saved regime_log.json")
 
-    book.step("Ingesting new ideas")
-    book.ingest_ideas(trades, brief["new_ideas"], "reactive")
-    book.ingest_ideas(trades, brief["pre_position_ideas"], "pre-position")
-
-    book.step("Rendering shark tank format (4 pages + fragments)")
-    shark_format.render_all(brief, trades, regime_log)
-
-    # legacy single-page output (kept, no longer the site root)
-    with open(book.OUTPUT_PATH, "w", encoding="utf-8") as f:
-        f.write(book.build_html(brief, trades, regime_log))
-
-    book.save_json(book.TRADES_PATH, trades)
-    book.save_json(book.REGIME_PATH, regime_log)
-    book.step("Done — wrote index/insights/earnings/trades + frag/* (+ legacy output.html)")
-
-
-if __name__ == "__main__":
-    main()
+book.step("Done")
