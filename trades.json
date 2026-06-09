@@ -63,10 +63,16 @@
           "level": 1.648,
           "pnl_pct": -0.18,
           "status": "open"
+        },
+        {
+          "date": "2026-06-09",
+          "level": 1.646,
+          "pnl_pct": -0.06,
+          "status": "open"
         }
       ],
-      "current": 1.648,
-      "current_pnl_pct": -0.18
+      "current": 1.646,
+      "current_pnl_pct": -0.06
     },
     {
       "id": "MM-2026-002",
@@ -89,8 +95,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "The war premium has been removed from crude before the war risk has been removed from the Gulf. Tehran rejected the Friday MoU terms, US forces are staged to re-engage, and specs have cut net length from 191.9k to 178.8k — leaving squeeze fuel. Asymmetric: $7 of downside to the recent floor against $13 to a re-escalation reprice. This is the right-tail hedge on the book's barbell, not a directional call on peace.",
-      "current": 96.05,
-      "current_pnl_pct": 5.55,
+      "current": 90.2,
+      "current_pnl_pct": -0.88,
       "history": [
         {
           "date": "2026-05-31",
@@ -127,67 +133,11 @@
           "level": 96.05,
           "pnl_pct": 5.55,
           "status": "open"
-        }
-      ]
-    },
-    {
-      "id": "MM-2026-003",
-      "opened": "2026-05-31",
-      "type": "reactive",
-      "asset_class": "Commodity",
-      "trade": "Long Brent vs short WTI (spread)",
-      "structure": "spread",
-      "entry": 3.3,
-      "stop": 1.5,
-      "target": 6.5,
-      "conviction": 5,
-      "conviction_breakdown": {
-        "gap": 2,
-        "catalyst": 1,
-        "positioning": 1,
-        "confirmation": 0,
-        "stop_quality": 1
-      },
-      "horizon": "weeks",
-      "min_hold_days": 0,
-      "thesis": "The Hormuz premium is Brent-specific — it prices the waterway, WTI prices Cushing. If the MoU frays, the Atlantic-basin grade reprices the de-mining risk and the spread widens; if it holds, physical caps the downside near current carry. A cleaner, lower-beta way to own the same re-escalation tail with defined spread risk.",
-      "current": 2.38,
-      "current_pnl_pct": -27.88,
-      "history": [
-        {
-          "date": "2026-05-31",
-          "level": 3.3,
-          "pnl_pct": 0.0,
-          "status": "open"
         },
         {
-          "date": "2026-06-01",
-          "level": 3.1,
-          "pnl_pct": -6.06,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-01",
-          "level": 2.81,
-          "pnl_pct": -14.85,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-01",
-          "level": 2.81,
-          "pnl_pct": -14.85,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-01",
-          "level": 2.81,
-          "pnl_pct": -14.85,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-08",
-          "level": 2.38,
-          "pnl_pct": -27.88,
+          "date": "2026-06-09",
+          "level": 90.2,
+          "pnl_pct": -0.88,
           "status": "open"
         }
       ]
@@ -213,8 +163,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Brent −17% is a forward CPI cut the FedWatch distribution (67.8% no cuts in 2026) has not booked. Bonds already rallied 26bp off the 4.70% high; the disinflation impulse rolls headline lower into the autumn. Deliberately the opposite macro leg to the Brent longs — the book owns both sides of the MoU binary and gets paid on either resolution.",
-      "current": 4.544,
-      "current_pnl_pct": -2.34,
+      "current": 4.5,
+      "current_pnl_pct": -1.35,
       "history": [
         {
           "date": "2026-05-31",
@@ -251,6 +201,12 @@
           "level": 4.544,
           "pnl_pct": -2.34,
           "status": "open"
+        },
+        {
+          "date": "2026-06-09",
+          "level": 4.5,
+          "pnl_pct": -1.35,
+          "status": "open"
         }
       ]
     },
@@ -275,8 +231,8 @@
       "horizon": "months",
       "min_hold_days": 45,
       "thesis": "Pre-position into the 5 June payrolls / 16–17 June FOMC window. Gold has already decoupled from a 4.98% long bond, which means it is pricing both MoU tails at once. It wins if oil-disinflation forces a dovish Fed and real yields fall, AND it wins if the MoU fails and the geopolitical bid returns. It loses only on the narrow path of strong-growth + stable-oil + hawkish-Fed together. That is the asymmetry pre-positioning is built for; minimum 45-day hold, not an event-day scalp.",
-      "current": 4350.0,
-      "current_pnl_pct": -3.82,
+      "current": 4330.0,
+      "current_pnl_pct": -4.27,
       "history": [
         {
           "date": "2026-05-31",
@@ -313,6 +269,12 @@
           "level": 4350.0,
           "pnl_pct": -3.82,
           "status": "open"
+        },
+        {
+          "date": "2026-06-09",
+          "level": 4330.0,
+          "pnl_pct": -4.27,
+          "status": "open"
         }
       ]
     },
@@ -337,8 +299,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "USDJPY at 159.37 with Finance Minister Katayama threatening intervention. BoJ September hike >50% priced vs Fed on hold. 3.63 pts downside to stop, 9.37 pts to target. Intervention is the backstop.",
-      "current": 160.32,
-      "current_pnl_pct": -0.6,
+      "current": 159.2,
+      "current_pnl_pct": 0.11,
       "history": [
         {
           "date": "2026-06-01",
@@ -362,6 +324,12 @@
           "date": "2026-06-08",
           "level": 160.32,
           "pnl_pct": -0.6,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-09",
+          "level": 159.2,
+          "pnl_pct": 0.11,
           "status": "open"
         }
       ]
@@ -387,8 +355,8 @@
       "horizon": "26 days",
       "min_hold_days": 0,
       "thesis": "VIX at 15.3 is cheap for 4 non-trivial events in 15 days: AVGO Jun 3, payrolls Jun 5, ECB Jun 11, FOMC Jun 16-17. 0.5% notional cost; 7x payoff if SPX draws down 6%. Insurance on a portfolio long AI equities.",
-      "current": 80.0,
-      "current_pnl_pct": 128.57,
+      "current": 50.0,
+      "current_pnl_pct": 42.86,
       "history": [
         {
           "date": "2026-06-01",
@@ -406,6 +374,12 @@
           "date": "2026-06-08",
           "level": 80.0,
           "pnl_pct": 128.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-09",
+          "level": 50.0,
+          "pnl_pct": 42.86,
           "status": "open"
         }
       ]
@@ -431,8 +405,8 @@
       "horizon": "3 months",
       "min_hold_days": 45,
       "thesis": "2s10s at +15bp after 18-month inversion. Buy 2Y (own cut optionality) vs short 10Y (short fiscal supply risk). June 5 payrolls at 89k + Fed pause re-prices front-end. ECB hiking cycle lifts global long rates. Steepener delivers whether Fed cuts or back-end sells off on supply. Late-cycle steepeners outperform after prolonged inversions.",
-      "current": 0.382,
-      "current_pnl_pct": 154.67,
+      "current": 0.4,
+      "current_pnl_pct": 166.67,
       "history": [
         {
           "date": "2026-06-01",
@@ -450,6 +424,12 @@
           "date": "2026-06-08",
           "level": 0.382,
           "pnl_pct": 154.67,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-09",
+          "level": 0.4,
+          "pnl_pct": 166.67,
           "status": "open"
         }
       ]
@@ -475,13 +455,19 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Friday's selloff was a single-factor US event — AI concentration plus a hawkish payroll — and Europe decoupled outright (DAX +0.2% vs Nasdaq −4.2%). The ECB hikes Thursday into a financials-heavy index with no AI capex cycle to give back. Ratio entry 0.972 (DAX/Comp); the divergence has legs because it is structural, not sentiment.",
-      "current": 0.9722,
-      "current_pnl_pct": 0.0,
+      "current": 0.967,
+      "current_pnl_pct": -0.53,
       "history": [
         {
           "date": "2026-06-08",
           "level": 0.9722,
           "pnl_pct": 0.0,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-09",
+          "level": 0.967,
+          "pnl_pct": -0.53,
           "status": "open"
         }
       ]
@@ -507,13 +493,19 @@
       "horizon": "1 month",
       "min_hold_days": 0,
       "thesis": "The tail is firing: Israel struck western and central Iran Monday, US hit Iranian radar sites Friday, Iran fired missiles at Kuwait/Bahrain — and Brent gapped +3% to ~$96 with the MoU deadlocked on $24bn of frozen assets. A confirmed mine or tanker hit takes the Strait premium to $110+. Defined-risk momentum entry above spot; max loss the ~$3 premium if the Strait calms.",
-      "current": 3.0,
-      "current_pnl_pct": 0.0,
+      "current": 1.3,
+      "current_pnl_pct": -56.67,
       "history": [
         {
           "date": "2026-06-08",
           "level": 3.0,
           "pnl_pct": 0.0,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-09",
+          "level": 1.3,
+          "pnl_pct": -56.67,
           "status": "open"
         }
       ]
@@ -539,13 +531,19 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Thursday's 25bp ECB hike is 99% priced — the rate-differential tailwind for EUR is in the price, and a hawkish US repricing widened the gap the other way. Classic buy-rumour-sell-fact setup into a fully-priced central bank. Pairs cleanly with long DAX: a weaker euro flatters the exporters.",
-      "current": 1.16,
-      "current_pnl_pct": 0.0,
+      "current": 1.158,
+      "current_pnl_pct": 0.17,
       "history": [
         {
           "date": "2026-06-08",
           "level": 1.16,
           "pnl_pct": 0.0,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-09",
+          "level": 1.158,
+          "pnl_pct": 0.17,
           "status": "open"
         }
       ]
@@ -571,12 +569,50 @@
       "horizon": "into 16–17 Jun FOMC",
       "min_hold_days": 30,
       "thesis": "The market prices a ~70% hike by year-end on one 172k payroll with unemployment steady at 4.3%. The Fed does not hike into a labor market that is firm-but-not-overheating with a richly-valued equity tape just cracking. The 2-year at 4.16% — a 16-month high — has over-extrapolated a single number; the 17 June dot plot is the catalyst to reprice it. Pre-position, not an event scalp.",
-      "current": 4.162,
-      "current_pnl_pct": 0.0,
+      "current": 4.1,
+      "current_pnl_pct": 1.49,
       "history": [
         {
           "date": "2026-06-08",
           "level": 4.162,
+          "pnl_pct": 0.0,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-09",
+          "level": 4.1,
+          "pnl_pct": 1.49,
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "id": "MM-2026-014",
+      "opened": "2026-06-09",
+      "type": "reactive",
+      "asset_class": "Derivatives",
+      "trade": "Buy SPX Jul-3 7200/6950 put spread (re-centre the hedge)",
+      "structure": "put spread",
+      "entry": 42.0,
+      "stop": 0.0,
+      "target": 250.0,
+      "conviction": 6,
+      "conviction_breakdown": {
+        "gap": 1,
+        "catalyst": 2,
+        "positioning": 1,
+        "confirmation": 1,
+        "stop_quality": 1
+      },
+      "horizon": "24 days",
+      "min_hold_days": 0,
+      "thesis": "The Jun-27 hedge (MM-2026-008) did its job and is now struck a long way below a higher spot after the relief rally. Three binary events sit inside the next eight sessions — May CPI tomorrow, the ECB on Thursday, and Kevin Warsh's first FOMC with a fresh dot plot on the 16-17th. This is not a directional bear call; it is paying ~0.5% of notional to keep defined-risk protection re-centred near the money while the cheaper, deeper hedge rolls off. Trim the old spread into strength, carry the new one through the event cluster.",
+      "current": 42.0,
+      "current_pnl_pct": 0.0,
+      "history": [
+        {
+          "date": "2026-06-09",
+          "level": 42.0,
           "pnl_pct": 0.0,
           "status": "open"
         }
@@ -639,6 +675,82 @@
         "result": "STOPPED",
         "pnl_pct": -13.6,
         "days_held": 7
+      }
+    },
+    {
+      "id": "MM-2026-003",
+      "opened": "2026-05-31",
+      "type": "reactive",
+      "asset_class": "Commodity",
+      "trade": "Long Brent vs short WTI (spread)",
+      "structure": "spread",
+      "entry": 3.3,
+      "stop": 1.5,
+      "target": 6.5,
+      "conviction": 5,
+      "conviction_breakdown": {
+        "gap": 2,
+        "catalyst": 1,
+        "positioning": 1,
+        "confirmation": 0,
+        "stop_quality": 1
+      },
+      "horizon": "weeks",
+      "min_hold_days": 0,
+      "thesis": "The Hormuz premium is Brent-specific — it prices the waterway, WTI prices Cushing. If the MoU frays, the Atlantic-basin grade reprices the de-mining risk and the spread widens; if it holds, physical caps the downside near current carry. A cleaner, lower-beta way to own the same re-escalation tail with defined spread risk.",
+      "current": 1.95,
+      "current_pnl_pct": -40.91,
+      "history": [
+        {
+          "date": "2026-05-31",
+          "level": 3.3,
+          "pnl_pct": 0.0,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-01",
+          "level": 3.1,
+          "pnl_pct": -6.06,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-01",
+          "level": 2.81,
+          "pnl_pct": -14.85,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-01",
+          "level": 2.81,
+          "pnl_pct": -14.85,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-01",
+          "level": 2.81,
+          "pnl_pct": -14.85,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-08",
+          "level": 2.38,
+          "pnl_pct": -27.88,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-09",
+          "level": 1.95,
+          "pnl_pct": -40.91,
+          "status": "discretionary"
+        }
+      ],
+      "exit": {
+        "date": "2026-06-09",
+        "level": 1.95,
+        "result": "DISCRETIONARY",
+        "pnl_pct": -40.91,
+        "days_held": 9,
+        "reason": "Ceasefire removes the Hormuz-specific Brent premium the spread was meant to own; traded through the $2.00 exit. Banked the loss, stand aside."
       }
     }
   ]

@@ -470,8 +470,13 @@ def _page_trades(brief):
     lhs = []
     reactive = [dict(i, _kind="reactive") for i in brief.get("new_ideas", [])]
     prepos = [dict(i, _kind="pre-position") for i in brief.get("pre_position_ideas", [])]
+    if brief.get("ideas_note"):
+        lhs.append('<div class="section-label">Positioning stance today</div>')
+        lhs.append(f'<div class="wrap-body" style="font-size:14px">{brief["ideas_note"]}</div>')
     lhs.append('<div class="section-label">New Trade Ideas</div>')
-    lhs.append('<div class="cardgrid">' + "".join(_trade_tile(i) for i in reactive + prepos) + '</div>')
+    cards = "".join(_trade_tile(i) for i in reactive + prepos)
+    lhs.append('<div class="cardgrid">' + cards + '</div>' if cards
+               else '<p class="mute" style="font-size:13px">No new idea today — into a binary print, forcing a trade is the trade.</p>')
     lhs.append('<div class="section-label">Live Book · click any trade to expand</div>')
     lhs.append('<iframe src="frag/book.html" class="bookframe" title="Live book"></iframe>')
     return "".join(lhs)
