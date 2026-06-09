@@ -1,7 +1,7 @@
 # Finnhub Earnings Data
-Generated: 2026-06-08 06:00 UTC
-Pre-earnings window:  2026-06-08 to 2026-06-13
-Post-earnings window: 2026-06-05 to 2026-06-08
+Generated: 2026-06-09 06:00 UTC
+Pre-earnings window:  2026-06-09 to 2026-06-14
+Post-earnings window: 2026-06-06 to 2026-06-09
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
@@ -10,7 +10,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-11
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $98.9bn
+- **Market cap:** $99.0bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     5.9385
@@ -31,7 +31,7 @@ Source: Finnhub.io
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 10.96%
 - EPS growth YoY (TTM):     13.16%
-- 52-week high:             421.48
+- 52-week high:             419.82
 - 52-week low:              224.13
 - Short ratio:              unavailable
 - Short interest:           unavailable
@@ -43,7 +43,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-10
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $608.6bn
+- **Market cap:** $609.2bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     2.0011
@@ -72,15 +72,17 @@ Source: Finnhub.io
 ---
 
 ## SAIL — SailPoint Inc
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-06-09
 - **Report timing:** BMO (before open)
 - **Sector:** Technology
-- **Market cap:** $10.3bn
+- **Market cap:** $10.0bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.0451
 - Revenue estimate: 281540502
+- EPS actual:      0.05
+- Revenue actual:  280140000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 26
@@ -89,10 +91,10 @@ Source: Finnhub.io
 - Period:         2026-06-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2027 Q1: actual 0.05 vs est 0.0451 (10.86%)
 - 2026 Q4: actual 0.08 vs est 0.0811 (-1.36%)
 - 2026 Q3: actual 0.08 vs est 0.0606 (32.01%)
 - 2026 Q2: actual 0.07 vs est 0.0432 (62.04%)
-- 2026 Q1: actual 0.01 vs est -0.0089 (212.36%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 24.35%
