@@ -320,6 +320,7 @@ def fetch_all(trade_ids=None):
 # --------------------------------------------------------------------------
 IDEA_TICKERS = {
     "1":   ("MU",       "long",  "Micron Technology (MU) — underlying for the collar"),
+    "14":  ("MU",       "long",  "Micron Technology (MU) — prepaid variable forward underlier"),
     "2":   ("EURUSD=X", "short", "EUR/USD — FX liability-hedge direction"),
     "3":   ("EURUSD=X", "short", "EUR/USD — seagull FX hedge, reducing net USD exposure"),
     "4":   ("^TNX",     "long",  "US 10Y yield (^TNX) — bond swap into current coupons"),
@@ -336,6 +337,7 @@ IDEA_TICKERS = {
 
 VALUATION_TICKERS = {
     "1":   "MU",
+    "14":  "MU",
     "5":   "NVDA",
     "6":   "NVDA",
     "7":   "AVGO",

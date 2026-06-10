@@ -66,6 +66,7 @@ PRODUCT_META = {
     11:  ("EUR bond switch", "Loss harvest / carry pickup"),
     12:  ("Hold — no structure", "Hedge · do not trim"),
     13:  ("DCS — suppressed", "Suppressed · conflicts with FX hedge"),
+    14:  ("Prepaid variable forward (OTC)", "Monetise concentration / tax-defer"),
     101: ("Capital-protected note", "Protected participation"),
     102: ("Cash-secured put (OTC)", "Income / discount accumulation"),
     103: ("Curve range accrual (capital-protected)", "Rates participation / macro"),
@@ -258,6 +259,11 @@ _ENHANCE_META = {
          "n/a",
          "Avoids a self-cancelling trade — converting EUR into USD while idea 3 hedges USD off — and surfaces the conflict for the advisor instead of silently doing both.",
          [{"name": "Suitability layer", "type": "in-house"}]),
+    14: ("Equity", "Prepaid variable forward 2-3y",
+         "~$5-7m of the MU position (about a third)",
+         "The OTC alternative to the collar+SBL: raises ~80% of the slice's value in cash today WITHOUT a sale, caps the realised-gain tax event, floors the downside and keeps a defined slice of upside — de-risks the book's single largest concentration and funds the other ideas in one trade.",
+         [{"name": "Goldman Sachs / Morgan Stanley", "type": "sell-side", "note": "PVF structuring"},
+          {"name": "JP Morgan GIS", "type": "house anchor", "note": "hedge the concentration"}]),
 }
 
 # Per-idea enrichment: fundamental thesis (with valuation multiples), explicit catalyst text,
@@ -575,6 +581,32 @@ IDEA_ENRICHMENTS = {
             "fit":     "1/2 — the EUR idle cash problem exists (fit = 1); but DCD conflicts with idea 3; advisor must choose a lane.",
         },
     },
+    14: {
+        "fundamental_thesis": (
+            "A prepaid variable forward (PVF) is the bespoke OTC route to monetising the 25%+ Micron "
+            "concentration without selling it. The client pledges a slice of the position (~$5-7m, about a "
+            "third) and receives ~80% of its value in cash up front; at maturity (2-3y) the number of shares "
+            "delivered varies with the price — full participation up to a cap (~120% of spot), full protection "
+            "below a floor (~90%). Economically it is a collar (long put / short call) plus a secured cash "
+            "advance, wrapped into one OTC contract — but unlike an outright sale it does NOT realise the 10x "
+            "capital gain today, so it defers the tax while taking the single-name risk and the liquidity "
+            "problem off the table at once. Live MU multiples: see Yahoo Finance data below."
+        ),
+        "catalyst_text": (
+            "24-Jun MU Q3 FY26 earnings sets the implied vol the bank prices the embedded collar at — richer "
+            "pre-print IV = a higher cash advance and a higher cap, so strike the PVF INTO the elevated vol, "
+            "before the print. No binary gate on the structure itself; the catalyst optimises the terms. "
+            "Choose PVF vs the collar+SBL (idea 1) by the client's priority: cash-now and tax-deferral (PVF) "
+            "versus keep-all-the-upside-with-a-loan (collar). They are alternatives on the same risk — do not "
+            "run both on the same shares."
+        ),
+        "sub_why": {
+            "setup":   "2/2 — 25%+ MU concentration confirmed from the position file; a PVF is the textbook OTC monetisation of a low-basis concentrated single stock. Inputs verified.",
+            "pricing": "1/2 — the cash-advance %, cap and floor depend on the live MU vol surface into 24-Jun; directionally rich (good for the client) but the exact terms need a desk quote.",
+            "catalyst": "1/2 — 24-Jun is a vol-timing gate for the embedded collar, not a payoff trigger; the PVF is a multi-year monetisation, not an event trade.",
+            "fit":     "2/2 — C1 rule: a ≥10% single-name concentration needs a documented de-risk plan, and the client wants liquidity off the 10x winner without realising the gain — the PVF solves both. Client is comfortable with OTC structures.",
+        },
+    },
     101: {
         "fundamental_thesis": (
             "Oracle Corporation (ORCL) — cloud infrastructure (OCI), database (Autonomous DB), "
@@ -793,6 +825,24 @@ def build_ideas(metrics):
               "Decumulator sells above market at a premium, but with gearing a hard rally forces double the daily "
               "clip at the strike, below the new market. Sized so a full 2x obligation is always deliverable from "
               "the shares held. View is LIKE -> C6 is suppressed into strength; deploy only post-print."),
+        _idea(14, "MU concentration: prepaid variable forward — the OTC alternative to the collar",
+              "C1 / equity OTC", ["MU US"], 6,
+              {"setup": 2, "pricing": 1, "catalyst": 1, "fit": 2},
+              {"setup": "sourced", "pricing": "estimated", "catalyst": "sourced", "fit": "sourced"},
+              "FIRE",
+              "A 2-3y prepaid variable forward on ~a third of the MU position: pledge the shares, take ~80% of "
+              "their value in cash today, keep upside to a ~120% cap and full protection below a ~90% floor. It is "
+              "a collar plus a secured cash advance in one OTC contract — but unlike a sale it does NOT realise the "
+              "10x gain, so it raises liquidity and defers the tax while taking the concentration risk off the table.",
+              "24-Jun earnings sets the vol the embedded collar is priced at — strike into the rich pre-print IV "
+              "for a higher advance and a higher cap. Choose this OR the collar+SBL (idea 1) by whether the "
+              "priority is cash-now-and-tax-deferral (PVF) or keep-all-the-upside-with-a-loan (collar).",
+              f"At {mu_w}% this is the book's defining risk; the PVF is the cleanest way to monetise it without a "
+              "taxable sale — cash out, tax deferred, downside floored, a defined slice of upside kept.",
+              ["Prepaid variable forward", "Monetise", "Tax-defer", "Equity OTC"],
+              "Caps upside above the ~120% strike; a hard rally through it is forgone gain. Early unwind costs the "
+              "embedded option value; senior-unsecured counterparty/issuer credit on the forward. Alternative to "
+              "idea 1 on the same shares — never run both on the same slice."),
         _idea(2, "USD mortgage: earmark idle cash + liability-matching forward strip",
               "X4 + K1", ["USD cash", "FX"], 7,
               {"setup": 2, "pricing": 1, "catalyst": 2, "fit": 2},
