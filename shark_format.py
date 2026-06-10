@@ -601,7 +601,8 @@ def _holdings_table(positions):
                     if isinstance(day, (int, float)) else '<span class="mute">&mdash;</span>')
         iv = p.get("iv_pct")
         conf = p.get("iv_confidence", "estimated")
-        iv_lab = "live" if conf == "sourced" else "est"
+        basis = p.get("iv_basis", "implied")
+        iv_lab = "RV 3m" if basis == "realized" else ("live" if conf == "sourced" else "est")
         iv_html = (f'<span class="srcdot src-{e(conf)}"></span>{iv:.0f}% &middot; '
                    f'{p.get("iv_percentile_est","?")}th <span class="mute">{iv_lab}</span>'
                    if iv else '<span class="mute">&mdash;</span>')
@@ -622,7 +623,7 @@ def _holdings_table(positions):
         )
     return ('<table class="holdtbl"><thead><tr>'
             '<th>Holding</th><th>Class</th><th class="num">Weight</th><th class="num">Mark</th>'
-            '<th class="num">P&amp;L</th><th class="num">Day</th><th>House view</th><th class="num">ATM IV</th>'
+            '<th class="num">P&amp;L</th><th class="num">Day</th><th>House view</th><th class="num">Vol (IV&middot;RV)</th>'
             '</tr></thead><tbody>' + "".join(rows) + '</tbody></table>')
 
 
@@ -696,7 +697,10 @@ def _page_portfolio(scan):
     lhs.append(_holdings_table(scan["positions"]))
     if scan.get("refresh_notes"):
         lhs.append(f'<div class="asof">Live refresh: {e("; ".join(scan["refresh_notes"]))}. '
-                   'Bonds derived from yields; gold from spot; ATM IV estimated until ivol_history.json reaches 60d.</div>')
+                   'Vol column: US names = implied (Black-Scholes inversion on live Yahoo option marks, "live"); '
+                   'EU names + gold = realized 3m vol from a year of price history with a sourced percentile ("RV 3m") — '
+                   'no listed options on Yahoo. US implied percentile builds to 60 daily snapshots. '
+                   'Bonds derived from yields; gold mark from spot.</div>')
     lhs.append(_cash_liab_block(scan))
     lhs.append(_view_engine_panel(scan))
     lhs.append('<div style="margin-top:1.5rem">'

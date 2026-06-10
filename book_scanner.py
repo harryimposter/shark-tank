@@ -146,6 +146,7 @@ def attach_views_and_vol(bookdata, views, ivol):
         p["iv_pct"] = snap.get("atm_iv_pct")
         p["iv_percentile_est"] = snap.get("iv_percentile_est")
         p["iv_confidence"] = snap.get("confidence")
+        p["iv_basis"] = snap.get("iv_basis", "implied")
         tier, _ = _conc_flag(p.get("weight_pct", 0), p.get("asset_class", ""))
         p["conc_tier"] = tier
 

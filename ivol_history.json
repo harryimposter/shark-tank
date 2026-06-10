@@ -5,7 +5,7 @@
     "fields": "atm_iv_pct = ATM implied vol; iv_percentile_est = rank vs own (short) history; skew = 90% put IV minus ATM IV (vol points)",
     "seeded": "2026-06-09",
     "last_fetch": "2026-06-10",
-    "source": "ATM IV computed by Black-Scholes inversion on Yahoo option marks (stdlib cookie+crumb, no key, no deps). US single names sourced; EU names estimated (not on feed); IV percentile = rank vs own history, estimated until 60 daily snapshots."
+    "source": "US single names: ATM ~360D implied vol by Black-Scholes inversion on Yahoo option marks. EU names + gold (no listed options on Yahoo): realized vol from 1y of daily closes, used as an implied proxy, with a sourced percentile vs trailing-year history. Stdlib cookie+crumb, no key, no deps. US IV percentile estimated until 60 daily snapshots."
   },
   "history": {
     "MU US": [
@@ -15,6 +15,7 @@
         "iv_percentile_est": 100,
         "skew": 5.2,
         "confidence": "sourced",
+        "iv_basis": "implied",
         "rank_confidence": "estimated",
         "note": "ATM-372d IV solved from last option marks (Black-Scholes inversion); rank vs 1 day(s) of own history (building to 60d).",
         "spot": 935.89,
@@ -28,6 +29,7 @@
         "iv_percentile_est": 100,
         "skew": 2.9,
         "confidence": "sourced",
+        "iv_basis": "implied",
         "rank_confidence": "estimated",
         "note": "ATM-372d IV solved from last option marks (Black-Scholes inversion); rank vs 1 day(s) of own history (building to 60d).",
         "spot": 208.19,
@@ -41,6 +43,7 @@
         "iv_percentile_est": 100,
         "skew": 2.1,
         "confidence": "sourced",
+        "iv_basis": "implied",
         "rank_confidence": "estimated",
         "note": "ATM-372d IV solved from last option marks (Black-Scholes inversion); rank vs 1 day(s) of own history (building to 60d).",
         "spot": 392.16,
@@ -54,6 +57,7 @@
         "iv_percentile_est": 100,
         "skew": 9.5,
         "confidence": "sourced",
+        "iv_basis": "implied",
         "rank_confidence": "estimated",
         "note": "ATM-372d IV solved from last option marks (Black-Scholes inversion); rank vs 1 day(s) of own history (building to 60d).",
         "spot": 475.5,
@@ -62,42 +66,54 @@
     ],
     "MC FP": [
       {
-        "date": "2026-06-09",
-        "atm_iv_pct": 30,
-        "iv_percentile_est": 60,
-        "skew": 6.0,
-        "confidence": "estimated",
-        "note": "Steep luxury put skew fattens the reverse-convertible coupon; refresh price + IV before quoting."
+        "date": "2026-06-10",
+        "atm_iv_pct": 30.6,
+        "iv_percentile_est": 51,
+        "skew": null,
+        "confidence": "sourced",
+        "iv_basis": "realized",
+        "rank_confidence": "sourced",
+        "note": "Realized vol (annualised 63d from 256 daily closes) — no listed options on Yahoo, so this is realized vol used as an implied proxy. Percentile = rank of current vs the trailing-year rolling 63d realized distribution (sourced).",
+        "spot": 492.3
       }
     ],
     "SAP GY": [
       {
-        "date": "2026-06-09",
-        "atm_iv_pct": 27,
-        "iv_percentile_est": 50,
-        "skew": 3.5,
-        "confidence": "estimated",
-        "note": "Fair vol; overwrite works at-or-above the 50th percentile with the call above resistance."
+        "date": "2026-06-10",
+        "atm_iv_pct": 44.5,
+        "iv_percentile_est": 72,
+        "skew": null,
+        "confidence": "sourced",
+        "iv_basis": "realized",
+        "rank_confidence": "sourced",
+        "note": "Realized vol (annualised 63d from 254 daily closes) — no listed options on Yahoo, so this is realized vol used as an implied proxy. Percentile = rank of current vs the trailing-year rolling 63d realized distribution (sourced).",
+        "spot": 154.7
       }
     ],
     "TTE FP": [
       {
-        "date": "2026-06-09",
-        "atm_iv_pct": 26,
-        "iv_percentile_est": 45,
-        "skew": 3.0,
-        "confidence": "estimated",
-        "note": "Recognised hedge - no structure flagged while the Strait premium persists."
+        "date": "2026-06-10",
+        "atm_iv_pct": 28.9,
+        "iv_percentile_est": 91,
+        "skew": null,
+        "confidence": "sourced",
+        "iv_basis": "realized",
+        "rank_confidence": "sourced",
+        "note": "Realized vol (annualised 63d from 256 daily closes) — no listed options on Yahoo, so this is realized vol used as an implied proxy. Percentile = rank of current vs the trailing-year rolling 63d realized distribution (sourced).",
+        "spot": 76.47
       }
     ],
     "4GLD GY": [
       {
-        "date": "2026-06-09",
-        "atm_iv_pct": 16,
-        "iv_percentile_est": 40,
-        "skew": 2.0,
-        "confidence": "estimated",
-        "note": "Recognised tail hedge - hold, no overwrite."
+        "date": "2026-06-10",
+        "atm_iv_pct": 27.2,
+        "iv_percentile_est": 53,
+        "skew": null,
+        "confidence": "sourced",
+        "iv_basis": "realized",
+        "rank_confidence": "sourced",
+        "note": "Realized vol (annualised 63d from 253 daily closes) — no listed options on Yahoo, so this is realized vol used as an implied proxy. Percentile = rank of current vs the trailing-year rolling 63d realized distribution (sourced).",
+        "spot": 4234.7
       }
     ],
     "SPY US": [
@@ -107,6 +123,7 @@
         "iv_percentile_est": 100,
         "skew": 5.0,
         "confidence": "sourced",
+        "iv_basis": "implied",
         "rank_confidence": "estimated",
         "note": "ATM-372d IV solved from last option marks (Black-Scholes inversion); rank vs 1 day(s) of own history (building to 60d).",
         "spot": 737.05,

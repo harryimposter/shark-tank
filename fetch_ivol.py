@@ -28,8 +28,14 @@ UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 RISK_FREE = 0.045          # ~3m T-bill; short-dated ATM IV is barely sensitive to this
 TARGET_DAYS = 360          # Observable O5 wants ATM ~360D IV as the vol-regime anchor
 
-# book ticker -> Yahoo symbol (US listed options only)
+# book ticker -> Yahoo symbol (US listed options only) -> sourced IMPLIED vol
 YH = {"MU US": "MU", "NVDA US": "NVDA", "AVGO US": "AVGO", "AMD US": "AMD", "SPY US": "SPY"}
+
+# book ticker -> Yahoo symbol for names with NO listed options on Yahoo (EU single
+# names + the gold ETC). We compute REALIZED vol from 1y of daily closes as an
+# implied-vol proxy — a sourced number with a sourced percentile, not a guess.
+EU_HIST = {"MC FP": "MC.PA", "SAP GY": "SAP.DE", "TTE FP": "TTE.PA", "4GLD GY": "GC=F"}
+RV_WINDOW = 63             # ~3 trading months — the realized-vol regime anchor
 
 
 # ---- Black-Scholes + implied-vol inversion --------------------------------
@@ -134,6 +140,31 @@ def atm_iv_for(op, crumb, symbol):
             "price_source": c_src or p_src}
 
 
+def _annvol(rets):
+    if len(rets) < 5:
+        return None
+    m = sum(rets) / len(rets)
+    var = sum((x - m) ** 2 for x in rets) / len(rets)
+    return math.sqrt(var) * math.sqrt(252) * 100.0
+
+
+def realized_vol(op, symbol, window=RV_WINDOW):
+    """Annualised realized vol over `window` days + its percentile vs the trailing
+    year of rolling-window realized vol (a sourced rank, not estimated)."""
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range=1y&interval=1d"
+    d = json.load(op.open(urllib.request.Request(url, headers=UA), timeout=20))
+    res = d["chart"]["result"][0]
+    closes = [c for c in res["indicators"]["quote"][0]["close"] if c]
+    if len(closes) < window + 10:
+        return None
+    rets = [math.log(closes[i] / closes[i - 1]) for i in range(1, len(closes))]
+    rv = _annvol(rets[-window:])
+    roll = [v for v in (_annvol(rets[i - window:i]) for i in range(window, len(rets) + 1)) if v]
+    pct = round(100 * sum(1 for v in roll if v <= rv) / len(roll)) if roll else None
+    return {"rv_pct": round(rv, 1), "pct": pct, "n": len(closes),
+            "last": round(closes[-1], 2), "window": window}
+
+
 def main():
     with open(IVOL_PATH, encoding="utf-8") as f:
         data = json.load(f)
@@ -159,7 +190,7 @@ def main():
         series.append({
             "date": TODAY, "atm_iv_pct": r["atm_iv_pct"],
             "iv_percentile_est": pct, "skew": r["skew"],
-            "confidence": "sourced",                       # ATM level computed from live option marks
+            "confidence": "sourced", "iv_basis": "implied", # ATM level computed from live option marks
             "rank_confidence": "sourced" if sourced_rank else "estimated",
             "note": (f'ATM-{r["tenor_days"]}d IV solved from {r["price_source"]} option marks '
                      f'(Black-Scholes inversion); rank vs {len(ivs)} day(s) of own history '
@@ -170,11 +201,37 @@ def main():
         print(f'  {book_tk}: ATM-{r["tenor_days"]}d IV {r["atm_iv_pct"]}% · skew {r["skew"]} '
               f'· {pct}th pctile ({len(ivs)}d) · {r["price_source"]}')
 
+    # EU single names + gold ETC — no Yahoo options, so realized vol from price history
+    for book_tk, yh in EU_HIST.items():
+        try:
+            r = realized_vol(op, yh)
+        except Exception as ex:
+            print(f"  {book_tk}: realized skip ({type(ex).__name__}: {str(ex)[:70]})")
+            continue
+        if not r:
+            print(f"  {book_tk}: no realized vol")
+            continue
+        series = [s for s in hist.get(book_tk, [])
+                  if s.get("date") != TODAY and s.get("iv_basis") == "realized"]
+        series.append({
+            "date": TODAY, "atm_iv_pct": r["rv_pct"], "iv_percentile_est": r["pct"],
+            "skew": None, "confidence": "sourced", "iv_basis": "realized",
+            "rank_confidence": "sourced",
+            "note": (f'Realized vol (annualised {r["window"]}d from {r["n"]} daily closes) — no listed '
+                     f'options on Yahoo, so this is realized vol used as an implied proxy. Percentile = '
+                     f'rank of current vs the trailing-year rolling {r["window"]}d realized distribution (sourced).'),
+            "spot": r["last"],
+        })
+        hist[book_tk] = series
+        print(f'  {book_tk}: realized-{r["window"]}d {r["rv_pct"]}% · {r["pct"]}th pctile '
+              f'(sourced, {r["n"]}d hist) [realized proxy]')
+
     meta = data.setdefault("_meta", {})
     meta["last_fetch"] = TODAY
-    meta["source"] = ("ATM IV computed by Black-Scholes inversion on Yahoo option marks (stdlib cookie+crumb, "
-                      "no key, no deps). US single names sourced; EU names estimated (not on feed); "
-                      "IV percentile = rank vs own history, estimated until 60 daily snapshots.")
+    meta["source"] = ("US single names: ATM ~360D implied vol by Black-Scholes inversion on Yahoo option "
+                      "marks. EU names + gold (no listed options on Yahoo): realized vol from 1y of daily "
+                      "closes, used as an implied proxy, with a sourced percentile vs trailing-year history. "
+                      "Stdlib cookie+crumb, no key, no deps. US IV percentile estimated until 60 daily snapshots.")
     with open(IVOL_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     print(f"wrote {IVOL_PATH}")
