@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Market Map / Shark Tank brief generator — 2026-06-10 (Wednesday).
 
-May CPI day. The big number lands at 8:30 ET. Iran/Israel truce still fragile;
+May CPI day — and it printed: hot headline 4.2%, soft core 2.9%. Iran/Israel truce still fragile;
 Brent has eased from $93 to ~$91 but the Strait is still shut. The AI de-rating
 story is still the dominant equity narrative — Oracle earnings tonight is the next
 data point. Gold stop was touched but held (min_hold 45d rule). Book unchanged.
@@ -78,14 +78,15 @@ SCREENER_NOTES = {
 }
 
 # ── Regime ─────────────────────────────────────────────────────────────────────
-regime = "A Truce Under Fire, A Hot CPI Ahead"
+regime = "Hot Headline, Soft Core — Truce Still Under Fire"
 regime_note = (
-    "The April ceasefire cracked: Iran and Israel traded the worst strikes in months on Jun 7-8, Israel hit "
-    "Iran's Mahshahr petrochemical complex and air defences, and Iran halted but warned it will resume — "
-    "Netanyahu won't even call it a ceasefire. The one-session chip bounce on Monday's halt gave it all back: "
-    "the S&P closed 7,386 (-0.3%), the Nasdaq -1.0%, only the Dow held. Brent kept its premium near $92 because "
-    "the Strait of Hormuz is still blockaded, not because anyone trusts the truce. May CPI tomorrow — expected "
-    "to tick up toward 4.2% — is the hard catalyst the geopolitics can't soften."
+    "May CPI printed this morning and split the difference: headline +0.5% m/m / 4.2% y/y — the highest since "
+    "April 2023 and a third straight acceleration — but core just +0.2% m/m / 2.9% y/y, BELOW the 0.3% forecast "
+    "(BLS). The hot headline is energy: the Iran shock pushed energy ~23.5% y/y and it drove over 60% of the "
+    "monthly increase, while the core stayed contained. The bond market read the soft core as relief — the 10Y "
+    "eased to ~4.52% from a 4.55% intraday high. Equities still fell (S&P -0.37%, Nasdaq -0.42%, Dow -0.78%) as "
+    "the US and Iran traded fresh military strikes; Brent holds ~$91.4 on the blockaded Strait. Oracle reports "
+    "after the close and the ECB hikes tomorrow — the two live catalysts now that the CPI binary is behind us."
 )
 regime_log = book.update_regime_log(regime_log, regime, regime_note)
 
@@ -672,7 +673,7 @@ NOTES = {
     "MM-2026-001": "Working. EURAUD drifted to ~1.636 as iron ore eased; the cross sits below entry. Thesis intact into Thursday's ECB — the hike is a growth error and EUR sells the fact. Stop 1.662.",
     "MM-2026-002": "Working — and validated by the tape. Brent held ~$93 despite the ceasefire headline; the war premium did not leave. Kept as the cheap re-escalation hedge. Exit on a weekly close below $87. Target $104.",
     "MM-2026-003": "Open, near flat. Brent-WTI spread ~$3.26 versus the 3.30 entry — nowhere near the $2.00 exit. The market did not collapse the Hormuz-specific premium; the spread is doing what it should. Stop 1.50.",
-    "MM-2026-004": "Offside. The 10Y sat at ~4.55%, barely moved by the ceasefire — the disinflation impulse the trade needs has not arrived. Stop 4.65%, ~10bp away. CPI today is the binary. Do not add.",
+    "MM-2026-004": "Working at last. The soft CPI core eased the 10Y to ~4.52% from a 4.55% intraday high — the disinflation impulse the trade needs finally showed up. Stop 4.65%, ~13bp away. Let it run into the dot plot; do not add.",
     "MM-2026-005": "Stop touched ($4,200 vs $4,250 stop) but min_hold 45d rule applies — position held per pre-position ruleset. Gold near $4,344 decoupled from oil and trading real rates. Min hold to ~July 15.",
     "MM-2026-007": "Slightly offside. USDJPY held ~160.1 — the dollar did not slip on the ceasefire. BoJ September hike and the intervention backstop above 162-163 remain the support. Stop 163.00.",
     "MM-2026-008": "Hedge held its value — SPX only ~7,406, so the 7300/7000 spread is close to the money, not stranded by a rally. Marked ~45 (model est). Carry it through CPI, the ECB and the dot plot.",
@@ -820,81 +821,82 @@ brief = {
     "idea_rsi_data": idea_rsi_data,
 
     "dominant_theme": (
-        "The truce keeps cracking and the Strait stays shut, so oil keeps its premium near $92 — while the "
-        "one-day chip bounce on Monday's brief halt has already failed. Two unresolved shocks, the war and a "
-        "CPI print expected to tick up to 4.2%, both still live into this morning."
+        "May CPI came in hot on the headline (4.2%) but soft on the core (2.9%, +0.2% m/m) — the inflation is "
+        "energy, not breadth — so the 10Y eased to ~4.52% even as equities fell on fresh US-Iran strikes. The "
+        "tape's verdict: a war premium in oil and a contained core in rates, with Oracle tonight and the ECB "
+        "tomorrow the next live catalysts."
     ),
 
     "summary_narrative": """
-<p>The ceasefire didn't hold. Over the weekend Iran and Israel traded the worst strikes in months — the first
-exchanged fire since the April truce — and Israel followed Iran's Monday "halt" with an extensive strike on
-Iran's air defences and the Mahshahr petrochemical complex. Iran says it has stopped, but warned it will fire
-again if Israel keeps hitting Lebanon; Netanyahu won't call it a ceasefire; Trump is pushing for an "immediate"
-one that does not yet exist on paper. This is a truce under fire, not a peace.</p>
+<p>The number everyone waited for landed, and it cut both ways. May CPI ran to <strong>4.2% headline</strong>
+(+0.5% m/m) — the hottest since April 2023 and a third straight monthly acceleration — but the <strong>core was
+soft: +0.2% m/m, 2.9% y/y, below the 0.3% consensus</strong> (BLS). The split is the whole story: the headline
+is energy, not breadth. The Iran shock pushed the energy index up ~23.5% year-on-year and energy alone drove
+over 60% of the monthly increase, while the core — the part the Fed actually targets — stayed contained.</p>
 
-<p>The market had one session of believing the de-escalation, and it has already taken it back. Monday's chip
-rebound — when Iran first halted — failed the next day: the S&amp;P closed 7,386.65 (-0.26%), the Nasdaq fell
-0.97%, and only the Dow held (+0.17%). The semis that bounced 6% gave it back, Micron round-tripping a 10%
-move to close down 1%. The dominant equity story is still the AI de-rating that took the Nasdaq down 4% earlier
-in the week — its worst day in over a year — not a relief rally.</p>
+<p>The bond market sided with the core. The US 10-year <strong>eased to ~4.52%</strong> after touching 4.55%
+intraday, taking the print as evidence the energy shock has not yet spilled into broad price pressure
+(Trading Economics). That is the relief our front-end trades were waiting for. Equities did not get the memo:
+the <strong>S&amp;P fell 0.37%, the Nasdaq 0.42% and the Dow 0.78%</strong>, with tech, industrials and
+discretionary leading lower (TheStreet) — because the other half of the tape is geopolitics, and the US and
+Iran traded fresh military strikes again.</p>
 
-<p>Oil is the one thing that has kept its nerve: Brent sits near $92, off a couple of dollars from $94 but
-holding almost all of its war premium. That is not the market disbelieving a peace — it is the physical fact
-that the <strong>Strait of Hormuz remains under a dual US-Iran blockade</strong>, with crude, fuel and gas
-shipments still disrupted while the truce keeps breaking. The premium is real, and it is earned.</p>
+<p>Oil keeps its nerve: <strong>Brent ~$91.4, WTI ~$88.3</strong>, the war premium intact on a Strait of Hormuz
+that is still effectively blockaded as the strikes resume. That premium is earned by a physical fact, not a
+sentiment, which is exactly why a hot energy-led headline does not change the rates call — the core says the
+Fed is not forced to hike on this.</p>
 
-<p>Into that sits the hard catalyst the geopolitics cannot soften: <strong>May CPI this morning at 8:30</strong>,
-expected to tick up to ~4.2% headline from 3.8%, on energy that is still elevated. The front-end has not moved
-— the 2-year sits ~4.15%, the year-end hike still priced — so the print is effectively unhedged. The
-disciplined posture is to hold the book that already owns both tails: the oil longs are earned by a blockaded
-Strait, the curve trades wait on CPI, and no fresh risk goes on in front of a number that can set the week by
-lunch.</p>
+<p>Two live catalysts are left in the window: <strong>Oracle reports after the close</strong> — the first real
+test of whether its $553bn AI backlog converts without capex blowing out the model — and the <strong>ECB hikes
++25bp tomorrow</strong> into euro-area inflation at 3.2%. The disciplined posture holds: the oil longs are
+earned by the blockade, the rates trades (short 2Y, the steepener) just got the soft-core tailwind, and the
+book carries both tails into the dot plot next week.</p>
 """,
 
     "takeaways": [
-        "The April ceasefire cracked — Iran/Israel traded the worst strikes in months (Jun 7-8); Israel hit Iran's Mahshahr petrochem complex; Iran halted but threatens to resume over Lebanon.",
-        "The one-day chip bounce failed: S&P 7,386.65 (-0.26%), Nasdaq -0.97%, only Dow +0.17%; SMH and Micron gave back Monday's pop. The AI de-rating is still the dominant story.",
-        "Brent holds ~$92 (off $94) — but because the Strait of Hormuz is still under a dual US-Iran blockade, not because the market trusts the truce. The premium is earned.",
-        "Rates haven't moved: 2Y ~4.15%, 10Y ~4.55%, 2s10s +40bp. So today's CPI is effectively unhedged.",
-        "May CPI today (8:30 ET) is the binary — expected to tick up to ~4.2% headline. We held the whole book to live levels; no new risk into the print.",
+        "May CPI is OUT: headline hot at 4.2% y/y (+0.5% m/m, highest since Apr 2023, 3rd straight acceleration) but core SOFT at +0.2% m/m / 2.9%, below the 0.3% forecast (BLS). The inflation is energy, not breadth.",
+        "Energy did it: the Iran shock lifted energy ~23.5% y/y and drove >60% of the monthly increase. Strip it out and the core says the Fed is not forced to hike.",
+        "The 10Y eased to ~4.52% (off a 4.55% intraday high) — the bond market took the soft core as relief. That's the tailwind our short-2Y and steepener were waiting for.",
+        "Equities still fell — S&P -0.37%, Nasdaq -0.42%, Dow -0.78% — as the US and Iran traded fresh strikes; Brent holds ~$91.4 on the blockaded Strait. The war premium is earned.",
+        "Two catalysts left in the window: Oracle after the close ($553bn AI backlog vs the capex bill) and the ECB +25bp tomorrow. We held the whole book; the rates trades just got cheaper to be right.",
     ],
 
     "scenarios": [
-        {"kind": "bull", "label": "Bull", "pct": "30%",
-         "headline": "CPI cools, the truce actually holds, Hormuz reopens",
-         "body": "May CPI prints at or below 3.9%, the 2-year breaks under 4.05%, the halt holds and the Strait "
-                 "reopens so oil finally bleeds the premium, and the AI cohort stabilises. Risk up · rates down · "
-                 "dollar soft · gold firm."},
+        {"kind": "bull", "label": "Bull", "pct": "35%",
+         "headline": "The market trusts the soft core; the front end relaxes",
+         "body": "The soft 2.9% core is taken as the signal — energy is a one-off shock, not breadth — the 2-year "
+                 "breaks under 4.05%, the year-end hike prices out, Oracle's backlog clears and the strikes cool. "
+                 "Risk up · rates down · dollar soft · gold firm."},
         {"kind": "base", "label": "Base", "pct": "45%",
-         "headline": "CPI ticks up, the truce stays fragile, oil stays bid",
-         "body": "CPI lands ~4.0-4.2%, the front-end holds its hike pricing, the Strait stays shut and crude keeps "
-                 "its premium on an on-again-off-again truce, and Europe leads into Thursday's ECB. Risk mixed · "
-                 "rates range · dollar firm · Brent $90-96."},
-        {"kind": "bear", "label": "Bear", "pct": "25%",
-         "headline": "CPI runs hot or the strikes resume",
-         "body": "CPI above 4.3% re-arms the year-end hike, or Iran-Israel re-escalate (Lebanon the fuse) and the "
-                 "oil premium pushes toward $100, and the AI de-rating resumes on a weak Oracle. Risk down · rates "
-                 "up · dollar up · gold higher as the stagflation scare bites."},
+         "headline": "Hot headline vs soft core stand-off; oil keeps its premium",
+         "body": "The market splits the difference: the 10Y holds ~4.5%, the front-end drifts lower on the core but "
+                 "won't commit before the dot plot, the Strait stays shut so Brent holds $88-95, and Europe leads on "
+                 "the ECB hike. Risk mixed · rates range-to-lower · dollar firm."},
+        {"kind": "bear", "label": "Bear", "pct": "20%",
+         "headline": "The strikes escalate or core re-accelerates next month",
+         "body": "Iran-Israel re-escalate and oil pushes toward $100, feeding the next headline and threatening to "
+                 "drag the core up too, or Oracle's capex bill spooks the AI cohort into another de-rating. "
+                 "Risk down · rates up · dollar up · gold higher as the stagflation scare bites."},
     ],
 
     "insights_layers": """
-<p>Yesterday's map said the same thing it says this morning, only louder: a ceasefire is only as good as its
-last 24 hours, and this one's were strikes. Build the picture forward from where we left it on 9 June — the
-April Iran-Israel truce had cracked, Iran had announced a Monday "halt," and the question into today was whether
-the de-escalation had any anchor. It doesn't. Israel answered the halt with an extensive strike on Iranian air
-defences and the Mahshahr petrochemical complex; Netanyahu still won't call it a ceasefire; Iran says it fires
-again if Israel keeps hitting Lebanon. So the screen is not pricing peace. It is pricing a truce that has already
-failed once and could fail again before the week is out — into a CPI print that lands at 8:30 this morning. Two
-live shocks, neither resolved, and that single fact explains most of the cross-asset tape.</p>
+<p>Build the picture forward from where we left it on 9 June, when the only question that mattered was what CPI
+would do to a tape already rattled by the truce breaking. Now we know, and the print cut both ways. Headline May
+CPI ran to 4.2% (+0.5% m/m) — the hottest since April 2023 and a third straight acceleration — but the core came
+in soft at +0.2% m/m and 2.9%, below the 0.3% consensus (BLS). The single most useful fact in the last 24 hours
+is that the inflation is <em>energy, not breadth</em>: the Iran shock pushed the energy index up about 23.5%
+year-on-year and energy alone drove over 60% of the monthly increase, while the core — the part the Fed targets
+— stayed contained. A hot headline that the Fed can look through is not the same animal as a hot core, and the
+distinction is the trade.</p>
 
-<p>The tell of the last 24 hours is that the most-quoted "good news" bought exactly one session. Monday's chip
-rip — semis +6%, Micron round-tripping a 10% move — failed the next day: the S&amp;P closed 7,386.65 (-0.26%),
-the Nasdaq -0.97%, only the Dow held. The relief was rented, not owned, and the right place to read the verdict
-is the oil price, not the VIX. Crude is pricing a physical fact — the Strait of Hormuz is still under a dual
-US-Iran blockade, crude and gas shipments still disrupted — while equities priced a hope and took it straight
-back. That is the gap that matters: ground truth is a Strait that is shut and a CPI landing on still-elevated
-energy; what's priced is a failed bounce and a still-live year-end hike; the consensus narrative was "ceasefire,
-buy the dip," and it just lost money.</p>
+<p>The tell of the day is that two markets read the same number differently. The bond market sided with the
+core: the US 10-year eased to ~4.52% off a 4.55% intraday high, taking the soft core as evidence the energy
+shock has not yet leaked into broad prices (Trading Economics). Equities sided with the geopolitics: the
+S&amp;P fell 0.37%, the Nasdaq 0.42% and the Dow 0.78% as the US and Iran traded fresh military strikes
+(TheStreet), with tech, industrials and discretionary leading lower. That divergence is the gap that matters —
+ground truth is an energy-led headline and a Strait of Hormuz still effectively shut; what's priced in rates is
+relief and what's priced in equities is risk; the right resolution is that the core wins the rates call and the
+war keeps the oil premium, which is exactly how the book is positioned.</p>
 
 <p>Go around the world and the same divergence repeats with a regional accent. <strong>Asia</strong> is where the
 quietest but most important single-name signal sits: the AI-memory supply chain ran hot overnight — Korea's
@@ -920,30 +922,33 @@ his first FOMC: a brand-new chair cannot afford to look soft on inflation in wee
 plot is skewed hawkish regardless of what one CPI print says — the market's "he'll be dovish" lean is the
 mispricing.</p>
 
-<p>Net it out on the priced-versus-not spectrum. Mispriced the wrong way: any residual hope that Monday's halt
-ended it. Under-priced: the chance the strikes resume — implied vol actually <em>eased</em> as the truce broke,
-which is the cheap convexity to own. Fairly priced: oil's premium, earned by the blockade. Fully priced:
-Thursday's ECB hike and, arguably, the year-end Fed hike the front end still carries. The disciplined posture
-is the book that already owns both tails — the oil longs earned by a shut Strait, the rates trades waiting on
-CPI — and to add nothing new in front of a number that can set the week by lunch.</p>
+<p>Net it out on the priced-versus-not spectrum, post-print. Under-priced: the chance the strikes escalate from
+here — implied vol stayed calm through the CPI, so the geopolitical convexity is still cheap to own. Also
+under-priced, more subtly: that a soft core lets the Fed hold even with a 4-handle headline, which the front end
+has only half-believed. Fairly priced: oil's premium, earned by the blockade. Fully priced: tomorrow's ECB hike,
+and most of the year-end Fed-hike fear the 2-year still carries — which is why the short-2Y and the steepener
+just got the cheaper, better entry the soft core handed them. The disciplined posture is unchanged: own both
+tails — the oil longs earned by a shut Strait, the rates trades now with a real tailwind — let Oracle and the
+ECB come to us, and add nothing new in front of next week's dot plot.</p>
 """,
 
     "wrap": """
-<p>A ceasefire is only as good as its last 24 hours, and this one's were strikes. The April Iran-Israel truce
-cracked over the weekend; Iran announced a halt on Monday and Israel answered with a strike on its air defences
-and the Mahshahr petrochemical complex. Netanyahu won't call it a ceasefire; Iran says it will fire again if
-Israel keeps hitting Lebanon. This is a truce under fire, not a peace.</p>
+<p>May CPI landed and split the tape. Headline ran hot to 4.2% (+0.5% m/m), the hottest since April 2023, but
+the core was soft — +0.2% m/m, 2.9% y/y, under the 0.3% consensus (BLS). The inflation is energy: the Iran
+shock lifted the energy index ~23.5% y/y and energy drove over 60% of the monthly rise, while the core stayed
+contained.</p>
 
-<p>The equity tape had one day of believing it and took the day back. Monday's chip rip — semis +6%, Micron
-+10% — failed the next session: the S&amp;P closed 7,386.65 (-0.26%), the Nasdaq -0.97%, only the Dow holding.
-The dominant story is still the AI de-rating, not a relief rally.</p>
+<p>Two markets, two readings. The 10-year eased to ~4.52% as the bond market took the soft core as relief; the
+S&amp;P (-0.37%), Nasdaq (-0.42%) and Dow (-0.78%) fell as the US and Iran traded fresh strikes. Brent holds
+~$91.4 — the Strait of Hormuz is still effectively shut and the war premium is earned.</p>
 
-<p><strong>The driver.</strong> Two live shocks — a war that keeps re-igniting and May CPI this morning — and
-neither has resolved. Oil holds near $92 because the Strait of Hormuz is still under a dual US-Iran blockade.
-Rates haven't moved: the 2-year sits ~4.15%, the year-end hike still priced.</p>
+<p><strong>The driver.</strong> A hot energy-led headline the Fed can look through, against a contained core
+the rates market believes. That is a softer rates picture than the 2-year priced, and a still-live geopolitical
+tail in oil.</p>
 
-<p><strong>So what to do.</strong> Hold the book that owns both tails, let the oil longs run, wait on CPI for
-the rates trades, and keep the hedge on.</p>
+<p><strong>So what to do.</strong> Hold the book that owns both tails — the soft core just handed the short-2Y
+and the steepener a better entry, the oil longs are earned by the blockade — let Oracle (tonight) and the ECB
+(tomorrow) come to us, and keep the hedge on into next week's dot plot.</p>
 """,
 
     "correlation_regime": """
@@ -960,10 +965,10 @@ Strait is the most honest price on the screen. Until the Strait reopens, the geo
 """,
 
     "vol_skew": """
-<p><strong>The VIX eased into the high-teens even as the truce broke — that is the mispricing.</strong>
-VIX9D ~16 · VIX ~19 · VIX3M ~20 · VIX6M ~21. The tell: implied vol relaxed while strikes resumed, so the
-front of the curve is underpricing the chance the war re-ignites before the CPI/ECB/FOMC window closes.
-Owning cheap geopolitical convexity is the trade.</p>
+<p><strong>The VIX stayed in the high-teens through a hot CPI headline and fresh strikes — that is the mispricing.</strong>
+VIX9D ~16 · VIX ~19 · VIX3M ~20 · VIX6M ~21. The tell: implied vol didn't budge on either the print or the
+US-Iran strikes, so the front of the curve is underpricing the chance the war re-ignites before the ECB/FOMC
+window closes. Owning cheap geopolitical convexity is the trade.</p>
 """,
 
     "sector_rv": """
@@ -977,58 +982,63 @@ the tape that hurts it. One more down session forces the stop.</p>
 """,
 
     "positioning": """
-<p><strong>The crowd is long the truce in equities and short it in oil — and oil is winning.</strong>
-Oil specs did not capitulate when Iran halted — constructive for the longs. Front-end rates: consensus chased
-the year-end hike after payrolls; the 2-year at 4.15% is the crowded position a soft CPI would squeeze.
-Euro: specs sit long into Thursday's ECB — sell-the-fact setup if 'data-dependent pause' is the signal.</p>
+<p><strong>The crowded short just got squeezed by the soft core.</strong> Front-end rates: consensus chased the
+year-end hike after the strong payroll; the 2-year sitting up near a 16-month high was the crowded position, and
+a soft 2.9% core is exactly the catalyst that starts to squeeze it — the 10Y already eased to ~4.52%. Oil specs
+never capitulated on the truce headlines — constructive for the longs. Euro: specs sit long into tomorrow's ECB
+— a buy-the-rumour-sell-the-fact setup if Lagarde leans 'data-dependent pause.'</p>
 """,
 
     "funding": """
 <p>SOFR near 3.62% — unchanged. The plumbing did not move even as the war re-ignited. <strong>The Pozsar
 mechanic:</strong> the 2-year's implied terminal rate sits well above secured funding; every floating-rate
-borrower that issued in 2023-24 expecting cuts is still paying a higher cost than its model assumed. Watch IG
-spreads on today's CPI print — the balance sheet shows the strain before the index does.</p>
+borrower that issued in 2023-24 expecting cuts is still paying a higher cost than its model assumed. The soft
+core nudges that terminal rate lower at the margin — watch IG spreads, where the balance sheet shows relief or
+strain before the index does.</p>
 """,
 
     "tape_missing": """
-<p><strong>1. The Strait of Hormuz is still blockaded.</strong> Implied vol eased even as strikes resumed.
-Own the convexity while it's cheap.</p>
+<p><strong>1. The market is treating an energy headline like a core problem.</strong> CPI's 4.2% is ~60%+
+energy; the core printed 2.9% and undershot. If the next month's energy base effect fades, the headline rolls
+over fast — the front end is still too short.</p>
 
-<p><strong>2. Oracle's $553bn backlog meets the same bar Broadcom failed.</strong> If the guide disappoints the
-whisper, the de-rating that drove this week resumes. Watch the guide, not the EPS.</p>
+<p><strong>2. Oracle's $553bn backlog meets the capex bill, not just the whisper.</strong> The stock is -12.9%
+on the week into the print; the real question is whether converting the backlog needs ~$80bn of capex before
+free cash flow turns positive. Watch the capex guide, not the EPS.</p>
 
-<p><strong>3. Today's CPI is effectively unhedged.</strong> The 2-year at ~4.15% and the year-end hike is
-priced; a number above 4.3% re-arms the hike.</p>
+<p><strong>3. The geopolitical convexity is still cheap.</strong> Implied vol stayed calm through CPI even as
+US-Iran strikes resumed. Own the tail while the Strait is shut.</p>
 """,
 
     "consensus": """
-<p><strong>Consensus BID:</strong> the worst of the war is behind us — Iran halted, Trump gets his ceasefire,
-oil drifts lower, CPI lands manageable, AI cohort stabilises, Warsh holds next week.</p>
+<p><strong>Consensus BID:</strong> a 4.2% headline is a hawkish print — it keeps the year-end hike alive, the
+Fed can't ease into a 4-handle, and the energy shock risks bleeding into the core next.</p>
 
-<p><strong>The strongest argument against — the OFFER:</strong> the ceasefire already broke once this week and
-Israel struck Iran's petrochemical complex after Iran's "halt." And today's CPI: headline at 3.8% in April on
-energy, consensus ~4.2% in May. A print above 4.3% re-arms the hike.</p>
+<p><strong>The strongest argument against — the OFFER:</strong> the core <em>undershot</em> at +0.2% / 2.9%, the
+headline is ~60% energy the Fed routinely looks through, and the 10Y eased on the print. The hawkish read is
+fighting the bond market's own verdict — the front end is mispriced for a hike that a contained core doesn't
+justify.</p>
 """,
 
     "one_chart": """
-<p class="theme">Brent crude near $92 — and the Strait of Hormuz that keeps it there.</p>
-<p>The single most informative price is the one the failed chip bounce couldn't shake. Brent eased a couple of
-dollars off $94 when Iran halted, then stuck — because the Strait of Hormuz is still under a dual US-Iran
-blockade and the truce keeps cracking. That premium is earned, not a fading scare. Hold above $90 and the
-geopolitical tail is live; the trigger is a weekly close below $87. Watch the Strait, and watch the 2-year
-~4.15% for whether today's CPI lets the front-end move at all.</p>
+<p class="theme">The core, not the headline — +0.2% m/m says the Fed isn't forced to hike.</p>
+<p>The single most informative number today is the one under the scary headline. A 4.2% print sounds hawkish
+until you see the core came in at +0.2% m/m and 2.9% y/y, below consensus, with energy doing over 60% of the
+work. The bond market got it — the 10Y eased to ~4.52%. Watch the 2-year: if it follows the 10Y lower and breaks
+under ~4.05%, the year-end-hike pricing unwinds and the short-2Y / steepener pay off; if energy keeps climbing
+and drags the core up next month, that's the bear case.</p>
 """,
 
     "catalyst_calendar": [
+        {"day": "Wed", "date": "Jun 10 ✓",
+         "event": "US May CPI — PRINTED: 4.2% headline, 2.9% core",
+         "consensus": "Headline +0.5% m/m / 4.2% y/y (highest since Apr-23); core +0.2% m/m / 2.9%, BELOW the 0.3% forecast. Energy ~60% of the rise (BLS).",
+         "view": ("Hot headline, soft core — the inflation is energy, not breadth, and the Fed can look through it. "
+                  "The 10Y eased to ~4.52%; the soft core hands the short-2Y (MM-013) and steepener (MM-009) a better entry."),
+         "asymmetry": "Done: core undershoot = front-end relief; risk now is energy dragging the core up next month",
+         "dir": "down"},
         {"day": "Wed", "date": "Jun 10",
-         "event": "US May CPI (BLS, 8:30 ET) — the deciding print",
-         "consensus": "Headline ~3.8% YoY; core ~2.8-3.3%. Cleveland Fed nowcast nearer 4.0%.",
-         "view": ("The single binary of the week. At/below 3.7%: the 2-year breaks under 4.05%, the hike prices "
-                  "out, MM-2026-013/009 finally get their move, gold bids. Above 4.1%: the hike re-arms."),
-         "asymmetry": "<3.7%: 2Y -15bp, gold +2%; >4.1%: 2Y +15-20bp, DXY +0.5%, gold -2%",
-         "dir": "flat"},
-        {"day": "Wed", "date": "Jun 10",
-         "event": "Oracle (ORCL) Q4 FY26 — after close",
+         "event": "Oracle (ORCL) Q4 FY26 — after close (tonight)",
          "consensus": "Finnhub EPS $1.58 vs Oracle's March guide $1.96-2.00; OCI +84% prior Q; RPO $553bn.",
          "view": "The next read on the AI-capex multiple after Broadcom. The backlog is the bull case; the test is whether OCI growth clears the whisper.",
          "asymmetry": "Guide clears whisper: cohort re-rates +; merely-good guide: de-rating resumes",
@@ -1058,7 +1068,7 @@ geopolitical tail is live; the trigger is a weekly close below $87. Watch the St
 <li><strong>MM-2026-001 · Short EURAUD:</strong> close above 1.660 after Thursday's ECB press conference. At ~1.636; stop 1.662.</li>
 <li><strong>MM-2026-002 · Long Brent:</strong> exit on a weekly close below $87 — the war premium gone. At ~$91.</li>
 <li><strong>MM-2026-003 · Long Brent/Short WTI spread:</strong> discretionary close below $2.00. At ~$3.26. Stop 1.50.</li>
-<li><strong>MM-2026-004 · Short US 10Y yield:</strong> stop at 4.65%. At ~4.53%. CPI today is the binary. Do not add.</li>
+<li><strong>MM-2026-004 · Short US 10Y yield:</strong> stop at 4.65%. At ~4.52%, eased on the soft CPI core. Working; let it run into the dot plot, do not add.</li>
 <li><strong>MM-2026-005 · Long gold:</strong> min hold to ~July 15. Stop $4,250; at ~$4,200 (stop touched, held by min_hold rule).</li>
 <li><strong>MM-2026-007 · Short USDJPY:</strong> stop 163.00. At ~160.1.</li>
 <li><strong>MM-2026-008 · SPX put spread:</strong> hold through CPI, ECB and dot plot.</li>
@@ -1078,23 +1088,24 @@ geopolitical tail is live; the trigger is a weekly close below $87. Watch the St
          "a": ("Because the price says it isn't ending — not yet. We marked Brent live to ~$91 and the Brent/WTI "
                "spread to ~$3.26. The premium is intact. The exit is a weekly close below $87. You do not sell the "
                "fire insurance the hour the fire is contained but still smoking.")},
-        {"q": "What should I actually watch today?",
-         "a": ("Two prints. May CPI at 8:30 — below 3.7% prices the year-end hike out and the front-end relaxes; "
-               "above 4.1% re-arms it. Then Oracle after the close — the next read on whether the market will pay "
-               "up for AI-capex names after Broadcom. The 2-year at 4.15% carries the first answer; Oracle's guide "
-               "carries the second.")},
+        {"q": "What should I actually watch from here?",
+         "a": ("The 2-year and Oracle. CPI is behind us and the core undershot, so watch whether the 2-year follows "
+               "the 10Y down through ~4.05% — that's the year-end hike pricing out and our rates trades paying. "
+               "Then Oracle after the close: not the EPS, the capex guide — whether that $553bn AI backlog converts "
+               "without blowing out the model. Tomorrow it's the ECB.")},
     ],
 
     "ideas_note": (
-        "<p>No new idea today — and that is the call. We marked the entire book to live levels and found a tape "
-        "that refused to move on a ceasefire. With May CPI at 8:30, the highest-expected-value action is to add "
-        "nothing. Forcing a trade into a binary is the opposite of edge.</p>"
+        "<p>No new idea today — and that is the call. CPI is out and it broke our way on the core, so the right move "
+        "is not a fresh trade but to let the existing rates pre-positions (short 2Y, the steepener) run on the "
+        "better-priced entry the soft core just handed them. With Oracle tonight and the ECB tomorrow, adding new "
+        "risk in front of two live catalysts is the opposite of edge.</p>"
     ),
 
     "event_radar_note": (
-        "<p>Three binary events inside the next eight sessions resolve every open position's thesis: May CPI "
-        "this morning (the deciding print on the year-end hike), ECB Thursday (+25bp locked; press conference "
-        "sets the euro), and Kevin Warsh's first FOMC dot plot on June 16-17.</p>"
+        "<p>With CPI behind us (hot headline, soft core), two live catalysts remain in the window plus next week's "
+        "Fed: Oracle after tonight's close (the $553bn AI backlog vs the capex bill), the ECB tomorrow (+25bp "
+        "locked; the press conference sets the euro), and Kevin Warsh's first FOMC dot plot on June 16-17.</p>"
     ),
 
     "burry_tell": (
@@ -1136,9 +1147,9 @@ geopolitical tail is live; the trigger is a weekly close below $87. Watch the St
     },
     "idea_selection": [
         {"label": "No new idea today", "in": False,
-         "text": ("the highest-EV action into an 8:30 CPI print is to add nothing — forcing a trade into a binary is "
-                  "the opposite of edge. We marked the whole book to live levels and found a tape that refused to "
-                  "move on a ceasefire, which is information, not an entry.")},
+         "text": ("CPI is out and the core broke our way, so the edge is in letting the existing rates trades run on "
+                  "the better entry, not in forcing a fresh one in front of Oracle tonight and the ECB tomorrow. "
+                  "We marked the whole book to live levels — that is information, not an entry.")},
         {"label": "Brent longs (MM-002/003/011)", "in": True,
          "text": ("kept, not added — earned by a Strait that is still shut. These are the trades the book is "
                   "expressing the geopolitical tail through; the RSI screener and the oil tape both still support "

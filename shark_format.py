@@ -16,7 +16,7 @@ Reuses book.py (escaping, progress math) and earnings.py (earnings section) as-i
 
 import os
 import html as _html
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 import book
 import earnings
@@ -226,8 +226,8 @@ details.idea-d>summary .smeta{display:flex;gap:6px;align-items:center;flex-wrap:
 .convtbl td.k{color:var(--ink);font-weight:600;white-space:nowrap}
 .convtbl td.s{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-mute);white-space:nowrap}
 .convtbl td.w{color:var(--ink-soft)}
-/* ---- real section headings (black, larger, look like headings) ---- */
-.section-h{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:#000;letter-spacing:-.01em;line-height:1.2;margin:2.4rem 0 .9rem;padding-bottom:.45rem;border-bottom:1.5px solid var(--ink)}
+/* ---- section headings (black, normal weight, look like headings) ---- */
+.section-h{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:#000;letter-spacing:-.005em;line-height:1.25;margin:2.1rem 0 .8rem;padding-bottom:.4rem;border-bottom:1px solid var(--line)}
 .section-h:first-child{margin-top:.3rem}
 .section-h .sh-sub{display:block;font-family:var(--font);font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mute);margin-top:.4rem}
 /* ---- methodology / positioning explainer ---- */
@@ -430,13 +430,32 @@ MENU_JS = (
 )
 
 
+def _coverage_bar():
+    """Dynamic 'now − 24h' window stamp, computed from the actual run time, on every tab."""
+    now = datetime.now()
+    start = now - timedelta(hours=24)
+    same_day = start.date() == now.date()
+    win = (f'{start:%a %d %b %H:%M} → {now:%a %d %b %H:%M}' if not same_day
+           else f'{start:%H:%M} → {now:%H:%M}, {now:%a %d %b}')
+    return (
+        '<div style="font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mute);'
+        'border:.5px solid var(--line);border-radius:var(--rad);background:var(--surface);'
+        'padding:.45rem .7rem;margin:0 0 1.2rem;line-height:1.6">'
+        f'<b style="color:var(--ink);font-weight:600">24-hour window</b> &middot; {win} local '
+        '&middot; live levels, marks, RSI &amp; technicals fetched at run time &middot; '
+        'macro narrative web-sourced for this window'
+        '</div>'
+    )
+
+
 def _shell(active, title, regime, regime_note, lhs_html, brief, masthead_html=None):
+    now = datetime.now()
     masthead = masthead_html or (
         '<div class="masthead">'
         + (f'<div class="regime-tag">{e(regime)}</div>' if regime else "")
         + f'<h1 class="article-title">{e(title)}</h1>'
-        + f'<p class="meta">Pre-market intelligence brief &middot; {e(TODAY)} '
-          f'&middot; generated {datetime.now():%H:%M} local &middot; self-graded book</p>'
+        + f'<p class="meta">Pre-market intelligence brief &middot; {now:%a %d %b %Y} '
+          f'&middot; generated {now:%H:%M} local &middot; self-graded book</p>'
         + (f'<p style="font-size:13px;color:var(--ink-soft);margin:.6rem 0 0">{e(regime_note)}</p>' if regime_note else "")
         + '</div>'
     )
@@ -445,7 +464,7 @@ def _shell(active, title, regime, regime_note, lhs_html, brief, masthead_html=No
         "<meta name='viewport' content='width=device-width,initial-scale=1'>"
         f"<title>{e(title)} · Shark Tank Market Map</title><style>{CSS}</style></head><body>"
         + _menu(active) + _topbar(active)
-        + '<div class="page">' + masthead
+        + '<div class="page">' + masthead + _coverage_bar()
         + '<div class="two-col"><div class="lhs">' + lhs_html + '</div>'
         + '<div class="rhs">' + _rhs(brief) + '</div></div>'
         + '<div class="foot">Shark Tank format · live levels via TradingView · '
