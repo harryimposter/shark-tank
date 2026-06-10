@@ -106,6 +106,58 @@ table.cal th{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:v
 .rtile .rv{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
 .rtile .rc{font-size:11px}
 .asof{font-size:10px;color:var(--ink-mute);margin-top:.5rem;letter-spacing:.04em}
+/* ---- client book module (Portfolio + Derivative Ideas) ---- */
+.statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:.4rem 0 .5rem}
+.stat{background:var(--surface);border:.5px solid var(--line);border-radius:var(--rad);padding:.7rem .85rem}
+.stat .sl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:3px}
+.stat .sv{font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .ss{font-size:11px;color:var(--ink-soft);margin-top:2px}
+.holdtbl{width:100%;border-collapse:collapse;font-size:13px}
+.holdtbl th{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:500;text-align:left;padding:7px 8px;border-bottom:.5px solid var(--line)}
+.holdtbl td{padding:8px;border-bottom:.5px solid var(--line);vertical-align:middle}
+.holdtbl tr:last-child td{border-bottom:none}
+.holdtbl .nm{font-weight:600}.holdtbl .tk{font-size:11px;color:var(--ink-mute);font-family:ui-monospace,monospace}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.wbar{position:relative;height:5px;background:var(--line);border-radius:3px;width:64px;margin-top:4px}
+.wbar>span{position:absolute;left:0;top:0;height:100%;border-radius:3px;background:var(--ink-soft)}
+.wbar.flag>span{background:var(--gold)}.wbar.act>span,.wbar.urgent>span{background:var(--red)}
+.vpill{font-size:10px;font-weight:600;letter-spacing:.04em;border-radius:20px;padding:2px 9px;white-space:nowrap;border:.5px solid}
+.v-like{color:var(--green);border-color:var(--green);background:rgba(26,122,69,.06)}
+.v-neutral{color:var(--ink-soft);border-color:var(--line);background:var(--surface)}
+.v-avoid{color:var(--red);border-color:var(--red);background:rgba(192,57,43,.06)}
+.v-hedge{color:var(--gold);border-color:var(--gold);background:rgba(184,150,12,.06)}
+.cflag{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);font-weight:600;margin-left:5px}
+.cflag.flag{color:var(--gold)}
+.srcdot{display:inline-block;width:6px;height:6px;border-radius:50%;vertical-align:middle;margin-right:3px}
+.src-sourced{background:var(--green)}.src-estimated{background:var(--gold)}.src-unverified{background:var(--red)}
+.viewcard{border:.5px solid var(--line);border-radius:var(--rad);padding:.7rem .9rem;margin-bottom:8px;background:var(--bg)}
+.viewcard .vh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:.35rem}
+.viewcard .vt{font-weight:600;font-size:13px}
+.viewcard .vr{font-size:12.5px;color:var(--ink-soft);line-height:1.55;margin-bottom:.4rem}
+.viewcard ul{margin:.2rem 0 .3rem;padding-left:1.1rem}.viewcard li{font-size:11.5px;color:var(--ink-soft);margin-bottom:2px}
+.viewcard .lock{font-size:11px;color:var(--ink-mute);border-left:2px solid var(--gold);padding:.25rem .6rem;background:var(--surface);border-radius:0 6px 6px 0;margin-top:.3rem}
+.idea{border:.5px solid var(--line);border-radius:var(--rad-lg);padding:1rem 1.15rem;margin-bottom:12px;background:var(--bg)}
+.idea.fire{border-left:3px solid var(--gold)}.idea.watch{border-left:3px solid var(--ink-mute)}.idea.suppress{border-left:3px solid var(--line);background:var(--surface)}
+.idea .ih{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:.5rem}
+.idea .it{font-size:15px;font-weight:600;line-height:1.35}
+.idea .inum{color:var(--ink-mute);font-weight:600}
+.idea .meta-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:.6rem}
+.tag{font-size:10px;letter-spacing:.04em;border:.5px solid var(--line);border-radius:20px;padding:1px 8px;color:var(--ink-soft);background:var(--surface)}
+.rules-tag{font-size:10px;font-weight:600;letter-spacing:.06em;color:var(--gold);border:.5px solid var(--gold);border-radius:20px;padding:1px 8px}
+.tier{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:2px 8px}
+.tier.fire{color:#fff;background:var(--gold)}.tier.watch{color:var(--ink-soft);background:var(--surface);border:.5px solid var(--line)}.tier.suppress{color:var(--ink-mute);background:var(--surface);border:.5px solid var(--line)}
+.conv8{display:flex;align-items:center;gap:8px;margin:.2rem 0 .55rem;flex-wrap:wrap}
+.pips8{display:flex;gap:3px}.pip8{width:20px;height:5px;border-radius:2px;background:var(--line)}.pip8.on{background:var(--gold)}
+.subs{font-size:11px;color:var(--ink-mute);display:flex;gap:10px;flex-wrap:wrap}
+.idea .blk{font-size:13px;line-height:1.6;margin:.45rem 0}
+.idea .blk b{font-weight:600}
+.idea .moves{color:var(--ink-soft)}
+.idea .note{font-size:12.5px;color:var(--ink-soft);background:var(--surface);border-radius:var(--rad);padding:.55rem .75rem;margin-top:.5rem;line-height:1.55}
+.idea .risk{font-size:11.5px;color:var(--red);border-left:2px solid var(--red);padding:.3rem .6rem;margin-top:.5rem;line-height:1.5;background:rgba(192,57,43,.04);border-radius:0 6px 6px 0}
+.findings{list-style:none;padding:0;margin:.2rem 0 0}
+.findings li{position:relative;padding:.4rem 0 .4rem 1.1rem;border-bottom:.5px solid var(--line);font-size:13px;line-height:1.5;color:var(--ink-soft)}
+.findings li:before{content:"";position:absolute;left:0;top:.85rem;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.findings li b{color:var(--ink)}
 """
 
 NAV = [
@@ -113,6 +165,8 @@ NAV = [
     ("insights.html", "Insights", "the detailed map"),
     ("earnings.html", "Earnings", "Earnings Intelligence"),
     ("trades.html", "Trade Ideas", "ideas + live book"),
+    ("portfolio.html", "Portfolio", "Fable · client book"),
+    ("ideas.html", "Derivative Ideas", "structured-product scan"),
 ]
 
 # --------------------------------------------------------------------------
@@ -249,8 +303,8 @@ MENU_JS = (
 )
 
 
-def _shell(active, title, regime, regime_note, lhs_html, brief):
-    masthead = (
+def _shell(active, title, regime, regime_note, lhs_html, brief, masthead_html=None):
+    masthead = masthead_html or (
         '<div class="masthead">'
         + (f'<div class="regime-tag">{e(regime)}</div>' if regime else "")
         + f'<h1 class="article-title">{e(title)}</h1>'
@@ -483,9 +537,240 @@ def _page_trades(brief):
 
 
 # --------------------------------------------------------------------------
+# Client book module — Portfolio + Derivative Ideas
+# --------------------------------------------------------------------------
+_VIEW_CLS = {"LIKE": "v-like", "NEUTRAL": "v-neutral", "AVOID": "v-avoid",
+             "LIKE-as-hedge": "v-hedge", "-": "v-neutral"}
+_CLASS_SHORT = {"equity": "Equity", "equity_etf": "ETF", "govt_bond": "Govt bond",
+                "corp_bond": "Corp bond", "commodity_etc": "Gold ETC"}
+
+
+def _eurm(n):
+    return f"&euro;{n/1e6:.1f}m"
+
+
+def _ccy(cur):
+    return "$" if cur == "USD" else "&euro;"
+
+
+def _view_pill(view):
+    return f'<span class="vpill {_VIEW_CLS.get(view, "v-neutral")}">{e(view)}</span>'
+
+
+def _portfolio_masthead(scan):
+    c, m = scan["client"], scan["metrics"]
+    return (
+        '<div class="masthead">'
+        f'<div class="regime-tag">{e(c.get("base_currency","EUR"))} base &middot; MiFID Professional</div>'
+        f'<h1 class="article-title">{e(c.get("display_name","Fable"))} / Portfolio</h1>'
+        f'<p class="meta">Client book scan &middot; as of {e(c.get("as_of", scan["as_of"]))} '
+        f'&middot; marks live via TradingView &middot; {_eurm(m["total_eur"])} &middot; not investment advice</p>'
+        f'<p style="font-size:13px;color:var(--ink-soft);margin:.6rem 0 0">'
+        f'{_eurm(m["total_eur"])} across {len(scan["positions"])} holdings + cash. '
+        f'Largest position {e(m["largest"]["ticker"])} at {m["largest"]["weight_pct"]}% (policy cap 10%); '
+        f'{m["usd_pct"]}% USD against a EUR base; {m["cash_pct"]}% idle cash.</p>'
+        '</div>'
+    )
+
+
+def _ideas_masthead(scan):
+    cnt = scan["counts"]
+    return (
+        '<div class="masthead">'
+        '<div class="regime-tag">Book Scanner &middot; Ruleset v2</div>'
+        '<h1 class="article-title">Portfolio / Derivative Ideas</h1>'
+        f'<p class="meta">{e(scan["client"].get("display_name","Fable"))} book scan &middot; {e(scan["as_of"])} '
+        f'&middot; {cnt["fired"]} fired &middot; {cnt["watch"]} watch &middot; {cnt["suppressed"]} suppressed</p>'
+        f'<p style="font-size:13px;color:var(--ink-soft);margin:.6rem 0 0">'
+        f'The House View Engine ran first, then the structure ladder. Every idea is consistency-locked to today’s '
+        f'market-map regime &mdash; <b>{e(scan.get("regime",""))}</b> &mdash; so no single-name structure contradicts the brief’s live bear case.</p>'
+        '</div>'
+    )
+
+
+def _holdings_table(positions):
+    rows = []
+    for p in positions:
+        w = p.get("weight_pct", 0)
+        tier = p.get("conc_tier", "")
+        flag = (f'<span class="cflag {tier}">{tier}</span>' if tier else "")
+        pnl = p.get("pnl_pct")
+        pnl_cls = "g" if (pnl or 0) > 0 else ("r" if (pnl or 0) < 0 else "mute")
+        day = p.get("day_chg_pct")
+        day_html = (f'<span class="{"g" if day>0 else ("r" if day<0 else "mute")}">{day:+.2f}%</span>'
+                    if isinstance(day, (int, float)) else '<span class="mute">&mdash;</span>')
+        iv = p.get("iv_pct")
+        iv_html = (f'{iv:.0f}% &middot; {p.get("iv_percentile_est","?")}th <span class="mute">est</span>'
+                   if iv else '<span class="mute">&mdash;</span>')
+        mark = p.get("mark_price")
+        unit = "" if p.get("quantity_type") == "nominal" else ""
+        mark_html = f'{_ccy(p["currency"])}{mark:,.2f}' if isinstance(mark, (int, float)) else "&mdash;"
+        rows.append(
+            '<tr>'
+            f'<td><div class="nm">{e(p["name"])}</div><div class="tk">{e(p["ticker"])}</div></td>'
+            f'<td class="mute">{e(_CLASS_SHORT.get(p.get("asset_class",""), p.get("asset_class","")))}</td>'
+            f'<td class="num">{w}%{flag}<div class="wbar {tier}"><span style="width:{min(100,w*3)}%"></span></div></td>'
+            f'<td class="num">{mark_html}</td>'
+            f'<td class="num {pnl_cls}">{pnl:+.1f}%</td>'
+            f'<td class="num">{day_html}</td>'
+            f'<td>{_view_pill(p.get("house_view","-"))}</td>'
+            f'<td class="num">{iv_html}</td>'
+            '</tr>'
+        )
+    return ('<table class="holdtbl"><thead><tr>'
+            '<th>Holding</th><th>Class</th><th class="num">Weight</th><th class="num">Mark</th>'
+            '<th class="num">P&amp;L</th><th class="num">Day</th><th>House view</th><th class="num">ATM IV</th>'
+            '</tr></thead><tbody>' + "".join(rows) + '</tbody></table>')
+
+
+def _cash_liab_block(scan):
+    c = scan["client"]; eurusd = c.get("fx_reference", {}).get("EURUSD", 1.154)
+    out = ['<div class="section-label">Cash &amp; liabilities</div>', '<table class="holdtbl"><tbody>']
+    for ca in scan.get("cash", []):
+        out.append(
+            f'<tr><td><div class="nm">{_ccy(ca["currency"])}{ca["amount"]:,.0f}</div>'
+            f'<div class="tk">{e(ca["currency"])} cash &middot; {e(ca["id"])}</div></td>'
+            f'<td class="mute">earning {ca.get("yield_pct",0)}%</td>'
+            f'<td colspan="5" class="mute" style="font-size:12px">{e(ca.get("notes",""))}</td></tr>'
+        )
+    for l in scan.get("liabilities", []):
+        out.append(
+            f'<tr><td><div class="nm" style="color:var(--red)">&minus;{_ccy(l["currency"])}{l["annual"]:,.0f}/yr</div>'
+            f'<div class="tk">{e(l["kind"])} &middot; to {e(l.get("until",""))}</div></td>'
+            f'<td class="mute">liability</td>'
+            f'<td colspan="5" class="mute" style="font-size:12px">{e(l.get("note",""))}</td></tr>'
+        )
+    out.append('</tbody></table>')
+    return "".join(out)
+
+
+def _findings(m):
+    items = [
+        f'<b>Concentration.</b> {e(m["largest"]["ticker"])} is {m["largest"]["weight_pct"]}% of the book on a ~10x gain, into earnings 24-Jun with options premium rich &mdash; collar, SBL against the hedged stock, then decumulate after the print.',
+        f'<b>FX.</b> A EUR-base client is {m["usd_pct"]}% USD; net of the mortgage liability and earmarked cash the hedgeable mismatch is ~{m["net_usd_pct"]}% &mdash; seagull the residual after Thursday’s ECB.',
+        '<b>Losses.</b> AVGO and LVMH are the harvest / reverse-convertible candidates; NVDA is the range-note (Phoenix/BREN) name &mdash; earnings-timing checked.',
+        '<b>Bonds.</b> Both bonds are underwater on rates, not credit &mdash; a swap harvests the loss and roughly triples the running coupon. CPI and ECB are the timing gates.',
+        f'<b>Cash.</b> {m["cash_pct"]}% idle &mdash; deposit campaign (EUR), T-bill ladder against the mortgage and a cash-secured NVDA put (USD).',
+    ]
+    return '<ul class="findings">' + "".join(f"<li>{x}</li>" for x in items) + "</ul>"
+
+
+def _view_engine_panel(scan):
+    out = ['<div class="section-label">House View Engine &middot; formed today, with receipts</div>']
+    meta = scan.get("views_meta", {})
+    if meta.get("note"):
+        out.append(f'<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .8rem">{e(meta["note"])}</p>')
+    for v in scan.get("house_views", []):
+        ev = "".join(f"<li>{e(x)}</li>" for x in v.get("evidence", []))
+        lock = (f'<div class="lock">Brief consistency: {e(v["brief_consistency"])}</div>'
+                if v.get("brief_consistency") else "")
+        out.append(
+            '<div class="viewcard"><div class="vh">'
+            f'<span class="vt">{e(v["ticker"])} {_view_pill(v["view"])}</span>'
+            f'<span class="subs"><span class="srcdot src-{e(v.get("confidence","estimated"))}"></span>{e(v.get("confidence",""))}</span>'
+            '</div>'
+            f'<div class="vr">{e(v.get("rationale",""))}</div>'
+            + (f'<ul>{ev}</ul>' if ev else "")
+            + lock + '</div>'
+        )
+    return "".join(out)
+
+
+def _page_portfolio(scan):
+    m = scan["metrics"]
+    lhs = ['<div class="section-label">Book at a glance</div>']
+    lhs.append(
+        '<div class="statgrid">'
+        f'<div class="stat"><div class="sl">AUM</div><div class="sv">{_eurm(m["total_eur"])}</div><div class="ss">{len(scan["positions"])} holdings + cash</div></div>'
+        f'<div class="stat"><div class="sl">Largest</div><div class="sv" style="color:var(--red)">{m["largest"]["weight_pct"]}%</div><div class="ss">{e(m["largest"]["ticker"])} &middot; cap 10%</div></div>'
+        f'<div class="stat"><div class="sl">USD exposure</div><div class="sv">{m["usd_pct"]}%</div><div class="ss">net ~{m["net_usd_pct"]}% after liabilities</div></div>'
+        f'<div class="stat"><div class="sl">Idle cash</div><div class="sv" style="color:var(--gold)">{m["cash_pct"]}%</div><div class="ss">{_eurm(m["cash_eur"])} earning ~0</div></div>'
+        '</div>'
+    )
+    lhs.append('<div class="section-label">Headline scanner findings</div>')
+    lhs.append(_findings(m))
+    lhs.append('<div class="section-label">Holdings &middot; marked live</div>')
+    lhs.append(_holdings_table(scan["positions"]))
+    if scan.get("refresh_notes"):
+        lhs.append(f'<div class="asof">Live refresh: {e("; ".join(scan["refresh_notes"]))}. '
+                   'Bonds derived from yields; gold from spot; ATM IV estimated until ivol_history.json reaches 60d.</div>')
+    lhs.append(_cash_liab_block(scan))
+    lhs.append(_view_engine_panel(scan))
+    lhs.append('<div style="margin-top:1.5rem">'
+               '<a href="ideas.html" style="font-size:13px;color:var(--gold);font-weight:600;text-decoration:none">'
+               'See the structured-product scan &rarr; Derivative Ideas</a></div>')
+    return "".join(lhs)
+
+
+def _pips8(score):
+    try:
+        n = int(round(float(score)))
+    except (TypeError, ValueError):
+        n = 0
+    return '<div class="pips8">' + "".join(
+        f'<div class="pip8 {"on" if i < n else ""}"></div>' for i in range(8)) + '</div>'
+
+
+def _idea_subs(i):
+    labels = [("setup", "Setup"), ("pricing", "Pricing"), ("catalyst", "Catalyst"), ("fit", "Client fit")]
+    parts = []
+    for k, lab in labels:
+        sc = i["subs"].get(k, 0)
+        src = i["sub_src"].get(k, "estimated")
+        parts.append(f'<span><span class="srcdot src-{e(src)}"></span>{lab} {sc}/2</span>')
+    return '<span class="subs">' + "".join(parts) + '</span>'
+
+
+def _render_idea(i):
+    tier = i["tier"].lower()
+    tags = "".join(f'<span class="tag">{e(t)}</span>' for t in i.get("tags", []))
+    tickers = "".join(f'<span class="tag">{e(t)}</span>' for t in i.get("tickers", []))
+    risk = (f'<div class="risk"><b>Risk:</b> {e(i["risk"])}</div>' if i.get("risk") else "")
+    return (
+        f'<div class="idea {tier}">'
+        '<div class="ih">'
+        f'<div class="it"><span class="inum">{i["num"]}.</span> {e(i["title"])}</div>'
+        f'<span class="tier {tier}">{e(i["tier"])} &middot; {i["score"]}/8</span>'
+        '</div>'
+        '<div class="meta-row">'
+        f'<span class="rules-tag">{e(i["rules"])}</span>{tickers}'
+        '</div>'
+        f'<div class="conv8">{_pips8(i["score"])}{_idea_subs(i)}</div>'
+        f'<div class="blk">{e(i["what_it_is"])}</div>'
+        f'<div class="blk moves"><b>What moves it:</b> {e(i["what_moves_it"])}</div>'
+        f'<div class="note"><b>Client note:</b> {e(i["client_note"])}</div>'
+        + risk
+        + f'<div class="meta-row" style="margin-top:.6rem">{tags}</div>'
+        '</div>'
+    )
+
+
+def _page_ideas(scan):
+    lhs = []
+    meta = scan.get("ivol_meta", {})
+    lhs.append('<div class="section-label">Fired &middot; conviction &ge; 5/8</div>')
+    lhs.append("".join(_render_idea(i) for i in scan["fired"]))
+    if scan.get("watch"):
+        lhs.append('<div class="section-label">Watch &middot; 3&ndash;4/8 &middot; promote on a data refresh</div>')
+        lhs.append("".join(_render_idea(i) for i in scan["watch"]))
+    if scan.get("suppressed"):
+        lhs.append('<div class="section-label">Suppressed &middot; rule fired, override held</div>')
+        lhs.append("".join(_render_idea(i) for i in scan["suppressed"]))
+    lhs.append(
+        '<div class="asof" style="margin-top:1.4rem">'
+        'Conviction /8 = setup &middot; pricing &middot; catalyst &middot; client fit (0&ndash;2 each). '
+        'Green dot = sourced, gold = estimated, red = unverified. '
+        f'{e(meta.get("honesty",""))} '
+        'Issuer credit: every note is senior unsecured paper &mdash; cap any single issuer at 20% of the structure book. '
+        'Demo book, not investment advice.</div>'
+    )
+    return "".join(lhs)
+
+
+# --------------------------------------------------------------------------
 # Entry point
 # --------------------------------------------------------------------------
-def render_all(brief, trades, regime_log=None):
+def render_all(brief, trades, regime_log=None, scan=None):
     os.makedirs(FRAG_DIR, exist_ok=True)
     regime = brief.get("regime", "")
     note = brief.get("regime_note", "")
@@ -500,6 +785,16 @@ def render_all(brief, trades, regime_log=None):
         htmldoc = _shell(fname, title, regime, note, lhs, brief)
         with open(os.path.join(HERE, fname), "w", encoding="utf-8") as f:
             f.write(htmldoc)
+
+    # client book module — two extra tabs, only when a scan is supplied
+    if scan:
+        for fname, title, lhs_html, mast in (
+            ("portfolio.html", "Fable / Portfolio", _page_portfolio(scan), _portfolio_masthead(scan)),
+            ("ideas.html", "Portfolio / Derivative Ideas", _page_ideas(scan), _ideas_masthead(scan)),
+        ):
+            htmldoc = _shell(fname, title, regime, note, lhs_html, brief, masthead_html=mast)
+            with open(os.path.join(HERE, fname), "w", encoding="utf-8") as f:
+                f.write(htmldoc)
 
     # iframe fragments
     frags = {

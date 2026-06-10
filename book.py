@@ -155,7 +155,22 @@ def mark_to_market(trades, levels):
         if hit_target(t, level):
             close_trade(trades, t, level, "TARGET", pl)
         elif hit_stop(t, level):
-            close_trade(trades, t, level, "STOPPED", pl)
+            # Ruleset: a pre-position trade is structural, not tactical — never close
+            # it before min_hold_days has elapsed, even if the stop appears hit intraday.
+            held = days_held(t, TODAY)
+            min_hold = int(t.get("min_hold_days", 0) or 0)
+            if held < min_hold:
+                log(f"   {t['id']} stop {t.get('stop')} touched but held {held}d < min_hold "
+                    f"{min_hold}d — pre-position, NOT closed (marked, held)")
+                t["history"].append(
+                    {"date": TODAY, "level": level, "pnl_pct": pl, "status": "stop_touched_min_hold"}
+                )
+                t["current"] = level
+                t["current_pnl_pct"] = pl
+                t["stop_touched"] = True
+                still_open.append(t)
+            else:
+                close_trade(trades, t, level, "STOPPED", pl)
         else:
             t["history"].append(
                 {"date": TODAY, "level": level, "pnl_pct": pl, "status": "open"}

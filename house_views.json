@@ -1,0 +1,103 @@
+{
+  "_meta": {
+    "engine": "House View Engine · Ruleset v2 (0a)",
+    "formed_session": "2026-06-09",
+    "note": "Claude forms its own view per name with web/brief evidence; >=2 evidence items required or the view is capped at NEUTRAL/estimated. View drives the structure ladder. Consistency-locked to the morning brief's scenario table (live bear case: AI de-rating).",
+    "stale_after": "2026-06-16"
+  },
+  "views": [
+    {
+      "ticker": "MU US", "view": "LIKE", "confidence": "sourced",
+      "rationale": "Memory supercycle intact; rich options premium into the 24-Jun print makes the concentration hedge cheap to put on, not a reason to abandon the name.",
+      "evidence": [
+        "GS price target doubled to $900 ahead of the 24-Jun earnings print",
+        "UBS flags pricing-driven guidance-beat potential; a 2x-short MU ETF just launched, lifting listed options premium",
+        "HBM / AI-memory supercycle narrative still the dominant driver"
+      ],
+      "brief_consistency": "AI de-rating is the live bear case in today's brief. LIKE is held, but hedging a 26% concentration is position management, not a view contradiction.",
+      "formed": "2026-06-09", "stale_after": "2026-06-16"
+    },
+    {
+      "ticker": "NVDA US", "view": "LIKE", "confidence": "sourced",
+      "rationale": "Consolidating, not deteriorating; the competitive moat versus AMD is intact and the January de-rate was rates-driven, not franchise-driven.",
+      "evidence": [
+        "UBS: the performance gap to AMD 'remains wide'",
+        "Holding the 195-235 range since March - orderly consolidation, not a downtrend",
+        "Huang / Computex product momentum intact"
+      ],
+      "brief_consistency": "LIKE unlocks the add-intent shelf (BREN / cash-secured puts at 195 support). The brief's CPI/Oracle bear case is acknowledged in every NVDA structure as the macro wobble.",
+      "formed": "2026-06-09", "stale_after": "2026-06-16"
+    },
+    {
+      "ticker": "AVGO US", "view": "NEUTRAL", "confidence": "sourced",
+      "rationale": "Cleared the estimate but missed the whisper; the de-rate is multiple-driven and the guide bar has not visibly reset.",
+      "evidence": [
+        "Q2 cleared consensus EPS but missed the buy-side whisper on the Q3 AI guide",
+        "Stock de-rated ~20% post-print; the move is valuation, not a broken franchise",
+        "Await evidence the forward guide bar resets before re-rating to LIKE"
+      ],
+      "brief_consistency": "NEUTRAL closes the accumulation path and opens the harvest lane (L6). Consistent with the brief's 'AI hedged for a miss, not a growth-rate disappointment' tell.",
+      "formed": "2026-06-09", "stale_after": "2026-06-16"
+    },
+    {
+      "ticker": "AMD US", "view": "NEUTRAL", "confidence": "estimated",
+      "rationale": "A +395% run leaves valuation stretched versus the competitive read; insufficient fresh evidence to upgrade to LIKE.",
+      "evidence": [
+        "Position +395% from the Oct-2023 entry - valuation extended",
+        "UBS competitive read still favours NVDA on the AI gap"
+      ],
+      "brief_consistency": "NEUTRAL allows income / staged-exit structures (overwrite, decumulator) but not accumulation. IV percentile unverified -> idea held at Watch until sourced.",
+      "formed": "2026-06-09", "stale_after": "2026-06-16"
+    },
+    {
+      "ticker": "MC FP", "view": "NEUTRAL", "confidence": "estimated",
+      "rationale": "Luxury demand soft and the live mark refreshed materially below the indicative level; monetise the wait rather than add, pending a price/IV refresh.",
+      "evidence": [
+        "Luxury end-demand soft into H2-2026",
+        "Live mark refreshed to ~EUR492 versus an indicative EUR580 - a deeper loss than the book showed"
+      ],
+      "brief_consistency": "NEUTRAL -> reverse convertible at the buy-more level, or harvest. A downgrade to AVOID on a price/IV refresh converts the idea to a clean harvest.",
+      "formed": "2026-06-09", "stale_after": "2026-06-16"
+    },
+    {
+      "ticker": "SAP GY", "view": "LIKE", "confidence": "estimated",
+      "rationale": "European software compounder with an AI-cloud tailwind; a winner to overwrite for income, not to chase, with the live mark a smaller gain than the book's indicative.",
+      "evidence": [
+        "Structural FCF compounder; Joule / cloud-AI monetisation building",
+        "Live mark refreshed below the indicative level - still a winner, smaller cushion"
+      ],
+      "brief_consistency": "LIKE but rich-valuation -> covered-call overwrite (W1) only, no accumulation. Pairs with NVDA for the AI RV conversation.",
+      "formed": "2026-06-09", "stale_after": "2026-06-16"
+    },
+    {
+      "ticker": "TTE FP", "view": "LIKE-as-hedge", "confidence": "sourced",
+      "rationale": "The book's energy / geopolitical hedge while Brent holds its war premium; protective, not a position to trim into the truce.",
+      "evidence": [
+        "Brent holding ~$93 - the war premium did not leave on the ceasefire headline (today's brief)",
+        "Behaves as the book's energy hedge in the bear scenario (truce breaks, oil to $100)"
+      ],
+      "brief_consistency": "Recognised hedge (W2) for the brief's live bear case -> winner-trim rules are suppressed. The scanner never contradicts the morning brief.",
+      "formed": "2026-06-09", "stale_after": "2026-06-16"
+    },
+    {
+      "ticker": "4GLD GY", "view": "LIKE-as-hedge", "confidence": "sourced",
+      "rationale": "The book's tail hedge if the truce breaks; back to trading real rates and decoupled from oil - hold through the dot plot, do not take profit.",
+      "evidence": [
+        "Gold ~$4,344, firm and decoupled from oil - trading real rates into the FOMC (today's brief)",
+        "Wins on both MoU tails: rate-cut path and geopolitical re-escalation"
+      ],
+      "brief_consistency": "Recognised tail hedge (W2). +109% winner-rule fires on the raw numbers; brief-consistency overrides -> no trim flag.",
+      "formed": "2026-06-09", "stale_after": "2026-06-16"
+    },
+    {
+      "ticker": "SPY US", "view": "NEUTRAL", "confidence": "sourced",
+      "rationale": "Core beta anchor opened with the account; the long-term lot and index-hedge underlier, not a trade.",
+      "evidence": [
+        "Long-term lot from 2021 - favourable tax treatment, the book's beta anchor",
+        "Candidate underlier for any index-level overlay hedge"
+      ],
+      "brief_consistency": "NEUTRAL beta. The defined-risk index hedge in today's brief (SPX put spread) is the book-level expression, not a single-name view.",
+      "formed": "2026-06-09", "stale_after": "2026-06-16"
+    }
+  ]
+}

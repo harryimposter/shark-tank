@@ -21,6 +21,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import book
 import shark_format
 import live_levels
+import book_scanner
 
 TODAY = date.today().isoformat()
 
@@ -729,9 +730,17 @@ with open(book.OUTPUT_PATH, "w", encoding="utf-8") as f:
     f.write(html_out)
 book.log(f"wrote {len(html_out):,} bytes -> {book.OUTPUT_PATH}")
 
-# ── Render: 4-page Shark Tank app ──────────────────────────────────────────
+# ── Client book scan (Fable / Portfolio + Derivative Ideas) ────────────────
+book.step("Scanning client book (Fable)")
+scan = book_scanner.build_scan(brief)
+if scan:
+    m = scan["metrics"]
+    book.log(f'Fable book EUR{m["total_eur"]:,} · {m["largest"]["ticker"]} {m["largest"]["weight_pct"]}% '
+             f'· {scan["counts"]["fired"]} fired / {scan["counts"]["watch"]} watch / {scan["counts"]["suppressed"]} suppressed')
+
+# ── Render: 6-page Shark Tank app ──────────────────────────────────────────
 book.step("Rendering Shark Tank pages + fragments")
-shark_format.render_all(brief, trades, regime_log)
+shark_format.render_all(brief, trades, regime_log, scan=scan)
 
 # ── Persist state ──────────────────────────────────────────────────────────
 book.step("Saving trades.json + regime_log.json")

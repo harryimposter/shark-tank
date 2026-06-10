@@ -1,0 +1,19 @@
+{
+  "_meta": {
+    "what": "Daily ATM ~360D implied-vol snapshot taken at scan time. Percentile = rank vs this file's own history.",
+    "honesty": "ESTIMATED until this file holds 60 trading days. Today is the seed snapshot, so every percentile below is estimated, not sourced. Wire Market Data App / Tradier (one API key) or ORATS for a sourced IV rank.",
+    "fields": "atm_iv_pct = ATM implied vol; iv_percentile_est = rank vs own (short) history; skew = 90% put IV minus ATM IV (vol points)",
+    "seeded": "2026-06-09"
+  },
+  "history": {
+    "MU US":   [{"date": "2026-06-09", "atm_iv_pct": 68, "iv_percentile_est": 82, "skew": 7.5, "confidence": "estimated", "note": "Rich into 24-Jun print; 2x-short MU ETF launch lifts premium; steep put skew fattens barrier/strike coupons."}],
+    "NVDA US": [{"date": "2026-06-09", "atm_iv_pct": 46, "iv_percentile_est": 48, "skew": 5.0, "confidence": "estimated", "note": "Mid-range of its own history; ~45d+ to the late-Aug print; clean BREN window."}],
+    "AVGO US": [{"date": "2026-06-09", "atm_iv_pct": 37, "iv_percentile_est": 22, "skew": 4.0, "confidence": "estimated", "note": "Post-print vol crush; the RevCon coupon is thin here - harvest now, sell vol when it rebuilds."}],
+    "AMD US":  [{"date": "2026-06-09", "atm_iv_pct": 52, "iv_percentile_est": 55, "skew": 4.5, "confidence": "estimated", "note": "Unverified until history builds - holds the overwrite/decumulator at Watch, not Fire."}],
+    "MC FP":   [{"date": "2026-06-09", "atm_iv_pct": 30, "iv_percentile_est": 60, "skew": 6.0, "confidence": "estimated", "note": "Steep luxury put skew fattens the reverse-convertible coupon; refresh price + IV before quoting."}],
+    "SAP GY":  [{"date": "2026-06-09", "atm_iv_pct": 27, "iv_percentile_est": 50, "skew": 3.5, "confidence": "estimated", "note": "Fair vol; overwrite works at-or-above the 50th percentile with the call above resistance."}],
+    "TTE FP":  [{"date": "2026-06-09", "atm_iv_pct": 26, "iv_percentile_est": 45, "skew": 3.0, "confidence": "estimated", "note": "Recognised hedge - no structure flagged while the Strait premium persists."}],
+    "4GLD GY": [{"date": "2026-06-09", "atm_iv_pct": 16, "iv_percentile_est": 40, "skew": 2.0, "confidence": "estimated", "note": "Recognised tail hedge - hold, no overwrite."}],
+    "SPY US":  [{"date": "2026-06-09", "atm_iv_pct": 19, "iv_percentile_est": 35, "skew": 5.5, "confidence": "estimated", "note": "Index vol; the book-level hedge is expressed via the brief's SPX put spread."}]
+  }
+}

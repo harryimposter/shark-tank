@@ -47,9 +47,9 @@ SYMBOLS = {
 }
 
 
-def fetch(timeout=20):
-    """Return {name: {"close", "chg_pct", "chg_abs"}} for every symbol that resolves."""
-    tickers = list(dict.fromkeys(SYMBOLS.values()))
+def scan(tickers, timeout=20):
+    """Generic: return {ticker: {"close","chg_pct","chg_abs"}} for any TradingView tickers."""
+    tickers = list(dict.fromkeys(tickers))
     body = json.dumps({"symbols": {"tickers": tickers},
                        "columns": ["close", "change", "change_abs"]}).encode()
     req = urllib.request.Request(
@@ -58,10 +58,20 @@ def fetch(timeout=20):
     data = json.load(urllib.request.urlopen(req, timeout=timeout))
     got = {row["s"]: row["d"] for row in data.get("data", [])}
     out = {}
-    for name, tk in SYMBOLS.items():
+    for tk in tickers:
         if tk in got and got[tk] and got[tk][0] is not None:
             close, chg, chg_abs = got[tk]
-            out[name] = {"close": close, "chg_pct": chg, "chg_abs": chg_abs}
+            out[tk] = {"close": close, "chg_pct": chg, "chg_abs": chg_abs}
+    return out
+
+
+def fetch(timeout=20):
+    """Return {name: {"close", "chg_pct", "chg_abs"}} for every named macro symbol that resolves."""
+    raw = scan(list(SYMBOLS.values()), timeout=timeout)
+    out = {}
+    for name, tk in SYMBOLS.items():
+        if tk in raw:
+            out[name] = raw[tk]
     return out
 
 
