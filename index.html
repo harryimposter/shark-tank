@@ -123,7 +123,42 @@ table.cal th{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:v
 .findings li{position:relative;padding:.4rem 0 .4rem 1.1rem;border-bottom:.5px solid var(--line);font-size:13px;line-height:1.5;color:var(--ink-soft)}
 .findings li:before{content:"";position:absolute;left:0;top:.85rem;width:5px;height:5px;border-radius:50%;background:var(--gold)}
 .findings li b{color:var(--ink)}
-</style></head><body><div class="scrim" id="scrim" onclick="closeMenu()"></div><nav class="menu" id="menu"><div class="mh">Shark Tank · Market Map</div><a href="index.html" class="active">Summary</a><a href="insights.html">Insights</a><a href="earnings.html">Earnings</a><a href="trades.html">Trade Ideas</a><a href="portfolio.html">Portfolio</a><a href="ideas.html">Derivative Ideas</a></nav><div class="topbar"><button class="burger" onclick="openMenu()" aria-label="menu"><span></span><span></span><span></span></button><div class="brand">Market Map <b>· Shark Tank</b></div><div class="navwrap">Summary</div></div><div class="page"><div class="masthead"><div class="regime-tag">A Ceasefire, Not an All-Clear</div><h1 class="article-title">Market Map / Summary</h1><p class="meta">Pre-market intelligence brief &middot; 2026-06-10 &middot; generated 07:46 local &middot; self-graded book</p><p style="font-size:13px;color:var(--ink-soft);margin:.6rem 0 0">Iran and Israel halted attacks and Trump is brokering a ceasefire — and the tape barely moved. Brent eased a single dollar to ~$93 and kept its war premium; the broad market was flat-to-down (S&amp;P +0.3%, DAX and Dow lower) while the bounce was confined to the chips force-sold on Friday (Nasdaq, Nikkei). Yields did not budge. The market is treating the truce as unproven — and May CPI tomorrow, not the ceasefire, is the event that matters.</p></div><div class="two-col"><div class="lhs"><div class="section-label">The overnight read</div><div class="wrap-body">
+/* ---- Derivatives Lab + house-view dropdowns ---- */
+.summary-box{border:.5px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--rad-lg);padding:1rem 1.2rem;background:var(--surface);margin-bottom:.6rem}
+.summary-box .sh{font-family:var(--serif);font-size:18px;line-height:1.4;margin-bottom:.5rem}
+.summary-box .stance{font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:.5rem}
+.sumpts{list-style:none;padding:0;margin:.3rem 0 0}
+.sumpts li{font-size:13px;line-height:1.55;padding:.5rem 0;border-top:.5px solid var(--line);display:flex;gap:9px;align-items:flex-start}
+.sumpts li .gchip{flex-shrink:0;font-size:9px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-mute);border:.5px solid var(--line);border-radius:5px;padding:1px 6px;background:#fff;margin-top:1px;min-width:62px;text-align:center}
+.grp{display:flex;align-items:center;gap:10px;margin:1.5rem 0 .7rem}
+.grp .gname{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.grp .gline{flex:1;height:1px;background:var(--line)}
+.grp .gcount{font-size:10px;color:var(--ink-mute)}
+.badge{font-size:10px;border:.5px solid var(--line);border-radius:6px;padding:1px 7px;color:var(--ink-soft);background:var(--surface);white-space:nowrap}
+.badge b{color:var(--ink);font-weight:600}
+.srcrow{display:flex;flex-wrap:wrap;gap:5px;margin-top:.55rem}
+.srcchip{font-size:10px;border:.5px solid var(--line);border-radius:20px;padding:1px 8px;color:var(--ink-soft);background:#fff}
+.srcchip .st{color:var(--ink-mute)}
+.impact{font-size:12.5px;color:var(--ink);background:rgba(184,150,12,.06);border-left:2px solid var(--gold);border-radius:0 6px 6px 0;padding:.5rem .75rem;margin-top:.55rem;line-height:1.55}
+.impact b{font-weight:600}
+.conv-how{font-size:11px;color:var(--ink-mute);margin:.15rem 0 .5rem}
+.origin{font-size:11px;color:var(--ink-mute);font-style:italic;margin-bottom:.5rem}
+details.idea-d{border:.5px solid var(--line);border-left:3px solid var(--ink-mute);border-radius:var(--rad-lg);padding:.7rem 1rem;margin-bottom:9px;background:var(--bg)}
+details.idea-d[open]{border-left-color:var(--gold);background:#fff}
+details.idea-d>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.idea-d>summary::-webkit-details-marker{display:none}
+details.idea-d>summary .stitle{font-size:14px;font-weight:600;line-height:1.35}
+details.idea-d>summary .smeta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.idea-body{padding-top:.7rem;margin-top:.6rem;border-top:.5px solid var(--line)}
+.vsum{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.vsum::-webkit-details-marker{display:none}
+.conv-mini{font-size:11px;color:var(--ink-mute)}
+.convtbl{width:100%;border-collapse:collapse;font-size:11.5px;margin:.5rem 0}
+.convtbl td{padding:3px 6px;border-bottom:.5px dotted var(--line);vertical-align:top}
+.convtbl td.k{color:var(--ink);font-weight:600;white-space:nowrap}
+.convtbl td.s{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-mute);white-space:nowrap}
+.convtbl td.w{color:var(--ink-soft)}
+</style></head><body><div class="scrim" id="scrim" onclick="closeMenu()"></div><nav class="menu" id="menu"><div class="mh">Shark Tank · Market Map</div><a href="index.html" class="active">Summary</a><a href="insights.html">Insights</a><a href="earnings.html">Earnings</a><a href="trades.html">Trade Ideas</a><a href="portfolio.html">Portfolio</a><a href="ideas.html">Derivatives Lab</a></nav><div class="topbar"><button class="burger" onclick="openMenu()" aria-label="menu"><span></span><span></span><span></span></button><div class="brand">Market Map <b>· Shark Tank</b></div><div class="navwrap">Summary</div></div><div class="page"><div class="masthead"><div class="regime-tag">A Ceasefire, Not an All-Clear</div><h1 class="article-title">Market Map / Summary</h1><p class="meta">Pre-market intelligence brief &middot; 2026-06-10 &middot; generated 08:15 local &middot; self-graded book</p><p style="font-size:13px;color:var(--ink-soft);margin:.6rem 0 0">Iran and Israel halted attacks and Trump is brokering a ceasefire — and the tape barely moved. Brent eased a single dollar to ~$93 and kept its war premium; the broad market was flat-to-down (S&amp;P +0.3%, DAX and Dow lower) while the bounce was confined to the chips force-sold on Friday (Nasdaq, Nikkei). Yields did not budge. The market is treating the truce as unproven — and May CPI tomorrow, not the ceasefire, is the event that matters.</p></div><div class="two-col"><div class="lhs"><div class="section-label">The overnight read</div><div class="wrap-body">
 <p>The headline was the one the market had been waiting for: Iran and Israel agreed to stop firing, and
 President Trump put his name to a ceasefire he is still brokering. The reaction was the surprise. Stocks
 did not surge, oil did not collapse, and the front-end of the curve did not move. The S&amp;P added 0.3%,
@@ -196,7 +231,7 @@ least positioned for.</p>
   </script>
 </div>
 </div>
-<div class="section-label">Rates &amp; funding · last close</div><div class="rates-grid"><div class="rtile"><div class="rl">SOFR (o/n)</div><div class="rv" id="sofr-v">3.62%</div><div class="rc mute" id="sofr-c">funding</div></div><div class="rtile"><div class="rl">US 2Y</div><div class="rv">4.13%</div><div class="rc g">+1bp</div></div><div class="rtile"><div class="rl">US 10Y</div><div class="rv">4.53%</div><div class="rc g">+1bp</div></div><div class="rtile"><div class="rl">US 30Y</div><div class="rv">5.01%</div><div class="rc g">+2bp</div></div><div class="rtile"><div class="rl">2s10s</div><div class="rv">+40bp</div><div class="rc g">steeper</div></div><div class="rtile"><div class="rl">Bund 10Y</div><div class="rv">3.05%</div><div class="rc r">-0bp</div></div><div class="rtile"><div class="rl">Gilt 10Y</div><div class="rv">4.92%</div><div class="rc r">-2bp</div></div><div class="rtile"><div class="rl">MOVE</div><div class="rv">~108</div><div class="rc r">easing (est)</div></div></div><div class="asof">as of Tue 9 Jun · TradingView · SOFR auto-updates (NY Fed)</div><div class="theme-line">The ceasefire&#x27;s real tell is in crude, not equities: a supply scare that supposedly ended gave back a single dollar of premium. The market does not believe the truce — and the front-end that de-rated the tape on Friday has not moved into tomorrow&#x27;s CPI.</div>
+<div class="section-label">Rates &amp; funding · last close</div><div class="rates-grid"><div class="rtile"><div class="rl">SOFR (o/n)</div><div class="rv" id="sofr-v">3.62%</div><div class="rc mute" id="sofr-c">funding</div></div><div class="rtile"><div class="rl">US 2Y</div><div class="rv">4.13%</div><div class="rc g">+1bp</div></div><div class="rtile"><div class="rl">US 10Y</div><div class="rv">4.53%</div><div class="rc g">+1bp</div></div><div class="rtile"><div class="rl">US 30Y</div><div class="rv">5.01%</div><div class="rc g">+1bp</div></div><div class="rtile"><div class="rl">2s10s</div><div class="rv">+40bp</div><div class="rc g">steeper</div></div><div class="rtile"><div class="rl">Bund 10Y</div><div class="rv">3.05%</div><div class="rc r">-1bp</div></div><div class="rtile"><div class="rl">Gilt 10Y</div><div class="rv">4.91%</div><div class="rc r">-1bp</div></div><div class="rtile"><div class="rl">MOVE</div><div class="rv">~108</div><div class="rc r">easing (est)</div></div></div><div class="asof">as of Tue 9 Jun · TradingView · SOFR auto-updates (NY Fed)</div><div class="theme-line">The ceasefire&#x27;s real tell is in crude, not equities: a supply scare that supposedly ended gave back a single dollar of premium. The market does not believe the truce — and the front-end that de-rated the tape on Friday has not moved into tomorrow&#x27;s CPI.</div>
 <script>
 (function(){
   function set(id,v){var el=document.getElementById(id);if(el)el.textContent=v;}

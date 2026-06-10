@@ -67,40 +67,40 @@
     "MC FP": [
       {
         "date": "2026-06-10",
-        "atm_iv_pct": 30.6,
-        "iv_percentile_est": 51,
+        "atm_iv_pct": 30.5,
+        "iv_percentile_est": 49,
         "skew": null,
         "confidence": "sourced",
         "iv_basis": "realized",
         "rank_confidence": "sourced",
         "note": "Realized vol (annualised 63d from 256 daily closes) — no listed options on Yahoo, so this is realized vol used as an implied proxy. Percentile = rank of current vs the trailing-year rolling 63d realized distribution (sourced).",
-        "spot": 492.3
+        "spot": 496.5
       }
     ],
     "SAP GY": [
       {
         "date": "2026-06-10",
         "atm_iv_pct": 44.5,
-        "iv_percentile_est": 72,
+        "iv_percentile_est": 71,
         "skew": null,
         "confidence": "sourced",
         "iv_basis": "realized",
         "rank_confidence": "sourced",
         "note": "Realized vol (annualised 63d from 254 daily closes) — no listed options on Yahoo, so this is realized vol used as an implied proxy. Percentile = rank of current vs the trailing-year rolling 63d realized distribution (sourced).",
-        "spot": 154.7
+        "spot": 154.08
       }
     ],
     "TTE FP": [
       {
         "date": "2026-06-10",
         "atm_iv_pct": 28.9,
-        "iv_percentile_est": 91,
+        "iv_percentile_est": 90,
         "skew": null,
         "confidence": "sourced",
         "iv_basis": "realized",
         "rank_confidence": "sourced",
         "note": "Realized vol (annualised 63d from 256 daily closes) — no listed options on Yahoo, so this is realized vol used as an implied proxy. Percentile = rank of current vs the trailing-year rolling 63d realized distribution (sourced).",
-        "spot": 76.47
+        "spot": 76.59
       }
     ],
     "4GLD GY": [
@@ -113,7 +113,7 @@
         "iv_basis": "realized",
         "rank_confidence": "sourced",
         "note": "Realized vol (annualised 63d from 253 daily closes) — no listed options on Yahoo, so this is realized vol used as an implied proxy. Percentile = rank of current vs the trailing-year rolling 63d realized distribution (sourced).",
-        "spot": 4234.7
+        "spot": 4227.4
       }
     ],
     "SPY US": [

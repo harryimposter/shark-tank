@@ -158,6 +158,41 @@ table.cal th{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:v
 .findings li{position:relative;padding:.4rem 0 .4rem 1.1rem;border-bottom:.5px solid var(--line);font-size:13px;line-height:1.5;color:var(--ink-soft)}
 .findings li:before{content:"";position:absolute;left:0;top:.85rem;width:5px;height:5px;border-radius:50%;background:var(--gold)}
 .findings li b{color:var(--ink)}
+/* ---- Derivatives Lab + house-view dropdowns ---- */
+.summary-box{border:.5px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--rad-lg);padding:1rem 1.2rem;background:var(--surface);margin-bottom:.6rem}
+.summary-box .sh{font-family:var(--serif);font-size:18px;line-height:1.4;margin-bottom:.5rem}
+.summary-box .stance{font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:.5rem}
+.sumpts{list-style:none;padding:0;margin:.3rem 0 0}
+.sumpts li{font-size:13px;line-height:1.55;padding:.5rem 0;border-top:.5px solid var(--line);display:flex;gap:9px;align-items:flex-start}
+.sumpts li .gchip{flex-shrink:0;font-size:9px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-mute);border:.5px solid var(--line);border-radius:5px;padding:1px 6px;background:#fff;margin-top:1px;min-width:62px;text-align:center}
+.grp{display:flex;align-items:center;gap:10px;margin:1.5rem 0 .7rem}
+.grp .gname{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.grp .gline{flex:1;height:1px;background:var(--line)}
+.grp .gcount{font-size:10px;color:var(--ink-mute)}
+.badge{font-size:10px;border:.5px solid var(--line);border-radius:6px;padding:1px 7px;color:var(--ink-soft);background:var(--surface);white-space:nowrap}
+.badge b{color:var(--ink);font-weight:600}
+.srcrow{display:flex;flex-wrap:wrap;gap:5px;margin-top:.55rem}
+.srcchip{font-size:10px;border:.5px solid var(--line);border-radius:20px;padding:1px 8px;color:var(--ink-soft);background:#fff}
+.srcchip .st{color:var(--ink-mute)}
+.impact{font-size:12.5px;color:var(--ink);background:rgba(184,150,12,.06);border-left:2px solid var(--gold);border-radius:0 6px 6px 0;padding:.5rem .75rem;margin-top:.55rem;line-height:1.55}
+.impact b{font-weight:600}
+.conv-how{font-size:11px;color:var(--ink-mute);margin:.15rem 0 .5rem}
+.origin{font-size:11px;color:var(--ink-mute);font-style:italic;margin-bottom:.5rem}
+details.idea-d{border:.5px solid var(--line);border-left:3px solid var(--ink-mute);border-radius:var(--rad-lg);padding:.7rem 1rem;margin-bottom:9px;background:var(--bg)}
+details.idea-d[open]{border-left-color:var(--gold);background:#fff}
+details.idea-d>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.idea-d>summary::-webkit-details-marker{display:none}
+details.idea-d>summary .stitle{font-size:14px;font-weight:600;line-height:1.35}
+details.idea-d>summary .smeta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.idea-body{padding-top:.7rem;margin-top:.6rem;border-top:.5px solid var(--line)}
+.vsum{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.vsum::-webkit-details-marker{display:none}
+.conv-mini{font-size:11px;color:var(--ink-mute)}
+.convtbl{width:100%;border-collapse:collapse;font-size:11.5px;margin:.5rem 0}
+.convtbl td{padding:3px 6px;border-bottom:.5px dotted var(--line);vertical-align:top}
+.convtbl td.k{color:var(--ink);font-weight:600;white-space:nowrap}
+.convtbl td.s{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-mute);white-space:nowrap}
+.convtbl td.w{color:var(--ink-soft)}
 """
 
 NAV = [
@@ -166,7 +201,7 @@ NAV = [
     ("earnings.html", "Earnings", "Earnings Intelligence"),
     ("trades.html", "Trade Ideas", "ideas + live book"),
     ("portfolio.html", "Portfolio", "Fable · client book"),
-    ("ideas.html", "Derivative Ideas", "structured-product scan"),
+    ("ideas.html", "Derivatives Lab", "client structuring desk"),
 ]
 
 # --------------------------------------------------------------------------
@@ -517,7 +552,11 @@ def _page_earnings(brief):
     body = earnings.render_earnings_section(brief.get("earnings_ideas", []))
     if not body:
         body = "<p class='mute'>No qualifying earnings in the window.</p>"
-    return '<div class="section-label">Earnings Intelligence · Finnhub-sourced</div>' + body
+    link = ('<div style="margin-top:1.5rem"><a href="ideas.html" '
+            'style="font-size:13px;color:var(--gold);font-weight:600;text-decoration:none">'
+            'These screens feed the client desk &rarr; see which map to Fable&rsquo;s book as New Adds in the '
+            'Derivatives Lab</a></div>')
+    return '<div class="section-label">Earnings Intelligence · Finnhub-sourced</div>' + body + link
 
 
 def _page_trades(brief):
@@ -578,12 +617,14 @@ def _ideas_masthead(scan):
     return (
         '<div class="masthead">'
         '<div class="regime-tag">Book Scanner &middot; Ruleset v2</div>'
-        '<h1 class="article-title">Portfolio / Derivative Ideas</h1>'
-        f'<p class="meta">{e(scan["client"].get("display_name","Fable"))} book scan &middot; {e(scan["as_of"])} '
-        f'&middot; {cnt["fired"]} fired &middot; {cnt["watch"]} watch &middot; {cnt["suppressed"]} suppressed</p>'
+        '<h1 class="article-title">Portfolio / Derivatives Lab</h1>'
+        f'<p class="meta">{e(scan["client"].get("display_name","Fable"))} structuring desk &middot; {e(scan["as_of"])} '
+        f'&middot; {cnt.get("new_adds",0)} new adds &middot; {cnt.get("enhance",0)} enhancements</p>'
         f'<p style="font-size:13px;color:var(--ink-soft);margin:.6rem 0 0">'
-        f'The House View Engine ran first, then the structure ladder. Every idea is consistency-locked to today’s '
-        f'market-map regime &mdash; <b>{e(scan.get("regime",""))}</b> &mdash; so no single-name structure contradicts the brief’s live bear case.</p>'
+        f'Where the desk’s ideas become this client’s trades. The Earnings screener and macro book feed '
+        f'<b>New Adds</b>; the Book Scanner turns existing holdings into <b>Enhancements</b>. Everything is sized to '
+        f'the book and consistency-locked to today’s regime &mdash; <b>{e(scan.get("regime",""))}</b> &mdash; '
+        f'and to the per-name house views.</p>'
         '</div>'
     )
 
@@ -659,23 +700,69 @@ def _findings(m):
     return '<ul class="findings">' + "".join(f"<li>{x}</li>" for x in items) + "</ul>"
 
 
+def _sources_row(sources):
+    if not sources:
+        return ""
+    chips = "".join(
+        f'<span class="srcchip">{e(s.get("name",""))}'
+        + (f' <span class="st">&middot; {e(s.get("type",""))}</span>' if s.get("type") else "")
+        + (f' <span class="st">&middot; {e(s.get("note",""))}</span>' if s.get("note") else "")
+        + '</span>' for s in sources)
+    return f'<div class="srcrow">{chips}</div>'
+
+
+def _conv_table(rows, total, total_max, caption="how we scored it"):
+    body = "".join(
+        f'<tr><td class="k">{e(r["k"])}</td><td class="s">{r["v"]}/{r["max"]}</td>'
+        f'<td class="w">{e(r["why"])}</td></tr>' for r in rows)
+    return (f'<table class="convtbl"><tr><td class="k">Conviction</td>'
+            f'<td class="s">{total}/{total_max}</td><td class="w">{e(caption)}</td></tr>{body}</table>')
+
+
+def _macro_anchors_block(meta):
+    a = meta.get("macro_anchors", {})
+    if not a:
+        return ""
+    authors = " ".join(
+        f'<span class="srcchip">{e(au.get("name",""))} <span class="st">&middot; {e(au.get("platform",""))}</span></span>'
+        for au in a.get("authors", []))
+    return (
+        '<div class="summary-box" style="border-left-color:var(--ink-mute)">'
+        '<div class="stance" style="margin-bottom:.4rem"><b>House anchor &mdash; JP Morgan GIS:</b> '
+        f'{e(a.get("jp_gis",""))}</div>'
+        f'<div class="srcrow">{authors}</div>'
+        + (f'<div class="conv-how" style="margin-top:.5rem">{e(a.get("disclaimer",""))}</div>' if a.get("disclaimer") else "")
+        + '</div>'
+    )
+
+
 def _view_engine_panel(scan):
-    out = ['<div class="section-label">House View Engine &middot; formed today, with receipts</div>']
+    out = ['<div class="section-label">House View Engine &middot; click any name for the full thesis, score &amp; sources</div>']
     meta = scan.get("views_meta", {})
     if meta.get("note"):
-        out.append(f'<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .8rem">{e(meta["note"])}</p>')
+        out.append(f'<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .7rem">{e(meta["note"])}</p>')
+    out.append(_macro_anchors_block(meta))
     for v in scan.get("house_views", []):
         ev = "".join(f"<li>{e(x)}</li>" for x in v.get("evidence", []))
+        conv = v.get("conviction")
+        conv_tbl = _conv_table(v.get("conv_breakdown", []), conv, 10) if v.get("conv_breakdown") else ""
         lock = (f'<div class="lock">Brief consistency: {e(v["brief_consistency"])}</div>'
                 if v.get("brief_consistency") else "")
+        conv_badge = (f'conviction {conv}/10' if conv is not None else e(v.get("confidence", "")))
         out.append(
-            '<div class="viewcard"><div class="vh">'
+            '<details class="viewcard">'
+            '<summary class="vsum">'
             f'<span class="vt">{e(v["ticker"])} {_view_pill(v["view"])}</span>'
-            f'<span class="subs"><span class="srcdot src-{e(v.get("confidence","estimated"))}"></span>{e(v.get("confidence",""))}</span>'
-            '</div>'
-            f'<div class="vr">{e(v.get("rationale",""))}</div>'
-            + (f'<ul>{ev}</ul>' if ev else "")
-            + lock + '</div>'
+            f'<span class="conv-mini"><span class="srcdot src-{e(v.get("confidence","estimated"))}"></span>'
+            f'{conv_badge} &nbsp;&#9656;</span>'
+            '</summary>'
+            '<div class="idea-body">'
+            f'<div class="vr">{e(v.get("detail", v.get("rationale","")))}</div>'
+            + conv_tbl
+            + (f'<div class="conv-how">Why &mdash; the receipts:</div><ul>{ev}</ul>' if ev else "")
+            + _sources_row(v.get("sources", []))
+            + lock
+            + '</div></details>'
         )
     return "".join(out)
 
@@ -705,7 +792,7 @@ def _page_portfolio(scan):
     lhs.append(_view_engine_panel(scan))
     lhs.append('<div style="margin-top:1.5rem">'
                '<a href="ideas.html" style="font-size:13px;color:var(--gold);font-weight:600;text-decoration:none">'
-               'See the structured-product scan &rarr; Derivative Ideas</a></div>')
+               'Take these into the structuring desk &rarr; Derivatives Lab</a></div>')
     return "".join(lhs)
 
 
@@ -752,25 +839,124 @@ def _render_idea(i):
     )
 
 
+_SUB_DESC = {"setup": ("Setup signal", "chart vs the product"),
+             "pricing": ("Pricing edge", "IV / skew / headroom"),
+             "catalyst": ("Catalyst clarity", "event window / gating"),
+             "fit": ("Client fit", "solves a stated problem")}
+
+
+def _idea_conv_table(i):
+    rows = ""
+    for k in ("setup", "pricing", "catalyst", "fit"):
+        lab, desc = _SUB_DESC[k]
+        sc, src = i["subs"].get(k, 0), i["sub_src"].get(k, "estimated")
+        rows += (f'<tr><td class="k">{lab}</td><td class="s">{sc}/2</td>'
+                 f'<td class="w"><span class="srcdot src-{e(src)}"></span>{desc} &middot; {e(src)}</td></tr>')
+    return (f'<table class="convtbl"><tr><td class="k">Conviction</td><td class="s">{i["score"]}/8</td>'
+            f'<td class="w">setup &middot; pricing &middot; catalyst &middot; fit (0-2 each)</td></tr>{rows}</table>')
+
+
+def _idea_body(i):
+    p = []
+    if i.get("origin"):
+        p.append(f'<div class="origin">From: {e(i["origin"])}</div>')
+    badges = []
+    if i.get("tenor"):
+        badges.append(f'<span class="badge"><b>Tenor</b> {e(i["tenor"])}</span>')
+    if i.get("sizing"):
+        badges.append(f'<span class="badge"><b>Size</b> {e(i["sizing"])}</span>')
+    if badges:
+        p.append('<div class="meta-row">' + "".join(badges) + '</div>')
+    p.append(f'<div class="blk">{e(i["what_it_is"])}</div>')
+    p.append(f'<div class="blk moves"><b>What moves it:</b> {e(i["what_moves_it"])}</div>')
+    p.append('<div class="conv-how">How we arrived at the conviction score:</div>')
+    p.append(_idea_conv_table(i))
+    p.append(f'<div class="note"><b>Client fit:</b> {e(i["client_note"])}</div>')
+    if i.get("portfolio_impact"):
+        p.append(f'<div class="impact"><b>How it helps the book:</b> {e(i["portfolio_impact"])}</div>')
+    if i.get("risk"):
+        p.append(f'<div class="risk"><b>Risk:</b> {e(i["risk"])}</div>')
+    p.append(_sources_row(i.get("sources", [])))
+    tags = "".join(f'<span class="tag">{e(t)}</span>' for t in i.get("tags", []))
+    if tags:
+        p.append(f'<div class="meta-row" style="margin-top:.55rem">{tags}</div>')
+    return "".join(p)
+
+
+def _render_new_add(i):
+    tier = i["tier"].lower()
+    tickers = "".join(f'<span class="tag">{e(t)}</span>' for t in i.get("tickers", []))
+    return (
+        f'<div class="idea {tier}">'
+        '<div class="ih">'
+        f'<div class="it">{e(i["title"])}</div>'
+        f'<span class="tier {tier}">{e(i["tier"])} &middot; {i["score"]}/8</span></div>'
+        f'<div class="meta-row"><span class="rules-tag">{e(i["rules"])}</span>{tickers}</div>'
+        + _idea_body(i) + '</div>')
+
+
+def _render_enhance(i):
+    tier = i["tier"].lower()
+    tickers = "".join(f'<span class="tag">{e(t)}</span>' for t in i.get("tickers", []))
+    return (
+        '<details class="idea-d"><summary class="vsum">'
+        f'<span class="stitle">{e(i["title"])}</span>'
+        f'<span class="smeta"><span class="tier {tier}">{e(i["tier"])} &middot; {i["score"]}/8</span>'
+        '<span class="conv-mini">&#9656;</span></span></summary>'
+        '<div class="idea-body">'
+        f'<div class="meta-row"><span class="rules-tag">{e(i["rules"])}</span>{tickers}</div>'
+        + _idea_body(i) + '</div></details>')
+
+
+def _group_block(grouped, render_fn):
+    out = []
+    for gname, items in grouped:
+        out.append(f'<div class="grp"><span class="gname">{e(gname)}</span><span class="gline"></span>'
+                   f'<span class="gcount">{len(items)} idea{"s" if len(items) != 1 else ""}</span></div>')
+        out.append("".join(render_fn(i) for i in items))
+    return "".join(out)
+
+
+def _overall_summary_block(scan):
+    s = scan.get("overall_summary")
+    if not s:
+        return ""
+    pts = "".join(f'<li><span class="gchip">{e(p.get("group",""))}</span><span>{p.get("text","")}</span></li>'
+                  for p in s.get("points", []))
+    return (
+        '<div class="section-label">What we&rsquo;re suggesting &mdash; the whole book</div>'
+        '<div class="summary-box">'
+        f'<div class="sh">{e(s.get("headline",""))}</div>'
+        f'<div class="stance">{e(s.get("stance",""))}</div>'
+        f'<ul class="sumpts">{pts}</ul></div>')
+
+
 def _page_ideas(scan):
-    lhs = []
     meta = scan.get("ivol_meta", {})
-    lhs.append('<div class="section-label">Fired &middot; conviction &ge; 5/8</div>')
-    lhs.append("".join(_render_idea(i) for i in scan["fired"]))
-    if scan.get("watch"):
-        lhs.append('<div class="section-label">Watch &middot; 3&ndash;4/8 &middot; promote on a data refresh</div>')
-        lhs.append("".join(_render_idea(i) for i in scan["watch"]))
-    if scan.get("suppressed"):
-        lhs.append('<div class="section-label">Suppressed &middot; rule fired, override held</div>')
-        lhs.append("".join(_render_idea(i) for i in scan["suppressed"]))
+    fable = e(scan["client"].get("display_name", "Fable"))
+    lhs = [_overall_summary_block(scan)]
+    lhs.append('<div class="section-label" style="margin-top:1.8rem">Section 1 &middot; New Adds '
+               '&mdash; desk ideas mapped to this client</div>')
+    lhs.append(f'<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .4rem">'
+               f'New exposures drawn from the Earnings screener and the macro book, filtered to the patterns in '
+               f'{fable}&rsquo;s book &mdash; AI &amp; semis, enterprise software, large-cap quality, energy &amp; gold '
+               f'hedges, duration; comfortable with structures. Tenor floors: equity structured products &ge; 3m, '
+               f'OTC &ge; 1m, rates structured products &ge; 2y.</p>')
+    lhs.append(_group_block(scan.get("new_adds_grouped", []), _render_new_add))
+    lhs.append('<div class="section-label" style="margin-top:2.2rem">Section 2 &middot; Enhancing the existing book '
+               '&mdash; click any idea to expand</div>')
+    lhs.append('<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .4rem">'
+               'Structures on positions the client already holds &mdash; the detailed why, how we arrived at the '
+               'conviction score, and how each one helps the overall portfolio.</p>')
+    lhs.append(_group_block(scan.get("enhance_grouped", []), _render_enhance))
     lhs.append(
-        '<div class="asof" style="margin-top:1.4rem">'
-        'Conviction /8 = setup &middot; pricing &middot; catalyst &middot; client fit (0&ndash;2 each). '
-        'Green dot = sourced, gold = estimated, red = unverified. '
+        '<div class="asof" style="margin-top:1.6rem">'
+        'Conviction /8 = setup &middot; pricing &middot; catalyst &middot; client fit (0&ndash;2 each); '
+        'green dot = sourced, gold = estimated. New Adds enter post-catalyst where the Earnings desk says HOLD, so '
+        'nothing here contradicts the brief or the per-name house views. '
         f'{e(meta.get("source", meta.get("honesty","")))} '
         'Issuer credit: every note is senior unsecured paper &mdash; cap any single issuer at 20% of the structure book. '
-        'Demo book, not investment advice.</div>'
-    )
+        'Demo book, not investment advice.</div>')
     return "".join(lhs)
 
 
@@ -797,7 +983,7 @@ def render_all(brief, trades, regime_log=None, scan=None):
     if scan:
         for fname, title, lhs_html, mast in (
             ("portfolio.html", "Fable / Portfolio", _page_portfolio(scan), _portfolio_masthead(scan)),
-            ("ideas.html", "Portfolio / Derivative Ideas", _page_ideas(scan), _ideas_masthead(scan)),
+            ("ideas.html", "Portfolio / Derivatives Lab", _page_ideas(scan), _ideas_masthead(scan)),
         ):
             htmldoc = _shell(fname, title, regime, note, lhs_html, brief, masthead_html=mast)
             with open(os.path.join(HERE, fname), "w", encoding="utf-8") as f:

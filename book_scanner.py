@@ -155,11 +155,163 @@ def attach_views_and_vol(bookdata, views, ivol):
 # The idea shelf — authored per the ruleset, scored /8 (Section 7).
 # Each: tier FIRE/WATCH/SUPPRESS · subscores sum to score · sourced/estimated flags.
 # --------------------------------------------------------------------------
-def _idea(num, title, rules, tickers, score, subs, sub_src, tier, what, moves, client, tags, risk=None):
+def _idea(num, title, rules, tickers, score, subs, sub_src, tier, what, moves, client, tags, risk=None,
+          section="enhance", asset_group="Multi-asset", tenor=None, sizing=None, impact=None,
+          sources=None, origin=None):
     return {"num": num, "title": title, "rules": rules, "tickers": tickers,
             "score": score, "subs": subs, "sub_src": sub_src, "tier": tier,
             "what_it_is": what, "what_moves_it": moves, "client_note": client,
-            "tags": tags, "risk": risk}
+            "tags": tags, "risk": risk, "section": section, "asset_group": asset_group,
+            "tenor": tenor, "sizing": sizing, "portfolio_impact": impact,
+            "sources": sources or [], "origin": origin}
+
+
+# Per-idea enrichment for the 13 'enhance' ideas — asset group (for grouping),
+# tenor, sizing and the portfolio-level impact. Keyed by idea number.
+_ENHANCE_META = {
+    1:  ("Equity", "Collar through 24-Jun; SBL revolving; decumulator 6-12m post-print",
+         "Collar full $15m (26.4%); Lombard ~50% LTV on the hedged stock; decumulator notional <=50% of the position",
+         "Removes the book's single largest risk — a 26% concentration on a 10x gain — without a taxable sale, and frees Lombard liquidity to fund the other ideas.",
+         [{"name": "Goldman Sachs / UBS", "type": "sell-side"}, {"name": "JP Morgan GIS", "type": "house anchor", "note": "hedge the tail"}]),
+    2:  ("FX", "T-bill ladder <12m; forward strip 12-24m laddered",
+         "Earmark from the $3m idle USD cash; forwards on $462k/yr of payments",
+         "Converts idle USD cash into a self-funding hedge of a real EUR liability — kills the 'what does the house cost in euros' risk and ends part of the cash drag at once.",
+         [{"name": "Brent Donnelly (am/FX)", "type": "Substack/X", "note": "EUR/USD tape"}]),
+    3:  ("FX", "Seagull 3-6m",
+         "Hedge 30-50% of the ~70% net USD mismatch (~EUR10-12m notional)",
+         "Cuts translation risk on the 74% USD sleeve for a EUR-base client, sized correctly only because the mortgage liability was netted first.",
+         [{"name": "Brent Donnelly (am/FX)", "type": "Substack/X"}, {"name": "JP Morgan GIS", "type": "house anchor", "note": "hedge USD into ECB"}]),
+    4:  ("Rates", "Switch (no added tenor)",
+         "$5m nominal UST '31 -> current coupons",
+         "Turns a dead -14% duration loss into ~3x the running carry at the same credit, and banks a loss that offsets gains harvested elsewhere.",
+         [{"name": "Today's brief", "type": "in-house", "note": "CPI gates the re-entry"}]),
+    5:  ("Equity", "Range note (BREN) 3-6m",
+         "On ~EUR1.5m of the NVDA position",
+         "Monetises a flat, range-bound LIKE position for income while the macro wobble (CPI) plays out — no new directional risk.",
+         [{"name": "UBS", "type": "sell-side"}, {"name": "Citrini Research", "type": "Substack/X"}]),
+    6:  ("Cash", "T-bills <12m; cash-secured put 1-3m",
+         "Residual USD cash; CSP one tranche (~$0.5m) struck at NVDA 195",
+         "Ends the USD cash drag and gets the client paid to add a LIKE name at the level they'd buy anyway.",
+         [{"name": "UBS", "type": "sell-side", "note": "NVDA support"}]),
+    7:  ("Equity", "Buffered note 12-18m re-entry",
+         "Harvest the full EUR2.35m AVGO position",
+         "Banks ~$635k of losses to offset the tax the MU exit will create, while a buffered note keeps the exposure case alive — the harvest and the concentration trim travel together.",
+         [{"name": "Today's brief", "type": "in-house", "note": "vol crushed post-print"}]),
+    8:  ("Cash", "Deposit 3-6m; CMT range accrual 2y (re-quoted)",
+         "EUR2.4m idle EUR cash",
+         "Ends the EUR cash drag into an ECB hike; declining the mispriced 5% headline (failed headroom) and re-quoting builds more trust than selling it.",
+         [{"name": "Today's brief", "type": "in-house", "note": "CPI gates the cap"}]),
+    9:  ("Equity", "Reverse convertible 6m (FCN if coupon must be certain)",
+         "On ~EUR1-1.5m at the LVMH add level",
+         "Monetises a -32% loss by getting the client paid at the exact level they'd average down — turns a drag into income or a disciplined add.",
+         [{"name": "JP Morgan GIS", "type": "house anchor", "note": "cautious luxury"}]),
+    10: ("Equity", "Covered-call overwrite 2-3m / decumulator",
+         "On part of the AMD position",
+         "Income on, or a disciplined staged exit from, a stretched +395% winner the desk no longer loves at this valuation.",
+         [{"name": "UBS", "type": "sell-side", "note": "favours NVDA"}]),
+    11: ("Rates", "Switch (ECB-gated, post-Thursday)",
+         "EUR3m nominal Siemens '30",
+         "The EUR twin to the UST swap — harvests a duration loss and lifts carry; pairs onto the same fixed-income review call.",
+         [{"name": "Today's brief", "type": "in-house", "note": "ECB Thursday"}]),
+    12: ("Multi-asset", "Hold (no structure)",
+         "Full TTE (+64%) and gold (+100%) positions",
+         "Preserves the book's two bear-case hedges intact — the scanner suppresses the raw winner-trim because protection beats profit-take while the brief's bear case is live.",
+         [{"name": "Doomberg", "type": "Substack", "note": "energy"}, {"name": "Michael Howell", "type": "Substack/X", "note": "gold/liquidity"}]),
+    13: ("FX", "Suppressed (no structure)",
+         "n/a",
+         "Avoids a self-cancelling trade — converting EUR into USD while idea 3 hedges USD off — and surfaces the conflict for the advisor instead of silently doing both.",
+         [{"name": "Suitability layer", "type": "in-house"}]),
+}
+
+
+def _new_adds(metrics):
+    """Section 1 — NEW exposures mapped to the client's pattern (AI/semis-heavy,
+    software, large-cap quality, energy+gold hedges, US duration, comfortable with
+    structures). Sourced from the Earnings screener + the macro book. Tenor floors:
+    equity structured products >=3m, OTC >=1m, rates structured products >=2y."""
+    return [
+        _idea(101, "Oracle: 6-month capital-protected note (post-print entry)",
+              "New add - structured note", ["ORCL US"], 6,
+              {"setup": 2, "pricing": 1, "catalyst": 1, "fit": 2},
+              {"setup": "sourced", "pricing": "estimated", "catalyst": "sourced", "fit": "sourced"},
+              "FIRE",
+              "A 6-month note with full capital protection and ~70-80% upside participation on Oracle, entered "
+              "AFTER the 10-Jun print to respect the Earnings desk's 'do not pre-position' call. Diversifies the "
+              "client's AI exposure away from pure semiconductors into cloud-infrastructure / OCI - the same theme, "
+              "a different leg of the build-out.",
+              "OCI growth and capex guidance clearing the whisper (not just the estimate). Capital protection means "
+              "the print risk is carried by the structure, not the client - the trade-off is capped upside.",
+              "The client is heavily AI but entirely through hardware (MU, NVDA, AVGO, AMD). Oracle adds the "
+              "software/cloud leg of the same conviction with downside protection - exactly the profile of a "
+              "growth-with-protection client who already buys structures.",
+              ["Capital-protected note", "AI / cloud", "Post-print", "Diversify"],
+              section="new_add", asset_group="Equity", tenor="6 months (equity SP >= 3m floor)",
+              sizing="~EUR1.5m from the idle USD cash",
+              impact="Broadens the AI bet from semis-only into software, with capital protection - adds conviction exposure while *reducing* the concentration risk profile.",
+              sources=[{"name": "Earnings screener (Finnhub)", "type": "in-house", "note": "ORCL - RPO $553bn, OCI +84%"},
+                       {"name": "Citrini Research", "type": "Substack/X", "note": "AI capex build-out"},
+                       {"name": "JP Morgan GIS", "type": "house anchor", "note": "OW AI infrastructure"}],
+              origin="Earnings tab -> Oracle (Neutral into the print; this enters post-print, no contradiction)"),
+        _idea(102, "Adobe: 3-month cash-secured put at the lows (discount accumulation)",
+              "New add - OTC / accumulator", ["ADBE US"], 5,
+              {"setup": 1, "pricing": 1, "catalyst": 1, "fit": 2},
+              {"setup": "sourced", "pricing": "estimated", "catalyst": "sourced", "fit": "sourced"},
+              "FIRE",
+              "Sell a 3-month cash-secured put on Adobe struck near the 52-week low - the client is paid a premium "
+              "to commit to buy a washed-out software name at a discount, or keeps the premium if it never gets "
+              "there. Cash ring-fenced against assignment.",
+              "Whether generative-AI is additive to Adobe's ARR or a threat - the guide, not the EPS. Washed-out "
+              "sentiment (near 52wk low, split sell-side) is the asymmetry the premium is paid for.",
+              "Fits the client's enterprise-software liking (they hold SAP) and their willingness to be paid to "
+              "wait. A defined, income-generating way to start a position in a beaten-down quality name.",
+              ["Cash-secured put", "Software", "Income", "Add-at-discount"],
+              section="new_add", asset_group="Equity", tenor="3 months (OTC put, >= 1m floor)",
+              sizing="~EUR1.0m cash ring-fenced",
+              impact="Adds a second, uncorrelated software name at a discount and converts idle cash into income - diversifies the equity sleeve away from the semis cluster.",
+              sources=[{"name": "Earnings screener (Finnhub)", "type": "in-house", "note": "ADBE near 52wk low, split coverage"},
+                       {"name": "JP Morgan GIS", "type": "house anchor", "note": "European/quality software tilt"}],
+              origin="Earnings tab -> Adobe (the 'is AI a tax or tailwind for software' test)"),
+        _idea(103, "EUR rates: 2-year steepener-linked capital-protected note",
+              "New add - rates structured product", ["EUR rates"], 6,
+              {"setup": 2, "pricing": 1, "catalyst": 1, "fit": 2},
+              {"setup": "sourced", "pricing": "estimated", "catalyst": "sourced", "fit": "sourced"},
+              "FIRE",
+              "A 2-year capital-protected note that pays an enhanced coupon as the 2s10s curve steepens - the exact "
+              "view the macro desk already owns via the cash steepener (MM-2026-009, +40bp and running). Capital "
+              "protected, EUR-denominated, sized from the idle EUR cash.",
+              "The front-end finally relaxing on a cool CPI / a held dot plot, which steepens the curve. Capital "
+              "protection caps the downside if the curve flattens instead.",
+              "The client already holds duration (two bonds) and is comfortable with structures - this expresses "
+              "the house curve view in a protected, 2-year wrapper rather than another cash bond, and puts EUR "
+              "cash to work for longer than a deposit.",
+              ["Rates SP", "Steepener", "Capital-protected", "Macro-aligned"],
+              section="new_add", asset_group="Rates", tenor="2 years (rates SP >= 2y floor)",
+              sizing="~EUR1.5m from the idle EUR cash",
+              impact="Expresses the desk's highest-conviction macro view (curve steepening) inside the client's book, protected, and lengthens the duration profile the client already favours.",
+              sources=[{"name": "Macro book (MM-2026-009)", "type": "in-house", "note": "2s10s steepener, +40bp"},
+                       {"name": "Today's brief", "type": "in-house", "note": "front-end into CPI / dot plot"},
+                       {"name": "JP Morgan GIS", "type": "house anchor", "note": "neutral-to-short duration, curve bias"}],
+              origin="Trade Ideas tab -> 2s10s steepener (MM-2026-009), wrapped for the client"),
+        _idea(104, "AI-power thematic: 12-18m note on the grid / power leg",
+              "New add - thematic structured note", ["Power basket"], 4,
+              {"setup": 1, "pricing": 1, "catalyst": 0, "fit": 2},
+              {"setup": "estimated", "pricing": "estimated", "catalyst": "estimated", "fit": "sourced"},
+              "WATCH",
+              "A 12-18 month note on a power / grid / electrification basket - the 'AI needs electricity' leg of the "
+              "build-out that Citrini has pressed. It diversifies the AI conviction away from the silicon and into "
+              "the infrastructure that powers it.",
+              "Whether the data-centre power-demand story converts into earnings for the grid names. Held at Watch "
+              "because the basket and IV are not yet sourced - promote once the underliers are pinned and priced.",
+              "Lets the client keep leaning into their strongest conviction (AI) while *reducing* the semis "
+              "concentration - a different, lower-beta expression of the same theme.",
+              ["Thematic note", "AI power", "Diversify", "Watch"],
+              section="new_add", asset_group="Multi-asset", tenor="12-18 months (equity SP >= 3m floor)",
+              sizing="~EUR1.0m, sized small as a thematic starter",
+              impact="A lower-correlation way to keep adding AI conviction; explicitly diversifies away from the MU/NVDA/AVGO/AMD cluster.",
+              sources=[{"name": "Citrini Research", "type": "Substack/X", "note": "AI-power / electrification thesis"},
+                       {"name": "JP Morgan GIS", "type": "house anchor", "note": "infrastructure / capex theme"}],
+              origin="Theme -> Citrini AI-power; diversifier for the AI concentration"),
+    ]
 
 
 def build_ideas(metrics):
@@ -337,7 +489,49 @@ def build_ideas(metrics):
                "a product-push screen lacks.",
                ["Contradiction", "DCD", "Suppressed"]),
     ]
-    return ideas
+    # overlay asset group / tenor / sizing / impact / sources onto the 13 'enhance' ideas
+    for it in ideas:
+        meta = _ENHANCE_META.get(it["num"])
+        if meta:
+            it["asset_group"], it["tenor"], it["sizing"], it["portfolio_impact"], it["sources"] = meta
+    return ideas + _new_adds(metrics)
+
+
+def _overall_summary(metrics):
+    """Portfolio-level action plan — the one-screen 'what we're suggesting' that the
+    two sections then detail. Synthesis, consistency-locked to the brief + JP GIS."""
+    return {
+        "headline": ("De-risk the concentration, put the idle cash to work, keep the hedges — and add AI "
+                     "exposure through software and power, not more semiconductors."),
+        "stance": ("Aligned with the JP Morgan GIS anchor (overweight quality/AI-infrastructure, hedge the "
+                   "tail, gold as a diversifier) and today's brief regime — a ceasefire the market doesn't yet "
+                   "trust into a CPI print. Nothing below contradicts the macro view or the per-name house views."),
+        "points": [
+            {"group": "Equity", "text": f"<b>Hedge first.</b> Collar the {metrics['largest']['weight_pct']}% Micron "
+             "position before 24-Jun — the book's defining risk — and carry the book-level SPX put spread. "
+             "Hedge the concentration, don't abandon the name."},
+            {"group": "Equity", "text": "<b>Bank the losses usefully.</b> Harvest AVGO and LVMH to fund the tax "
+             "the eventual Micron exit creates; keep the exposure cases alive through buffered notes / reverse "
+             "convertibles."},
+            {"group": "Rates", "text": "<b>Make the bonds work.</b> Swap both underwater bonds into current "
+             "coupons — the loss is already taken, the carry roughly triples at the same credit. CPI and ECB are "
+             "the timing gates."},
+            {"group": "Cash", "text": f"<b>End the cash drag.</b> {metrics['cash_pct']}% idle "
+             f"({_eurm_plain(metrics['cash_eur'])}) → a T-bill ladder against the USD mortgage, an EUR deposit "
+             "campaign, and a cash-secured NVDA put at support."},
+            {"group": "FX", "text": f"<b>Hedge the currency.</b> {metrics['usd_pct']}% USD on a EUR base → "
+             "seagull the residual mismatch after Thursday's ECB, sized off the liability-netted exposure."},
+            {"group": "Multi-asset", "text": "<b>Keep the hedges.</b> TotalEnergies and gold are the bear-case "
+             "insurance while Brent holds $93 — do not trim (Doomberg / Howell aligned)."},
+            {"group": "Equity", "text": "<b>Add selectively.</b> Diversify the AI bet into software (Oracle note, "
+             "Adobe accumulator) and the power leg, and express the curve view via a 2y rates note — new risk only "
+             "where it *reduces* the semiconductor concentration."},
+        ],
+    }
+
+
+def _eurm_plain(n):
+    return f"EUR{n/1e6:.1f}m"
 
 
 # --------------------------------------------------------------------------
@@ -359,6 +553,18 @@ def build_scan(brief=None):
     watch = [i for i in ideas if i["tier"] == "WATCH"]
     suppressed = [i for i in ideas if i["tier"] == "SUPPRESS"]
 
+    # Section split + asset-class grouping for the Derivatives Lab
+    new_adds = [i for i in ideas if i["section"] == "new_add"]
+    enhance  = [i for i in ideas if i["section"] == "enhance"]
+    order = ["Equity", "FX", "Rates", "Cash", "Multi-asset"]
+    def group(items):
+        g = {}
+        for i in items:
+            g.setdefault(i.get("asset_group", "Multi-asset"), []).append(i)
+        return [(k, g[k]) for k in order if k in g] + [(k, v) for k, v in g.items() if k not in order]
+    new_adds_grouped = group(new_adds)
+    enhance_grouped  = group(enhance)
+
     client = dict(bookdata.get("client", {}))
     client["display_name"] = CLIENT_DISPLAY
 
@@ -372,7 +578,11 @@ def build_scan(brief=None):
         "views_meta": views.get("_meta", {}),
         "ideas": ideas,
         "fired": fired, "watch": watch, "suppressed": suppressed,
-        "counts": {"fired": len(fired), "watch": len(watch), "suppressed": len(suppressed)},
+        "new_adds": new_adds, "enhance": enhance,
+        "new_adds_grouped": new_adds_grouped, "enhance_grouped": enhance_grouped,
+        "overall_summary": _overall_summary(metrics),
+        "counts": {"fired": len(fired), "watch": len(watch), "suppressed": len(suppressed),
+                   "new_adds": len(new_adds), "enhance": len(enhance)},
         "refresh_notes": refresh_notes,
         "ivol_meta": ivol.get("_meta", {}),
         "as_of": client.get("as_of", TODAY),

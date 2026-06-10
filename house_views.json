@@ -1,100 +1,219 @@
 {
   "_meta": {
-    "engine": "House View Engine · Ruleset v2 (0a)",
+    "engine": "House View Engine - Ruleset v2 (0a)",
     "formed_session": "2026-06-09",
-    "note": "Claude forms its own view per name with web/brief evidence; >=2 evidence items required or the view is capped at NEUTRAL/estimated. View drives the structure ladder. Consistency-locked to the morning brief's scenario table (live bear case: AI de-rating).",
-    "stale_after": "2026-06-16"
+    "note": "Claude forms its own view per name with web/brief evidence, scores conviction /10 on a fixed rubric, and shows its work. >=2 evidence items or the view caps at NEUTRAL/estimated. Views are consistency-locked to the morning brief's regime (live bear case: AI de-rating) and sanity-checked against the JP Morgan GIS house anchor plus named author inputs.",
+    "stale_after": "2026-06-16",
+    "conviction_rubric": "Conviction /10 = Evidence (/3) + House alignment vs JP GIS & named authors & sell-side (/3) + Regime fit vs the brief (/2) + Valuation & risk balance (/2).",
+    "macro_anchors": {
+      "jp_gis": "JP Morgan Global Investment Strategy (mid-2026 read): overweight equities with a quality / AI-infrastructure tilt; neutral-to-short duration into sticky inflation and a still-priced year-end hike; gold as a structural diversifier; selectively cautious on consumer luxury. Used as the institutional anchor every per-name view is checked against.",
+      "authors": [
+        {"name": "Citrini Research", "platform": "Substack / X", "beat": "AI capex, power and semis - structurally constructive on the build-out, watchful on the marginal-ROI tell"},
+        {"name": "Doomberg", "platform": "Substack", "beat": "Energy & commodities - supply-side framing of oil and gas"},
+        {"name": "Michael Howell (CrossBorder Capital)", "platform": "Substack / X", "beat": "Global liquidity and gold as the liquidity hedge"},
+        {"name": "Brent Donnelly (am/FX)", "platform": "Substack / X", "beat": "FX, positioning and the EUR/USD tape"}
+      ],
+      "disclaimer": "Author references are thematic characterisations of these analysts' publicly known beats for this internal demo - not direct quotes, holdings, or current calls. JP GIS framing is illustrative."
+    }
   },
   "views": [
     {
-      "ticker": "MU US", "view": "LIKE", "confidence": "sourced",
-      "rationale": "Memory supercycle intact; rich options premium into the 24-Jun print makes the concentration hedge cheap to put on, not a reason to abandon the name.",
+      "ticker": "MU US", "view": "LIKE", "confidence": "sourced", "conviction": 7,
+      "conv_breakdown": [
+        {"k": "Evidence", "v": 3, "max": 3, "why": "GS PT doubled to $900; UBS pricing-driven beat flag; a 2x-short MU ETF just launched - three recent, sourced data points."},
+        {"k": "House alignment", "v": 2, "max": 3, "why": "JP GIS overweight AI infrastructure and Citrini's memory/HBM thesis both support the name; sell-side skews bullish. Docked one for how crowded the long is."},
+        {"k": "Regime fit", "v": 1, "max": 2, "why": "The brief's live bear case is an AI de-rating - the view holds but the regime is not a tailwind, so the conviction is in the name, not the tape."},
+        {"k": "Valuation & risk", "v": 1, "max": 2, "why": "A 10x gain into a binary print at a rich multiple: the upside is real but the risk is concentration, which is why the recommendation is to hedge, not add."}
+      ],
+      "rationale": "Memory supercycle intact; rich premium into the 24-Jun print makes the concentration hedge cheap to put on, not a reason to abandon the name.",
+      "detail": "Micron is the book's defining position and the cleanest expression of the HBM / AI-memory supercycle. The bull case is supply discipline meeting AI-driven demand: HBM is sold out, pricing is the swing factor, and Goldman doubling its target to $900 plus UBS flagging a pricing-led guidance beat say the sell-side sees the same thing. The honest counterweight is that this is now a consensus long at a rich multiple into a binary earnings print, with a 2x-short ETF newly launched - positioning is one-sided. So the view is LIKE the franchise, but the action is to hedge the 26% concentration through the print (collar funded by the rich call premium), not to chase. We do not contradict the brief's AI-de-rating bear case; we respect it by hedging.",
       "evidence": [
         "GS price target doubled to $900 ahead of the 24-Jun earnings print",
-        "UBS flags pricing-driven guidance-beat potential; a 2x-short MU ETF just launched, lifting listed options premium",
-        "HBM / AI-memory supercycle narrative still the dominant driver"
+        "UBS flags pricing-driven guidance-beat potential",
+        "A 2x-short MU ETF just launched - lifting listed options premium (the hedge funder)"
+      ],
+      "sources": [
+        {"name": "Goldman Sachs", "type": "sell-side", "note": "PT $900"},
+        {"name": "UBS", "type": "sell-side", "note": "pricing-driven beat flag"},
+        {"name": "Citrini Research", "type": "Substack/X", "note": "AI memory / HBM build-out thesis"},
+        {"name": "JP Morgan GIS", "type": "house anchor", "note": "OW AI infrastructure"}
       ],
       "brief_consistency": "AI de-rating is the live bear case in today's brief. LIKE is held, but hedging a 26% concentration is position management, not a view contradiction.",
       "formed": "2026-06-09", "stale_after": "2026-06-16"
     },
     {
-      "ticker": "NVDA US", "view": "LIKE", "confidence": "sourced",
-      "rationale": "Consolidating, not deteriorating; the competitive moat versus AMD is intact and the January de-rate was rates-driven, not franchise-driven.",
+      "ticker": "NVDA US", "view": "LIKE", "confidence": "sourced", "conviction": 7,
+      "conv_breakdown": [
+        {"k": "Evidence", "v": 2, "max": 3, "why": "UBS gap-to-AMD note + the orderly 195-235 consolidation; solid but not a fresh hard catalyst."},
+        {"k": "House alignment", "v": 3, "max": 3, "why": "JP GIS AI-infrastructure OW, Citrini's capex thesis and sell-side all line up behind the name."},
+        {"k": "Regime fit", "v": 1, "max": 2, "why": "Same AI-de-rating bear case applies; the consolidation is constructive but rate-sensitive into CPI."},
+        {"k": "Valuation & risk", "v": 1, "max": 2, "why": "Rich, but the January de-rate already took some air out; a defined add-level (195) exists."}
+      ],
+      "rationale": "Consolidating, not deteriorating; the moat versus AMD is intact and the January de-rate was rates-driven, not franchise-driven.",
+      "detail": "Nvidia is a LIKE the desk would add to lower, not chase higher. The franchise read is unchanged - UBS still frames the performance gap to AMD as wide, Citrini's capex thesis still points at Nvidia as the toll-road of the build-out - and the price action since March is an orderly 195-235 range, not a breakdown. The risk is macro, not company: a hot CPI or a weak Oracle re-arms the rate-driven de-rating that hit the stock in January. That is why the structures we like here are add-at-support (a cash-secured put struck at 195) or get-paid-to-wait (a range note), rather than outright buying strength.",
       "evidence": [
         "UBS: the performance gap to AMD 'remains wide'",
-        "Holding the 195-235 range since March - orderly consolidation, not a downtrend",
+        "Holding the 195-235 range since March - orderly consolidation",
         "Huang / Computex product momentum intact"
       ],
-      "brief_consistency": "LIKE unlocks the add-intent shelf (BREN / cash-secured puts at 195 support). The brief's CPI/Oracle bear case is acknowledged in every NVDA structure as the macro wobble.",
+      "sources": [
+        {"name": "UBS", "type": "sell-side", "note": "gap-to-AMD wide"},
+        {"name": "Citrini Research", "type": "Substack/X", "note": "AI capex toll-road thesis"},
+        {"name": "JP Morgan GIS", "type": "house anchor", "note": "OW AI infrastructure"}
+      ],
+      "brief_consistency": "LIKE unlocks the add-intent shelf (range note / CSP at 195). The brief's CPI/Oracle bear case is acknowledged in every NVDA structure as the macro wobble.",
       "formed": "2026-06-09", "stale_after": "2026-06-16"
     },
     {
-      "ticker": "AVGO US", "view": "NEUTRAL", "confidence": "sourced",
+      "ticker": "AVGO US", "view": "NEUTRAL", "confidence": "sourced", "conviction": 6,
+      "conv_breakdown": [
+        {"k": "Evidence", "v": 2, "max": 3, "why": "The whisper-miss and the ~20% de-rate are observed facts; what's missing is evidence the guide bar resets."},
+        {"k": "House alignment", "v": 2, "max": 3, "why": "Sell-side is split post-print; JP GIS still likes AI infra but the name-specific signal is weak."},
+        {"k": "Regime fit", "v": 1, "max": 2, "why": "Exactly the 'hedged for a miss, not a growth-rate disappointment' tell the brief names."},
+        {"k": "Valuation & risk", "v": 1, "max": 2, "why": "Cheaper after the de-rate but no catalyst to re-rate - a NEUTRAL hold, harvest the loss."}
+      ],
       "rationale": "Cleared the estimate but missed the whisper; the de-rate is multiple-driven and the guide bar has not visibly reset.",
+      "detail": "Broadcom is the cautionary tale of the cohort: a quarter that beat the printed number, missed the buy-side whisper, and lost a fifth of its value because the multiple was priced for perfection. The view is NEUTRAL with conviction - not because the franchise is broken, but because there is no near-term catalyst to re-rate it and the position is sitting on a 21% loss. That combination points to the harvest lane: bank the tax loss, keep the exposure case alive through a buffered note, and sell the vol via a reverse convertible once front-month IV rebuilds (it is crushed post-print). Upgrades to LIKE only on evidence the forward guide resets.",
       "evidence": [
         "Q2 cleared consensus EPS but missed the buy-side whisper on the Q3 AI guide",
-        "Stock de-rated ~20% post-print; the move is valuation, not a broken franchise",
-        "Await evidence the forward guide bar resets before re-rating to LIKE"
+        "Stock de-rated ~20% post-print - the move is valuation, not a broken franchise",
+        "No near-term catalyst to reset the guide bar"
       ],
-      "brief_consistency": "NEUTRAL closes the accumulation path and opens the harvest lane (L6). Consistent with the brief's 'AI hedged for a miss, not a growth-rate disappointment' tell.",
+      "sources": [
+        {"name": "Sell-side consensus", "type": "sell-side", "note": "split post-print"},
+        {"name": "JP Morgan GIS", "type": "house anchor", "note": "AI infra OW, name-neutral"},
+        {"name": "Today's brief", "type": "in-house", "note": "AI hedged-for-a-miss tell"}
+      ],
+      "brief_consistency": "NEUTRAL closes the accumulation path and opens the harvest lane (L6). Consistent with the brief's 'hedged for a miss, not a growth-rate disappointment' tell.",
       "formed": "2026-06-09", "stale_after": "2026-06-16"
     },
     {
-      "ticker": "AMD US", "view": "NEUTRAL", "confidence": "estimated",
+      "ticker": "AMD US", "view": "NEUTRAL", "confidence": "estimated", "conviction": 5,
+      "conv_breakdown": [
+        {"k": "Evidence", "v": 1, "max": 3, "why": "Mainly the +395% run and a competitive read; thin fresh, name-specific evidence."},
+        {"k": "House alignment", "v": 1, "max": 3, "why": "UBS competitive read favours NVDA; no strong house support for adding AMD here."},
+        {"k": "Regime fit", "v": 1, "max": 2, "why": "Same AI-de-rating risk; a big winner with little cushion if the cohort wobbles."},
+        {"k": "Valuation & risk", "v": 2, "max": 2, "why": "Valuation stretched after a 4x - the risk balance squarely supports the cautious NEUTRAL."}
+      ],
       "rationale": "A +395% run leaves valuation stretched versus the competitive read; insufficient fresh evidence to upgrade to LIKE.",
+      "detail": "AMD is a NEUTRAL that leans toward taking some chips off the table. It has been a 4x winner, but the desk's competitive read still puts Nvidia ahead on the AI gap, and there is no fresh, name-specific catalyst to justify adding at a stretched multiple. NEUTRAL allows income or staged-exit structures - a covered-call overwrite, or a decumulator that sells above market - but not accumulation. The reason it sits at Watch rather than Fire is honesty about the data: the IV percentile is realized-vol-proxied today, not a sourced option rank, so we hold the structure until the vol read is firmer.",
       "evidence": [
         "Position +395% from the Oct-2023 entry - valuation extended",
         "UBS competitive read still favours NVDA on the AI gap"
       ],
-      "brief_consistency": "NEUTRAL allows income / staged-exit structures (overwrite, decumulator) but not accumulation. IV percentile unverified -> idea held at Watch until sourced.",
+      "sources": [
+        {"name": "UBS", "type": "sell-side", "note": "competitive read favours NVDA"},
+        {"name": "Valuation discipline", "type": "in-house", "note": "stretched after +395%"}
+      ],
+      "brief_consistency": "NEUTRAL allows income / staged-exit structures (overwrite, decumulator) but not accumulation.",
       "formed": "2026-06-09", "stale_after": "2026-06-16"
     },
     {
-      "ticker": "MC FP", "view": "NEUTRAL", "confidence": "estimated",
-      "rationale": "Luxury demand soft and the live mark refreshed materially below the indicative level; monetise the wait rather than add, pending a price/IV refresh.",
+      "ticker": "MC FP", "view": "NEUTRAL", "confidence": "estimated", "conviction": 5,
+      "conv_breakdown": [
+        {"k": "Evidence", "v": 1, "max": 3, "why": "Soft luxury demand + a live mark well below the indicative; light hard evidence."},
+        {"k": "House alignment", "v": 2, "max": 3, "why": "JP GIS is selectively cautious on consumer luxury - the house leans the same way."},
+        {"k": "Regime fit", "v": 1, "max": 2, "why": "Not a regime name; idiosyncratic demand story rather than macro-driven."},
+        {"k": "Valuation & risk", "v": 1, "max": 2, "why": "A 32% loss; cheap on paper but no demand catalyst - monetise the wait, don't add blind."}
+      ],
+      "rationale": "Luxury demand soft and the live mark refreshed materially below the indicative; monetise the wait rather than add, pending a price/IV refresh.",
+      "detail": "LVMH is the book's problem child outside tech: a -32% position (the live refresh deepened the loss well below the book's indicative mark) in a sector JP GIS is cautious on. The view is NEUTRAL - not yet AVOID, because the franchise and the brand portfolio are intact and a 10%-lower entry is plausibly attractive to a long-term holder. The structure that fits is a reverse convertible struck where the client would average down anyway: steep luxury put skew fattens the coupon, so they get paid to wait at their buy level. If a price/IV refresh or a demand downgrade tips the view to AVOID, it converts cleanly to a harvest-and-rotate.",
       "evidence": [
         "Luxury end-demand soft into H2-2026",
         "Live mark refreshed to ~EUR492 versus an indicative EUR580 - a deeper loss than the book showed"
       ],
-      "brief_consistency": "NEUTRAL -> reverse convertible at the buy-more level, or harvest. A downgrade to AVOID on a price/IV refresh converts the idea to a clean harvest.",
+      "sources": [
+        {"name": "JP Morgan GIS", "type": "house anchor", "note": "cautious consumer luxury"},
+        {"name": "Live mark (TradingView)", "type": "in-house", "note": "refresh deepened the loss"}
+      ],
+      "brief_consistency": "NEUTRAL -> reverse convertible at the buy-more level, or harvest. A downgrade to AVOID on a refresh converts the idea to a clean harvest.",
       "formed": "2026-06-09", "stale_after": "2026-06-16"
     },
     {
-      "ticker": "SAP GY", "view": "LIKE", "confidence": "estimated",
-      "rationale": "European software compounder with an AI-cloud tailwind; a winner to overwrite for income, not to chase, with the live mark a smaller gain than the book's indicative.",
+      "ticker": "SAP GY", "view": "LIKE", "confidence": "estimated", "conviction": 6,
+      "conv_breakdown": [
+        {"k": "Evidence", "v": 1, "max": 3, "why": "Structural FCF/cloud story is sound but the supporting points are thematic, not fresh catalysts."},
+        {"k": "House alignment", "v": 2, "max": 3, "why": "JP GIS European-quality tilt supports it; sell-side constructive on the cloud transition."},
+        {"k": "Regime fit", "v": 2, "max": 2, "why": "A non-US, AI-adjacent quality compounder is a useful diversifier away from the US-tech concentration."},
+        {"k": "Valuation & risk", "v": 1, "max": 2, "why": "Realized vol has risen (44% proxy) and the live mark is a smaller winner than the book showed - rich, so overwrite not add."}
+      ],
+      "rationale": "European software compounder with an AI-cloud tailwind; a winner to overwrite for income, not to chase.",
+      "detail": "SAP is the book's one genuinely diversifying quality long - European, software, AI-adjacent (Joule / RISE cloud migration), and not correlated one-for-one with the US semis cluster. The view is LIKE, but the live mark is a smaller gain than the book's indicative and 3-month realized vol has risen to ~44%, so the action is income, not accumulation: a covered-call overwrite struck above resistance harvests that elevated vol while the client keeps the position. It also pairs naturally with Nvidia for an AI relative-value conversation if the client wants to express software-over-hardware.",
       "evidence": [
         "Structural FCF compounder; Joule / cloud-AI monetisation building",
-        "Live mark refreshed below the indicative level - still a winner, smaller cushion"
+        "Live mark refreshed below the indicative - still a winner, smaller cushion",
+        "Realized 3m vol ~44% (sourced) - overwrite-friendly"
+      ],
+      "sources": [
+        {"name": "JP Morgan GIS", "type": "house anchor", "note": "European quality tilt"},
+        {"name": "Sell-side consensus", "type": "sell-side", "note": "constructive on cloud transition"}
       ],
       "brief_consistency": "LIKE but rich-valuation -> covered-call overwrite (W1) only, no accumulation. Pairs with NVDA for the AI RV conversation.",
       "formed": "2026-06-09", "stale_after": "2026-06-16"
     },
     {
-      "ticker": "TTE FP", "view": "LIKE-as-hedge", "confidence": "sourced",
+      "ticker": "TTE FP", "view": "LIKE-as-hedge", "confidence": "sourced", "conviction": 7,
+      "conv_breakdown": [
+        {"k": "Evidence", "v": 2, "max": 3, "why": "Brent holding ~$93 and TTE's 91st-percentile realized vol both confirm the energy-risk premium is live."},
+        {"k": "House alignment", "v": 2, "max": 3, "why": "Doomberg's supply-side energy framing + JP GIS treating energy/gold as inflation hedges back the hold."},
+        {"k": "Regime fit", "v": 2, "max": 2, "why": "Direct hedge to the brief's live bear case (truce breaks, oil to $100) - exactly the regime role wanted."},
+        {"k": "Valuation & risk", "v": 1, "max": 2, "why": "A +64% winner; the raw rule says trim, but its hedge value outweighs the profit-take here."}
+      ],
       "rationale": "The book's energy / geopolitical hedge while Brent holds its war premium; protective, not a position to trim into the truce.",
+      "detail": "TotalEnergies is not a trade, it is the book's insurance. With Brent holding ~$93 - the ceasefire took barely a dollar off the war premium - the energy-risk story is exactly the bear scenario the brief is most worried about, and TTE is the hedge against it (alongside gold). Its own realized vol sitting at the 91st percentile of the year confirms the market is pricing that risk. So even though the position is a +64% winner and the raw winner-rule would flag a trim or overwrite, the scanner suppresses that: you do not sell the fire insurance while the building is still smoking. Doomberg's supply-side framing and JP GIS's treatment of energy as an inflation hedge both point the same way.",
       "evidence": [
         "Brent holding ~$93 - the war premium did not leave on the ceasefire headline (today's brief)",
-        "Behaves as the book's energy hedge in the bear scenario (truce breaks, oil to $100)"
+        "TTE realized 3m vol at the 91st percentile of its own year (sourced)",
+        "Behaves as the book's energy hedge in the bear scenario (oil to $100)"
       ],
-      "brief_consistency": "Recognised hedge (W2) for the brief's live bear case -> winner-trim rules are suppressed. The scanner never contradicts the morning brief.",
+      "sources": [
+        {"name": "Doomberg", "type": "Substack", "note": "supply-side energy framing"},
+        {"name": "JP Morgan GIS", "type": "house anchor", "note": "energy as inflation hedge"},
+        {"name": "Today's brief", "type": "in-house", "note": "Brent holding the premium"}
+      ],
+      "brief_consistency": "Recognised hedge (W2) for the brief's live bear case -> winner-trim rules suppressed. The scanner never contradicts the morning brief.",
       "formed": "2026-06-09", "stale_after": "2026-06-16"
     },
     {
-      "ticker": "4GLD GY", "view": "LIKE-as-hedge", "confidence": "sourced",
+      "ticker": "4GLD GY", "view": "LIKE-as-hedge", "confidence": "sourced", "conviction": 8,
+      "conv_breakdown": [
+        {"k": "Evidence", "v": 2, "max": 3, "why": "Gold ~$4,344 firm and decoupled from oil, trading real rates into the FOMC (today's brief)."},
+        {"k": "House alignment", "v": 3, "max": 3, "why": "Michael Howell's liquidity-hedge thesis and JP GIS's structural-diversifier stance both strongly endorse the hold."},
+        {"k": "Regime fit", "v": 2, "max": 2, "why": "The cleanest two-tailed hedge: wins on a rate-cut path and on geopolitical re-escalation."},
+        {"k": "Valuation & risk", "v": 1, "max": 2, "why": "A +100% winner; rich after the run, but its convexity to both tails justifies holding the full position."}
+      ],
       "rationale": "The book's tail hedge if the truce breaks; back to trading real rates and decoupled from oil - hold through the dot plot, do not take profit.",
+      "detail": "Gold is the highest-conviction view in the book precisely because it is the lowest-conviction directional bet - it is held as structural insurance, and on that basis the case is strong. It has doubled, it is decoupled from oil (so it is trading real rates and liquidity, not the war), and it owns both of the brief's tails: it rallies if the front-end finally relaxes on a cool CPI, and it rallies if the ceasefire breaks. Michael Howell's global-liquidity work frames gold as the cleanest hedge against the liquidity cycle, and JP GIS holds it as a structural diversifier - both endorse carrying it through the FOMC. The raw +100% winner-rule is overridden: this is the hedge, not profit to harvest.",
       "evidence": [
         "Gold ~$4,344, firm and decoupled from oil - trading real rates into the FOMC (today's brief)",
-        "Wins on both MoU tails: rate-cut path and geopolitical re-escalation"
+        "Wins on both tails: rate-cut path and geopolitical re-escalation",
+        "Realized 3m vol mid-range (sourced) - calm, doing its job"
       ],
-      "brief_consistency": "Recognised tail hedge (W2). +109% winner-rule fires on the raw numbers; brief-consistency overrides -> no trim flag.",
+      "sources": [
+        {"name": "Michael Howell (CrossBorder Capital)", "type": "Substack/X", "note": "gold as the liquidity hedge"},
+        {"name": "JP Morgan GIS", "type": "house anchor", "note": "structural diversifier"},
+        {"name": "Today's brief", "type": "in-house", "note": "decoupled, two-tailed"}
+      ],
+      "brief_consistency": "Recognised tail hedge (W2). +100% winner-rule fires on the raw numbers; brief-consistency overrides -> no trim flag.",
       "formed": "2026-06-09", "stale_after": "2026-06-16"
     },
     {
-      "ticker": "SPY US", "view": "NEUTRAL", "confidence": "sourced",
+      "ticker": "SPY US", "view": "NEUTRAL", "confidence": "sourced", "conviction": 6,
+      "conv_breakdown": [
+        {"k": "Evidence", "v": 2, "max": 3, "why": "Long-term lot, low-cost core - the facts are clear, it is the beta anchor."},
+        {"k": "House alignment", "v": 2, "max": 3, "why": "JP GIS is OW equities, but at the index level the book already has ample (concentrated) beta."},
+        {"k": "Regime fit", "v": 1, "max": 2, "why": "The book-level hedge against the brief's tail is the SPX put spread, not a single-name view."},
+        {"k": "Valuation & risk", "v": 1, "max": 2, "why": "Favourable tax lot; the risk is that the book's beta is already heavily concentrated in US tech."}
+      ],
       "rationale": "Core beta anchor opened with the account; the long-term lot and index-hedge underlier, not a trade.",
+      "detail": "The S&P position is the book's beta anchor - a low-cost 2021 lot with favourable tax treatment - and the view is a deliberate NEUTRAL. JP GIS is overweight equities, but this book already carries plenty of equity beta, most of it concentrated in US semis, so adding index risk is not the need; managing the concentration and the tail is. SPY's real role here is as the underlier for the book-level hedge - the brief's SPX put spread expresses the macro tail at the portfolio level, which is cleaner than hedging each single name.",
       "evidence": [
         "Long-term lot from 2021 - favourable tax treatment, the book's beta anchor",
         "Candidate underlier for any index-level overlay hedge"
+      ],
+      "sources": [
+        {"name": "JP Morgan GIS", "type": "house anchor", "note": "OW equities, but book already long beta"},
+        {"name": "Today's brief", "type": "in-house", "note": "SPX put spread is the book-level tail hedge"}
       ],
       "brief_consistency": "NEUTRAL beta. The defined-risk index hedge in today's brief (SPX put spread) is the book-level expression, not a single-name view.",
       "formed": "2026-06-09", "stale_after": "2026-06-16"
