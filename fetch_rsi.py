@@ -419,7 +419,93 @@ def fetch_all_ideas(idea_keys=None):
 # Cross-asset RSI SCREENER — curated ~50-name universe
 # --------------------------------------------------------------------------
 # (yahoo_ticker, display_name, sector, region). Edit here to change the universe.
+# Broad, liquid cross-asset universe (~140 names) — large/mid-cap, no micro/niche.
 SCREEN_UNIVERSE = [
+    # === US semiconductors & semicap ===
+    ("NVDA","NVIDIA","Semiconductors","US"), ("AMD","Adv. Micro Devices","Semiconductors","US"),
+    ("AVGO","Broadcom","Semiconductors","US"), ("MU","Micron","Semiconductors","US"),
+    ("INTC","Intel","Semiconductors","US"), ("QCOM","Qualcomm","Semiconductors","US"),
+    ("TXN","Texas Instruments","Semiconductors","US"), ("ADI","Analog Devices","Semiconductors","US"),
+    ("MRVL","Marvell","Semiconductors","US"), ("NXPI","NXP","Semiconductors","US"),
+    ("MCHP","Microchip","Semiconductors","US"), ("ON","ON Semi","Semiconductors","US"),
+    ("ARM","Arm Holdings","Semiconductors","US"), ("SWKS","Skyworks","Semiconductors","US"),
+    ("AMAT","Applied Materials","Semicap","US"), ("LRCX","Lam Research","Semicap","US"),
+    ("KLAC","KLA Corp","Semicap","US"), ("TER","Teradyne","Semicap","US"),
+    ("ONTO","Onto Innovation","Semicap","US"), ("ACLS","Axcelis","Semicap","US"),
+    ("TSM","TSMC (ADR)","Semiconductors","Asia"),
+    # === AI optical / connectivity / infra ===
+    ("LITE","Lumentum","AI optical","US"), ("COHR","Coherent","AI optical","US"),
+    ("AXTI","AXT Inc","AI optical","US"), ("ALAB","Astera Labs","AI connectivity","US"),
+    ("CRDO","Credo Technology","AI connectivity","US"), ("SITM","SiTime","AI connectivity","US"),
+    ("ANET","Arista Networks","AI networking","US"), ("CSCO","Cisco","Networking","US"),
+    ("SMCI","Super Micro","AI servers","US"), ("DELL","Dell","AI servers","US"),
+    ("VRT","Vertiv","AI power/cooling","US"), ("ETN","Eaton","AI power","US"),
+    # === US software / internet ===
+    ("AAPL","Apple","Tech hardware","US"), ("MSFT","Microsoft","Software","US"),
+    ("GOOGL","Alphabet","Internet","US"), ("AMZN","Amazon","Internet","US"),
+    ("META","Meta Platforms","Internet","US"), ("ORCL","Oracle","Software","US"),
+    ("ADBE","Adobe","Software","US"), ("CRM","Salesforce","Software","US"),
+    ("NOW","ServiceNow","Software","US"), ("INTU","Intuit","Software","US"),
+    ("PANW","Palo Alto","Cybersecurity","US"), ("CRWD","CrowdStrike","Cybersecurity","US"),
+    ("SNOW","Snowflake","Software","US"), ("PLTR","Palantir","Software","US"),
+    ("NFLX","Netflix","Media","US"), ("UBER","Uber","Internet","US"),
+    ("SHOP","Shopify","Internet","US"),
+    # === US financials ===
+    ("JPM","JPMorgan","Financials","US"), ("BAC","Bank of America","Financials","US"),
+    ("WFC","Wells Fargo","Financials","US"), ("GS","Goldman Sachs","Financials","US"),
+    ("MS","Morgan Stanley","Financials","US"), ("C","Citigroup","Financials","US"),
+    ("SCHW","Schwab","Financials","US"), ("BLK","BlackRock","Financials","US"),
+    ("AXP","American Express","Financials","US"), ("V","Visa","Payments","US"),
+    ("MA","Mastercard","Payments","US"), ("PYPL","PayPal","Payments","US"),
+    # === US healthcare ===
+    ("LLY","Eli Lilly","Healthcare","US"), ("UNH","UnitedHealth","Healthcare","US"),
+    ("JNJ","Johnson & Johnson","Healthcare","US"), ("MRK","Merck","Healthcare","US"),
+    ("ABBV","AbbVie","Healthcare","US"), ("PFE","Pfizer","Healthcare","US"),
+    ("TMO","Thermo Fisher","Healthcare","US"), ("ISRG","Intuitive Surgical","Healthcare","US"),
+    ("AMGN","Amgen","Healthcare","US"),
+    # === US industrials / energy / materials ===
+    ("CAT","Caterpillar","Industrials","US"), ("BA","Boeing","Industrials","US"),
+    ("GE","GE Aerospace","Industrials","US"), ("HON","Honeywell","Industrials","US"),
+    ("DE","Deere","Industrials","US"), ("UNP","Union Pacific","Industrials","US"),
+    ("LMT","Lockheed Martin","Defense","US"), ("RTX","RTX","Defense","US"),
+    ("XOM","Exxon Mobil","Energy","US"), ("CVX","Chevron","Energy","US"),
+    ("COP","ConocoPhillips","Energy","US"), ("SLB","Schlumberger","Energy","US"),
+    ("FCX","Freeport-McMoRan","Materials","US"), ("LIN","Linde","Materials","US"),
+    # === US consumer / comms / utilities ===
+    ("WMT","Walmart","Consumer","US"), ("COST","Costco","Consumer","US"),
+    ("MCD","McDonald's","Consumer","US"), ("NKE","Nike","Consumer","US"),
+    ("SBUX","Starbucks","Consumer","US"), ("HD","Home Depot","Consumer","US"),
+    ("PG","Procter & Gamble","Consumer","US"), ("KO","Coca-Cola","Consumer","US"),
+    ("PEP","PepsiCo","Consumer","US"), ("DIS","Disney","Media","US"),
+    ("TSLA","Tesla","Autos","US"), ("T","AT&T","Comms","US"),
+    ("VZ","Verizon","Comms","US"), ("NEE","NextEra Energy","Utilities","US"),
+    ("DUK","Duke Energy","Utilities","US"),
+    # === cross-asset ETFs ===
+    ("SPY","S&P 500 ETF","US equity","US"), ("QQQ","Nasdaq 100 ETF","US tech","US"),
+    ("DIA","Dow ETF","US equity","US"), ("IWM","Russell 2000 ETF","US small-cap","US"),
+    ("SMH","Semis ETF","Semiconductors","US"), ("SOXX","Semis ETF","Semiconductors","US"),
+    ("XLF","Financials ETF","Financials","US"), ("XLE","Energy ETF","Energy","US"),
+    ("XLK","Tech ETF","US tech","US"), ("XLV","Healthcare ETF","Healthcare","US"),
+    ("XLI","Industrials ETF","Industrials","US"), ("GLD","Gold ETF","Commodity","Global"),
+    ("SLV","Silver ETF","Commodity","Global"), ("TLT","20y+ Treasury ETF","Rates","US"),
+    ("HYG","HY Credit ETF","Credit","US"), ("EEM","EM Equity ETF","EM","Global"),
+    ("EFA","EAFE Equity ETF","Intl","Global"),
+    # === Europe / UK ===
+    ("SAP.DE","SAP","Software","Europe"), ("ASML","ASML (ADR)","Semiconductors","Europe"),
+    ("MC.PA","LVMH","Luxury","Europe"), ("SIE.DE","Siemens","Industrials","Europe"),
+    ("OR.PA","L'Oreal","Consumer","Europe"), ("AIR.PA","Airbus","Industrials","Europe"),
+    ("SHEL","Shell (ADR)","Energy","UK"), ("BP","BP (ADR)","Energy","UK"),
+    ("AZN","AstraZeneca (ADR)","Healthcare","UK"), ("HSBC","HSBC (ADR)","Financials","UK"),
+    ("NVO","Novo Nordisk (ADR)","Healthcare","Europe"), ("NSRGY","Nestle (ADR)","Consumer","Europe"),
+    ("SHOP.TO","Shopify (TSX)","Internet","Canada"),
+    # === Asia / Japan / Korea ===
+    ("BABA","Alibaba (ADR)","Internet","Asia"), ("PDD","PDD Holdings (ADR)","Internet","Asia"),
+    ("TCEHY","Tencent (ADR)","Internet","Asia"), ("TM","Toyota (ADR)","Autos","Japan"),
+    ("SONY","Sony (ADR)","Tech hardware","Japan"), ("MUFG","Mitsubishi UFJ (ADR)","Financials","Japan"),
+    ("HMC","Honda (ADR)","Autos","Japan"), ("INFY","Infosys (ADR)","IT services","Asia"),
+]
+
+_OLD_SCREEN_UNIVERSE = [
     # --- US mega-cap tech / semis ---
     ("NVDA",  "NVIDIA",            "Semiconductors", "US"),
     ("AMD",   "Adv. Micro Devices","Semiconductors", "US"),

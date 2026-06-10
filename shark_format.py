@@ -55,7 +55,7 @@ a{color:inherit}
 .menu a.active{background:var(--surface);color:var(--gold);font-weight:500}
 .scrim{display:none;position:fixed;inset:0;background:rgba(0,0,0,.18);z-index:55}
 .scrim.open{display:block}
-.page{max-width:1400px;margin:0 auto;padding:1.6rem 2rem 4rem}
+.page{max-width:1760px;margin:0 auto;padding:1.6rem 2.2rem 4rem}
 .masthead{border-bottom:.5px solid var(--line);padding-bottom:1rem;margin-bottom:1.5rem}
 .regime-tag{display:inline-block;font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:.5px solid var(--gold);border-radius:20px;padding:2px 10px;margin-bottom:.7rem}
 .article-title{font-family:var(--serif);font-size:2rem;font-weight:400;line-height:1.25;margin:0 0 .4rem}
@@ -258,13 +258,19 @@ details.idea-d>summary .smeta{display:flex;gap:6px;align-items:center;flex-wrap:
 /* ---- product-type / objective tags (Derivatives Desk) ---- */
 .ptag{font-size:10px;font-weight:600;letter-spacing:.03em;border-radius:6px;padding:1px 8px;border:.5px solid var(--gold);color:var(--gold);background:rgba(184,150,12,.07);white-space:nowrap}
 .otag{font-size:10px;font-weight:600;border-radius:6px;padding:1px 8px;border:.5px solid var(--ink-mute);color:var(--ink-soft);background:var(--surface);white-space:nowrap}
-/* ---- portfolio pie row (stacked for legibility) ---- */
+/* ---- portfolio pie row (3 compact tiles in one line) ---- */
 .pie-row{display:grid;grid-template-columns:1fr;gap:12px;margin:.4rem 0 1.1rem}
-.pie-card{border:.5px solid var(--line);border-radius:var(--rad-lg);padding:.8rem 1rem .5rem;background:var(--bg)}
-.pie-card .pc-t{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:.3rem}
+@media(min-width:680px){.pie-row{grid-template-columns:repeat(3,1fr)}}
+.pie-card{border:.5px solid var(--line);border-radius:var(--rad-lg);padding:.7rem .8rem .4rem;background:var(--bg)}
+.pie-card .pc-t{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);margin-bottom:.2rem;text-align:center}
 /* ---- half/half two-column layout for long card lists ---- */
 .split2{display:grid;grid-template-columns:1fr;gap:12px;align-items:start}
-@media(min-width:680px){.split2{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.split2{grid-template-columns:1fr 1fr}}
+/* ---- two-column prose for long narrative pages (fills the page breadth) ---- */
+.cols2{column-count:1;column-gap:2.6rem}
+@media(min-width:900px){.cols2{column-count:2}}
+.cols2>p:first-child{margin-top:0}
+.cols2 p{break-inside:avoid-column}
 /* ---- live book P&L header ---- */
 .pnl-head{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:.3rem 0 .7rem}
 .pnl-tile{background:var(--surface);border:.5px solid var(--line);border-radius:var(--rad);padding:.6rem .8rem}
@@ -1185,7 +1191,7 @@ def _book_accordion(trades, enrichments=None, rsi_data=None):
 def _page_summary(brief):
     lhs = []
     lhs.append(_h("The overnight read", "Pre-market summary · what happened in the last 24 hours"))
-    lhs.append(f'<div class="wrap-body">{brief.get("summary_narrative", brief.get("wrap",""))}</div>')
+    lhs.append(f'<div class="wrap-body cols2">{brief.get("summary_narrative", brief.get("wrap",""))}</div>')
     if brief.get("takeaways"):
         lhs.append(_h("Today's takeaways"))
         lhs.append(_takeaways(brief["takeaways"]))
@@ -1209,7 +1215,7 @@ def _burry_block(text):
 def _page_insights(brief):
     lhs = []
     lhs.append(_h("The detailed map", "How the pieces connect · the regime, the gap, what's priced"))
-    lhs.append(f'<div class="wrap-body">{brief.get("insights_layers", brief.get("wrap",""))}</div>')
+    lhs.append(f'<div class="wrap-body cols2">{brief.get("insights_layers", brief.get("wrap",""))}</div>')
     if brief.get("scenarios"):
         lhs.append(_h("Bull / Base / Bear", "the three paths, with probabilities"))
         lhs.append(_scenarios(brief["scenarios"]))
@@ -1477,7 +1483,7 @@ def _loss_recovery_block(scan):
               'For every underwater position the desk gives a precise recovery route. Where it makes sense you '
               'can run a capital-protected / income structure <b>and</b> an OTC trade at margin alongside it, so '
               'the position recovers faster than waiting for the mark to come back on its own.</p>'
-            + items)
+            + '<div class="split2">' + items + '</div>')
 
 
 def _holdings_table(positions):
@@ -1593,6 +1599,7 @@ def _view_engine_panel(scan):
     if meta.get("note"):
         out.append(f'<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .7rem">{e(meta["note"])}</p>')
     out.append(_macro_anchors_block(meta))
+    cards = []
     for v in scan.get("house_views", []):
         ev = "".join(f"<li>{e(x)}</li>" for x in v.get("evidence", []))
         conv = v.get("conviction")
@@ -1600,7 +1607,7 @@ def _view_engine_panel(scan):
         lock = (f'<div class="lock">Brief consistency: {e(v["brief_consistency"])}</div>'
                 if v.get("brief_consistency") else "")
         conv_badge = (f'conviction {conv}/10' if conv is not None else e(v.get("confidence", "")))
-        out.append(
+        cards.append(
             '<details class="viewcard">'
             '<summary class="vsum">'
             f'<span class="vt">{e(v["ticker"])} {_view_pill(v["view"])}</span>'
@@ -1615,6 +1622,7 @@ def _view_engine_panel(scan):
             + lock
             + '</div></details>'
         )
+    out.append('<div class="split2">' + "".join(cards) + '</div>')
     return "".join(out)
 
 

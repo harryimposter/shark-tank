@@ -333,36 +333,36 @@ _DONUT_COLORS = [
 ]
 
 
-def donut_chart(segments, title="", w=600, h=270, hole=0.58):
-    """Annular pie ('donut') from segments: [{"label","value","color"?}].
-
-    Drawn with the dasharray technique (no arc-path math), donut on the left and
-    a value/percentage legend on the right. Returns a self-contained <svg>.
+def donut_chart(segments, title="", w=300, h=300, hole=0.6):
+    """Compact annular pie ('donut') for a 3-up tile row. No centre text; the legend
+    sits below the donut with the colour swatch and its % ('% near the bars'), and
+    each slice carries a small % callout with a leader-line pointer to the slice.
+    segments: [{"label","value","color"?}].
     """
     segs = [s for s in (segments or []) if isinstance(s.get("value"), (int, float)) and s["value"] > 0]
     if not segs:
-        return _placeholder(f"{title or 'allocation'}: no data", w=w, h=140)
+        return _placeholder(f"{title or 'allocation'}: no data", w=w, h=120)
     total = sum(s["value"] for s in segs)
+    import math
 
-    cx, cy, r = 96, h / 2 + 6, 78
-    sw = r * (1 - hole)                # ring thickness
-    rr = r - sw / 2                    # radius of the stroked centreline
-    circ = 2 * 3.141592653589793 * rr
+    cx, cy, r = w / 2, 118, 84
+    sw = r * (1 - hole)
+    rr = r - sw / 2
+    circ = 2 * math.pi * rr
 
     out = [_open(w, h)]
-    if title:
-        out.append(_title(title, w))
-    # base ring (so gaps never show the background)
+    # base ring
     out.append(f'<circle cx="{cx}" cy="{cy}" r="{rr:.2f}" fill="none" '
                f'stroke="{PALETTE["line"]}" stroke-width="{sw:.1f}"/>')
 
     offset = 0.0
+    callouts = []
+    cum = 0.0
     for i, s in enumerate(segs):
         frac = s["value"] / total
         seg_len = frac * circ
         color = s.get("color") or _DONUT_COLORS[i % len(_DONUT_COLORS)]
         s["_color"] = color
-        # rotate -90deg around the centre so the first slice starts at 12 o'clock
         out.append(
             f'<circle cx="{cx}" cy="{cy}" r="{rr:.2f}" fill="none" stroke="{color}" '
             f'stroke-width="{sw:.1f}" stroke-dasharray="{seg_len:.2f} {circ - seg_len:.2f}" '
@@ -370,27 +370,44 @@ def donut_chart(segments, title="", w=600, h=270, hole=0.58):
             f'transform="rotate(-90 {cx} {cy})"/>'
         )
         offset += seg_len
+        # mid-angle for the % callout (only if the slice is big enough to label)
+        mid = cum + frac / 2.0
+        cum += frac
+        pct = 100 * frac
+        if pct >= 6:
+            ang = -math.pi / 2 + 2 * math.pi * mid    # start at 12 o'clock, clockwise
+            x0 = cx + (r) * math.cos(ang)
+            y0 = cy + (r) * math.sin(ang)
+            x1 = cx + (r + 10) * math.cos(ang)
+            y1 = cy + (r + 10) * math.sin(ang)
+            anchor = "start" if math.cos(ang) >= 0 else "end"
+            tx = x1 + (4 if anchor == "start" else -4)
+            callouts.append(
+                f'<line x1="{x0:.1f}" y1="{y0:.1f}" x2="{x1:.1f}" y2="{y1:.1f}" '
+                f'stroke="{PALETTE["ink_mute"]}" stroke-width="1"/>'
+                f'<text x="{tx:.1f}" y="{y1+3:.1f}" text-anchor="{anchor}" font-size="11" '
+                f'font-family="-apple-system, Helvetica, sans-serif" '
+                f'fill="{PALETTE["ink_soft"]}">{pct:.0f}%</text>'
+            )
+    out += callouts
 
-    # centre label: total count of slices
-    out.append(f'<text x="{cx}" y="{cy-2}" text-anchor="middle" font-size="17" font-weight="600" '
-               f'fill="{PALETTE["ink_soft"]}">{len(segs)} parts</text>')
-    out.append(f'<text x="{cx}" y="{cy+16}" text-anchor="middle" font-size="12" '
-               f'fill="{PALETTE["ink_mute"]}">allocation</text>')
-
-    # legend on the right
-    lx = cx + r + 40
-    ly = cy - (len(segs) * 13)
+    # legend below the donut: swatch + label + % (the % 'near the bars')
+    n = len(segs)
+    ly = cy + r + 20
     for i, s in enumerate(segs):
         pct = 100 * s["value"] / total
-        y = ly + i * 27
-        out.append(f'<rect x="{lx}" y="{y-12}" width="15" height="15" rx="3" fill="{s["_color"]}"/>')
-        out.append(f'<text x="{lx+23}" y="{y}" font-size="16" fill="{PALETTE["ink"]}">'
-                   f'{_esc(s["label"])}</text>')
-        out.append(f'<text x="{w-12}" y="{y}" text-anchor="end" font-size="16" font-weight="600" '
+        y = ly + i * 16
+        out.append(f'<rect x="14" y="{y-9}" width="10" height="10" rx="2" fill="{s["_color"]}"/>')
+        out.append(f'<text x="30" y="{y}" font-size="11.5" '
+                   f'font-family="-apple-system, Helvetica, sans-serif" '
+                   f'fill="{PALETTE["ink"]}">{_esc(s["label"])}</text>')
+        out.append(f'<text x="{w-12}" y="{y}" text-anchor="end" font-size="11.5" font-weight="600" '
                    f'font-family="-apple-system, Helvetica, sans-serif" '
                    f'fill="{PALETTE["ink_soft"]}">{pct:.1f}%</text>')
-    out.append("</svg>")
-    return "".join(out)
+    # grow the viewBox height to fit the legend rows
+    real_h = int(ly + n * 16 + 6)
+    svg = "".join(out).replace(f'viewBox="0 0 {w} {h}"', f'viewBox="0 0 {w} {real_h}"', 1)
+    return svg + "</svg>"
 
 
 if __name__ == "__main__":  # quick visual smoke test

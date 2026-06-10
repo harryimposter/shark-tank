@@ -57,7 +57,7 @@ for ik, r in idea_rsi_data.items():
         book.log(f"  idea {ik} RSI={r['rsi']}  {r['verdict']}{ta_str}{pe_str}")
 
 # ── RSI screener (curated cross-asset universe, absolute 30/70) ──────────────────
-book.step("Running RSI screener (curated ~50-name cross-asset universe, Yahoo)")
+book.step("Running RSI screener (broad ~140-name cross-asset universe, Yahoo)")
 screen = fetch_rsi.run_screener()
 book.log(f'  scanned {screen["scanned"]} · {len(screen["oversold"])} oversold · '
          f'{len(screen["overbought"])} overbought · {screen["errors"]} no-data')
