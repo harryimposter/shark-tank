@@ -223,6 +223,424 @@ _ENHANCE_META = {
          [{"name": "Suitability layer", "type": "in-house"}]),
 }
 
+# Per-idea enrichment: fundamental thesis (with valuation multiples), explicit catalyst text,
+# and per-criterion WHY explanations. Keys are idea nums (int). Applied in build_ideas().
+IDEA_ENRICHMENTS = {
+    1: {
+        "fundamental_thesis": (
+            "Micron Technology (MU) is the book's single largest concentration at 26.4% of NAV "
+            "— 2.6× the 10% policy weight — on a 10× gain from the AI HBM DRAM cycle. "
+            "Live multiples: see Yahoo Finance data below. At any multiple, single-name "
+            "concentration 2.6× above policy is a portfolio risk independent of MU's fundamental "
+            "case. The collar does NOT require a bearish view on MU — it is a risk-management "
+            "execution analogous to diversifying a concentrated ESPP. The Lombard line adds "
+            "immediate liquidity without triggering a taxable sale."
+        ),
+        "catalyst_text": (
+            "24-Jun MU Q3 FY26 earnings (binary print). Collar must be in place BEFORE this date. "
+            "C6 gate: do NOT deploy the 2×-geared decumulator into the binary event — "
+            "collar first; decumulate after vol normalises post-print. "
+            "SBL facility can draw immediately once the collar is in place."
+        ),
+        "sub_why": {
+            "setup":   "2/2 — 26.4% concentration confirmed from position file; 24-Jun IV elevated into binary; zero-cost collar into catalyst is the textbook setup. All inputs verified.",
+            "pricing": "2/2 — elevated pre-earnings IV means the sold call fully finances the bought put (ZCC achievable); Lombard LTV improves with collateral lock; both sourced.",
+            "catalyst": "1/2 — 24-Jun is the timing gate for the decumulator, not the collar itself. Full sequence is 3 steps (collar → SBL → decumulator); only the last step uses the catalyst.",
+            "fit":     "2/2 — C1 rule: ≥10% single-name concentration requires a documented hedge plan. Client is confirmed comfortable with structured products.",
+        },
+    },
+    2: {
+        "fundamental_thesis": (
+            "The Miami mortgage creates a $38,500/month USD obligation for a EUR-base client. "
+            "At EUR/USD 1.155, each annual payment costs ~EUR401k; at 1.20 that falls to ~EUR385k; "
+            "at 1.08 it rises to ~EUR428k. Over 5 years the liability PV is ~$2.3m — a material "
+            "unhedged FX exposure. A T-bill ladder earns ~4%+ while eliminating exchange-rate "
+            "uncertainty on each dated obligation. Carry: forward points are positive for a "
+            "EUR-base client selling USD forward (ECB rate > Fed equivalent net), so the hedge "
+            "earns carry AND locks the rate — positive expected value on both dimensions."
+        ),
+        "catalyst_text": (
+            "ECB Jun 11 (+25bp fully priced). A hawkish press conference lifts EUR/USD and "
+            "improves the forward entry (stronger EUR = fewer euros needed to sell forward). "
+            "Structure the strip AFTER Thursday's decision to avoid buying into an ECB-driven "
+            "EUR squeeze. No binary gate — valid regardless of ECB outcome; Thursday optimises entry."
+        ),
+        "sub_why": {
+            "setup":   "2/2 — liability confirmed ($38.5k/mo USD from client file); idle USD cash confirmed ($3m); T-bill maturities matched to payment dates. Setup is certain, not probabilistic.",
+            "pricing": "1/2 — forward strip yield estimated pending re-quote after CPI and ECB; T-bill yield directionally ~4%+ but exact strip must be formally priced Friday.",
+            "catalyst": "2/2 — unlike equity trades, nothing binary gates this product; ECB improves entry without gating it. Design feature: always on, ECB just optimises timing.",
+            "fit":     "2/2 — addresses the client's explicit stated anxiety ('what does the house cost in euros?'); USD mortgage is the documented liability; direct liability match.",
+        },
+    },
+    3: {
+        "fundamental_thesis": (
+            "After netting the USD mortgage liability PV (~$2.3m), the book's residual net USD "
+            "exposure is ~74% of NAV on a EUR base. At EUR/USD 1.155, a 10% move creates "
+            "~EUR800k+ translation gain/loss on an EUR11m book. The seagull hedges 30-50% of "
+            "this mismatch at near-zero net premium (far-wing sale cheapens the hedge). "
+            "EUR/USD valuation: fair-value models (PPP, BEER) cluster around 1.10-1.18; "
+            "current ~1.155 is near the midpoint, hence a range structure, not a directional "
+            "forward. Relevant level: EUR/USD spot from live feed."
+        ),
+        "catalyst_text": (
+            "ECB Jun 11: hawkish Lagarde spikes EUR/USD and worsens the forward entry — "
+            "structure the seagull AFTER the ECB decision. "
+            "FOMC Jun 16-17: Fed hold widens the rate differential further, potentially improving "
+            "entry if EUR weakens post-FOMC. Both events are timing gates, not payoff triggers."
+        ),
+        "sub_why": {
+            "setup":   "2/2 — net USD mismatch quantified from position file with correct liability netting; seagull size calculated off the net (not naive gross). Verified.",
+            "pricing": "1/2 — seagull wing placement and net premium depend on post-ECB EUR/USD vol and skew; estimated until formally priced Thursday or Friday.",
+            "catalyst": "1/2 — ECB Thursday is a timing gate (hawkish = worse entry), not a payoff catalyst; the seagull is passive, not event-driven.",
+            "fit":     "2/2 — X1/X2 rules: EUR-base client with 74% USD sleeve; liability-netting makes the hedge correctly sized; directly addresses the stated mandate.",
+        },
+    },
+    4: {
+        "fundamental_thesis": (
+            "The 2021 UST 1.25% '31 is marked at ~$85.60 (est.), a ~-14% duration loss vs cost. "
+            "Current US 10Y yield ~4.55% — the swap roughly triples the running coupon at the same "
+            "credit. No credit risk: both legs are US Treasuries. The swap is a pure carry pickup "
+            "on the income statement. The only question is timing: today's CPI at 8:30 sets the "
+            "re-entry yield. Hot print (10Y to 4.65%+) improves the coupon further. Cold print "
+            "(10Y to 4.35%) means execute today. Either way, the swap wins on carry at same credit. "
+            "Relevant metric: US 10Y yield from live feed."
+        ),
+        "catalyst_text": (
+            "May CPI Jun 10 at 8:30 ET — the key gate. Hot (>4.1%): wait for FOMC for better entry. "
+            "Cold (≤3.7%): execute today. "
+            "FOMC dot plot Jun 16-17: zero-cut median pushes 10Y higher; one-cut-held brings it lower. "
+            "Optimal sequence: observe CPI at 8:30, decide whether to execute today or next week."
+        ),
+        "sub_why": {
+            "setup":   "2/2 — 2021 vintage UST duration loss confirmed (~$85.6 mark est.); current 4.55% coupon triples the running yield at same credit; swap math is verified in principle.",
+            "pricing": "1/2 — re-entry yield depends on today's CPI print (10Y may move 10-15bp); exact replacement bond coupon not yet known.",
+            "catalyst": "1/2 — CPI at 8:30 and FOMC Jun 16-17 are both binary gates; holding to see the print is the correct call. Catalyst gates, doesn't trigger.",
+            "fit":     "2/2 — B1 rule: swap is yield-neutral at same credit, pure carry improvement; client holds duration (confirmed from position file); the loss is already taken.",
+        },
+    },
+    5: {
+        "fundamental_thesis": (
+            "NVIDIA (NVDA) is the book's AI anchor — currently at a small paper loss. "
+            "House view: LIKE. Live multiples: see Yahoo Finance data below. "
+            "NVDA is mid-range with a flat near-term trend — the prerequisite for a BREN. "
+            "The range note pays a coupon as long as NVDA stays within the defined range "
+            "(e.g. ~$195-$235 est.); it converts the paper loss into paid waiting rather than "
+            "a realised loss. Thesis is NOT 'NVDA will re-rate sharply'; it is 'NVDA will not "
+            "move dramatically in 45 days.' Delta-netting rule: BREN (idea 5) and CSP (idea 6) "
+            "are mutually exclusive on NVDA — never both simultaneously."
+        ),
+        "catalyst_text": (
+            "Late-Aug NVDA Q2 FY27 earnings — ~45+ days after the BREN entry; the tenor is designed "
+            "to clear the print. CPI today (Jun 10) and FOMC Jun 16-17 are near-term macro wobbles "
+            "the BREN absorbs within the range. If CPI is hot and NVDA breaks the range lower, "
+            "the BREN becomes a loss — this is the key risk to monitor into 8:30."
+        ),
+        "sub_why": {
+            "setup":   "2/2 — NVDA mid-range, flat trend confirmed from live marks; house view LIKE; BREN setup requires flat/mildly bullish underlying — all confirmed.",
+            "pricing": "1/2 — IV percentile estimated (<60 days of ivol_history.json history); specific coupon and strikes require a live quote. Direction correct, quantum estimated.",
+            "catalyst": "2/2 — late-Aug print is 45d+ away, clean tenor for the BREN; CPI today is the identified near-term macro wobble. Two relevant catalysts identified and timed.",
+            "fit":     "1/2 — LIKE view + income intent fits mandate; BUT delta-netting rule means fit is conditional: BREN XOR CSP, never both on NVDA simultaneously.",
+        },
+    },
+    6: {
+        "fundamental_thesis": (
+            "Idle USD cash ($3m) earns near-zero vs T-bill yield ~4%+ (post-CPI est.). "
+            "NVDA live multiples: see Yahoo Finance data below. Cash-secured put: the client "
+            "commits to buy NVDA at the 195 support level and collects a premium. If NVDA "
+            "stays above 195 at expiry, the premium is kept. If NVDA touches 195, the client "
+            "buys NVDA at an effective cost of (195 − premium) — a discount accumulation at the "
+            "pre-confirmed add level. Ring-fenced cash = no leverage; defined-risk structure only. "
+            "The alternative to BREN (idea 5), not the complement — delta-netting rule applies."
+        ),
+        "catalyst_text": (
+            "CPI Jun 10 at 8:30 ET: hot print = NVDA down, 195 more likely to be tested; "
+            "cold print = NVDA stable, premium income more likely to be kept. "
+            "NVDA next earnings: late-Aug — outside the 3-month CSP window. "
+            "Decision gate today: if NVDA breaks below the range on the print, the CSP at "
+            "195 is the more defensive structure vs the BREN."
+        ),
+        "sub_why": {
+            "setup":   "1/2 — USD cash confirmed; 195 support identified from chart; BUT 195 must be re-verified live after today's CPI print (support level may have shifted).",
+            "pricing": "1/2 — T-bill yield (~4%+) confirmed; CSP premium depends on NVDA delta and implied vol post-CPI; estimated.",
+            "catalyst": "1/2 — CPI reprices NVDA delta and the CSP's moneyness; CSP invalid if 195 breaks on a hot print. One clear catalyst gate.",
+            "fit":     "2/2 — gets paid to add NVDA at the stated accumulation level; converts idle USD cash to income; the alternative to BREN, not the pair.",
+        },
+    },
+    7: {
+        "fundamental_thesis": (
+            "Broadcom (AVGO) was exited at -21% after Q3 guide missed the buy-side whisper "
+            "($16.0bn vs $17.2bn expected) at a 41× multiple. View: NEUTRAL post-miss. "
+            "Live AVGO multiples: see Yahoo Finance data below. "
+            "Harvest: ~$635k of losses booked, directly offsetting capital gains from the MU "
+            "exit (ideas 7 and 1 travel together on the same tax conversation — one call, two "
+            "harvests). Buffered note re-entry preserves the long-term AVGO thesis (AI ASICs + "
+            "VMware) with downside protection. Note: front-month IV is crushed post-print; "
+            "harvest immediately while the loss is available — sell vol via RevCon in ~30 days."
+        ),
+        "catalyst_text": (
+            "No near-term dated catalyst (next AVGO Q4 print ~90 days out). "
+            "30-day wash rule: buffered note re-entry is structured to avoid a like-for-like "
+            "repurchase within 30 days (note's economic profile differs from direct equity). "
+            "Timing catalyst: front-month vol crushed post-print — optimal time to realise "
+            "the loss is NOW before vol rebuilds and widens spreads on the replacement structure."
+        ),
+        "sub_why": {
+            "setup":   "2/2 — AVGO loss verified at -21% from live mark; vol-term structure analysis (front crushed, 360d elevated) confirmed; harvest + buffered re-entry is the canonical L6 sequence.",
+            "pricing": "1/2 — front-month vol crushed → RevCon coupon is thin right now; buffered note participation rate estimated. Wait ~30 days to sell vol via RevCon.",
+            "catalyst": "1/2 — no near-term dated catalyst; 30-day wash rule is the timing constraint, not a market event. Harvest is non-catalysed; buffered note is the discipline mechanism.",
+            "fit":     "2/2 — L6 rule: NEUTRAL view post-whisper-miss → harvest + buffered re-entry is canonical; -$635k loss funds the MU exit tax — the paired trade that makes the sequence compelling.",
+        },
+    },
+    8: {
+        "fundamental_thesis": (
+            "EUR2.4m idle in a deposit account earns near-zero. ECB policy rate post-Thursday "
+            "hike: ~4.50%; deposit campaign rates should clear 3%+ (EUR IG deposit market). "
+            "The CMT range accrual (10Y US CMT, EUR-paying, 5% if fixing stays 0-4.80%) "
+            "FAILED the headroom gate: fixing at ~4.55% with only ~25bp of room vs ~42bp "
+            "trailing annual range = 0.6× coverage ratio (threshold: ≥1.5×). "
+            "Re-quoted at 5.00-5.25% cap → lower coupon (~3.8% est.) but passes the gate. "
+            "QUANTO: pays EUR on a USD rate — the quanto adjustment affects pricing and must "
+            "be disclosed. Do NOT promise a vanilla EUR coupon."
+        ),
+        "catalyst_text": (
+            "CPI Jun 10 at 8:30 ET — direct input. Hot (>4.1%): risks pushing 10Y CMT above "
+            "4.80%, triggering non-accrual on the 4.80-cap version before client sees it. "
+            "Deposit campaign proceeds regardless of CPI (rate-agnostic). "
+            "ECB Jun 11: sets deposit campaign pricing (hawkish = better deposit rate). "
+            "Both events gate the range accrual; neither gates the deposit."
+        ),
+        "sub_why": {
+            "setup":   "1/2 — EUR2.4m idle confirmed; the 5% CMT range accrual failure is correctly identified; re-quote specified. But the re-quoted version is not yet on screen — setup is partial.",
+            "pricing": "1/2 — deposit rate (~3%+) directionally confirmed; re-quoted accrual coupon estimated; must clear the CPI-hot bear case non-accrual test before client presentation.",
+            "catalyst": "1/2 — CPI today kills the 4.80 version if >4.1%; ECB gates deposit pricing. Both events gate entry, neither triggers independently.",
+            "fit":     "2/2 — K1+K5: idle EUR cash drag is the stated problem; declining the mispriced 5% version and explaining why builds more trust than selling it.",
+        },
+    },
+    9: {
+        "fundamental_thesis": (
+            "LVMH (MC.PA) is down ~32% from cost (confirmed live mark). House view: NEUTRAL. "
+            "Live LVMH multiples: see Yahoo Finance data below. "
+            "Luxury sector puts carry steep skew (expensive) → upside calls are relatively cheap "
+            "→ RevCon coupon is fattened by the skew. The revCon is NOT a directional LVMH bet: "
+            "it monetises the client's stated willingness to buy more LVMH lower. "
+            "6-month tenor designed to clear the next earnings print. If the mark recovers, "
+            "the revCon is called; if not, the client receives LVMH at a discount and repeats. "
+            "Hard gate: View Engine AVOID → convert to harvest immediately."
+        ),
+        "catalyst_text": (
+            "No binary near-term catalyst on LVMH (next earnings ~2 months out). "
+            "Soft catalysts: Chinese consumer confidence data, EU luxury sector sentiment, "
+            "EUR/USD moves (weaker EUR = better EUR-reported revenues for LVMH's global sales). "
+            "The revCon is income-driven, not event-driven. The 6-month tenor is designed "
+            "to clear the next earnings print rather than to express a directional view."
+        ),
+        "sub_why": {
+            "setup":   "1/2 — LVMH -32% confirmed; luxury put skew identified; BUT the house view must be re-verified live (View Engine AVOID converts this to a harvest, removing the setup entirely).",
+            "pricing": "1/2 — steep luxury skew confirmed directionally; exact revCon coupon depends on live mark and current skew; estimated until formally priced.",
+            "catalyst": "1/2 — no binary near-term catalyst; revCon is income-driven; 1/2 because the absence of a near-term catalyst is a feature of the 6-month design, not a gap.",
+            "fit":     "2/2 — question verbatim: 'would you buy more LVMH lower?' Yes → revCon. No → harvest. Client holds EUR equities and is confirmed comfortable with structured notes.",
+        },
+    },
+    10: {
+        "fundamental_thesis": (
+            "AMD is up +395% from cost — a 4× winner the desk no longer loves at current "
+            "valuation. House view: NEUTRAL. Live AMD multiples: see Yahoo Finance data below. "
+            "Covered-call overwrite: sells OTM calls above market (income on the held position). "
+            "Decumulator: sells above market at a premium via a daily-clip mechanism (staged exit). "
+            "Held at WATCH because the IV percentile is UNVERIFIED — the overwrite's appeal "
+            "entirely depends on whether the premium is large enough to justify the sold-call "
+            "obligation. Promote to FIRE the moment IV is sourced (Market Data App / Tradier)."
+        ),
+        "catalyst_text": (
+            "No near-term catalyst within a sensible 2-3 month overwrite tenor (AMD earnings ~60d+). "
+            "The overwrite is timing-neutral: IV percentile verification is the gate, not a market "
+            "event. CPI and FOMC are macro risks but not direct AMD catalysts in the overwrite window."
+        ),
+        "sub_why": {
+            "setup":   "1/2 — AMD +395% verified; NEUTRAL view confirmed; IV percentile is unverified (the blocking issue). Promote to FIRE the moment IV is sourced.",
+            "pricing": "1/2 — IV estimated as probably elevated on a +395% winner, but unconfirmed without a live quote; the whole idea gates on this single input.",
+            "catalyst": "1/2 — no near-term catalyst; the absence of a catalyst makes this a pure income/exit conversation, not an event play.",
+            "fit":     "1/2 — client holds AMD but hasn't stated intent to exit; the income-vs-exit question must be answered by the client first; fit is conditional.",
+        },
+    },
+    11: {
+        "fundamental_thesis": (
+            "Siemens AG 2030 EUR bond is at a duration loss (confirmed from position file). "
+            "Current EUR IG corporate spreads offer a materially higher running coupon at the "
+            "same credit tier as the 2021 vintage bond. ECB hike Thursday raises Bund yields "
+            "and improves the re-entry coupon for the replacement bond. "
+            "This is the EUR twin to idea 4 (UST swap): same swap thesis, EUR currency, "
+            "ECB-gated instead of CPI-gated. "
+            "Key metric (not a P/E): running coupon pick-up on the swap is estimated at "
+            "+80-100bp (the exact figure depends on post-ECB Bund yields)."
+        ),
+        "catalyst_text": (
+            "ECB Jun 11 is the direct gate — hawkish tone lifts Bund yields and improves the "
+            "re-entry coupon for the replacement EUR IG bond. Auto-promotes to FIRE on Friday. "
+            "FOMC Jun 16-17 is a secondary input (US rate expectations feed through EUR IG pricing). "
+            "Optimal timing: execute on Friday (post-ECB) or the following week."
+        ),
+        "sub_why": {
+            "setup":   "1/2 — Siemens bond duration loss confirmed from position file; swap thesis mirrors idea 4; but live Siemens '30 mark and replacement coupon are estimated until a live quote.",
+            "pricing": "1/2 — EUR IG coupon depends on Bund yield post-ECB; estimated. Direction (higher carry) is clear; exact quantum is pending.",
+            "catalyst": "1/2 — ECB Thursday is the optimal entry gate (auto-promotes Friday); catalyst improves entry, doesn't pay off a binary.",
+            "fit":     "1/2 — EUR twin to the UST swap; client holds EUR bonds and is comfortable with bond swaps; WATCH until ECB sets the entry level.",
+        },
+    },
+    12: {
+        "fundamental_thesis": (
+            "TotalEnergies (TTE) +64% and Xetra-Gold ETC +100% — both confirmed from live marks. "
+            "Both are the book's bear-scenario hedges: TTE benefits from a blockaded Hormuz (war "
+            "premium = TTE revenue premium); gold benefits from a dovish Fed repricing (lower real "
+            "yields = higher gold) and geopolitical risk premia. "
+            "Raw rules (W1 overwrite, profit-take) fire numerically on these positions — "
+            "SUPPRESSED by brief-consistency override. "
+            "TTE: no equity P/E multiple in traditional sense (energy commodity exposure). "
+            "Gold: no earnings multiple (real asset, inverse of real yields). "
+            "The hedge function overrides the valuation argument."
+        ),
+        "catalyst_text": (
+            "SUPPRESS — no structure added. The 'catalyst' is the brief's active bear case: "
+            "hold while (a) Strait of Hormuz is blockaded, (b) no formal Iran/Israel truce, "
+            "(c) CPI has not printed below 3.7%. "
+            "Exit triggers: weekly Brent close below $87 (TTE); FOMC dot plot showing a cut "
+            "path that materially lifts real rates (gold hedge becomes unnecessary)."
+        ),
+        "sub_why": {
+            "setup":   "0/2 — SUPPRESS: no structure added. Scanner fires 0 because the correct call is NOT to trade. Raw W1/W3 rules fire numerically but are overridden by the consistency check.",
+            "pricing": "1/2 — both positions have confirmed live marks; no product to price; the 1 reflects the accuracy of the HOLD decision, not a derivative pricing edge.",
+            "catalyst": "0/2 — the 'catalyst' suppresses action: the brief's live bear case makes trimming the hedges the wrong call. 0/2 for structure.",
+            "fit":     "1/2 — recognised hedges for a book with ~74% USD equity risk; Doomberg/Howell bear-case overlay supports HOLD; client holds both and understands the rationale.",
+        },
+    },
+    13: {
+        "fundamental_thesis": (
+            "A dual-currency deposit (DCD) converts EUR idle cash into USD at a pre-agreed "
+            "strike rate in exchange for a higher coupon. This would ADD USD exposure — "
+            "directly opposite to idea 3 (seagull), which REDUCES the book's net USD exposure. "
+            "Running both simultaneously creates a self-cancelling trade (pay premium twice, "
+            "net zero FX change) that wastes client capital on offsetting products. "
+            "The scanner surfaces the conflict rather than silently pricing both — "
+            "this is the suitability feature a product-push screen would miss."
+        ),
+        "catalyst_text": (
+            "SUPPRESS — no catalyst analysis applicable. The contradiction itself is the signal. "
+            "Advisor chooses between two mutually exclusive lanes: "
+            "(A) USD hedge lane (idea 3 seagull — reduces USD exposure) or "
+            "(B) USD accumulation lane (DCD — increases USD exposure for a coupon). "
+            "The hedge lane wins while the book carries 74% USD on a EUR base. "
+            "DCD can be re-evaluated only if the client explicitly declines idea 3."
+        ),
+        "sub_why": {
+            "setup":   "1/2 — EUR idle cash exists and DCD is technically feasible; 1 reflects the structural existence of the product. The contradiction blocks execution.",
+            "pricing": "0/2 — pricing a contradictory product is misleading and explicitly suppressed. 0/2.",
+            "catalyst": "0/2 — no catalyst; the scanner surfaces the conflict for the advisor, not a market event. 0/2.",
+            "fit":     "1/2 — the EUR idle cash problem exists (fit = 1); but DCD conflicts with idea 3; advisor must choose a lane.",
+        },
+    },
+    101: {
+        "fundamental_thesis": (
+            "Oracle Corporation (ORCL) — cloud infrastructure (OCI), database (Autonomous DB), "
+            "and enterprise applications. Key AI metric: remaining performance obligations (RPO) "
+            "$553bn (+325% YoY) — the largest confirmed AI backlog on screen. "
+            "OCI grew 84% YoY in Q3 to $4.9bn. Consensus EPS: $1.58 (Finnhub); Oracle's own "
+            "March guide: $1.96-2.00 — a wide gap implying a beat is already expected. "
+            "Live ORCL multiples: see Yahoo Finance data below. "
+            "Capital-protected note: full 100% protection means the print risk (gap-down if guide "
+            "misses whisper) is absorbed by the note structure. Trade-off: capped upside "
+            "(70-80% participation est.). The thesis is backlog conversion, not EPS."
+        ),
+        "catalyst_text": (
+            "10-Jun ORCL Q4 FY26 earnings (after close) — ENTER POST-PRINT ONLY. "
+            "The Earnings desk: 'do not pre-position.' This note enters the day after the print. "
+            "Key catalyst WITHIN the note: OCI growth rate and capex guidance vs the whisper "
+            "($17.2bn FY26 guide). If the guide clears the whisper, the note's participation "
+            "captures the re-rate. If it disappoints (the AVGO parallel), capital protection absorbs it."
+        ),
+        "sub_why": {
+            "setup":   "2/2 — OCI +84% YoY, RPO $553bn confirmed (Finnhub sourced); post-print entry correctly gates the note per the Earnings desk's call; setup verified.",
+            "pricing": "1/2 — ~70-80% upside participation estimated pending a live structure quote; capital protection premium depends on current rates and vol; direction correct, quantum estimated.",
+            "catalyst": "1/2 — 10-Jun print is the gate (enter post-print); 1/2 because the note's 6-month payoff window has multiple internal catalysts (OCI revs, capex guide) not yet known.",
+            "fit":     "2/2 — client has ZERO software/cloud exposure (all AI is hardware: MU/NVDA/AVGO/AMD); Oracle adds the OCI/cloud leg with full capital protection — direct mandate fit.",
+        },
+    },
+    102: {
+        "fundamental_thesis": (
+            "Adobe Inc (ADBE) — creative cloud (Photoshop, Illustrator, Premiere), digital "
+            "experience (Experience Cloud), and generative AI (Firefly). Near 52-week low. "
+            "Split sell-side: 19 buy / 22 hold / 4 sell — sentiment is washed out vs an AI "
+            "disruption overhang. Live ADBE multiples: see Yahoo Finance data below. "
+            "Core question: is Firefly additive to ARR (upsell to existing seats) or "
+            "cannibalising Creative Cloud (AI as substitute)? Cash-secured put: the client "
+            "is paid a premium to commit to buy ADBE at the 52-week low level. If ADBE "
+            "stays above the strike at expiry, the premium is kept. If it falls to the strike, "
+            "the client buys ADBE at (strike − premium) — discount accumulation with defined risk."
+        ),
+        "catalyst_text": (
+            "11-Jun ADBE Q2 FY26 earnings (after close) — ENTER POST-PRINT ONLY. "
+            "The pivotal question: guidance tone on net-new AI/Firefly monetisation — the guide, "
+            "not printed EPS, is what moves the stock at this valuation. A beaten-down stock near "
+            "the 52-week low means the downside from a bad guide may already be largely priced — "
+            "the asymmetry is on the upside from the beaten-down level."
+        ),
+        "sub_why": {
+            "setup":   "1/2 — ADBE near 52-week low confirmed; split sell-side confirmed (Finnhub sourced); but specific CSP strike needs live verification after the 11-Jun print.",
+            "pricing": "1/2 — put premium at a beaten-down name estimated; IV at lows tends to be elevated (better CSP coupon) but requires a live quote.",
+            "catalyst": "1/2 — 11-Jun print is the gate (enter post-print); the guide on AI monetisation is the pivotal data point; catalyst is pending as of Jun 10.",
+            "fit":     "2/2 — client holds SAP (enterprise software confirmed); CSP = income while waiting to add a beaten-down quality software name at a discount; direct mandate fit.",
+        },
+    },
+    103: {
+        "fundamental_thesis": (
+            "2s10s USD yield curve steepener expressed as a EUR-denominated capital-protected note. "
+            "The macro desk's own position (MM-2026-009) is already at +40bp (entry: +15bp, running). "
+            "Structural case: prolonged inversion followed by a Fed pause creates a bull-steepener "
+            "as the front-end falls faster than the back-end. "
+            "Key levels: 2Y yield ~4.15% (16-month high, pricing a hike that may not come); "
+            "10Y yield ~4.55%; 2s10s spread +40bp vs historic post-inversion mean of +80-100bp. "
+            "Capital-protected note: if the curve flattens instead, the client loses only time value "
+            "(opportunity cost), not capital. No equity P/E — this is a pure rates macro view."
+        ),
+        "catalyst_text": (
+            "May CPI Jun 10 at 8:30 ET (soft print = 2Y falls faster than 10Y = curve steepens). "
+            "FOMC dot plot Jun 16-17 (any pause signal = 2Y falls 15-20bp = steepener accelerates). "
+            "ECB Jun 11 (sets EUR swap rates for the note's EUR pricing). "
+            "All three gates must clear before the note is formally launched — optimal timing: week of Jun 16."
+        ),
+        "sub_why": {
+            "setup":   "2/2 — MM-2026-009 steepener at +40bp running confirms the desk's own view; 2Y at 4.15% (16-month high on one payroll) is a documented structural gap vs the actual hiking probability.",
+            "pricing": "1/2 — capital-protected note pricing estimated (depends on rates at issue and EUR swap rates post-ECB); participation rate and coupon pending live quote.",
+            "catalyst": "1/2 — CPI and FOMC gate the front-end; ECB gates EUR pricing; all three are binary (could move either way). 1/2 because catalysts gate launch, not just improve it.",
+            "fit":     "2/2 — client holds two bonds (duration comfort confirmed); expresses the desk's highest-conviction macro view in a protected 2Y EUR wrapper; structurally additive.",
+        },
+    },
+    104: {
+        "fundamental_thesis": (
+            "AI data centres require 3-5× more electrical power per rack vs traditional computing. "
+            "US data centre power demand projected to grow at ~20-25% CAGR through 2030 "
+            "(Citrini Research; JP Morgan GIS infrastructure theme). "
+            "The AI-power / electrification basket is a lower-beta, lower-multiple way to express "
+            "AI conviction: grid / utility / industrial names trade at 15-25× P/E vs AI semis "
+            "at 30-120×. WATCH: the specific basket of underliers is unspecified — "
+            "'power / grid / electrification' is a theme, not yet a named tradeable basket. "
+            "Promote when the basket is pinned and IV is sourced from a structuring desk."
+        ),
+        "catalyst_text": (
+            "No specific dated catalyst — a secular, 12-18 month thematic play. "
+            "WATCH gate: promote when (a) basket underliers are agreed (specific names), and "
+            "(b) IV and participation rate are sourced from a structuring desk. "
+            "Near-term thematic signals: US infrastructure bill news, hyperscaler data-centre "
+            "capex announcements (Microsoft, Google, Meta), utility earnings showing the power ramp."
+        ),
+        "sub_why": {
+            "setup":   "1/2 — Citrini AI-power thesis is identified and the thematic rationale is sound; but specific basket underliers are unspecified — 'power/grid' is a theme, not a verified tradeable set.",
+            "pricing": "1/2 — 12-18m tenor is within the equity SP floor (≥3m); pricing estimated (basket TBD, IV unknown); tenor correct, underliers not yet pinned.",
+            "catalyst": "0/2 — no specific dated catalyst; the secular theme lacks a near-term binary payoff trigger. This is WHY this idea is WATCH, not FIRE.",
+            "fit":     "2/2 — client wants AI exposure without adding more semis; power/electrification is the cleanest diversifier within the AI theme; thematic notes fit mandate.",
+        },
+    },
+}
+
 
 def _new_adds(metrics):
     """Section 1 — NEW exposures mapped to the client's pattern (AI/semis-heavy,
@@ -494,7 +912,18 @@ def build_ideas(metrics):
         meta = _ENHANCE_META.get(it["num"])
         if meta:
             it["asset_group"], it["tenor"], it["sizing"], it["portfolio_impact"], it["sources"] = meta
-    return ideas + _new_adds(metrics)
+
+    all_ideas = ideas + _new_adds(metrics)
+
+    # overlay thesis/catalyst/sub_why enrichments onto every idea
+    for it in all_ideas:
+        enr = IDEA_ENRICHMENTS.get(it["num"])
+        if enr:
+            it["fundamental_thesis"] = enr.get("fundamental_thesis", "")
+            it["catalyst_text"]      = enr.get("catalyst_text", "")
+            it["sub_why"]            = enr.get("sub_why", {})
+
+    return all_ideas
 
 
 def _overall_summary(metrics):
@@ -548,6 +977,11 @@ def build_scan(brief=None):
     metrics = compute_metrics(bookdata)
     attach_views_and_vol(bookdata, views, ivol)
     ideas = build_ideas(metrics)
+
+    # attach per-idea RSI + valuation data (computed in gen script, stored in brief)
+    idea_rsi = (brief or {}).get("idea_rsi_data", {})
+    for it in ideas:
+        it["idea_data"] = idea_rsi.get(str(it["num"]))
 
     fired = [i for i in ideas if i["tier"] == "FIRE"]
     watch = [i for i in ideas if i["tier"] == "WATCH"]

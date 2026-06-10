@@ -41,6 +41,16 @@ for tid, r in rsi_data.items():
     else:
         book.log(f"  {tid} RSI={r['rsi']}  SD={r['sd_dist']:+.2f}  {r['verdict']}")
 
+book.step("Computing idea RSI + valuation data (Yahoo Finance)")
+idea_rsi_data = fetch_rsi.fetch_all_ideas()
+for ik, r in idea_rsi_data.items():
+    if r.get("error"):
+        book.log(f"  idea {ik}: {r['error']}")
+    elif r.get("rsi") is not None:
+        val = r.get("valuation") or {}
+        pe_str = f"  P/E={val.get('trailing_pe_fmt','N/A')}" if not val.get("error") else ""
+        book.log(f"  idea {ik} RSI={r['rsi']}  SD={r['sd_dist']:+.2f}  {r['verdict']}{pe_str}")
+
 # ── Regime ─────────────────────────────────────────────────────────────────────
 regime = "A Truce Under Fire, A Hot CPI Ahead"
 regime_note = (
@@ -781,6 +791,7 @@ brief = {
     "earnings_ideas": earnings_ideas,
     "trade_enrichments": TRADE_ENRICHMENTS,
     "rsi_data": rsi_data,
+    "idea_rsi_data": idea_rsi_data,
 
     "dominant_theme": (
         "The truce keeps cracking and the Strait stays shut, so oil keeps its premium near $92 — while the "

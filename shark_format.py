@@ -1233,29 +1233,133 @@ def _idea_body(i):
     return "".join(p)
 
 
-def _render_new_add(i):
-    tier = i["tier"].lower()
-    tickers = "".join(f'<span class="tag">{e(t)}</span>' for t in i.get("tickers", []))
+def _val_block(val):
+    """Render live valuation multiples for single-name equities."""
+    if not val:
+        return '<div class="rsi-block"><span class="rsi-na">Valuation multiples: not available (macro/FX/rates instrument or no ticker mapped)</span></div>'
+    if val.get("error"):
+        return f'<div class="rsi-block"><span class="rsi-na">Valuation multiples: {e(str(val["error"])[:120])} (Yahoo Finance)</span></div>'
+    ticker = val.get("ticker", "")
+    asof   = val.get("asof", "")
+    def badge(label, key):
+        v = val.get(key, "N/A")
+        return f'<span class="badge"><b>{label}</b>&nbsp;{e(str(v))}</span>'
+    badges = " ".join([badge("P/E (ttm)", "trailing_pe_fmt"),
+                       badge("Fwd P/E",   "forward_pe_fmt"),
+                       badge("EV/EBITDA", "ev_ebitda_fmt"),
+                       badge("P/S",       "p_to_s_fmt"),
+                       badge("EV/Rev",    "ev_revenue_fmt")])
+    return (f'<div class="rsi-block" style="margin-top:.4rem">'
+            f'<span style="font-weight:600;font-size:12px">Live multiples ({e(ticker)})</span>'
+            f'<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:.25rem">{badges}</div>'
+            f'<span style="color:var(--ink-mute);font-size:11px">Source: Yahoo Finance · as of {e(asof)}</span>'
+            f'</div>')
+
+
+def _idea_full_conv_table(i):
+    """Conviction table with per-criterion WHY explanations from sub_why."""
+    rows = ""
+    for k in ("setup", "pricing", "catalyst", "fit"):
+        lab, _ = _SUB_DESC[k]
+        sc  = i["subs"].get(k, 0)
+        why = i.get("sub_why", {}).get(k, "")
+        rows += (f'<tr><td class="k">{lab}</td><td class="s">{sc}/2</td>'
+                 f'<td class="w">{e(why)}</td></tr>')
+    return (f'<table class="convtbl">'
+            f'<tr><td class="k">Conviction total</td><td class="s">{i["score"]}/8</td>'
+            f'<td class="w">setup &middot; pricing &middot; catalyst &middot; fit (0&ndash;2 each)</td></tr>'
+            f'{rows}</table>')
+
+
+def _idea_full_dropdown(i):
+    """Full 8-section expandable dropdown for a Derivatives Lab idea."""
+    tier      = i["tier"].lower()
+    tickers   = "".join(f'<span class="tag">{e(t)}</span>' for t in i.get("tickers", []))
+    idea_data = i.get("idea_data") or {}
+    val       = idea_data.get("valuation") if idea_data else None
+
+    def sec(label, body_html):
+        return (f'<div class="tb-label">{e(label)}</div>'
+                f'<div class="tb-text">{body_html}</div>')
+
+    # 1 — What does [X] do
+    s1 = sec("What it does", e(i["what_it_is"]))
+
+    # 2 — Catalyst
+    cat_text = i.get("catalyst_text") or i.get("what_moves_it", "")
+    s2 = sec("Catalyst", e(cat_text))
+
+    # 3 — Fundamental thesis + valuation
+    thesis = i.get("fundamental_thesis") or ""
+    s3 = sec("Fundamental thesis", e(thesis) + _val_block(val))
+
+    # 4 — RSI positioning
+    s4 = sec("RSI positioning (1-month window)",
+             _rsi_block(idea_data if idea_data else None))
+
+    # 5 — Conviction score with WHY per criterion
+    s5 = sec("Conviction score", _idea_full_conv_table(i))
+
+    # 6 — Client fit
+    s6 = sec("Client fit", e(i["client_note"]))
+
+    # 7 — Risk / what would make it wrong
+    risk_text = i.get("risk") or i.get("what_moves_it", "")
+    s7 = (f'<div class="tb-label">Risk / what would make it wrong</div>'
+          f'<div class="tb-risk">{e(risk_text)}</div>')
+
+    # 8 — How it helps the book
+    impact = i.get("portfolio_impact") or ""
+    s8 = sec("How it helps the book", e(impact))
+
+    badges = []
+    if i.get("tenor"):
+        badges.append(f'<span class="badge"><b>Tenor</b>&nbsp;{e(i["tenor"])}</span>')
+    if i.get("sizing"):
+        badges.append(f'<span class="badge"><b>Size</b>&nbsp;{e(i["sizing"])}</span>')
+    meta_row = ('<div class="meta-row">' + "".join(badges) + '</div>') if badges else ""
+    origin_row = (f'<div class="origin">From: {e(i["origin"])}</div>') if i.get("origin") else ""
+    tags_row = ""
+    tags = "".join(f'<span class="tag">{e(t)}</span>' for t in i.get("tags", []))
+    if tags:
+        tags_row = f'<div class="meta-row" style="margin-top:.55rem">{tags}</div>'
+
+    body = (
+        f'<div class="trade-body">'
+        + origin_row + meta_row
+        + f'<div class="meta-row"><span class="rules-tag">{e(i["rules"])}</span>{tickers}</div>'
+        + s1 + s2 + s3 + s4 + s5 + s6 + s7 + s8
+        + _sources_row(i.get("sources", []))
+        + tags_row
+        + '</div>'
+    )
+
     return (
-        f'<div class="idea {tier}">'
-        '<div class="ih">'
-        f'<div class="it">{e(i["title"])}</div>'
-        f'<span class="tier {tier}">{e(i["tier"])} &middot; {i["score"]}/8</span></div>'
-        f'<div class="meta-row"><span class="rules-tag">{e(i["rules"])}</span>{tickers}</div>'
-        + _idea_body(i) + '</div>')
+        f'<details class="trade-drop">'
+        f'<summary>'
+        f'<div>'
+        f'<div class="td-name">{e(i["title"])}</div>'
+        f'<div style="font-size:11px;color:var(--ink-mute);margin-top:2px">'
+        f'{e(i["rules"])} &middot; {e(i.get("asset_group",""))} &middot; {e(i.get("tenor",""))}'
+        f'</div>'
+        f'</div>'
+        f'<div class="td-meta">'
+        f'<span class="tier {tier}">{e(i["tier"])}</span>'
+        f'<span class="conv-badge">{i["score"]}/8</span>'
+        f'<span style="font-size:11px;color:var(--ink-mute)">&#9656; expand</span>'
+        f'</div>'
+        f'</summary>'
+        + body
+        + '</details>'
+    )
+
+
+def _render_new_add(i):
+    return _idea_full_dropdown(i)
 
 
 def _render_enhance(i):
-    tier = i["tier"].lower()
-    tickers = "".join(f'<span class="tag">{e(t)}</span>' for t in i.get("tickers", []))
-    return (
-        '<details class="idea-d"><summary class="vsum">'
-        f'<span class="stitle">{e(i["title"])}</span>'
-        f'<span class="smeta"><span class="tier {tier}">{e(i["tier"])} &middot; {i["score"]}/8</span>'
-        '<span class="conv-mini">&#9656;</span></span></summary>'
-        '<div class="idea-body">'
-        f'<div class="meta-row"><span class="rules-tag">{e(i["rules"])}</span>{tickers}</div>'
-        + _idea_body(i) + '</div></details>')
+    return _idea_full_dropdown(i)
 
 
 def _group_block(grouped, render_fn):
