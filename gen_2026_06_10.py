@@ -84,9 +84,12 @@ regime_note = (
     "April 2023 and a third straight acceleration — but core just +0.2% m/m / 2.9% y/y, BELOW the 0.3% forecast "
     "(BLS). The hot headline is energy: the Iran shock pushed energy ~23.5% y/y and it drove over 60% of the "
     "monthly increase, while the core stayed contained. The bond market read the soft core as relief — the 10Y "
-    "eased to ~4.52% from a 4.55% intraday high. Equities still fell (S&P -0.37%, Nasdaq -0.42%, Dow -0.78%) as "
-    "the US and Iran traded fresh military strikes; Brent holds ~$91.4 on the blockaded Strait. Oracle reports "
-    "after the close and the ECB hikes tomorrow — the two live catalysts now that the CPI binary is behind us."
+    "eased to ~4.52% from a 4.55% intraday high. Equities still fell (S&P -0.37%, Nasdaq -0.42%, Dow -0.78%), and "
+    "the swing driver was Trump: after floating a deal 'in two or three days' on Monday (stocks up, Brent -3%), he "
+    "told reporters today the US is 'going to be attacking them very hard' and would hit Iran the same day, citing "
+    "a downed US Apache in the Strait — a Truth Social post called Iran's military 'a complete and total mess.' "
+    "That headline whipsaw drove the intraday tape; Brent holds ~$91.4 on the blockaded Strait. Oracle reports "
+    "after the close and the ECB hikes tomorrow."
 )
 regime_log = book.update_regime_log(regime_log, regime, regime_note)
 
@@ -838,8 +841,11 @@ over 60% of the monthly increase, while the core — the part the Fed actually t
 intraday, taking the print as evidence the energy shock has not yet spilled into broad price pressure
 (Trading Economics). That is the relief our front-end trades were waiting for. Equities did not get the memo:
 the <strong>S&amp;P fell 0.37%, the Nasdaq 0.42% and the Dow 0.78%</strong>, with tech, industrials and
-discretionary leading lower (TheStreet) — because the other half of the tape is geopolitics, and the US and
-Iran traded fresh military strikes again.</p>
+discretionary leading lower (TheStreet) — and the swing factor was the President. <strong>Trump whipsawed the
+tape on the wire</strong>: on Monday he floated a deal with Iran "in two or three days," which rallied stocks
+and knocked ~3% off Brent; today he told reporters the US is "going to be attacking them very hard" and would
+hit Iran the same day, citing Iran downing a US Apache in the Strait, with a Truth Social post calling Iran's
+military "a complete and total mess." Risk-on to risk-off in 24 hours, on headlines, not data.</p>
 
 <p>Oil keeps its nerve: <strong>Brent ~$91.4, WTI ~$88.3</strong>, the war premium intact on a Strait of Hormuz
 that is still effectively blockaded as the strikes resume. That premium is earned by a physical fact, not a
@@ -857,7 +863,7 @@ book carries both tails into the dot plot next week.</p>
         "May CPI is OUT: headline hot at 4.2% y/y (+0.5% m/m, highest since Apr 2023, 3rd straight acceleration) but core SOFT at +0.2% m/m / 2.9%, below the 0.3% forecast (BLS). The inflation is energy, not breadth.",
         "Energy did it: the Iran shock lifted energy ~23.5% y/y and drove >60% of the monthly increase. Strip it out and the core says the Fed is not forced to hike.",
         "The 10Y eased to ~4.52% (off a 4.55% intraday high) — the bond market took the soft core as relief. That's the tailwind our short-2Y and steepener were waiting for.",
-        "Equities still fell — S&P -0.37%, Nasdaq -0.42%, Dow -0.78% — as the US and Iran traded fresh strikes; Brent holds ~$91.4 on the blockaded Strait. The war premium is earned.",
+        "Trump was the swing driver, not the data: Monday he floated an Iran deal 'in two or three days' (stocks up, Brent -3%); today he said the US is 'going to be attacking them very hard' and would hit Iran the same day. Equities fell — S&P -0.37%, Nasdaq -0.42%, Dow -0.78% — Brent held ~$91.4. Headlines, not fundamentals, moved the tape.",
         "Two catalysts left in the window: Oracle after the close ($553bn AI backlog vs the capex bill) and the ECB +25bp tomorrow. We held the whole book; the rates trades just got cheaper to be right.",
     ],
 
@@ -910,12 +916,19 @@ financials-and-industrials index with no AI multiple to give back, it hikes into
 Bund and Gilt yields rose (+4bp, +7bp) while the US 10Y eased — the next rates impulse is European, not American.</p>
 
 <p>The politics are the constraint behind every one of those moves, and this is where consensus is lazy.
-The market is treating the ceasefire as a diplomatic process; it is a domestic-politics problem. <strong>Netanyahu
-will not sign anything he can frame as a concession</strong> before his coalition is safe, and Trump wants an
-"immediate" ceasefire he can claim as a win — two leaders who need different headlines, which is precisely why
-the truce keeps breaking on the seam (Lebanon) neither will own. The non-consensus read: the path of least
-resistance is not peace and not all-out war but a managed, on-again-off-again conflict that keeps the Hormuz
-premium in oil for months — the market is pricing a binary when the politics deliver a grind. In Europe, the
+The market is treating the ceasefire as a diplomatic process; it is a domestic-politics problem, and right now
+it is being run on a wire. <strong>Trump is the single biggest intraday market-mover in this tape.</strong> On
+Monday he said an Iran deal was in its "final stages" and could land "in two or three days" — stocks rallied,
+Brent fell ~3%. By today he had flipped to "we're going to be attacking them very hard," promising to hit Iran
+the same day after it downed a US Apache in the Strait, with a Truth Social post dismissing Iran's military as
+"a complete and total mess." Same President, opposite tape, 24 hours apart. <strong>Netanyahu will not sign
+anything he can frame as a concession</strong> before his coalition is safe, and Trump wants both the
+"dealmaker" headline and the "we hit them hard" headline — which is precisely why the truce keeps breaking on
+the seam (Lebanon) neither will own. The non-consensus read: the path of least resistance is not peace and not
+all-out war but a managed, on-again-off-again conflict run by headline — so the trade is not to bet on the
+outcome but to own the convexity (cheap vol, the oil tail) and treat each Trump deal-or-strike line as noise
+around a Hormuz premium that stays bid for months. The market keeps pricing a binary; the politics deliver a
+grind punctuated by headlines. In Europe, the
 ECB can hike, but the German fiscal-political backdrop means a hawkish Lagarde will be framed at home as a
 growth error before the autumn regional votes — the constraint is the trade. And next week Kevin Warsh chairs
 his first FOMC: a brand-new chair cannot afford to look soft on inflation in week one, so the risk into the dot
@@ -1080,10 +1093,12 @@ and drags the core up next month, that's the bear case.</p>
 """,
 
     "client_ammo": [
-        {"q": "The ceasefire is here — is the all-clear real?",
-         "a": ("Look at oil before you answer. A genuine end hands back the war premium, and Brent gave back exactly "
-               "one dollar to ~$93. The crude market is telling you it does not trust the truce. We held the whole "
-               "book rather than chase it.")},
+        {"q": "Trump said a deal was days away, then said he'd hit Iran hard — what do I believe?",
+         "a": ("Believe the oil price, not the President. He floated a deal 'in two or three days' on Monday and "
+               "flipped to 'attacking them very hard' today, and the tape whipsawed on each line — but Brent still "
+               "sits ~$91.4 with the Strait shut. The crude market is pricing the physical fact, not the headline. "
+               "We trade the premium and treat the deal-or-strike soundbites as noise; we held the whole book "
+               "rather than chase either one.")},
         {"q": "Then why are you still long oil if the war is ending?",
          "a": ("Because the price says it isn't ending — not yet. We marked Brent live to ~$91 and the Brent/WTI "
                "spread to ~$3.26. The premium is intact. The exit is a weekly close below $87. You do not sell the "
