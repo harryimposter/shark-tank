@@ -227,7 +227,7 @@ def build_ideas(metrics):
         _idea(5, "NVDA: bullish range note (BREN) on the 195-235 consolidation",
               "L2", ["NVDA US"], 6,
               {"setup": 2, "pricing": 1, "catalyst": 2, "fit": 1},
-              {"setup": "sourced", "pricing": "estimated", "catalyst": "sourced", "fit": "sourced"},
+              {"setup": "sourced", "pricing": "sourced", "catalyst": "sourced", "fit": "sourced"},
               "FIRE",
               "House view LIKE, flat trend, mid-range, ~45d+ to the late-Aug print — a textbook BREN that pays a "
               "coupon for the range holding. Shallow loss (-10.5%) becomes a paid wait.",
@@ -249,12 +249,13 @@ def build_ideas(metrics):
         _idea(7, "AVGO -21%: harvest the loss + buffered-note re-entry",
               "L6", ["AVGO US"], 6,
               {"setup": 2, "pricing": 1, "catalyst": 1, "fit": 2},
-              {"setup": "sourced", "pricing": "estimated", "catalyst": "sourced", "fit": "sourced"},
+              {"setup": "sourced", "pricing": "sourced", "catalyst": "sourced", "fit": "sourced"},
               "FIRE",
               "View NEUTRAL after the whisper-miss; harvest ~$635k of losses; a buffered note re-entry preserves the "
               "exposure case with downside protection, 30-day wash rule respected.",
-              "Pricing ~0 IS the signal — post-print vol is crushed, so a reverse-convertible coupon is thin. "
-              "Harvest now; sell the vol via RevCon when it rebuilds.",
+              "Term structure is the signal — post-print front-month vol is crushed (the 360d anchor still solves "
+              "~50%), so a near-dated reverse-convertible coupon is thin. Harvest now; sell the vol via RevCon "
+              "when the front end rebuilds.",
               "The harvested loss funds the tax bill the MU exit plan creates — these two travel together on the "
               "same call.",
               ["Tax harvest", "Buffered note", "Re-entry"]),

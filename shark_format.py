@@ -600,7 +600,10 @@ def _holdings_table(positions):
         day_html = (f'<span class="{"g" if day>0 else ("r" if day<0 else "mute")}">{day:+.2f}%</span>'
                     if isinstance(day, (int, float)) else '<span class="mute">&mdash;</span>')
         iv = p.get("iv_pct")
-        iv_html = (f'{iv:.0f}% &middot; {p.get("iv_percentile_est","?")}th <span class="mute">est</span>'
+        conf = p.get("iv_confidence", "estimated")
+        iv_lab = "live" if conf == "sourced" else "est"
+        iv_html = (f'<span class="srcdot src-{e(conf)}"></span>{iv:.0f}% &middot; '
+                   f'{p.get("iv_percentile_est","?")}th <span class="mute">{iv_lab}</span>'
                    if iv else '<span class="mute">&mdash;</span>')
         mark = p.get("mark_price")
         unit = "" if p.get("quantity_type") == "nominal" else ""
@@ -760,7 +763,7 @@ def _page_ideas(scan):
         '<div class="asof" style="margin-top:1.4rem">'
         'Conviction /8 = setup &middot; pricing &middot; catalyst &middot; client fit (0&ndash;2 each). '
         'Green dot = sourced, gold = estimated, red = unverified. '
-        f'{e(meta.get("honesty",""))} '
+        f'{e(meta.get("source", meta.get("honesty","")))} '
         'Issuer credit: every note is senior unsecured paper &mdash; cap any single issuer at 20% of the structure book. '
         'Demo book, not investment advice.</div>'
     )
