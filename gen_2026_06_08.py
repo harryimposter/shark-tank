@@ -8,6 +8,7 @@ Run: python gen_2026_06_08.py
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import book
+import shark_format
 
 trades     = book.load_trades()
 regime_log = book.load_json(book.REGIME_PATH, [])
@@ -607,23 +608,93 @@ Thesis: dot plot June 17 holds at one cut; 2Y reverses 15&ndash;20bp.</li>
     # ── Trade cards (already in trades.json; no ingest needed) ─────────────
     "new_ideas":          new_ideas_cards,
     "pre_position_ideas": prepos_cards,
+
+    # ── Extra fields for shark_format / index.html ──────────────────────────
+    "summary_narrative": """
+<p>Three things happened in 96 hours that redrew the map. On Wednesday June 3, Broadcom proved
+the AI cycle is real: $22.2B in revenue, $10.8B of AI semiconductor income, $16B guided for Q3.
+On Friday June 5, payrolls printed 172,000 &mdash; double the 85,000 consensus &mdash; and the same market
+that cheered AVGO's beat sold every name with an AI multiple attached. And over the weekend,
+Israel struck western and central Iranian defence systems while the US hit Iranian radar sites
+and Iran fired missiles at Kuwait and Bahrain. That is not an escalation calendar. It is the
+absence of a de-escalation one.</p>
+
+<p>Break apart what happened to AVGO and the anatomy is instructive. The stock beat every consensus
+estimate &mdash; but the buy side needed $17.2 billion in Q3 AI revenue guidance to justify 41&times;
+forward earnings. AVGO guided $16.0 billion. The guide was the 93rd percentile of any company's AI
+revenue guidance in history. The market priced the 100th. That gap &mdash; between what was delivered
+and what was needed &mdash; explains the 16% afterhours drop. The thesis is not broken. The multiple was.</p>
+
+<p><strong>The driver:</strong> Payrolls +172k repriced 57% probability of zero cuts in 2026, up from below 50%.
+The Fed holds at 3.5&ndash;3.75% in June (99.2% priced) but September and December are now genuinely live
+for a hike, not a cut. That reprices every duration position and every high-multiple equity simultaneously.</p>
+
+<p><strong>Counter-intuitive hook:</strong> Gold is down while oil is up. Gold fell to $4,350 while Brent
+rallied to $96. Gold prices real rates (higher on payrolls repricing), not war premium. Oil prices physical
+supply disruption. Two different primary drivers in two different assets on the same headline.</p>
+
+<p><strong>The gap:</strong> At 41&times; forward earnings, "exceptional but below buy-side" is insufficient.
+The shift from demand-pull to supply-allocation is what the tape is beginning to price. Three catalysts
+in 10 days decide the next leg: May CPI June 10, ECB June 11, FOMC dot plot June 16&ndash;17.</p>
+""",
+
+    "takeaways": [
+        "May NFP +172k (2× the 85k consensus) repriced a Fed hike and de-rated the AI multiple simultaneously in a single session.",
+        "AVGO stopped June 8: Q3 AI guide $16.0B vs buy-side $17.2B at 41× forward earnings — the 93rd percentile wasn't enough for the multiple.",
+        "Israel struck Iran's defence systems; US hit Iranian radar; Iran fired at Kuwait and Bahrain — Brent gapped to $96.",
+        "Four new trades added: Long DAX/short Nasdaq (010), Brent call spread (011), Short EURUSD (012), Short US 2Y (013).",
+        "Three binary catalysts remain: May CPI Jun 10, ECB Jun 11, FOMC dot plot Jun 16-17 — the book holds both tails.",
+    ],
+
+    "scenarios": [
+        {"kind": "bull", "label": "Bull", "pct": "40%",
+         "headline": "ECB pauses, dot plot holds one cut, Iran stays air-only",
+         "body": ("ECB hikes Thursday, signals pause. FOMC dot plot holds at one cut. Iran stays air-only — "
+                  "no Hormuz closure. AI names re-rate as $16B Q3 delivery proves the cycle intact. SPX 7,700 by July.")},
+        {"kind": "base", "label": "Base", "pct": "40%",
+         "headline": "ECB hawkish, dot plot 0 cuts, Brent $90–100 on Hormuz standoff",
+         "body": ("ECB sounds hawkish, dot plot goes to zero cuts. EUR fades on stagflation read. "
+                  "AI multiple stays compressed. Brent $90–100 on Hormuz standoff. SPX 7,000–7,500 chop. 2s10s to +55bp.")},
+        {"kind": "bear", "label": "Bear", "pct": "20%",
+         "headline": "Hormuz closure confirmed, FOMC hike signal, CPI above 4%",
+         "body": ("Physical disruption confirmed (mine or tanker hit). FOMC signals hike. CPI above 4%. "
+                  "Credit cracks from 80bp IG OAS. Tech −15%. USDJPY intervention unwinds yen carry globally. Oil $110+.")},
+    ],
+
+    "rates_levels": [
+        {"name": "SOFR (o/n)", "level": "~3.62%", "chg": "funding", "dir": "flat",
+         "vid": "sofr-v", "cid": "sofr-c", "asof": "Mon 8 Jun · NY Fed"},
+        {"name": "US 2Y",    "level": "4.162%",     "chg": "+10bp wk",  "dir": "up"},
+        {"name": "US 10Y",   "level": "4.544%",     "chg": "+8bp wk",   "dir": "up"},
+        {"name": "US 30Y",   "level": "4.70%",      "chg": "est",       "dir": "up"},
+        {"name": "2s10s",    "level": "+38.2bp",    "chg": "+23bp wk",  "dir": "up"},
+        {"name": "Bund 10Y", "level": "unverified", "chg": "",          "dir": "flat"},
+        {"name": "Gilt 10Y", "level": "unverified", "chg": "",          "dir": "flat"},
+        {"name": "MOVE",     "level": "~120 (est)", "chg": "elevated",  "dir": "up"},
+    ],
+
+    "ideas_note": (
+        "<p>Three new reactive ideas (MM-010, 011, 012) and one pre-position (MM-013) were added today "
+        "on a regime re-rate to 'Payrolls Shock Meets Hormuz Fire'. The payrolls shock and Hormuz escalation "
+        "changed both the rates and geopolitics thesis simultaneously. Trades are sized conservatively &mdash; "
+        "three binary events (CPI, ECB, FOMC) remain in the next 10 days. AVGO position stopped at $216.</p>"
+    ),
 }
 
-# ── Render and save ────────────────────────────────────────────────────────
-book.step("Rendering HTML")
+# ── Render: legacy single page (output.html) ──────────────────────────────
+book.step("Rendering output.html")
 html_out = book.build_html(brief, trades, regime_log)
-
-book.step("Writing output.html")
 with open(book.OUTPUT_PATH, "w", encoding="utf-8") as f:
     f.write(html_out)
 book.log(f"wrote {len(html_out):,} bytes -> {book.OUTPUT_PATH}")
 
-book.step("Saving trades.json")
-book.save_json(book.TRADES_PATH, trades)
-book.log("saved trades.json")
+# ── Render: Shark Tank pages + fragments ──────────────────────────────────
+book.step("Rendering Shark Tank pages + fragments (index.html, insights, earnings, trades, frag/*)")
+shark_format.render_all(brief, trades, regime_log)
 
-book.step("Saving regime_log.json")
+# ── Persist state ──────────────────────────────────────────────────────────
+book.step("Saving trades.json + regime_log.json")
+book.save_json(book.TRADES_PATH, trades)
 book.save_json(book.REGIME_PATH, regime_log)
-book.log("saved regime_log.json")
 
 book.step("Done")
