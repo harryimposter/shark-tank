@@ -35,6 +35,43 @@ TV_MAP = {
     "MC FP": "EURONEXT:MC", "SAP GY": "XETR:SAP", "TTE FP": "EURONEXT:TTE",
 }
 
+# Equity sector + book-wide region maps, used for the Portfolio allocation pies.
+EQUITY_SECTOR = {
+    "MU US": "Semiconductors", "NVDA US": "Semiconductors", "AVGO US": "Semiconductors",
+    "AMD US": "Semiconductors", "SPY US": "US index (ETF)", "MC FP": "Luxury",
+    "SAP GY": "Software", "TTE FP": "Energy",
+}
+ASSET_BUCKET = {
+    "equity": "Equities", "equity_etf": "Equities",
+    "govt_bond": "Fixed income", "corp_bond": "Fixed income",
+    "commodity_etc": "Commodities",
+}
+
+# Product type + objective per idea num, gated by asset class (the shelf):
+#   Equities  — RevCon / FCN / Phoenix / Digital review / Autocall Market Plus / BREN /
+#               protected participation; OTC accumulators / decumulators.
+#   FX        — DCS (income); forwards / seagulls / puts / accumulators (hedging).
+#   Rates     — range accruals only.
+PRODUCT_META = {
+    1:   ("Collar + SBL + decumulator", "Concentration hedge / de-risk"),
+    2:   ("T-bill ladder + FX forward strip", "FX liability hedge"),
+    3:   ("FX seagull", "FX hedge"),
+    4:   ("Bond switch", "Loss harvest / carry pickup"),
+    5:   ("BREN (range note)", "Participation / income"),
+    6:   ("Cash-secured put (OTC)", "Income / add-at-support"),
+    7:   ("Loss harvest + buffered note", "Loss recovery / protected re-entry"),
+    8:   ("Deposit + range accrual", "Income / end cash drag"),
+    9:   ("Reverse convertible (FCN if certain)", "Income / add-at-level"),
+    10:  ("Covered-call overwrite / decumulator", "Income / staged exit"),
+    11:  ("EUR bond switch", "Loss harvest / carry pickup"),
+    12:  ("Hold — no structure", "Hedge · do not trim"),
+    13:  ("DCS — suppressed", "Suppressed · conflicts with FX hedge"),
+    101: ("Capital-protected note", "Protected participation"),
+    102: ("Cash-secured put (OTC)", "Income / discount accumulation"),
+    103: ("Curve range accrual (capital-protected)", "Rates participation / macro"),
+    104: ("Thematic participation note", "Participation / diversify"),
+}
+
 # Client liabilities (demo) — drives the FX liability-netting (Observable O12).
 LIABILITIES = [
     {"kind": "USD mortgage", "currency": "USD", "monthly": 38500, "annual": 462000,
@@ -915,15 +952,113 @@ def build_ideas(metrics):
 
     all_ideas = ideas + _new_adds(metrics)
 
-    # overlay thesis/catalyst/sub_why enrichments onto every idea
+    # overlay thesis/catalyst/sub_why enrichments + product type / objective onto every idea
     for it in all_ideas:
         enr = IDEA_ENRICHMENTS.get(it["num"])
         if enr:
             it["fundamental_thesis"] = enr.get("fundamental_thesis", "")
             it["catalyst_text"]      = enr.get("catalyst_text", "")
             it["sub_why"]            = enr.get("sub_why", {})
+        pm = PRODUCT_META.get(it["num"])
+        if pm:
+            it["product_type"], it["objective"] = pm
 
     return all_ideas
+
+
+def compute_allocations(bookdata):
+    """Three allocation breakdowns for the Portfolio pie charts:
+       asset class (whole book incl. cash), equity sector (equities only), region (whole book)."""
+    eurusd = bookdata["client"]["fx_reference"]["EURUSD"]
+    pos = bookdata["positions"]
+    cash = bookdata.get("cash", [])
+
+    # --- asset class (whole book) ---
+    ac = {}
+    for p in pos:
+        bucket = ASSET_BUCKET.get(p.get("asset_class", ""), "Other")
+        ac[bucket] = ac.get(bucket, 0) + p["value_eur"]
+    cash_eur = sum(c["amount"] / (eurusd if c["currency"] == "USD" else 1) for c in cash)
+    if cash_eur:
+        ac["Cash"] = ac.get("Cash", 0) + cash_eur
+    ac_order = ["Equities", "Fixed income", "Commodities", "Cash", "Other"]
+    asset_class = [{"label": k, "value": round(ac[k])} for k in ac_order if k in ac]
+
+    # --- equity sector (equities only) ---
+    sec = {}
+    for p in pos:
+        if p.get("asset_class") in ("equity", "equity_etf"):
+            s = EQUITY_SECTOR.get(p["ticker"], p.get("name", "Other"))
+            sec[s] = sec.get(s, 0) + p["value_eur"]
+    sector = [{"label": k, "value": round(v)} for k, v in sorted(sec.items(), key=lambda kv: -kv[1])]
+
+    # --- region (whole book, by listing currency; gold ETC = Global) ---
+    reg = {}
+    for p in pos:
+        if p.get("asset_class") == "commodity_etc":
+            r = "Global / commodity"
+        elif p["currency"] == "USD":
+            r = "US"
+        else:
+            r = "Europe"
+        reg[r] = reg.get(r, 0) + p["value_eur"]
+    if cash_eur:
+        reg["Cash"] = reg.get("Cash", 0) + cash_eur
+    region = [{"label": k, "value": round(v)} for k, v in sorted(reg.items(), key=lambda kv: -kv[1])]
+
+    return {"asset_class": asset_class, "sector": sector, "region": region}
+
+
+def _loss_recovery(bookdata):
+    """Per-position recovery routes for underwater holdings — exact how-to, plus the
+    faster structured-product + OTC-at-margin path where it genuinely makes sense."""
+    by_tk = {p["ticker"]: p for p in bookdata["positions"]}
+    def loss(tk):
+        p = by_tk.get(tk, {})
+        v = p.get("pnl_pct")
+        return f"{v:+.1f}%" if isinstance(v, (int, float)) else ""
+    out = []
+    out.append({
+        "name": "Broadcom (AVGO US)", "loss": loss("AVGO US"),
+        "how": ("Harvest the loss now (front-month IV is crushed post-print, so spreads on the replacement are "
+                "tight) to bank the tax loss against the gains the Micron exit will create, then re-enter the "
+                "AI-ASIC thesis through a 12–18m buffered note (protected participation) so the exposure stays on "
+                "with a downside buffer. In ~30 days, once front-end vol rebuilds, sell a reverse convertible to "
+                "earn the coupon back."),
+        "accelerator": ("Run the buffered note AND an OTC decumulator/accumulator at margin: the accumulator buys "
+                        "AVGO back on a daily clip below current (a discount average-down funded on margin) while "
+                        "the note carries the protected upside — together they claw back the 21% materially faster "
+                        "than waiting for spot to mean-revert. Cap the margin so a full obligation is always "
+                        "deliverable."),
+    })
+    out.append({
+        "name": "LVMH (MC FP)", "loss": loss("MC FP"),
+        "how": ("Sell a 6-month reverse convertible struck at the level you would average down anyway. Steep "
+                "luxury put skew fattens the coupon, so you are paid a high single-digit coupon to wait at your "
+                "add level; if it is put to you, you own more LVMH at a discount — exactly the plan. FCN if the "
+                "coupon must be certain."),
+        "accelerator": ("Pair the RevCon coupon with a short OTC accumulator at margin to leg into the discount on "
+                        "a daily clip — the coupon funds the carry, so the blended entry drops faster and the "
+                        "−32% recovers on a lower break-even than spot alone."),
+    })
+    out.append({
+        "name": "NVIDIA (NVDA US)", "loss": loss("NVDA US"),
+        "how": ("Sell a BREN / range note on the 195–235 consolidation: it pays a coupon while NVDA holds the "
+                "range, turning the paper loss into paid waiting rather than a realised loss."),
+        "accelerator": ("Add a cash-secured put struck at 195 (ring-fenced cash, defined risk — not the BREN at "
+                        "the same time per the delta-netting rule): the premium offsets the drawdown and commits "
+                        "you to add at support, the level you would buy at anyway."),
+    })
+    out.append({
+        "name": "US Treasury 1.25% '31 + Siemens 0.875% '30", "loss": f'{loss("T 1.25 08/15/31")} / {loss("SIEGR 0.875 06/30")}',
+        "how": ("Switch both underwater bonds into current-coupon paper of the same credit. The loss is already "
+                "taken; the switch banks it (offsetting gains harvested elsewhere) and roughly triples the running "
+                "carry — the higher coupon amortises the recovery without taking new credit risk. CPI gates the "
+                "UST leg, Thursday's ECB gates the Siemens/EUR leg."),
+        "accelerator": ("Rates leg — not a margin/OTC candidate; the recovery is the carry pickup itself, banked "
+                        "cleanly via the switch."),
+    })
+    return out
 
 
 def _overall_summary(metrics):
@@ -1015,6 +1150,8 @@ def build_scan(brief=None):
         "new_adds": new_adds, "enhance": enhance,
         "new_adds_grouped": new_adds_grouped, "enhance_grouped": enhance_grouped,
         "overall_summary": _overall_summary(metrics),
+        "allocations": compute_allocations(bookdata),
+        "loss_recovery": _loss_recovery(bookdata),
         "counts": {"fired": len(fired), "watch": len(watch), "suppressed": len(suppressed),
                    "new_adds": len(new_adds), "enhance": len(enhance)},
         "refresh_notes": refresh_notes,

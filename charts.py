@@ -313,6 +313,86 @@ def yield_curve(points):
     return "".join(svg)
 
 
+# --------------------------------------------------------------------------
+# 13e -- DONUT / PIE (portfolio allocations)
+# --------------------------------------------------------------------------
+# A muted, on-palette categorical sequence (gold-led, then earthy neutrals).
+_DONUT_COLORS = [
+    "#b8960c",  # gold
+    "#1a7a45",  # green
+    "#c0392b",  # red
+    "#6b6b6b",  # ink-soft
+    "#8a6d3b",  # bronze
+    "#3b6ea5",  # slate blue
+    "#a05195",  # mauve
+    "#d08a2e",  # amber
+    "#5b8c5a",  # sage
+    "#9a9a9a",  # ink-mute
+    "#7a5195",  # plum
+    "#2f6f6f",  # teal
+]
+
+
+def donut_chart(segments, title="", w=600, h=270, hole=0.58):
+    """Annular pie ('donut') from segments: [{"label","value","color"?}].
+
+    Drawn with the dasharray technique (no arc-path math), donut on the left and
+    a value/percentage legend on the right. Returns a self-contained <svg>.
+    """
+    segs = [s for s in (segments or []) if isinstance(s.get("value"), (int, float)) and s["value"] > 0]
+    if not segs:
+        return _placeholder(f"{title or 'allocation'}: no data", w=w, h=140)
+    total = sum(s["value"] for s in segs)
+
+    cx, cy, r = 96, h / 2 + 6, 78
+    sw = r * (1 - hole)                # ring thickness
+    rr = r - sw / 2                    # radius of the stroked centreline
+    circ = 2 * 3.141592653589793 * rr
+
+    out = [_open(w, h)]
+    if title:
+        out.append(_title(title, w))
+    # base ring (so gaps never show the background)
+    out.append(f'<circle cx="{cx}" cy="{cy}" r="{rr:.2f}" fill="none" '
+               f'stroke="{PALETTE["line"]}" stroke-width="{sw:.1f}"/>')
+
+    offset = 0.0
+    for i, s in enumerate(segs):
+        frac = s["value"] / total
+        seg_len = frac * circ
+        color = s.get("color") or _DONUT_COLORS[i % len(_DONUT_COLORS)]
+        s["_color"] = color
+        # rotate -90deg around the centre so the first slice starts at 12 o'clock
+        out.append(
+            f'<circle cx="{cx}" cy="{cy}" r="{rr:.2f}" fill="none" stroke="{color}" '
+            f'stroke-width="{sw:.1f}" stroke-dasharray="{seg_len:.2f} {circ - seg_len:.2f}" '
+            f'stroke-dashoffset="{-offset:.2f}" '
+            f'transform="rotate(-90 {cx} {cy})"/>'
+        )
+        offset += seg_len
+
+    # centre label: total count of slices
+    out.append(f'<text x="{cx}" y="{cy-4}" text-anchor="middle" font-size="13" '
+               f'fill="{PALETTE["ink_soft"]}">{len(segs)} parts</text>')
+    out.append(f'<text x="{cx}" y="{cy+14}" text-anchor="middle" font-size="10" '
+               f'fill="{PALETTE["ink_mute"]}">allocation</text>')
+
+    # legend on the right
+    lx = cx + r + 36
+    ly = cy - (len(segs) * 11)
+    for i, s in enumerate(segs):
+        pct = 100 * s["value"] / total
+        y = ly + i * 22
+        out.append(f'<rect x="{lx}" y="{y-9}" width="11" height="11" rx="2" fill="{s["_color"]}"/>')
+        out.append(f'<text x="{lx+18}" y="{y}" font-size="12.5" fill="{PALETTE["ink"]}">'
+                   f'{_esc(s["label"])}</text>')
+        out.append(f'<text x="{w-12}" y="{y}" text-anchor="end" font-size="12.5" '
+                   f'font-family="-apple-system, Helvetica, sans-serif" '
+                   f'fill="{PALETTE["ink_soft"]}">{pct:.1f}%</text>')
+    out.append("</svg>")
+    return "".join(out)
+
+
 if __name__ == "__main__":  # quick visual smoke test
     demo_closed = [
         {"conviction": 7, "exit": {"date": "2026-05-10", "pnl_pct": 2.1}},

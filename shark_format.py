@@ -20,6 +20,7 @@ from datetime import date, datetime
 
 import book
 import earnings
+import charts
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 FRAG_DIR = os.path.join(HERE, "frag")
@@ -225,6 +226,59 @@ details.idea-d>summary .smeta{display:flex;gap:6px;align-items:center;flex-wrap:
 .convtbl td.k{color:var(--ink);font-weight:600;white-space:nowrap}
 .convtbl td.s{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-mute);white-space:nowrap}
 .convtbl td.w{color:var(--ink-soft)}
+/* ---- real section headings (black, larger, look like headings) ---- */
+.section-h{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:#000;letter-spacing:-.01em;line-height:1.2;margin:2.4rem 0 .9rem;padding-bottom:.45rem;border-bottom:1.5px solid var(--ink)}
+.section-h:first-child{margin-top:.3rem}
+.section-h .sh-sub{display:block;font-family:var(--font);font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mute);margin-top:.4rem}
+/* ---- methodology / positioning explainer ---- */
+.method-box{background:var(--surface);border:.5px solid var(--line);border-left:3px solid var(--ink);border-radius:var(--rad-lg);padding:.9rem 1.1rem;margin:.3rem 0 1.1rem}
+.method-box .mb-t{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-bottom:.5rem}
+.method-box p{margin:.35rem 0;font-size:12.5px;color:var(--ink-soft);line-height:1.62}
+.method-box b{color:var(--ink);font-weight:600}
+.method-box ul{margin:.3rem 0;padding-left:1.1rem}.method-box li{font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:3px}
+/* ---- RSI screener ---- */
+.scr-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:.5rem}
+@media(max-width:760px){.scr-grid{grid-template-columns:1fr}}
+.scr-col h4{font-size:14px;font-weight:700;margin:0 0 .6rem;display:flex;align-items:center;gap:8px}
+.scr-col.under h4{color:var(--green)}.scr-col.over h4{color:var(--red)}
+.scr-col .scr-sub{font-size:11px;color:var(--ink-mute);font-weight:400}
+.rsi-chip{font-variant-numeric:tabular-nums;font-weight:700;border-radius:6px;padding:1px 8px;font-size:12.5px;white-space:nowrap}
+.rsi-chip.os{color:var(--green);background:rgba(26,122,69,.1)}
+.rsi-chip.ob{color:var(--red);background:rgba(192,57,43,.1)}
+.rsi-chip.nu{color:var(--ink-soft);background:var(--surface)}
+.scr-empty{font-size:12px;color:var(--ink-mute);font-style:italic;padding:.5rem 0}
+/* ---- technical-analysis block ---- */
+.ta-block{background:var(--surface);border:.5px solid var(--line);border-radius:var(--rad);padding:.55rem .8rem;margin-top:.35rem;font-size:12px;line-height:1.6}
+.ta-grid{display:flex;flex-wrap:wrap;gap:6px;margin:.35rem 0}
+.ta-tag{font-size:10.5px;border:.5px solid var(--line);border-radius:6px;padding:1px 7px;background:#fff;color:var(--ink-soft);white-space:nowrap}
+.ta-tag b{color:var(--ink);font-weight:600}
+.ta-tag.up{border-color:rgba(26,122,69,.5);color:var(--green)}
+.ta-tag.dn{border-color:rgba(192,57,43,.5);color:var(--red)}
+.ta-how{font-size:11px;color:var(--ink-mute);margin-top:.3rem;line-height:1.5}
+/* ---- product-type / objective tags (Derivatives Desk) ---- */
+.ptag{font-size:10px;font-weight:600;letter-spacing:.03em;border-radius:6px;padding:1px 8px;border:.5px solid var(--gold);color:var(--gold);background:rgba(184,150,12,.07);white-space:nowrap}
+.otag{font-size:10px;font-weight:600;border-radius:6px;padding:1px 8px;border:.5px solid var(--ink-mute);color:var(--ink-soft);background:var(--surface);white-space:nowrap}
+/* ---- portfolio pie row ---- */
+.pie-row{display:grid;grid-template-columns:1fr;gap:10px;margin:.4rem 0 1.1rem}
+@media(min-width:780px){.pie-row{grid-template-columns:1fr 1fr 1fr}}
+.pie-card{border:.5px solid var(--line);border-radius:var(--rad-lg);padding:.7rem .85rem .4rem;background:var(--bg)}
+.pie-card .pc-t{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:.2rem}
+/* ---- live book P&L header ---- */
+.pnl-head{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:.3rem 0 .7rem}
+.pnl-tile{background:var(--surface);border:.5px solid var(--line);border-radius:var(--rad);padding:.6rem .8rem}
+.pnl-tile .pl{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute)}
+.pnl-tile .pv{font-size:21px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1;margin-top:2px}
+.pnl-tile .pv.g{color:var(--green)}.pnl-tile .pv.r{color:var(--red)}
+.aim-line{font-size:12.5px;color:var(--ink-soft);background:rgba(184,150,12,.06);border-left:2px solid var(--gold);border-radius:0 6px 6px 0;padding:.5rem .8rem;margin:.2rem 0 .8rem;line-height:1.6}
+.aim-line b{color:var(--ink)}
+.select-box{border:.5px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--rad-lg);padding:.9rem 1.1rem;background:var(--surface);margin:.3rem 0 1rem}
+.select-box .sb-t{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.select-box ul{margin:.3rem 0 0;padding-left:0;list-style:none}
+.select-box li{font-size:12.5px;line-height:1.6;padding:.4rem 0;border-top:.5px solid var(--line);display:flex;gap:8px;align-items:flex-start}
+.select-box li:first-child{border-top:none}
+.select-box .tk{flex-shrink:0;font-size:9px;font-weight:700;text-transform:uppercase;border-radius:5px;padding:1px 7px;margin-top:1px;min-width:54px;text-align:center}
+.select-box .tk.in{color:#fff;background:var(--green)}
+.select-box .tk.out{color:var(--ink-soft);background:#fff;border:.5px solid var(--line)}
 """
 
 NAV = [
@@ -233,8 +287,14 @@ NAV = [
     ("earnings.html", "Earnings", "Earnings Intelligence"),
     ("trades.html", "Trade Ideas", "ideas + live book"),
     ("portfolio.html", "Portfolio", "Fable · client book"),
-    ("ideas.html", "Derivatives Lab", "client structuring desk"),
+    ("ideas.html", "Derivatives Desk", "structured products + OTC"),
 ]
+
+
+def _h(label, sub=None):
+    """A real section heading — black, larger, looks like a heading."""
+    sub_html = f'<span class="sh-sub">{e(sub)}</span>' if sub else ""
+    return f'<h2 class="section-h">{e(label)}{sub_html}</h2>'
 
 # --------------------------------------------------------------------------
 # TradingView live right rail (market-quotes widget — no key, live, all classes)
@@ -427,47 +487,224 @@ def _pips(score, total=10):
 
 
 def _rsi_block(rsi):
-    """Render the RSI positioning check block for a trade dropdown."""
+    """Render the RSI positioning check on the CLASSIC ABSOLUTE convention
+    (>=70 overbought, <=30 oversold, 30–70 neutral). No averaging."""
     if not rsi:
-        return '<div class="rsi-block"><span class="rsi-na">RSI positioning: no data available for this instrument</span></div>'
+        return '<div class="rsi-block"><span class="rsi-na">RSI: no data available for this instrument</span></div>'
     if rsi.get("error"):
-        return f'<div class="rsi-block"><span class="rsi-na">RSI positioning: {e(rsi["error"])}</span></div>'
-    verdict = rsi.get("verdict", "")
-    rsi_val = rsi.get("rsi", "—")
-    mean    = rsi.get("mean", "—")
-    std     = rsi.get("std", "—")
-    sd_dist = rsi.get("sd_dist", 0)
-    crowd   = rsi.get("crowd_vs_us", False)
+        return f'<div class="rsi-block"><span class="rsi-na">RSI: {e(rsi["error"])}</span></div>'
+    verdict   = rsi.get("verdict", "NEUTRAL")
+    rsi_val   = rsi.get("rsi", "—")
+    crowd     = rsi.get("crowd_vs_us", False)
+    supports  = rsi.get("supports", False)
     direction = rsi.get("direction", "")
-    ticker  = rsi.get("ticker", "")
-    note    = rsi.get("note", ticker)
+    note      = rsi.get("note", rsi.get("ticker", ""))
 
-    if verdict == "CROWDED_HIGH":
-        v_html = '<span class="rsi-crowded">CROWDED / OVERBOUGHT</span>'
-        interp = "RSI is >1 SD above its 1-month mean — instrument is technically overbought."
-    elif verdict == "CROWDED_LOW":
-        v_html = '<span class="rsi-crowded">CROWDED / OVERSOLD</span>'
-        interp = "RSI is >1 SD below its 1-month mean — instrument is technically oversold."
+    if verdict == "OVERBOUGHT":
+        v_html = '<span class="rsi-crowded">OVERBOUGHT (≥70)</span>'
+        interp = "RSI ≥ 70 — the tape has run up and is technically overbought; vulnerable to a sell-off."
+    elif verdict == "OVERSOLD":
+        v_html = '<span class="rsi-neutral">OVERSOLD (≤30)</span>'
+        interp = "RSI ≤ 30 — the tape is washed out and technically oversold; set up to bounce."
     else:
-        v_html = '<span class="rsi-neutral">NEUTRAL</span>'
-        interp = "RSI is within ±1 SD of its 1-month mean — no crowding signal."
+        v_html = '<span class="rsi-neutral" style="color:var(--ink-soft)">NEUTRAL (30–70)</span>'
+        interp = "RSI between 30 and 70 — no overbought/oversold extreme; positioning signal is neutral."
 
     impact = ""
     if crowd:
-        impact = f' <span style="color:var(--red);font-weight:600">— AGAINST our {direction} position (−1 conviction point)</span>'
-    elif verdict != "NEUTRAL":
-        impact = f' <span style="color:var(--green);font-weight:600">— SUPPORTS our {direction} position</span>'
+        impact = (f' <span style="color:var(--red);font-weight:600">— ⚑ FLAGGED: against our {e(direction)} '
+                  f'(an overbought long / oversold short is chasing an extreme → −1 conviction point)</span>')
+    elif supports:
+        impact = f' <span style="color:var(--green);font-weight:600">— SUPPORTS our {e(direction)} position</span>'
 
     return (
         f'<div class="rsi-block">'
         f'<span class="rv">RSI {rsi_val}</span>'
-        f'<span style="color:var(--ink-mute)">mean {mean} · ±1SD [{round(mean-std,1) if isinstance(mean,(int,float)) and isinstance(std,(int,float)) else "—"}, {round(mean+std,1) if isinstance(mean,(int,float)) and isinstance(std,(int,float)) else "—"}] · '
-        f'SD dist {sd_dist:+.2f}</span>'
         f'<span>{v_html}{impact}</span>'
-        f'<span style="color:var(--ink-mute);font-size:11px">{e(note)} · 14-period RSI · 21-session window</span>'
+        f'<span style="color:var(--ink-mute);font-size:11px">{e(note)} · 14-period RSI (Wilder), 1y daily closes · absolute 30/70 convention</span>'
         f'<span style="color:var(--ink-soft);font-size:11px">{e(interp)}</span>'
         f'</div>'
     )
+
+
+def _ta_block(ta):
+    """Render the technical-analysis read (50/100/200 DMA, Bollinger, Fibonacci)."""
+    if not ta:
+        return '<div class="ta-block"><span class="rsi-na">Technical analysis: no price history available</span></div>'
+    if ta.get("error"):
+        return f'<div class="ta-block"><span class="rsi-na">Technical analysis: {e(ta["error"])}</span></div>'
+    trend = ta.get("trend", "mixed")
+    trend_cls = {"uptrend": "up", "downtrend": "dn"}.get(trend, "")
+    cross = ta.get("cross")
+    cross_cls = "up" if cross == "golden" else ("dn" if cross == "death" else "")
+    tags = []
+    for lab, key, ma in (("50d", "pct_vs_50", ta.get("sma50")), ("100d", "pct_vs_100", ta.get("sma100")),
+                         ("200d", "pct_vs_200", ta.get("sma200"))):
+        pct = ta.get(key)
+        if ma is None or pct is None:
+            continue
+        cls = "up" if pct >= 0 else "dn"
+        tags.append(f'<span class="ta-tag {cls}"><b>{lab}</b> {ma:,.2f} ({pct:+}%)</span>')
+    tags.append(f'<span class="ta-tag {trend_cls}"><b>Trend</b> {e(trend)}</span>')
+    if cross:
+        tags.append(f'<span class="ta-tag {cross_cls}"><b>{e(cross)} cross</b></span>')
+    nf = ta.get("nearest_fib", {})
+    if nf:
+        tags.append(f'<span class="ta-tag"><b>Fib</b> {e(nf.get("level",""))} @ {nf.get("price",0):,.2f}</span>')
+    tags.append(f'<span class="ta-tag"><b>Boll %B</b> {ta.get("bb_pctb","?")}</span>')
+    score = ta.get("ta_score")
+    score_html = ""
+    if score is not None:
+        sc_cls = "var(--green)" if score == 2 else ("var(--gold)" if score == 1 else "var(--red)")
+        score_html = (f'<span class="ta-tag" style="border-color:{sc_cls};color:{sc_cls}">'
+                      f'<b>TA score {score}/2</b></span>')
+    return (
+        '<div class="ta-block">'
+        + f'<div class="ta-grid">{"".join(tags)}{score_html}</div>'
+        + f'<div>{e(ta.get("read",""))}</div>'
+        + f'<div class="ta-how">{e(ta.get("how",""))}</div>'
+        + '</div>'
+    )
+
+
+def _positioning_method():
+    """How 'crowded vs not' is assessed — shown on Trade Ideas, Live Book, Derivatives Desk."""
+    return (
+        '<div class="method-box">'
+        '<div class="mb-t">How we judge whether a trade is crowded</div>'
+        '<p>Positioning is the question: <b>is the crowd already on the side we want to be on?</b> '
+        'If everyone is long what we are buying, there is no one left to buy and the unwind risk is high. '
+        'We assess it from three reads, not an average of anything:</p>'
+        '<ul>'
+        '<li><b>RSI on the absolute convention.</b> RSI ≥ 70 = overbought (the buyers are exhausted); '
+        'RSI ≤ 30 = oversold (the sellers are exhausted). We do <i>not</i> average RSI against a rolling mean — '
+        'an oversold tape is oversold whatever its recent average was. An overbought reading on a long, or an '
+        'oversold reading on a short, is <b>flagged</b> and costs a conviction point.</li>'
+        '<li><b>Speculative positioning / flow.</b> CFTC CoT net length for FX and commodities, fund-flow and '
+        'options-skew reads for equities — where the money already sits and how stretched it is.</li>'
+        '<li><b>Pain trade.</b> The direction that hurts the most people forces the biggest move; if our trade '
+        'is also the pain trade for the consensus, positioning scores high.</li>'
+        '</ul>'
+        '<p>The positioning component scores <b>0–2</b>: 2 = the crowd is offside our trade (maximum fuel); '
+        '1 = neutral/mildly supportive; 0 = the crowd is already with us (high unwind risk).</p>'
+        '</div>'
+    )
+
+
+def _screener_conv(item, kind):
+    """Systematic technical-conviction /5 for a screened name, with per-criterion WHY.
+    kind = 'under' (oversold → buy) or 'over' (overbought → fade)."""
+    rsi = item.get("rsi", 50)
+    ta  = item.get("technicals") or {}
+    pctb = ta.get("bb_pctb", 0.5)
+    p200 = ta.get("pct_vs_200")
+    rows = []
+    score = 0
+    # 1) RSI extremity (0-2)
+    if kind == "under":
+        ext = 2 if rsi <= 22 else (1 if rsi <= 30 else 0)
+        ext_why = f"RSI {rsi} — {'deeply' if ext==2 else 'modestly'} oversold (≤30 trigger); the lower the RSI the more washed-out the selling."
+    else:
+        ext = 2 if rsi >= 78 else (1 if rsi >= 70 else 0)
+        ext_why = f"RSI {rsi} — {'deeply' if ext==2 else 'modestly'} overbought (≥70 trigger); the higher the RSI the more exhausted the buying."
+    score += ext
+    rows.append(("RSI extremity", ext, 2, ext_why))
+    # 2) Bollinger confirmation (0-2)
+    if kind == "under":
+        bb = 2 if pctb <= 0.1 else (1 if pctb <= 0.25 else 0)
+        bb_why = f"Bollinger %B {pctb} — {'tagging the lower band (statistically stretched, snap-back-prone)' if bb==2 else 'in the lower half' if bb==1 else 'not yet at the band'}."
+    else:
+        bb = 2 if pctb >= 0.9 else (1 if pctb >= 0.75 else 0)
+        bb_why = f"Bollinger %B {pctb} — {'riding the upper band (statistically stretched, fade-prone)' if bb==2 else 'in the upper half' if bb==1 else 'not yet at the band'}."
+    score += bb
+    rows.append(("Bollinger confirmation", bb, 2, bb_why))
+    # 3) Trend/structure quality (0-1)
+    if kind == "under":
+        st = 1 if (p200 is not None and p200 > -8) else 0
+        st_why = ("Still near/above the 200-day MA — an oversold dip inside an intact uptrend is the higher-quality bounce."
+                  if st else "Well below the 200-day MA — oversold but in a downtrend; bounces here are lower quality.")
+    else:
+        st = 1 if (p200 is not None and p200 > 0) else 0
+        st_why = ("Extended above the 200-day MA — an overbought name far from trend support has the most room to mean-revert."
+                  if st else "Already below trend support — overbought on a bear rally; the fade is lower quality.")
+    score += st
+    rows.append(("Trend / structure", st, 1, st_why))
+    return score, rows
+
+
+def _screener_card(item, kind, note=None):
+    chip_cls = "os" if kind == "under" else "ob"
+    rsi = item.get("rsi", "?")
+    score, rows = _screener_conv(item, kind)
+    conv_tbl = (
+        '<table class="convtbl">'
+        f'<tr><td class="k">Technical conviction</td><td class="s">{score}/5</td>'
+        f'<td class="w">RSI extremity · Bollinger · trend (systematic, no fundamentals)</td></tr>'
+        + "".join(f'<tr><td class="k">{e(k)}</td><td class="s">{v}/{mx}</td><td class="w">{e(w)}</td></tr>'
+                  for k, v, mx, w in rows)
+        + "</table>"
+    )
+    if note:
+        why = note
+    elif kind == "under":
+        why = (f"Mechanically surfaced as oversold (RSI {rsi} ≤ 30). The case to go higher is mean reversion: "
+               f"selling is exhausted and the technical picture below supports a bounce back toward the moving-average stack.")
+    else:
+        why = (f"Mechanically surfaced as overbought (RSI {rsi} ≥ 70). The case to sell off is mean reversion: "
+               f"buying is exhausted and the technical picture below shows a stretched tape with room to revert.")
+    return (
+        '<details class="trade-drop">'
+        '<summary><div>'
+        f'<div class="td-name">{e(item.get("name",""))}</div>'
+        f'<div style="font-size:11px;color:var(--ink-mute);margin-top:2px">{e(item.get("ticker",""))} · '
+        f'{e(item.get("sector",""))} · {e(item.get("region",""))}</div>'
+        '</div><div class="td-meta">'
+        f'<span class="rsi-chip {chip_cls}">RSI {rsi}</span>'
+        f'<span style="font-size:11px;color:var(--ink-mute)">&#9656; expand</span>'
+        '</div></summary>'
+        '<div class="trade-body">'
+        f'<div class="tb-label">Why it {"should go higher" if kind=="under" else "should sell off"}</div>'
+        f'<div class="tb-text">{e(why)}</div>'
+        '<div class="tb-label">Technical picture (50/100/200 DMA · Bollinger · Fibonacci)</div>'
+        f'{_ta_block(item.get("technicals"))}'
+        '<div class="tb-label">Technical conviction · how each score was earned</div>'
+        f'{conv_tbl}'
+        '</div></details>'
+    )
+
+
+def _rsi_screener(screen, notes=None):
+    """Two-column RSI screener: oversold names to buy, overbought names to fade."""
+    if not screen:
+        return ""
+    notes = notes or {}
+    under = screen.get("oversold", [])
+    over  = screen.get("overbought", [])
+    method = (
+        '<div class="method-box">'
+        '<div class="mb-t">How these names are found</div>'
+        f'<p>Each refresh we scan a curated <b>{screen.get("scanned","~50")}-name cross-asset universe</b> '
+        '(US mega-cap tech &amp; semis, financials, industrials, energy, healthcare; key ETFs across equity, '
+        'rates, credit and gold; plus Europe, UK, Japan and Korea names) and compute the <b>14-period RSI</b> '
+        '(Wilder) on six months of daily closes. We split on the <b>absolute convention</b>: '
+        '<b>RSI ≤ 30 = oversold</b> (left column — names set up to go higher), '
+        '<b>RSI ≥ 70 = overbought</b> (right column — names that have run too far and should sell off). '
+        'No averaging. Each name carries its full technical picture and a systematic technical-conviction score.</p>'
+        f'<p style="font-size:11px;color:var(--ink-mute)">Universe scanned {screen.get("asof","")}; '
+        f'{screen.get("errors",0)} symbol(s) returned no data this run.</p>'
+        '</div>'
+    )
+    left = ('<div class="scr-col under"><h4>Oversold &mdash; names to go higher '
+            f'<span class="scr-sub">RSI ≤ {int(screen.get("low",30))}</span></h4>'
+            + ("".join(_screener_card(i, "under", notes.get(i["ticker"])) for i in under)
+               if under else '<div class="scr-empty">No name in the universe is oversold this refresh.</div>')
+            + '</div>')
+    right = ('<div class="scr-col over"><h4>Overbought &mdash; names that should sell off '
+             f'<span class="scr-sub">RSI ≥ {int(screen.get("high",70))}</span></h4>'
+             + ("".join(_screener_card(i, "over", notes.get(i["ticker"])) for i in over)
+                if over else '<div class="scr-empty">No name in the universe is overbought this refresh.</div>')
+             + '</div>')
+    return method + '<div class="scr-grid">' + left + right + '</div>'
 
 
 def _conviction_legend():
@@ -489,12 +726,16 @@ def _conviction_legend():
         ("Stop quality (0–1)", "0–1", "Is the stop loss clearly defined and tight relative to the move? "
          "1 = stop at a clean technical/structural level with a disciplined R/R ratio; "
          "0 = wide, arbitrary, or no defined stop."),
-        ("RSI positioning (0–1) ★ NEW", "0–1", "1-month RSI crowding check. Compute the 14-period RSI "
-         "over the past 3 months, take the mean and std of the last 21 sessions (~1 month), and test "
-         "whether the current RSI is >1 SD from the mean. If CROWDED against your position direction "
-         "(overbought on a long, oversold on a short) = 0 (subtract 1 conviction point); otherwise = 1. "
-         "This criterion is displayed on each trade but does not retroactively change existing book scores "
-         "— it applies to new trades going forward."),
+        ("Technical analysis (0–2) ★ NEW", "0–2", "Does the chart confirm the trade? We read the "
+         "50/100/200-day moving averages (trend + golden/death cross), 20-day Bollinger Bands (is the "
+         "entry stretched at a band or does it have room?), and Fibonacci retracements off the trailing "
+         "6-month swing (the support/resistance the stop and target hang on). "
+         "2 = trend agrees with the trade AND the entry is not chasing an exhausted band; "
+         "1 = mixed; 0 = the chart contradicts the trade."),
+        ("RSI positioning (0–1) ★ NEW", "0–1", "Crowding check on the CLASSIC ABSOLUTE convention — "
+         "RSI ≥ 70 overbought, RSI ≤ 30 oversold, 30–70 neutral. No averaging against a rolling mean. "
+         "If the tape is overbought and we are long, or oversold and we are short, the position is "
+         "chasing an extreme: it is FLAGGED and scores 0 (−1 conviction point). Otherwise = 1."),
     ]
     tbl = ('<table><thead><tr><th>Criterion</th><th>Max</th><th>What earns points</th></tr></thead><tbody>'
            + "".join(f'<tr><td>{e(r[0])}</td><td style="text-align:right">{e(r[1])}</td><td style="color:var(--ink-soft)">{e(r[2])}</td></tr>'
@@ -502,11 +743,13 @@ def _conviction_legend():
            + "</tbody></table>")
     return (
         '<div class="conv-legend">'
-        '<div class="cl-title">How conviction is scored · /10 rubric (11 with RSI check)</div>'
+        '<div class="cl-title">How conviction is scored · /10 core rubric (+ TA and RSI shown live)</div>'
         + tbl +
         '<div style="font-size:11px;color:var(--ink-mute);margin-top:.6rem">'
-        'Max score: 3+2+2+2+1 = <b>10</b> (legacy); +1 RSI check = <b>11</b> for new trades. '
-        'Scores in the book reflect the rubric at trade entry — RSI is computed live at each refresh.</div>'
+        'Core score: gap 3 + catalyst 2 + positioning 2 + confirmation 2 + stop 1 = <b>10</b>. '
+        'Technical analysis (0–2) and the RSI check (0–1) are computed live at each refresh and shown on '
+        'every trade; the book scores were struck at entry, so the live TA/RSI reads are decision aids that '
+        'flag when a position is technically offside rather than silently rewriting historical scores.</div>'
         '</div>'
     )
 
@@ -541,7 +784,7 @@ def _icon_legend():
         ('<div style="display:inline-flex;gap:3px">'
          + "".join(f'<div class="pip8 {"on" if i < 6 else ""}"></div>' for i in range(8))
          + '</div>',
-         "Conviction pips (0–8 for Derivatives Lab ideas, 0–10 for the Trade book): filled gold bars = score earned; empty = not earned."),
+         "Conviction pips (0–8 for Derivatives Desk ideas, 0–10 for the Trade book): filled gold bars = score earned; empty = not earned."),
     ]
     rows = "".join(
         f'<div class="il-row"><div class="il-key">{sym}</div><div class="il-val">{desc}</div></div>'
@@ -586,15 +829,22 @@ def _trade_dropdown(idea, enrichments=None, rsi_data=None):
         ("Confirmation", cb.get("confirmation", 0),  2, why.get("confirmation", "—")),
         ("Stop quality", cb.get("stop_quality", 0),  1, why.get("stop_quality", "—")),
     ]
-    # RSI criterion
-    rsi_score = ""
+    # Technical-analysis criterion (0-2)
+    ta = (rsi or {}).get("technicals") if rsi else None
+    if ta and not ta.get("error") and ta.get("ta_score") is not None:
+        crit.append(("Technical analysis ★", ta["ta_score"], 2, why.get("technical_analysis",
+            f'{ta.get("trend","?")} ({ta.get("cross","no")} cross); Bollinger %B {ta.get("bb_pctb","?")}; '
+            f'nearest Fib {ta.get("nearest_fib",{}).get("level","?")} — chart '
+            + ("confirms" if ta["ta_score"] == 2 else "is mixed on" if ta["ta_score"] == 1 else "contradicts")
+            + " the trade.")))
+    # RSI criterion (absolute 30/70)
     if rsi and not rsi.get("error"):
         crowd_vs_us = rsi.get("crowd_vs_us", False)
         rsi_pt = 0 if crowd_vs_us else 1
         crit.append(("RSI check ★", rsi_pt, 1, why.get("rsi_positioning",
-            f'RSI {rsi.get("rsi","?")} · mean {rsi.get("mean","?")} · SD dist {rsi.get("sd_dist","?"):+.2f} · '
-            f'{rsi.get("verdict","?")} — {"crowded against position: 0 pts" if crowd_vs_us else "neutral or supportive: 1 pt"}'
-        )))
+            f'RSI {rsi.get("rsi","?")} · {rsi.get("verdict","?")} — '
+            + ("⚑ overbought long / oversold short, chasing an extreme: 0 pts" if crowd_vs_us
+               else "neutral or supportive: 1 pt"))))
     conv_tbl = (
         '<table class="convtbl">'
         f'<tr><td class="k">Conviction total</td><td class="s">{conv}/10</td>'
@@ -667,8 +917,11 @@ def _trade_dropdown(idea, enrichments=None, rsi_data=None):
         # conviction
         + f'<div class="tb-label">Full conviction breakdown</div>'
         + conv_tbl
+        # technical analysis
+        + f'<div class="tb-label">Technical analysis · 50/100/200 DMA · Bollinger · Fibonacci</div>'
+        + _ta_block(ta)
         # RSI
-        + f'<div class="tb-label">RSI positioning check (1-month window)</div>'
+        + f'<div class="tb-label">RSI positioning check (absolute 30/70)</div>'
         + _rsi_block(rsi)
         # risks
         + (f'<div class="tb-label">Risks / what would make this wrong</div>' + note_html
@@ -779,11 +1032,16 @@ def _book_accordion(trades, enrichments=None, rsi_data=None):
             ("Confirmation", cb.get("confirmation",0),  2, why.get("confirmation","—")),
             ("Stop quality", cb.get("stop_quality",0),  1, why.get("stop_quality","—")),
         ]
+        tta = (trsi or {}).get("technicals") if trsi else None
+        if tta and not tta.get("error") and tta.get("ta_score") is not None:
+            crit.append(("Technical analysis ★", tta["ta_score"], 2,
+                         f'{tta.get("trend","?")} · {tta.get("cross","no")} cross · Boll %B {tta.get("bb_pctb","?")} · '
+                         f'nearest Fib {tta.get("nearest_fib",{}).get("level","?")}'))
         if trsi and not trsi.get("error"):
             crowd = trsi.get("crowd_vs_us", False)
             crit.append(("RSI check ★", 0 if crowd else 1, 1,
-                         f'RSI {trsi.get("rsi","?")} · {trsi.get("verdict","?")} · '
-                         + ("crowded against position" if crowd else "neutral/supportive")))
+                         f'RSI {trsi.get("rsi","?")} · {trsi.get("verdict","?")} (absolute 30/70) · '
+                         + ("⚑ chasing an extreme" if crowd else "neutral/supportive")))
 
         conv_tbl = (
             '<table class="convtbl">'
@@ -827,16 +1085,21 @@ def _book_accordion(trades, enrichments=None, rsi_data=None):
         if cats:
             body += f'<div class="det-thesis"><strong>Catalysts:</strong></div>{cat_html}'
         body += f'<div class="det-thesis"><strong>Conviction breakdown:</strong></div>{conv_tbl}'
-        if trsi:
-            body += '<div class="det-thesis"><strong>RSI positioning:</strong></div>'
-        # RSI in FRAG_CSS context — simplified inline block
+        # Technical analysis in FRAG_CSS context — inline block
+        if tta and not tta.get("error"):
+            body += '<div class="det-thesis"><strong>Technical analysis (50/100/200 DMA · Bollinger · Fibonacci):</strong></div>'
+            body += (f'<div style="background:#f7f7f5;border:.5px solid rgba(0,0,0,.1);border-radius:6px;'
+                     f'padding:.4rem .6rem;font-size:11px;margin-top:.3rem;line-height:1.55">'
+                     f'<b>{e(tta.get("trend","?"))}</b> · {e(tta.get("cross","no"))} cross · '
+                     f'Bollinger %B {tta.get("bb_pctb","?")} · nearest Fib {e(tta.get("nearest_fib",{}).get("level","?"))} · '
+                     f'TA score <b>{tta.get("ta_score","?")}/2</b><br>{e(tta.get("read",""))}</div>')
+        # RSI in FRAG_CSS context — absolute 30/70 convention
         if trsi and not trsi.get("error"):
+            body += '<div class="det-thesis"><strong>RSI positioning (absolute 30/70):</strong></div>'
             body += (f'<div style="background:#f7f7f5;border:.5px solid rgba(0,0,0,.1);border-radius:6px;'
                      f'padding:.4rem .6rem;font-size:11px;margin-top:.3rem">'
-                     f'RSI {trsi.get("rsi","?")} · mean {trsi.get("mean","?")} · '
-                     f'SD dist {trsi.get("sd_dist","?"):+.2f} · '
-                     f'<b>{e(trsi.get("verdict","?"))}</b>'
-                     + (" · <b style=\"color:#c0392b\">CROWDED vs our position</b>" if trsi.get("crowd_vs_us") else "")
+                     f'RSI {trsi.get("rsi","?")} · <b>{e(trsi.get("verdict","?"))}</b>'
+                     + (" · <b style=\"color:#c0392b\">&#9873; FLAGGED — chasing an extreme vs our position</b>" if trsi.get("crowd_vs_us") else "")
                      + f' · {e(trsi.get("note",""))}'
                      + '</div>')
         elif trsi and trsi.get("error"):
@@ -857,30 +1120,44 @@ def _book_accordion(trades, enrichments=None, rsi_data=None):
 # --------------------------------------------------------------------------
 def _page_summary(brief):
     lhs = []
-    lhs.append('<div class="section-label">The overnight read</div>')
+    lhs.append(_h("The overnight read", "Pre-market summary · what happened in the last 24 hours"))
     lhs.append(f'<div class="wrap-body">{brief.get("summary_narrative", brief.get("wrap",""))}</div>')
     if brief.get("takeaways"):
-        lhs.append('<div class="section-label">Today\'s takeaways</div>')
+        lhs.append(_h("Today's takeaways"))
         lhs.append(_takeaways(brief["takeaways"]))
     if brief.get("scenarios"):
-        lhs.append('<div class="section-label">Scenarios · Bull / Base / Bear</div>')
+        lhs.append(_h("Scenarios", "Bull / Base / Bear"))
         lhs.append(_scenarios(brief["scenarios"]))
     if brief.get("tape_missing"):
-        lhs.append('<div class="section-label">What the Tape Is Missing</div>')
+        lhs.append(_h("What the tape is missing"))
         lhs.append(f'<div class="wrap-body" style="font-size:14px">{brief["tape_missing"]}</div>')
     return "".join(lhs)
 
 
+def _burry_block(text):
+    if not text:
+        return ""
+    return ('<div class="method-box" style="border-left-color:var(--gold)">'
+            '<div class="mb-t" style="color:var(--gold)">The Burry tell &mdash; what nobody is looking at</div>'
+            f'<p>{text}</p></div>')
+
+
 def _page_insights(brief):
     lhs = []
-    lhs.append('<div class="section-label">The detailed map</div>')
+    lhs.append(_h("The detailed map", "How the pieces connect · the regime, the gap, what's priced"))
     lhs.append(f'<div class="wrap-body">{brief.get("insights_layers", brief.get("wrap",""))}</div>')
+    if brief.get("scenarios"):
+        lhs.append(_h("Bull / Base / Bear", "the three paths, with probabilities"))
+        lhs.append(_scenarios(brief["scenarios"]))
+    if brief.get("burry_tell"):
+        lhs.append(_h("The Burry tell", "the structural thing that matters in 6 months"))
+        lhs.append(_burry_block(brief["burry_tell"]))
     if brief.get("one_chart"):
-        lhs.append('<div class="section-label">Today\'s One Chart That Matters</div>')
+        lhs.append(_h("Today's one chart that matters"))
         lhs.append(f'<div class="one-chart">{brief["one_chart"]}</div>')
-    lhs.append('<div class="section-label">Catalyst Calendar (5 trading days)</div>')
+    lhs.append(_h("Catalyst calendar", "next 5 trading days"))
     lhs.append(_catalyst(brief.get("catalyst_calendar", [])))
-    lhs.append('<div class="section-label">Deep dives</div>')
+    lhs.append(_h("Deep dives", "correlation · vol & skew · sector RV · positioning · consensus · talking points"))
     lhs.append(
         '<div class="iframe-2col">'
         '<iframe src="frag/consensus.html" title="Consensus"></iframe>'
@@ -894,33 +1171,149 @@ def _page_insights(brief):
     return "".join(lhs)
 
 
+def _earnings_criteria():
+    rows = [
+        ("Asymmetry signal (0–2)", "Does the implied move misprice the historical average move, or is "
+         "estimate dispersion unusually wide? 2 = clear mispricing of the event; 1 = moderate; 0 = none."),
+        ("Sell-side consensus (0–2)", "Is the sell-side aligned — majority buy, upside to price target, "
+         "positive revisions? 2 = strong support; 1 = mixed; 0 = contradicts. If unverified, conviction caps at Medium."),
+        ("Catalyst clarity (0–2)", "Pre-print: is there an identifiable catalyst the consensus hasn't priced? "
+         "Post-print: is the reaction disproportionate to the print (oversold/overbought)? 2 = clear edge; 1 = plausible; 0 = none."),
+        ("Positioning & sentiment (0–2)", "Short interest >10% of float or an extreme positioning setup? "
+         "2 = extreme; 1 = notable lean; 0 = neutral/unavailable."),
+    ]
+    tbl = ('<table class="conv-legend" style="width:100%;border:none;padding:0;margin:0;background:none">'
+           '<table style="width:100%;border-collapse:collapse;font-size:12px"><thead><tr>'
+           '<th style="text-align:left;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);padding:5px 6px;border-bottom:.5px solid var(--line)">Pillar</th>'
+           '<th style="text-align:left;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);padding:5px 6px;border-bottom:.5px solid var(--line)">What earns points</th>'
+           '</tr></thead><tbody>'
+           + "".join(f'<tr><td style="padding:5px 6px;border-bottom:.5px dotted var(--line);font-weight:600;white-space:nowrap;vertical-align:top">{e(k)}</td>'
+                     f'<td style="padding:5px 6px;border-bottom:.5px dotted var(--line);color:var(--ink-soft)">{e(v)}</td></tr>'
+                     for k, v in rows)
+           + "</tbody></table></table>")
+    return (
+        '<div class="conv-legend">'
+        '<div class="cl-title">How the conviction rating is built · /8 (four pillars, 0–2 each)</div>'
+        + tbl +
+        '<div style="font-size:11px;color:var(--ink-mute);margin-top:.6rem">'
+        'Label rules: <b>High</b> = score ≥6 with no pillar at 0 and all pillars sourced; '
+        '<b>High — data gap flagged</b> = ≥6 but a pillar is estimated/unverified; '
+        '<b>Medium</b> = 4–5 or any pillar 0 or consensus unverified; <b>Low</b> (&lt;4) is excluded. '
+        'Green/gold/red dots on each pillar = sourced / estimated / unverified.</div>'
+        '</div>'
+    )
+
+
 def _page_earnings(brief):
+    lhs = [_h("Earnings intelligence", "Finnhub-sourced · single-name read into and out of the print")]
+    # summary line of today's ideas
+    summ = brief.get("earnings_summary")
+    if summ:
+        lhs.append(f'<div class="aim-line"><b>Today&rsquo;s read:</b> {summ}</div>')
+    # why these names were picked + sources
+    why = brief.get("earnings_why")
+    lhs.append(
+        '<div class="method-box">'
+        '<div class="mb-t">Why these names — and how they clear the universe filter</div>'
+        '<p>We scan a defined universe and skip everything outside it silently: <b>market cap $10bn+</b>, '
+        'geographies <b>US (primary) and South Korea (secondary)</b>, sectors <b>Technology, Financials, '
+        'Industrials, Utilities</b>, reporting within <b>5 days pre- or 3 days post-print</b>. '
+        'Consensus estimates, recommendations, surprise history and growth metrics are pre-fetched from '
+        '<b>Finnhub</b> (earnings_data.md, tagged &ldquo;sourced&rdquo;); anything missing is supplemented by '
+        'web search and tagged &ldquo;estimated&rdquo;.</p>'
+        + (f'<p>{why}</p>' if why else '')
+        + '</div>'
+    )
+    lhs.append(_h("The conviction rating, defined"))
+    lhs.append(_earnings_criteria())
+    lhs.append(_h("Today's earnings ideas"))
     body = earnings.render_earnings_section(brief.get("earnings_ideas", []))
     if not body:
         body = "<p class='mute'>No qualifying earnings in the window.</p>"
-    link = ('<div style="margin-top:1.5rem"><a href="ideas.html" '
-            'style="font-size:13px;color:var(--gold);font-weight:600;text-decoration:none">'
-            'These screens feed the client desk &rarr; see which map to Fable&rsquo;s book as New Adds in the '
-            'Derivatives Lab</a></div>')
-    return '<div class="section-label">Earnings Intelligence · Finnhub-sourced</div>' + body + link
+    lhs.append(body)
+    lhs.append('<div style="margin-top:1.5rem"><a href="ideas.html" '
+               'style="font-size:13px;color:var(--gold);font-weight:600;text-decoration:none">'
+               'These screens feed the client desk &rarr; see which map to Fable&rsquo;s book as New Adds on the '
+               'Derivatives Desk</a></div>')
+    return "".join(lhs)
 
 
-def _page_trades(brief):
+def _book_pnl_header(brief, trades):
+    """Overall book P&L (%) + the stated aim at this point."""
+    bp = brief.get("book_pnl") or {}
+    opens  = [t for t in trades.get("open", []) if isinstance(t.get("current_pnl_pct"), (int, float))]
+    closed = [t for t in trades.get("closed", []) if isinstance(t.get("exit", {}).get("pnl_pct"), (int, float))]
+    open_avg = bp.get("open_avg")
+    if open_avg is None and opens:
+        open_avg = sum(t["current_pnl_pct"] for t in opens) / len(opens)
+    realized = bp.get("realized")
+    if realized is None and closed:
+        realized = sum(t["exit"]["pnl_pct"] for t in closed) / len(closed)
+    wins = sum(1 for t in closed if t["exit"]["pnl_pct"] > 0)
+    hit = bp.get("hit_rate")
+    if hit is None and closed:
+        hit = 100 * wins / len(closed)
+
+    def tile(label, val, suffix="%"):
+        if val is None:
+            return f'<div class="pnl-tile"><div class="pl">{e(label)}</div><div class="pv">&mdash;</div></div>'
+        cls = "g" if val > 0 else ("r" if val < 0 else "")
+        sign = "+" if (suffix == "%" and val > 0) else ""
+        return (f'<div class="pnl-tile"><div class="pl">{e(label)}</div>'
+                f'<div class="pv {cls}">{sign}{val:.1f}{suffix}</div></div>')
+
+    tiles = (
+        tile("Open book P&L", open_avg)
+        + tile("Realised (closed)", realized)
+        + tile("Hit rate", hit)
+        + f'<div class="pnl-tile"><div class="pl">Open / closed</div><div class="pv">{len(opens)}/{len(closed)}</div></div>'
+    )
+    aim = brief.get("book_aim", "")
+    aim_html = f'<div class="aim-line"><b>The aim at this point:</b> {aim}</div>' if aim else ""
+    note = bp.get("note", "")
+    note_html = (f'<p style="font-size:11px;color:var(--ink-mute);margin:.2rem 0 .6rem">{e(note)}</p>'
+                 if note else "")
+    return f'<div class="pnl-head">{tiles}</div>' + note_html + aim_html
+
+
+def _idea_selection(sel):
+    """Summary: which of today's flagged ideas go into the book, and why / why not the rest."""
+    if not sel:
+        return ""
+    items = "".join(
+        f'<li><span class="tk {"in" if s.get("in") else "out"}">{"ADD" if s.get("in") else "PASS"}</span>'
+        f'<span><b>{e(s.get("label",""))}</b> &mdash; {s.get("text","")}</span></li>'
+        for s in sel)
+    return ('<div class="select-box"><div class="sb-t">What we are putting in the book today &mdash; and what we are not</div>'
+            f'<ul>{items}</ul></div>')
+
+
+def _page_trades(brief, trades):
     enr  = brief.get("trade_enrichments", {})
     rsi  = brief.get("rsi_data", {})
     lhs  = []
+    lhs.append(_h("How conviction & positioning are scored"))
     lhs.append(_conviction_legend())
+    lhs.append(_positioning_method())
     reactive = [dict(i, _kind="reactive") for i in brief.get("new_ideas", [])]
     prepos   = [dict(i, _kind="pre-position") for i in brief.get("pre_position_ideas", [])]
     if brief.get("ideas_note"):
-        lhs.append('<div class="section-label">Positioning stance today</div>')
+        lhs.append(_h("Positioning stance today"))
         lhs.append(f'<div class="wrap-body" style="font-size:14px">{brief["ideas_note"]}</div>')
-    lhs.append('<div class="section-label">New Trade Ideas</div>')
+    lhs.append(_h("New trade ideas", "each idea expands to its full thesis, conviction, technicals & RSI"))
     if reactive + prepos:
         lhs.append("".join(_trade_dropdown(i, enr, rsi) for i in reactive + prepos))
     else:
         lhs.append('<p class="mute" style="font-size:13px">No new idea today — into a binary print, forcing a trade is the trade.</p>')
-    lhs.append('<div class="section-label">Open Book · click any trade for the full breakdown</div>')
+    # RSI screener
+    if brief.get("screen"):
+        lhs.append(_h("RSI screener", "oversold names to buy · overbought names to fade"))
+        lhs.append(_rsi_screener(brief["screen"], brief.get("screener_notes")))
+    # Open book + P&L header + selection summary
+    lhs.append(_h("Open book", "overall P&L, the aim, and what we are adding today"))
+    lhs.append(_book_pnl_header(brief, trades))
+    lhs.append(_idea_selection(brief.get("idea_selection")))
+    lhs.append('<p style="font-size:12px;color:var(--ink-mute);margin:.2rem 0 .5rem">Click any trade for the full breakdown — thesis, conviction, technical analysis and RSI.</p>')
     lhs.append('<iframe src="frag/book.html" class="bookframe" title="Live book"></iframe>')
     return "".join(lhs)
 
@@ -966,9 +1359,9 @@ def _ideas_masthead(scan):
     cnt = scan["counts"]
     return (
         '<div class="masthead">'
-        '<div class="regime-tag">Book Scanner &middot; Ruleset v2</div>'
-        '<h1 class="article-title">Portfolio / Derivatives Lab</h1>'
-        f'<p class="meta">{e(scan["client"].get("display_name","Fable"))} structuring desk &middot; {e(scan["as_of"])} '
+        '<div class="regime-tag">Derivatives Desk &middot; Ruleset v2</div>'
+        '<h1 class="article-title">Derivatives Desk</h1>'
+        f'<p class="meta">Structured products + OTC &middot; {e(scan["as_of"])} '
         f'&middot; {cnt.get("new_adds",0)} new adds &middot; {cnt.get("enhance",0)} enhancements</p>'
         f'<p style="font-size:13px;color:var(--ink-soft);margin:.6rem 0 0">'
         f'Where the desk’s ideas become this client’s trades. The Earnings screener and macro book feed '
@@ -977,6 +1370,49 @@ def _ideas_masthead(scan):
         f'and to the per-name house views.</p>'
         '</div>'
     )
+
+
+def _product_shelf():
+    return (
+        '<div class="method-box">'
+        '<div class="mb-t">The product shelf — and where each one is allowed</div>'
+        '<p>Every recommendation is tagged with its <b>product type</b> and its <b>objective</b>. The shelf is '
+        'gated by asset class:</p>'
+        '<ul>'
+        '<li><b>Equities — Income:</b> reverse convertibles, fixed-coupon notes (FCN), Phoenix autocalls, '
+        'digital review notes. <b>Income + participation:</b> autocallable Market Plus notes. '
+        '<b>Participation:</b> BREN (bullish range / enhanced-return note). '
+        '<b>Protected participation:</b> 100% (or minimal-loss) principal-protected with upside to a cap. '
+        '<b>OTC:</b> accumulators / decumulators.</li>'
+        '<li><b>FX — Income:</b> DCS (dual-currency security) only. '
+        '<b>Hedging:</b> forwards, seagulls, puts — accumulators / decumulators where they genuinely fit.</li>'
+        '<li><b>Rates:</b> range accruals only.</li>'
+        '</ul>'
+        '<p style="font-size:11px;color:var(--ink-mute)">Issuer credit: every note is senior unsecured paper — '
+        'cap any single issuer at 20% of the structure book.</p>'
+        '</div>'
+    )
+
+
+def _loss_recovery_block(scan):
+    lr = scan.get("loss_recovery")
+    if not lr:
+        return ""
+    items = "".join(
+        '<div class="idea" style="border-left:3px solid var(--gold)">'
+        f'<div class="it" style="margin-bottom:.3rem">{e(x.get("name",""))} '
+        f'<span style="font-size:11px;color:var(--red);font-weight:600">{e(x.get("loss",""))}</span></div>'
+        f'<div class="blk"><b>How to recover it:</b> {x.get("how","")}</div>'
+        + (f'<div class="impact"><b>Faster path (structured + OTC at margin):</b> {x.get("accelerator","")}</div>'
+           if x.get("accelerator") else "")
+        + '</div>'
+        for x in lr)
+    return (_h("Recovering losses", "exactly how to claw each one back — and the faster, margined path")
+            + '<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .6rem">'
+              'For every underwater position the desk gives a precise recovery route. Where it makes sense you '
+              'can run a capital-protected / income structure <b>and</b> an OTC trade at margin alongside it, so '
+              'the position recovers faster than waiting for the mark to come back on its own.</p>'
+            + items)
 
 
 def _holdings_table(positions):
@@ -1020,7 +1456,7 @@ def _holdings_table(positions):
 
 def _cash_liab_block(scan):
     c = scan["client"]; eurusd = c.get("fx_reference", {}).get("EURUSD", 1.154)
-    out = ['<div class="section-label">Cash &amp; liabilities</div>', '<table class="holdtbl"><tbody>']
+    out = [_h("Cash & liabilities"), '<table class="holdtbl"><tbody>']
     for ca in scan.get("cash", []):
         out.append(
             f'<tr><td><div class="nm">{_ccy(ca["currency"])}{ca["amount"]:,.0f}</div>'
@@ -1087,7 +1523,7 @@ def _macro_anchors_block(meta):
 
 
 def _view_engine_panel(scan):
-    out = ['<div class="section-label">House View Engine &middot; click any name for the full thesis, score &amp; sources</div>']
+    out = []
     meta = scan.get("views_meta", {})
     if meta.get("note"):
         out.append(f'<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .7rem">{e(meta["note"])}</p>')
@@ -1117,9 +1553,46 @@ def _view_engine_panel(scan):
     return "".join(out)
 
 
+def _allocation_pies(scan):
+    alloc = scan.get("allocations") or {}
+    cards = []
+    for key, title in (("asset_class", "Asset allocation"),
+                       ("sector", "Equity sector allocation"),
+                       ("region", "Regional allocation")):
+        segs = alloc.get(key)
+        if not segs:
+            continue
+        cards.append('<div class="pie-card">'
+                     f'<div class="pc-t">{e(title)}</div>'
+                     + charts.donut_chart(segs, "")
+                     + '</div>')
+    if not cards:
+        return ""
+    return '<div class="pie-row">' + "".join(cards) + '</div>'
+
+
+def _iv_explainer():
+    return (
+        '<div class="method-box">'
+        '<div class="mb-t">How the implied-vol column is calculated</div>'
+        '<p>The vol column is computed by us, not taken from a vendor field. For <b>US single names with '
+        'listed options</b> (MU, NVDA, AVGO, AMD, SPY) we pull the Yahoo Finance option chain at the '
+        '~360-day expiry, take the at-the-money option mark (bid/ask mid, or last price when the market is '
+        'shut), and <b>invert Black–Scholes</b> to solve for the implied volatility &sigma; — we do not trust '
+        'Yahoo&rsquo;s own impliedVolatility field, which returns ~0. We also read the 90% put skew the same way. '
+        'These are tagged <b>&ldquo;live&rdquo;</b> with a green source dot.</p>'
+        '<p>For <b>EU names and the gold ETC</b> (LVMH, SAP, TotalEnergies, Xetra-Gold), which have no listed '
+        'options on Yahoo, we compute <b>3-month realized volatility</b> from a year of daily closes and use it '
+        'as an implied-vol proxy, tagged <b>&ldquo;RV 3m&rdquo;</b>. Bonds are derived from yields; gold from spot. '
+        'The percentile is the rank of today&rsquo;s reading against the name&rsquo;s own history — sourced for the '
+        'realized series, and &ldquo;estimated&rdquo; for the US implied series until it accumulates 60 daily snapshots.</p>'
+        '</div>'
+    )
+
+
 def _page_portfolio(scan):
     m = scan["metrics"]
-    lhs = ['<div class="section-label">Book at a glance</div>']
+    lhs = [_h("Book at a glance", f'{scan["client"].get("display_name","Fable")} · marked live')]
     lhs.append(
         '<div class="statgrid">'
         f'<div class="stat"><div class="sl">AUM</div><div class="sv">{_eurm(m["total_eur"])}</div><div class="ss">{len(scan["positions"])} holdings + cash</div></div>'
@@ -1128,21 +1601,23 @@ def _page_portfolio(scan):
         f'<div class="stat"><div class="sl">Idle cash</div><div class="sv" style="color:var(--gold)">{m["cash_pct"]}%</div><div class="ss">{_eurm(m["cash_eur"])} earning ~0</div></div>'
         '</div>'
     )
-    lhs.append('<div class="section-label">Headline scanner findings</div>')
+    pies = _allocation_pies(scan)
+    if pies:
+        lhs.append(_h("Allocation", "by asset class, equity sector, and region"))
+        lhs.append(pies)
+    lhs.append(_h("Headline scanner findings"))
     lhs.append(_findings(m))
-    lhs.append('<div class="section-label">Holdings &middot; marked live</div>')
+    lhs.append(_h("Holdings", "marked live · vol column computed by us"))
+    lhs.append(_iv_explainer())
     lhs.append(_holdings_table(scan["positions"]))
     if scan.get("refresh_notes"):
-        lhs.append(f'<div class="asof">Live refresh: {e("; ".join(scan["refresh_notes"]))}. '
-                   'Vol column: US names = implied (Black-Scholes inversion on live Yahoo option marks, "live"); '
-                   'EU names + gold = realized 3m vol from a year of price history with a sourced percentile ("RV 3m") — '
-                   'no listed options on Yahoo. US implied percentile builds to 60 daily snapshots. '
-                   'Bonds derived from yields; gold mark from spot.</div>')
+        lhs.append(f'<div class="asof">Live refresh: {e("; ".join(scan["refresh_notes"]))}.</div>')
     lhs.append(_cash_liab_block(scan))
+    lhs.append(_h("House view engine", "click any name for the full thesis, score & sources"))
     lhs.append(_view_engine_panel(scan))
     lhs.append('<div style="margin-top:1.5rem">'
                '<a href="ideas.html" style="font-size:13px;color:var(--gold);font-weight:600;text-decoration:none">'
-               'Take these into the structuring desk &rarr; Derivatives Lab</a></div>')
+               'Take these into the structuring desk &rarr; Derivatives Desk</a></div>')
     return "".join(lhs)
 
 
@@ -1293,15 +1768,19 @@ def _idea_full_dropdown(i):
     thesis = i.get("fundamental_thesis") or ""
     s3 = sec("Fundamental thesis", e(thesis) + _val_block(val))
 
-    # 4 — RSI positioning
-    s4 = sec("RSI positioning (1-month window)",
+    # 4 — Technical analysis (50/100/200 DMA · Bollinger · Fibonacci)
+    ta = (idea_data or {}).get("technicals")
+    s4 = sec("Technical analysis · 50/100/200 DMA · Bollinger · Fibonacci", _ta_block(ta))
+
+    # 5 — RSI positioning (absolute 30/70)
+    s5 = sec("RSI positioning (absolute 30/70)",
              _rsi_block(idea_data if idea_data else None))
 
-    # 5 — Conviction score with WHY per criterion
-    s5 = sec("Conviction score", _idea_full_conv_table(i))
+    # 6 — Conviction score with WHY per criterion
+    s6 = sec("Conviction score", _idea_full_conv_table(i))
 
-    # 6 — Client fit
-    s6 = sec("Client fit", e(i["client_note"]))
+    # 7 — Client fit
+    s7c = sec("Client fit", e(i["client_note"]))
 
     # 7 — Risk / what would make it wrong
     risk_text = i.get("risk") or i.get("what_moves_it", "")
@@ -1313,6 +1792,10 @@ def _idea_full_dropdown(i):
     s8 = sec("How it helps the book", e(impact))
 
     badges = []
+    if i.get("product_type"):
+        badges.append(f'<span class="ptag">Product · {e(i["product_type"])}</span>')
+    if i.get("objective"):
+        badges.append(f'<span class="otag">Objective · {e(i["objective"])}</span>')
     if i.get("tenor"):
         badges.append(f'<span class="badge"><b>Tenor</b>&nbsp;{e(i["tenor"])}</span>')
     if i.get("sizing"):
@@ -1328,12 +1811,15 @@ def _idea_full_dropdown(i):
         f'<div class="trade-body">'
         + origin_row + meta_row
         + f'<div class="meta-row"><span class="rules-tag">{e(i["rules"])}</span>{tickers}</div>'
-        + s1 + s2 + s3 + s4 + s5 + s6 + s7 + s8
+        + s1 + s2 + s3 + s4 + s5 + s6 + s7c + s7 + s8
         + _sources_row(i.get("sources", []))
         + tags_row
         + '</div>'
     )
 
+    summary_tags = ""
+    if i.get("product_type"):
+        summary_tags += f'<span class="ptag">{e(i["product_type"])}</span>'
     return (
         f'<details class="trade-drop">'
         f'<summary>'
@@ -1344,7 +1830,8 @@ def _idea_full_dropdown(i):
         f'</div>'
         f'</div>'
         f'<div class="td-meta">'
-        f'<span class="tier {tier}">{e(i["tier"])}</span>'
+        + summary_tags
+        + f'<span class="tier {tier}">{e(i["tier"])}</span>'
         f'<span class="conv-badge">{i["score"]}/8</span>'
         f'<span style="font-size:11px;color:var(--ink-mute)">&#9656; expand</span>'
         f'</div>'
@@ -1378,7 +1865,6 @@ def _overall_summary_block(scan):
     pts = "".join(f'<li><span class="gchip">{e(p.get("group",""))}</span><span>{p.get("text","")}</span></li>'
                   for p in s.get("points", []))
     return (
-        '<div class="section-label">What we&rsquo;re suggesting &mdash; the whole book</div>'
         '<div class="summary-box">'
         f'<div class="sh">{e(s.get("headline",""))}</div>'
         f'<div class="stance">{e(s.get("stance",""))}</div>'
@@ -1388,26 +1874,31 @@ def _overall_summary_block(scan):
 def _page_ideas(scan):
     meta = scan.get("ivol_meta", {})
     fable = e(scan["client"].get("display_name", "Fable"))
-    lhs = [_icon_legend(), _overall_summary_block(scan)]
-    lhs.append('<div class="section-label" style="margin-top:1.8rem">Section 1 &middot; New Adds '
-               '&mdash; desk ideas mapped to this client</div>')
+    lhs = [_icon_legend()]
+    lhs.append(_h("What we're suggesting", "the whole book, in one screen"))
+    lhs.append(_overall_summary_block(scan))
+    lhs.append(_product_shelf())
+    lhs.append(_positioning_method())
+    lhs.append(_loss_recovery_block(scan))
+    lhs.append(_h("New adds", "desk ideas mapped to this client"))
     lhs.append(f'<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .4rem">'
                f'New exposures drawn from the Earnings screener and the macro book, filtered to the patterns in '
                f'{fable}&rsquo;s book &mdash; AI &amp; semis, enterprise software, large-cap quality, energy &amp; gold '
-               f'hedges, duration; comfortable with structures. Tenor floors: equity structured products &ge; 3m, '
-               f'OTC &ge; 1m, rates structured products &ge; 2y.</p>')
+               f'hedges, duration; comfortable with structures. Each idea is tagged with its product type and '
+               f'objective. Tenor floors: equity structured products &ge; 3m, OTC &ge; 1m, rates structured products &ge; 2y.</p>')
     lhs.append(_group_block(scan.get("new_adds_grouped", []), _render_new_add))
-    lhs.append('<div class="section-label" style="margin-top:2.2rem">Section 2 &middot; Enhancing the existing book '
-               '&mdash; click any idea to expand</div>')
+    lhs.append(_h("Enhancing the existing book", "structures on positions the client already holds"))
     lhs.append('<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .4rem">'
-               'Structures on positions the client already holds &mdash; the detailed why, how we arrived at the '
-               'conviction score, and how each one helps the overall portfolio.</p>')
+               'Structures on positions the client already holds &mdash; the detailed why, the technical and RSI '
+               'reads, how we arrived at the conviction score, and how each one helps the overall portfolio. '
+               'Click any idea to expand.</p>')
     lhs.append(_group_block(scan.get("enhance_grouped", []), _render_enhance))
     lhs.append(
         '<div class="asof" style="margin-top:1.6rem">'
         'Conviction /8 = setup &middot; pricing &middot; catalyst &middot; client fit (0&ndash;2 each); '
-        'green dot = sourced, gold = estimated. New Adds enter post-catalyst where the Earnings desk says HOLD, so '
-        'nothing here contradicts the brief or the per-name house views. '
+        'each idea also carries a live technical-analysis read and an RSI check on the absolute 30/70 convention. '
+        'New Adds enter post-catalyst where the Earnings desk says HOLD, so nothing here contradicts the brief or '
+        'the per-name house views. '
         f'{e(meta.get("source", meta.get("honesty","")))} '
         'Issuer credit: every note is senior unsecured paper &mdash; cap any single issuer at 20% of the structure book. '
         'Demo book, not investment advice.</div>')
@@ -1426,7 +1917,7 @@ def render_all(brief, trades, regime_log=None, scan=None):
         "index.html":    ("Summary",     "Market Map / Summary",   _page_summary(brief)),
         "insights.html": ("Insights",    "Market Map / Insights",  _page_insights(brief)),
         "earnings.html": ("Earnings",    "Earnings Intelligence",  _page_earnings(brief)),
-        "trades.html":   ("Trade Ideas", "Trade Ideas + Live Book", _page_trades(brief)),
+        "trades.html":   ("Trade Ideas", "Trade Ideas + Live Book", _page_trades(brief, trades)),
     }
     for fname, (active, title, lhs) in pages.items():
         htmldoc = _shell(fname, title, regime, note, lhs, brief)
@@ -1437,7 +1928,7 @@ def render_all(brief, trades, regime_log=None, scan=None):
     if scan:
         for fname, title, lhs_html, mast in (
             ("portfolio.html", "Fable / Portfolio", _page_portfolio(scan), _portfolio_masthead(scan)),
-            ("ideas.html", "Portfolio / Derivatives Lab", _page_ideas(scan), _ideas_masthead(scan)),
+            ("ideas.html", "Derivatives Desk", _page_ideas(scan), _ideas_masthead(scan)),
         ):
             htmldoc = _shell(fname, title, regime, note, lhs_html, brief, masthead_html=mast)
             with open(os.path.join(HERE, fname), "w", encoding="utf-8") as f:

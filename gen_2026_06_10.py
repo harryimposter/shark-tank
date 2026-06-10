@@ -39,7 +39,10 @@ for tid, r in rsi_data.items():
     if r.get("error"):
         book.log(f"  {tid} RSI: {r['error']}")
     else:
-        book.log(f"  {tid} RSI={r['rsi']}  SD={r['sd_dist']:+.2f}  {r['verdict']}")
+        ta = r.get("technicals") or {}
+        ta_str = f"  TA={ta.get('ta_score','?')}/2 {ta.get('trend','')}" if ta else ""
+        flag = "  *** FLAGGED vs us" if r.get("crowd_vs_us") else ""
+        book.log(f"  {tid} RSI={r['rsi']}  {r['verdict']}{ta_str}{flag}")
 
 book.step("Computing idea RSI + valuation data (Yahoo Finance)")
 idea_rsi_data = fetch_rsi.fetch_all_ideas()
@@ -49,7 +52,30 @@ for ik, r in idea_rsi_data.items():
     elif r.get("rsi") is not None:
         val = r.get("valuation") or {}
         pe_str = f"  P/E={val.get('trailing_pe_fmt','N/A')}" if not val.get("error") else ""
-        book.log(f"  idea {ik} RSI={r['rsi']}  SD={r['sd_dist']:+.2f}  {r['verdict']}{pe_str}")
+        ta = r.get("technicals") or {}
+        ta_str = f"  TA={ta.get('ta_score','?')}/2 {ta.get('trend','')}" if ta else ""
+        book.log(f"  idea {ik} RSI={r['rsi']}  {r['verdict']}{ta_str}{pe_str}")
+
+# ── RSI screener (curated cross-asset universe, absolute 30/70) ──────────────────
+book.step("Running RSI screener (curated ~50-name cross-asset universe, Yahoo)")
+screen = fetch_rsi.run_screener()
+book.log(f'  scanned {screen["scanned"]} · {len(screen["oversold"])} oversold · '
+         f'{len(screen["overbought"])} overbought · {screen["errors"]} no-data')
+
+# Authored screener notes overlay the live mechanical read with a desk view where we
+# genuinely have one (keyed by ticker). Live names without a note get a templated read.
+SCREENER_NOTES = {
+    "MU":  "We like it higher: HBM is sold out into the AI-memory supercycle and the name has just washed out into "
+           "the 24-Jun print. Oversold here is the dip we would add on, not the breakdown to fade.",
+    "MC.PA": "Oversold but we are NOT buyers: luxury end-demand is soft and the house view is NEUTRAL — this is a "
+             "level to sell income against (reverse convertible), not to chase.",
+    "NVDA": "Constructive lower: the 195-235 consolidation is intact and the de-rate was rates-driven, not "
+            "franchise-driven. Oversold into support is where the desk gets paid to add.",
+    "AVGO": "Oversold after the whisper-miss, but NEUTRAL — there is no near-term catalyst to re-rate it, so this is "
+            "a harvest-and-buffered-re-entry name, not a clean long.",
+    "TSM":  "Higher: the Asia semis complex is the supply-chain spine of the AI build-out; an oversold TSMC is a "
+            "buy-the-dip in the toll-road, not a trend break.",
+}
 
 # ── Regime ─────────────────────────────────────────────────────────────────────
 regime = "A Truce Under Fire, A Hot CPI Ahead"
@@ -852,45 +878,54 @@ lunch.</p>
     ],
 
     "insights_layers": """
-<p>A ceasefire is only as good as its last 24 hours, and this one's last 24 hours were strikes. The April truce
-between Iran and Israel cracked over the weekend in the worst exchange of fire in months; Iran announced a halt
-on Monday, and Israel answered it with an extensive strike on Iranian air defences and the Mahshahr
-petrochemical complex. Netanyahu has pointedly declined to call it a ceasefire; Iran says it will fire again if
-Israel keeps hitting Lebanon. So the screen you are reading is not pricing peace — it is pricing a truce that
-has already failed once and could fail again before the week is out.</p>
+<p>Yesterday's map said the same thing it says this morning, only louder: a ceasefire is only as good as its
+last 24 hours, and this one's were strikes. Build the picture forward from where we left it on 9 June — the
+April Iran-Israel truce had cracked, Iran had announced a Monday "halt," and the question into today was whether
+the de-escalation had any anchor. It doesn't. Israel answered the halt with an extensive strike on Iranian air
+defences and the Mahshahr petrochemical complex; Netanyahu still won't call it a ceasefire; Iran says it fires
+again if Israel keeps hitting Lebanon. So the screen is not pricing peace. It is pricing a truce that has already
+failed once and could fail again before the week is out — into a CPI print that lands at 8:30 this morning. Two
+live shocks, neither resolved, and that single fact explains most of the cross-asset tape.</p>
 
-<p><strong>Layer 1 — the regime.</strong> Two shocks, both still live: a war that keeps re-igniting and a CPI
-print landing this morning. Neither has resolved. The truce is unsigned and already broken once; the inflation
-number has not been seen. The map did not simplify this week — it got more dangerous, because the market spent
-a day pretending one tail was gone. The book that owns both tails is positioned correctly precisely because
-nothing is settled.</p>
+<p>The tell of the last 24 hours is that the most-quoted "good news" bought exactly one session. Monday's chip
+rip — semis +6%, Micron round-tripping a 10% move — failed the next day: the S&amp;P closed 7,386.65 (-0.26%),
+the Nasdaq -0.97%, only the Dow held. The relief was rented, not owned, and the right place to read the verdict
+is the oil price, not the VIX. Crude is pricing a physical fact — the Strait of Hormuz is still under a dual
+US-Iran blockade, crude and gas shipments still disrupted — while equities priced a hope and took it straight
+back. That is the gap that matters: ground truth is a Strait that is shut and a CPI landing on still-elevated
+energy; what's priced is a failed bounce and a still-live year-end hike; the consensus narrative was "ceasefire,
+buy the dip," and it just lost money.</p>
 
-<p><strong>Layer 2 — the counter-intuitive hook.</strong> The most-quoted "good news" — Iran halting — produced
-a rally that lasted exactly one session. The hook is that the relief was rented, not owned: a blockaded Strait
-and a Netanyahu who won't sign mean the de-escalation has no anchor. Watch the oil price, not the VIX, for the
-real verdict — crude is pricing the physical fact (Hormuz shut), while equities priced a hope and took it back.</p>
+<p>Go around the world and the same divergence repeats with a regional accent. <strong>Asia</strong> is where the
+quietest but most important single-name signal sits: the AI-memory supply chain ran hot overnight — Korea's
+HBM names (SK Hynix, Samsung) are the spine of every hyperscaler accelerator, and any headline on who is buying
+whose high-bandwidth memory moves the whole semis complex before the US wakes up. KOSPI and the SOX track each
+other tick-for-tick now; this is one market, not two, and the read is set in Seoul and Taipei first. <strong>Japan</strong>
+carries the other live wire: USD/JPY at ~160 with the MoF openly threatening intervention and a BoJ September
+hike creeping into the price — the Nikkei is hostage to the yen, and a carry unwind there would be a global
+risk event, not a local one. <strong>Europe and the UK</strong> have decoupled outright: the DAX is a
+financials-and-industrials index with no AI multiple to give back, it hikes into an ECB that goes Thursday, and
+Bund and Gilt yields rose (+4bp, +7bp) while the US 10Y eased — the next rates impulse is European, not American.</p>
 
-<p><strong>Layer 3 — the gap.</strong> Ground truth: the Strait of Hormuz remains under a dual US-Iran blockade,
-crude and gas shipments still disrupted, into a CPI print landing on still-elevated energy. What's priced: a
-failed chip bounce and a still-live year-end hike. The consensus narrative was "ceasefire, buy the dip" — and
-it just lost money. The gap is between a geopolitics that is still hot and an equity tape that wanted it cold.</p>
+<p>The politics are the constraint behind every one of those moves, and this is where consensus is lazy.
+The market is treating the ceasefire as a diplomatic process; it is a domestic-politics problem. <strong>Netanyahu
+will not sign anything he can frame as a concession</strong> before his coalition is safe, and Trump wants an
+"immediate" ceasefire he can claim as a win — two leaders who need different headlines, which is precisely why
+the truce keeps breaking on the seam (Lebanon) neither will own. The non-consensus read: the path of least
+resistance is not peace and not all-out war but a managed, on-again-off-again conflict that keeps the Hormuz
+premium in oil for months — the market is pricing a binary when the politics deliver a grind. In Europe, the
+ECB can hike, but the German fiscal-political backdrop means a hawkish Lagarde will be framed at home as a
+growth error before the autumn regional votes — the constraint is the trade. And next week Kevin Warsh chairs
+his first FOMC: a brand-new chair cannot afford to look soft on inflation in week one, so the risk into the dot
+plot is skewed hawkish regardless of what one CPI print says — the market's "he'll be dovish" lean is the
+mispricing.</p>
 
-<p><strong>Layer 4 — Bull / Base / Bear.</strong> <em>Bull (30%):</em> CPI cools to ≤3.9%, the halt holds, the
-Strait reopens and crude bleeds the premium — risk up, rates down, gold firm. <em>Base (45%):</em> CPI ticks
-up to ~4.0-4.2%, the truce stays fragile and the Strait stays shut so oil holds its bid, Europe leads into the
-ECB — risk mixed, rates range, dollar firm. <em>Bear (25%):</em> CPI runs hot (>4.3%) or the strikes resume
-with Lebanon the fuse and oil pushes $100, and the AI de-rating resumes on a weak Oracle — risk down, rates up,
-gold higher. The bear tail is fatter than it was: there are two ways to lose this week.</p>
-
-<p><strong>Layer 5 — priced vs not-priced.</strong> Mispriced the wrong way: any residual hope that Monday's
-halt was the end of it. Under-priced: the chance the strikes resume — implied vol eased even as the truce broke.
-Fairly priced: oil's premium. Fully priced: Thursday's ECB hike. Own the geopolitical convexity cheaply while
-the tape is still treating the war as yesterday's story.</p>
-
-<p><strong>The Burry tell.</strong> Hyperscaler capex is now so large that the marginal AI-revenue beat has to
-accelerate just to hold the multiple; Broadcom grew AI 143% and lost a seventh of its cap because the cohort
-is hedged for a miss and not one name is hedged for a growth-rate disappointment. Oracle reports tonight with
-a $553bn backlog into that exact trap.</p>
+<p>Net it out on the priced-versus-not spectrum. Mispriced the wrong way: any residual hope that Monday's halt
+ended it. Under-priced: the chance the strikes resume — implied vol actually <em>eased</em> as the truce broke,
+which is the cheap convexity to own. Fairly priced: oil's premium, earned by the blockade. Fully priced:
+Thursday's ECB hike and, arguably, the year-end Fed hike the front end still carries. The disciplined posture
+is the book that already owns both tails — the oil longs earned by a shut Strait, the rates trades waiting on
+CPI — and to add nothing new in front of a number that can set the week by lunch.</p>
 """,
 
     "wrap": """
@@ -1061,6 +1096,62 @@ geopolitical tail is live; the trigger is a weekly close below $87. Watch the St
         "this morning (the deciding print on the year-end hike), ECB Thursday (+25bp locked; press conference "
         "sets the euro), and Kevin Warsh's first FOMC dot plot on June 16-17.</p>"
     ),
+
+    "burry_tell": (
+        "Hyperscaler capex is now so large that the marginal AI-revenue beat has to <em>accelerate</em> just to "
+        "hold the multiple. Broadcom grew AI revenue 143% and still lost a seventh of its market cap, because the "
+        "whole cohort is hedged for a miss and not one name is hedged for a growth-rate <em>disappointment</em>. "
+        "Oracle reports tonight into that exact trap with a $553bn backlog. The structural point nobody is pricing: "
+        "the AI trade has quietly become a second-derivative trade — it is no longer enough to grow fast, you have "
+        "to grow faster than last quarter — and that is the regime in which a cohort de-rates without a single bad "
+        "print, just a string of merely-very-good ones."
+    ),
+
+    "earnings_summary": (
+        "Three names in the window, all NEUTRAL — we are not pre-positioning into any of them. Oracle (tonight) is "
+        "the next read on whether the AI-capex multiple holds after Broadcom; Adobe (Thu) is the cleanest test of "
+        "whether generative-AI is a tax or a tailwind for software incumbents; SailPoint (reported) is a small-cap "
+        "tell on whether security spend is still defensive. The trade is the read, not the position."
+    ),
+    "earnings_why": (
+        "These three cleared the universe filter — $10bn+ cap, US/Korea, Tech/Financials/Industrials/Utilities, "
+        "reporting inside the 5-day-pre / 3-day-post window — and nothing else in the universe qualified this run. "
+        "Oracle and Adobe are the two software/cloud prints that bracket the AI-capex debate the macro book is "
+        "built around; SailPoint is the early-bird identity-security read. Consensus EPS, recommendation splits and "
+        "growth metrics are Finnhub-sourced (earnings_data.md); the implied-move and positioning fields are "
+        "supplemented by web search and tagged estimated."
+    ),
+
+    "book_aim": (
+        "Carry a barbell that is paid on either resolution of the oil binary and waits on CPI for the rates trades — "
+        "long the Hormuz tail (Brent outright + call spread + Brent/WTI), short the over-extrapolated front end "
+        "(2Y, 2s10s steepener), a cross-region RV (long DAX / short Nasdaq) and a defined-risk SPX hedge, with gold "
+        "as the two-tailed anchor. The aim at this point in June is to be flat-to-up into the 16-17 Jun FOMC without "
+        "taking directional CPI risk, and to let the structural pre-positions (steepener, gold) do the compounding."
+    ),
+    "book_pnl": {
+        "note": ("Open book P&L is the equal-weight average of the marked-to-live open positions; realised is the "
+                 "average of closed trades. Position-level marks are live (TradingView); the two option lines are "
+                 "model estimates from spot.")
+    },
+    "idea_selection": [
+        {"label": "No new idea today", "in": False,
+         "text": ("the highest-EV action into an 8:30 CPI print is to add nothing — forcing a trade into a binary is "
+                  "the opposite of edge. We marked the whole book to live levels and found a tape that refused to "
+                  "move on a ceasefire, which is information, not an entry.")},
+        {"label": "Brent longs (MM-002/003/011)", "in": True,
+         "text": ("kept, not added — earned by a Strait that is still shut. These are the trades the book is "
+                  "expressing the geopolitical tail through; the RSI screener and the oil tape both still support "
+                  "carrying them. Exit is a weekly Brent close below $87.")},
+        {"label": "2s10s steepener (MM-009) + short 2Y (MM-013)", "in": True,
+         "text": ("held as the structural rates pre-position — the front end is over-extrapolating one payroll, and "
+                  "the dot plot on 16-17 Jun is the catalyst. Min-hold rules keep these on through the noise.")},
+        {"label": "Long DAX / short Nasdaq (MM-010)", "in": False,
+         "text": ("flagged but NOT added to today — it sits on its 0.943 stop and the narrow chip-led bounce is "
+                  "exactly the tape that hurts it. Structural case intact; we do not add while US tech leads.")},
+    ],
+    "screen": screen,
+    "screener_notes": SCREENER_NOTES,
 
     "vix_term": [
         {"label": "VIX9D", "value": 16.0},
