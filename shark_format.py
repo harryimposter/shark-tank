@@ -207,10 +207,10 @@ details.trade-drop>summary .td-meta{display:flex;gap:6px;align-items:center;flex
 /* ---- icon legend ---- */
 .icon-legend{background:var(--surface);border:.5px solid var(--line);border-radius:var(--rad-lg);padding:.9rem 1.1rem;margin-bottom:1rem}
 .icon-legend .il-title{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:.65rem}
-.il-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:6px}
-.il-row{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.55}
-.il-row .il-key{flex-shrink:0;min-width:80px}
-.il-row .il-val{color:var(--ink-soft)}
+.il-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px 18px}
+.il-row{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.55;flex-wrap:wrap}
+.il-row .il-key{flex-shrink:0;min-width:70px;max-width:100%}
+.il-row .il-val{color:var(--ink-soft);flex:1 1 170px;min-width:170px}
 details.idea-d{border:.5px solid var(--line);border-left:3px solid var(--ink-mute);border-radius:var(--rad-lg);padding:.7rem 1rem;margin-bottom:9px;background:var(--bg)}
 details.idea-d[open]{border-left-color:var(--gold);background:#fff}
 details.idea-d>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
@@ -841,10 +841,10 @@ def _icon_legend():
         ('<span style="display:inline-flex;align-items:center;gap:4px"><span class="srcdot src-unverified"></span>red dot</span>',
          "Data point is <b>unverified</b> — not yet confirmed this session; treat with caution."),
         # conviction pips
-        ('<div style="display:inline-flex;gap:3px">'
-         + "".join(f'<div class="pip8 {"on" if i < 6 else ""}"></div>' for i in range(8))
+        ('<div style="display:inline-flex;gap:2px">'
+         + "".join(f'<div class="pip8 {"on" if i < 6 else ""}" style="width:12px"></div>' for i in range(8))
          + '</div>',
-         "Conviction pips (0–8 for Derivatives Desk ideas, 0–10 for the Trade book): filled gold bars = score earned; empty = not earned."),
+         "Conviction pips: filled gold bars = score earned, empty = not earned (Derivatives Desk live /11, Trade book live /13)."),
     ]
     rows = "".join(
         f'<div class="il-row"><div class="il-key">{sym}</div><div class="il-val">{desc}</div></div>'
@@ -1687,6 +1687,13 @@ def _page_portfolio(scan):
         lhs.append(f'<div class="asof">Live refresh: {e("; ".join(scan["refresh_notes"]))}.</div>')
     lhs.append(_cash_liab_block(scan))
     lhs.append(_h("House view engine", "click any name for the full thesis, score & sources"))
+    lhs.append(
+        '<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .7rem">'
+        f'<b>Universe:</b> the <b>{len(scan["positions"])} positions the client actually holds</b> — this is a '
+        'whole-book scan, not a market screen, so every holding gets an independent house view (LIKE / NEUTRAL / '
+        'AVOID / LIKE-as-hedge) scored on a fixed /10 rubric and consistency-locked to the morning brief and the '
+        'JP Morgan GIS anchor. New names (outside the book) are screened separately on the Earnings tab and the '
+        'Trade Ideas RSI screener, then arrive here as Derivatives Desk <i>New Adds</i>.</p>')
     lhs.append(_view_engine_panel(scan))
     lhs.append('<div style="margin-top:1.5rem">'
                '<a href="ideas.html" style="font-size:13px;color:var(--gold);font-weight:600;text-decoration:none">'
@@ -1976,6 +1983,18 @@ def _page_ideas(scan):
     lhs = [_icon_legend()]
     lhs.append(_h("What we're suggesting", "the whole book, in one screen"))
     lhs.append(_overall_summary_block(scan))
+    lhs.append(
+        '<div class="method-box">'
+        '<div class="mb-t">The universe — where these ideas come from</div>'
+        '<p>The desk draws from <b>two universes</b>, both defined and screened upstream:</p>'
+        '<ul>'
+        f'<li><b>Enhancements</b> — universe is the <b>{len(scan.get("positions", []))} positions the client '
+        'holds</b> (the Portfolio book). The Book Scanner turns each into a structure idea.</li>'
+        '<li><b>New Adds</b> — universe is everything <i>outside</i> the book that clears an upstream screen: the '
+        '<b>Earnings screener</b> ($10bn+ cap, US/Korea, Tech/Financials/Industrials/Utilities) and the '
+        '<b>macro book</b>, plus the <b>Trade Ideas RSI screener</b> (~140-name cross-asset universe). Only names '
+        'that fit this client&rsquo;s mandate and patterns are carried through.</li>'
+        '</ul></div>')
     lhs.append(_product_shelf())
     lhs.append(_positioning_method())
     lhs.append(_loss_recovery_block(scan))
