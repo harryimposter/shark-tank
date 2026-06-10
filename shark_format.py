@@ -178,6 +178,38 @@ table.cal th{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:v
 .impact b{font-weight:600}
 .conv-how{font-size:11px;color:var(--ink-mute);margin:.15rem 0 .5rem}
 .origin{font-size:11px;color:var(--ink-mute);font-style:italic;margin-bottom:.5rem}
+/* ---- trade dropdowns ---- */
+details.trade-drop{border:.5px solid var(--line);border-left:3px solid var(--ink-mute);border-radius:var(--rad-lg);padding:.75rem 1.05rem;margin-bottom:10px;background:var(--bg)}
+details.trade-drop[open]{border-left-color:var(--gold);background:#fff}
+details.trade-drop>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+details.trade-drop>summary::-webkit-details-marker{display:none}
+details.trade-drop>summary .td-name{font-size:14px;font-weight:600;line-height:1.35}
+details.trade-drop>summary .td-meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end;flex-shrink:0}
+.trade-body{padding-top:.75rem;margin-top:.65rem;border-top:.5px solid var(--line)}
+.tb-label{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);margin:.9rem 0 .25rem}
+.tb-label:first-child{margin-top:0}
+.tb-text{font-size:13px;color:var(--ink-soft);line-height:1.6}
+.tb-risk{font-size:12.5px;color:var(--red);border-left:2px solid var(--red);padding:.3rem .65rem;margin-top:.4rem;background:rgba(192,57,43,.04);border-radius:0 6px 6px 0;line-height:1.5}
+.rsi-block{background:var(--surface);border:.5px solid var(--line);border-radius:var(--rad);padding:.5rem .75rem;margin-top:.35rem;font-size:12px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.rsi-block .rv{font-weight:600;font-size:13px;font-variant-numeric:tabular-nums}
+.rsi-crowded{color:var(--red);font-weight:700;letter-spacing:.04em}
+.rsi-neutral{color:var(--green);font-weight:700;letter-spacing:.04em}
+.rsi-na{color:var(--ink-mute);font-style:italic}
+/* ---- conviction legend ---- */
+.conv-legend{background:var(--surface);border:.5px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--rad-lg);padding:1rem 1.2rem;margin-bottom:1.2rem}
+.conv-legend .cl-title{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.conv-legend table{width:100%;border-collapse:collapse;font-size:12px}
+.conv-legend th{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);font-weight:500;text-align:left;padding:5px 6px;border-bottom:.5px solid var(--line)}
+.conv-legend td{padding:5px 6px;border-bottom:.5px dotted var(--line);vertical-align:top}
+.conv-legend td:first-child{font-weight:600;white-space:nowrap}
+.conv-legend td:nth-child(2){color:var(--ink-mute);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+/* ---- icon legend ---- */
+.icon-legend{background:var(--surface);border:.5px solid var(--line);border-radius:var(--rad-lg);padding:.9rem 1.1rem;margin-bottom:1rem}
+.icon-legend .il-title{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:.65rem}
+.il-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:6px}
+.il-row{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.55}
+.il-row .il-key{flex-shrink:0;min-width:80px}
+.il-row .il-val{color:var(--ink-soft)}
 details.idea-d{border:.5px solid var(--line);border-left:3px solid var(--ink-mute);border-radius:var(--rad-lg);padding:.7rem 1rem;margin-bottom:9px;background:var(--bg)}
 details.idea-d[open]{border-left-color:var(--gold);background:#fff}
 details.idea-d>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
@@ -394,6 +426,258 @@ def _pips(score, total=10):
     return "".join(f'<div class="pip {"on" if i < n else ""}"></div>' for i in range(total))
 
 
+def _rsi_block(rsi):
+    """Render the RSI positioning check block for a trade dropdown."""
+    if not rsi:
+        return '<div class="rsi-block"><span class="rsi-na">RSI positioning: no data available for this instrument</span></div>'
+    if rsi.get("error"):
+        return f'<div class="rsi-block"><span class="rsi-na">RSI positioning: {e(rsi["error"])}</span></div>'
+    verdict = rsi.get("verdict", "")
+    rsi_val = rsi.get("rsi", "—")
+    mean    = rsi.get("mean", "—")
+    std     = rsi.get("std", "—")
+    sd_dist = rsi.get("sd_dist", 0)
+    crowd   = rsi.get("crowd_vs_us", False)
+    direction = rsi.get("direction", "")
+    ticker  = rsi.get("ticker", "")
+    note    = rsi.get("note", ticker)
+
+    if verdict == "CROWDED_HIGH":
+        v_html = '<span class="rsi-crowded">CROWDED / OVERBOUGHT</span>'
+        interp = "RSI is >1 SD above its 1-month mean — instrument is technically overbought."
+    elif verdict == "CROWDED_LOW":
+        v_html = '<span class="rsi-crowded">CROWDED / OVERSOLD</span>'
+        interp = "RSI is >1 SD below its 1-month mean — instrument is technically oversold."
+    else:
+        v_html = '<span class="rsi-neutral">NEUTRAL</span>'
+        interp = "RSI is within ±1 SD of its 1-month mean — no crowding signal."
+
+    impact = ""
+    if crowd:
+        impact = f' <span style="color:var(--red);font-weight:600">— AGAINST our {direction} position (−1 conviction point)</span>'
+    elif verdict != "NEUTRAL":
+        impact = f' <span style="color:var(--green);font-weight:600">— SUPPORTS our {direction} position</span>'
+
+    return (
+        f'<div class="rsi-block">'
+        f'<span class="rv">RSI {rsi_val}</span>'
+        f'<span style="color:var(--ink-mute)">mean {mean} · ±1SD [{round(mean-std,1) if isinstance(mean,(int,float)) and isinstance(std,(int,float)) else "—"}, {round(mean+std,1) if isinstance(mean,(int,float)) and isinstance(std,(int,float)) else "—"}] · '
+        f'SD dist {sd_dist:+.2f}</span>'
+        f'<span>{v_html}{impact}</span>'
+        f'<span style="color:var(--ink-mute);font-size:11px">{e(note)} · 14-period RSI · 21-session window</span>'
+        f'<span style="color:var(--ink-soft);font-size:11px">{e(interp)}</span>'
+        f'</div>'
+    )
+
+
+def _conviction_legend():
+    """Return the 'How conviction is scored' explainer section."""
+    rows = [
+        ("Gap (0–3)", "0–3", "How far is the current price from fair value / your view? "
+         "3 = extreme regime-level mispricing (>3 SDs or a fundamental regime shift not priced); "
+         "2 = clear gap (~1–2 SDs or a well-documented mispricing); "
+         "1 = minor gap; 0 = no gap or price is against you."),
+        ("Catalyst (0–2)", "0–2", "Is there a specific, dated event that can close the gap? "
+         "2 = precise near-term dated catalyst (earnings, FOMC, CPI, ECB) with a clear payoff trigger; "
+         "1 = soft or undated catalyst; 0 = no catalyst or catalyst is ambiguous."),
+        ("Positioning (0–2)", "0–2", "Does existing market positioning provide fuel for the trade? "
+         "2 = the crowd is on the other side of your trade (maximum squeeze potential); "
+         "1 = neutral or mildly supportive; 0 = crowd is with you (high unwind risk)."),
+        ("Confirmation (0–2)", "0–2", "Do independent signals confirm the thesis? "
+         "2 = multiple confirming signals (technical breakout + fundamental data + flow); "
+         "1 = one confirming signal; 0 = no confirmation or contradicting signals."),
+        ("Stop quality (0–1)", "0–1", "Is the stop loss clearly defined and tight relative to the move? "
+         "1 = stop at a clean technical/structural level with a disciplined R/R ratio; "
+         "0 = wide, arbitrary, or no defined stop."),
+        ("RSI positioning (0–1) ★ NEW", "0–1", "1-month RSI crowding check. Compute the 14-period RSI "
+         "over the past 3 months, take the mean and std of the last 21 sessions (~1 month), and test "
+         "whether the current RSI is >1 SD from the mean. If CROWDED against your position direction "
+         "(overbought on a long, oversold on a short) = 0 (subtract 1 conviction point); otherwise = 1. "
+         "This criterion is displayed on each trade but does not retroactively change existing book scores "
+         "— it applies to new trades going forward."),
+    ]
+    tbl = ('<table><thead><tr><th>Criterion</th><th>Max</th><th>What earns points</th></tr></thead><tbody>'
+           + "".join(f'<tr><td>{e(r[0])}</td><td style="text-align:right">{e(r[1])}</td><td style="color:var(--ink-soft)">{e(r[2])}</td></tr>'
+                     for r in rows)
+           + "</tbody></table>")
+    return (
+        '<div class="conv-legend">'
+        '<div class="cl-title">How conviction is scored · /10 rubric (11 with RSI check)</div>'
+        + tbl +
+        '<div style="font-size:11px;color:var(--ink-mute);margin-top:.6rem">'
+        'Max score: 3+2+2+2+1 = <b>10</b> (legacy); +1 RSI check = <b>11</b> for new trades. '
+        'Scores in the book reflect the rubric at trade entry — RSI is computed live at each refresh.</div>'
+        '</div>'
+    )
+
+
+def _icon_legend():
+    """Return the visible icon/badge legend for the Derivatives Lab page."""
+    items = [
+        # tier badges
+        ('<span class="tier fire" style="font-size:11px">FIRE</span>',
+         "Top-conviction idea — all four conviction sub-scores high; deploy now."),
+        ('<span class="tier watch" style="font-size:11px">WATCH</span>',
+         "Interesting but incomplete — typically waiting on a data point, IV sourcing, or a catalyst gate. Promote to FIRE when the missing piece arrives."),
+        ('<span class="tier suppress" style="font-size:11px">SUPPRESS</span>',
+         "Algorithmically flagged but deliberately held back — either contradicts another idea on the same name or the brief's current regime says 'hold, don't trim.'"),
+        # house view pills
+        ('<span class="vpill v-like" style="font-size:11px">LIKE</span>',
+         "House view: constructive / bullish on this name or instrument. Supports adding or holding."),
+        ('<span class="vpill v-neutral" style="font-size:11px">NEUTRAL</span>',
+         "House view: no strong directional view. Hold existing positions; do not add."),
+        ('<span class="vpill v-avoid" style="font-size:11px">AVOID</span>',
+         "House view: negative / bearish. Reduce or hedge existing exposure; do not add."),
+        ('<span class="vpill v-hedge" style="font-size:11px">LIKE-as-hedge</span>',
+         "House view: hold this position specifically as a portfolio hedge or tail risk offset — not for directional upside."),
+        # source dots
+        ('<span style="display:inline-flex;align-items:center;gap:4px"><span class="srcdot src-sourced"></span>green dot</span>',
+         "Data point is <b>sourced</b> — from a named sell-side report, Finnhub, TradingView live feed, or a public filing."),
+        ('<span style="display:inline-flex;align-items:center;gap:4px"><span class="srcdot src-estimated"></span>gold dot</span>',
+         "Data point is <b>estimated</b> — derived, model-computed, or from an analyst's thematic note rather than a hard data source."),
+        ('<span style="display:inline-flex;align-items:center;gap:4px"><span class="srcdot src-unverified"></span>red dot</span>',
+         "Data point is <b>unverified</b> — not yet confirmed this session; treat with caution."),
+        # conviction pips
+        ('<div style="display:inline-flex;gap:3px">'
+         + "".join(f'<div class="pip8 {"on" if i < 6 else ""}"></div>' for i in range(8))
+         + '</div>',
+         "Conviction pips (0–8 for Derivatives Lab ideas, 0–10 for the Trade book): filled gold bars = score earned; empty = not earned."),
+    ]
+    rows = "".join(
+        f'<div class="il-row"><div class="il-key">{sym}</div><div class="il-val">{desc}</div></div>'
+        for sym, desc in items
+    )
+    return (
+        '<div class="icon-legend">'
+        '<div class="il-title">Legend &mdash; what every badge, pill, dot and bar means</div>'
+        f'<div class="il-grid">{rows}</div>'
+        '</div>'
+    )
+
+
+def _trade_dropdown(idea, enrichments=None, rsi_data=None):
+    """Render a trade as a self-contained expandable <details> dropdown."""
+    tid  = idea.get("id", "")
+    enr  = (enrichments or {}).get(tid, {})
+    rsi  = (rsi_data or {}).get(tid)
+    cb   = idea.get("conviction_breakdown", {}) or {}
+    kind = idea.get("_kind", idea.get("type", "reactive"))
+    conv = idea.get("conviction", 0)
+    # P&L badge
+    pl   = idea.get("current_pnl_pct")
+    if pl is not None:
+        pl_cls = "g" if pl > 0 else ("r" if pl < 0 else "mute")
+        pl_html = f'<span class="{pl_cls}" style="font-size:12px;font-weight:600">{pl:+.2f}%</span>'
+    else:
+        pl_html = ""
+    # Closed badge
+    closed_badge = ""
+    if idea.get("exit"):
+        ex = idea["exit"]
+        c_cls = "g" if (ex.get("pnl_pct", 0) or 0) > 0 else "r"
+        closed_badge = (f'<span class="{c_cls}" style="font-size:11px;font-weight:600">'
+                        f'{e(ex.get("result","CLOSED"))} {ex.get("pnl_pct",0):+.1f}%</span>')
+    # Conviction breakdown table with WHY
+    why = enr.get("breakdown_why", {})
+    crit = [
+        ("Gap",          cb.get("gap", 0),          3, why.get("gap",          "—")),
+        ("Catalyst",     cb.get("catalyst", 0),      2, why.get("catalyst",     "—")),
+        ("Positioning",  cb.get("positioning", 0),   2, why.get("positioning",  "—")),
+        ("Confirmation", cb.get("confirmation", 0),  2, why.get("confirmation", "—")),
+        ("Stop quality", cb.get("stop_quality", 0),  1, why.get("stop_quality", "—")),
+    ]
+    # RSI criterion
+    rsi_score = ""
+    if rsi and not rsi.get("error"):
+        crowd_vs_us = rsi.get("crowd_vs_us", False)
+        rsi_pt = 0 if crowd_vs_us else 1
+        crit.append(("RSI check ★", rsi_pt, 1, why.get("rsi_positioning",
+            f'RSI {rsi.get("rsi","?")} · mean {rsi.get("mean","?")} · SD dist {rsi.get("sd_dist","?"):+.2f} · '
+            f'{rsi.get("verdict","?")} — {"crowded against position: 0 pts" if crowd_vs_us else "neutral or supportive: 1 pt"}'
+        )))
+    conv_tbl = (
+        '<table class="convtbl">'
+        f'<tr><td class="k">Conviction total</td><td class="s">{conv}/10</td>'
+        f'<td class="w">scored at entry per the rubric below</td></tr>'
+        + "".join(f'<tr><td class="k">{e(k)}</td><td class="s">{v}/{mx}</td>'
+                  f'<td class="w">{e(w)}</td></tr>'
+                  for k, v, mx, w in crit)
+        + "</table>"
+    )
+    # Catalyst list
+    cats = enr.get("catalysts", [])
+    cat_html = ("<ul style='margin:.3rem 0 0;padding-left:1.2rem'>"
+                + "".join(f"<li style='font-size:12.5px;color:var(--ink-soft);margin-bottom:3px'>{e(c)}</li>" for c in cats)
+                + "</ul>") if cats else '<span class="tb-text">—</span>'
+    # Trade rows
+    rows_data = [
+        ("Direction", ("Short" if "short" in (idea.get("trade","") + " " + idea.get("structure","")).lower()
+                       and "long" not in (idea.get("trade","") + " " + idea.get("structure","")).lower()
+                       else "Long")),
+        ("Asset class", idea.get("asset_class", "")),
+        ("Structure",   idea.get("structure", "")),
+        ("Entry",       idea.get("entry")),
+        ("Stop",        idea.get("stop")),
+        ("Target",      idea.get("target")),
+        ("Horizon",     idea.get("horizon", "")),
+    ]
+    if idea.get("min_hold_days"):
+        rows_data.append(("Min hold", f'{idea["min_hold_days"]}d'))
+    if pl is not None:
+        rows_data.insert(0, ("Current P&L", f'{pl:+.2f}%'))
+    trade_tbl = (
+        '<table class="convtbl" style="margin:.3rem 0">'
+        + "".join(f'<tr><td class="k" style="width:110px">{e(k)}</td>'
+                  f'<td class="s" style="text-align:left">{e(v)}</td><td class="w"></td></tr>'
+                  for k, v in rows_data if v is not None)
+        + "</table>"
+    )
+    # Status note (open book note)
+    note_html = ""
+    if enr.get("risks"):
+        note_html = f'<div class="tb-risk">{e(enr["risks"])}</div>'
+    return (
+        f'<details class="trade-drop">'
+        f'<summary>'
+        f'<div>'
+        f'<div class="td-name">{e(idea.get("trade",""))}</div>'
+        f'<div style="font-size:11px;color:var(--ink-mute);margin-top:2px">{e(tid)} · {e(kind)} · {e(idea.get("asset_class",""))}</div>'
+        f'</div>'
+        f'<div class="td-meta">'
+        + (pl_html or closed_badge)
+        + f'<span class="conv-badge">{e(conv)}/10</span>'
+        f'<span style="font-size:11px;color:var(--ink-mute)">&#9656; expand</span>'
+        f'</div>'
+        f'</summary>'
+        f'<div class="trade-body">'
+        # instrument
+        + (f'<div class="tb-label">What this instrument is &amp; what drives it</div>'
+           f'<div class="tb-text">{e(enr.get("instrument",""))}</div>'
+           if enr.get("instrument") else "")
+        # trade view
+        + f'<div class="tb-label">Trade view · entry / stop / target / horizon</div>'
+        + trade_tbl
+        # fundamental thesis
+        + (f'<div class="tb-label">Fundamental thesis</div>'
+           f'<div class="tb-text">{e(enr.get("fundamental_thesis", idea.get("thesis","")))}</div>'
+           if enr.get("fundamental_thesis") else
+           f'<div class="tb-label">Thesis</div><div class="tb-text">{e(idea.get("thesis",""))}</div>')
+        # catalysts
+        + f'<div class="tb-label">Catalyst(s)</div>{cat_html}'
+        # conviction
+        + f'<div class="tb-label">Full conviction breakdown</div>'
+        + conv_tbl
+        # RSI
+        + f'<div class="tb-label">RSI positioning check (1-month window)</div>'
+        + _rsi_block(rsi)
+        # risks
+        + (f'<div class="tb-label">Risks / what would make this wrong</div>' + note_html
+           if enr.get("risks") else "")
+        + f'</div>'
+        f'</details>'
+    )
+
+
 def _trade_tile(idea):
     cb = idea.get("conviction_breakdown", {}) or {}
     rubric = (f'gap({cb.get("gap",0)}/3) · catalyst({cb.get("catalyst",0)}/2) · '
@@ -466,42 +750,104 @@ def _client_ammo_body(rows):
                    f'<div class="a">{e(r.get("a",""))}</div></div>' for r in rows)
 
 
-def _book_accordion(trades):
+def _book_accordion(trades, enrichments=None, rsi_data=None):
+    enr = enrichments or {}
+    rsi = rsi_data or {}
     out = []
     for t in trades.get("open", []) + trades.get("closed", []):
+        tid    = t.get("id", "")
+        te     = enr.get(tid, {})
+        trsi   = rsi.get(tid)
         closed = "exit" in t
-        pl = t.get("current_pnl_pct")
+        pl     = t.get("current_pnl_pct")
         pl_cls = "g" if (pl or 0) > 0 else ("r" if (pl or 0) < 0 else "mute")
-        status = (f'<span class="{pl_cls}">{pl:+.2f}%</span>' if pl is not None else "—")
         if closed:
-            ex = t["exit"]
-            status = f'<span class="r">{e(ex.get("result"))} {ex.get("pnl_pct"):+.2f}%</span>'
-        rows = [
-            ("Asset class", t.get("asset_class", "")),
-            ("Structure", t.get("structure", "")),
-            ("Opened", t.get("opened", "")),
+            ex  = t["exit"]
+            pl_cls = "g" if (ex.get("pnl_pct", 0) or 0) > 0 else "r"
+            status_html = (f'<span class="{pl_cls}">{e(ex.get("result","CLOSED"))} '
+                           f'{ex.get("pnl_pct",0):+.2f}%</span>')
+        else:
+            status_html = (f'<span class="{pl_cls}">{pl:+.2f}%</span>' if pl is not None else
+                           '<span class="mute">open</span>')
+
+        cb = t.get("conviction_breakdown") or {}
+        why = te.get("breakdown_why", {})
+        crit = [
+            ("Gap",          cb.get("gap",0),          3, why.get("gap","—")),
+            ("Catalyst",     cb.get("catalyst",0),      2, why.get("catalyst","—")),
+            ("Positioning",  cb.get("positioning",0),   2, why.get("positioning","—")),
+            ("Confirmation", cb.get("confirmation",0),  2, why.get("confirmation","—")),
+            ("Stop quality", cb.get("stop_quality",0),  1, why.get("stop_quality","—")),
+        ]
+        if trsi and not trsi.get("error"):
+            crowd = trsi.get("crowd_vs_us", False)
+            crit.append(("RSI check ★", 0 if crowd else 1, 1,
+                         f'RSI {trsi.get("rsi","?")} · {trsi.get("verdict","?")} · '
+                         + ("crowded against position" if crowd else "neutral/supportive")))
+
+        conv_tbl = (
+            '<table class="convtbl">'
+            f'<tr><td class="k">Conviction</td><td class="s">{t.get("conviction","")}/10</td>'
+            f'<td class="w">scored at entry</td></tr>'
+            + "".join(f'<tr><td class="k">{e(k)}</td><td class="s">{v}/{mx}</td>'
+                      f'<td class="w">{e(w)}</td></tr>' for k, v, mx, w in crit)
+            + "</table>"
+        )
+
+        cats = te.get("catalysts", [])
+        cat_html = ("<ul style='margin:.25rem 0 0;padding-left:1.1rem'>"
+                    + "".join(f"<li style='font-size:12px;color:#6b6b6b;margin-bottom:2px'>{e(c)}</li>" for c in cats)
+                    + "</ul>") if cats else ""
+
+        rows_data = [
+            ("Opened", t.get("opened","")),
+            ("Asset class", t.get("asset_class","")),
+            ("Structure", t.get("structure","")),
             ("Entry", t.get("entry")),
             ("Current", t.get("current")),
             ("Stop", t.get("stop")),
             ("Target", t.get("target")),
-            ("Conviction", f'{t.get("conviction","")}/10'),
-            ("Horizon", t.get("horizon", "")),
+            ("Horizon", t.get("horizon","")),
         ]
         if t.get("min_hold_days"):
-            rows.append(("Min hold", f'{t["min_hold_days"]}d'))
-        cb = t.get("conviction_breakdown") or {}
-        if cb:
-            rows.append(("Score", f'gap{cb.get("gap",0)} · cat{cb.get("catalyst",0)} · '
-                                  f'pos{cb.get("positioning",0)} · conf{cb.get("confirmation",0)} · '
-                                  f'stop{cb.get("stop_quality",0)}'))
+            rows_data.append(("Min hold", f'{t["min_hold_days"]}d'))
+        if closed:
+            ex = t["exit"]
+            rows_data += [("Exit date", ex.get("date","")), ("Exit level", ex.get("level")),
+                          ("Days held", f'{ex.get("days_held","")}d')]
         det_rows = "".join(f'<div class="det-row"><span class="det-k">{e(k)}</span>'
-                           f'<span>{e(v)}</span></div>' for k, v in rows)
+                           f'<span>{e(v)}</span></div>' for k, v in rows_data if v is not None)
+
+        body = det_rows
+        if te.get("instrument"):
+            body += (f'<div class="det-thesis"><strong>Instrument:</strong> {e(te["instrument"])}</div>')
+        if te.get("fundamental_thesis") or t.get("thesis"):
+            body += (f'<div class="det-thesis"><strong>Thesis:</strong> '
+                     f'{e(te.get("fundamental_thesis", t.get("thesis","")))} </div>')
+        if cats:
+            body += f'<div class="det-thesis"><strong>Catalysts:</strong></div>{cat_html}'
+        body += f'<div class="det-thesis"><strong>Conviction breakdown:</strong></div>{conv_tbl}'
+        if trsi:
+            body += '<div class="det-thesis"><strong>RSI positioning:</strong></div>'
+        # RSI in FRAG_CSS context — simplified inline block
+        if trsi and not trsi.get("error"):
+            body += (f'<div style="background:#f7f7f5;border:.5px solid rgba(0,0,0,.1);border-radius:6px;'
+                     f'padding:.4rem .6rem;font-size:11px;margin-top:.3rem">'
+                     f'RSI {trsi.get("rsi","?")} · mean {trsi.get("mean","?")} · '
+                     f'SD dist {trsi.get("sd_dist","?"):+.2f} · '
+                     f'<b>{e(trsi.get("verdict","?"))}</b>'
+                     + (" · <b style=\"color:#c0392b\">CROWDED vs our position</b>" if trsi.get("crowd_vs_us") else "")
+                     + f' · {e(trsi.get("note",""))}'
+                     + '</div>')
+        elif trsi and trsi.get("error"):
+            body += f'<div style="font-size:11px;color:#9a9a9a;margin-top:.3rem">{e(trsi["error"])}</div>'
+        if te.get("risks"):
+            body += f'<div class="det-thesis" style="color:#c0392b"><strong>Risks:</strong> {e(te["risks"])}</div>'
+
         out.append(
-            f'<details><summary><span><span class="pill">{e(t.get("id",""))}</span> '
-            f'{e(t.get("trade",""))}</span>{status}</summary>'
-            + det_rows
-            + f'<div class="det-thesis"><strong>Thesis &amp; what I\'m watching:</strong> '
-              f'{e(t.get("thesis",""))}</div></details>'
+            f'<details><summary><span><span class="pill">{e(tid)}</span> '
+            f'{e(t.get("trade",""))}</span>{status_html}</summary>'
+            + body + '</details>'
         )
     return "".join(out) or "<p class='mute'>no positions</p>"
 
@@ -560,17 +906,21 @@ def _page_earnings(brief):
 
 
 def _page_trades(brief):
-    lhs = []
+    enr  = brief.get("trade_enrichments", {})
+    rsi  = brief.get("rsi_data", {})
+    lhs  = []
+    lhs.append(_conviction_legend())
     reactive = [dict(i, _kind="reactive") for i in brief.get("new_ideas", [])]
-    prepos = [dict(i, _kind="pre-position") for i in brief.get("pre_position_ideas", [])]
+    prepos   = [dict(i, _kind="pre-position") for i in brief.get("pre_position_ideas", [])]
     if brief.get("ideas_note"):
         lhs.append('<div class="section-label">Positioning stance today</div>')
         lhs.append(f'<div class="wrap-body" style="font-size:14px">{brief["ideas_note"]}</div>')
     lhs.append('<div class="section-label">New Trade Ideas</div>')
-    cards = "".join(_trade_tile(i) for i in reactive + prepos)
-    lhs.append('<div class="cardgrid">' + cards + '</div>' if cards
-               else '<p class="mute" style="font-size:13px">No new idea today — into a binary print, forcing a trade is the trade.</p>')
-    lhs.append('<div class="section-label">Live Book · click any trade to expand</div>')
+    if reactive + prepos:
+        lhs.append("".join(_trade_dropdown(i, enr, rsi) for i in reactive + prepos))
+    else:
+        lhs.append('<p class="mute" style="font-size:13px">No new idea today — into a binary print, forcing a trade is the trade.</p>')
+    lhs.append('<div class="section-label">Open Book · click any trade for the full breakdown</div>')
     lhs.append('<iframe src="frag/book.html" class="bookframe" title="Live book"></iframe>')
     return "".join(lhs)
 
@@ -934,7 +1284,7 @@ def _overall_summary_block(scan):
 def _page_ideas(scan):
     meta = scan.get("ivol_meta", {})
     fable = e(scan["client"].get("display_name", "Fable"))
-    lhs = [_overall_summary_block(scan)]
+    lhs = [_icon_legend(), _overall_summary_block(scan)]
     lhs.append('<div class="section-label" style="margin-top:1.8rem">Section 1 &middot; New Adds '
                '&mdash; desk ideas mapped to this client</div>')
     lhs.append(f'<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .4rem">'
@@ -990,6 +1340,8 @@ def render_all(brief, trades, regime_log=None, scan=None):
                 f.write(htmldoc)
 
     # iframe fragments
+    enr = brief.get("trade_enrichments", {})
+    rsi = brief.get("rsi_data", {})
     frags = {
         "consensus.html":   ("The Consensus · Bid / Offer", brief.get("consensus", "")),
         "talking.html":     ("Talking Points Today", _client_ammo_body(brief.get("client_ammo", []))),
@@ -997,7 +1349,7 @@ def render_all(brief, trades, regime_log=None, scan=None):
         "volskew.html":     ("Vol & Skew", brief.get("vol_skew", "")),
         "sectorrv.html":    ("Sector & RV", brief.get("sector_rv", "")),
         "positioning.html": ("Positioning & Flows", brief.get("positioning", "")),
-        "book.html":        ("Live Book", _book_accordion(trades)),
+        "book.html":        ("Live Book", _book_accordion(trades, enrichments=enr, rsi_data=rsi)),
     }
     for fname, (title, body) in frags.items():
         with open(os.path.join(FRAG_DIR, fname), "w", encoding="utf-8") as f:

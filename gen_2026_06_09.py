@@ -38,13 +38,14 @@ levels["MM-2026-008"] = 45.0   # SPX Jun-27 7300/7000 put spread (model est, SPX
 levels["MM-2026-011"] = 2.0    # Brent 100/115 call spread (model est, Brent ~$93)
 
 # ── Regime ─────────────────────────────────────────────────────────────────
-regime = "A Ceasefire, Not an All-Clear"
+regime = "A Truce Under Fire, A Hot CPI Ahead"
 regime_note = (
-    "Iran and Israel halted attacks and Trump is brokering a ceasefire — and the tape barely moved. "
-    "Brent eased a single dollar to ~$93 and kept its war premium; the broad market was flat-to-down "
-    "(S&P +0.3%, DAX and Dow lower) while the bounce was confined to the chips force-sold on Friday "
-    "(Nasdaq, Nikkei). Yields did not budge. The market is treating the truce as unproven — and May CPI "
-    "tomorrow, not the ceasefire, is the event that matters."
+    "The April ceasefire cracked: Iran and Israel traded the worst strikes in months on Jun 7-8, Israel hit "
+    "Iran's Mahshahr petrochemical complex and air defences, and Iran halted but warned it will resume — "
+    "Netanyahu won't even call it a ceasefire. The one-session chip bounce on Monday's halt gave it all back: "
+    "the S&P closed 7,386 (-0.3%), the Nasdaq -1.0%, only the Dow held. Brent kept its premium near $92 because "
+    "the Strait of Hormuz is still blockaded, not because anyone trusts the truce. May CPI tomorrow — expected "
+    "to tick up toward 4.2% — is the hard catalyst the geopolitics can't soften."
 )
 regime_log = book.update_regime_log(regime_log, regime, regime_note)
 
@@ -268,207 +269,203 @@ brief = {
     "earnings_ideas": earnings_ideas,
 
     "dominant_theme": (
-        "The ceasefire's real tell is in crude, not equities: a supply scare that supposedly ended gave back "
-        "a single dollar of premium. The market does not believe the truce — and the front-end that de-rated "
-        "the tape on Friday has not moved into tomorrow's CPI."
+        "The truce keeps cracking and the Strait stays shut, so oil keeps its premium near $92 — while the "
+        "one-day chip bounce on Monday's brief halt has already failed. Two unresolved shocks, the war and a "
+        "CPI print expected to tick up to 4.2%, both still live into tomorrow morning."
     ),
 
     # ── SUMMARY page ───────────────────────────────────────────────────────
     "summary_narrative": """
-<p>The headline was the one the market had been waiting for: Iran and Israel agreed to stop firing, and
-President Trump put his name to a ceasefire he is still brokering. The reaction was the surprise. Stocks
-did not surge, oil did not collapse, and the front-end of the curve did not move. The S&amp;P added 0.3%,
-the Dow and the DAX fell, and Brent gave back a single dollar to around $93 — keeping almost all of the war
-premium it built last week. The only real movers were the chips that had been force-sold on Friday: the
-Nasdaq, Korea and Japan bounced. Strip those out and there was no relief rally at all.</p>
+<p>The ceasefire didn't hold. Over the weekend Iran and Israel traded the worst strikes in months — the first
+exchanged fire since the April truce — and Israel followed Iran's Monday "halt" with an extensive strike on
+Iran's air defences and the Mahshahr petrochemical complex. Iran says it has stopped, but warned it will fire
+again if Israel keeps hitting Lebanon; Netanyahu won't call it a ceasefire; Trump is pushing for an "immediate"
+one that does not yet exist on paper. This is a truce under fire, not a peace.</p>
 
-<p>That is the tell, and it is worth sitting with. When a supply scare genuinely ends, the supply-sensitive
-asset hands back its premium — and oil barely budged. The crude market is pricing this truce as unproven,
-which is a more honest verdict than the equity tape's narrow bounce. The war premium still sitting in Brent
-is, in effect, the market's own probability that the ceasefire fails. So the "all-clear" the chip rally
-implies is contradicted by the oil price two screens over, and when those two disagree, oil is usually the
-one telling the truth.</p>
+<p>The market had one session of believing the de-escalation, and it has already taken it back. Monday's chip
+rebound — when Iran first halted — failed the next day: the S&amp;P closed 7,386.65 (-0.26%), the Nasdaq fell
+0.97%, and only the Dow held (+0.17%). The semis that bounced 6% gave it back, Micron round-tripping a 10%
+move to close down 1%. The dominant equity story is still the AI de-rating that took the Nasdaq down 4% earlier
+in the week — its worst day in over a year — not a relief rally.</p>
 
-<p>So the read is narrower than the headline: a real de-escalation that the market does not yet trust, into a
-May CPI print tomorrow morning that the ceasefire does nothing to soften. Friday's selloff was a rates event,
-and rates have not moved — the 2-year is still 4.15%, the year-end hike still priced. The disciplined posture
-is to hold the book that already owns both tails rather than chase the bounce: the oil longs are validated by
-crude refusing to fall, the curve steepener and short front-end wait on CPI, and no fresh risk goes on in
-front of an 8:30 print that can settle the week by lunch.</p>
+<p>Oil is the one thing that has kept its nerve: Brent sits near $92, off a couple of dollars from $94 but
+holding almost all of its war premium. That is not the market disbelieving a peace — it is the physical fact
+that the <strong>Strait of Hormuz remains under a dual US-Iran blockade</strong>, with crude, fuel and gas
+shipments still disrupted while the truce keeps breaking. The premium is real, and it is earned.</p>
+
+<p>Into that sits the hard catalyst the geopolitics cannot soften: <strong>May CPI tomorrow at 8:30</strong>,
+expected to tick up to ~4.2% headline from 3.8%, on energy that is still elevated. The front-end has not moved
+— the 2-year sits ~4.15%, the year-end hike still priced — so the print is effectively unhedged. The
+disciplined posture is to hold the book that already owns both tails: the oil longs are earned by a blockaded
+Strait, the curve trades wait on CPI, and no fresh risk goes on in front of a number that can set the week by
+lunch.</p>
 """,
 
     "takeaways": [
-        "The ceasefire was announced and the tape shrugged — S&P +0.3%, Dow and DAX lower; the bounce was only the force-sold chips (Nasdaq, Nikkei, Korea).",
-        "Oil barely moved: Brent held ~$93 and WTI ~$90, keeping the war premium — the crude market is pricing the truce as unproven.",
-        "Rates did not budge: 2Y ~4.15%, 10Y ~4.55%, 2s10s +40bp. The front-end that drove Friday's selloff is unchanged into CPI.",
-        "We marked the whole book to live TradingView levels and held everything — no closes, no new risk. The Brent/WTI spread is ~$3.26, nowhere near its exit.",
-        "May CPI tomorrow (8:30 ET) is the binary; the long-DAX/short-Nasdaq RV is the one position near its stop after today's narrow tech leadership.",
+        "The April ceasefire cracked — Iran/Israel traded the worst strikes in months (Jun 7-8); Israel hit Iran's Mahshahr petrochem complex; Iran halted but threatens to resume over Lebanon.",
+        "The one-day chip bounce failed: S&P 7,386.65 (-0.26%), Nasdaq -0.97%, only Dow +0.17%; SMH and Micron gave back Monday's pop. The AI de-rating is still the dominant story.",
+        "Brent holds ~$92 (off $94) — but because the Strait of Hormuz is still under a dual US-Iran blockade, not because the market trusts the truce. The premium is earned.",
+        "Rates haven't moved: 2Y ~4.15%, 10Y ~4.55%, 2s10s +40bp. So tomorrow's CPI is effectively unhedged.",
+        "May CPI tomorrow (8:30 ET) is the binary — expected to tick up to ~4.2% headline. We held the whole book to live levels; no new risk into the print.",
     ],
 
     "scenarios": [
-        {"kind": "bull", "label": "Bull", "pct": "35%",
-         "headline": "CPI cools, the truce holds, the front-end finally relaxes",
-         "body": "May CPI prints at or below 3.7%, the 2-year breaks under 4.05%, oil keeps bleeding the premium "
-                 "as the ceasefire sticks, and the AI cohort extends today's bounce. Risk up · rates down · "
+        {"kind": "bull", "label": "Bull", "pct": "30%",
+         "headline": "CPI cools, the truce actually holds, Hormuz reopens",
+         "body": "May CPI prints at or below 3.9%, the 2-year breaks under 4.05%, the halt holds and the Strait "
+                 "reopens so oil finally bleeds the premium, and the AI cohort stabilises. Risk up · rates down · "
                  "dollar soft · gold firm."},
-        {"kind": "base", "label": "Base", "pct": "50%",
-         "headline": "CPI roughly in line, a skeptical chop, oil stays bid",
-         "body": "CPI lands 3.8-4.0%, the front-end holds its hike pricing, crude keeps most of its premium on a "
-                 "truce no one trusts, and Europe leads into an ECB hike. Risk mixed · rates range · dollar firm · "
-                 "Brent $90-95."},
-        {"kind": "bear", "label": "Bear", "pct": "15%",
-         "headline": "CPI runs hot or the truce breaks",
-         "body": "CPI above 4.1% re-arms the year-end hike, or a fresh exchange re-opens the oil premium toward "
-                 "$100, and the AI de-rating resumes on a weak Oracle. Risk down · rates up · dollar up · "
-                 "gold down then up as the growth scare arrives."},
+        {"kind": "base", "label": "Base", "pct": "45%",
+         "headline": "CPI ticks up, the truce stays fragile, oil stays bid",
+         "body": "CPI lands ~4.0-4.2%, the front-end holds its hike pricing, the Strait stays shut and crude keeps "
+                 "its premium on an on-again-off-again truce, and Europe leads into Thursday's ECB. Risk mixed · "
+                 "rates range · dollar firm · Brent $90-96."},
+        {"kind": "bear", "label": "Bear", "pct": "25%",
+         "headline": "CPI runs hot or the strikes resume",
+         "body": "CPI above 4.3% re-arms the year-end hike, or Iran-Israel re-escalate (Lebanon the fuse) and the "
+                 "oil premium pushes toward $100, and the AI de-rating resumes on a weak Oracle. Risk down · rates "
+                 "up · dollar up · gold higher as the stagflation scare bites."},
     ],
 
     # ── THE MARKET MAP — Insights detailed layers ──────────────────────────
     "insights_layers": """
-<p>The most informative thing a market does is refuse to move. Overnight the headline was unambiguous — a
-ceasefire, brokered by the President, between two states that were exchanging missiles seventy-two hours ago —
-and the reaction was a shrug. The S&amp;P added a third of a percent, the Dow and the DAX fell, and Brent
-handed back exactly one dollar of a premium it had spent a week building. The only thing that rallied with
-conviction was the cohort that had been force-sold on Friday: semiconductors in the US, Korea and Japan. That
-is not a relief rally. It is a short-cover in the most-oversold corner, dressed up as one.</p>
+<p>A ceasefire is only as good as its last 24 hours, and this one's last 24 hours were strikes. The April truce
+between Iran and Israel cracked over the weekend in the worst exchange of fire in months; Iran announced a halt
+on Monday, and Israel answered it with an extensive strike on Iranian air defences and the Mahshahr
+petrochemical complex. Netanyahu has pointedly declined to call it a ceasefire; Iran says it will fire again if
+Israel keeps hitting Lebanon. So the screen you are reading is not pricing peace — it is pricing a truce that
+has already failed once and could fail again before the week is out.</p>
 
-<p>Decompose it, because the screen's green flatters the day. The VIX fell 12% and the Nasdaq rose, which
-reads as risk-on — until you notice that gold rose too, the dollar did not fall, oil did not fall, and the
-2-year did not move. A genuine de-escalation hands back the war premium in the asset that carries it; crude
-gave back a dollar on a ceasefire, which is the market politely declining to believe it. The premium still
-priced into Brent is the probability the tape assigns to the truce failing, and at $93 that probability is
-still high. So-what: the equity bounce and the oil price are telling two different stories, and when they
-diverge, the commodity — closer to the physical fact — usually wins.</p>
+<p>Decompose the equity tape, because the one green day in it is gone. When Iran first halted on Monday the
+chips ripped — the semis index up 6%, Micron up 10% — on hope the de-escalation would stick. It didn't: the
+next session gave it all back, the Nasdaq closing down 0.97%, the S&amp;P off 0.26% at 7,386, Micron round-
+tripping to -1%, and only the Dow holding a token gain. So-what: the dominant equity story is still the AI
+de-rating that took the Nasdaq down 4% earlier in the week — its worst day in over a year — and a one-session
+geopolitical bounce did not change it. Who's wrong: anyone who bought the Monday pop as a turn.</p>
 
-<p><strong>Layer 1 — the regime.</strong> Last week's frame was a two-tailed tape carrying an oil-supply tail
-and a rates-repricing tail at once. The correction to make today is that <em>neither tail has actually been
-removed</em>. The ceasefire was announced but crude did not price it; CPI has not printed. The map did not
-simplify — it only looks calmer. Both tails are live into a fragile truce and an 8:30 inflation number, and
-the book that owns both sides of that binary is positioned correctly precisely because nothing has resolved.</p>
+<p><strong>Layer 1 — the regime.</strong> Two shocks, both still live: a war that keeps re-igniting and a CPI
+print that lands tomorrow. Neither has resolved. The truce is unsigned and already broken once; the inflation
+number has not been seen. The map did not simplify this week — it got more dangerous, because the market spent
+a day pretending one tail was gone. The book that owns both tails is positioned correctly precisely because
+nothing is settled.</p>
 
-<p><strong>Layer 2 — the counter-intuitive hook.</strong> Good news arrived and the things that should have
-moved on good news didn't. A durable ceasefire is disinflationary, risk-positive and dollar-negative; instead
-oil held, the dollar held, and only the force-sold chips bounced. The hook is that the market's most
-supply-sensitive instrument refused the story the headline told. Watch crude, not the VIX, for the real
-verdict on the truce — the VIX is measuring relief in equities, while oil is measuring belief in the peace.</p>
+<p><strong>Layer 2 — the counter-intuitive hook.</strong> The most-quoted "good news" — Iran halting — produced
+a rally that lasted exactly one session. The hook is that the relief was rented, not owned: a blockaded Strait
+and a Netanyahu who won't sign mean the de-escalation has no anchor. Watch the oil price, not the VIX, for the
+real verdict — crude is pricing the physical fact (Hormuz shut), while equities priced a hope and took it back.</p>
 
-<p><strong>Layer 3 — the gap.</strong> Ground truth: oil holding $93 says the physical and geopolitical risk
-is still priced, into a CPI print landing on still-elevated April energy. What's priced: a narrow tech relief
-and a still-live year-end hike. The consensus narrative: "ceasefire, buy the dip." The gap is between an
-equity tape that booked relief and an oil tape that refused it. That disagreement is the week's edge — and it
-sits in commodities and rates, not in the index.</p>
+<p><strong>Layer 3 — the gap.</strong> Ground truth: the Strait of Hormuz remains under a dual US-Iran blockade,
+crude and gas shipments still disrupted, into a CPI print landing on still-elevated energy. What's priced: a
+failed chip bounce and a still-live year-end hike. The consensus narrative was "ceasefire, buy the dip" — and
+it just lost money. The gap is between a geopolitics that is still hot and an equity tape that wanted it cold.
+That gap sits in oil and rates, not the index.</p>
 
-<p><strong>Layer 4 — Bull / Base / Bear.</strong> <em>Bull (35%):</em> CPI cools below 3.7%, the 2-year breaks
-under 4.05%, the truce holds and crude finally bleeds the premium — risk up, rates down, dollar soft, gold
-firm. <em>Base (50%):</em> CPI lands in line, the front-end holds its hike pricing, oil keeps most of its
-premium on a truce no one trusts, and Europe leads into Thursday's ECB — risk mixed, rates range, dollar firm.
-<em>Bear (15%):</em> CPI runs hot or a fresh exchange re-opens the oil premium toward $100, and the AI
-de-rating resumes on a weak Oracle — risk down, rates up, dollar up. The base case got heavier today: the
-market's refusal to celebrate is itself a vote for chop.</p>
+<p><strong>Layer 4 — Bull / Base / Bear.</strong> <em>Bull (30%):</em> CPI cools to ≤3.9%, the halt holds, the
+Strait reopens and crude bleeds the premium — risk up, rates down, gold firm. <em>Base (45%):</em> CPI ticks
+up to ~4.0-4.2%, the truce stays fragile and the Strait stays shut so oil holds its bid, Europe leads into the
+ECB — risk mixed, rates range, dollar firm. <em>Bear (25%):</em> CPI runs hot (>4.3%) or the strikes resume
+with Lebanon the fuse and oil pushes $100, and the AI de-rating resumes on a weak Oracle — risk down, rates up,
+gold higher. The bear tail is fatter than it was: there are two ways to lose this week and the war just proved
+it is one of them.</p>
 
-<p><strong>Layer 5 — priced vs not-priced.</strong> Mispriced the wrong way: the chip bounce treating the
-truce as durable while oil says otherwise — one of those two is wrong. Half-priced: European long-end repricing
-(Bund and Gilt yields rose today as the US front-end sat still). Fairly priced: a firm, range-bound dollar.
-Fully priced: Thursday's ECB hike at 99%. The actionable item is the first — do not buy the tech bounce as an
-all-clear the oil price is refusing to ratify.</p>
+<p><strong>Layer 5 — priced vs not-priced.</strong> Mispriced the wrong way: any residual hope that Monday's
+halt was the end of it. Under-priced: the chance the strikes resume — implied vol eased even as the truce broke.
+Fairly priced: oil's premium, which a blockaded Strait fully earns. Fully priced: Thursday's ECB hike. The
+actionable item is the second — own the geopolitical convexity (the Brent call spread) cheaply while the tape
+is still treating the war as yesterday's story.</p>
 
-<p><strong>The Burry tell — still live, and today's bounce feeds it.</strong> Hyperscaler capex is now so large
-that the marginal AI-revenue beat has to <em>accelerate</em> just to hold the multiple; Broadcom grew AI 143%
-and lost a seventh of its cap because the cohort is hedged for a miss and not one name is hedged for a
-growth-rate disappointment. Oracle reports tomorrow night with a $553bn backlog into that exact trap — and the
-dip-buying that lifted the chips today is precisely the behaviour that precedes the next leg down if Oracle's
-guide is merely very good. The ceasefire bought the AI trade a calm session, not a change in its arithmetic.</p>
+<p><strong>The Burry tell — still live.</strong> Hyperscaler capex is now so large that the marginal AI-revenue
+beat has to <em>accelerate</em> just to hold the multiple; Broadcom grew AI 143% and lost a seventh of its cap
+because the cohort is hedged for a miss and not one name is hedged for a growth-rate disappointment. Oracle
+reports tomorrow night with a $553bn backlog into that exact trap. The AI de-rating, not the war, is the
+structural story that will still matter in six months.</p>
 
-<p><strong>The Pozsar mechanic.</strong> The cleanest read of the plumbing today is that it didn't move. Yields
-sat still, the dollar barely eased, and secured funding is unchanged — which means the constraint from last
-week is fully intact. The 2-year's implied terminal rate still sits well above SOFR, so every floating-rate
-borrower that issued in 2023-24 expecting cuts is still paying more than its model assumed, and investment-grade
-spreads near 80bp are still priced for a soft landing a hot CPI would question. The ceasefire relieved equity
-sentiment; it relieved none of the balance-sheet pressure. Watch IG spreads on the CPI print, not the VIX.</p>
+<p><strong>The Pozsar mechanic.</strong> The plumbing didn't move even as the war re-ignited: yields sat still,
+the dollar barely budged, secured funding is unchanged — so the constraint from last week is fully intact. The
+2-year's implied terminal rate still sits well above SOFR; every floating-rate borrower that issued in 2023-24
+expecting cuts is still paying more than its model assumed, and IG spreads near 80bp are priced for a soft
+landing a hot CPI would question. Watch IG spreads on the print, not the VIX.</p>
 
-<p><strong>The Papic constraint.</strong> The political tell today was in the European long end. Bund yields
-rose four basis points and Gilts seven, even as US yields fell — the market pricing Thursday's ECB hike in real
-time. Christine Lagarde will deliver it because her inflation profile and the politics around it leave no room
-to pause, even though the ceasefire's lower-oil path quietly weakens her rationale. And in Washington, Kevin
-Warsh inherits the chair next week believing AI productivity can stem inflation, into a committee in no mood to
-ease — a new chair who cannot afford to look soft on inflation in his first meeting, which caps how dovish the
-dots can read whatever the data allows.</p>
+<p><strong>The Papic constraint.</strong> Two political fuses. In the Gulf, Iran has tied any durable halt to a
+Lebanon ceasefire Israel insists is a separate war — so the truce's stability depends on a conflict neither
+side will link, which is why it keeps breaking. In Europe, Bund and Gilt yields rose even as US yields fell,
+the market pricing Thursday's ECB hike that Lagarde has no political room to skip. And in Washington, Kevin
+Warsh inherits the chair next week and cannot look soft on inflation in his first meeting — capping how dovish
+the dots can read whatever CPI allows.</p>
 
-<p>So what to do with all of it. The honest posture is patience expressed through what you already own. The oil
-book stays — the market just validated it by refusing to sell the premium. The curve steepener and the short
-front-end wait on a CPI print that has not yet given them their move. Don't chase the chip bounce; it is the
-most-oversold names mean-reverting, not a regime turn. And keep the defined-risk equity hedge on, because the
-one thing this tape has not done is price the binary that lands at 8:30 tomorrow.</p>
+<p>So what to do. Patience, expressed through what you already own. The oil book stays — a blockaded Strait and
+a truce that keeps cracking earn the premium. The curve trades wait on a CPI print that hasn't given them their
+move. Don't chase a chip bounce that already failed. And keep the defined-risk equity hedge on, because the one
+thing this tape has not priced is the binary that lands at 8:30 tomorrow.</p>
 """,
 
     "wrap": """
-<p>The headline was the one the market had been waiting for — a ceasefire between Iran and Israel, brokered by
-Trump — and the reaction was a shrug. Stocks did not surge, oil did not collapse, and the front-end did not
-move. The S&amp;P added 0.3%, the Dow and DAX fell, and Brent gave back a single dollar to ~$93. The only real
-movers were the chips force-sold on Friday: the Nasdaq, Korea and Japan bounced. Strip those out and there was
-no relief rally.</p>
+<p>A ceasefire is only as good as its last 24 hours, and this one's were strikes. The April Iran-Israel truce
+cracked over the weekend in the worst exchange of fire in months; Iran announced a halt on Monday and Israel
+answered with a strike on its air defences and the Mahshahr petrochemical complex. Netanyahu won't call it a
+ceasefire; Iran says it will fire again if Israel keeps hitting Lebanon. This is a truce under fire, not a
+peace.</p>
 
-<p>That is the tell. When a supply scare genuinely ends, the supply-sensitive asset hands back its premium —
-and oil barely moved. The crude market is pricing the truce as unproven, a more honest verdict than the equity
-bounce. The premium still in Brent is the market's probability the ceasefire fails, and at $93 it is high.
-The equity tape and the oil price disagree, and oil usually wins that argument.</p>
+<p>The equity tape had one day of believing it and took the day back. Monday's chip rip — semis +6%, Micron
++10% — failed the next session: the S&amp;P closed 7,386.65 (-0.26%), the Nasdaq -0.97%, Micron round-tripping
+to -1%, only the Dow holding. The dominant story is still the AI de-rating that took the Nasdaq down 4% earlier
+in the week, not a relief rally.</p>
 
-<p><strong>The driver.</strong> Neither tail has actually been removed. The ceasefire was announced but crude
-did not price it; CPI has not printed. The map did not simplify — it only looks calmer. Friday's selloff was a
-rates event, and rates have not moved: the 2-year is still 4.15%, the year-end hike still priced.</p>
+<p><strong>The driver.</strong> Two live shocks — a war that keeps re-igniting and a CPI print tomorrow — and
+neither has resolved. Oil holds near $92 because the Strait of Hormuz is still under a dual US-Iran blockade,
+not because anyone trusts the halt. Rates haven't moved: the 2-year sits ~4.15%, the year-end hike still
+priced.</p>
 
 <p><strong>The Burry tell.</strong> The AI cohort is hedged for a revenue miss, not a growth-rate
-disappointment. Oracle reports tomorrow with a $553bn backlog into that trap, and today's dip-buying in chips
-is the behaviour that precedes the next leg if the guide is merely very good. The ceasefire bought calm, not a
-change in the arithmetic.</p>
+disappointment. Oracle reports tomorrow with a $553bn backlog into that trap. The AI de-rating, not the war, is
+the structural story that still matters in six months.</p>
 
-<p><strong>The Pozsar mechanic.</strong> The plumbing didn't move — yields sat still, the dollar barely eased,
-funding is unchanged. The 2-year's implied terminal rate is still well above SOFR, IG spreads near 80bp still
-priced for perfection. The ceasefire relieved sentiment, not balance-sheet pressure. Watch spreads on the CPI
-print, not the VIX.</p>
+<p><strong>The Pozsar mechanic.</strong> The plumbing didn't move even as the war re-ignited — yields sat
+still, the dollar barely eased, funding is unchanged. The 2-year's implied terminal rate is still well above
+SOFR, IG spreads near 80bp priced for perfection. Watch spreads on the CPI print, not the VIX.</p>
 
-<p><strong>The Papic constraint.</strong> The tell was the European long end — Bund +4bp, Gilt +7bp as US
-yields fell, the market pricing Thursday's ECB hike in real time even as cheaper oil weakens the rationale.
-Warsh inherits the chair next week and cannot look soft on inflation in his first meeting.</p>
+<p><strong>The Papic constraint.</strong> Iran has tied a durable halt to a Lebanon ceasefire Israel treats as
+a separate war — so the truce depends on a conflict neither side will link, which is why it keeps breaking. In
+Europe, Bund +4bp / Gilt +7bp price Thursday's ECB hike Lagarde can't skip; Warsh inherits the Fed chair next
+week and can't look soft on inflation in his first meeting.</p>
 
-<p>So what to do: hold the book that owns both tails, let the oil longs run on a premium the market just
-refused to sell, wait on CPI for the rates trades, don't chase the chip bounce, and keep the hedge on.</p>
+<p>So what to do: hold the book that owns both tails, let the oil longs run on a premium a blockaded Strait
+earns, wait on CPI for the rates trades, don't chase a chip bounce that already failed, and keep the hedge on.</p>
 """,
 
     "correlation_regime": """
-<p><strong>1. Equities (chips) up while oil, gold and the dollar barely move — the risk-on is fake breadth.</strong>
-A real risk-on rally sells gold and the dollar and lifts the whole tape. Today gold rose, the dollar held, the
-broad index was flat-to-down, and only the force-sold semis bounced. Read it as mean-reversion in the most
-oversold cohort, not a regime turn — and do not extrapolate a third of a percent on the S&amp;P into an
-all-clear.</p>
+<p><strong>1. The chip rebound de-correlated from the de-escalation headline — relief that lasted one day.</strong>
+Monday the semis ripped 6% on Iran's halt; the next session they gave it back as the strikes resumed and the
+broad tape fell. The "good news" and the price decoupled within 24 hours, which tells you the de-escalation has
+no anchor while Hormuz stays shut. Don't trade the headline; trade the blockade.</p>
 
-<p><strong>2. US yields fell while Bund and Gilt yields rose — a transatlantic rates split.</strong> The 10Y
-eased a basis point or two on the ceasefire's disinflation hint, but Bund (+4bp) and Gilt (+7bp) rose as the
-market prices Thursday's ECB hike. The divergence says the next rates impulse is European, not American — and
-it is why long DAX is structurally sound even on a day the trade lost ground.</p>
+<p><strong>2. US yields fell while Bund and Gilt yields rose — a transatlantic rates split.</strong> The US 10Y
+eased a basis point or two; Bund (+4bp) and Gilt (+7bp) rose as the market prices Thursday's ECB hike. The next
+rates impulse is European, not American — which is why long DAX is structurally sound even on a day US tech
+outperformed it.</p>
 
-<p><strong>3. Brent held its premium while the ceasefire headline screamed de-escalation — the physical market
-disbelieving the truce.</strong> This is the day's most important non-correlation: the supply-sensitive asset
-refused the supply-good news. Until crude actually rolls over, the geopolitical tail is still on, and the Brent
-long (MM-2026-002) plus the call spread (MM-2026-011) are the cheap way to own it.</p>
+<p><strong>3. Brent held its premium while equities tried to price peace — the physical market overruling the
+political one.</strong> Oil near $92 with a blockaded Strait is the most honest price on the screen: it is the
+supply fact, not a hope. Until the Strait reopens, the geopolitical tail is on, and the Brent long
+(MM-2026-002) plus the call spread (MM-2026-011) are the cheap way to own it.</p>
 
-<p><strong>4. Nasdaq +1.6% vs DAX −0.6% and Dow −0.2% — the bounce has no breadth.</strong> The same names that
-led Friday's fall led today's rise, and nothing else participated. That narrowness is exactly what pressured
-the long-DAX/short-Nasdaq RV (MM-2026-010) toward its stop — a single-cohort move, not a market one. The trade
-needs the CPI/Oracle read to restore breadth; until then it is contested and capped in size.</p>
+<p><strong>4. The semis led both the fall and the failed bounce — no breadth either way.</strong> The same
+cohort that took the Nasdaq down 4% earlier led Monday's rip and Tuesday's give-back; nothing else moved much.
+That narrowness pressured the long-DAX/short-Nasdaq RV (MM-2026-010) toward its stop on the up-day and helps it
+back on the give-back — a single-cohort tape, not a market one. It needs the CPI/Oracle read to settle.</p>
 """,
 
     "vol_skew": """
-<p><strong>VIX down 12% to ~18.9 — relief, but still elevated and the term structure has not fully relaxed.</strong>
-VIX9D ~16 · VIX 18.9 · VIX3M ~20 · VIX6M ~21. The spot unwound part of Friday's spike, yet the curve is still
+<p><strong>The VIX eased into the high-teens even as the truce broke — that is the mispricing.</strong>
+VIX9D ~16 · VIX ~19 · VIX3M ~20 · VIX6M ~21. Vol came off the chip-selloff spike, yet the curve is still
 paying up for the next three weeks — rational with CPI, the ECB and a new chair's first FOMC inside the window.
-The options market is not calling the truce or the event cluster benign; it is taking a breath.</p>
+The tell: implied vol relaxed while strikes resumed, so the front of the curve is underpricing the chance the
+war re-ignites before any of those events. Owning cheap geopolitical convexity is the trade.</p>
 
-<p><strong>The hedge that is still working — and still close to the money.</strong> Because there was no real
-relief rally, the SPX sits at ~7,406 and the Jun-27 7300/7000 put spread (MM-2026-008) is barely out of the
-money, not stranded a thousand points below spot. That is the opposite of the picture a true bounce would have
-left, and it is why there is no case to roll it today — it is doing its job cheaply, ~45 points (model est) with
-three binary events still ahead. Carry it; do not pay to re-strike a hedge that is already where you want it.</p>
+<p><strong>The hedge that is still working — and still close to the money.</strong> Because the chip bounce
+failed, the SPX sits ~7,386 and the Jun-27 7300/7000 put spread (MM-2026-008) is barely out of the money, not
+stranded below spot. There is no case to roll it — it is doing its job cheaply, ~45 points (model est) with
+three binary events still ahead. Carry it; do not pay to re-strike a hedge already where you want it.</p>
 
 <p><strong>Rates vol is the one to watch on the print.</strong> MOVE has eased from its payroll-week highs, but
 the 2-year did not move today and CPI tomorrow is a genuine binary for the front-end. A soft print collapses the
@@ -479,19 +476,20 @@ the earliest signal the front-end relief never came — and it will show in MOVE
     "sector_rv": """
 <p><strong>Leading — and it is a narrow list:</strong></p>
 <ul>
-<li><strong>Semiconductors and AI hardware:</strong> the cohort that led Friday's fall led today's bounce —
-Korea and Japan's chip names recovered and the US semis followed. Be clear-eyed: this is a multiple re-rating
-mean-reverting, not new demand. SK Hynix has pre-sold its 2026 HBM to Nvidia, so the bounce is credible, but
-Oracle tomorrow night is the test of whether the market will pay up for AI-capex beneficiaries again.</li>
-<li><strong>Energy producers:</strong> quiet outperformers, because crude refused to fall. With Brent holding
-~$93 the sector keeps the geopolitical bid — the mirror image of the broad market's caution.</li>
+<li><strong>Energy producers:</strong> the cleanest outperformers, because crude held its premium on a blockaded
+Strait. With Brent near $92 the sector keeps the geopolitical bid — the mirror image of the broad market's
+caution, and the leadership the tape's failed chip bounce lacked.</li>
+<li><strong>Mega-cap defensives / the Dow:</strong> the only major US index to hold a gain (+0.17%) as the
+Nasdaq fell — a rotation toward quality and away from the AI cohort that is still de-rating. The market is
+paying for earnings certainty, not growth multiples, into the CPI print.</li>
 </ul>
 
 <p><strong>Lagging:</strong></p>
 <ul>
-<li><strong>European equities (DAX, broad):</strong> down on the day even as US tech rose — no AI cohort to
-bounce, and a rising Bund yield into Thursday's ECB. Structurally still the right place to be long versus US
-tech, but today the narrow US-chip leadership ran against it.</li>
+<li><strong>AI semiconductors:</strong> still the laggard that matters — the cohort that took the Nasdaq down 4%
+earlier in the week, ripped 6% on Monday's halt, then gave it back. SK Hynix has pre-sold its 2026 HBM to
+Nvidia so the demand floor is real, but Oracle tomorrow night is the test of whether the market will pay up for
+AI-capex beneficiaries again, and the de-rating has the upper hand until it does.</li>
 <li><strong>Rate-proxy defensives:</strong> utilities and staples lag a (narrow) risk-on tape and stay capped by
 a long end that has not eased. They become interesting again only if CPI runs hot and the safety bid returns.</li>
 </ul>
@@ -506,10 +504,10 @@ is acceptable: the trade is wrong if the AI cohort keeps leading through CPI.</p
     "positioning": """
 <p><strong>The crowd is long the truce in equities and short it in oil — and oil is winning.</strong></p>
 <ul>
-<li><strong>Oil:</strong> the premium holding near $93 says specs did <em>not</em> capitulate on the ceasefire
-headline. That is constructive for the longs — there is no flush, the positioning is not stretched, and a fresh
-escalation would catch a market that is still leaning the wrong way. The pain trade is a re-escalation into
-specs who sold the headline.</li>
+<li><strong>Oil:</strong> the premium holding near $92 says specs did <em>not</em> capitulate when Iran halted.
+That is constructive for the longs — no flush, positioning not stretched, and the strikes resuming caught any
+spec who sold the Monday headline. The pain trade is exactly this: re-escalation into a market that briefly
+believed the peace.</li>
 <li><strong>Front-end rates:</strong> the consensus chased the year-end hike after payrolls and has not let go —
 the 2-year sat at 4.15% today. That is the crowded position a soft CPI would squeeze. If tomorrow's print cools,
 the unwind is in the front end, which is what the short-2Y (MM-2026-013) and the steepener (MM-2026-009) own.</li>
@@ -524,9 +522,9 @@ session, which is why the equity hedge stays on and no new risk went on today.</
 """,
 
     "funding": """
-<p>SOFR near 3.62% — unchanged; repo orderly; and crucially the plumbing did not move on the ceasefire. The
-dollar barely eased and the cross-currency basis is stable — the overnight headline relieved equity sentiment
-without touching funding. <strong>The Pozsar mechanic that still binds:</strong> the 2-year's implied terminal
+<p>SOFR near 3.62% — unchanged; repo orderly; and crucially the plumbing did not move even as the war
+re-ignited. The dollar barely budged and the cross-currency basis is stable — the strikes hit sentiment and oil,
+not funding. <strong>The Pozsar mechanic that still binds:</strong> the 2-year's implied terminal
 rate sits well above secured funding, so every floating-rate borrower that issued in 2023-24 expecting cuts is
 still paying a higher marginal cost than its model assumed. Investment-grade spreads near 80bp are still priced
 for a soft landing a hot CPI would question. The ceasefire bought equity calm and zero balance-sheet relief.
@@ -535,48 +533,44 @@ strain before the index does.</p>
 """,
 
     "tape_missing": """
-<p><strong>1. Oil refusing to fall is the loudest signal on the screen, and the tape is reading the VIX
-instead.</strong> A ceasefire that takes one dollar off Brent is a ceasefire the crude market does not trust.
-The threshold is a weekly close below $87 — that is when the war premium is actually gone and the Strait trades
-come off. Above it, the premium priced into Brent is the market's live probability the truce fails, and it is
-the cleanest real-time gauge of the geopolitics there is.</p>
+<p><strong>1. The Strait of Hormuz is still blockaded, and the tape is treating the war as yesterday's
+story.</strong> Implied vol eased even as the strikes resumed — the market priced one day of de-escalation and
+moved on. The threshold is the Strait reopening: until it does, Brent's premium is earned and a weekly close
+below $87 (the level that says the premium is gone) is not in view. Own the convexity while it is cheap.</p>
 
-<p><strong>2. (Burry tell) Oracle's $553bn backlog meets the same bar Broadcom failed, and today's dip-buyers
-are walking into it.</strong> The AI cohort is hedged for a miss, not a growth-rate disappointment. If OCI growth
-or capex guidance tomorrow clears the printed estimate but not the whisper, the de-rating that paused this week
-resumes — and the chips that bounced today lead it down. Watch the guide, not the EPS.</p>
+<p><strong>2. (Burry tell) Oracle's $553bn backlog meets the same bar Broadcom failed.</strong> The AI cohort is
+hedged for a miss, not a growth-rate disappointment. If OCI growth or capex guidance tomorrow clears the printed
+estimate but not the whisper, the de-rating that drove this week resumes — and the chips that already failed to
+hold Monday's bounce lead it down. Watch the guide, not the EPS.</p>
 
-<p><strong>3. The front-end has not moved, so tomorrow's CPI is effectively unhedged by the ceasefire.</strong>
-The 2-year sat at 4.15% and the year-end hike is still priced; the truce does nothing to a backward-looking
-inflation print landing on still-elevated April energy. A number above 4.1% re-arms the hike with oil already
-falling — sticky core that a cheaper barrel does not fix — and that combination is the one the relief tape is
-least positioned for.</p>
+<p><strong>3. The front-end has not moved, so tomorrow's CPI is effectively unhedged.</strong> The 2-year sat at
+~4.15% and the year-end hike is still priced; the war does nothing to a backward-looking inflation print landing
+on still-elevated energy. Consensus looks for headline to tick up to ~4.2% from 3.8% — a number above 4.3%
+re-arms the hike, the combination the tape is least positioned for.</p>
 """,
 
     "consensus": """
-<p><strong>Consensus BID:</strong> the ceasefire is the all-clear — the truce holds, oil drifts lower, CPI lands
-benign, and today's chip bounce broadens into a proper relief rally. Warsh holds next week, the dots drift
-hawkish but stop short of a hike, and the volatility high is behind us.</p>
+<p><strong>Consensus BID:</strong> the worst of the war is behind us — Iran halted, Trump gets his "immediate"
+ceasefire, oil drifts lower, CPI lands manageable, and the AI cohort stabilises after the de-rating. Warsh holds
+next week, the dots drift hawkish but stop short of a hike, and the vol high is in.</p>
 
-<p><strong>The strongest argument against — the OFFER:</strong> two things the bid is ignoring. First, oil did
-not fall, which means the market itself does not believe the premise of the bid. Second, tomorrow's CPI: headline
-ran 3.8% in April on energy, and the Cleveland Fed nowcast points nearer 4.0% for May — a backward-looking number
-that the ceasefire's cheaper oil will not touch for another month. A print above 4.1% confirms the inflation
-impulse the front-end feared, re-arms the year-end hike, and puts gold's $4,250 stop in play — while crude is
-already softening, which is the uncomfortable combination of sticky core that a cheaper barrel does not fix. The
-ceasefire settled the easy question; CPI settles the hard one, and the oil market is quietly siding with the
-offer.</p>
+<p><strong>The strongest argument against — the OFFER:</strong> two things the bid is ignoring. First, the
+ceasefire already broke once this week and Israel struck Iran's petrochemical complex after Iran's "halt" — the
+de-escalation has no anchor while Hormuz stays shut, so the oil premium is earned, not a fading scare. Second,
+tomorrow's CPI: headline ran 3.8% in April on energy, and consensus looks for it to tick up to ~4.2% in May. A
+print above 4.3% confirms the inflation impulse the front-end feared, re-arms the year-end hike and puts gold's
+$4,250 stop in play. The market settled the easy question — that Monday's bounce was rented — and CPI plus the
+war are the hard ones still open.</p>
 """,
 
     "one_chart": """
-<p class="theme">Brent crude at ~$93 — the truce's lie detector.</p>
-<p>Forget the VIX and the chip bounce; the single most informative price today is the one that refused to move.
-A genuine end to a Gulf supply scare hands back the premium, and Brent gave back a dollar. That stickiness is the
-market pricing the ceasefire as unproven — the premium left in crude is the probability the tape assigns to the
-truce failing. Hold above $90 and the geopolitical tail is still live and the oil book stays on; a weekly close
-below $87 is the level that says the war premium is finally gone, at which point the Strait trades come off and
-the disinflation it implies hands the front-end its move. The equity tape booked relief today. Watch whether
-crude ever agrees — and watch the 2-year at 4.15% for whether tomorrow's CPI lets it.</p>
+<p class="theme">Brent crude near $92 — and the Strait of Hormuz that keeps it there.</p>
+<p>The single most informative price is the one the failed chip bounce couldn't shake. Brent eased a couple of
+dollars off $94 when Iran halted, then stuck — because the Strait of Hormuz is still under a dual US-Iran
+blockade and the truce keeps cracking. That premium is earned, not a fading scare. Hold above $90 and the
+geopolitical tail is live and the oil book stays on; the trigger to take the Strait trades off is the blockade
+lifting (a weekly close below $87 confirms it), not a headline. Watch the Strait, and watch the 2-year ~4.15%
+for whether tomorrow's CPI — expected up at ~4.2% — lets the front-end move at all.</p>
 """,
 
     "catalyst_calendar": [
