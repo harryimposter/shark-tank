@@ -372,21 +372,21 @@ def donut_chart(segments, title="", w=600, h=270, hole=0.58):
         offset += seg_len
 
     # centre label: total count of slices
-    out.append(f'<text x="{cx}" y="{cy-4}" text-anchor="middle" font-size="13" '
+    out.append(f'<text x="{cx}" y="{cy-2}" text-anchor="middle" font-size="17" font-weight="600" '
                f'fill="{PALETTE["ink_soft"]}">{len(segs)} parts</text>')
-    out.append(f'<text x="{cx}" y="{cy+14}" text-anchor="middle" font-size="10" '
+    out.append(f'<text x="{cx}" y="{cy+16}" text-anchor="middle" font-size="12" '
                f'fill="{PALETTE["ink_mute"]}">allocation</text>')
 
     # legend on the right
-    lx = cx + r + 36
-    ly = cy - (len(segs) * 11)
+    lx = cx + r + 40
+    ly = cy - (len(segs) * 13)
     for i, s in enumerate(segs):
         pct = 100 * s["value"] / total
-        y = ly + i * 22
-        out.append(f'<rect x="{lx}" y="{y-9}" width="11" height="11" rx="2" fill="{s["_color"]}"/>')
-        out.append(f'<text x="{lx+18}" y="{y}" font-size="12.5" fill="{PALETTE["ink"]}">'
+        y = ly + i * 27
+        out.append(f'<rect x="{lx}" y="{y-12}" width="15" height="15" rx="3" fill="{s["_color"]}"/>')
+        out.append(f'<text x="{lx+23}" y="{y}" font-size="16" fill="{PALETTE["ink"]}">'
                    f'{_esc(s["label"])}</text>')
-        out.append(f'<text x="{w-12}" y="{y}" text-anchor="end" font-size="12.5" '
+        out.append(f'<text x="{w-12}" y="{y}" text-anchor="end" font-size="16" font-weight="600" '
                    f'font-family="-apple-system, Helvetica, sans-serif" '
                    f'fill="{PALETTE["ink_soft"]}">{pct:.1f}%</text>')
     out.append("</svg>")

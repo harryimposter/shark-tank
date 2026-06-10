@@ -476,6 +476,20 @@ SCREEN_UNIVERSE = [
     ("TM",    "Toyota (ADR)",      "Autos",          "Japan"),
     ("SONY",  "Sony (ADR)",        "Tech hardware",  "Japan"),
     ("MUFG",  "Mitsubishi UFJ",    "Financials",     "Japan"),
+    # --- AI supply-chain sleeve (HBM / optical / connectivity / semicap) ---
+    ("MRVL",  "Marvell",           "Semiconductors", "US"),
+    ("ARM",   "Arm Holdings",      "Semiconductors", "US"),
+    ("SWKS",  "Skyworks",          "Semiconductors", "US"),
+    ("LITE",  "Lumentum",          "AI optical",     "US"),
+    ("COHR",  "Coherent",          "AI optical",     "US"),
+    ("AXTI",  "AXT Inc",           "AI optical",     "US"),
+    ("ALAB",  "Astera Labs",       "AI connectivity","US"),
+    ("CRDO",  "Credo Technology",  "AI connectivity","US"),
+    ("SITM",  "SiTime",            "AI connectivity","US"),
+    ("ONTO",  "Onto Innovation",   "Semicap",        "US"),
+    ("ACLS",  "Axcelis",           "Semicap",        "US"),
+    ("AMAT",  "Applied Materials", "Semicap",        "US"),
+    ("VRT",   "Vertiv",            "AI power/cooling","US"),
 ]
 
 
@@ -510,10 +524,12 @@ def run_screener(universe=None, low=30.0, high=70.0):
             overbought.append(r)
     oversold.sort(key=lambda x: x["rsi"])         # most oversold first
     overbought.sort(key=lambda x: -x["rsi"])      # most overbought first
+    universe = [{"ticker": tk, "name": name, "sector": sector, "region": region}
+                for tk, name, sector, region in uni]
     return {
         "oversold": oversold, "overbought": overbought,
         "scanned": len(uni), "errors": errors,
-        "low": low, "high": high,
+        "low": low, "high": high, "universe": universe,
         "asof": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
     }
 

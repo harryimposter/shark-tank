@@ -258,11 +258,13 @@ details.idea-d>summary .smeta{display:flex;gap:6px;align-items:center;flex-wrap:
 /* ---- product-type / objective tags (Derivatives Desk) ---- */
 .ptag{font-size:10px;font-weight:600;letter-spacing:.03em;border-radius:6px;padding:1px 8px;border:.5px solid var(--gold);color:var(--gold);background:rgba(184,150,12,.07);white-space:nowrap}
 .otag{font-size:10px;font-weight:600;border-radius:6px;padding:1px 8px;border:.5px solid var(--ink-mute);color:var(--ink-soft);background:var(--surface);white-space:nowrap}
-/* ---- portfolio pie row ---- */
-.pie-row{display:grid;grid-template-columns:1fr;gap:10px;margin:.4rem 0 1.1rem}
-@media(min-width:780px){.pie-row{grid-template-columns:1fr 1fr 1fr}}
-.pie-card{border:.5px solid var(--line);border-radius:var(--rad-lg);padding:.7rem .85rem .4rem;background:var(--bg)}
-.pie-card .pc-t{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:.2rem}
+/* ---- portfolio pie row (stacked for legibility) ---- */
+.pie-row{display:grid;grid-template-columns:1fr;gap:12px;margin:.4rem 0 1.1rem}
+.pie-card{border:.5px solid var(--line);border-radius:var(--rad-lg);padding:.8rem 1rem .5rem;background:var(--bg)}
+.pie-card .pc-t{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:.3rem}
+/* ---- half/half two-column layout for long card lists ---- */
+.split2{display:grid;grid-template-columns:1fr;gap:12px;align-items:start}
+@media(min-width:680px){.split2{grid-template-columns:1fr 1fr}}
 /* ---- live book P&L header ---- */
 .pnl-head{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:.3rem 0 .7rem}
 .pnl-tile{background:var(--surface);border:.5px solid var(--line);border-radius:var(--rad);padding:.6rem .8rem}
@@ -599,6 +601,12 @@ def _positioning_method():
         'RSI ≤ 30 = oversold (the sellers are exhausted). We do <i>not</i> average RSI against a rolling mean — '
         'an oversold tape is oversold whatever its recent average was. An overbought reading on a long, or an '
         'oversold reading on a short, is <b>flagged</b> and costs a conviction point.</li>'
+        '<li><b>Moving-average stretch &amp; Bollinger Bands.</b> How far is price from its 50/100/200-day '
+        'moving averages, and where does it sit in its Bollinger Bands? Price riding the upper band and stretched '
+        'far above the 200-day means the move is extended and the late longs are crowded (fade-prone); hugging the '
+        'lower band well below the MAs means the sellers are exhausted (squeeze-prone). A Bollinger <i>squeeze</i> '
+        '(tight bands) says a crowded, low-vol consensus is about to break — we read these the same way for '
+        'crowding as we read RSI.</li>'
         '<li><b>Speculative positioning / flow.</b> CFTC CoT net length for FX and commodities, fund-flow and '
         'options-skew reads for equities — where the money already sits and how stretched it is.</li>'
         '<li><b>Pain trade.</b> The direction that hurts the most people forces the biggest move; if our trade '
@@ -699,18 +707,43 @@ def _rsi_screener(screen, notes=None):
     notes = notes or {}
     under = screen.get("oversold", [])
     over  = screen.get("overbought", [])
+    # full universe list, grouped by region then sector
+    uni = screen.get("universe", [])
+    uni_html = ""
+    if uni:
+        by_region = {}
+        for u in uni:
+            by_region.setdefault(u.get("region", "—"), []).append(u)
+        blocks = []
+        for region in ["US", "Europe", "UK", "Japan", "Asia", "Global"]:
+            items = by_region.get(region)
+            if not items:
+                continue
+            chips = " ".join(f'<span class="ta-tag" title="{e(u["name"])} · {e(u["sector"])}">{e(u["ticker"])}</span>'
+                             for u in items)
+            blocks.append(f'<div style="margin:.4rem 0"><b style="font-size:11px;color:var(--ink-mute);'
+                          f'text-transform:uppercase;letter-spacing:.06em">{e(region)}</b>'
+                          f'<div class="ta-grid" style="margin-top:.25rem">{chips}</div></div>')
+        uni_html = ('<details style="margin-top:.5rem"><summary style="cursor:pointer;font-size:12px;'
+                    f'font-weight:600;color:var(--gold)">Show the full scanned universe ({len(uni)} names) &#9656;</summary>'
+                    f'<div style="margin-top:.4rem">{"".join(blocks)}</div></details>')
     method = (
         '<div class="method-box">'
-        '<div class="mb-t">How these names are found</div>'
-        f'<p>Each refresh we scan a curated <b>{screen.get("scanned","~50")}-name cross-asset universe</b> '
-        '(US mega-cap tech &amp; semis, financials, industrials, energy, healthcare; key ETFs across equity, '
-        'rates, credit and gold; plus Europe, UK, Japan and Korea names) and compute the <b>14-period RSI</b> '
-        '(Wilder) on six months of daily closes. We split on the <b>absolute convention</b>: '
-        '<b>RSI ≤ 30 = oversold</b> (left column — names set up to go higher), '
-        '<b>RSI ≥ 70 = overbought</b> (right column — names that have run too far and should sell off). '
-        'No averaging. Each name carries its full technical picture and a systematic technical-conviction score.</p>'
+        '<div class="mb-t">How these names are found — and the universe we scan</div>'
+        f'<p>Each refresh we scan a curated <b>{screen.get("scanned","~60")}-name cross-asset universe</b> and '
+        'compute the <b>14-period RSI</b> (Wilder) on six months of daily closes, splitting on the '
+        '<b>absolute convention</b>: <b>RSI ≤ 30 = oversold</b> (left — set up to go higher), '
+        '<b>RSI ≥ 70 = overbought</b> (right — run too far, should sell off). No averaging.</p>'
+        '<p>The universe is built from five buckets: <b>(1) US mega-cap tech &amp; semis</b>; '
+        '<b>(2) US financials, industrials, energy, healthcare &amp; consumer</b>; '
+        '<b>(3) cross-asset ETFs</b> (equity, small-cap, rates/TLT, credit/HYG, gold); '
+        '<b>(4) Europe, UK, Japan &amp; Korea</b> names; and <b>(5) an AI supply-chain sleeve</b> — '
+        'HBM / optical / connectivity / semicap — which is exactly where names like '
+        '<b>LITE (Lumentum), AXTI, COHR, ALAB, CRDO, SITM, MRVL, ARM, SWKS, VRT</b> live. '
+        'The list is editable in one place (<code>fetch_rsi.SCREEN_UNIVERSE</code>); flag any name and it goes in.</p>'
         f'<p style="font-size:11px;color:var(--ink-mute)">Universe scanned {screen.get("asof","")}; '
         f'{screen.get("errors",0)} symbol(s) returned no data this run.</p>'
+        + uni_html +
         '</div>'
     )
     left = ('<div class="scr-col under"><h4>Oversold &mdash; names to go higher '
@@ -762,13 +795,15 @@ def _conviction_legend():
            + "</tbody></table>")
     return (
         '<div class="conv-legend">'
-        '<div class="cl-title">How conviction is scored · /10 core rubric (+ TA and RSI shown live)</div>'
+        '<div class="cl-title">How conviction is scored · live total /13</div>'
         + tbl +
         '<div style="font-size:11px;color:var(--ink-mute);margin-top:.6rem">'
-        'Core score: gap 3 + catalyst 2 + positioning 2 + confirmation 2 + stop 1 = <b>10</b>. '
-        'Technical analysis (0–2) and the RSI check (0–1) are computed live at each refresh and shown on '
-        'every trade; the book scores were struck at entry, so the live TA/RSI reads are decision aids that '
-        'flag when a position is technically offside rather than silently rewriting historical scores.</div>'
+        '<b>Live conviction = core 10 + technical analysis (0–2) + RSI check (0–1) = /13.</b> '
+        'The core (gap 3 + catalyst 2 + positioning 2 + confirmation 2 + stop 1) is struck at entry; the '
+        'technical-analysis score (moving-average trend + Bollinger stretch + Fibonacci) and the RSI check are '
+        'recomputed live every refresh and <b>count toward the score shown on the badge</b>, so a trade that goes '
+        'technically offside loses conviction points in real time. The Derivatives Desk uses the same idea on its '
+        'base /8 (→ live /11).</div>'
         '</div>'
     )
 
@@ -848,26 +883,31 @@ def _trade_dropdown(idea, enrichments=None, rsi_data=None):
         ("Confirmation", cb.get("confirmation", 0),  2, why.get("confirmation", "—")),
         ("Stop quality", cb.get("stop_quality", 0),  1, why.get("stop_quality", "—")),
     ]
-    # Technical-analysis criterion (0-2)
+    # Technical-analysis criterion (0-2) — folded into the live total
     ta = (rsi or {}).get("technicals") if rsi else None
+    ta_pt = ta_max = 0
     if ta and not ta.get("error") and ta.get("ta_score") is not None:
-        crit.append(("Technical analysis ★", ta["ta_score"], 2, why.get("technical_analysis",
+        ta_pt, ta_max = ta["ta_score"], 2
+        crit.append(("Technical analysis ★", ta_pt, 2, why.get("technical_analysis",
             f'{ta.get("trend","?")} ({ta.get("cross","no")} cross); Bollinger %B {ta.get("bb_pctb","?")}; '
             f'nearest Fib {ta.get("nearest_fib",{}).get("level","?")} — chart '
-            + ("confirms" if ta["ta_score"] == 2 else "is mixed on" if ta["ta_score"] == 1 else "contradicts")
+            + ("confirms" if ta_pt == 2 else "is mixed on" if ta_pt == 1 else "contradicts")
             + " the trade.")))
-    # RSI criterion (absolute 30/70)
+    # RSI criterion (absolute 30/70) — folded into the live total
+    rsi_pt = rsi_max = 0
     if rsi and not rsi.get("error"):
         crowd_vs_us = rsi.get("crowd_vs_us", False)
-        rsi_pt = 0 if crowd_vs_us else 1
+        rsi_pt, rsi_max = (0 if crowd_vs_us else 1), 1
         crit.append(("RSI check ★", rsi_pt, 1, why.get("rsi_positioning",
             f'RSI {rsi.get("rsi","?")} · {rsi.get("verdict","?")} — '
             + ("⚑ overbought long / oversold short, chasing an extreme: 0 pts" if crowd_vs_us
                else "neutral or supportive: 1 pt"))))
+    live_total = conv + ta_pt + rsi_pt
+    live_max   = 10 + ta_max + rsi_max
     conv_tbl = (
         '<table class="convtbl">'
-        f'<tr><td class="k">Conviction total</td><td class="s">{conv}/10</td>'
-        f'<td class="w">scored at entry per the rubric below</td></tr>'
+        f'<tr><td class="k">Live conviction</td><td class="s">{live_total}/{live_max}</td>'
+        f'<td class="w">core (10, struck at entry) + technical analysis + RSI, recomputed live</td></tr>'
         + "".join(f'<tr><td class="k">{e(k)}</td><td class="s">{v}/{mx}</td>'
                   f'<td class="w">{e(w)}</td></tr>'
                   for k, v, mx, w in crit)
@@ -914,7 +954,7 @@ def _trade_dropdown(idea, enrichments=None, rsi_data=None):
         f'</div>'
         f'<div class="td-meta">'
         + (pl_html or closed_badge)
-        + f'<span class="conv-badge">{e(conv)}/10</span>'
+        + f'<span class="conv-badge">{live_total}/{live_max}</span>'
         f'<span style="font-size:11px;color:var(--ink-mute)">&#9656; expand</span>'
         f'</div>'
         f'</summary>'
@@ -1052,20 +1092,25 @@ def _book_accordion(trades, enrichments=None, rsi_data=None):
             ("Stop quality", cb.get("stop_quality",0),  1, why.get("stop_quality","—")),
         ]
         tta = (trsi or {}).get("technicals") if trsi else None
+        ta_pt = ta_max = rsi_pt = rsi_max = 0
         if tta and not tta.get("error") and tta.get("ta_score") is not None:
-            crit.append(("Technical analysis ★", tta["ta_score"], 2,
+            ta_pt, ta_max = tta["ta_score"], 2
+            crit.append(("Technical analysis ★", ta_pt, 2,
                          f'{tta.get("trend","?")} · {tta.get("cross","no")} cross · Boll %B {tta.get("bb_pctb","?")} · '
                          f'nearest Fib {tta.get("nearest_fib",{}).get("level","?")}'))
         if trsi and not trsi.get("error"):
             crowd = trsi.get("crowd_vs_us", False)
-            crit.append(("RSI check ★", 0 if crowd else 1, 1,
+            rsi_pt, rsi_max = (0 if crowd else 1), 1
+            crit.append(("RSI check ★", rsi_pt, 1,
                          f'RSI {trsi.get("rsi","?")} · {trsi.get("verdict","?")} (absolute 30/70) · '
                          + ("⚑ chasing an extreme" if crowd else "neutral/supportive")))
-
+        core_conv = t.get("conviction", 0) or 0
+        live_total = core_conv + ta_pt + rsi_pt
+        live_max   = 10 + ta_max + rsi_max
         conv_tbl = (
             '<table class="convtbl">'
-            f'<tr><td class="k">Conviction</td><td class="s">{t.get("conviction","")}/10</td>'
-            f'<td class="w">scored at entry</td></tr>'
+            f'<tr><td class="k">Live conviction</td><td class="s">{live_total}/{live_max}</td>'
+            f'<td class="w">core {core_conv}/10 at entry + technical analysis + RSI, live</td></tr>'
             + "".join(f'<tr><td class="k">{e(k)}</td><td class="s">{v}/{mx}</td>'
                       f'<td class="w">{e(w)}</td></tr>' for k, v, mx, w in crit)
             + "</table>"
@@ -1201,15 +1246,11 @@ def _earnings_criteria():
         ("Positioning & sentiment (0–2)", "Short interest >10% of float or an extreme positioning setup? "
          "2 = extreme; 1 = notable lean; 0 = neutral/unavailable."),
     ]
-    tbl = ('<table class="conv-legend" style="width:100%;border:none;padding:0;margin:0;background:none">'
-           '<table style="width:100%;border-collapse:collapse;font-size:12px"><thead><tr>'
-           '<th style="text-align:left;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);padding:5px 6px;border-bottom:.5px solid var(--line)">Pillar</th>'
-           '<th style="text-align:left;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);padding:5px 6px;border-bottom:.5px solid var(--line)">What earns points</th>'
-           '</tr></thead><tbody>'
-           + "".join(f'<tr><td style="padding:5px 6px;border-bottom:.5px dotted var(--line);font-weight:600;white-space:nowrap;vertical-align:top">{e(k)}</td>'
-                     f'<td style="padding:5px 6px;border-bottom:.5px dotted var(--line);color:var(--ink-soft)">{e(v)}</td></tr>'
+    tbl = ('<table><thead><tr><th>Pillar</th><th>What earns points</th></tr></thead><tbody>'
+           + "".join(f'<tr><td style="font-weight:600;white-space:nowrap;vertical-align:top">{e(k)}</td>'
+                     f'<td style="color:var(--ink-soft)">{e(v)}</td></tr>'
                      for k, v in rows)
-           + "</tbody></table></table>")
+           + "</tbody></table>")
     return (
         '<div class="conv-legend">'
         '<div class="cl-title">How the conviction rating is built · /8 (four pillars, 0–2 each)</div>'
@@ -1321,7 +1362,7 @@ def _page_trades(brief, trades):
         lhs.append(f'<div class="wrap-body" style="font-size:14px">{brief["ideas_note"]}</div>')
     lhs.append(_h("New trade ideas", "each idea expands to its full thesis, conviction, technicals & RSI"))
     if reactive + prepos:
-        lhs.append("".join(_trade_dropdown(i, enr, rsi) for i in reactive + prepos))
+        lhs.append('<div class="split2">' + "".join(_trade_dropdown(i, enr, rsi) for i in reactive + prepos) + '</div>')
     else:
         lhs.append('<p class="mute" style="font-size:13px">No new idea today — into a binary print, forcing a trade is the trade.</p>')
     # RSI screener
@@ -1394,9 +1435,12 @@ def _ideas_masthead(scan):
 def _product_shelf():
     return (
         '<div class="method-box">'
-        '<div class="mb-t">The product shelf — and where each one is allowed</div>'
-        '<p>Every recommendation is tagged with its <b>product type</b> and its <b>objective</b>. The shelf is '
-        'gated by asset class:</p>'
+        '<div class="mb-t">The product shelf — a guideline, not a limit</div>'
+        '<p>Every recommendation is tagged with its <b>product type</b> and its <b>objective</b>. The list below is '
+        'the <b>house guideline</b> for what trades cleanly today — not a hard limit. If an idea genuinely needs a '
+        'structure outside it, we will still suggest it and flag: <b>&ldquo;please check with your derivs team on '
+        'feasibility of trading.&rdquo;</b> In <b>OTC, essentially anything is possible</b> — the guideline just '
+        'tells you what is standard vs. what needs a feasibility check. The asset-class gating:</p>'
         '<ul>'
         '<li><b>Equities — Income:</b> reverse convertibles, fixed-coupon notes (FCN), Phoenix autocalls, '
         'digital review notes. <b>Income + participation:</b> autocallable Market Plus notes. '
@@ -1753,7 +1797,8 @@ def _val_block(val):
 
 
 def _idea_full_conv_table(i):
-    """Conviction table with per-criterion WHY explanations from sub_why."""
+    """Conviction table with per-criterion WHY — base /8 PLUS live technical analysis
+    (0-2: MAs + Bollinger + Fib) and the RSI check (0-1), folded into a live total /11."""
     rows = ""
     for k in ("setup", "pricing", "catalyst", "fit"):
         lab, _ = _SUB_DESC[k]
@@ -1761,9 +1806,26 @@ def _idea_full_conv_table(i):
         why = i.get("sub_why", {}).get(k, "")
         rows += (f'<tr><td class="k">{lab}</td><td class="s">{sc}/2</td>'
                  f'<td class="w">{e(why)}</td></tr>')
+    idea_data = i.get("idea_data") or {}
+    ta = idea_data.get("technicals")
+    ta_pt = ta_max = rsi_pt = rsi_max = 0
+    if ta and not ta.get("error") and ta.get("ta_score") is not None:
+        ta_pt, ta_max = ta["ta_score"], 2
+        rows += (f'<tr><td class="k">Technical analysis ★</td><td class="s">{ta_pt}/2</td>'
+                 f'<td class="w">{e(ta.get("trend","?"))} ({e(ta.get("cross","no"))} cross); Bollinger %B '
+                 f'{ta.get("bb_pctb","?")}; nearest Fib {e(ta.get("nearest_fib",{}).get("level","?"))} — chart '
+                 + ("confirms" if ta_pt == 2 else "is mixed on" if ta_pt == 1 else "contradicts") + " the structure.</td></tr>")
+    if idea_data and not idea_data.get("error") and idea_data.get("rsi") is not None:
+        crowd = idea_data.get("crowd_vs_us", False)
+        rsi_pt, rsi_max = (0 if crowd else 1), 1
+        rows += (f'<tr><td class="k">RSI check ★</td><td class="s">{rsi_pt}/1</td>'
+                 f'<td class="w">RSI {idea_data.get("rsi","?")} · {e(idea_data.get("verdict","?"))} (absolute 30/70) — '
+                 + ("⚑ chasing an extreme: 0 pts" if crowd else "neutral or supportive: 1 pt") + "</td></tr>")
+    live_total = i["score"] + ta_pt + rsi_pt
+    live_max   = 8 + ta_max + rsi_max
     return (f'<table class="convtbl">'
-            f'<tr><td class="k">Conviction total</td><td class="s">{i["score"]}/8</td>'
-            f'<td class="w">setup &middot; pricing &middot; catalyst &middot; fit (0&ndash;2 each)</td></tr>'
+            f'<tr><td class="k">Live conviction</td><td class="s">{live_total}/{live_max}</td>'
+            f'<td class="w">setup · pricing · catalyst · fit (/8) + technical analysis + RSI, live</td></tr>'
             f'{rows}</table>')
 
 
@@ -1838,6 +1900,14 @@ def _idea_full_dropdown(i):
         + '</div>'
     )
 
+    # live conviction for the badge: base /8 + TA (0-2) + RSI (0-1)
+    _ta_ok = bool(ta and not ta.get("error") and ta.get("ta_score") is not None)
+    _rsi_ok = bool(idea_data and not idea_data.get("error") and idea_data.get("rsi") is not None)
+    _ta_pt = ta["ta_score"] if _ta_ok else 0
+    _rsi_pt = (0 if idea_data.get("crowd_vs_us") else 1) if _rsi_ok else 0
+    live_total = i["score"] + _ta_pt + _rsi_pt
+    live_max   = 8 + (2 if _ta_ok else 0) + (1 if _rsi_ok else 0)
+
     summary_tags = ""
     if i.get("product_type"):
         summary_tags += f'<span class="ptag">{e(i["product_type"])}</span>'
@@ -1853,7 +1923,7 @@ def _idea_full_dropdown(i):
         f'<div class="td-meta">'
         + summary_tags
         + f'<span class="tier {tier}">{e(i["tier"])}</span>'
-        f'<span class="conv-badge">{i["score"]}/8</span>'
+        f'<span class="conv-badge">{live_total}/{live_max}</span>'
         f'<span style="font-size:11px;color:var(--ink-mute)">&#9656; expand</span>'
         f'</div>'
         f'</summary>'
@@ -1875,7 +1945,7 @@ def _group_block(grouped, render_fn):
     for gname, items in grouped:
         out.append(f'<div class="grp"><span class="gname">{e(gname)}</span><span class="gline"></span>'
                    f'<span class="gcount">{len(items)} idea{"s" if len(items) != 1 else ""}</span></div>')
-        out.append("".join(render_fn(i) for i in items))
+        out.append('<div class="split2">' + "".join(render_fn(i) for i in items) + '</div>')
     return "".join(out)
 
 
@@ -1916,8 +1986,9 @@ def _page_ideas(scan):
     lhs.append(_group_block(scan.get("enhance_grouped", []), _render_enhance))
     lhs.append(
         '<div class="asof" style="margin-top:1.6rem">'
-        'Conviction /8 = setup &middot; pricing &middot; catalyst &middot; client fit (0&ndash;2 each); '
-        'each idea also carries a live technical-analysis read and an RSI check on the absolute 30/70 convention. '
+        'Live conviction /11 = setup &middot; pricing &middot; catalyst &middot; client fit (/8) + technical '
+        'analysis (0&ndash;2: moving averages + Bollinger + Fibonacci) + RSI check (0&ndash;1, absolute 30/70), '
+        'recomputed every refresh. '
         'New Adds enter post-catalyst where the Earnings desk says HOLD, so nothing here contradicts the brief or '
         'the per-name house views. '
         f'{e(meta.get("source", meta.get("honesty","")))} '
