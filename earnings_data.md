@@ -1,7 +1,7 @@
 # Finnhub Earnings Data
-Generated: 2026-06-10 06:00 UTC
-Pre-earnings window:  2026-06-10 to 2026-06-15
-Post-earnings window: 2026-06-07 to 2026-06-10
+Generated: 2026-06-11 06:00 UTC
+Pre-earnings window:  2026-06-11 to 2026-06-16
+Post-earnings window: 2026-06-08 to 2026-06-11
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
@@ -10,7 +10,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-11
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $96.0bn
+- **Market cap:** $94.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     5.9385
@@ -39,15 +39,17 @@ Source: Finnhub.io
 ---
 
 ## ORCL — Oracle Corp
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-06-10
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $593.0bn
+- **Market cap:** $578.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     2.0011
 - Revenue estimate: 19478790366
+- EPS actual:      2.11
+- Revenue actual:  19184000000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 40
@@ -56,10 +58,10 @@ Source: Finnhub.io
 - Period:         2026-06-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q4: actual 2.11 vs est 2.0011 (5.44%)
 - 2026 Q3: actual 1.79 vs est 1.7365 (3.08%)
 - 2026 Q2: actual 2.26 vs est 1.6711 (35.24%)
 - 2026 Q1: actual 1.47 vs est 1.5099 (-2.64%)
-- 2025 Q4: actual 1.7 vs est 1.6769 (1.38%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 14.87%
