@@ -195,10 +195,16 @@
           "level": 1.64944,
           "pnl_pct": -0.27,
           "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 1.64918,
+          "pnl_pct": -0.25,
+          "status": "open"
         }
       ],
-      "current": 1.64944,
-      "current_pnl_pct": -0.27
+      "current": 1.64918,
+      "current_pnl_pct": -0.25
     },
     {
       "id": "MM-2026-002",
@@ -221,8 +227,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "The war premium has been removed from crude before the war risk has been removed from the Gulf. Tehran rejected the Friday MoU terms, US forces are staged to re-engage, and specs have cut net length from 191.9k to 178.8k — leaving squeeze fuel. Asymmetric: $7 of downside to the recent floor against $13 to a re-escalation reprice. This is the right-tail hedge on the book's barbell, not a directional call on peace.",
-      "current": 92.08,
-      "current_pnl_pct": 1.19,
+      "current": 91.76,
+      "current_pnl_pct": 0.84,
       "history": [
         {
           "date": "2026-05-31",
@@ -391,6 +397,12 @@
           "level": 92.08,
           "pnl_pct": 1.19,
           "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 91.76,
+          "pnl_pct": 0.84,
+          "status": "open"
         }
       ]
     },
@@ -415,8 +427,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Brent −17% is a forward CPI cut the FedWatch distribution (67.8% no cuts in 2026) has not booked. Bonds already rallied 26bp off the 4.70% high; the disinflation impulse rolls headline lower into the autumn. Deliberately the opposite macro leg to the Brent longs — the book owns both sides of the MoU binary and gets paid on either resolution.",
-      "current": 4.528,
-      "current_pnl_pct": -1.98,
+      "current": 4.52,
+      "current_pnl_pct": -1.8,
       "history": [
         {
           "date": "2026-05-31",
@@ -585,6 +597,12 @@
           "level": 4.528,
           "pnl_pct": -1.98,
           "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4.52,
+          "pnl_pct": -1.8,
+          "status": "open"
         }
       ]
     },
@@ -609,8 +627,8 @@
       "horizon": "months",
       "min_hold_days": 45,
       "thesis": "Pre-position into the 5 June payrolls / 16–17 June FOMC window. Gold has already decoupled from a 4.98% long bond, which means it is pricing both MoU tails at once. It wins if oil-disinflation forces a dovish Fed and real yields fall, AND it wins if the MoU fails and the geopolitical bid returns. It loses only on the narrow path of strong-growth + stable-oil + hawkish-Fed together. That is the asymmetry pre-positioning is built for; minimum 45-day hold, not an event-day scalp.",
-      "current": 4088.52,
-      "current_pnl_pct": -9.61,
+      "current": 4084.79,
+      "current_pnl_pct": -9.69,
       "history": [
         {
           "date": "2026-05-31",
@@ -779,6 +797,12 @@
           "level": 4088.52,
           "pnl_pct": -9.61,
           "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4084.79,
+          "pnl_pct": -9.69,
+          "status": "stop_touched_min_hold"
         }
       ],
       "stop_touched": true
@@ -804,7 +828,7 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "USDJPY at 159.37 with Finance Minister Katayama threatening intervention. BoJ September hike >50% priced vs Fed on hold. 3.63 pts downside to stop, 9.37 pts to target. Intervention is the backstop.",
-      "current": 160.523,
+      "current": 160.518,
       "current_pnl_pct": -0.72,
       "history": [
         {
@@ -962,6 +986,12 @@
           "level": 160.523,
           "pnl_pct": -0.72,
           "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 160.518,
+          "pnl_pct": -0.72,
+          "status": "open"
         }
       ]
     },
@@ -972,6 +1002,7 @@
       "asset_class": "Derivatives",
       "trade": "Buy SPX Jun-27 7300/7000 put spread (hedge)",
       "structure": "put spread",
+      "is_option_spread": true,
       "entry": 35.0,
       "stop": 0.0,
       "target": 265.0,
@@ -1138,6 +1169,12 @@
           "level": 80.0,
           "pnl_pct": 128.57,
           "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 80.0,
+          "pnl_pct": 128.57,
+          "status": "open"
         }
       ]
     },
@@ -1162,8 +1199,8 @@
       "horizon": "3 months",
       "min_hold_days": 45,
       "thesis": "2s10s at +15bp after 18-month inversion. Buy 2Y (own cut optionality) vs short 10Y (short fiscal supply risk). June 5 payrolls at 89k + Fed pause re-prices front-end. ECB hiking cycle lifts global long rates. Steepener delivers whether Fed cuts or back-end sells off on supply. Late-cycle steepeners outperform after prolonged inversions.",
-      "current": 0.397,
-      "current_pnl_pct": 164.67,
+      "current": 0.395,
+      "current_pnl_pct": 163.33,
       "history": [
         {
           "date": "2026-06-01",
@@ -1314,6 +1351,12 @@
           "level": 0.397,
           "pnl_pct": 164.67,
           "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.395,
+          "pnl_pct": 163.33,
+          "status": "open"
         }
       ]
     },
@@ -1338,8 +1381,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Friday's selloff was a single-factor US event — AI concentration plus a hawkish payroll — and Europe decoupled outright (DAX +0.2% vs Nasdaq −4.2%). The ECB hikes Thursday into a financials-heavy index with no AI capex cycle to give back. Ratio entry 0.972 (DAX/Comp); the divergence has legs because it is structural, not sentiment.",
-      "current": 0.9639,
-      "current_pnl_pct": -0.85,
+      "current": 0.9636,
+      "current_pnl_pct": -0.88,
       "history": [
         {
           "date": "2026-06-08",
@@ -1478,6 +1521,12 @@
           "level": 0.9639,
           "pnl_pct": -0.85,
           "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.9636,
+          "pnl_pct": -0.88,
+          "status": "open"
         }
       ]
     },
@@ -1488,6 +1537,7 @@
       "asset_class": "Commodity (options)",
       "trade": "Buy Brent $100/$115 call spread (own the Hormuz tail)",
       "structure": "call spread",
+      "is_option_spread": true,
       "entry": 3.0,
       "stop": 1.0,
       "target": 11.0,
@@ -1642,6 +1692,12 @@
           "level": 2.5,
           "pnl_pct": -16.67,
           "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 2.5,
+          "pnl_pct": -16.67,
+          "status": "open"
         }
       ]
     },
@@ -1666,8 +1722,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Thursday's 25bp ECB hike is 99% priced — the rate-differential tailwind for EUR is in the price, and a hawkish US repricing widened the gap the other way. Classic buy-rumour-sell-fact setup into a fully-priced central bank. Pairs cleanly with long DAX: a weaker euro flatters the exporters.",
-      "current": 1.15381,
-      "current_pnl_pct": 0.53,
+      "current": 1.15375,
+      "current_pnl_pct": 0.54,
       "history": [
         {
           "date": "2026-06-08",
@@ -1806,6 +1862,12 @@
           "level": 1.15381,
           "pnl_pct": 0.53,
           "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 1.15375,
+          "pnl_pct": 0.54,
+          "status": "open"
         }
       ]
     },
@@ -1830,8 +1892,8 @@
       "horizon": "into 16–17 Jun FOMC",
       "min_hold_days": 30,
       "thesis": "The market prices a ~70% hike by year-end on one 172k payroll with unemployment steady at 4.3%. The Fed does not hike into a labor market that is firm-but-not-overheating with a richly-valued equity tape just cracking. The 2-year at 4.16% — a 16-month high — has over-extrapolated a single number; the 17 June dot plot is the catalyst to reprice it. Pre-position, not an event scalp.",
-      "current": 4.131,
-      "current_pnl_pct": 0.74,
+      "current": 4.125,
+      "current_pnl_pct": 0.89,
       "history": [
         {
           "date": "2026-06-08",
@@ -1969,6 +2031,12 @@
           "date": "2026-06-11",
           "level": 4.131,
           "pnl_pct": 0.74,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4.125,
+          "pnl_pct": 0.89,
           "status": "open"
         }
       ]

@@ -969,6 +969,19 @@ def _icon_legend():
     )
 
 
+def _option_status(t):
+    """ITM / OTM / Open label for option spread trades — used instead of a return %."""
+    current = t.get("current")
+    entry   = t.get("entry")
+    if current is None or entry is None:
+        return "Open"
+    if current > entry:
+        return "In the money"
+    if current < entry:
+        return "Out of the money"
+    return "Open"
+
+
 def _trade_dropdown(idea, enrichments=None, rsi_data=None):
     """Render a trade as a self-contained expandable <details> dropdown."""
     tid  = idea.get("id", "")
@@ -977,20 +990,29 @@ def _trade_dropdown(idea, enrichments=None, rsi_data=None):
     cb   = idea.get("conviction_breakdown", {}) or {}
     kind = idea.get("_kind", idea.get("type", "reactive"))
     conv = idea.get("conviction", 0)
-    # P&L badge
-    pl   = idea.get("current_pnl_pct")
-    if pl is not None:
+    # P&L badge — option spreads show ITM/OTM status, not a return %
+    pl       = idea.get("current_pnl_pct")
+    is_opt   = idea.get("is_option_spread", False)
+    if is_opt:
+        _os = _option_status(idea)
+        _oc = "g" if _os == "In the money" else ("r" if _os == "Out of the money" else "mute")
+        pl_html = f'<span class="{_oc}" style="font-size:12px;font-weight:600">{_os}</span>'
+    elif pl is not None:
         pl_cls = "g" if pl > 0 else ("r" if pl < 0 else "mute")
         pl_html = f'<span class="{pl_cls}" style="font-size:12px;font-weight:600">{pl:+.2f}%</span>'
     else:
         pl_html = ""
-    # Closed badge
+    # Closed badge — option spreads show result only, no %
     closed_badge = ""
     if idea.get("exit"):
         ex = idea["exit"]
         c_cls = "g" if (ex.get("pnl_pct", 0) or 0) > 0 else "r"
-        closed_badge = (f'<span class="{c_cls}" style="font-size:11px;font-weight:600">'
-                        f'{e(ex.get("result","CLOSED"))} {ex.get("pnl_pct",0):+.1f}%</span>')
+        if is_opt:
+            closed_badge = (f'<span class="{c_cls}" style="font-size:11px;font-weight:600">'
+                            f'{e(ex.get("result","CLOSED"))}</span>')
+        else:
+            closed_badge = (f'<span class="{c_cls}" style="font-size:11px;font-weight:600">'
+                            f'{e(ex.get("result","CLOSED"))} {ex.get("pnl_pct",0):+.1f}%</span>')
     # Conviction breakdown table with WHY
     why = enr.get("breakdown_why", {})
     crit = [
@@ -1049,7 +1071,9 @@ def _trade_dropdown(idea, enrichments=None, rsi_data=None):
     ]
     if idea.get("min_hold_days"):
         rows_data.append(("Min hold", f'{idea["min_hold_days"]}d'))
-    if pl is not None:
+    if is_opt:
+        rows_data.insert(0, ("Status", _option_status(idea)))
+    elif pl is not None:
         rows_data.insert(0, ("Current P&L", f'{pl:+.2f}%'))
     trade_tbl = (
         '<table class="convtbl" style="margin:.3rem 0">'
@@ -1189,12 +1213,20 @@ def _book_accordion(trades, enrichments=None, rsi_data=None):
         trsi   = rsi.get(tid)
         closed = "exit" in t
         pl     = t.get("current_pnl_pct")
+        is_opt = t.get("is_option_spread", False)
         pl_cls = "g" if (pl or 0) > 0 else ("r" if (pl or 0) < 0 else "mute")
         if closed:
             ex  = t["exit"]
             pl_cls = "g" if (ex.get("pnl_pct", 0) or 0) > 0 else "r"
-            status_html = (f'<span class="{pl_cls}">{e(ex.get("result","CLOSED"))} '
-                           f'{ex.get("pnl_pct",0):+.2f}%</span>')
+            if is_opt:
+                status_html = f'<span class="{pl_cls}">{e(ex.get("result","CLOSED"))}</span>'
+            else:
+                status_html = (f'<span class="{pl_cls}">{e(ex.get("result","CLOSED"))} '
+                               f'{ex.get("pnl_pct",0):+.2f}%</span>')
+        elif is_opt:
+            _os  = _option_status(t)
+            _oc  = "g" if _os == "In the money" else ("r" if _os == "Out of the money" else "mute")
+            status_html = f'<span class="{_oc}">{_os}</span>'
         else:
             status_html = (f'<span class="{pl_cls}">{pl:+.2f}%</span>' if pl is not None else
                            '<span class="mute">open</span>')
@@ -1476,8 +1508,10 @@ def _page_earnings(brief):
 def _book_pnl_header(brief, trades):
     """Overall book P&L (%) + the stated aim at this point."""
     bp = brief.get("book_pnl") or {}
-    opens  = [t for t in trades.get("open", []) if isinstance(t.get("current_pnl_pct"), (int, float))]
-    closed = [t for t in trades.get("closed", []) if isinstance(t.get("exit", {}).get("pnl_pct"), (int, float))]
+    opens  = [t for t in trades.get("open", [])
+              if isinstance(t.get("current_pnl_pct"), (int, float)) and not t.get("is_option_spread")]
+    closed = [t for t in trades.get("closed", [])
+              if isinstance(t.get("exit", {}).get("pnl_pct"), (int, float)) and not t.get("is_option_spread")]
     open_avg = bp.get("open_avg")
     if open_avg is None and opens:
         open_avg = sum(t["current_pnl_pct"] for t in opens) / len(opens)

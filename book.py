@@ -476,12 +476,26 @@ def render_trade_card(idea):
     )
 
 
+def _opt_status_span(t):
+    """ITM / OTM / Open span for option spread trades in the legacy book table."""
+    cur, ent = t.get("current"), t.get("entry")
+    if cur is None or ent is None:
+        return '<span class="mute">Open</span>'
+    if cur > ent:
+        return '<span class="g">In the money</span>'
+    if cur < ent:
+        return '<span class="r">Out of the money</span>'
+    return '<span class="mute">Open</span>'
+
+
 def render_live_book(trades):
     rows = []
     for t in trades["open"]:
-        cur = t.get("current", t.get("entry"))
-        pl = t.get("current_pnl_pct")
-        prog = int(progress_to_target(t, cur) * 100) if cur is not None else 0
+        cur    = t.get("current", t.get("entry"))
+        pl     = t.get("current_pnl_pct")
+        is_opt = t.get("is_option_spread", False)
+        prog   = int(progress_to_target(t, cur) * 100) if cur is not None else 0
+        pnl_cell = _opt_status_span(t) if is_opt else pnl_span(pl)
         rows.append(
             "<tr>"
             f'<td>{e(t.get("id",""))}</td>'
@@ -490,7 +504,7 @@ def render_live_book(trades):
             f'<td>{e(t.get("opened",""))}</td>'
             f'<td class="num">{e(t.get("entry"))}</td>'
             f'<td class="num">{e(cur)}</td>'
-            f'<td class="num">{pnl_span(pl)}</td>'
+            f'<td class="num">{pnl_cell}</td>'
             f'<td class="num">{e(t.get("conviction"))}</td>'
             f'<td><div class="bar"><span style="width:{prog}%"></span></div></td>'
             "</tr>"
@@ -503,7 +517,9 @@ def render_live_book(trades):
         + "</tbody></table>"
     )
 
-    sb = scoreboard(trades["closed"])
+    # Scoreboard excludes option spreads (% is not a meaningful return metric for them)
+    linear_closed = [t for t in trades["closed"] if not t.get("is_option_spread")]
+    sb = scoreboard(linear_closed)
     if sb["count"] == 0:
         score_html = '<p class="mute">no closed trades yet — scoreboard builds as the book matures</p>'
     else:
@@ -521,7 +537,10 @@ def render_live_book(trades):
 
     closed_rows = []
     for t in trades["closed"]:
-        ex = t.get("exit", {})
+        ex     = t.get("exit", {})
+        is_opt = t.get("is_option_spread", False)
+        pnl_cell = (f'<span>{e(ex.get("result","CLOSED"))}</span>' if is_opt
+                    else pnl_span(ex.get("pnl_pct")))
         closed_rows.append(
             "<tr>"
             f'<td>{e(t.get("id",""))}</td>'
@@ -529,7 +548,7 @@ def render_live_book(trades):
             f'<td>{e(ex.get("result",""))}</td>'
             f'<td class="num">{e(t.get("entry"))}</td>'
             f'<td class="num">{e(ex.get("level"))}</td>'
-            f'<td class="num">{pnl_span(ex.get("pnl_pct"))}</td>'
+            f'<td class="num">{pnl_cell}</td>'
             f'<td class="num">{e(ex.get("days_held"))}d</td>'
             f'<td>{e(ex.get("date",""))}</td>'
             "</tr>"
