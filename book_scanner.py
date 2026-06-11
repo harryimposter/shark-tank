@@ -610,30 +610,33 @@ IDEA_ENRICHMENTS = {
     101: {
         "fundamental_thesis": (
             "Oracle Corporation (ORCL) — cloud infrastructure (OCI), database (Autonomous DB), "
-            "and enterprise applications. POST-PRINT: Q4 FY26 REPORTED (10-Jun AH). "
-            "ACTUAL: EPS $2.11 vs $1.97 consensus — beat. OCI revenue +93% YoY to $4.9bn. "
-            "Total revenue $19.2bn (record). RPO $553bn — the largest AI backlog on screen. "
-            "Then: $20bn capital raise announced → stock fell -10%+ AH. "
-            "THE THESIS: the dilution is the cost of funding the $553bn pipeline that has already been sold. "
-            "OCI growing 93% YoY is the AI-infrastructure thesis confirmed. The equity is penalised "
-            "for the near-term dilution math; the fundamental re-rate is 18-24 months away. "
+            "and enterprise applications. POST-PRINT CAPEX PANIC: Q4 FY26 REPORTED (10-Jun AH). "
+            "REVENUE ~$19.2bn (slight beat). OCI +93% YoY. Cloud +47%. "
+            "RPO SURGED to ~$638bn (from ~$553bn last quarter) — the largest AI backlog in enterprise "
+            "software history. The demand thesis is CONFIRMED. "
+            "BUT: FY26 capex landed at $55.7bn (above ~$50bn guide). FY27 GUIDED ~$70bn PLUS $20-25bn "
+            "in component prepayments — total capital commitment ~$90-95bn in one fiscal year. "
+            "Funded by ~$40bn debt+equity raise (~$20bn share sale). Stock -7 to -11% AH. "
+            "MARKET READ: capital and capacity problem, not a demand problem. "
             "Capital-protected note (100% protection, 70-80% participation est.): absorbs the "
-            "dilution hangover, captures the OCI re-rate. The note structure is the correct vehicle — "
-            "not unprotected equity. Post-print window is NOW OPEN."
+            "capital-structure overhang, captures the OCI re-rate. The note structure is the "
+            "correct vehicle — not unprotected equity. Post-print window is NOW OPEN."
         ),
         "catalyst_text": (
-            "10-Jun ORCL Q4 FY26 earnings — PRINTED AND CONFIRMED. "
+            "10-Jun ORCL Q4 FY26 earnings — PRINTED. CAPEX PANIC SELLOFF. "
             "Post-print window is NOW OPEN (typically 5-10 sessions). "
-            "The entry gate has fired: OCI +93%, RPO $553bn confirmed, EPS beat. "
-            "The near-term headwind ($20B dilution) is exactly what the capital protection absorbs. "
-            "Key catalyst WITHIN the 6-month note: OCI revenue acceleration in Q1 FY27 (Sep report); "
-            "capex absorption of the $20bn raise; RPO conversion rate. "
-            "Sizing: up to ~EUR1.5m from idle USD cash. Do not wait — the post-print window is live."
+            "Key numbers: Revenue ~$19.2B, OCI +93%, RPO ~$638B. "
+            "Capital shock: FY26 capex $55.7B; FY27 guided ~$70B + $20-25B prepayments; ~$40B raise. "
+            "The near-term headwind (capital-structure dilution + capex overhang) is exactly what "
+            "the capital protection absorbs. "
+            "Key catalysts WITHIN the 6-month note: OCI revenue acceleration in Q1 FY27 (Sep report); "
+            "capex absorption / reduction of additional raises; RPO conversion rate. "
+            "Sizing: up to ~EUR1.5m from idle USD cash. Window is live now."
         ),
         "sub_why": {
-            "setup":   "2/2 — Q4 FY26 print confirmed: OCI +93%, EPS $2.11 vs $1.97, RPO $553bn (all sourced). Post-print entry is the correct gate per the Earnings desk. Setup fully verified.",
-            "pricing": "1/2 — ~70-80% upside participation estimated pending a live structure quote; $20bn dilution may temporarily lift option vol (affects note pricing); direction correct, quantum estimated.",
-            "catalyst": "2/2 — the print has fired and confirmed the thesis (OCI +93%, record revenues, beat). The 6-month payoff window opens now with clear internal catalysts (Q1 FY27 OCI revs, capex absorption).",
+            "setup":   "2/2 — Q4 FY26 print confirmed: OCI +93%, RPO ~$638bn, revenue ~$19.2B (all sourced). Capex shock confirmed ($55.7B FY26, $70B FY27 guide). Post-print entry is the correct gate. Setup fully verified.",
+            "pricing": "1/2 — ~70-80% upside participation estimated pending a live structure quote; elevated vol from capex panic may affect note pricing; direction correct, quantum estimated.",
+            "catalyst": "2/2 — the print has fired and confirmed the demand thesis (OCI +93%, RPO $638B). The capital-shock selloff is the entry; the 6-month window has clear internal catalysts (Q1 FY27 OCI revs).",
             "fit":     "2/2 — client has ZERO software/cloud exposure (all AI is hardware: MU/NVDA/AVGO/AMD); Oracle adds the OCI/cloud leg with full capital protection — direct mandate fit.",
         },
     },
@@ -724,29 +727,30 @@ def _new_adds(metrics):
     structures). Sourced from the Earnings screener + the macro book. Tenor floors:
     equity structured products >=3m, OTC >=1m, rates structured products >=2y."""
     return [
-        _idea(101, "Oracle: 6-month capital-protected note — POST-PRINT WINDOW OPEN",
+        _idea(101, "Oracle: 6-month capital-protected note — CAPEX PANIC ENTRY OPEN",
               "New add - structured note", ["ORCL US"], 7,
               {"setup": 2, "pricing": 1, "catalyst": 2, "fit": 2},
               {"setup": "sourced", "pricing": "estimated", "catalyst": "sourced", "fit": "sourced"},
               "FIRE",
               "A 6-month note with full capital protection and ~70-80% upside participation on Oracle. "
-              "POST-PRINT: EPS $2.11 beat ($1.97 est), OCI +93% YoY to $4.9bn, RPO $553bn confirmed. "
-              "Oracle then announced a $20bn capital raise — stock -10%+ AH. The note absorbs the dilution "
-              "hangover with 100% capital protection, participates in the OCI re-rate as the pipeline converts. "
+              "POST-PRINT CAPEX PANIC: Revenue ~$19.2B (slight beat), OCI +93%, Cloud +47%, RPO ~$638B. "
+              "FY26 capex $55.7B (above ~$50B guide); FY27 guided ~$70B + $20-25B prepayments; ~$40B raise. "
+              "Stock -7-11% AH. Market read: capital and capacity problem, not demand. "
+              "The note absorbs the capital-structure overhang, participates in the OCI re-rate. "
               "ENTRY WINDOW OPEN NOW — typically 5-10 sessions post-print.",
-              "OCI revenue acceleration in Q1 FY27 (Sep quarter) and capex absorption of the $20bn raise. "
-              "Capital protection carries the dilution overhang for the client — the trade-off is capped upside.",
+              "OCI revenue acceleration in Q1 FY27 (Sep quarter) without further large capital raises. "
+              "Capital protection carries the capex-overhang risk for the client — the trade-off is capped upside.",
               "The client is heavily AI but entirely through hardware (MU, NVDA, AVGO, AMD). Oracle adds the "
               "software/cloud leg of the same conviction with downside protection — exactly the profile of a "
               "growth-with-protection client who already buys structures.",
-              ["Capital-protected note", "AI / cloud", "Post-print", "Dilution-protected"],
+              ["Capital-protected note", "AI / cloud", "Post-print", "Capex-protected"],
               section="new_add", asset_group="Equity", tenor="6 months (equity SP >= 3m floor)",
               sizing="~EUR1.5m from the idle USD cash",
               impact="Broadens the AI bet from semis-only into cloud infrastructure, with capital protection — adds conviction exposure while reducing concentration risk. Entry gate OPEN.",
-              sources=[{"name": "Earnings screener (Finnhub)", "type": "in-house", "note": "ORCL Q4 FY26: EPS $2.11, OCI +93%, RPO $553bn"},
+              sources=[{"name": "Earnings screener (Finnhub)", "type": "in-house", "note": "ORCL Q4 FY26: rev ~$19.2B, OCI +93%, RPO ~$638B, capex $55.7B FY26 / ~$70B FY27 guide"},
                        {"name": "Citrini Research", "type": "Substack/X", "note": "AI capex build-out"},
                        {"name": "JP Morgan GIS", "type": "house anchor", "note": "OW AI infrastructure"}],
-              origin="Earnings tab -> Oracle (post-print entry; dilution overhang = note structure opportunity)"),
+              origin="Earnings tab -> Oracle (post-print capex panic entry; capital-protected note = correct structure)"),
         _idea(102, "Adobe: 3-month cash-secured put — gate opens TONIGHT post-print",
               "New add - OTC / accumulator", ["ADBE US"], 5,
               {"setup": 1, "pricing": 1, "catalyst": 1, "fit": 2},

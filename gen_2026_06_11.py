@@ -2,13 +2,18 @@
 # -*- coding: utf-8 -*-
 """Market Map / Shark Tank brief generator — 2026-06-11 (Thursday).
 
-ECB day: hiked 25bp to 2.25% (first since Sept 2023) as expected. Oracle reported
-after yesterday's close — beat on fundamentals (OCI +93%, EPS $2.11 vs $1.97 est.,
-full-year rev $67.4B) but -10%+ after hours on a $20B equity+debt raise. US launched
-a second day of Iran strikes; Iran fired back at Bahrain, Kuwait, Jordan — Iran
-declared ceasefire "meaningless." Brent climbing toward $95. Gold at $4,104+.
-SPX put spread now in the money (S&P -1.62% yesterday to ~7,267). Adobe reports
-after the close tonight. FOMC June 16-17 next week.
+Oracle reported after yesterday's close — capex panic selloff: revenue ~$19.2B
+(slight beat), OCI +93%, Cloud +47%, RPO surged to ~$638B. BUT FY26 capex came in
+at $55.7B (above ~$50B guide), FY27 guided to ~$70B + $20-25B component prepayments,
+funded by ~$40B debt-and-equity raise (~$20B share sale component). Stock -7 to -11%
+AH. Market read: capital and capacity problem, not a demand problem.
+
+ECB decision DAY: +25bp to 2.25% WIDELY EXPECTED but has NOT happened yet as of
+this run. Decision is TODAY (Jun 11). Framed as imminent/upcoming throughout.
+
+US-Iran Day-2 strikes ongoing; Brent climbing toward $95; SPX put spread in the
+money (S&P -1.62% yesterday to ~7,267). Adobe reports after close tonight.
+FOMC June 16-17 next week.
 
 Run:  python gen_2026_06_11.py
 """
@@ -78,28 +83,33 @@ SCREENER_NOTES = {
             "a harvest-and-buffered-re-entry name, not a clean long.",
     "TSM":  "Higher: the Asia semis complex is the supply-chain spine of the AI build-out; an oversold TSMC is a "
             "buy-the-dip in the toll-road, not a trend break.",
-    "ORCL": "Post-print read: Oracle BEAT on every fundamental metric (OCI +93%, EPS $2.11 vs $1.97, RPO $553bn), "
-            "but the $20B equity+debt raise hit after-hours hard (-10%+). The dilution is a tax on the near-term price; "
-            "the OCI growth story is not broken — it is being funded. A capital-protected note is the right "
-            "structure: participate in the cloud re-rate, let the structure absorb the dilution overhang.",
+    "ORCL": "Post-print CAPEX PANIC: Revenue ~$19.2B (slight beat), OCI +93%, Cloud +47%, RPO surged to ~$638B "
+            "(from ~$553B). BUT FY26 capex $55.7B beat the ~$50B guide, FY27 guided ~$70B PLUS $20-25B component "
+            "prepayments — total capital commitment ~$90-95B in one year. Funded via ~$40B debt+equity raise "
+            "(incl. ~$20B share sale). Stock -7 to -11% AH. Market read: demand confirmed ($638B RPO), "
+            "execution and capital structure are the constraint. "
+            "Capital-protected note: absorbs the near-term dilution, participates in the OCI re-rate.",
 }
 
 # ── Regime ─────────────────────────────────────────────────────────────────────
-regime = "Oracle Beats Then Dilutes; ECB Hiked; Day-Two Strikes"
+regime = "Oracle Capex Panic: $70B FY27 Guided; ECB Decision Today; Day-Two Strikes"
 regime_note = (
-    "Three binary events landed or are landing today. Oracle reported after yesterday's close and delivered every "
-    "fundamental number the bull case needed — OCI grew 93% to $4.9bn, total revenue +21% to $19.2bn, EPS $2.11 "
-    "vs $1.97 consensus, full-year revenue a record $67.4bn, RPO $553bn converting at a record rate — and then "
-    "immediately announced a $20bn equity-and-debt raise to fund AI infrastructure. The stock fell 10%+ in extended "
-    "trading. The fundamentals were not the trade; the dilution was. At 12:15 GMT the ECB hiked +25bp to 2.25% as "
-    "fully priced (first hike since September 2023), with Lagarde's press conference setting the EUR direction into "
-    "next week. EUR/USD held near 1.1533 — the 'sell the fact' script is running. Geopolitically, the US launched "
-    "a second day of strikes on Iran, and Iran fired back targeting Bahrain, Kuwait and Jordan. Tehran declared the "
-    "April ceasefire 'practically meaningless' (Iran FM); Qatari mediators left Tehran empty-handed; the sticking "
-    "points are uranium enrichment and frozen-asset release. Brent climbed toward $93.50 and is looking at $95. "
-    "US equity futures rebounded after the US military announced it had 'completed' the latest round of strikes, "
-    "but the Strait of Hormuz remains at ~15% of pre-war traffic. Adobe reports after the close tonight — the "
-    "clearest test of whether generative AI is a software tax or a tailwind."
+    "Oracle reported Q4 FY26 after yesterday's close and it is a capex panic, not a dilution story. Revenue "
+    "came in ~$19.2bn (slight beat), OCI grew 93% YoY, Cloud +47%, and — the headline bull number — the RPO "
+    "backlog surged to ~$638bn (up from ~$553bn). Every demand metric confirmed the AI thesis. Then the market "
+    "read the cost of delivering it: FY26 capex came in at $55.7bn, above the ~$50bn guide. Oracle then guided "
+    "FY27 capex to ~$70bn PLUS an additional $20-25bn in component prepayments — a total capital commitment of "
+    "~$90-95bn in one fiscal year. To fund it, Oracle announced a ~$40bn debt-and-equity raise (including ~$20bn "
+    "in new shares). Stock fell 7-11% after hours. The market is not saying 'the demand is bad' — the $638bn RPO "
+    "proves otherwise. The market is saying 'we don't trust the capital structure to fund this without destroying "
+    "shareholder value.' That distinction — capital and capacity problem, not a demand problem — is the trade. "
+    "A capital-protected note participates in the re-rate if Oracle executes, absorbs the dilution hangover if it "
+    "doesn't. The ECB decision is TODAY (Jun 11) — +25bp to 2.25% is the consensus at near-100% probability, "
+    "but the decision has NOT been announced as this script runs. Lagarde's press conference tone is the "
+    "live EUR catalyst. EUR/USD is ~1.15 pre-decision. Geopolitically, the US-Iran conflict entered a second "
+    "day of strikes; Iran fired back targeting Gulf states; ceasefire declared 'practically meaningless'; "
+    "Qatari mediators left empty-handed. Brent is climbing toward $93-95. Adobe reports after the close tonight. "
+    "FOMC June 16-17 is the final gate."
 )
 regime_log = book.update_regime_log(regime_log, regime, regime_note)
 
@@ -119,33 +129,34 @@ TRADE_ENRICHMENTS = {
             "spread between the eurozone and Australia."
         ),
         "fundamental_thesis": (
-            "The ECB hiked +25bp to 2.25% today as fully priced — its first hike since September 2023. "
-            "EUR/USD barely moved (1.1533), the classic 'sell the fact' response, confirming the rate "
-            "differential tailwind for EUR was already in the price. The AUD carries a terms-of-trade "
-            "tailwind from firm iron ore (~$105/t). The EURAUD cross has been drifting lower since the "
-            "1.66 handle, consistent with the thesis. Lagarde's press conference wording ('data-dependent "
-            "pause' signals) now sets the pace for EUR."
+            "The ECB decision is TODAY (Jun 11) — +25bp to 2.25% is consensus at near-100% probability, "
+            "but as yet unannounced. The 'buy the rumour, sell the fact' setup is the trade: EUR was bid "
+            "from 1.08 to ~1.15 as the market priced in this hike cycle. Once the hike is delivered, "
+            "the marginal buyer disappears, and the rate differential at these levels has already been "
+            "extracted. Lagarde's press conference tone ('data-dependent pause' vs 'further hikes') sets "
+            "the EUR direction into next week. The AUD carries a terms-of-trade tailwind from firm iron "
+            "ore (~$105/t). EURAUD drifting lower from 1.66 is consistent with the thesis."
         ),
         "catalysts": [
-            "ECB Jun 11 press conference (DONE: +25bp hiked; EUR/USD little changed at 1.1533 — "
-            "'sell the fact' running; watch Lagarde's tone on further hikes vs data-dependent pause)",
+            "ECB Jun 11 decision (PENDING — +25bp consensus at ~99%; delivery = sell-the-fact trigger; "
+            "Lagarde presser wording on 'further hikes' vs 'data-dependent pause' is the live EUR driver)",
             "Iron ore price action (any Chinese demand headline or PBOC stimulus = AUD tailwind)",
             "RBA June meeting (if hawkish, AUD further supported vs EUR)",
             "FOMC Jun 16-17 (Fed hold = USD strengthens vs EUR, compresses EUR/AUD further)",
         ],
         "risks": (
-            "ECB explicitly signals another hike (EUR squeezes higher above 1.162 on cross); iron ore "
+            "ECB explicitly signals another hike (EUR squeezes above 1.162 on EURAUD cross); iron ore "
             "collapses on China demand shock (AUD loses its tailwind); broader risk-off drives USD "
             "safe-haven bid rather than EUR/AUD move; stop at 1.662."
         ),
         "breakdown_why": {
             "gap":          "3/3 — the cross is ~170 pips above the 2yr spread's implied fair value; "
-                            "a full-figure mispricing between a dovish ECB (pause after today's hike) "
-                            "and an RBA still in tightening mode. ECB hike confirmed the path.",
-            "catalyst":     "2/2 — ECB hike done as expected; press conference is the live catalyst "
-                            "right now; FOMC Jun 16-17 is the next gate. Two dated catalysts confirmed.",
+                            "a full-figure mispricing between a dovish-terminal ECB and an RBA still "
+                            "in tightening mode. Sell-the-fact setup intact pre-decision.",
+            "catalyst":     "2/2 — ECB Jun 11 decision (TODAY, PENDING) and FOMC Jun 16-17 are both "
+                            "near-dated, directly EUR-relevant events. Two dated catalysts in the window.",
             "positioning":  "1/2 — EUR longs into the ECB are crowded (spec long at multi-year highs "
-                            "vs AUD), providing squeeze fuel if Lagarde leans pause.",
+                            "vs AUD), providing squeeze fuel if Lagarde leans data-dependent pause.",
             "confirmation": "1/2 — the cross sold off from the 1.66 handle, giving one technical "
                             "confirmation; needs a clean break lower for a 2.",
             "stop_quality": "1/1 — 1.662 is a clear technical level; tight relative to the target move.",
@@ -453,21 +464,21 @@ TRADE_ENRICHMENTS = {
             "Nasdaq), European banks outperforming US tech, and AI multiple compression."
         ),
         "fundamental_thesis": (
-            "Both legs of the trade moved in our favour today. ECB hiked +25bp to 2.25% — the "
-            "DAX's financial sector gets a direct earnings tailwind (higher deposit margins). "
-            "Nasdaq fell -1.98% yesterday on Oracle's post-print dilution and hot CPI selling "
-            "tech. The DAX/Nasdaq ratio should have recovered from the 0.949 near-stop. Oracle "
-            "confirmed the AI-capex disappointment thesis (good numbers, dilutive raise = "
-            "negative Nasdaq re-rate). The structural divergence — financials vs semis, ECB "
-            "hiking vs Fed holding — is now in the price."
+            "The two legs of the trade are both working. ECB decision is TODAY (Jun 11, PENDING) "
+            "— if +25bp as expected, the DAX's financial sector gets a direct NIM tailwind. "
+            "Nasdaq fell -1.98% yesterday on Oracle's capex panic and CPI-driven tech selling. "
+            "The DAX/Nasdaq ratio should have recovered from the 0.949 near-stop. Oracle's "
+            "$70B FY27 capex guide confirmed the AI-capex bill thesis (Nasdaq de-rate on cost, "
+            "not demand). The structural divergence — European financials vs US tech, ECB on "
+            "the way to 2.25% vs Fed holding at 3.75% — is the durable driver."
         ),
         "catalysts": [
-            "ECB Jun 11 DONE: +25bp hiked; DAX financials beneficiary — ratio should recover "
-            "from the 0.949 near-stop",
-            "Oracle Jun 10 AMC DONE: -10%+ on $20B raise = Nasdaq cohort de-rated; "
-            "Nasdaq -1.98% yesterday confirms the leg-down catalyst",
-            "FOMC Jun 16-17 — Fed hold (96-98% probability) = USD bids, DAX exporters benefit; "
-            "any dovish dot = Nasdaq bid = ratio pressure",
+            "ECB Jun 11 decision (PENDING — +25bp consensus; if confirmed, DAX financials "
+            "benefit from higher NIM; ratio should recover from 0.949 near-stop)",
+            "Oracle Jun 10 AMC DONE: capex panic (-7 to -11%) = Nasdaq cohort de-rated; "
+            "Nasdaq -1.98% yesterday confirms the AI-cost leg-down catalyst",
+            "FOMC Jun 16-17 — Fed hold (96-98% probability) = USD bids; dovish dot = Nasdaq "
+            "bid = ratio pressure",
             "Adobe tonight — software de-rating risk on guidance = another Nasdaq leg down",
         ],
         "risks": (
@@ -537,31 +548,32 @@ TRADE_ENRICHMENTS = {
             "via energy import costs), and speculative positioning."
         ),
         "fundamental_thesis": (
-            "The ECB hiked +25bp to 2.25% today as expected — EUR/USD barely moved at 1.1533, "
-            "confirming the 'sell the fact' setup. The rate-differential tailwind for EUR was "
-            "fully in the price before the decision; Lagarde's press conference now sets the pace. "
-            "If she signals 'data-dependent pause' (the base case given the inflation is energy-led), "
-            "EUR fades further. FOMC Jun 16-17 next week is the next USD-strength catalyst. "
-            "Pairs with long DAX — weaker EUR flatters German exporters in EUR terms."
+            "The ECB decision is TODAY (Jun 11, PENDING). The market has priced +25bp to 2.25% "
+            "at near-100% probability — EUR ran from 1.08 to ~1.15 as this hike cycle was priced "
+            "in. Once the hike is delivered, the 'buy the rumour' crowd is done and the marginal "
+            "EUR buyer disappears. EUR/USD at ~1.15 pre-decision is the 'fully priced' level. "
+            "The 'sell the fact' unwind begins on delivery. Lagarde's presser — 'data-dependent "
+            "pause' language (base case given inflation is energy-led) = EUR fades; 'further "
+            "hikes' = EUR spike and respect the 1.182 stop. FOMC Jun 16-17 is the next catalyst."
         ),
         "catalysts": [
-            "ECB Jun 11 press conference (LIVE NOW) — 'data-dependent pause' language = EUR "
-            "sell-the-fact accelerates toward 1.140; 'further hikes' = EUR squeeze, respect stop",
+            "ECB Jun 11 decision (PENDING — +25bp consensus; delivery = sell-the-fact trigger; "
+            "Lagarde presser: 'data-dependent pause' = EUR toward 1.140; 'further hikes' = stop test)",
             "FOMC Jun 16-17 — Fed holds at 3.75% (96-98% probability); USD bids on the 'Fed "
             "still careful' narrative vs ECB that just hiked = spread widens for EUR/USD",
             "Spec positioning unwind (EUR longs near multi-year highs = crowded unwind fuel)",
         ],
         "risks": (
-            "ECB surprise hawkishness (hawkish tone lifts EUR above 1.182 stop); US data "
-            "disappoints and EUR/USD re-rates higher; safe-haven EUR bid (rare but possible in "
-            "extreme risk-off); stop at 1.182."
+            "ECB surprise hawkishness (explicit 'further hikes' tone lifts EUR above 1.182 stop); "
+            "US data disappoints and EUR/USD re-rates higher; safe-haven EUR bid in extreme "
+            "risk-off; stop at 1.182."
         ),
         "breakdown_why": {
-            "gap":          "1/3 — the mispricing is real but contained (the ECB hike IS priced; "
-                            "the gap is the reaction to the press conference wording, not a "
-                            "regime-level mispricing); hence 1 not 2.",
-            "catalyst":     "2/2 — ECB press conference is a precise, dated catalyst with "
-                            "well-defined payoff trigger (specific phrase/tone).",
+            "gap":          "1/3 — the mispricing is real but contained (the ECB hike is fully "
+                            "priced; the gap is the reaction to the press conference wording, not "
+                            "a regime-level mispricing); hence 1 not 2.",
+            "catalyst":     "2/2 — ECB Jun 11 decision (PENDING TODAY) is a precise, dated "
+                            "catalyst with a well-defined payoff trigger (specific presser tone).",
             "positioning":  "1/2 — EUR spec longs at multi-year highs provide unwind fuel; "
                             "not a 2 because the crowding was anticipated (already partially "
                             "faded before entry).",
@@ -689,7 +701,7 @@ dashboard = [
     _row("Brent Crude", "brent",  _usd),
     _row("Gold (XAU)",  "gold",   _gold),
     _row("VIX",         "vix",    lambda v: f"{v:.2f}"),
-    {"name": "SOFR", "level": "~3.62%", "chg": "", "dir": "flat"},   # unchanged; ECB hike is EUR funding
+    {"name": "SOFR", "level": "~3.62%", "chg": "", "dir": "flat"},   # unchanged; ECB decision pending Jun 11
     {"name": "MOVE", "level": "~108 (est)", "chg": "", "dir": "flat"},
 ]
 
@@ -707,7 +719,7 @@ rates_levels = [
 ]
 
 NOTES = {
-    "MM-2026-001": "ECB hiked 25bp today as expected. EUR/USD barely moved (1.1533) — sell-the-fact confirmed. EURAUD tracking lower. Lagarde's press conference is the live catalyst. Stop 1.662.",
+    "MM-2026-001": "ECB decision PENDING today (Jun 11) — +25bp to 2.25% is consensus at ~99%. EUR/USD ~1.15 pre-decision. Sell-the-fact thesis: once delivered, EUR longs unwind. Lagarde's presser is the live catalyst post-decision. Stop 1.662.",
     "MM-2026-002": "Working hard — and validated a second time. US launched Day 2 of Iran strikes; Iran fired at Gulf states; ceasefire declared 'meaningless.' Brent at $93.50 and climbing toward $95. Conviction 3 upgraded on re-escalation confirmation. Exit on weekly close below $87. Target $104.",
     "MM-2026-003": "Building momentum. Brent-WTI spread benefits directly from Day 2 strikes — Brent-specific war premium is widening again. The spread's purpose is confirmed. Stop 1.50.",
     "MM-2026-004": "Working — soft CPI core eased the 10Y to ~4.52% from yesterday's 4.55% high. Disinflation impulse confirmed. FOMC dot plot Jun 16-17 is the next catalyst. Do not add; let the steepener carry it. Stop 4.65%.",
@@ -715,9 +727,9 @@ NOTES = {
     "MM-2026-007": "Near flat. USDJPY holding ~160.2 — the USD did not strengthen materially on the ceasefire-is-dead news. BoJ September hike still >50% priced; MoF intervention threat above 163 remains the ceiling. Stop 163.00.",
     "MM-2026-008": "BEST PERFORMER: put spread is now IN THE MONEY. S&P fell -1.62% yesterday to ~7,267, below the 7300 strike. Mark ~80 vs $35 premium paid (+$45, +129%). Two catalysts remain (ADBE tonight, FOMC next week). Hold through expiry Jun 27; do not lift early.",
     "MM-2026-009": "Best structural position, still running strong. 2s10s curve steepened further on the soft CPI core; 10Y eased while front-end stays anchored. Min hold to July 16; target +60bp. FOMC next week is the next catalyst. Hold.",
-    "MM-2026-010": "Thesis confirmed today. ECB hiked (DAX financial tailwind), Nasdaq fell -1.98% yesterday (Oracle -10%, AI de-rated). Ratio should have recovered from the 0.949 near-stop. Structural case intact — do not trim ahead of FOMC next week.",
+    "MM-2026-010": "Oracle capex panic confirmed the Nasdaq de-rate leg — stock -7-11% AH, Nasdaq -1.98% yesterday. ECB decision PENDING today (Jun 11, +25bp consensus) — if confirmed, DAX financials get NIM tailwind. Ratio should recover from 0.949 near-stop. Structural case intact — do not trim ahead of FOMC next week.",
     "MM-2026-011": "Gaining. Brent at $93.50 and approaching $95 — the $100 strike is only $6.50 away. Mark ~$2.50 (model est) vs $3 premium. Day-2 strikes bring the $100 trigger into range. Defined risk; hold through the Strait crisis.",
-    "MM-2026-012": "Working. EUR/USD at 1.1533 as ECB hiked — the sell-the-fact is running. Lagarde's press conference is the live catalyst; any pause signal accelerates the move. Stop 1.182; target 1.130.",
+    "MM-2026-012": "ECB decision PENDING today. EUR/USD ~1.15 pre-decision — buy-the-rumour crowd fully positioned. Delivery of the +25bp (PENDING) triggers the sell-the-fact unwind. Lagarde's presser tone is the pace-setter post-decision. Stop 1.182; target 1.130.",
     "MM-2026-013": "Progressing. 2Y holding near ~4.15%; soft CPI core from yesterday validated the 'over-extrapolated hike' thesis. FOMC Jun 16-17 dot plot is the payoff catalyst. Min hold 30d through Jun 16. Stop 4.35%.",
 }
 
@@ -787,8 +799,8 @@ staleness = [
     {"datum": "SAIL Q1 FY27: EPS $0.05 beat, rev $280M +22% YoY; -11% pre-market on slight rev miss",
      "source": "GrufuFocus / MarketBeat (Jun 9 BMO)",                                  "asof": "2026-06-09", "stale": False},
     {"datum": "SOFR ~3.62% / MOVE",  "source": "NY Fed (rail) / MOVE unverified",     "asof": "2026-06-10", "stale": True},
-    {"datum": "ECB deposit rate 2.25% (hiked +25bp Jun 11)",
-     "source": "ECB press release / web search",                                        "asof": "2026-06-11", "stale": False},
+    {"datum": "ECB deposit rate: +25bp to 2.25% PENDING (decision TODAY Jun 11, consensus ~99%)",
+     "source": "Market pricing / web search (decision not yet announced)",               "asof": "2026-06-11", "stale": False},
 ]
 
 earnings_ideas = [
@@ -886,57 +898,60 @@ brief = {
     "idea_rsi_data": idea_rsi_data,
 
     "dominant_theme": (
-        "Oracle beat the fundamentals and got punished for the funding. The ECB hiked as expected and EUR barely "
-        "moved. Day-two US-Iran strikes pushed Brent toward $95. The SPX put spread is now in the money. "
+        "Oracle's capex panic: $638B RPO confirmed the AI demand — but $70B FY27 capex + $20-25B prepayments "
+        "+ $40B raise punished the stock. ECB decision TODAY (Jun 11): +25bp pending, sell-the-fact setup. "
+        "Day-two US-Iran strikes push Brent toward $95. SPX put spread in the money (+129%). "
         "Adobe reports tonight. FOMC June 16-17 is the final gate. The book is positioned correctly."
     ),
 
     "summary_narrative": """
-<p>Three catalysts landed in the last 24 hours and each one confirmed a different part of the book's thesis.
-<strong>Oracle reported Q4 FY26 after yesterday's close</strong> and delivered every number the bull case
-needed: OCI infrastructure grew 93% YoY to $4.9bn, total revenue rose 21% to a record $19.2bn, adjusted EPS
-came in at $2.11 against a $1.97 consensus, and the full-year hit $67.4bn — the AI backlog is converting. Then
-Oracle announced a <strong>$20bn equity-and-debt raise</strong> to fund the build-out and the stock fell 10%+
-after hours. The fundamentals were not the issue; the dilution was — and it is a short-term overhang on a
-thesis that is intact. A capital-protected note is the right structure: participate in the OCI re-rate,
-let the structure absorb the dilution hangover.</p>
+<p><strong>Oracle's Q4 FY26 print is the defining event of this tape</strong>, and it is a capex panic, not
+a dilution story. The demand numbers are extraordinary: OCI infrastructure grew 93% YoY, Cloud +47%, total
+revenue ~$19.2bn (slight beat), and the remaining performance obligations backlog surged to
+<strong>~$638bn</strong> — up from ~$553bn last quarter, the largest confirmed AI order book in enterprise
+software history. The AI demand thesis is confirmed. What punished the stock (-7 to -11% after hours) was
+the cost of delivering it: FY26 capex came in at $55.7bn, above the ~$50bn guide; Oracle then guided
+FY27 capex to <strong>~$70bn plus $20-25bn in component prepayments</strong> — a total capital commitment
+of ~$90-95bn in one fiscal year. To fund this, Oracle announced a ~$40bn debt-and-equity raise (including
+~$20bn in new shares). The market is not saying the demand is bad. It is saying: <em>we don't trust the
+capital structure to fund this without destroying shareholder value.</em> That distinction — capital and
+capacity problem, not a demand problem — is the thesis for the capital-protected note (idea 101).</p>
 
-<p>At 12:15 GMT today, <strong>the ECB hiked +25bp to 2.25%</strong> — its first rate increase since September
-2023 — exactly as the market had fully priced. EUR/USD barely moved, sitting at <strong>~1.1533</strong>,
-confirming the classic buy-the-rumour-sell-the-fact script. Lagarde's press conference is the live catalyst
-right now: any hint of a data-dependent pause accelerates the short-EUR/USD trade (MM-2026-012); an explicit
-further-hike signal squeezes EUR higher and respects the 1.182 stop.</p>
+<p>The <strong>ECB decision is TODAY (Jun 11)</strong> and has not been announced as this brief is published.
+The consensus is +25bp to 2.25% at near-100% probability — the first hike since September 2023 — fully
+priced into EUR/USD (~1.15 pre-decision). The 'buy the rumour' crowd is fully positioned. Once the hike is
+delivered, the sell-the-fact dynamic takes over; Lagarde's press conference tone is the pace-setter. A
+'data-dependent pause' signal is the base case and accelerates MM-2026-012; any 'further hikes' language
+squeezes EUR and requires respecting the 1.182 stop.</p>
 
-<p>On the geopolitical front, <strong>the US launched a second day of strikes on Iran</strong> and Iran fired
-back targeting Bahrain, Kuwait and Jordan. Tehran's foreign ministry declared the April ceasefire
-"practically meaningless." Qatari mediators left Tehran empty-handed — uranium enrichment and frozen assets
-remain the sticking points. <strong>Brent climbed to $93.50 and is looking at $95</strong>, with the Strait
-of Hormuz still at ~15% of pre-war traffic (JPMorgan). Bloomberg Intelligence forecasts $130/bbl for
-July-August if the Strait stays shut. US equity futures recovered from yesterday's sharp sell (S&amp;P
--1.62%, Nasdaq -1.98%, Dow -1.87%) after the US military announced the latest strikes were "complete" —
-but the war is not over.</p>
+<p>Geopolitically, the US-Iran conflict entered a <strong>second day of strikes</strong>. Iran fired back
+targeting Gulf states. Tehran's foreign ministry declared the April ceasefire "practically meaningless."
+Qatari mediators left empty-handed — uranium enrichment and frozen assets remain the sticking points.
+<strong>Brent is climbing toward $93-95</strong>, Strait of Hormuz at ~15% of pre-war traffic, and
+Bloomberg Intelligence forecasts $130/bbl for July-August if the Strait stays shut.</p>
 
-<p>The SPX 7300/7000 put spread (MM-2026-008) is now <strong>in the money</strong> — the S&amp;P fell through
-the 7300 strike yesterday, and the mark on the spread is now estimated at ~$80 versus the $35 premium paid
-(+129%). One more live catalyst (FOMC Jun 16-17) remains inside the Jun 27 expiry window. Adobe reports
-after the close tonight — the cleanest remaining test of whether generative AI is a software tax or tailwind,
-and the entry gate for the cash-secured put (idea 102).</p>
+<p>The SPX 7300/7000 put spread (MM-2026-008) is now <strong>in the money</strong> — the S&amp;P fell
+-1.62% yesterday to ~7,267, through the 7300 strike. Mark ~$80 vs $35 premium paid (+129%). FOMC Jun 16-17
+remains inside the Jun 27 expiry — the final catalyst in the window. Adobe reports after the close tonight
+(idea 102 CSP gate opens post-print; do not pre-position).</p>
 """,
 
     "takeaways": [
-        "Oracle BEAT but diluted: OCI +93%, EPS $2.11 vs $1.97, full-year revenue $67.4bn — then announced a "
-        "$20B equity+debt raise. Stock -10%+ AH. Fundamentals intact; dilution is the overhang. Capital-protected "
-        "note (idea 101) is now the entry — participate in the OCI re-rate, protect against the equity hangover.",
-        "ECB hiked +25bp to 2.25% today as fully priced — first hike since Sept 2023. EUR/USD barely moved "
-        "(1.1533). The sell-the-fact script is running. MM-012 (short EUR/USD) working. Lagarde presser is live.",
+        "Oracle CAPEX PANIC: Revenue ~$19.2B (slight beat), OCI +93%, Cloud +47%, RPO $638B. BUT FY26 capex "
+        "$55.7B (above guide), FY27 guided ~$70B + $20-25B prepayments. ~$40B raise (~$20B shares). Stock "
+        "-7-11% AH. Market read: demand confirmed, capital structure is the problem. Capital-protected note "
+        "(idea 101): protect vs dilution hangover, participate in OCI re-rate. Entry window NOW OPEN.",
+        "ECB decision TODAY (Jun 11): +25bp to 2.25% PENDING at ~99% probability — decision not yet "
+        "announced. Sell-the-fact setup: EUR/USD ~1.15 pre-decision = buy-the-rumour fully priced. "
+        "MM-012 (short EUR/USD) is the trade. Lagarde presser post-decision is the pace-setter.",
         "Day-two US-Iran strikes. Iran fired at Bahrain, Kuwait, Jordan. Qatari talks failed. Ceasefire "
-        "'meaningless.' Brent at $93.50 climbing toward $95. Strait at 15% pre-war traffic. Oil longs earned.",
-        "SPX put spread now in the money: S&P fell -1.62% yesterday to ~7,267, below the 7300 strike. Mark ~$80 "
-        "vs $35 premium paid (+129%). Hold through FOMC Jun 16-17 (final catalyst in the window).",
-        "Adobe reports after close tonight: analysts expect EPS $5.01, rev $6.43-6.48B, +/-9.47% implied move. "
-        "The CSP entry gate (idea 102) opens post-print. Do NOT pre-position.",
+        "'meaningless.' Brent climbing toward $93-95. Strait at ~15% pre-war traffic. Oil longs earned.",
+        "SPX put spread in the money: S&P -1.62% yesterday to ~7,267, below 7300 strike. Mark ~$80 vs "
+        "$35 premium paid (+129%). Hold through FOMC Jun 16-17 — final catalyst inside Jun 27 expiry.",
+        "Adobe reports after close tonight: EPS est $5.01 (Finnhub), rev $6.43-6.48B, ±9.47% implied move. "
+        "CSP entry gate (idea 102) opens post-print. Do NOT pre-position.",
         "FOMC Jun 16-17 next week: 96-98% hold probability at 3.75%. Warsh's first presser is the dot-plot "
-        "edge. Short-2Y (MM-013) and steepener (MM-009) are the pre-positions that profit from a pause signal.",
+        "edge. Short-2Y (MM-013) and steepener (MM-009) are pre-positions that profit from a pause signal.",
     ],
 
     "scenarios": [
@@ -961,82 +976,86 @@ and the entry gate for the cash-secured put (idea 102).</p>
     ],
 
     "insights_layers": """
-<p>Three events in 24 hours and each one moved the book, not just the tape. Let's price them correctly. Oracle
-delivered a genuine beat — OCI infrastructure +93%, record revenues, record RPO conversion — and then announced
-$20bn of new capital raises. The stock fell 10%+ on dilution; the fundamental case did not change. These are not
-the same thing. A company that is growing its cloud infrastructure 93% per year needs capital: the raise is
-evidence of conviction, not distress. The market is pricing the short-term equity math (dilution = lower EPS per
-share near-term); the correct long-term read is that Oracle is funding the pipeline that the $553bn RPO has
-already sold. A capital-protected note — full downside protection against the dilution hangover, 70-80%
-participation in the OCI re-rate — is the right way to express this. The post-print window opened last night.</p>
+<p>The Oracle print is the most important data point in the AI infrastructure build-out since Broadcom's
+March quarter, and the market is reading it correctly — just not for the reason most people think.
+The demand numbers are extraordinary: OCI +93%, RPO surged to ~$638bn (+15% vs last quarter alone),
+total revenue ~$19.2bn. This is not a demand problem. The problem is the cost of serving the demand.
+FY26 capex landed at $55.7bn — above the ~$50bn guide that was already making analysts nervous. Then
+Oracle guided FY27 to ~$70bn in capex PLUS $20-25bn in component prepayments. That is a capital
+commitment of ~$90-95bn in a single fiscal year from a company with ~$70bn in annual revenue. To fund
+it: a ~$40bn debt-and-equity raise including ~$20bn in new shares — the largest capital raise in
+Oracle's history. Stock fell 7-11% after hours. The market is not selling the AI thesis. It is selling
+the equity structure of a company that has committed more capital than it can generate organically.
+The non-consensus read: the $638bn RPO is the most bullish number in enterprise software history;
+the $90bn annual capex commitment is the most frightening. Both can be true. A capital-protected note
+is the instrument that lets you hold both positions simultaneously — participate in the OCI re-rate
+if Oracle executes, absorb the dilution hangover if it can't fund the pipeline without further raises.</p>
 
-<p>The ECB hiked +25bp to 2.25% as universally expected, and EUR/USD sat at 1.1533, unmoved. This is the
-<em>sell-the-fact</em> in its purest form — the differential was already priced, so the event was inert. What
-matters now is Lagarde's press conference wording. Any phrasing that implies a pause after this hike ("monitoring
-data," "meeting-by-meeting," "gradual normalization") is the trigger for EUR to slide; any explicit reference to
-"further hikes" squeezes EUR higher and we respect the 1.182 stop on MM-012. The structural case is intact: ECB
-hiking into an energy-driven inflation print while the growth backdrop for Europe is soft is the definition of
-the policy error the trade is positioned for. But today's execution is about the press conference, not the hike.</p>
+<p>The ECB decision is <strong>TODAY (Jun 11) and has not been announced</strong> as this brief is
+published. The consensus is +25bp to 2.25% at near-100% probability. EUR/USD is at approximately
+~1.15 pre-decision — the level the market has been building to since the rate-hike narrative began.
+The 'sell the fact' setup is not a prediction; it is a positioning observation. EUR ran from 1.08 to
+1.15 on this hike cycle. The marginal buyer — the spec account pricing in the rate differential —
+is fully positioned. Once delivery happens, the catalyst for EUR ownership is gone and the unwind
+begins. Lagarde's press conference is the pace-setter: 'data-dependent pause' language accelerates
+the short-EUR/USD (MM-012); explicit 'further hikes' language is the stop-test. The structural case
+for the trade — ECB hiking into a soft European growth backdrop while the Fed holds — is intact
+regardless of today's press conference specifics.</p>
 
-<p>Geopolitically, the situation has deteriorated precisely as the non-consensus read predicted: not all-out war,
-not peace, but a managed grind punctuated by headlines. The US launched a second round of Iran strikes; Iran
-fired at Bahrain, Kuwait and Jordan; Iran's foreign ministry declared the ceasefire "meaningless"; Qatari
-mediators left Tehran with nothing. Turkey urged both sides to stop and return to talks. The sticking points
-remain: uranium enrichment on Iran's side, sanctions relief before a final agreement. Trump wants both headlines
-— "we're making a deal" and "we're hitting them hard" — and is getting both, which is precisely why the Hormuz
-premium stays bid. The Strait is at ~15% of pre-war traffic. Bloomberg Intelligence is forecasting $130/bbl
-average in July-August. The US Strategic Petroleum Reserve is at its lowest level since the early 1980s. The
-oil longs were not overstayed; they were earned and remain earned.</p>
+<p>Geopolitically, the conflict is following the managed-grind playbook precisely as the
+non-consensus read predicted. Day-two US strikes on Iran; Iran firing back at Gulf states; ceasefire
+declared "meaningless"; Qatari mediators leaving empty-handed. The sticking points — uranium enrichment,
+frozen assets — are the same as day one. The Strait of Hormuz remains at ~15% of pre-war traffic.
+Bloomberg forecasts $130/bbl for July-August. The SPR is at multi-decade lows. The oil longs are not
+overstayed; they were earned by a physical blockade and remain earned as long as the Strait is shut.</p>
 
-<p>Go around the world and the architecture of the book becomes clear. <strong>Asia:</strong> the AI-memory
-supply chain is intact — KOSPI and the SOX track tick-for-tick, and the HBM names (SK Hynix, Samsung) set the
-tone before the US wakes up. NVDA consolidating in the 195-235 range is a range note (BREN), not a trend break.
-<strong>Japan:</strong> USD/JPY at ~160.2, MoF threatening intervention above 163, BoJ September hike >50%
-priced — the carry unwind is coming, it is just not today. <strong>Europe:</strong> the ECB hike makes the
-DAX/Nasdaq ratio trade look better (financials benefit; Nasdaq fell -1.98% yesterday); the ratio should have
-recovered from the 0.949 near-stop. The DAX has no AI multiple to give back — the divergence is structural.</p>
+<p>Go around the world. <strong>Asia:</strong> the AI-memory supply chain is intact — HBM demand is
+the spine of every hyperscaler build, and Oracle's $638bn RPO implies accelerating HBM procurement.
+NVDA consolidating 195-235 is a range, not a trend break. <strong>Japan:</strong> USD/JPY ~160,
+MoF threatening intervention above 163, BoJ September hike >50% priced — carry unwind is coming,
+not today. <strong>Europe:</strong> the ECB decision today is the event the DAX/Nasdaq ratio trade
+was built for — if confirmed, European financials get NIM relief while US tech is still digesting
+the Oracle capex shock.</p>
 
-<p>The priced-versus-not audit, as of this morning: <strong>under-priced</strong> — the $130/bbl July-August
-Brent scenario (our Brent call spread's $100 strike is only $6.50 away); the Oracle OCI re-rate post-dilution
-absorption; the FOMC dovish surprise (still the consensus-wrong direction — Warsh cannot look soft in week one).
-<strong>Fairly priced:</strong> the Brent outright premium (~$93-95 range); the EUR/USD sell-the-fact (running
-but not dramatic yet). <strong>Fully priced:</strong> the ECB hike itself (done); the soft CPI core (already in
-the 10Y at 4.52%). The SPX put spread is the book's best performer (+129%), having repriced the complacency the
-market had at VIX 15.3 when six live events sat inside a 26-day window.</p>
+<p>Priced-versus-not: <strong>under-priced</strong> — the $90-95bn Oracle annual capex commitment
+propagating through the AI infrastructure cohort (if Oracle needs $70B, what do Microsoft/Google/Amazon
+need?); the $130/bbl July Brent scenario (call spread $100 strike only ~$6 away); FOMC hawkish
+surprise (Warsh cannot look soft in week one). <strong>Fairly priced:</strong> Brent outright ~$93-95;
+the ECB hike itself (fully in the price). <strong>Fully priced:</strong> Oracle revenue beat (already
+discounted — the stock reacted to capex, not EPS); the soft CPI core (10Y already at 4.52%).</p>
 """,
 
     "wrap": """
-<p>Three catalysts printed in 24 hours and each one confirmed something. Oracle beat every fundamental metric
-and then announced a $20bn capital raise — the stock fell 10%+, but the fundamental case did not. The ECB
-hiked +25bp to 2.25% exactly as priced, EUR/USD moved barely a pip, and Lagarde is running a sell-the-fact
-presser right now. The US and Iran traded a second day of strikes; Brent climbed to $93.50 and the Strait
-of Hormuz remains at ~15% of pre-war traffic.</p>
+<p>Oracle's capex panic confirmed the AI demand and scared the capital markets in the same breath. OCI +93%,
+RPO ~$638bn, revenue ~$19.2bn — every demand number was right. Then: $55.7bn FY26 capex (above guide),
+$70bn FY27 guided + $20-25bn prepayments, $40bn raise. Stock -7-11% AH. The market isn't selling AI;
+it's selling Oracle's equity structure. ECB decision is TODAY — +25bp is consensus at ~99%, not yet
+announced. Sell-the-fact setup is the trade. US-Iran day-two strikes; Brent toward $95; SPX put spread
+in the money at +129%.</p>
 
-<p><strong>The driver.</strong> Not the events — those were all priced. It's what comes next: Adobe tonight
-(AI as tailwind or tax?), FOMC June 16-17 (Warsh's first dot plot, zero cuts still priced at 96%), and
-whether the Brent call spread's $100 strike is now only $6.50 away. The book was already positioned for all
-of it.</p>
+<p><strong>The driver.</strong> Oracle's capex guide is the read-through for the whole AI infrastructure
+cohort: if Oracle needs $70bn per year, Microsoft/Google/Amazon face the same equation. The market hasn't
+priced the capital-structure consequence of the AI buildout — only the revenue upside.</p>
 
-<p><strong>So what to do.</strong> Hold all positions. The SPX put spread is in the money (+129%) — keep it
-through FOMC. The oil longs are earned. The short-EUR/USD sell-the-fact is running. The rates pre-positions
-(short-2Y, steepener) have their catalyst next week. Do not add in front of Adobe tonight; let the print
-open the CSP entry gate for idea 102.</p>
+<p><strong>So what to do.</strong> Hold all positions. The Oracle note window is open (idea 101). The ECB
+sell-the-fact is pending (MM-012). The oil longs are earned. The SPX hedge is in the money. Do not add
+before Adobe tonight — the CSP entry gate (idea 102) opens post-print only.</p>
 """,
 
     "correlation_regime": """
-<p><strong>1. Equities and bonds decoupled again — and this time the right way for the book.</strong> Yesterday
-S&amp;P -1.62% / Nasdaq -1.98% while the 10Y held at 4.52% and gold rose +0.80% to $4,104. The safe-haven
-rotation is intact: when geopolitics escalate, the bond and gold bid follows.</p>
+<p><strong>1. Equities and bonds decoupled again — the safe-haven rotation is working.</strong> Yesterday:
+S&amp;P -1.62% / Nasdaq -1.98% while the 10Y held at 4.52% and gold +0.80% to ~$4,104. Geopolitical
+escalation → bond and gold bid. This is the barbell the book holds — long both tails simultaneously.</p>
 
-<p><strong>2. EUR/USD and the ECB outcome are decoupled — classic sell-the-fact.</strong> The ECB delivered
-the most widely-priced hike in years and EUR barely moved (+0.02% on the day to 1.1533). The differential
-compression happened before the announcement; the short-EUR/USD trade benefits from the slow grind lower as
-the policy divergence continues with the Fed on hold.</p>
+<p><strong>2. EUR/USD and the ECB decision are the live cross-asset watch today.</strong> EUR/USD ~1.15
+pre-decision: if +25bp delivers as consensus, the sell-the-fact dynamic begins. If EUR barely moves on
+delivery (as the rate differential is fully priced), that IS the confirmation of the trade thesis — not
+a contradiction of it. Watch EUR/USD in the hour after the announcement.</p>
 
-<p><strong>3. Brent and equities are re-correlating on the upside — but for the wrong reason.</strong> Brent
-$93.50 rising toward $95 is an oil war story; the equity futures bounce after "strikes complete" is a
-ceasefire story. The two should not trade together. When they converge, the Brent premium stays more
-durable than the equity bid.</p>
+<p><strong>3. Brent and equities are telling different stories.</strong> Brent rising toward $95 is an
+oil-war supply story. Equity futures bouncing on "strikes complete" is a ceasefire-optimism story.
+These should not trade together for long — the physical Strait blockade is more durable than the
+headline-optimism bid. When they diverge, Brent stays bid longer.</p>
 """,
 
     "vol_skew": """
@@ -1049,15 +1068,15 @@ is six days away.</p>
 """,
 
     "sector_rv": """
-<p><strong>Leading:</strong> Energy producers (Brent $93.50 and rising), gold/metals (dual safe-haven + real-
-rate bid at $4,104), European financials (ECB hike done = NIM relief). <strong>Lagging:</strong> US tech/AI
-semis (Nasdaq -1.98% yesterday, NVDA/AMD/AVGO in range-mode), European luxury (LVMH: ECB hike + Iran
-headline = twin headwind).</p>
+<p><strong>Leading:</strong> Energy producers (Brent ~$93-95 and rising), gold/metals (dual safe-haven + real-
+rate bid at ~$4,104), European financials (ECB decision PENDING today — if hikes as expected, NIM relief).
+<strong>Lagging:</strong> US tech/AI semis (Nasdaq -1.98% yesterday on Oracle capex panic; NVDA/AMD/AVGO
+in range-mode), European luxury (LVMH: energy inflation + ECB tightening = twin headwind).</p>
 
-<p><strong>RV:</strong> Long DAX / short Nasdaq (MM-2026-010) should be recovering — Nasdaq -1.98% yesterday
-was a tailwind for the ratio; ECB hike today is a DAX financials tailwind. The ratio had dipped toward 0.949
-(vs 0.943 stop) but today's dynamics should put distance between us and the stop. This is the structural case
-the trade was built for: ECB hiking = European banks rerate; US tech premium compresses on rates + war.</p>
+<p><strong>RV:</strong> Long DAX / short Nasdaq (MM-2026-010) should recover today — Nasdaq -1.98% yesterday
+was a tailwind; ECB decision (PENDING) is the catalyst for the DAX financials leg. The ratio dipped toward
+0.949 (vs 0.943 stop) and today's dynamics should provide recovery. This is the structural case the trade
+was built for: ECB rate hike = European banks rerate; US tech premium compresses on capex shock + war.</p>
 """,
 
     "positioning": """
@@ -1100,11 +1119,12 @@ the Bloomberg $130 forecast is the tape, not the tail. The SPX vol curve has not
     "book_outlook": {
         "commentary": (
             "The book's best day yet on the derivatives side: the <b>SPX put spread is in the money at +129%</b>, "
-            "the Brent call spread's $100 strike is only $6.50 away, and the short-EUR/USD sell-the-fact is running. "
-            "The equity sleeve remains the pressure point — Micron 25.8% concentration is squarely in the AI semis "
-            "correction — but the <b>hedge book has now done more than offset the equity drag</b>. Today's "
-            "architecture: Oracle post-print dilution overhang on the semis/tech book; ECB DONE (EUR/USD sell-the-fact); "
-            "Brent climbing toward $95; Adobe reports tonight (do NOT pre-position, let it open the CSP entry gate)."
+            "the Brent call spread's $100 strike is only ~$6 away, and MM-012 (short EUR/USD) is positioned for "
+            "the ECB sell-the-fact that fires TODAY. The equity sleeve remains the pressure point — Micron 25.8% "
+            "concentration is squarely in the AI semis correction — but the <b>hedge book has now done more than "
+            "offset the equity drag</b>. Today's live events: ECB decision PENDING (sell-the-fact setup on delivery); "
+            "Oracle post-print capex panic overhang on semis/tech (RPO $638B confirmed, $90-95B capex commitment "
+            "is the shock); Brent climbing toward $95; Adobe reports tonight (do NOT pre-position)."
         ),
         "outperform": [
             {"name": "Brent positions (MM-002, MM-003, MM-011)", "why": "Brent $93.50 climbing toward $95, Strait at "
@@ -1113,8 +1133,8 @@ the Bloomberg $130 forecast is the tape, not the tail. The SPX vol curve has not
             {"name": "Xetra-Gold (4GLD)", "why": "Gold at $4,104 (+0.80% yesterday) running on both engines: "
              "geopolitical safe haven (day-2 strikes) and real-rate compression (10Y at 4.52%, soft core). "
              "Dual bid — do not trim."},
-            {"name": "Short EUR/USD (MM-012)", "why": "The ECB hike landed, EUR barely moved — sell-the-fact running "
-             "perfectly. Lagarde's press conference signals confirm: 'data-dependent' language = EUR grind lower."},
+            {"name": "Short EUR/USD (MM-012)", "why": "ECB decision PENDING today — sell-the-fact trigger fires on "
+             "delivery. EUR ~1.15 pre-decision = buy-the-rumour fully priced. Lagarde presser tone sets the pace."},
             {"name": "SPX put spread (MM-008)", "why": "Now in the money at ~$80 vs $35 premium paid (+129%). Hold "
              "through FOMC Jun 16-17 — the final catalyst in the 26-day window."},
         ],
@@ -1123,9 +1143,8 @@ the Bloomberg $130 forecast is the tape, not the tail. The SPX vol curve has not
              "correction. Oracle dilution overhang bleeds across the cohort. The concentration is the amplifier."},
             {"name": "NVDA / AVGO / AMD", "why": "Same AI-capex-doubt complex. Oracle's $20B raise signals OCI needs "
              "capital at scale — the cohort de-rates on the bill, not the revenue. Range-bound at best."},
-            {"name": "LVMH (MC FP)", "why": "ECB hike done but the European discretionary multiple is still "
-             "compressed: consumer confidence soft, energy inflation eating luxury budgets, euro volatility "
-             "as the presser plays out."},
+            {"name": "LVMH (MC FP)", "why": "ECB decision today + energy inflation = twin headwind for European "
+             "luxury: rate tightening compresses the multiple; consumer budgets squeezed by oil prices."},
             {"name": "US Treasury 1.25% 2031", "why": "The underwater bond is above water on a mark-to-live basis "
              "as the 10Y stays at 4.52%, but it is still the tail risk if Warsh delivers hawkish dots next week."},
         ],
@@ -1145,16 +1164,18 @@ the Bloomberg $130 forecast is the tape, not the tail. The SPX vol curve has not
     },
 
     "consensus": """
-<p><strong>Consensus BID:</strong> Oracle dilution is a fundamental problem, not just a positioning event —
-$20bn of new paper means EPS per share is impaired and the re-rate requires multiple years of OCI growth
-just to get back to where it was. The stock is correctly -10% and could go lower as lockup expiry + dilution
-absorption plays out.</p>
+<p><strong>Consensus BID:</strong> Oracle's capex shock is a structural problem — $70bn FY27 capex + $20-25bn
+prepayments = ~$90-95bn annual capital commitment from a ~$70bn revenue company. The $40bn raise is just
+year one. The equity is correctly down 7-11% because the free-cash-flow inflection is now 2-3 years away,
+not 12-18 months, and each subsequent year will need similar capital raises. The AI theme is right but
+Oracle's equity structure makes it uninvestable at current multiples.</p>
 
-<p><strong>The strongest argument against — the OFFER:</strong> Oracle grew OCI 93% YoY and its $553bn RPO
-is the largest order book in enterprise software history. The dilution is the cost of funding the pipeline
-that has already been sold. The <em>fundamental value</em> is not impaired; the equity-per-share math is
-temporarily impaired. A capital-protected note that takes the downside out of the equation and participates
-in the re-rate is exactly the right structure — and it's available today.</p>
+<p><strong>The strongest argument against — the OFFER:</strong> Oracle's RPO surged to ~$638bn — the AI
+demand is not only confirmed, it is accelerating. The $90-95bn capex is funding a pipeline that has
+already been contracted. A company that can grow its OCI backlog by $85bn in one quarter and convert it
+at 93% YoY growth is not impaired — it is capital-constrained. A structure (note, protected equity)
+that lets you hold the conviction without the equity-dilution risk is the right instrument. The note
+window is open today.</p>
 """,
 
     "one_chart": """
@@ -1176,18 +1197,22 @@ full intrinsic ($300). Hold through FOMC — this is exactly what the hedge was 
          "asymmetry": "DONE: core undershoot = front-end relief confirmed. Risk is energy base dragging core higher next month.",
          "dir": "down"},
         {"day": "Wed", "date": "Jun 10 ✓",
-         "event": "Oracle (ORCL) Q4 FY26 — PRINTED: beat + diluted",
-         "consensus": "Actual EPS $2.11 vs $1.97 est; OCI revenue +93% to $4.9bn; total revenue $19.2bn (rec.); RPO $553bn. Then: $20bn capital raise announced.",
-         "view": ("Fundamentals beat, $20B raise punished the stock (-10%+ AH). The AI-capex thesis is intact; the equity "
-                  "hangover is real. Capital-protected note (idea 101) is the post-print entry: protect against dilution, "
-                  "participate in the OCI re-rate."),
-         "asymmetry": "DONE: note window open. If OCI growth accelerates in Q1 FY27, dilution absorbed faster.",
+         "event": "Oracle (ORCL) Q4 FY26 — PRINTED: capex panic selloff",
+         "consensus": "Revenue ~$19.2bn (slight beat), OCI +93%, Cloud +47%, RPO surged to ~$638bn. "
+                      "FY26 capex: $55.7bn (above ~$50bn guide). FY27 guided ~$70bn + $20-25bn prepayments. "
+                      "~$40bn debt+equity raise (~$20bn share sale). Stock -7 to -11% AH.",
+         "view": ("Demand confirmed ($638B RPO); capital structure is the problem ($90-95bn annual commitment). "
+                  "Market read: capital and capacity problem, not a demand problem. Capital-protected note (idea 101): "
+                  "absorbs dilution hangover, participates in OCI re-rate. Entry window NOW OPEN."),
+         "asymmetry": "DONE: note window open. If OCI growth accelerates in Q1 FY27 without further raises, re-rate.",
          "dir": "down"},
-        {"day": "Thu", "date": "Jun 11 ✓ (today)",
-         "event": "ECB rate decision — DONE: +25bp to 2.25%",
-         "consensus": "+25bp delivered. Lagarde press conference in progress — 'data-dependent' language = pause signal.",
-         "view": "Sell-the-fact script running. EUR/USD at 1.1533 — barely moved on the hike. MM-012 short EUR/USD working.",
-         "asymmetry": "DONE: pause signal = EUR/USD grind lower; any 'further hikes' language = short-term EUR spike (respect 1.182 stop).",
+        {"day": "Thu", "date": "Jun 11 ← TODAY (PENDING)",
+         "event": "ECB rate decision — +25bp to 2.25% PENDING (consensus ~99%)",
+         "consensus": "+25bp expected at ~99%; first hike since September 2023. EUR/USD ~1.15 pre-decision.",
+         "view": "Sell-the-fact setup: EUR was bid from 1.08 to 1.15 pricing this hike. Once delivered, the "
+                 "marginal EUR buyer is done. Lagarde's presser tone ('data-dependent pause' vs 'further hikes') "
+                 "sets the EUR/USD direction post-decision. MM-012 is the trade.",
+         "asymmetry": "Delivery + pause signal: EUR/USD -0.5 to -1%; 'further hikes' language: EUR spike then fade (respect 1.182 stop)",
          "dir": "down"},
         {"day": "Thu", "date": "Jun 11 (tonight)",
          "event": "Adobe (ADBE) Q2 — after close",
@@ -1207,7 +1232,7 @@ full intrinsic ($300). Hold through FOMC — this is exactly what the hedge was 
 
     "what_changes_mind": """
 <ul>
-<li><strong>MM-2026-001 · Short EURAUD:</strong> close above 1.660 after Lagarde's press conference today. At ~1.636; stop 1.662. ECB DONE — now watching presser language.</li>
+<li><strong>MM-2026-001 · Short EURAUD:</strong> close above 1.660. At ~1.636; stop 1.662. ECB decision PENDING today — Lagarde's presser post-decision is the live catalyst. 'Further hikes' language = stop test.</li>
 <li><strong>MM-2026-002 · Long Brent:</strong> exit on weekly close below $87 — war premium gone. At ~$93.50, climbing. The Strait is still shut. Hold.</li>
 <li><strong>MM-2026-003 · Long Brent/Short WTI spread:</strong> discretionary close below $2.00. At ~$3.40. Stop 1.50. Day-2 strikes widen the quality premium.</li>
 <li><strong>MM-2026-004 · Short US 10Y yield:</strong> stop at 4.65%. At ~4.52%. CPI core undershot (2.9%) — working. FOMC Jun 16-17 is the catalyst. Do not add.</li>
@@ -1215,28 +1240,30 @@ full intrinsic ($300). Hold through FOMC — this is exactly what the hedge was 
 <li><strong>MM-2026-007 · Short USDJPY:</strong> stop 163.00. At ~160.2. BoJ Sept hike >50% priced. Carry unwind coming, not today.</li>
 <li><strong>MM-2026-008 · SPX put spread:</strong> now in the money (+129%). Hold through FOMC Jun 16-17 — final catalyst inside Jun 27 expiry. No change.</li>
 <li><strong>MM-2026-009 · 2s10s steepener:</strong> min hold to July 16. At ~+43bp; target +60bp. FOMC is the catalyst. Hold.</li>
-<li><strong>MM-2026-010 · Long DAX / short Nasdaq:</strong> stop ratio 0.943. ECB hike done (DAX financials tailwind); Nasdaq -1.98% yesterday. Ratio recovering. Hold.</li>
-<li><strong>MM-2026-011 · Brent 100/115 call spread:</strong> gaining. $100 strike only $6.50 away at $93.50. Hold. Exit: Brent falls below $85 for 3 sessions.</li>
-<li><strong>MM-2026-012 · Short EURUSD:</strong> stop 1.182. At 1.1533. ECB hiked and EUR barely moved — sell-the-fact running. Hold.</li>
+<li><strong>MM-2026-010 · Long DAX / short Nasdaq:</strong> stop ratio 0.943. ECB decision PENDING today (DAX financials tailwind if confirmed); Nasdaq -1.98% yesterday on Oracle capex panic. Ratio should recover. Hold.</li>
+<li><strong>MM-2026-011 · Brent 100/115 call spread:</strong> gaining. $100 strike only ~$6 away at ~$93-95. Hold. Exit: Brent falls below $85 for 3 sessions.</li>
+<li><strong>MM-2026-012 · Short EURUSD:</strong> stop 1.182. EUR ~1.15 pre-ECB decision (PENDING today). Sell-the-fact trigger fires on delivery. Hold.</li>
 <li><strong>MM-2026-013 · Short US 2Y yield:</strong> stop 4.35%; min hold 30 days. At ~4.15%. Core CPI soft. FOMC next week is the payoff. Do not add.</li>
 </ul>
 """,
 
     "client_ammo": [
-        {"q": "Oracle beat everything — why is the stock down 10%?",
-         "a": ("Because the market is pricing the dilution, not the fundamentals. Oracle raised $20bn in new equity "
-               "and debt — which is real dilution math: more shares, lower EPS per share in the near term. But it "
-               "is raising that capital to fund the $553bn order backlog that has already been sold. The correct "
-               "long-term read is that OCI growing at 93% YoY is funding the next phase of AI infrastructure, and "
-               "the capital raise is confidence, not distress. A capital-protected note — full downside protection "
-               "against the hangover, 70-80% participation in the re-rate — is the right structure. "
-               "The window is open now.")},
-        {"q": "The ECB just hiked and EUR barely moved. Is the trade over?",
-         "a": ("No, it's just beginning. The hike was 99% priced — the buy-the-rumour crowd is now sitting long "
-               "EUR at 1.162 (the pre-hike high) and the position is flat. They need Lagarde to signal further "
-               "hikes to make money; she's sounding data-dependent and measured. The sell-the-fact unwind "
-               "takes 2-5 sessions to play out; we're at 1.1533 and the short EUR/USD (MM-012) has room to "
-               "~1.12. ECB hiking into a soft European growth backdrop is the thesis; the hike is the catalyst.")},
+        {"q": "Oracle beat everything — why is the stock down 7-11%?",
+         "a": ("Because the market is pricing the capex bill, not the revenue beat. Oracle's RPO surged to $638bn "
+               "— the largest AI backlog in enterprise software history. The demand is confirmed. The problem is "
+               "the cost: FY26 capex came in at $55.7bn (above the $50bn guide), then Oracle guided FY27 to "
+               "$70bn PLUS $20-25bn in component prepayments. That's ~$90-95bn in capital commitment in one "
+               "fiscal year from a company with $70bn in annual revenue. To fund it: $40bn raise including "
+               "$20bn in new shares. The market read: capital and capacity problem, not a demand problem. "
+               "A capital-protected note is the right instrument — you get 70-80% participation in the OCI "
+               "re-rate if Oracle executes, and 100% capital protection if the capital structure buckles.")},
+        {"q": "The ECB decision is today — what should I expect?",
+         "a": ("The hike is already priced — +25bp to 2.25% at near-100% probability. EUR ran from 1.08 to 1.15 "
+               "pricing this in. So the hike delivery is a non-event by itself. What matters is Lagarde's press "
+               "conference: if she signals 'data-dependent pause' (the base case, given the inflation is energy-led "
+               "and the European growth backdrop is soft), EUR fades from ~1.15 and the short EUR/USD trade "
+               "(MM-012) accelerates. If she signals 'further hikes ahead', EUR spikes short-term, we respect "
+               "the 1.182 stop. The bet is on the presser, not the hike.")},
         {"q": "We've had two days of US-Iran strikes. Is it escalating or de-escalating?",
          "a": ("Neither — and that is the correct answer. The market keeps pricing a binary (deal or war). The "
                "political reality is a managed, on-again-off-again conflict: Trump wants both the deal headline "
@@ -1253,40 +1280,46 @@ full intrinsic ($300). Hold through FOMC — this is exactly what the hedge was 
     ],
 
     "ideas_note": (
-        "<p>Two entry gates opened today and one still pending. The Oracle capital-protected note (idea 101) is "
-        "live post-print: the $20bn dilution overhang is the price of entry into the OCI re-rate, and the note "
-        "structure absorbs it. The ECB hike confirmed EUR/USD sell-the-fact (idea 1) and the Brent call spread "
-        "(idea 11) has its $100 strike only $6.50 away. Adobe tonight is the gate for idea 102 CSP — do not "
-        "pre-position, wait for the print. No net-new ideas today: the existing 17 ideas cover every "
-        "regime dimension, and forcing a new one in front of FOMC Jun 16-17 adds noise, not edge.</p>"
+        "<p>Two entry triggers are live today. The Oracle capital-protected note (idea 101) window opened "
+        "post-print last night: the ~$90-95bn annual capex commitment is the near-term overhang; the $638bn "
+        "RPO is the long-term thesis. The note structure holds both. The ECB decision is PENDING today "
+        "(idea 1 / MM-012: sell-the-fact on delivery) — the entry thesis fires once the hike is confirmed "
+        "and Lagarde's presser tone is heard. The Brent call spread (idea 11) has its $100 strike "
+        "only ~$6 away at ~$93-95. Adobe tonight is the gate for idea 102 CSP — do not pre-position. "
+        "No net-new ideas today: the 17 existing ideas cover every regime dimension.</p>"
     ),
 
     "event_radar_note": (
-        "<p>Three of five catalysts are now behind us: CPI (hot headline, soft core ✓), Oracle (beat + diluted ✓), "
-        "ECB (hiked +25bp, presser live ✓). Two remain: Adobe after tonight's close (AI tax or tailwind — "
-        "the CSP entry gate opens post-print) and Kevin Warsh's first FOMC dot plot June 16-17 (the "
-        "biggest remaining macro event, zero-cut vs pause-signal asymmetry). The book is pre-positioned "
-        "for the FOMC via short-2Y and the steepener; no action needed before the print.</p>"
+        "<p>Two of five catalysts are confirmed behind us: CPI Jun 10 (hot headline, soft core ✓) and Oracle "
+        "Jun 10 AH (capex panic selloff ✓). Three remain: ECB Jun 11 (PENDING TODAY — +25bp consensus, "
+        "sell-the-fact on delivery), Adobe after tonight's close (AI tax or tailwind — CSP entry gate opens "
+        "post-print), and Kevin Warsh's first FOMC dot plot June 16-17 (the biggest remaining macro event, "
+        "zero-cut vs pause-signal asymmetry). The book is pre-positioned for the FOMC via short-2Y and "
+        "the steepener; no action needed before the Adobe print.</p>"
     ),
 
     "burry_tell": (
-        "Oracle's $20bn capital raise is proof the AI infrastructure build requires more capital than the market "
-        "originally priced, and nobody is asking what happens when the other hyperscalers need to do the same. "
-        "Microsoft, Google, Amazon and Meta have each guided $70-100bn in capex for 2026. If each of them "
-        "needs to raise external capital to fund it — Oracle just proved the equity market will sell you on the "
-        "announcement — the AI infrastructure trade quietly becomes a <em>dilution cycle</em>, not a "
-        "multiple expansion. The structural point: the $553bn backlog is the most bullish number in "
-        "enterprise software history, but the $20bn raise to fund it suggests the free-cash-flow inflection "
-        "is 18-24 months away, not now. Everyone is pricing the backlog; nobody is pricing the capital structure "
-        "drag between now and the inflection."
+        "Oracle guided $70bn in FY27 capex plus $20-25bn in component prepayments — roughly $90-95bn "
+        "total capital commitment from a company with $70bn in annual revenue. The RPO of $638bn means the "
+        "demand is real. The problem is the ratio: Oracle is committing more capital in one year than it "
+        "generates in revenue. Nobody is asking what this implies when Microsoft ($70-100bn), Google, "
+        "Amazon and Meta face the same equation. The AI infrastructure trade has quietly become a "
+        "<em>capital markets trade</em> — who can fund the build without a structural dilution cycle? "
+        "Oracle just showed the equity market's answer: it will punish the announcement even when "
+        "the demand is confirmed. The structural point that nobody is pricing: the $638bn RPO is the most "
+        "bullish demand number in enterprise software history, but the capital structure required to deliver "
+        "it means the free-cash-flow inflection is 3-4 years away, not 12-18 months. Pricing the backlog "
+        "without pricing the capital drag is the consensus error."
     ),
 
     "earnings_summary": (
-        "Oracle: POST-PRINT. Beat on fundamentals (EPS $2.11 vs $1.97; OCI +93%; RPO $553bn) then announced "
-        "$20bn capital raise — stock -10%+ AH. The note structure (idea 101) is the entry: downside protection "
-        "against the dilution, participation in the OCI re-rate. SailPoint: POST-PRINT, beat but guided cautiously "
-        "(-11% pre-market). Adobe: PRE-PRINT tonight — EPS $5.01 est, rev $6.43-6.48bn, implied move ±9.47%. "
-        "CSP entry gate (idea 102: $385 put) opens post-print. Do not pre-position."
+        "Oracle: POST-PRINT capex panic. Revenue ~$19.2B (slight beat), OCI +93%, Cloud +47%, RPO ~$638B. "
+        "FY26 capex $55.7B (above ~$50B guide); FY27 guided ~$70B + $20-25B prepayments; ~$40B raise. "
+        "Stock -7-11% AH. Capital and capacity problem, not a demand problem. Note structure (idea 101) "
+        "is the entry: protect against the capital-structure overhang, participate in the OCI re-rate. "
+        "SailPoint: POST-PRINT, beat but cautious guide (-11% pre-market). "
+        "Adobe: PRE-PRINT tonight — EPS $5.01 est (Finnhub), rev $6.43-6.48B, implied move ±9.47%. "
+        "CSP gate (idea 102: $385 put) opens post-print. Do not pre-position."
     ),
     "earnings_why": (
         "Oracle and Adobe are the two software/cloud prints that bracket the AI-capex debate the macro book is "
