@@ -951,58 +951,58 @@ brief = {
     "idea_rsi_data": idea_rsi_data,
 
     "dominant_theme": (
-        "HOT PPI (+6.5% YoY, BLS) + Kharg Island seizure threat + Oracle capex panic. May PPI is the "
-        "largest 12-month producer price rise since Nov 2022 — hawkish for Fed, headwind for rates pre-positions. "
-        "Trump threatened to seize Kharg Island (~90% of Iran's crude) and vowed Day-3 strikes — most oil-bullish "
-        "statement since the war; Brent toward $95-100. SpaceX IPO tomorrow (SPCX, $135/share, $75B raise — biggest ever). "
-        "ECB decision PENDING today. SPX put spread in the money (+129%). Adobe reports tonight."
+        "HOT PPI (+6.5% YoY, BLS) + ECB hike to 2.25% + Kharg Island seizure threat + Oracle capex panic. "
+        "May PPI is the largest 12-month producer price rise since Nov 2022 — hawkish for Fed, headwind for rates. "
+        "ECB delivered +25bp to 2.25% today (first in ~3 years); Lagarde pause signal confirmed; EUR/USD fading. "
+        "Trump threatened to seize Kharg Island (~90% of Iran's crude) — most oil-bullish statement since the war; Brent toward $95-100. "
+        "SpaceX IPO tomorrow (SPCX, $135/share, $75B raise — biggest ever). SPX put spread in the money (+129%). Adobe reports tonight."
     ),
 
     "summary_narrative": """
-<p><strong>Four themes dominate the June 11 tape — and one prior framing requires an immediate correction.</strong></p>
+<p>The dominant story this morning is a data correction that reframes the entire rates complex. BLS released
+May producer prices at <strong>+1.1% MoM and +6.5% YoY</strong> — the largest 12-month rise in
+final-demand PPI since November 2022 — with stage-1 intermediate demand surging +12.3% YoY (sources:
+BLS + Trading Economics, corroborated). The pipeline is not clearing; it is re-accelerating. The
+previous framing of PPI as soft was wrong and is corrected here in full. What it means for monetary
+policy is blunt: Warsh walks into FOMC June 16–17 with CPI at 4.2% headline <em>and</em> PPI at
++6.5%. He cannot credibly signal a dovish tilt. The rates pre-positions (short 2Y MM-013, short 10Y
+MM-004) entered on a soft-inflation thesis that PPI has materially challenged — they are flagged
+honestly under pressure, stops are risk-live, and no size is added.</p>
 
-<p><strong>1. May PPI is HOT — pipeline re-accelerating.</strong> BLS released May producer prices this
-morning: final-demand PPI <strong>+1.1% MoM and +6.5% YoY</strong>, the largest 12-month rise since
-November 2022 (sources: BLS bls.gov/news.release/archives/ppi_06112026.htm + Trading Economics).
-Stage-1 intermediate demand rose +12.3% YoY — the pipeline is not clearing; it is accelerating. The
-previous framing of PPI as soft was wrong and is corrected here. The honest re-mark: Warsh walks into
-FOMC June 16-17 with CPI at 4.2% headline <em>and</em> PPI at +6.5%. He cannot credibly signal a
-dovish tilt. The rates pre-positions (short 2Y MM-013, short 10Y MM-004) now face a genuine headwind;
-they are flagged honestly as under pressure rather than as straightforward winning setups.</p>
+<p>Simultaneously, the geopolitical escalation reached a new threshold. Trump vowed a third consecutive
+night of strikes on Iran and — in the most oil-bullish single statement since hostilities began —
+threatened to physically <em>seize Kharg Island</em>, Iran's primary oil export terminal handling
+roughly <strong>90% of the country's crude exports</strong> (~2.5-3M bbl/day). Even as a threat this
+is unprecedented; a seizure removes more supply from world markets in one move than any shock in modern
+history. (Sources: Bloomberg, Axios, CNBC.) Brent is pushing toward $95–100 and the call spread's
+$100 strike is only ~$5–6 away. The counterweight worth acknowledging: the UAE and Iran held their
+<strong>first face-to-face meeting since the war began</strong> — a de-escalation channel is open.
+(Sources: Bloomberg, Al Jazeera.) Bloomberg's $130/bbl July–August forecast is now the base case if
+the Strait holds at 15% capacity, not the tail.</p>
 
-<p><strong>2. Kharg Island — escalation to a new level.</strong> Trump vowed a third consecutive night
-of strikes on Iran and threatened to <em>seize Kharg Island</em>, Iran's main oil export terminal
-handling roughly <strong>90% of Iran's crude exports</strong> (~2.5-3M bbl/day). Even as a threat,
-this is the most oil-bullish single statement since hostilities began. (Sources: Bloomberg, Axios, CNBC.)
-The counterweight: UAE and Iran held their <strong>first face-to-face meeting since the war began</strong>
-— a de-escalation channel now open. (Sources: Bloomberg, Al Jazeera.) Brent moves toward $95-100. The
-$100 strike on the call spread (MM-011) is ~$5-6 away. Bloomberg's $130/bbl July-August forecast is
-now the base case, not the tail, if the Strait stays at 15% capacity.</p>
+<p>Adding to the complexity, Oracle's earnings from Tuesday night continue to weigh on the AI
+semiconductor complex. Revenue of ~$19.2bn was a slight beat, OCI grew 93% and RPO surged to
+<strong>~$638bn</strong> — the largest confirmed AI backlog in enterprise software history. The demand
+is not in question. What punished the stock 7–11% after hours was the capital-structure read: FY26
+capex at $55.7bn (above guide), FY27 guided at ~$70bn plus $20–25bn in component prepayments, funded
+by a $40bn raise. Capital and capacity problem, not demand. The capital-protected note (idea 101) is
+the post-print vehicle: absorb the dilution overhang, participate in the OCI re-rate.</p>
 
-<p><strong>3. Oracle capex panic (from last night's close).</strong> Revenue ~$19.2bn (slight beat),
-OCI +93%, Cloud +47%, RPO surged to <strong>~$638bn</strong> from ~$553bn — the largest confirmed AI
-backlog in enterprise software history. The AI demand thesis is confirmed. What punished the stock
-(-7 to -11% AH): FY26 capex $55.7bn (above guide), FY27 guided ~$70bn + $20-25bn prepayments, ~$40bn
-raise. Capital and capacity problem, not a demand problem. The capital-protected note (idea 101) is the
-post-print entry: absorb the dilution overhang, participate in the OCI re-rate.</p>
+<p>Rounding out the session, the <strong>ECB delivered its +25bp hike to 2.25%</strong> today — the
+first in nearly three years — explicitly citing Iran-war-driven inflation (euro-area CPI 3.2% in May,
+above the 2% target). Lagarde then said the ECB is <em>"not pre-committing to a particular rate path"</em>,
+which is the pause signal that removes the forward catalyst for EUR longs. Sell-the-fact confirmed:
+EUR/USD fading from ~1.15 post-delivery. Hot PPI adds a USD-broadly-supportive overlay, widening the
+carry advantage. MM-012 has dual confirmed tailwinds. (Sources: CNBC, Bloomberg, Reuters, FXStreet.)
+And tomorrow SpaceX debuts on Nasdaq under ticker <strong>SPCX</strong> at $135/share, ~$1.77T
+valuation, ~$75bn raise (Goldman lead, Source: CNBC) — the largest IPO in history, whose cross-market
+implication is a $75bn liquidity drain from existing equity portfolios, disproportionately from tech.</p>
 
-<p><strong>4. SpaceX IPO — biggest in history, debuts tomorrow.</strong> Priced last night at
-$135/share, ~$1.77T valuation, ~$75bn raise, Nasdaq debut tomorrow (Jun 12) under ticker
-<strong>SPCX</strong>, Goldman lead. (Source: CNBC.) The cross-market impact: $75bn in capital
-allocation to a single new issue is the largest IPO liquidity drain in history. Cash deployment into
-SPCX is a marginal headwind for risk assets tonight and tomorrow.</p>
-
-<p>The <strong>ECB delivered its +25bp hike to 2.25%</strong> today (Jun 11) — the first hike in nearly
-three years — explicitly citing Iran-war-driven inflation (euro-area CPI 3.2% in May, above the 2%
-target). Lagarde flagged upside risks to inflation, downside risks to growth, and said the ECB is
-<em>"not pre-committing to a particular rate path"</em> — the pause signal. Sell-the-fact confirmed:
-EUR/USD fading from ~1.15 post-delivery, dual tailwind with hot PPI supporting USD broadly. (Sources:
-CNBC, Bloomberg, Reuters, FXStreet.) MM-012 short-EUR thesis is executing.</p>
-
-<p>The SPX put spread (MM-2026-008) is <strong>in the money</strong> — S&amp;P -1.62% yesterday to
-~7,267, through the 7300 strike. Mark ~$80 vs $35 premium paid (+129%). Hot PPI + SpaceX IPO drain both
-add to equity headwind. FOMC Jun 16-17 is still inside Jun 27 expiry. Adobe reports tonight (idea 102
-CSP gate opens post-print; do not pre-position).</p>
+<p>The SPX put spread (MM-2026-008) is <strong>in the money at +129%</strong> — S&amp;P -1.62%
+yesterday to ~7,267, through the 7,300 strike, marking ~$80 against the $35 premium paid. Hot PPI,
+the SpaceX IPO drain and the raised probability of a hawkish FOMC surprise all add to the equity
+headwind into June 16–17. Adobe reports after tonight's close; the CSP entry gate (idea 102) opens
+post-print only.</p>
 """,
 
     "takeaways": [
@@ -1296,26 +1296,31 @@ and gap out when the hike narrative re-emerges.</p>
 """,
 
     "tape_missing": """
-<p><strong>1. The Oracle dilution story is masking the fundamental re-rate.</strong> The market punished the
-raise (-10% AH) and is pricing the equity dilution math. It is not yet pricing what Oracle's $638bn RPO
-converts to in OCI free cash flow in 18-24 months. The note structure (capital-protected, 70-80% participation)
-lets you hold the backlog conviction without the dilution hangover.</p>
+<p><strong>The most important thing the tape is not pricing is the FOMC hawkish tail.</strong> The
+96–98% hold probability means the market is positioned for an uneventful June 16–17 with no signal
+of any kind. Hot PPI at +6.5% YoY makes that assumption fragile: Warsh faces CPI 4.2% <em>and</em>
+PPI 6.5% in his first press conference as chair, and he cannot signal a dovish tilt without an
+immediate credibility problem. The non-trivial probability is now a hawkish surprise — an explicit
+hike bias or "further tightening may be warranted" — not the dovish pivot the market spent last
+year pricing. The SPX put spread is the correct hedge for this tail; MM-013 and MM-004 are exposed
+to it, and their stops matter in a way they did not a week ago.</p>
 
-<p><strong>2. The FOMC risk is now MORE hawkish than the market prices.</strong> The 96-98% hold probability
-means the market is priced for nothing. Hot PPI +6.5% YoY changes the calculus: Warsh faces CPI 4.2% AND PPI
-6.5% in his first presser. He cannot signal a dovish tilt without a credibility problem. The non-trivial
-asymmetry is now a HAWKISH surprise, not a dovish signal. The SPX put spread is the correct hedge for this
-tail; MM-013 and MM-004 are exposed to it — their stops matter now.</p>
+<p>Just behind that is the Kharg Island seizure scenario, which is also nowhere in the price.
+Trump threatened to physically seize the terminal handling ~90% of Iran's crude exports (~2.5-3M
+bbl/day). If executed, that is a supply shock with no modern precedent: Brent would gap to $110–130
+and the $100 call spread strike (MM-011, only ~$5–6 from spot) would be deep in the money within
+sessions. The VIX curve has not priced this tail at all. The oil longs and the call spread are the
+right instruments for a scenario the equity market has collectively decided to treat as rhetoric —
+which may be correct, but at current oil prices the asymmetry of being wrong is enormous.</p>
 
-<p><strong>3. Kharg Island physical seizure is not in the price.</strong> Trump threatened to seize Kharg
-Island — ~90% of Iran's crude exports (~2.5-3M bbl/day). If executed: Brent gaps to $110-130. The $100
-call spread strike (MM-011) is only ~$5-6 away. The VIX curve has not priced this tail. The oil longs and
-call spread are the right instruments for a scenario the equity market has entirely ignored.</p>
-
-<p><strong>4. SpaceX IPO liquidity drain is not in the VIX.</strong> The largest IPO in history ($75B raise)
-debuts tomorrow on Nasdaq. The cross-market allocation drag — cash pulled from existing equities to fund
-SPCX — is a marginal headwind for AI/tech that is not priced in the VIX term structure. Watch for
-tomorrow-dated equity selling that is IPO-driven, not macro-driven.</p>
+<p>Beyond that, the Oracle dilution story is obscuring the fundamental re-rate. The market punished
+the ~$40bn raise (-10% AH) and is pricing the equity dilution math in full. What it is not yet
+pricing is what Oracle's $638bn RPO converts to in OCI free cash flow in 18–24 months when the
+contracted pipeline begins deploying. The capital-protected note structure lets you hold the backlog
+conviction without taking the dilution hangover on the equity side — that asymmetry is not priced
+in the post-panic selloff level. Finally, the SpaceX IPO liquidity drag tomorrow ($75bn from
+existing portfolios) is a one-session headwind for AI/tech that is not in the VIX term structure
+and is widely underweighted as a market-impact factor.</p>
 """,
 
     "book_outlook": {
