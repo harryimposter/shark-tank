@@ -14,7 +14,11 @@ NEW NEWS (all June 11 2026, verified):
 - UAE and Iran held first face-to-face meeting since the war began (de-escalation). (Bloomberg, Al Jazeera)
 - SpaceX IPO priced $135/share, ~$1.77T valuation, 555.6M shares (~$75B raise),
   Nasdaq debut JUNE 12 under ticker SPCX, Goldman lead — biggest IPO ever. (CNBC)
-- ECB decision: TODAY Jun 11 — framed as PENDING throughout; do not assume result.
+- ECB decision: CONFIRMED DONE Jun 11 — hiked +25bp to 2.25%, first hike in ~3 years.
+  Explicitly cited Iran-war-driven inflation (euro-area CPI 3.2% May, above 2% target).
+  Lagarde: upside risks to inflation, downside risks to growth, "not pre-committing to a
+  particular rate path." Sources: CNBC, Bloomberg, Reuters, FXStreet (4 sources agree).
+  Sell-the-fact dynamic confirmed: EUR/USD fading from ~1.15 post-delivery.
 
 Run:  python gen_2026_06_11.py
 """
@@ -93,7 +97,7 @@ SCREENER_NOTES = {
 }
 
 # ── Regime ─────────────────────────────────────────────────────────────────────
-regime = "Hot PPI +6.5% YoY; Kharg Island Seizure Threat; Day-Three Strikes; SpaceX IPO Tomorrow"
+regime = "Hot PPI +6.5% YoY; ECB Hiked to 2.25%; Kharg Island Seizure Threat; SpaceX IPO Tomorrow"
 regime_note = (
     "Four themes collide on June 11. First: May PPI came in HOT — final-demand producer prices +1.1% MoM and "
     "+6.5% YoY (BLS, the largest 12-month rise since November 2022). Stage-1 intermediate demand surged +12.3% "
@@ -116,8 +120,12 @@ regime_note = (
     "Fourth and finally: SpaceX priced its IPO last night at $135/share with a ~$1.77T valuation, raising ~$75bn, "
     "the largest IPO in history. It debuts on Nasdaq tomorrow (Jun 12) under ticker SPCX, with Goldman as lead. "
     "The liquidity drag — $75bn in capital committed to a single new issue — is a cross-market event. "
-    "The ECB decision is TODAY (Jun 11) — +25bp to 2.25% is consensus at near-100% probability but has NOT "
-    "been announced as this script runs. FOMC June 16-17 is the terminal gate."
+    "The ECB DELIVERED the +25bp hike to 2.25% today (Jun 11) — its first hike in nearly three years. "
+    "The Bank explicitly cited Iran-war-driven inflation as the rationale, with euro-area CPI at 3.2% in May, "
+    "above the 2% target. Lagarde flagged upside risks to inflation and downside risks to growth, and pointedly "
+    "said the ECB is 'not pre-committing to a particular rate path' — the pause signal the sell-the-fact trade "
+    "needed. EUR/USD has faded from ~1.15 post-delivery, confirming the MM-012 short-EUR thesis. "
+    "FOMC June 16-17 is the terminal gate."
 )
 regime_log = book.update_regime_log(regime_log, regime, regime_note)
 
@@ -137,17 +145,18 @@ TRADE_ENRICHMENTS = {
             "spread between the eurozone and Australia."
         ),
         "fundamental_thesis": (
-            "The ECB decision is TODAY (Jun 11) — +25bp to 2.25% is consensus at near-100% probability, "
-            "but as yet unannounced. The 'buy the rumour, sell the fact' setup is the trade: EUR was bid "
-            "from 1.08 to ~1.15 as the market priced in this hike cycle. Once the hike is delivered, "
-            "the marginal buyer disappears, and the rate differential at these levels has already been "
-            "extracted. Lagarde's press conference tone ('data-dependent pause' vs 'further hikes') sets "
-            "the EUR direction into next week. The AUD carries a terms-of-trade tailwind from firm iron "
-            "ore (~$105/t). EURAUD drifting lower from 1.66 is consistent with the thesis."
+            "The ECB DELIVERED the +25bp hike to 2.25% today (Jun 11) — its first hike in nearly three "
+            "years — and the sell-the-fact dynamic is confirmed. EUR was bid from 1.08 to ~1.15 as the "
+            "market priced this hike cycle. Lagarde's press conference delivered exactly what the trade "
+            "needed: 'not pre-committing to a particular rate path' — a pause signal that removes the "
+            "marginal EUR buyer. EUR/USD fading post-delivery. Additionally, hot PPI (+6.5% YoY) adds a "
+            "USD-broadly-supportive overlay: the Fed must stay restrictive, which is USD-positive. Dual "
+            "tailwind confirmed. The AUD carries a terms-of-trade tailwind from firm iron ore (~$105/t). "
+            "EURAUD drifting lower from 1.66 is consistent with the thesis."
         ),
         "catalysts": [
-            "ECB Jun 11 decision (PENDING — +25bp consensus at ~99%; delivery = sell-the-fact trigger; "
-            "Lagarde presser wording on 'further hikes' vs 'data-dependent pause' is the live EUR driver)",
+            "ECB Jun 11 decision — DONE: +25bp to 2.25% delivered. Lagarde: 'not pre-committing' = "
+            "pause signal confirmed. Sell-the-fact unwind now active. EUR/USD fading from ~1.15.",
             "Iron ore price action (any Chinese demand headline or PBOC stimulus = AUD tailwind)",
             "RBA June meeting (if hawkish, AUD further supported vs EUR)",
             "FOMC Jun 16-17 (Fed hold = USD strengthens vs EUR, compresses EUR/AUD further)",
@@ -159,10 +168,10 @@ TRADE_ENRICHMENTS = {
         ),
         "breakdown_why": {
             "gap":          "3/3 — the cross is ~170 pips above the 2yr spread's implied fair value; "
-                            "a full-figure mispricing between a dovish-terminal ECB and an RBA still "
-                            "in tightening mode. Sell-the-fact setup intact pre-decision.",
-            "catalyst":     "2/2 — ECB Jun 11 decision (TODAY, PENDING) and FOMC Jun 16-17 are both "
-                            "near-dated, directly EUR-relevant events. Two dated catalysts in the window.",
+                            "a full-figure mispricing between a pause-signalling ECB and an RBA still "
+                            "in tightening mode. Sell-the-fact confirmed post-delivery.",
+            "catalyst":     "2/2 — ECB Jun 11 DELIVERED (+25bp, pause signal confirmed) and FOMC Jun 16-17 "
+                            "are both near-dated, directly EUR-relevant events. Two dated catalysts in the window.",
             "positioning":  "1/2 — EUR longs into the ECB are crowded (spec long at multi-year highs "
                             "vs AUD), providing squeeze fuel if Lagarde leans data-dependent pause.",
             "confirmation": "1/2 — the cross sold off from the 1.66 handle, giving one technical "
@@ -738,7 +747,7 @@ dashboard = [
     _row("Brent Crude", "brent",  _usd),
     _row("Gold (XAU)",  "gold",   _gold),
     _row("VIX",         "vix",    lambda v: f"{v:.2f}"),
-    {"name": "SOFR", "level": "~3.62%", "chg": "", "dir": "flat"},   # unchanged; ECB decision pending Jun 11
+    {"name": "SOFR", "level": "~3.62%", "chg": "", "dir": "flat"},   # unchanged; ECB delivered +25bp to 2.25% Jun 11
     {"name": "MOVE", "level": "~108 (est)", "chg": "", "dir": "flat"},
 ]
 
@@ -756,7 +765,7 @@ rates_levels = [
 ]
 
 NOTES = {
-    "MM-2026-001": "ECB decision PENDING today (Jun 11) — +25bp to 2.25% consensus at ~99%. EUR/USD ~1.15 pre-decision. Sell-the-fact thesis: once delivered, EUR longs unwind. Lagarde presser is the live catalyst. Stop 1.662. NOTE: hot PPI (+6.5% YoY) may complicate by supporting USD broadly.",
+    "MM-2026-001": "ECB DELIVERED +25bp to 2.25% today (Jun 11) — first hike in ~3 years. Lagarde: 'not pre-committing to a particular rate path' = pause signal confirmed. EUR/USD fading from ~1.15 post-hike. Sell-the-fact underway. Hot PPI (+6.5% YoY) adds USD-broadly-supportive overlay. Dual tailwind confirmed. Stop 1.662.",
     "MM-2026-002": "UPGRADED — Day-3 strikes vowed by Trump tonight; Kharg Island seizure THREATENED (~90% of Iran's crude). Most oil-bullish single statement since the war began. Brent moving toward $95-100. Bloomberg $130/bbl Jul-Aug if Strait stays shut. Counterweight: UAE-Iran held first talks. Conviction holds at max. Exit on weekly close below $87.",
     "MM-2026-003": "Building strongly. Brent-WTI spread widens on Kharg Island escalation — Brent-specific supply shock is what this spread was designed for. Structural case confirmed Day 3. Stop $1.50.",
     "MM-2026-004": "HEADWIND — re-mark required. Hot PPI (+1.1% MoM / +6.5% YoY, BLS Jun 11 — largest since Nov 2022) counters the soft core CPI (2.9%) that had been supporting the thesis. Pipeline re-accelerating. Warsh cannot look dovish with CPI 4.2% AND PPI 6.5%. Position ~8bp offside (entry ~4.44%, current ~4.52%). Stop 4.65% is now closer. Do not add; FOMC Jun 16-17 is the terminal gate — if Warsh signals pause, trade recovers; if hawkish, stop is hit.",
@@ -764,9 +773,9 @@ NOTES = {
     "MM-2026-007": "Near flat. USDJPY ~160.5. Hot PPI may support USD modestly vs JPY via higher US rate expectations. BoJ Sept hike >50% priced. MoF intervention ceiling at 163. Stop 163.00.",
     "MM-2026-008": "BEST PERFORMER: put spread IN THE MONEY. S&P fell -1.62% to ~7,267, below 7300 strike. Mark ~$80 vs $35 premium paid (+129%). Hot PPI → hawkish Fed → equity headwind. SpaceX IPO tomorrow ($75B raise) = liquidity drain. Hold through FOMC Jun 16-17; do not lift early.",
     "MM-2026-009": "RE-ASSESS. Hot PPI (+6.5% YoY) COMPLICATES the steepener: if PPI feeds into long-end inflation expectations, 10Y could rise with the front end instead of steepening. Thesis was: front end anchored by Fed hold, long end drifts lower. Hot PPI: long end could sell off faster. The steepener still works if Warsh signals pause (front end falls), but the short leg is now under PPI pressure. Min hold to July 16; monitor. Do not add.",
-    "MM-2026-010": "Oracle capex panic confirmed Nasdaq de-rate. ECB PENDING today — if confirmed, DAX financials get NIM tailwind. Hot PPI may support European financials additionally (higher-for-longer globally). Ratio at ~0.964 recovering from 0.949 near-stop. Structural case intact. Hold through FOMC next week.",
+    "MM-2026-010": "Oracle capex panic confirmed Nasdaq de-rate. ECB DELIVERED +25bp today — DAX financials get NIM tailwind as confirmed. Hot PPI supports European financials additionally (higher-for-longer globally). Lagarde 'not pre-committing' = no further shock to European growth outlook. Ratio at ~0.964 recovering from 0.949 near-stop. Structural case intact. Hold through FOMC next week.",
     "MM-2026-011": "ACCELERATING. Brent toward $95-100 on Kharg Island seizure threat. $100 strike now only ~$5-6 away. Day-3 strikes vowed. Mark ~$2.50 vs $3.00 premium. Kharg execution = $100 call goes deep in the money within sessions. Defined risk; hold.",
-    "MM-2026-012": "ECB decision PENDING today. EUR/USD ~1.15 pre-decision. Sell-the-fact thesis intact. HOT PPI supports USD broadly (higher-for-longer Fed = USD bid). Dual tailwind if ECB delivers and Lagarde signals pause. Stop 1.182; target 1.130.",
+    "MM-2026-012": "ECB DELIVERED +25bp to 2.25% — sell-the-fact CONFIRMED. Lagarde said 'not pre-committing to a particular rate path' = pause signal. EUR/USD fading from ~1.15. Hot PPI supports USD broadly (higher-for-longer Fed = USD bid). Dual tailwind materialised. Stop 1.182; target 1.130.",
     "MM-2026-013": "HEADWIND — re-mark required. Hot PPI +6.5% YoY (BLS Jun 11) re-arms hike pricing. 2Y at ~4.11%, holding; but if PPI feeds through to CPI and Warsh turns hawkish at FOMC, 2Y rises back toward 4.35% stop. The structural over-extrapolation thesis stands but timing has shifted more hawkish. Min hold 30d through Jun 16. Stop 4.35%. Do not add.",
 }
 
@@ -839,8 +848,8 @@ staleness = [
     {"datum": "SAIL Q1 FY27: EPS $0.05 beat, rev $280M +22% YoY; -11% pre-market on slight rev miss",
      "source": "GrufuFocus / MarketBeat (Jun 9 BMO)",                                  "asof": "2026-06-09", "stale": False},
     {"datum": "SOFR ~3.62% / MOVE",  "source": "NY Fed (rail) / MOVE unverified",     "asof": "2026-06-10", "stale": True},
-    {"datum": "ECB deposit rate: +25bp to 2.25% PENDING (decision TODAY Jun 11, consensus ~99%)",
-     "source": "Market pricing / web search (decision not yet announced)",               "asof": "2026-06-11", "stale": False},
+    {"datum": "ECB deposit rate: HIKED +25bp to 2.25% ✓ (Jun 11) — first hike in ~3 years; Lagarde: upside inflation risk, 'not pre-committing to a particular rate path'",
+     "source": "CNBC + Bloomberg + Reuters + FXStreet (4 sources corroborated)",          "asof": "2026-06-11", "stale": False},
 ]
 
 earnings_ideas = [
@@ -983,10 +992,12 @@ $135/share, ~$1.77T valuation, ~$75bn raise, Nasdaq debut tomorrow (Jun 12) unde
 allocation to a single new issue is the largest IPO liquidity drain in history. Cash deployment into
 SPCX is a marginal headwind for risk assets tonight and tomorrow.</p>
 
-<p>The <strong>ECB decision is TODAY (Jun 11)</strong> and has not been announced as this brief is
-published. Consensus: +25bp to 2.25% at near-100% probability. EUR/USD ~1.15 pre-decision. Sell-the-fact
-dynamic on delivery; Lagarde's presser tone is the live EUR catalyst. Hot PPI adds USD-broadly-supportive
-context to the short-EUR/USD (MM-012).</p>
+<p>The <strong>ECB delivered its +25bp hike to 2.25%</strong> today (Jun 11) — the first hike in nearly
+three years — explicitly citing Iran-war-driven inflation (euro-area CPI 3.2% in May, above the 2%
+target). Lagarde flagged upside risks to inflation, downside risks to growth, and said the ECB is
+<em>"not pre-committing to a particular rate path"</em> — the pause signal. Sell-the-fact confirmed:
+EUR/USD fading from ~1.15 post-delivery, dual tailwind with hot PPI supporting USD broadly. (Sources:
+CNBC, Bloomberg, Reuters, FXStreet.) MM-012 short-EUR thesis is executing.</p>
 
 <p>The SPX put spread (MM-2026-008) is <strong>in the money</strong> — S&amp;P -1.62% yesterday to
 ~7,267, through the 7300 strike. Mark ~$80 vs $35 premium paid (+129%). Hot PPI + SpaceX IPO drain both
@@ -1008,9 +1019,10 @@ CSP gate opens post-print; do not pre-position).</p>
         "Oracle CAPEX PANIC: Revenue ~$19.2B (slight beat), OCI +93%, Cloud +47%, RPO $638B. BUT FY26 capex "
         "$55.7B (above guide), FY27 guided ~$70B + $20-25B prepayments. ~$40B raise (~$20B shares). Stock "
         "-7-11% AH. Capital and capacity problem, not demand. Capital-protected note (idea 101) NOW OPEN.",
-        "ECB decision TODAY (Jun 11): +25bp to 2.25% PENDING at ~99% probability — not yet announced. "
-        "Sell-the-fact setup: EUR/USD ~1.15. Hot PPI adds USD-broadly-supportive overlay to MM-012 short-EUR. "
-        "Lagarde presser post-decision is the pace-setter.",
+        "ECB DELIVERED +25bp to 2.25% ✓ (Jun 11) — first hike in ~3 years; explicitly cited Iran-war inflation "
+        "(euro-area CPI 3.2% May). Lagarde: 'not pre-committing to a particular rate path' = pause signal confirmed. "
+        "Sell-the-fact underway: EUR/USD fading from ~1.15. Hot PPI adds USD-broadly-supportive overlay. "
+        "MM-012 dual tailwind confirmed. (Sources: CNBC, Bloomberg, Reuters, FXStreet.)",
         "SPX put spread in the money: S&P -1.62% to ~7,267, below 7300 strike. Mark ~$80 vs $35 paid (+129%). "
         "Hot PPI + SpaceX IPO drain = equity headwind. Hold through FOMC Jun 16-17 — final catalyst in window.",
         "Adobe reports after close tonight: EPS est $5.01 (Finnhub), rev $6.43-6.48B, ±9.47% implied move. "
@@ -1059,16 +1071,18 @@ the $90bn annual capex commitment is the most frightening. Both can be true. A c
 is the instrument that lets you hold both positions simultaneously — participate in the OCI re-rate
 if Oracle executes, absorb the dilution hangover if it can't fund the pipeline without further raises.</p>
 
-<p>The ECB decision is <strong>TODAY (Jun 11) and has not been announced</strong> as this brief is
-published. The consensus is +25bp to 2.25% at near-100% probability. EUR/USD is at approximately
-~1.15 pre-decision — the level the market has been building to since the rate-hike narrative began.
-The 'sell the fact' setup is not a prediction; it is a positioning observation. EUR ran from 1.08 to
-1.15 on this hike cycle. The marginal buyer — the spec account pricing in the rate differential —
-is fully positioned. Once delivery happens, the catalyst for EUR ownership is gone and the unwind
-begins. Lagarde's press conference is the pace-setter: 'data-dependent pause' language accelerates
-the short-EUR/USD (MM-012); explicit 'further hikes' language is the stop-test. The structural case
-for the trade — ECB hiking into a soft European growth backdrop while the Fed holds — is intact
-regardless of today's press conference specifics.</p>
+<p>The ECB <strong>delivered the +25bp hike to 2.25%</strong> today (Jun 11) — the first in nearly
+three years — explicitly citing Iran-war-driven inflation as the rationale. Euro-area CPI was 3.2%
+in May, above the 2% target, and the Bank said it could not remain passive while supply-shock
+inflation entrenched. Lagarde's press conference was precisely the pause signal the sell-the-fact
+trade required: she flagged upside risks to inflation but simultaneously noted downside risks to
+growth, and declined to pre-commit to a future path. That nuanced wording is the inflection: the
+marginal EUR buyer — the spec account that had built a multi-year EUR long from 1.08 to 1.15
+pricing in this hike — now has the event behind it and no forward catalyst for additional hikes.
+The unwind has begun. EUR/USD is fading from ~1.15 post-delivery. The structural case strengthens
+with hot PPI: if the US must keep rates higher-for-longer (PPI +6.5% YoY forces Warsh's hand),
+the USD carry advantage widens further versus a pause-signalling ECB. MM-012 has dual tailwinds.
+(Sources: CNBC, Bloomberg, Reuters, FXStreet.)</p>
 
 <p>Geopolitically, the conflict is following the managed-grind playbook precisely as the
 non-consensus read predicted. Day-two US strikes on Iran; Iran firing back at Gulf states; ceasefire
@@ -1105,24 +1119,79 @@ short 2Y) — they were entered on a soft-inflation thesis that hot PPI has mate
 """,
 
     "wrap": """
-<p>Hot PPI (+6.5% YoY) is the correction that reframes the tape. The prior framing of "soft PPI / dovish
-Fed" was wrong; producer prices are re-accelerating at the fastest 12-month pace since November 2022.
-Warsh walks into FOMC with CPI 4.2% AND PPI 6.5%; the rates pre-positions (short 2Y, short 10Y) are
-under honest pressure. Oil positions are upgraded: Trump threatened to seize Kharg Island — the most
-oil-bullish single statement of the war, with the UAE-Iran de-escalation talks as the only counterweight.
-Brent toward $95-100. Oracle capex panic overhang on AI semis. ECB decision PENDING. SpaceX IPO tomorrow
-is the biggest capital-markets event of the year.</p>
+<p>Thursday's tape was defined by three events arriving inside a six-hour window, each pulling in a
+different direction and together producing the most complex macro set-up of the year so far. By midday
+London, the picture was clear: stagflation risk is back on the table, the ECB has blinked first among
+major central banks, and the oil market is one presidential threat away from a supply shock that would
+make the 1973 embargo look modest.</p>
 
-<p><strong>The driver.</strong> Hot PPI + Kharg Island threat is a stagflation-plus-supply-shock setup.
-The equity market is repricing AI capex costs (Oracle). The oil market is pricing a right tail on physical
-supply. The rates market hasn't priced the PPI pipeline yet. The SpaceX IPO liquidity drain is not in
-the VIX. Three of four under-priced themes are negative for risk — the book is correctly positioned
-with the put spread, oil longs, and gold as the dominant earners.</p>
+<p>Begin with the number that changes everything: May producer prices came in at +1.1% month-on-month and
++6.5% year-on-year, the largest twelve-month rise in final-demand PPI since November 2022 (BLS,
+corroborated by Trading Economics). Stage-one intermediate demand surged +12.3% year-on-year. This is
+not a blip — it is pipeline re-acceleration. The prior framing of "soft PPI / dovish Fed" was wrong,
+and this brief corrects it in full. What it means for Kevin Warsh walking into FOMC on June 16–17 is
+stark: he faces headline CPI at 4.2% <em>and</em> PPI at 6.5%, simultaneously, in his first meeting as
+chair. He cannot credibly signal a dovish tilt without an immediate credibility problem. The core CPI
+print of 2.9% gives him a technical look-through argument on energy at the consumer level, but the
++6.5% producer-price reading undermines that argument the moment it passes through to the next CPI
+vintage. The market is still pricing a 96–98% probability of a hold; the probability of a hawkish
+surprise — a hike bias, an explicit "further tightening may be warranted" — is materially
+underweighted. The SPX put spread held through CPI, held through Oracle, and is in the money at +129%.
+PPI makes the FOMC tail larger, not smaller.</p>
 
-<p><strong>So what to do.</strong> Hold all positions. Respect stops on MM-013 and MM-004 — hot PPI has
-shifted the thesis risk honestly. The Oracle note window is open (idea 101). The ECB sell-the-fact is
-pending (MM-012) with hot-PPI USD support. The oil longs are earning. Do not add before Adobe tonight —
-CSP entry gate (idea 102) opens post-print only.</p>
+<p>In Frankfurt, the ECB delivered what the market expected but framed it in a way that immediately
+triggered the sell-the-fact trade. The +25 basis-point hike to 2.25% — the Bank's first in nearly three
+years — was unanimous and explicitly justified by Iran-war-driven energy inflation, with euro-area CPI
+holding at 3.2% in May against a 2% target. What made the difference was Lagarde's press conference:
+she flagged upside risks to inflation and downside risks to growth in the same breath, and declined to
+pre-commit to any future rate path. That measured, two-handed language is exactly what the spec community
+that had built EUR longs from 1.08 to 1.15 did not want to hear. The marginal EUR buyer needed a
+commitment to further hikes to justify holding the position; the "not pre-committing" formulation
+removes that rationale entirely. EUR/USD began fading from ~1.15 within minutes of the presser. Add hot
+US PPI — which forces the Fed to stay restrictive and therefore widens the USD carry advantage — and
+MM-012 now has two confirmed tailwinds rather than one speculative one. (Sources: CNBC, Bloomberg live
+blog, Reuters, FXStreet — four sources corroborated.)</p>
+
+<p>In the Middle East, Donald Trump raised the escalation stakes to a level that has no precedent in
+this conflict. Having vowed a third consecutive night of strikes on Iran, he went further and threatened
+to physically seize Kharg Island — Iran's main oil export terminal, handling roughly 90% of the
+country's crude exports, or approximately 2.5 to 3 million barrels per day. Even as a threat, this is
+the most oil-bullish single statement since the war began. Bloomberg's $130/barrel July–August forecast,
+which looked aggressive two weeks ago, is now the base case if the Strait of Hormuz stays at 15% of
+pre-war traffic. The counterweight is real but not decisive: the UAE and Iran held their first
+face-to-face meeting since hostilities began, opening a de-escalation channel that prevents the market
+from pricing a straight-line seizure. The correct frame is managed escalation with a credible right
+tail — not a ceasefire, not total war. Brent is pushing toward $95–100. The call spread's $100 strike
+is five or six dollars away. (Sources: Bloomberg, Axios, CNBC for Trump threat; Bloomberg, Al Jazeera
+for UAE–Iran talks.)</p>
+
+<p>Last night's Oracle print is still reverberating through the AI semiconductor complex. Revenue of
+$19.2 billion was a slight beat; OCI +93%, cloud +47%, RPO surging to $638 billion from $553 billion —
+the largest confirmed AI backlog in enterprise software history. The AI demand thesis is not in doubt.
+What punished the stock 7–11% after hours was the capital-structure arithmetic: FY26 capex came in at
+$55.7 billion above guide, FY27 is guided at $70 billion plus $20–25 billion in component prepayments,
+and the whole package is funded via a $40 billion debt-and-equity raise. That is a company committing
+more capital in one fiscal year than it earns in revenue. The equity market's verdict — sell the raise,
+own the backlog through a protected structure — is exactly what the capital-protected note (idea 101)
+was designed for. The window is open.</p>
+
+<p>Tomorrow, SpaceX debuts on Nasdaq under ticker SPCX at $135 per share, a $1.77 trillion valuation,
+with Goldman Sachs as lead on what is the largest IPO in history at roughly $75 billion raised. (Source:
+CNBC.) The cross-market read is not about SpaceX the business — it is about where $75 billion in
+capital is coming from. It is coming from existing equity portfolios, disproportionately concentrated
+in large-cap tech and AI names. Expect marginal selling pressure in semiconductors and cloud names
+tomorrow morning as institutional allocations are funded. It is not a structural short signal; it is a
+one-session liquidity drain that explains any tech underperformance tomorrow that otherwise lacks a
+fundamental catalyst.</p>
+
+<p>The book's posture into the close is straightforward. The put spread is in the money and held — the
+FOMC remains inside the June 27 expiry and is now a larger tail, not a smaller one. The oil longs are
+earning and upgraded; the Kharg Island right-tail is the largest non-consensus risk in the market and
+the call spread is the correct expression of it. Short EUR/USD is executing with confirmed dual tailwinds.
+Gold's three-engine thesis (safe-haven, inflation-hedge, real-rates uncertainty) is intact. The only
+honest admissions: the short 2Y and short 10Y positions entered on a soft-inflation thesis that hot PPI
+has materially challenged. Stops at 4.35% and 4.65% are risk-live. Do not add. Adobe reports after the
+close tonight — the cash-secured put entry gate (idea 102) opens only after the print, not before.</p>
 """,
 
     "correlation_regime": """
@@ -1132,10 +1201,11 @@ breaks the classic risk-off flight-to-bonds: if inflation is re-accelerating, th
 the inflation-hedge and the geopolitical-risk premium simultaneously. Watch for the bond/equity
 correlation to flip from negative (usual safe-haven) toward positive (stagflation regime).</p>
 
-<p><strong>2. EUR/USD and the ECB decision are the live cross-asset watch today.</strong> EUR/USD ~1.15
-pre-decision. Hot PPI adds a USD-broadly-supportive overlay: if the US re-inflates via PPI, the Fed
-must stay restrictive, which is USD-positive across the board. The ECB sell-the-fact + US higher-for-longer
-= double tailwind for short-EUR/USD (MM-012).</p>
+<p><strong>2. EUR/USD sell-the-fact confirmed after ECB delivered.</strong> The ECB hiked +25bp to 2.25%
+today (Jun 11), Lagarde signalled "not pre-committing to a rate path" = pause. EUR/USD fading from ~1.15
+post-delivery. Hot PPI adds a USD-broadly-supportive overlay: the Fed must stay restrictive, widening
+the USD carry advantage. ECB sell-the-fact + US higher-for-longer = double confirmed tailwind for
+short-EUR/USD (MM-012).</p>
 
 <p><strong>3. Brent and equities are telling different stories — and hot PPI widens the gap.</strong>
 Brent rising toward $95-100 on Kharg Island threat + PPI re-acceleration is a supply AND inflation
@@ -1157,7 +1227,7 @@ before the main event (FOMC) even arrived. The residual value in the put spread 
     "sector_rv": """
 <p><strong>Leading:</strong> Energy producers (Brent toward $95-100 on Kharg Island threat; Day-3 strikes;
 SpaceX IPO not relevant), gold/metals (PPI inflation hedge + geopolitical bid; three engines running).
-ECB decision PENDING — if hikes, European financials get NIM relief (DAX tailwind). Hot PPI broadly
+ECB DELIVERED +25bp — European financials get NIM relief confirmed (DAX tailwind active). Hot PPI broadly
 supportive of financials globally (higher-for-longer = wider margins).
 <strong>Lagging:</strong> US tech/AI semis (Oracle capex panic + hot PPI hike risk = dual multiple
 compression); long-duration bond-proxies (utilities, REITs — hot PPI pushes real yields higher);
@@ -1165,10 +1235,10 @@ European luxury (LVMH: energy inflation + ECB tightening = twin headwind).
 <strong>Tomorrow watch:</strong> SpaceX (SPCX) IPO debut on Nasdaq — space tech, satellites, Starlink
 revenue; $1.77T valuation. Peers: Boeing, L3Harris, Iridium. The IPO supply overhang drains tech liquidity.</p>
 
-<p><strong>RV:</strong> Long DAX / short Nasdaq (MM-2026-010) structural case strengthened: Nasdaq under
-Oracle + hot PPI pressure; ECB decision (PENDING) is the DAX financials catalyst. Ratio recovered from
-0.949 near-stop. Hot PPI supports European financials via higher-for-longer global rate environment.
-Hold through FOMC next week.</p>
+<p><strong>RV:</strong> Long DAX / short Nasdaq (MM-2026-010) structural case confirmed: Nasdaq under
+Oracle + hot PPI pressure; ECB hike (+25bp, DONE) delivered the DAX financials NIM-relief catalyst.
+Ratio recovered from 0.949 near-stop. Hot PPI supports European financials via higher-for-longer global
+rate environment. Hold through FOMC next week.</p>
 """,
 
     "positioning": """
@@ -1183,8 +1253,9 @@ data-dependent pause signal next week starts the unwind.</p>
 """,
 
     "funding": """
-<p>SOFR near 3.62% — unchanged. The plumbing is unmoved even through two days of US-Iran strikes and an ECB
-hike. <strong>The Pozsar mechanic remains live:</strong> FOMC at 3.50-3.75% (held) means secured funding sits
+<p>SOFR near 3.62% — unchanged. The plumbing is unmoved even through three days of US-Iran strikes and the
+ECB's +25bp hike to 2.25% (delivered Jun 11, first in ~3 years). <strong>The Pozsar mechanic remains live:</strong>
+FOMC at 3.50-3.75% (held) means secured funding sits
 well below the 2Y yield (~4.15%), and every floating-rate borrower issued in 2023-24 expecting two-to-three
 cuts is still cash-flow negative versus its model. A FOMC pause signal next week narrows that gap; a hawkish
 dot plot widens it. IG spreads are the tell — they tighten when the market believes the terminal rate is falling
@@ -1222,8 +1293,9 @@ tomorrow-dated equity selling that is IPO-driven, not macro-driven.</p>
             "hawkish PPI re-acceleration. The <b>SPX put spread is in the money at +129%</b>, the Brent longs are "
             "upgraded on Kharg Island seizure threat, gold is running on three engines (safe-haven + inflation-hedge + "
             "real-rates), and MM-012 has hot-PPI USD support on top of the ECB sell-the-fact. "
-            "Today's events: ECB decision PENDING; Day-3 strikes + Kharg threat = Brent toward $95-100; "
-            "SpaceX IPO tomorrow ($75B drain); Adobe reports tonight (do NOT pre-position). "
+            "Today's confirmed events: ECB DELIVERED +25bp to 2.25% (sell-the-fact active, MM-012 executing); "
+            "Day-3 strikes + Kharg threat = Brent toward $95-100; SpaceX IPO tomorrow ($75B drain); "
+            "Adobe reports tonight (do NOT pre-position). "
             "Respect stops on MM-013 (4.35%) and MM-004 (4.65%) — PPI has moved the goalposts."
         ),
         "outperform": [
@@ -1233,9 +1305,10 @@ tomorrow-dated equity selling that is IPO-driven, not macro-driven.</p>
             {"name": "Xetra-Gold (4GLD)", "why": "Three engines: geopolitical safe-haven (Day-3 strikes, Kharg threat), "
              "inflation hedge (PPI +6.5% YoY = stagflation overlay), and real-rates (10Y at 4.52%, uncertain direction). "
              "Net: bullish. Min hold to ~Jul 15; stop $4,250."},
-            {"name": "Short EUR/USD (MM-012)", "why": "ECB decision PENDING today — sell-the-fact trigger fires on "
-             "delivery. Hot PPI adds USD-broadly-supportive overlay (higher-for-longer Fed = USD bid). Dual tailwind "
-             "if ECB delivers + Lagarde signals pause. Stop 1.182."},
+            {"name": "Short EUR/USD (MM-012)", "why": "ECB DELIVERED +25bp to 2.25% today — sell-the-fact CONFIRMED. "
+             "Lagarde said 'not pre-committing to a particular rate path' = pause signal. EUR/USD fading from ~1.15. "
+             "Hot PPI adds USD-broadly-supportive overlay (higher-for-longer Fed = USD bid). Dual tailwind confirmed. "
+             "Stop 1.182."},
             {"name": "SPX put spread (MM-008)", "why": "In the money at +129%. Hot PPI + SpaceX IPO liquidity drain "
              "both add to equity headwind. FOMC hawkish surprise risk now HIGHER (not lower) after PPI. "
              "Hold through Jun 16-17 — maximum residual value in the FOMC tail."},
@@ -1325,13 +1398,16 @@ full intrinsic ($300). Hold through FOMC — this is exactly what the hedge was 
          "asymmetry": "Hot PPI = FOMC hawkish surprise risk higher; 2Y toward stop 4.35%. Gold/oil up. "
                       "If Warsh ignores PPI (looks through energy), rates relief resumes but credibility damaged.",
          "dir": "up"},
-        {"day": "Thu", "date": "Jun 11 ← TODAY (PENDING)",
-         "event": "ECB rate decision — +25bp to 2.25% PENDING (consensus ~99%)",
-         "consensus": "+25bp expected at ~99%; first hike since September 2023. EUR/USD ~1.15 pre-decision.",
-         "view": "Sell-the-fact setup: EUR was bid from 1.08 to 1.15 pricing this hike. Once delivered, the "
-                 "marginal EUR buyer is done. Lagarde's presser tone ('data-dependent pause' vs 'further hikes') "
-                 "sets the EUR/USD direction post-decision. MM-012 is the trade.",
-         "asymmetry": "Delivery + pause signal: EUR/USD -0.5 to -1%; 'further hikes' language: EUR spike then fade (respect 1.182 stop)",
+        {"day": "Thu", "date": "Jun 11 ✓",
+         "event": "ECB rate decision — DONE: +25bp to 2.25% delivered; first hike in ~3 years",
+         "consensus": "Hiked +25bp to 2.25% as expected. Euro-area CPI 3.2% May (above 2% target). "
+                      "Lagarde cited Iran-war-driven inflation explicitly. EUR/USD ~1.15 at delivery, now fading. "
+                      "Sources: CNBC, Bloomberg, Reuters, FXStreet (4 corroborated).",
+         "view": "Sell-the-fact CONFIRMED: EUR bid from 1.08 to 1.15 on the hike cycle; once delivered, the "
+                 "marginal EUR buyer is done. Lagarde's 'not pre-committing to a particular rate path' = pause "
+                 "signal. EUR/USD fading. Hot PPI adds USD-broadly-supportive overlay = dual tailwind for MM-012.",
+         "asymmetry": "DONE: sell-the-fact underway (EUR/USD -0.5 to -1% expected over 2-5 sessions). "
+                      "Hot PPI + Fed higher-for-longer widens USD carry advantage further.",
          "dir": "down"},
         {"day": "Thu", "date": "Jun 11 (tonight)",
          "event": "Adobe (ADBE) Q2 — after close",
@@ -1366,7 +1442,7 @@ full intrinsic ($300). Hold through FOMC — this is exactly what the hedge was 
 
     "what_changes_mind": """
 <ul>
-<li><strong>MM-2026-001 · Short EURAUD:</strong> close above 1.660. At ~1.637; stop 1.662. ECB PENDING today — Lagarde presser post-decision is live catalyst. Hot PPI supports USD broadly. 'Further hikes' language = stop test.</li>
+<li><strong>MM-2026-001 · Short EURAUD:</strong> close above 1.660. At ~1.637; stop 1.662. ECB DELIVERED +25bp today — Lagarde said 'not pre-committing' = pause signal confirmed. Sell-the-fact underway, hot PPI supports USD broadly. 'Further hikes' language absent — stop test risk reduced.</li>
 <li><strong>MM-2026-002 · Long Brent:</strong> exit on weekly close below $87 — war premium gone. At ~$92-95, climbing on Kharg threat. The Strait is still shut. Day-3 strikes vowed. Hold.</li>
 <li><strong>MM-2026-003 · Long Brent/Short WTI spread:</strong> close below $2.00. At ~$3.40. Stop 1.50. Kharg Island threat = Brent-specific supply shock = spread widens. Hold.</li>
 <li><strong>MM-2026-004 · Short US 10Y yield:</strong> stop at 4.65%. At ~4.52%. HEADWIND: hot PPI +6.5% YoY shifts balance toward hawkish FOMC. Position ~8bp offside. Do NOT add. Stop 4.65% is risk-live. FOMC Jun 16-17 is the terminal gate.</li>
@@ -1374,9 +1450,9 @@ full intrinsic ($300). Hold through FOMC — this is exactly what the hedge was 
 <li><strong>MM-2026-007 · Short USDJPY:</strong> stop 163.00. At ~160.5. Hot PPI may support USD modestly. BoJ Sept hike >50% priced. Carry unwind coming, not today.</li>
 <li><strong>MM-2026-008 · SPX put spread:</strong> in the money (+129%). Hot PPI raised FOMC hawkish probability — maximum remaining value is in the FOMC tail. Hold through Jun 16-17 expiry. Do not take early profit.</li>
 <li><strong>MM-2026-009 · 2s10s steepener:</strong> min hold to July 16. At ~+40bp; target +60bp. COMPLICATION: hot PPI can push 10Y higher alongside the front end rather than steepening. Monitor. Do not add. Stop is the 30-day min-hold discipline.</li>
-<li><strong>MM-2026-010 · Long DAX / short Nasdaq:</strong> stop ratio 0.943. ECB PENDING today (DAX tailwind); Oracle + PPI compresses Nasdaq multiple. Hot PPI globally supportive of bank NIM = DAX financials. Ratio recovering. Hold.</li>
+<li><strong>MM-2026-010 · Long DAX / short Nasdaq:</strong> stop ratio 0.943. ECB DELIVERED today — DAX financials NIM tailwind confirmed. Oracle + hot PPI compresses Nasdaq multiple. Hot PPI globally supportive of bank NIM = DAX financials. Ratio recovering. Hold.</li>
 <li><strong>MM-2026-011 · Brent 100/115 call spread:</strong> $100 strike ~$5-6 away at current Brent ~$94-95. Kharg Island seizure threat = $100 trigger in range. Defined risk; hold. Exit: Brent falls below $85 for 3 sessions.</li>
-<li><strong>MM-2026-012 · Short EURUSD:</strong> stop 1.182. EUR ~1.15 pre-ECB (PENDING). Sell-the-fact on delivery + hot PPI USD support = dual tailwind. Hold.</li>
+<li><strong>MM-2026-012 · Short EURUSD:</strong> stop 1.182. ECB DELIVERED +25bp — sell-the-fact CONFIRMED, EUR fading from ~1.15. Lagarde 'not pre-committing' = no further-hike squeeze risk near-term. Hot PPI USD support = dual tailwind both confirmed. Hold.</li>
 <li><strong>MM-2026-013 · Short US 2Y yield:</strong> stop 4.35%; min hold 30d. At ~4.11%. HEADWIND: hot PPI re-arms hike pricing. 2Y risk of moving back toward stop. Do NOT add. The structural over-extrapolation thesis stands but timing shifted hawkish. Respect stop.</li>
 </ul>
 """,
@@ -1413,13 +1489,16 @@ full intrinsic ($300). Hold through FOMC — this is exactly what the hedge was 
                "it: $40bn raise including $20bn in new shares. Capital and capacity problem, not a demand problem. "
                "The capital-protected note (idea 101) is the right instrument: 70-80% participation in the OCI "
                "re-rate, 100% capital protection against the dilution overhang.")},
-        {"q": "The ECB decision is today — what should I expect?",
-         "a": ("The hike is already priced — +25bp to 2.25% at near-100% probability, not yet announced. EUR ran "
-               "from 1.08 to 1.15 pricing this in. The hike delivery is a non-event by itself. What matters is "
-               "Lagarde's press conference. Hot US PPI today actually adds a tailwind to the short-EUR/USD "
-               "trade: if the US must keep rates higher-for-longer (PPI forces Warsh's hand), the USD is broadly "
-               "supported. So on top of the sell-the-fact dynamic from the ECB, we get USD strength from the Fed. "
-               "Two tailwinds for MM-012 if Lagarde signals pause.")},
+        {"q": "The ECB hiked today — what happened and what does it mean for us?",
+         "a": ("The ECB delivered exactly what the sell-the-fact trade required. It hiked +25bp to 2.25% — the "
+               "first rate rise in nearly three years — explicitly citing Iran-war-driven inflation, with euro-area "
+               "CPI at 3.2% in May. Then Lagarde said the ECB is 'not pre-committing to a particular rate path.' "
+               "That phrase is the inflection: the spec community that had built EUR longs from 1.08 to 1.15 "
+               "pricing in a full hike cycle now has no forward catalyst to keep holding. The sell-the-fact "
+               "unwind has begun; EUR/USD is fading from ~1.15. On top of that, hot PPI (+6.5% YoY) forces the "
+               "Fed's hand too — higher US rates for longer = wider USD carry advantage versus a pause-signalling "
+               "ECB. MM-012 now has two confirmed tailwinds, not one speculative one. (Sources: CNBC, Bloomberg, "
+               "Reuters, FXStreet.)")},
         {"q": "Adobe reports tonight — should I be doing something?",
          "a": ("No position before the print. The entry gate for the cash-secured put (idea 102) opens only "
                "after we see the number. If ADBE beats on AI ARR — software relief, we wait. If it misses on "
@@ -1428,24 +1507,25 @@ full intrinsic ($300). Hold through FOMC — this is exactly what the hedge was 
     ],
 
     "ideas_note": (
-        "<p>Three live catalysts shape entry discipline today. (1) <strong>Oracle note (idea 101)</strong> — "
+        "<p>Three confirmed catalysts shaping entry discipline. (1) <strong>Oracle note (idea 101)</strong> — "
         "window opened post-print; capex overhang is near-term noise against a $638bn RPO long-term thesis. "
-        "(2) <strong>Brent call spread (idea 11)</strong> — $100 strike is ~$5-6 from spot after Trump's "
-        "Kharg Island seizure threat; hold at current premium, do not chase with new premium. "
-        "(3) <strong>Adobe CSP (idea 102)</strong> — gate opens tonight post-print only, no pre-position. "
-        "<strong>Rates ideas (short 2Y / short 10Y):</strong> hot PPI (+6.5% YoY, BLS Jun 11) is a "
-        "genuine headwind — do NOT add size. Stops at 4.35% (2Y) and 4.65% (10Y) are now risk-live "
-        "ahead of FOMC Jun 16-17. No net-new ideas today: existing positions cover every regime dimension.</p>"
+        "(2) <strong>Brent call spread (idea 11)</strong> — $100 strike is ~$5-6 from spot on Kharg Island "
+        "seizure threat; hold at current premium, do not chase. "
+        "(3) <strong>Adobe CSP (idea 102)</strong> — gate opens tonight post-print only. "
+        "ECB delivered +25bp today — <strong>MM-012 short-EUR/USD executing</strong> (sell-the-fact confirmed, "
+        "Lagarde 'not pre-committing'). "
+        "<strong>Rates ideas (short 2Y / short 10Y):</strong> hot PPI (+6.5% YoY) is a genuine headwind — "
+        "do NOT add size. Stops at 4.35% (2Y) and 4.65% (10Y) are risk-live ahead of FOMC Jun 16-17.</p>"
     ),
 
     "event_radar_note": (
-        "<p>Three of six catalysts are confirmed behind us: CPI Jun 10 (hot 4.2% headline ✓), Oracle Jun 10 AH "
-        "(capex panic selloff ✓), and PPI Jun 11 (HOT +1.1% MoM / +6.5% YoY — hawkish ✓). Three remain: "
-        "ECB Jun 11 (PENDING TODAY — +25bp consensus, sell-the-fact on delivery if Lagarde signals pause), "
+        "<p>Four of six catalysts are confirmed: CPI Jun 10 (hot 4.2% headline ✓), Oracle Jun 10 AH "
+        "(capex panic selloff ✓), PPI Jun 11 (HOT +1.1% MoM / +6.5% YoY — hawkish ✓), and ECB Jun 11 "
+        "(DELIVERED ✓ — +25bp to 2.25%, Lagarde 'not pre-committing', sell-the-fact confirmed). Two remain: "
         "Adobe tonight's close (AI tax or tailwind — CSP entry gate opens post-print only), and "
-        "Kevin Warsh's first FOMC dot plot June 16-17 (now MORE hawkish given PPI heat — zero-cut vs "
-        "additional-hike asymmetry). The book's rates pre-positions are now facing headwind; stops are "
-        "risk-live. No additional action before the Adobe print.</p>"
+        "Kevin Warsh's first FOMC dot plot June 16-17 (now MORE hawkish given PPI heat — "
+        "hike-bias vs data-dependent-hold asymmetry). The book's rates pre-positions are facing headwind; "
+        "stops are risk-live. No additional action before the Adobe print.</p>"
     ),
 
     "burry_tell": (
@@ -1481,12 +1561,12 @@ full intrinsic ($300). Hold through FOMC — this is exactly what the hedge was 
     ),
 
     "book_aim": (
-        "The dominant aim today: manage the honest tension between the oil and rates trades. "
-        "Kharg Island seizure threat upgrades Brent's right tail — the call spread's $100 strike is in range. "
-        "But hot PPI (+6.5% YoY) directly challenges the short-2Y and short-10Y thesis: the rates trades "
-        "entered on a soft-inflation read that PPI has now complicated. Do NOT add to rates positions. "
-        "Stops (4.35% / 4.65%) are risk-live. The structure survives if Warsh signals a pause at FOMC Jun 16-17 "
-        "despite PPI heat; the structure breaks if he hikes or signals further hikes. "
+        "Three things confirmed today, one still in question. Confirmed: ECB delivered +25bp to 2.25% with "
+        "a pause signal — MM-012 sell-the-fact executing with dual tailwind (ECB pause + hot PPI USD support). "
+        "Confirmed: hot PPI +6.5% YoY is a genuine headwind for the short-2Y and short-10Y positions — do NOT "
+        "add; stops at 4.35% / 4.65% are risk-live. Confirmed: Kharg Island seizure threat upgrades Brent's "
+        "right tail — call spread $100 strike within reach, hold. In question: FOMC Jun 16-17 — Warsh faces "
+        "CPI 4.2% + PPI 6.5%; hawkish surprise risk is higher, not lower. "
         "For the rest of June: let the derivatives (Brent spread, SPX put spread) carry P&L, "
         "execute the Oracle note and Adobe CSP post-print on their own entry triggers, "
         "and do not open new directional bets until after June 17."

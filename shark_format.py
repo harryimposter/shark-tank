@@ -1416,7 +1416,7 @@ def _page_summary(brief, scan=None):
     # "So what for the book" — at the very top, collapsed by default.
     if scan and (brief or {}).get("book_outlook"):
         lhs.append(_explain_drop(
-            "So what for the book",
+            "So what for the book (Click on the dropdown for impact)",
             "today's tape, read onto the live client portfolio — click to expand",
             _book_outlook(brief, scan)))
     lhs.append(_fallback_banner())
