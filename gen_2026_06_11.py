@@ -2,18 +2,19 @@
 # -*- coding: utf-8 -*-
 """Market Map / Shark Tank brief generator — 2026-06-11 (Thursday).
 
-Oracle reported after yesterday's close — capex panic selloff: revenue ~$19.2B
-(slight beat), OCI +93%, Cloud +47%, RPO surged to ~$638B. BUT FY26 capex came in
-at $55.7B (above ~$50B guide), FY27 guided to ~$70B + $20-25B component prepayments,
-funded by ~$40B debt-and-equity raise (~$20B share sale component). Stock -7 to -11%
-AH. Market read: capital and capacity problem, not a demand problem.
+CRITICAL CORRECTIONS vs prior run:
+- May PPI (BLS Jun 11) is HOT, NOT soft: Final-demand +1.1% MoM, +6.5% YoY
+  (largest 12-month rise since Nov 2022). Stage-1 intermediate demand +12.3% YoY.
+  Source: bls.gov/news.release/archives/ppi_06112026.htm + Trading Economics.
+  This SUPPORTS hawkish Fed read — remove all "soft PPI / reduces hawkish-surprise" framing.
 
-ECB decision DAY: +25bp to 2.25% WIDELY EXPECTED but has NOT happened yet as of
-this run. Decision is TODAY (Jun 11). Framed as imminent/upcoming throughout.
-
-US-Iran Day-2 strikes ongoing; Brent climbing toward $95; SPX put spread in the
-money (S&P -1.62% yesterday to ~7,267). Adobe reports after close tonight.
-FOMC June 16-17 next week.
+NEW NEWS (all June 11 2026, verified):
+- Trump threatened to SEIZE Kharg Island (~90% of Iran's crude exports), vowed a
+  3rd consecutive night of strikes on Iran. (Bloomberg, Axios, CNBC)
+- UAE and Iran held first face-to-face meeting since the war began (de-escalation). (Bloomberg, Al Jazeera)
+- SpaceX IPO priced $135/share, ~$1.77T valuation, 555.6M shares (~$75B raise),
+  Nasdaq debut JUNE 12 under ticker SPCX, Goldman lead — biggest IPO ever. (CNBC)
+- ECB decision: TODAY Jun 11 — framed as PENDING throughout; do not assume result.
 
 Run:  python gen_2026_06_11.py
 """
@@ -92,24 +93,31 @@ SCREENER_NOTES = {
 }
 
 # ── Regime ─────────────────────────────────────────────────────────────────────
-regime = "Oracle Capex Panic: $70B FY27 Guided; ECB Decision Today; Day-Two Strikes"
+regime = "Hot PPI +6.5% YoY; Kharg Island Seizure Threat; Day-Three Strikes; SpaceX IPO Tomorrow"
 regime_note = (
-    "Oracle reported Q4 FY26 after yesterday's close and it is a capex panic, not a dilution story. Revenue "
-    "came in ~$19.2bn (slight beat), OCI grew 93% YoY, Cloud +47%, and — the headline bull number — the RPO "
-    "backlog surged to ~$638bn (up from ~$553bn). Every demand metric confirmed the AI thesis. Then the market "
-    "read the cost of delivering it: FY26 capex came in at $55.7bn, above the ~$50bn guide. Oracle then guided "
-    "FY27 capex to ~$70bn PLUS an additional $20-25bn in component prepayments — a total capital commitment of "
-    "~$90-95bn in one fiscal year. To fund it, Oracle announced a ~$40bn debt-and-equity raise (including ~$20bn "
-    "in new shares). Stock fell 7-11% after hours. The market is not saying 'the demand is bad' — the $638bn RPO "
-    "proves otherwise. The market is saying 'we don't trust the capital structure to fund this without destroying "
-    "shareholder value.' That distinction — capital and capacity problem, not a demand problem — is the trade. "
-    "A capital-protected note participates in the re-rate if Oracle executes, absorbs the dilution hangover if it "
-    "doesn't. The ECB decision is TODAY (Jun 11) — +25bp to 2.25% is the consensus at near-100% probability, "
-    "but the decision has NOT been announced as this script runs. Lagarde's press conference tone is the "
-    "live EUR catalyst. EUR/USD is ~1.15 pre-decision. Geopolitically, the US-Iran conflict entered a second "
-    "day of strikes; Iran fired back targeting Gulf states; ceasefire declared 'practically meaningless'; "
-    "Qatari mediators left empty-handed. Brent is climbing toward $93-95. Adobe reports after the close tonight. "
-    "FOMC June 16-17 is the final gate."
+    "Four themes collide on June 11. First: May PPI came in HOT — final-demand producer prices +1.1% MoM and "
+    "+6.5% YoY (BLS, the largest 12-month rise since November 2022). Stage-1 intermediate demand surged +12.3% "
+    "YoY, meaning the pipeline is re-accelerating. This is explicitly hawkish for the Fed: Warsh cannot look "
+    "dovish into a FOMC with CPI headline at 4.2% AND PPI at +6.5%. The rates pre-positions (short 2Y, steepener) "
+    "are now facing a genuine headwind — the PPI print re-arms the hike-pricing that the soft core CPI had "
+    "temporarily defused. "
+    "Second, the geopolitical situation escalated sharply: Trump vowed a THIRD consecutive night of strikes on "
+    "Iran and — in a significant escalation beyond anything in Day 1 or Day 2 — threatened to SEIZE Kharg Island, "
+    "Iran's primary oil export terminal handling roughly 90% of Iran's crude exports. A seizure would remove "
+    "~2.5-3M bbl/day from world markets at a stroke. Even as a threat, this is the most oil-bullish single "
+    "statement since the war began. Brent is moving toward $95-100. The Brent $100 call spread (MM-011) is now "
+    "close to in the money. "
+    "Counterweight: the UAE and Iran held their first face-to-face meeting since hostilities began — a "
+    "de-escalation signal that prevents the market from pricing a straight-line escalation. The two-sided "
+    "tension (Trump threatening Kharg vs UAE-Iran talking) is the correct frame: managed conflict, not total war. "
+    "Third, Oracle's capex panic from last night continues to weigh on AI semis: OCI +93%, RPO $638bn, revenue "
+    "$19.2bn — but the $55.7bn FY26 capex and $70bn+ FY27 commitment funded by a $40bn raise is the equity-"
+    "structure shock. "
+    "Fourth and finally: SpaceX priced its IPO last night at $135/share with a ~$1.77T valuation, raising ~$75bn, "
+    "the largest IPO in history. It debuts on Nasdaq tomorrow (Jun 12) under ticker SPCX, with Goldman as lead. "
+    "The liquidity drag — $75bn in capital committed to a single new issue — is a cross-market event. "
+    "The ECB decision is TODAY (Jun 11) — +25bp to 2.25% is consensus at near-100% probability but has NOT "
+    "been announced as this script runs. FOMC June 16-17 is the terminal gate."
 )
 regime_log = book.update_regime_log(regime_log, regime, regime_note)
 
@@ -170,39 +178,43 @@ TRADE_ENRICHMENTS = {
             "demand, US shale supply, and tanker/shipping availability."
         ),
         "fundamental_thesis": (
-            "The thesis just got re-confirmed: the US launched a second day of Iran strikes and Brent "
-            "climbed toward $93.50, approaching $95. Iran fired back at Bahrain, Kuwait and Jordan. "
-            "The Strait of Hormuz is at ~15% of pre-war traffic (JPMorgan) and Qatari mediators left "
-            "Tehran empty-handed on Thursday — uranium enrichment and frozen assets remain the sticking "
-            "points. The SPR is heading toward its lowest level since the early 1980s. Forecasts from "
-            "Bloomberg Intelligence: Brent averages $130/bbl in July-August if the Strait stays shut. "
-            "This remains the right-tail hedge — asymmetric upside into a scenario that is physically, "
-            "not sentimentally, priced."
+            "The thesis just got a material upgrade. Trump vowed a THIRD consecutive night of strikes "
+            "on Iran and — in the single most oil-bullish statement since hostilities began — threatened "
+            "to SEIZE KHARG ISLAND, Iran's primary oil export terminal handling ~90% of Iran's crude "
+            "exports (~2.5-3M bbl/day). A physical seizure would be the largest single supply shock in "
+            "oil-market history. Even as a threat, this pushes Brent toward $95-100 and compresses the "
+            "gap to the Bloomberg Intelligence $130/bbl July-August forecast. Counterweight: the UAE "
+            "and Iran held their first face-to-face meeting since the war began — a de-escalation signal "
+            "that prevents a straight-line spike. The framing: managed escalation with a dramatic "
+            "right tail, not a ceasefire. Strait of Hormuz remains at ~15% pre-war traffic. SPR at "
+            "multi-decade lows. May PPI +6.5% YoY confirms the inflation pipeline is accelerating — "
+            "further support for an oil price that is both supply-constrained and re-inflating."
         ),
         "catalysts": [
+            "Kharg Island seizure threat (Trump Jun 11) — if executed: removes ~90% of Iran's crude "
+            "exports; Brent gaps to $110+. Even as threat: floor bid materially raised.",
             "Strait of Hormuz traffic (currently ~15% pre-war; any mine/tanker incident = $100+ gap)",
-            "US-Iran talks timeline (Qatari mediation failed Thu; Turkey urging both sides to return "
-            "to negotiations — next diplomatic signal is the catalyst)",
+            "Iran-UAE talks (first face-to-face since war; any de-escalation deal = Strait premium collapses)",
+            "Day-3 US strikes on Iran (vowed for tonight) — escalation confirms the tail risk",
             "OPEC+ emergency meeting (supply cut = price floor lifted)",
             "Weekly US crude inventory data (EIA Wednesdays); SPR drawdown trajectory",
         ],
         "risks": (
-            "Genuine ceasefire + Strait reopening (premium collapses toward $84 support); demand "
+            "Iran-UAE diplomatic deal extends to Strait re-opening (premium collapses toward $84 support); "
+            "Trump Kharg Island threat proves rhetorical without follow-through (headline fade); demand "
             "destruction from global recession fears; SPR release program accelerates; stop at weekly "
             "close below $87."
         ),
         "breakdown_why": {
-            "gap":          "3/3 — Hormuz at 15% pre-war traffic, Brent below forecasted $130 July avg; "
-                            "the physical constraint is more severe than the price currently implies. "
-                            "Upgraded to 3 after day-two US strikes re-confirmed the tail.",
-            "catalyst":     "2/2 — second day of US strikes is the confirmation; Qatari talks failed; "
-                            "Turkey urging restraint = negotiations still live but fragile. Direct, "
-                            "datable catalysts on the horizon.",
-            "positioning":  "1/2 — specs cut net length but are not cleanly short; modest support.",
-            "confirmation": "1/2 — Brent breaking above $93 on day-two strikes gives one technical "
-                            "confirmation; not yet a clean re-acceleration above $95.",
-            "stop_quality": "1/1 — weekly close below $87 is a clean structural level with clear "
-                            "fundamental interpretation (war premium gone).",
+            "gap":          "3/3 — Hormuz at 15% pre-war traffic, Kharg Island seizure threat now live; "
+                            "the physical constraint is MORE severe than the price currently implies. "
+                            "May PPI +6.5% YoY adds an inflation-pipeline overlay. Gap widened further today.",
+            "catalyst":     "2/2 — Day-3 strikes vowed for tonight; Kharg Island seizure is a dated, "
+                            "direct catalyst. Iran-UAE talks are the counterweight but not the resolution.",
+            "positioning":  "1/2 — specs cut net length but not cleanly short; modest supportive lean.",
+            "confirmation": "1/2 — Brent above $93 on day-three escalation; not yet a clean re-acceleration "
+                            "above $95 to confirm. Kharg threat accelerates this.",
+            "stop_quality": "1/1 — weekly close below $87 is a clean structural level; war premium gone.",
         },
     },
     "MM-2026-003": {
@@ -251,37 +263,46 @@ TRADE_ENRICHMENTS = {
             "global risk sentiment (Treasuries = safe haven), and real growth outlook."
         ),
         "fundamental_thesis": (
-            "May CPI printed yesterday: headline 4.2% (all energy), core +0.2% m/m / 2.9% — BELOW "
-            "consensus. The soft core is the signal: the Fed is not forced to hike on energy-driven "
-            "inflation it routinely looks through. The 10Y eased to ~4.52% on the print. The trade "
-            "is now in its payoff window: soft core = front-end eases, FOMC Jun 16-17 is the "
-            "confirmation catalyst. Warsh cannot look dovish in week one — but a zero-cut dot at "
-            "3.75% already IS the hold, not a hike. The disinflation thesis holds."
+            "This position is now facing a genuine headwind and must be framed honestly. The original "
+            "thesis rested on soft core CPI (May: 2.9%, below consensus) reducing the probability of "
+            "a Fed hike. That signal was real and the 10Y eased to ~4.52%. But today's May PPI print "
+            "(BLS) is HOT: final-demand PPI +1.1% MoM and +6.5% YoY — the largest 12-month rise since "
+            "November 2022, with stage-1 intermediate demand at +12.3% YoY. The pipeline is re-accelerating. "
+            "PPI leads CPI: a +6.5% producer price rise will not stay contained at the consumer level for "
+            "long. Warsh now faces CPI at 4.2% headline AND PPI at +6.5% — he cannot look dovish in his "
+            "first FOMC. The trade is not wrong yet (10Y at ~4.52% vs 4.44% entry = only ~8bp offside) "
+            "but the narrative risk has shifted from 'soft landing' to 'stagflation'; the 10Y faces "
+            "upward pressure from re-accelerating inflation expectations. The stop at 4.65% is now "
+            "closer to relevant. Do not add. Monitor FOMC dot-plot signals carefully."
         ),
         "catalysts": [
             "May CPI Jun 10 DONE: 4.2% headline / 2.9% core (below 0.3% forecast) — soft core "
-            "gave the front-end relief the trade needed; 10Y eased to ~4.52%",
-            "FOMC dot plot Jun 16-17 — zero-cut median = yield up, test stop; one-cut held = yield "
-            "falls 15-20bp; Warsh's first presser tone is the edge",
+            "gave one-day relief; 10Y eased to ~4.52%",
+            "May PPI Jun 11 HOT: +1.1% MoM / +6.5% YoY (BLS) — largest since Nov 2022; "
+            "pipeline re-acceleration. This is a HEADWIND for the long-duration thesis.",
+            "FOMC dot plot Jun 16-17 — zero-cut median AND hike signal = yield up, stop tested; "
+            "data-dependent pause = yield falls 10-15bp. Warsh presser tone in the context of "
+            "CPI 4.2% + PPI 6.5% is now MORE hawkish than previously framed.",
             "Treasury supply (June/July refunding — supply shock risk at the long end)",
-            "Any core re-acceleration in June CPI (Jul 10) = bear case",
+            "June CPI (Jul 10) = if PPI pipeline feeds through to core, stop is tested",
         ],
         "risks": (
-            "Warsh proves hawkish at first FOMC (dot plot = zero cuts, hike bias); energy dragging "
-            "core up next month; fiscal supply shock pushes term premium; geopolitical re-escalation "
-            "re-inflates commodity prices and spills into core. Stop at 4.65% (now ~4.52%, ~13bp away)."
+            "Warsh delivers explicitly hawkish FOMC (dot plot = hike bias; PPI print supports this); "
+            "PPI-to-CPI pipeline accelerates core above 3.5% in June or July; fiscal supply shock "
+            "at the long end; Kharg Island seizure + oil at $100 re-inflates inflation expectations. "
+            "Stop at 4.65% (now ~4.52%, ~13bp away — closer than it looks given PPI + FOMC risk)."
         ),
         "breakdown_why": {
-            "gap":          "2/3 — the disinflation impulse from oil is real but the market has "
-                            "not priced it; not a 3 because the front-end is already pricing some "
-                            "easing and the supply risk is a genuine offset.",
-            "catalyst":     "1/2 — CPI and FOMC are the catalysts but both are binary (the trade "
-                            "can go either way on each); no soft catalyst between now and then.",
-            "positioning":  "1/2 — consensus is still long duration (was already rallied 26bp); "
-                            "not a cleanly crowded short to squeeze.",
-            "confirmation": "0/2 — the yield has NOT confirmed the move lower yet; still offside "
-                            "at 4.53% vs 4.44% entry; no technical confirmation.",
-            "stop_quality": "1/1 — 4.65% is a clear technical level (prior high); ~12bp risk.",
+            "gap":          "1/3 — downgraded from 2: the soft core CPI is now offset by hot PPI "
+                            "+6.5% YoY. The net inflation signal is ambiguous. The long-duration gap "
+                            "thesis has narrowed materially.",
+            "catalyst":     "1/2 — FOMC is still a dated catalyst but the PPI print makes the "
+                            "hawkish scenario more likely; the trade can now go either way with higher "
+                            "probability on the wrong side.",
+            "positioning":  "1/2 — consensus is still long duration; no change.",
+            "confirmation": "0/2 — no technical confirmation; yield has not broken lower from entry; "
+                            "hot PPI adds to the headwind, not the thesis.",
+            "stop_quality": "1/1 — 4.65% is still a clear technical level; ~13bp risk.",
         },
     },
     "MM-2026-005": {
@@ -293,27 +314,34 @@ TRADE_ENRICHMENTS = {
             "inflation/stagflation fears."
         ),
         "fundamental_thesis": (
-            "Gold is now working on two separate engines simultaneously. First, the safe-haven "
-            "engine: US-Iran day-two strikes and Iran hitting Gulf states sent the geopolitical bid "
-            "back in — gold at $4,104+ and rising 0.80% while equities struggle. Second, the "
-            "real-rates engine: May CPI core at 2.9% (below consensus) eased the 10Y to ~4.52%, "
-            "reducing the real-rate pressure that had been capping gold. Both the bull scenarios are "
-            "now firing at once. The narrow path where gold loses (strong growth + stable oil + "
-            "aggressive Fed) is precisely NOT the current environment."
+            "Gold is now working on THREE engines, with one turning ambiguous. Engine 1 — "
+            "geopolitical safe-haven: Trump threatened to SEIZE Kharg Island (Day-3 strikes vowed), "
+            "the most aggressive oil escalation since hostilities began. Gulf states at risk; "
+            "ceasefire 'meaningless.' The safe-haven bid is now STRONGER than yesterday. "
+            "Engine 2 — inflation hedge: May PPI came in HOT at +6.5% YoY (BLS, Jun 11), the "
+            "largest rise since November 2022. Accelerating producer prices feed into inflation "
+            "expectations — a direct gold tailwind. Engine 3 — real rates (now AMBIGUOUS): the "
+            "soft core CPI (2.9%) eased the 10Y to ~4.52%, reducing real-rate pressure. But hot "
+            "PPI complicates this — if the inflation pipeline flows through, real rates could "
+            "re-price higher and cap gold. Net: two engines (safe-haven + inflation hedge) are "
+            "stronger than before; the real-rates engine is the risk. Stop touched Jun 10 "
+            "($4,200 vs $4,250 stop) but min_hold 45d rule applies; position held; gold is "
+            "recovering from the low."
         ),
         "catalysts": [
-            "US-Iran Day 2 strikes (Jun 11) — safe-haven bid active NOW; Brent toward $95 = "
-            "inflation + risk premium both supporting gold",
-            "FOMC dot plot Jun 16-17 — zero-cut median caps gold; one-cut held = gold +2%",
-            "May CPI core DONE (2.9%, below est.) — real-rate pressure eased to ~4.52% 10Y",
+            "Kharg Island seizure threat (Jun 11) — strongest geopolitical bid yet; Brent toward $100 = "
+            "stagflation premium + safe-haven bid reinforce each other",
+            "US-Iran Day-3 strikes (vowed for tonight, Jun 11) — escalation confirms tail risk",
+            "May PPI +6.5% YoY (BLS Jun 11) — hot producer prices = inflation-hedge thesis strengthened",
+            "FOMC dot plot Jun 16-17 — hawkish dots = real yields up, gold capped; dovish pause = gold up",
             "EM central bank Q2 gold purchase data (China, India, Turkey structural buyers)",
         ],
         "risks": (
-            "Warsh surprises hawkishly at FOMC (real yields surge, gold sells); rapid Strait "
-            "reopening + genuine ceasefire removes the geopolitical bid; gold-specific spec flush; "
-            "strong USD spike on FOMC or escalation-safe-haven dollar bid. "
+            "Warsh delivers hawkish FOMC with explicit hike bias (real yields surge sharply, gold sells "
+            "despite geopolitics); Iran-UAE talks produce genuine de-escalation deal (geopolitical bid fades "
+            "faster than PPI bid supports); gold-specific spec flush; strong DXY spike on FOMC. "
             "NOTE: Stop touched Jun 10 ($4,200 vs $4,250 stop) but min_hold 45d rule applies — "
-            "position stays open; gold has since recovered to $4,104 and rising."
+            "position stays open."
         ),
         "breakdown_why": {
             "gap":          "2/3 — gold's decoupling from the long bond at 4.98% is a clear "
@@ -592,34 +620,43 @@ TRADE_ENRICHMENTS = {
             "The 2Y is the most policy-sensitive point on the yield curve."
         ),
         "fundamental_thesis": (
-            "The market prices ~70% probability of a year-end rate hike based on one 172k payroll "
-            "with unemployment steady at 4.3%. The Fed does not hike into a labor market that is "
-            "firm-but-not-overheating with a richly-valued equity tape just beginning to crack. "
-            "The 2-year at 4.16% — a 16-month high — has over-extrapolated a single data point. "
-            "The June 17 dot plot is the catalyst to reprice it. Pre-position, not an event scalp."
+            "This position must be re-marked for hot PPI. The original thesis: the 2Y at ~4.16% "
+            "was over-extrapolating a single payroll print (172k, unchanged unemployment) and a "
+            "hike was not justified. The soft core CPI (2.9% May) supported that view. However, "
+            "today's May PPI (BLS, Jun 11) came in HOT: +1.1% MoM and +6.5% YoY — the largest "
+            "12-month rise since November 2022. Stage-1 intermediate demand at +12.3% YoY. Hot "
+            "PPI re-arms the market's hike pricing — the 2Y at ~4.11% is now at RISK of moving "
+            "back toward 4.30-4.35% stop level. Warsh faces both headline CPI 4.2% and PPI 6.5%; "
+            "he cannot signal a dovish tilt without being seen as reckless. The thesis is not "
+            "broken (the 2Y was over-extrapolating a single payroll; that structural view stands) "
+            "but the timing risk has increased materially. The FOMC catalyst is still the payoff "
+            "gate, but the probability distribution has shifted toward a hawkish outcome. Minimum "
+            "hold applies; do not add; respect the stop."
         ),
         "catalysts": [
-            "FOMC dot plot Jun 16-17 (any pause signal = 2Y falls 15-20bp immediately)",
-            "May CPI Jun 10 (below 3.7% = 2Y falls 10-15bp today)",
-            "Initial jobless claims (any spike = Fed hiking case weakens)",
-            "Warsh's first press conference language on rate path",
+            "FOMC dot plot Jun 16-17 — if Warsh signals data-dependent pause: 2Y falls 15-20bp "
+            "(trade works); if zero-cut dots with hike bias: 2Y rises to stop at 4.35%",
+            "May CPI Jun 10 DONE: core 2.9% = modest support; now offset by hot PPI",
+            "May PPI Jun 11 HOT: +6.5% YoY (BLS) — HEADWIND; re-arms hike pricing",
+            "Initial jobless claims (any spike = Fed hiking case weakens; support for the trade)",
+            "Kharg Island oil shock (Brent to $100+ = stagflation = hike risk rises = further headwind)",
         ],
         "risks": (
-            "Hot CPI re-arms the hike pricing (2Y to 4.35% stop); Warsh proves hawkish in first "
-            "FOMC; additional strong employment data; inflation re-accelerates on oil; stop at "
-            "4.35%; min_hold 30 days to Jun 16 FOMC at minimum."
+            "Hot PPI already partially re-prices the 2Y higher (stop at 4.35% closer than before); "
+            "Warsh delivers explicitly hawkish dot plot at first FOMC (2Y +25bp, stop taken); "
+            "oil shock from Kharg Island seizure re-inflates via the energy pipeline; "
+            "stop at 4.35%; min_hold 30 days through Jun 16 FOMC."
         ),
         "breakdown_why": {
-            "gap":          "2/3 — 2Y at 4.16% (16-month high) on one payroll print with "
-                            "unemployment at 4.3% is a clear over-extrapolation gap vs "
-                            "the actual hiking probability.",
-            "catalyst":     "2/2 — FOMC dot plot is a precise, dated catalyst with direct "
-                            "2Y transmission; CPI is a secondary near-term gate.",
-            "positioning":  "2/2 — the market is very heavily short 2Y duration (positioned "
-                            "for a hike); any unwind is a large, fast move = maximum squeeze "
-                            "fuel.",
-            "confirmation": "0/2 — no technical confirmation yet; the yield has not broken "
-                            "lower to confirm the trade.",
+            "gap":          "1/3 — downgraded from 2: hot PPI +6.5% YoY means the Fed's 'inflation "
+                            "is energy-driven, look-through' case is harder to make. The gap between "
+                            "the 2Y yield and the justified hiking probability has narrowed.",
+            "catalyst":     "2/2 — FOMC dot plot remains a precise, dated catalyst with direct "
+                            "2Y transmission; still 2/2 but the directional probability has shifted.",
+            "positioning":  "2/2 — market is still heavily short 2Y duration; squeeze fuel remains "
+                            "if FOMC surprises dovishly.",
+            "confirmation": "0/2 — no technical confirmation; yield has not broken lower; "
+                            "hot PPI adds downside risk.",
             "stop_quality": "1/1 — 4.35% is a clear technical level; 19bp of risk.",
         },
     },
@@ -719,18 +756,18 @@ rates_levels = [
 ]
 
 NOTES = {
-    "MM-2026-001": "ECB decision PENDING today (Jun 11) — +25bp to 2.25% is consensus at ~99%. EUR/USD ~1.15 pre-decision. Sell-the-fact thesis: once delivered, EUR longs unwind. Lagarde's presser is the live catalyst post-decision. Stop 1.662.",
-    "MM-2026-002": "Working hard — and validated a second time. US launched Day 2 of Iran strikes; Iran fired at Gulf states; ceasefire declared 'meaningless.' Brent at $93.50 and climbing toward $95. Conviction 3 upgraded on re-escalation confirmation. Exit on weekly close below $87. Target $104.",
-    "MM-2026-003": "Building momentum. Brent-WTI spread benefits directly from Day 2 strikes — Brent-specific war premium is widening again. The spread's purpose is confirmed. Stop 1.50.",
-    "MM-2026-004": "Working — soft CPI core eased the 10Y to ~4.52% from yesterday's 4.55% high. Disinflation impulse confirmed. FOMC dot plot Jun 16-17 is the next catalyst. Do not add; let the steepener carry it. Stop 4.65%.",
-    "MM-2026-005": "Recovering well. Gold at $4,104 (+0.80% today) getting a dual bid: safe-haven from Day 2 US-Iran strikes AND real-rate relief from the soft CPI core. Two-engine rally. Min hold to ~July 15; stop $4,250.",
-    "MM-2026-007": "Near flat. USDJPY holding ~160.2 — the USD did not strengthen materially on the ceasefire-is-dead news. BoJ September hike still >50% priced; MoF intervention threat above 163 remains the ceiling. Stop 163.00.",
-    "MM-2026-008": "BEST PERFORMER: put spread is now IN THE MONEY. S&P fell -1.62% yesterday to ~7,267, below the 7300 strike. Mark ~80 vs $35 premium paid (+$45, +129%). Two catalysts remain (ADBE tonight, FOMC next week). Hold through expiry Jun 27; do not lift early.",
-    "MM-2026-009": "Best structural position, still running strong. 2s10s curve steepened further on the soft CPI core; 10Y eased while front-end stays anchored. Min hold to July 16; target +60bp. FOMC next week is the next catalyst. Hold.",
-    "MM-2026-010": "Oracle capex panic confirmed the Nasdaq de-rate leg — stock -7-11% AH, Nasdaq -1.98% yesterday. ECB decision PENDING today (Jun 11, +25bp consensus) — if confirmed, DAX financials get NIM tailwind. Ratio should recover from 0.949 near-stop. Structural case intact — do not trim ahead of FOMC next week.",
-    "MM-2026-011": "Gaining. Brent at $93.50 and approaching $95 — the $100 strike is only $6.50 away. Mark ~$2.50 (model est) vs $3 premium. Day-2 strikes bring the $100 trigger into range. Defined risk; hold through the Strait crisis.",
-    "MM-2026-012": "ECB decision PENDING today. EUR/USD ~1.15 pre-decision — buy-the-rumour crowd fully positioned. Delivery of the +25bp (PENDING) triggers the sell-the-fact unwind. Lagarde's presser tone is the pace-setter post-decision. Stop 1.182; target 1.130.",
-    "MM-2026-013": "Progressing. 2Y holding near ~4.15%; soft CPI core from yesterday validated the 'over-extrapolated hike' thesis. FOMC Jun 16-17 dot plot is the payoff catalyst. Min hold 30d through Jun 16. Stop 4.35%.",
+    "MM-2026-001": "ECB decision PENDING today (Jun 11) — +25bp to 2.25% consensus at ~99%. EUR/USD ~1.15 pre-decision. Sell-the-fact thesis: once delivered, EUR longs unwind. Lagarde presser is the live catalyst. Stop 1.662. NOTE: hot PPI (+6.5% YoY) may complicate by supporting USD broadly.",
+    "MM-2026-002": "UPGRADED — Day-3 strikes vowed by Trump tonight; Kharg Island seizure THREATENED (~90% of Iran's crude). Most oil-bullish single statement since the war began. Brent moving toward $95-100. Bloomberg $130/bbl Jul-Aug if Strait stays shut. Counterweight: UAE-Iran held first talks. Conviction holds at max. Exit on weekly close below $87.",
+    "MM-2026-003": "Building strongly. Brent-WTI spread widens on Kharg Island escalation — Brent-specific supply shock is what this spread was designed for. Structural case confirmed Day 3. Stop $1.50.",
+    "MM-2026-004": "HEADWIND — re-mark required. Hot PPI (+1.1% MoM / +6.5% YoY, BLS Jun 11 — largest since Nov 2022) counters the soft core CPI (2.9%) that had been supporting the thesis. Pipeline re-accelerating. Warsh cannot look dovish with CPI 4.2% AND PPI 6.5%. Position ~8bp offside (entry ~4.44%, current ~4.52%). Stop 4.65% is now closer. Do not add; FOMC Jun 16-17 is the terminal gate — if Warsh signals pause, trade recovers; if hawkish, stop is hit.",
+    "MM-2026-005": "THREE engines running. Kharg Island seizure threat = geopolitical bid strongest yet. Hot PPI +6.5% YoY = inflation-hedge case strengthened. Real-rates engine ambiguous (10Y at 4.52% on soft core CPI; but hot PPI could push real rates up). Net: two of three engines bullish. Min hold to ~July 15; stop $4,250.",
+    "MM-2026-007": "Near flat. USDJPY ~160.5. Hot PPI may support USD modestly vs JPY via higher US rate expectations. BoJ Sept hike >50% priced. MoF intervention ceiling at 163. Stop 163.00.",
+    "MM-2026-008": "BEST PERFORMER: put spread IN THE MONEY. S&P fell -1.62% to ~7,267, below 7300 strike. Mark ~$80 vs $35 premium paid (+129%). Hot PPI → hawkish Fed → equity headwind. SpaceX IPO tomorrow ($75B raise) = liquidity drain. Hold through FOMC Jun 16-17; do not lift early.",
+    "MM-2026-009": "RE-ASSESS. Hot PPI (+6.5% YoY) COMPLICATES the steepener: if PPI feeds into long-end inflation expectations, 10Y could rise with the front end instead of steepening. Thesis was: front end anchored by Fed hold, long end drifts lower. Hot PPI: long end could sell off faster. The steepener still works if Warsh signals pause (front end falls), but the short leg is now under PPI pressure. Min hold to July 16; monitor. Do not add.",
+    "MM-2026-010": "Oracle capex panic confirmed Nasdaq de-rate. ECB PENDING today — if confirmed, DAX financials get NIM tailwind. Hot PPI may support European financials additionally (higher-for-longer globally). Ratio at ~0.964 recovering from 0.949 near-stop. Structural case intact. Hold through FOMC next week.",
+    "MM-2026-011": "ACCELERATING. Brent toward $95-100 on Kharg Island seizure threat. $100 strike now only ~$5-6 away. Day-3 strikes vowed. Mark ~$2.50 vs $3.00 premium. Kharg execution = $100 call goes deep in the money within sessions. Defined risk; hold.",
+    "MM-2026-012": "ECB decision PENDING today. EUR/USD ~1.15 pre-decision. Sell-the-fact thesis intact. HOT PPI supports USD broadly (higher-for-longer Fed = USD bid). Dual tailwind if ECB delivers and Lagarde signals pause. Stop 1.182; target 1.130.",
+    "MM-2026-013": "HEADWIND — re-mark required. Hot PPI +6.5% YoY (BLS Jun 11) re-arms hike pricing. 2Y at ~4.11%, holding; but if PPI feeds through to CPI and Warsh turns hawkish at FOMC, 2Y rises back toward 4.35% stop. The structural over-extrapolation thesis stands but timing has shifted more hawkish. Min hold 30d through Jun 16. Stop 4.35%. Do not add.",
 }
 
 def _pnl_cls(p):
@@ -791,9 +828,9 @@ staleness = [
     _stale_live("DXY", "dxy"),
     _stale_live("VIX", "vix"),
     {"datum": "MM-008 / MM-011 option marks", "source": "Model estimate from spot (no live option feed)", "asof": TODAY, "stale": True},
-    {"datum": "May PPI (released Jun 11) — missed consensus; headline and core both below est.",
-     "source": "BLS Jun 11 (reported today; exact reading to be confirmed vs Reuters/Bloomberg)",
-     "asof": "2026-06-11", "stale": True},
+    {"datum": "May PPI (released Jun 11) — HOT: final-demand +1.1% MoM / +6.5% YoY (largest 12-month rise since Nov 2022); stage-1 intermediate demand +12.3% YoY",
+     "source": "BLS bls.gov/news.release/archives/ppi_06112026.htm + Trading Economics (corroborated)",
+     "asof": "2026-06-11", "stale": False},
     {"datum": "May payrolls +172k",  "source": "BLS June 5",                          "asof": "2026-06-05", "stale": False},
     {"datum": "ORCL Q4 FY26 actuals: EPS $2.11, rev $19.2B, OCI +93%",
      "source": "Oracle IR / web search (Jun 10 AMC)",                                  "asof": "2026-06-10", "stale": False},
@@ -905,92 +942,105 @@ brief = {
     "idea_rsi_data": idea_rsi_data,
 
     "dominant_theme": (
-        "Oracle's capex panic: $638B RPO confirmed the AI demand — but $70B FY27 capex + $20-25B prepayments "
-        "+ $40B raise punished the stock. ECB decision TODAY (Jun 11): +25bp pending, sell-the-fact setup. "
-        "Day-two US-Iran strikes push Brent toward $95. May PPI MISSED this morning — back-to-back soft "
-        "PPI+CPI; FOMC hawkish surprise probability lower. SPX put spread in the money (+129%). "
-        "Adobe reports tonight. FOMC June 16-17 is the final gate. The book is positioned correctly."
+        "HOT PPI (+6.5% YoY, BLS) + Kharg Island seizure threat + Oracle capex panic. May PPI is the "
+        "largest 12-month producer price rise since Nov 2022 — hawkish for Fed, headwind for rates pre-positions. "
+        "Trump threatened to seize Kharg Island (~90% of Iran's crude) and vowed Day-3 strikes — most oil-bullish "
+        "statement since the war; Brent toward $95-100. SpaceX IPO tomorrow (SPCX, $135/share, $75B raise — biggest ever). "
+        "ECB decision PENDING today. SPX put spread in the money (+129%). Adobe reports tonight."
     ),
 
     "summary_narrative": """
-<p><strong>Oracle's Q4 FY26 print is the defining event of this tape</strong>, and it is a capex panic, not
-a dilution story. The demand numbers are extraordinary: OCI infrastructure grew 93% YoY, Cloud +47%, total
-revenue ~$19.2bn (slight beat), and the remaining performance obligations backlog surged to
-<strong>~$638bn</strong> — up from ~$553bn last quarter, the largest confirmed AI order book in enterprise
-software history. The AI demand thesis is confirmed. What punished the stock (-7 to -11% after hours) was
-the cost of delivering it: FY26 capex came in at $55.7bn, above the ~$50bn guide; Oracle then guided
-FY27 capex to <strong>~$70bn plus $20-25bn in component prepayments</strong> — a total capital commitment
-of ~$90-95bn in one fiscal year. To fund this, Oracle announced a ~$40bn debt-and-equity raise (including
-~$20bn in new shares). The market is not saying the demand is bad. It is saying: <em>we don't trust the
-capital structure to fund this without destroying shareholder value.</em> That distinction — capital and
-capacity problem, not a demand problem — is the thesis for the capital-protected note (idea 101).</p>
+<p><strong>Four themes dominate the June 11 tape — and one prior framing requires an immediate correction.</strong></p>
 
-<p>The <strong>ECB decision is TODAY (Jun 11)</strong> and has not been announced as this brief is published.
-The consensus is +25bp to 2.25% at near-100% probability — the first hike since September 2023 — fully
-priced into EUR/USD (~1.15 pre-decision). The 'buy the rumour' crowd is fully positioned. Once the hike is
-delivered, the sell-the-fact dynamic takes over; Lagarde's press conference tone is the pace-setter. A
-'data-dependent pause' signal is the base case and accelerates MM-2026-012; any 'further hikes' language
-squeezes EUR and requires respecting the 1.182 stop.</p>
+<p><strong>1. May PPI is HOT — pipeline re-accelerating.</strong> BLS released May producer prices this
+morning: final-demand PPI <strong>+1.1% MoM and +6.5% YoY</strong>, the largest 12-month rise since
+November 2022 (sources: BLS bls.gov/news.release/archives/ppi_06112026.htm + Trading Economics).
+Stage-1 intermediate demand rose +12.3% YoY — the pipeline is not clearing; it is accelerating. The
+previous framing of PPI as soft was wrong and is corrected here. The honest re-mark: Warsh walks into
+FOMC June 16-17 with CPI at 4.2% headline <em>and</em> PPI at +6.5%. He cannot credibly signal a
+dovish tilt. The rates pre-positions (short 2Y MM-013, short 10Y MM-004) now face a genuine headwind;
+they are flagged honestly as under pressure rather than as straightforward winning setups.</p>
 
-<p>Geopolitically, the US-Iran conflict entered a <strong>second day of strikes</strong>. Iran fired back
-targeting Gulf states. Tehran's foreign ministry declared the April ceasefire "practically meaningless."
-Qatari mediators left empty-handed — uranium enrichment and frozen assets remain the sticking points.
-<strong>Brent is climbing toward $93-95</strong>, Strait of Hormuz at ~15% of pre-war traffic, and
-Bloomberg Intelligence forecasts $130/bbl for July-August if the Strait stays shut.</p>
+<p><strong>2. Kharg Island — escalation to a new level.</strong> Trump vowed a third consecutive night
+of strikes on Iran and threatened to <em>seize Kharg Island</em>, Iran's main oil export terminal
+handling roughly <strong>90% of Iran's crude exports</strong> (~2.5-3M bbl/day). Even as a threat,
+this is the most oil-bullish single statement since hostilities began. (Sources: Bloomberg, Axios, CNBC.)
+The counterweight: UAE and Iran held their <strong>first face-to-face meeting since the war began</strong>
+— a de-escalation channel now open. (Sources: Bloomberg, Al Jazeera.) Brent moves toward $95-100. The
+$100 strike on the call spread (MM-011) is ~$5-6 away. Bloomberg's $130/bbl July-August forecast is
+now the base case, not the tail, if the Strait stays at 15% capacity.</p>
 
-<p>This morning's <strong>May PPI report missed consensus</strong> — headline and core producer prices both
-came in below estimates, following yesterday's soft core CPI (2.9%). Two consecutive below-consensus reads
-on both producer and consumer prices signal the disinflation impulse is real and broadening, not just
-energy-driven. This materially reduces the probability of a FOMC hawkish surprise on June 16-17: Warsh
-cannot justify a hike bias into a tape where producer prices are decelerating. The short-2Y (MM-013) and
-steepener (MM-009) entered this week already positioned for this exact setup.</p>
+<p><strong>3. Oracle capex panic (from last night's close).</strong> Revenue ~$19.2bn (slight beat),
+OCI +93%, Cloud +47%, RPO surged to <strong>~$638bn</strong> from ~$553bn — the largest confirmed AI
+backlog in enterprise software history. The AI demand thesis is confirmed. What punished the stock
+(-7 to -11% AH): FY26 capex $55.7bn (above guide), FY27 guided ~$70bn + $20-25bn prepayments, ~$40bn
+raise. Capital and capacity problem, not a demand problem. The capital-protected note (idea 101) is the
+post-print entry: absorb the dilution overhang, participate in the OCI re-rate.</p>
 
-<p>The SPX 7300/7000 put spread (MM-2026-008) is now <strong>in the money</strong> — the S&amp;P fell
--1.62% yesterday to ~7,267, through the 7300 strike. Mark ~$80 vs $35 premium paid (+129%). FOMC Jun 16-17
-remains inside the Jun 27 expiry — the final catalyst in the window. Adobe reports after the close tonight
-(idea 102 CSP gate opens post-print; do not pre-position).</p>
+<p><strong>4. SpaceX IPO — biggest in history, debuts tomorrow.</strong> Priced last night at
+$135/share, ~$1.77T valuation, ~$75bn raise, Nasdaq debut tomorrow (Jun 12) under ticker
+<strong>SPCX</strong>, Goldman lead. (Source: CNBC.) The cross-market impact: $75bn in capital
+allocation to a single new issue is the largest IPO liquidity drain in history. Cash deployment into
+SPCX is a marginal headwind for risk assets tonight and tomorrow.</p>
+
+<p>The <strong>ECB decision is TODAY (Jun 11)</strong> and has not been announced as this brief is
+published. Consensus: +25bp to 2.25% at near-100% probability. EUR/USD ~1.15 pre-decision. Sell-the-fact
+dynamic on delivery; Lagarde's presser tone is the live EUR catalyst. Hot PPI adds USD-broadly-supportive
+context to the short-EUR/USD (MM-012).</p>
+
+<p>The SPX put spread (MM-2026-008) is <strong>in the money</strong> — S&amp;P -1.62% yesterday to
+~7,267, through the 7300 strike. Mark ~$80 vs $35 premium paid (+129%). Hot PPI + SpaceX IPO drain both
+add to equity headwind. FOMC Jun 16-17 is still inside Jun 27 expiry. Adobe reports tonight (idea 102
+CSP gate opens post-print; do not pre-position).</p>
 """,
 
     "takeaways": [
+        "CORRECTION — May PPI is HOT, NOT soft: +1.1% MoM / +6.5% YoY (BLS Jun 11) — largest 12-month "
+        "rise since Nov 2022. Stage-1 intermediate demand +12.3% YoY. Pipeline re-accelerating. Hawkish Fed "
+        "read. Warsh faces CPI 4.2% AND PPI 6.5% at FOMC Jun 16-17. Rates pre-positions (MM-013, MM-004) "
+        "honestly face headwinds — do NOT add; respect stops.",
+        "ESCALATION: Trump vowed Day-3 strikes + threatened to SEIZE KHARG ISLAND (~90% of Iran's crude). "
+        "Most oil-bullish statement since the war. Brent toward $95-100. Brent call spread $100 strike only "
+        "~$5-6 away. Counterweight: UAE-Iran first face-to-face meeting (de-escalation channel open). "
+        "Oil longs strongly earned — hold all.",
+        "SpaceX IPO priced: SPCX Nasdaq Jun 12 at $135/share, ~$1.77T valuation, ~$75B raise (Goldman lead) "
+        "— biggest IPO in history. Watch: $75B liquidity drain is cross-market headwind tomorrow. (CNBC)",
         "Oracle CAPEX PANIC: Revenue ~$19.2B (slight beat), OCI +93%, Cloud +47%, RPO $638B. BUT FY26 capex "
         "$55.7B (above guide), FY27 guided ~$70B + $20-25B prepayments. ~$40B raise (~$20B shares). Stock "
-        "-7-11% AH. Market read: demand confirmed, capital structure is the problem. Capital-protected note "
-        "(idea 101): protect vs dilution hangover, participate in OCI re-rate. Entry window NOW OPEN.",
-        "ECB decision TODAY (Jun 11): +25bp to 2.25% PENDING at ~99% probability — decision not yet "
-        "announced. Sell-the-fact setup: EUR/USD ~1.15 pre-decision = buy-the-rumour fully priced. "
-        "MM-012 (short EUR/USD) is the trade. Lagarde presser post-decision is the pace-setter.",
-        "Day-two US-Iran strikes. Iran fired at Bahrain, Kuwait, Jordan. Qatari talks failed. Ceasefire "
-        "'meaningless.' Brent climbing toward $93-95. Strait at ~15% pre-war traffic. Oil longs earned.",
-        "SPX put spread in the money: S&P -1.62% yesterday to ~7,267, below 7300 strike. Mark ~$80 vs "
-        "$35 premium paid (+129%). Hold through FOMC Jun 16-17 — final catalyst inside Jun 27 expiry.",
-        "May PPI MISSED this morning: headline and core both below consensus. Back-to-back soft PPI + core CPI "
-        "(2.9% yesterday) = disinflation broadening, not just energy. FOMC hawkish surprise probability lower. "
-        "Short-2Y (MM-013) and steepener (MM-009) gain a softer entry — hold pre-positions, do not add yet.",
+        "-7-11% AH. Capital and capacity problem, not demand. Capital-protected note (idea 101) NOW OPEN.",
+        "ECB decision TODAY (Jun 11): +25bp to 2.25% PENDING at ~99% probability — not yet announced. "
+        "Sell-the-fact setup: EUR/USD ~1.15. Hot PPI adds USD-broadly-supportive overlay to MM-012 short-EUR. "
+        "Lagarde presser post-decision is the pace-setter.",
+        "SPX put spread in the money: S&P -1.62% to ~7,267, below 7300 strike. Mark ~$80 vs $35 paid (+129%). "
+        "Hot PPI + SpaceX IPO drain = equity headwind. Hold through FOMC Jun 16-17 — final catalyst in window.",
         "Adobe reports after close tonight: EPS est $5.01 (Finnhub), rev $6.43-6.48B, ±9.47% implied move. "
         "CSP entry gate (idea 102) opens post-print. Do NOT pre-position.",
-        "FOMC Jun 16-17 next week: 96-98% hold probability at 3.75%. Warsh's first presser is the dot-plot "
-        "edge. Short-2Y (MM-013) and steepener (MM-009) are pre-positions that profit from a pause signal.",
+        "FOMC Jun 16-17 next week: context has shifted hawkish on hot PPI. Warsh under pressure to lean "
+        "restrictive. MM-013 and MM-009 remain open as pre-positions but thesis is now contested — stops matter.",
     ],
 
     "scenarios": [
-        {"kind": "bull", "label": "Bull", "pct": "30%",
-         "headline": "FOMC pauses + Strait cracks open; Oracle dilution absorbed",
-         "body": "Warsh signals data-dependent pause at FOMC Jun 16-17 — 2Y falls 15-20bp, equities recover, "
-                 "Oracle dilution overhang fades as OCI growth data flows. Turkey/Qatar mediation produces "
-                 "an interim Strait deal, Brent eases toward $88 from $95 — inflation narrative cools. "
-                 "Risk up · rates down · dollar soft · gold consolidates."},
+        {"kind": "bull", "label": "Bull", "pct": "20%",
+         "headline": "UAE-Iran deal + FOMC signals pause; PPI spike proves transitory",
+         "body": "UAE-Iran talks produce a Strait interim deal — Brent falls toward $86-88, inflation fears "
+                 "cool. Warsh at FOMC Jun 16-17 emphasises core CPI (2.9%) over PPI headline, signals "
+                 "data-dependent pause — 2Y falls 15-20bp, equity risk re-opens. Oracle dilution overhang "
+                 "fades as OCI growth data flows. SpaceX IPO demand is met without crowding out. "
+                 "Risk up · rates down · dollar soft · oil falls · gold consolidates."},
         {"kind": "base", "label": "Base", "pct": "45%",
-         "headline": "Grind — war premium stays, FOMC holds but no signal, Oracle rebuilds",
-         "body": "Strait stays at 15-20% capacity, Brent holds $90-96. FOMC holds with zero-cut dots but "
-                 "Warsh signals caution without hawkishness — no relief rally. Oracle's $20B raise proves "
-                 "well-timed as OCI rev acceleration continues; dilution absorbed over weeks. Adobe prints "
-                 "mixed AI monetisation data tonight. Risk mixed · rates range · dollar firm vs EUR."},
-        {"kind": "bear", "label": "Bear", "pct": "25%",
-         "headline": "Escalation to $100 oil or FOMC hawkish surprise triggers a re-rating",
-         "body": "Day-three strikes, a confirmed mine incident or Strait closure to <10% traffic pushes Brent "
-                 "toward $100-$110 (SPR running low); or Warsh's dot plot median shows zero cuts with a hike "
-                 "bias — front-end blows out 20bp, AI multiples compress again. Adobe disappointment adds "
-                 "to the AI-as-tax narrative. Risk down · rates up · gold up · SPX toward 7,000."},
+         "headline": "Kharg threat proves rhetorical; grind — PPI-elevated rates, war premium stays",
+         "body": "Trump's Kharg Island threat is not executed — a tactical pressure statement. Brent holds "
+                 "$90-96 on ongoing Strait restriction but no new supply shock. FOMC holds at 3.75% with "
+                 "zero-cut dots; Warsh acknowledges hot PPI without signalling hikes — rates grind higher "
+                 "near the stop, not through it. Oracle rebuilds over weeks; Adobe mixed tonight. "
+                 "SpaceX IPO absorbs well. Risk mixed · rates elevated · dollar firm · gold bid on PPI."},
+        {"kind": "bear", "label": "Bear", "pct": "35%",
+         "headline": "Kharg Island seized OR Warsh hawks up — stagflation + credit crunch",
+         "body": "Trump executes on Kharg Island threat: ~2.5-3M bbl/day removed, Brent gaps to $110-130 "
+                 "(Bloomberg forecast materialises), stagflation spike. AND/OR Warsh delivers explicitly hawkish "
+                 "dot plot (hike bias) on PPI +6.5% + CPI 4.2% evidence — 2Y +25bp, rates pre-positions stopped, "
+                 "AI multiples compress sharply, SPX toward 6,800-7,000. SpaceX IPO absorbs badly, liquidity "
+                 "crunch adds to the sell. Risk sharply down · rates up hard · gold up · oil spike."},
     ],
 
     "insights_layers": """
@@ -1035,72 +1085,90 @@ not today. <strong>Europe:</strong> the ECB decision today is the event the DAX/
 was built for — if confirmed, European financials get NIM relief while US tech is still digesting
 the Oracle capex shock.</p>
 
-<p>This morning's May PPI report adds a second data point to the disinflation read: headline and core
-producer prices missed consensus, following yesterday's soft core CPI at 2.9%. Two consecutive below-estimate
-reads on PPI and core CPI means the inflation is energy-driven — the headline story — but the underlying
-breadth is cooling. For the Fed: this is the sequencing Warsh needs to justify holding at 3.75%. The
-front-end is under-pricing the probability of a genuine pause signal at FOMC June 16-17.</p>
+<p>This morning's May PPI is the most important macro data point since the CPI print. Final-demand PPI
+<strong>+1.1% MoM and +6.5% YoY</strong> (BLS) — the largest 12-month rise since November 2022. Stage-1
+intermediate demand at +12.3% YoY confirms the pipeline is not clearing; it is accelerating. Correct the
+prior framing: this is not disinflation broadening. This is the opposite — producer-price re-acceleration.
+The implication for the Fed: Warsh now faces CPI 4.2% AND PPI 6.5% entering FOMC Jun 16-17. The core
+CPI (2.9%) gives him the look-through argument on energy at the consumer level; the hot PPI undermines
+that argument at the producer level. Net: the balance of risk has shifted toward hawkish. The FOMC is
+no longer a coin-flip on pause vs nothing; it is now a coin-flip on data-dependent hold vs hike signal.</p>
 
-<p>Priced-versus-not: <strong>under-priced</strong> — the $90-95bn Oracle annual capex commitment
-propagating through the AI infrastructure cohort (if Oracle needs $70B, what do Microsoft/Google/Amazon
-need?); the $130/bbl July Brent scenario (call spread $100 strike only ~$6 away); FOMC hawkish
-surprise (Warsh cannot look soft in week one). <strong>Fairly priced:</strong> Brent outright ~$93-95;
-the ECB hike itself (fully in the price). <strong>Fully priced:</strong> Oracle revenue beat (already
-discounted — the stock reacted to capex, not EPS); the soft CPI core (10Y already at 4.52%).</p>
+<p>Priced-versus-not: <strong>under-priced</strong> — Kharg Island physical seizure scenario (if executed:
+Brent gaps to $110-130, removes ~90% of Iran's crude; the market is priced for Strait restriction, not
+for Kharg); FOMC hawkish surprise (Warsh has CPI 4.2% + PPI 6.5% forcing his hand); SpaceX IPO liquidity
+drain ($75B capital allocation = cross-market; not priced in the VIX). <strong>Fairly priced:</strong>
+Brent outright ~$93-95 on Strait restriction; the ECB hike (fully in the price).
+<strong>Fully priced:</strong> Oracle revenue beat (already discounted); the Strait partial blockade
+(already in $93-95 Brent). <strong>Over-priced (at risk):</strong> the long-duration trades (short 10Y,
+short 2Y) — they were entered on a soft-inflation thesis that hot PPI has materially challenged.</p>
 """,
 
     "wrap": """
-<p>Oracle's capex panic confirmed the AI demand and scared the capital markets in the same breath. OCI +93%,
-RPO ~$638bn, revenue ~$19.2bn — every demand number was right. Then: $55.7bn FY26 capex (above guide),
-$70bn FY27 guided + $20-25bn prepayments, $40bn raise. Stock -7-11% AH. The market isn't selling AI;
-it's selling Oracle's equity structure. ECB decision is TODAY — +25bp is consensus at ~99%, not yet
-announced. Sell-the-fact setup is the trade. US-Iran day-two strikes; Brent toward $95; SPX put spread
-in the money at +129%.</p>
+<p>Hot PPI (+6.5% YoY) is the correction that reframes the tape. The prior framing of "soft PPI / dovish
+Fed" was wrong; producer prices are re-accelerating at the fastest 12-month pace since November 2022.
+Warsh walks into FOMC with CPI 4.2% AND PPI 6.5%; the rates pre-positions (short 2Y, short 10Y) are
+under honest pressure. Oil positions are upgraded: Trump threatened to seize Kharg Island — the most
+oil-bullish single statement of the war, with the UAE-Iran de-escalation talks as the only counterweight.
+Brent toward $95-100. Oracle capex panic overhang on AI semis. ECB decision PENDING. SpaceX IPO tomorrow
+is the biggest capital-markets event of the year.</p>
 
-<p><strong>The driver.</strong> Oracle's capex guide is the read-through for the whole AI infrastructure
-cohort: if Oracle needs $70bn per year, Microsoft/Google/Amazon face the same equation. The market hasn't
-priced the capital-structure consequence of the AI buildout — only the revenue upside.</p>
+<p><strong>The driver.</strong> Hot PPI + Kharg Island threat is a stagflation-plus-supply-shock setup.
+The equity market is repricing AI capex costs (Oracle). The oil market is pricing a right tail on physical
+supply. The rates market hasn't priced the PPI pipeline yet. The SpaceX IPO liquidity drain is not in
+the VIX. Three of four under-priced themes are negative for risk — the book is correctly positioned
+with the put spread, oil longs, and gold as the dominant earners.</p>
 
-<p><strong>So what to do.</strong> Hold all positions. The Oracle note window is open (idea 101). The ECB
-sell-the-fact is pending (MM-012). The oil longs are earned. The SPX hedge is in the money. Do not add
-before Adobe tonight — the CSP entry gate (idea 102) opens post-print only.</p>
+<p><strong>So what to do.</strong> Hold all positions. Respect stops on MM-013 and MM-004 — hot PPI has
+shifted the thesis risk honestly. The Oracle note window is open (idea 101). The ECB sell-the-fact is
+pending (MM-012) with hot-PPI USD support. The oil longs are earning. Do not add before Adobe tonight —
+CSP entry gate (idea 102) opens post-print only.</p>
 """,
 
     "correlation_regime": """
-<p><strong>1. Equities and bonds decoupled again — the safe-haven rotation is working.</strong> Yesterday:
-S&amp;P -1.62% / Nasdaq -1.98% while the 10Y held at 4.52% and gold +0.80% to ~$4,104. Geopolitical
-escalation → bond and gold bid. This is the barbell the book holds — long both tails simultaneously.</p>
+<p><strong>1. Bonds and equities: no more safe-haven comfort in Treasuries.</strong> Hot PPI (+6.5% YoY)
+breaks the classic risk-off flight-to-bonds: if inflation is re-accelerating, the 10Y is not a safe haven
+— it is a source of risk. Gold has taken over the safe-haven role (up $4,104+) as it offers both
+the inflation-hedge and the geopolitical-risk premium simultaneously. Watch for the bond/equity
+correlation to flip from negative (usual safe-haven) toward positive (stagflation regime).</p>
 
 <p><strong>2. EUR/USD and the ECB decision are the live cross-asset watch today.</strong> EUR/USD ~1.15
-pre-decision: if +25bp delivers as consensus, the sell-the-fact dynamic begins. If EUR barely moves on
-delivery (as the rate differential is fully priced), that IS the confirmation of the trade thesis — not
-a contradiction of it. Watch EUR/USD in the hour after the announcement.</p>
+pre-decision. Hot PPI adds a USD-broadly-supportive overlay: if the US re-inflates via PPI, the Fed
+must stay restrictive, which is USD-positive across the board. The ECB sell-the-fact + US higher-for-longer
+= double tailwind for short-EUR/USD (MM-012).</p>
 
-<p><strong>3. Brent and equities are telling different stories.</strong> Brent rising toward $95 is an
-oil-war supply story. Equity futures bouncing on "strikes complete" is a ceasefire-optimism story.
-These should not trade together for long — the physical Strait blockade is more durable than the
-headline-optimism bid. When they diverge, Brent stays bid longer.</p>
+<p><strong>3. Brent and equities are telling different stories — and hot PPI widens the gap.</strong>
+Brent rising toward $95-100 on Kharg Island threat + PPI re-acceleration is a supply AND inflation
+story. Equities are being squeezed by: Oracle capex shock (top-line fear), hot PPI (rate-hike fear),
+and SpaceX IPO liquidity drain tomorrow. The divergence between energy and equities should widen. Oil
+longs and the SPX put spread are both positioned for exactly this configuration.</p>
 """,
 
     "vol_skew": """
-<p><strong>The VIX is finally repricing the event calendar, but slowly.</strong> Estimated VIX9D ~18 · VIX ~21 ·
-VIX3M ~22 · VIX6M ~23 — roughly 2-3 points higher than last week's complacency at 15.3. The S&amp;P is now
-below the 7300 put strike, which means the hedge paid. The tell: the term curve is still flat (VIX ≈ VIX3M)
-when it should be backwardated into the FOMC dot plot on Jun 16-17. The near-dated vol is catching up; the
-term structure is not yet reflecting that the biggest macro catalyst of the summer (Warsh's first presser)
-is six days away.</p>
+<p><strong>The VIX is catching up but still not pricing all the tails.</strong> Estimated VIX9D ~18 ·
+VIX ~21 · VIX3M ~22 · VIX6M ~23 — repricing from 15.3 last week, but still materially under-priced
+for the calendar: FOMC Jun 16-17 + Kharg Island tail + SpaceX IPO tomorrow all in the same window.
+The term curve is flat when it should be steeply backwardated. The skew story: hot PPI should be
+pushing put skew higher (inflation + hawkish Fed = equity downside risk), but the VIX term structure
+hasn't incorporated the full PPI-to-FOMC pipeline. The SPX put spread is in the money; the hedge paid
+before the main event (FOMC) even arrived. The residual value in the put spread is the FOMC tail.</p>
 """,
 
     "sector_rv": """
-<p><strong>Leading:</strong> Energy producers (Brent ~$93-95 and rising), gold/metals (dual safe-haven + real-
-rate bid at ~$4,104), European financials (ECB decision PENDING today — if hikes as expected, NIM relief).
-<strong>Lagging:</strong> US tech/AI semis (Nasdaq -1.98% yesterday on Oracle capex panic; NVDA/AMD/AVGO
-in range-mode), European luxury (LVMH: energy inflation + ECB tightening = twin headwind).</p>
+<p><strong>Leading:</strong> Energy producers (Brent toward $95-100 on Kharg Island threat; Day-3 strikes;
+SpaceX IPO not relevant), gold/metals (PPI inflation hedge + geopolitical bid; three engines running).
+ECB decision PENDING — if hikes, European financials get NIM relief (DAX tailwind). Hot PPI broadly
+supportive of financials globally (higher-for-longer = wider margins).
+<strong>Lagging:</strong> US tech/AI semis (Oracle capex panic + hot PPI hike risk = dual multiple
+compression); long-duration bond-proxies (utilities, REITs — hot PPI pushes real yields higher);
+European luxury (LVMH: energy inflation + ECB tightening = twin headwind).
+<strong>Tomorrow watch:</strong> SpaceX (SPCX) IPO debut on Nasdaq — space tech, satellites, Starlink
+revenue; $1.77T valuation. Peers: Boeing, L3Harris, Iridium. The IPO supply overhang drains tech liquidity.</p>
 
-<p><strong>RV:</strong> Long DAX / short Nasdaq (MM-2026-010) should recover today — Nasdaq -1.98% yesterday
-was a tailwind; ECB decision (PENDING) is the catalyst for the DAX financials leg. The ratio dipped toward
-0.949 (vs 0.943 stop) and today's dynamics should provide recovery. This is the structural case the trade
-was built for: ECB rate hike = European banks rerate; US tech premium compresses on capex shock + war.</p>
+<p><strong>RV:</strong> Long DAX / short Nasdaq (MM-2026-010) structural case strengthened: Nasdaq under
+Oracle + hot PPI pressure; ECB decision (PENDING) is the DAX financials catalyst. Ratio recovered from
+0.949 near-stop. Hot PPI supports European financials via higher-for-longer global rate environment.
+Hold through FOMC next week.</p>
 """,
 
     "positioning": """
@@ -1125,67 +1193,79 @@ and gap out when the hike narrative re-emerges.</p>
 
     "tape_missing": """
 <p><strong>1. The Oracle dilution story is masking the fundamental re-rate.</strong> The market punished the
-raise (-10% AH) and is pricing the equity dilution math. It is not yet pricing what Oracle's $553bn backlog
+raise (-10% AH) and is pricing the equity dilution math. It is not yet pricing what Oracle's $638bn RPO
 converts to in OCI free cash flow in 18-24 months. The note structure (capital-protected, 70-80% participation)
-is the right way to express this: you don't need to buy the dilution hangover, you just need to be there when
-the OCI growth-rate compounds.</p>
+lets you hold the backlog conviction without the dilution hangover.</p>
 
-<p><strong>2. The FOMC risk has shifted: soft PPI this morning reduces hawkish-surprise probability, but the market
-still hasn't priced a genuine pause signal.</strong> The market is at 96-98% hold probability — priced for a
-do-nothing hold, but not for a meaningful data-dependent-pause signal. May PPI missed + core CPI 2.9% gives
-Warsh cover to lean dovish in his first presser without looking soft. The non-trivial asymmetry has inverted:
-hawkish surprise risk is now lower; the unpriced scenario is a dovish tilt that pushes the 2Y down 20-25bp.
-MM-013 (short 2Y) is positioned for it.</p>
+<p><strong>2. The FOMC risk is now MORE hawkish than the market prices.</strong> The 96-98% hold probability
+means the market is priced for nothing. Hot PPI +6.5% YoY changes the calculus: Warsh faces CPI 4.2% AND PPI
+6.5% in his first presser. He cannot signal a dovish tilt without a credibility problem. The non-trivial
+asymmetry is now a HAWKISH surprise, not a dovish signal. The SPX put spread is the correct hedge for this
+tail; MM-013 and MM-004 are exposed to it — their stops matter now.</p>
 
-<p><strong>3. Brent approaching $100 is not in the equity VIX.</strong> At $93.50, the Brent call spread's
-$100 strike is $6.50 away. A move to $100 — one mine incident, one confirmed Strait-closure escalation — and
-the Bloomberg $130 forecast is the tape, not the tail. The SPX vol curve has not priced a $100+ oil scenario.</p>
+<p><strong>3. Kharg Island physical seizure is not in the price.</strong> Trump threatened to seize Kharg
+Island — ~90% of Iran's crude exports (~2.5-3M bbl/day). If executed: Brent gaps to $110-130. The $100
+call spread strike (MM-011) is only ~$5-6 away. The VIX curve has not priced this tail. The oil longs and
+call spread are the right instruments for a scenario the equity market has entirely ignored.</p>
+
+<p><strong>4. SpaceX IPO liquidity drain is not in the VIX.</strong> The largest IPO in history ($75B raise)
+debuts tomorrow on Nasdaq. The cross-market allocation drag — cash pulled from existing equities to fund
+SPCX — is a marginal headwind for AI/tech that is not priced in the VIX term structure. Watch for
+tomorrow-dated equity selling that is IPO-driven, not macro-driven.</p>
 """,
 
     "book_outlook": {
         "commentary": (
-            "The book's best day yet on the derivatives side: the <b>SPX put spread is in the money at +129%</b>, "
-            "the Brent call spread's $100 strike is only ~$6 away, and MM-012 (short EUR/USD) is positioned for "
-            "the ECB sell-the-fact that fires TODAY. The equity sleeve remains the pressure point — Micron 25.8% "
-            "concentration is squarely in the AI semis correction — but the <b>hedge book has now done more than "
-            "offset the equity drag</b>. Today's live events: ECB decision PENDING (sell-the-fact setup on delivery); "
-            "Oracle post-print capex panic overhang on semis/tech (RPO $638B confirmed, $90-95B capex commitment "
-            "is the shock); Brent climbing toward $95; Adobe reports tonight (do NOT pre-position)."
+            "The book is correctly positioned for the tape — but one prior framing requires correction. "
+            "<b>Hot PPI (+6.5% YoY, BLS Jun 11)</b> is the key re-mark: the rates pre-positions (short 2Y MM-013, "
+            "short 10Y MM-004) were framed as gaining a softer entry; that is wrong. They are under pressure from "
+            "hawkish PPI re-acceleration. The <b>SPX put spread is in the money at +129%</b>, the Brent longs are "
+            "upgraded on Kharg Island seizure threat, gold is running on three engines (safe-haven + inflation-hedge + "
+            "real-rates), and MM-012 has hot-PPI USD support on top of the ECB sell-the-fact. "
+            "Today's events: ECB decision PENDING; Day-3 strikes + Kharg threat = Brent toward $95-100; "
+            "SpaceX IPO tomorrow ($75B drain); Adobe reports tonight (do NOT pre-position). "
+            "Respect stops on MM-013 (4.35%) and MM-004 (4.65%) — PPI has moved the goalposts."
         ),
         "outperform": [
-            {"name": "Brent positions (MM-002, MM-003, MM-011)", "why": "Brent $93.50 climbing toward $95, Strait at "
-             "15% capacity, Bloomberg $130 Jul-Aug forecast. The war premium is not a trade to be cut. The call "
-             "spread's $100 strike is only $6.50 away from being in the money."},
-            {"name": "Xetra-Gold (4GLD)", "why": "Gold at $4,104 (+0.80% yesterday) running on both engines: "
-             "geopolitical safe haven (day-2 strikes) and real-rate compression (10Y at 4.52%, soft core). "
-             "Dual bid — do not trim."},
+            {"name": "Brent positions (MM-002, MM-003, MM-011)", "why": "Kharg Island seizure threat (Day-3 strikes, "
+             "Trump statement) + Strait at 15% capacity + Bloomberg $130 Jul-Aug forecast. $100 call spread strike "
+             "only ~$5-6 away. UAE-Iran talks are the only counterweight. The war premium has a new right tail. Do not trim."},
+            {"name": "Xetra-Gold (4GLD)", "why": "Three engines: geopolitical safe-haven (Day-3 strikes, Kharg threat), "
+             "inflation hedge (PPI +6.5% YoY = stagflation overlay), and real-rates (10Y at 4.52%, uncertain direction). "
+             "Net: bullish. Min hold to ~Jul 15; stop $4,250."},
             {"name": "Short EUR/USD (MM-012)", "why": "ECB decision PENDING today — sell-the-fact trigger fires on "
-             "delivery. EUR ~1.15 pre-decision = buy-the-rumour fully priced. Lagarde presser tone sets the pace."},
-            {"name": "SPX put spread (MM-008)", "why": "Now in the money at ~$80 vs $35 premium paid (+129%). Hold "
-             "through FOMC Jun 16-17 — the final catalyst in the 26-day window."},
+             "delivery. Hot PPI adds USD-broadly-supportive overlay (higher-for-longer Fed = USD bid). Dual tailwind "
+             "if ECB delivers + Lagarde signals pause. Stop 1.182."},
+            {"name": "SPX put spread (MM-008)", "why": "In the money at +129%. Hot PPI + SpaceX IPO liquidity drain "
+             "both add to equity headwind. FOMC hawkish surprise risk now HIGHER (not lower) after PPI. "
+             "Hold through Jun 16-17 — maximum residual value in the FOMC tail."},
         ],
         "underperform": [
-            {"name": "Micron (MU) — 25.8%", "why": "The book's largest equity risk, in the epicentre of the AI semis "
-             "correction. Oracle dilution overhang bleeds across the cohort. The concentration is the amplifier."},
-            {"name": "NVDA / AVGO / AMD", "why": "Same AI-capex-doubt complex. Oracle's $20B raise signals OCI needs "
-             "capital at scale — the cohort de-rates on the bill, not the revenue. Range-bound at best."},
-            {"name": "LVMH (MC FP)", "why": "ECB decision today + energy inflation = twin headwind for European "
-             "luxury: rate tightening compresses the multiple; consumer budgets squeezed by oil prices."},
-            {"name": "US Treasury 1.25% 2031", "why": "The underwater bond is above water on a mark-to-live basis "
-             "as the 10Y stays at 4.52%, but it is still the tail risk if Warsh delivers hawkish dots next week."},
+            {"name": "Micron (MU) — 25.8%", "why": "The book's largest equity risk. Oracle capex panic + hot PPI "
+             "(hawkish Fed risk) = dual AI semis headwind. Hot PPI → higher real rates → multiple compression for "
+             "high-growth semis. The concentration is the amplifier."},
+            {"name": "NVDA / AVGO / AMD", "why": "Oracle capex shock + PPI-driven rate risk = two vectors of multiple "
+             "compression. SpaceX IPO tomorrow drains marginal capital from existing tech/semis. Range-bound at best."},
+            {"name": "LVMH (MC FP)", "why": "ECB decision today + energy inflation (Brent toward $100) + PPI "
+             "re-acceleration = triple headwind for European luxury: rate tightening, energy costs, consumer squeeze."},
+            {"name": "US Treasury 1.25% 2031", "why": "Hot PPI +6.5% YoY directly challenges this bond's thesis: "
+             "if inflation re-accelerates, the 10Y could move from 4.52% toward the 4.65% danger zone. "
+             "The Warsh hawkish scenario — now more likely — tests this position hardest."},
         ],
         "watch": [
             {"label": "Do not pre-position Adobe", "text": "The CSP entry gate for idea 102 opens only after tonight's "
-             "print. Hold cash, set the entry level ($385 CSP if ADBE trades down to support), and let the "
-             "implied-move settle before sizing."},
-            {"label": "Maintain the SPX hedge", "text": "The put spread is +129% but FOMC Jun 16-17 is still inside "
-             "the Jun 27 expiry. Do not take profit early — this is the book-level tail protection for the "
-             "highest-risk event remaining in the window."},
-            {"label": "Oracle note window open", "text": "The capital-protected note (idea 101) is the post-print "
-             "entry vehicle: full downside protection against the $20B dilution hangover, 70-80% participation "
-             "in the OCI re-rate. The window opened last night and typically runs 5-10 sessions."},
-            {"label": "FOMC positioning", "text": "Short-2Y (MM-013) and the steepener (MM-009) are the pre-positions "
-             "that profit from a Warsh pause signal. Do not add new risk; let the existing book work."},
+             "print. Hold cash, set the entry level ($385 CSP if ADBE trades down to support). Do not guess the print."},
+            {"label": "Maintain the SPX hedge", "text": "Put spread at +129% with FOMC Jun 16-17 still inside expiry. "
+             "Hot PPI has increased the probability of a hawkish dot plot — the tail the hedge was bought for. "
+             "Do not take profit early; the residual value is the FOMC tail."},
+            {"label": "Oracle note window open", "text": "Capital-protected note (idea 101): full downside protection "
+             "against the dilution hangover, 70-80% participation in the OCI re-rate. Window open; $638bn RPO thesis."},
+            {"label": "WATCH stops on rates trades", "text": "Hot PPI has shifted the FOMC probability toward hawkish. "
+             "MM-013 stop 4.35% and MM-004 stop 4.65% are now risk-live. Do not add to either position. "
+             "If FOMC delivers hawkish dots, stops are hit — that is the correct outcome, not a surprise."},
+            {"label": "SpaceX IPO tomorrow (SPCX, Nasdaq)", "text": "Biggest IPO ever ($75B raise). Watch for marginal "
+             "equity selling pressure in AI/tech tomorrow as capital is allocated to SPCX. Not a structural event "
+             "but a temporary liquidity drain. No action needed — just context for tomorrow's equity tape."},
         ],
     },
 
@@ -1218,10 +1298,11 @@ full intrinsic ($300). Hold through FOMC — this is exactly what the hedge was 
         {"day": "Wed", "date": "Jun 10 ✓",
          "event": "US May CPI — DONE: 4.2% headline, 2.9% core",
          "consensus": "Headline +0.5% m/m / 4.2% y/y (highest since Apr-23); core +0.2% m/m / 2.9%, BELOW the 0.3% forecast. Energy ~60% of the rise (BLS).",
-         "view": ("Hot headline, soft core — the inflation is energy, not breadth, and the Fed can look through it. "
-                  "The 10Y eased to ~4.52%; the soft core hands the short-2Y (MM-013) and steepener (MM-009) their thesis."),
-         "asymmetry": "DONE: core undershoot = front-end relief confirmed. Risk is energy base dragging core higher next month.",
-         "dir": "down"},
+         "view": ("Hot headline, soft core — the 10Y eased to ~4.52% on the print. HOWEVER: the next-day hot PPI "
+                  "(+6.5% YoY) materially complicates this read. Soft core at the consumer level does not stay "
+                  "soft if the producer pipeline re-accelerates. The CPI gave one day of relief; the PPI took it back."),
+         "asymmetry": "DONE: one-day relief on soft core. Subsequent hot PPI reverses the FOMC-dovish-probability read.",
+         "dir": "flat"},
         {"day": "Wed", "date": "Jun 10 ✓",
          "event": "Oracle (ORCL) Q4 FY26 — PRINTED: capex panic selloff",
          "consensus": "Revenue ~$19.2bn (slight beat), OCI +93%, Cloud +47%, RPO surged to ~$638bn. "
@@ -1233,15 +1314,17 @@ full intrinsic ($300). Hold through FOMC — this is exactly what the hedge was 
          "asymmetry": "DONE: note window open. If OCI growth accelerates in Q1 FY27 without further raises, re-rate.",
          "dir": "down"},
         {"day": "Thu", "date": "Jun 11 ✓",
-         "event": "US May PPI — RELEASED: missed consensus",
-         "consensus": "Headline and core PPI both came in below consensus — following yesterday's soft core CPI (2.9%). "
-                      "Exact readings BLS-sourced this morning (mark as estimated until cross-checked vs Reuters/Bloomberg).",
-         "view": ("Back-to-back misses on PPI and core CPI: the disinflation impulse is real and broadening. "
-                  "The Fed is not forced to hike on energy-driven price rises it routinely looks through. "
-                  "MM-013 (short 2Y) and MM-009 (steepener) are pre-positioned for exactly this setup — "
-                  "FOMC Jun 16-17 just got a softer entry condition."),
-         "asymmetry": "Soft PPI + soft core CPI = inflation breadth absent; 2Y yield relief. Only upside risk: energy base effect dragging core higher in July print (Jul 10).",
-         "dir": "down"},
+         "event": "US May PPI — RELEASED: HOT (+1.1% MoM / +6.5% YoY)",
+         "consensus": "Final-demand PPI +1.1% MoM / +6.5% YoY — largest 12-month rise since November 2022. "
+                      "Stage-1 intermediate demand +12.3% YoY. Pipeline re-accelerating. "
+                      "Source: BLS bls.gov/news.release/archives/ppi_06112026.htm + Trading Economics (corroborated).",
+         "view": ("HAWKISH re-read. Warsh walks into FOMC Jun 16-17 with CPI 4.2% AND PPI 6.5% — cannot signal "
+                  "a dovish tilt without credibility damage. Rates pre-positions (MM-013, MM-004) face headwinds. "
+                  "Oil positions reinforced (PPI pipeline = inflation stays high, oil bid). Gold inflation-hedge "
+                  "case strengthened. Short-EUR/USD gets USD-broadly-supportive overlay."),
+         "asymmetry": "Hot PPI = FOMC hawkish surprise risk higher; 2Y toward stop 4.35%. Gold/oil up. "
+                      "If Warsh ignores PPI (looks through energy), rates relief resumes but credibility damaged.",
+         "dir": "up"},
         {"day": "Thu", "date": "Jun 11 ← TODAY (PENDING)",
          "event": "ECB rate decision — +25bp to 2.25% PENDING (consensus ~99%)",
          "consensus": "+25bp expected at ~99%; first hike since September 2023. EUR/USD ~1.15 pre-decision.",
@@ -1257,81 +1340,112 @@ full intrinsic ($300). Hold through FOMC — this is exactly what the hedge was 
                  "wait for the print to open the CSP entry gate (idea 102: $385 cash-secured put).",
          "asymmetry": "AI additive to ARR: software relief +8-10%; cannibalisation read: ADBE toward $330s, CSP assigned",
          "dir": "flat"},
+        {"day": "Fri", "date": "Jun 12 ← TOMORROW",
+         "event": "SpaceX IPO Nasdaq debut — ticker SPCX, $135/share, ~$1.77T valuation",
+         "consensus": "Priced Jun 11 at $135/share, 555.6M shares, ~$75B raise (Goldman lead). Biggest IPO in history. "
+                      "Nasdaq debut tomorrow (Source: CNBC). No comparable precedent for $75B single-day IPO capital allocation.",
+         "view": ("Cross-market liquidity event: $75B capital drain from existing equities. AI/tech is most exposed. "
+                  "Not a fundamental short signal — SpaceX is an extraordinary business — but the IPO-supply overhang "
+                  "is a marginal headwind for tech liquidity tomorrow. Watch for SPX/NDX early weakness."),
+         "asymmetry": "High demand absorbs smoothly: limited market impact. Overhang selling: AI/tech -1-2% intraday. "
+                      "No action needed from the book — just context for tomorrow's tape.",
+         "dir": "down"},
         {"day": "Tue-Wed", "date": "Jun 16-17",
          "event": "FOMC + dot plot — Warsh's first meeting, 96-98% hold priced",
-         "consensus": "Hold at 3.50-3.75% consensus; dots are the whole event. Warsh cannot look soft with 4.2% CPI.",
-         "view": "Zero-cut median: 2Y +10bp, gold sells, S&P -1.5%. One-cut held: 2Y -15bp, gold +2%, S&P +1%. "
-                 "Short-2Y (MM-013) and steepener (MM-009) are positioned for the pause signal.",
-         "asymmetry": "0-cut dots: DXY +0.7%, 2Y +10bp; 1-cut held: 2Y -15bp, gold +2%; hike bias: 2Y +25bp, S&P -3%",
+         "consensus": "Hold at 3.50-3.75% consensus; dots are the whole event. "
+                      "Warsh now faces CPI 4.2% AND PPI 6.5% — BOTH above acceptable levels for a soft presser.",
+         "view": ("UPDATED — hawkish scenario now more likely after hot PPI. Three scenarios: "
+                  "(1) Hold + hike bias (CPI+PPI justify it): 2Y +20-25bp, stops MM-013/MM-004 triggered, SPX -2-3%; "
+                  "(2) Hold + data-dependent (core CPI look-through): 2Y -5-10bp, limited relief; "
+                  "(3) Hold + pause signal (ignores PPI): 2Y -15-20bp — credibility risk for Warsh. "
+                  "MM-008 (put spread) benefits from all but scenario 3."),
+         "asymmetry": "Hike bias: 2Y +25bp, SPX -3%, put spread pays; pause signal: 2Y -15bp, gold +2%; "
+                      "data-dependent neutral: range. Probability distribution shifted hawkish post-PPI.",
          "dir": "flat"},
     ],
 
     "what_changes_mind": """
 <ul>
-<li><strong>MM-2026-001 · Short EURAUD:</strong> close above 1.660. At ~1.636; stop 1.662. ECB decision PENDING today — Lagarde's presser post-decision is the live catalyst. 'Further hikes' language = stop test.</li>
-<li><strong>MM-2026-002 · Long Brent:</strong> exit on weekly close below $87 — war premium gone. At ~$93.50, climbing. The Strait is still shut. Hold.</li>
-<li><strong>MM-2026-003 · Long Brent/Short WTI spread:</strong> discretionary close below $2.00. At ~$3.40. Stop 1.50. Day-2 strikes widen the quality premium.</li>
-<li><strong>MM-2026-004 · Short US 10Y yield:</strong> stop at 4.65%. At ~4.52%. CPI core undershot (2.9%) — working. FOMC Jun 16-17 is the catalyst. Do not add.</li>
-<li><strong>MM-2026-005 · Long gold:</strong> min hold to July 15. Stop $4,250. At ~$4,104, dual bid (geopolitical + real-rate). Min_hold rule applies; do not force exit.</li>
-<li><strong>MM-2026-007 · Short USDJPY:</strong> stop 163.00. At ~160.2. BoJ Sept hike >50% priced. Carry unwind coming, not today.</li>
-<li><strong>MM-2026-008 · SPX put spread:</strong> now in the money (+129%). Hold through FOMC Jun 16-17 — final catalyst inside Jun 27 expiry. No change.</li>
-<li><strong>MM-2026-009 · 2s10s steepener:</strong> min hold to July 16. At ~+43bp; target +60bp. FOMC is the catalyst. Hold.</li>
-<li><strong>MM-2026-010 · Long DAX / short Nasdaq:</strong> stop ratio 0.943. ECB decision PENDING today (DAX financials tailwind if confirmed); Nasdaq -1.98% yesterday on Oracle capex panic. Ratio should recover. Hold.</li>
-<li><strong>MM-2026-011 · Brent 100/115 call spread:</strong> gaining. $100 strike only ~$6 away at ~$93-95. Hold. Exit: Brent falls below $85 for 3 sessions.</li>
-<li><strong>MM-2026-012 · Short EURUSD:</strong> stop 1.182. EUR ~1.15 pre-ECB decision (PENDING today). Sell-the-fact trigger fires on delivery. Hold.</li>
-<li><strong>MM-2026-013 · Short US 2Y yield:</strong> stop 4.35%; min hold 30 days. At ~4.15%. Core CPI soft. FOMC next week is the payoff. Do not add.</li>
+<li><strong>MM-2026-001 · Short EURAUD:</strong> close above 1.660. At ~1.637; stop 1.662. ECB PENDING today — Lagarde presser post-decision is live catalyst. Hot PPI supports USD broadly. 'Further hikes' language = stop test.</li>
+<li><strong>MM-2026-002 · Long Brent:</strong> exit on weekly close below $87 — war premium gone. At ~$92-95, climbing on Kharg threat. The Strait is still shut. Day-3 strikes vowed. Hold.</li>
+<li><strong>MM-2026-003 · Long Brent/Short WTI spread:</strong> close below $2.00. At ~$3.40. Stop 1.50. Kharg Island threat = Brent-specific supply shock = spread widens. Hold.</li>
+<li><strong>MM-2026-004 · Short US 10Y yield:</strong> stop at 4.65%. At ~4.52%. HEADWIND: hot PPI +6.5% YoY shifts balance toward hawkish FOMC. Position ~8bp offside. Do NOT add. Stop 4.65% is risk-live. FOMC Jun 16-17 is the terminal gate.</li>
+<li><strong>MM-2026-005 · Long gold:</strong> min hold to July 15. Stop $4,250 (already touched Jun 10, min_hold override). At ~$4,075. Three-engine bid: geopolitical + inflation-hedge (PPI) + real-rates uncertainty. Hold.</li>
+<li><strong>MM-2026-007 · Short USDJPY:</strong> stop 163.00. At ~160.5. Hot PPI may support USD modestly. BoJ Sept hike >50% priced. Carry unwind coming, not today.</li>
+<li><strong>MM-2026-008 · SPX put spread:</strong> in the money (+129%). Hot PPI raised FOMC hawkish probability — maximum remaining value is in the FOMC tail. Hold through Jun 16-17 expiry. Do not take early profit.</li>
+<li><strong>MM-2026-009 · 2s10s steepener:</strong> min hold to July 16. At ~+40bp; target +60bp. COMPLICATION: hot PPI can push 10Y higher alongside the front end rather than steepening. Monitor. Do not add. Stop is the 30-day min-hold discipline.</li>
+<li><strong>MM-2026-010 · Long DAX / short Nasdaq:</strong> stop ratio 0.943. ECB PENDING today (DAX tailwind); Oracle + PPI compresses Nasdaq multiple. Hot PPI globally supportive of bank NIM = DAX financials. Ratio recovering. Hold.</li>
+<li><strong>MM-2026-011 · Brent 100/115 call spread:</strong> $100 strike ~$5-6 away at current Brent ~$94-95. Kharg Island seizure threat = $100 trigger in range. Defined risk; hold. Exit: Brent falls below $85 for 3 sessions.</li>
+<li><strong>MM-2026-012 · Short EURUSD:</strong> stop 1.182. EUR ~1.15 pre-ECB (PENDING). Sell-the-fact on delivery + hot PPI USD support = dual tailwind. Hold.</li>
+<li><strong>MM-2026-013 · Short US 2Y yield:</strong> stop 4.35%; min hold 30d. At ~4.11%. HEADWIND: hot PPI re-arms hike pricing. 2Y risk of moving back toward stop. Do NOT add. The structural over-extrapolation thesis stands but timing shifted hawkish. Respect stop.</li>
 </ul>
 """,
 
     "client_ammo": [
+        {"q": "PPI was reported hot today — what does that mean for the Fed and our rates positions?",
+         "a": ("May PPI came in at +1.1% MoM and +6.5% YoY (BLS, Jun 11) — the largest 12-month producer price "
+               "rise since November 2022. Stage-1 intermediate demand is up +12.3% YoY. This means the inflation "
+               "pipeline is re-accelerating. The read-through for the Fed: Warsh now walks into FOMC June 16-17 "
+               "facing both CPI at 4.2% headline and PPI at +6.5%. He cannot credibly signal a dovish tilt. "
+               "For our rates positions (short 2Y, short 10Y), this is an honest headwind — we entered on a "
+               "soft-inflation thesis that the CPI supported, but PPI complicates. We are not adding to either "
+               "position. The stops (4.35% on 2Y, 4.65% on 10Y) are now risk-live and we respect them.")},
+        {"q": "What's the Kharg Island story and why does it matter for oil?",
+         "a": ("Trump vowed a third consecutive night of strikes on Iran and, in an extraordinary step, threatened "
+               "to SEIZE Kharg Island — Iran's primary oil export terminal handling roughly 90% of Iran's crude "
+               "exports (~2.5-3M bbl/day). A physical seizure of Kharg would be the largest single oil-supply "
+               "shock in modern history; Brent would gap toward $110-130. Even as a threat, it has pushed Brent "
+               "toward $95-100. Our Brent call spread's $100 strike is now only ~$5-6 away. The counterweight: "
+               "the UAE and Iran held their first face-to-face meeting since the war began — a de-escalation channel. "
+               "The correct framing is managed escalation with a credible right tail, not binary war/peace.")},
+        {"q": "SpaceX is IPO-ing tomorrow — is it relevant to us?",
+         "a": ("Directly relevant as a cross-market liquidity event, not as a holding. SpaceX priced at $135/share, "
+               "~$1.77T valuation, ~$75B raise — the largest IPO in history. Nasdaq debut tomorrow under SPCX. "
+               "(Source: CNBC.) The impact: $75B in capital is being allocated to a single new issue. That cash "
+               "comes from existing equity holdings — mostly tech. Expect marginal selling pressure in AI/semis "
+               "tomorrow as investors fund the allocation. It's not a fundamental catalyst, but it's a real "
+               "liquidity drag that explains tomorrow's equity tape if tech underperforms without news.")},
         {"q": "Oracle beat everything — why is the stock down 7-11%?",
-         "a": ("Because the market is pricing the capex bill, not the revenue beat. Oracle's RPO surged to $638bn "
-               "— the largest AI backlog in enterprise software history. The demand is confirmed. The problem is "
-               "the cost: FY26 capex came in at $55.7bn (above the $50bn guide), then Oracle guided FY27 to "
-               "$70bn PLUS $20-25bn in component prepayments. That's ~$90-95bn in capital commitment in one "
-               "fiscal year from a company with $70bn in annual revenue. To fund it: $40bn raise including "
-               "$20bn in new shares. The market read: capital and capacity problem, not a demand problem. "
-               "A capital-protected note is the right instrument — you get 70-80% participation in the OCI "
-               "re-rate if Oracle executes, and 100% capital protection if the capital structure buckles.")},
+         "a": ("The market is pricing the capex bill, not the revenue beat. Oracle's RPO surged to $638bn — the "
+               "largest AI backlog in enterprise software history. The demand is confirmed. But FY26 capex came "
+               "in at $55.7bn (above the $50bn guide), then Oracle guided FY27 to $70bn PLUS $20-25bn component "
+               "prepayments — ~$90-95bn in capital commitment in one year from a $70bn revenue company. To fund "
+               "it: $40bn raise including $20bn in new shares. Capital and capacity problem, not a demand problem. "
+               "The capital-protected note (idea 101) is the right instrument: 70-80% participation in the OCI "
+               "re-rate, 100% capital protection against the dilution overhang.")},
         {"q": "The ECB decision is today — what should I expect?",
-         "a": ("The hike is already priced — +25bp to 2.25% at near-100% probability. EUR ran from 1.08 to 1.15 "
-               "pricing this in. So the hike delivery is a non-event by itself. What matters is Lagarde's press "
-               "conference: if she signals 'data-dependent pause' (the base case, given the inflation is energy-led "
-               "and the European growth backdrop is soft), EUR fades from ~1.15 and the short EUR/USD trade "
-               "(MM-012) accelerates. If she signals 'further hikes ahead', EUR spikes short-term, we respect "
-               "the 1.182 stop. The bet is on the presser, not the hike.")},
-        {"q": "We've had two days of US-Iran strikes. Is it escalating or de-escalating?",
-         "a": ("Neither — and that is the correct answer. The market keeps pricing a binary (deal or war). The "
-               "political reality is a managed, on-again-off-again conflict: Trump wants both the deal headline "
-               "and the 'we hit them hard' headline. Iranian domestic politics cannot survive a visible concession "
-               "on enrichment. Qatari mediators left Tehran empty-handed. The Strait is at 15% capacity. Brent "
-               "is at $93.50 and Bloomberg forecasts $130 for July-August if it stays shut. The trade is not to "
-               "predict the outcome; it's to own the premium while the Strait is physically shut.")},
+         "a": ("The hike is already priced — +25bp to 2.25% at near-100% probability, not yet announced. EUR ran "
+               "from 1.08 to 1.15 pricing this in. The hike delivery is a non-event by itself. What matters is "
+               "Lagarde's press conference. Hot US PPI today actually adds a tailwind to the short-EUR/USD "
+               "trade: if the US must keep rates higher-for-longer (PPI forces Warsh's hand), the USD is broadly "
+               "supported. So on top of the sell-the-fact dynamic from the ECB, we get USD strength from the Fed. "
+               "Two tailwinds for MM-012 if Lagarde signals pause.")},
         {"q": "Adobe reports tonight — should I be doing something?",
          "a": ("No position before the print. The entry gate for the cash-secured put (idea 102) opens only "
-               "after we see the number. If ADBE beats on AI ARR contribution — software relief, we wait for a "
-               "better entry. If it misses on AI cannibalisation — ADBE trades down toward $330s and the CSP "
-               "gets assigned at the $385 strike, owning shares at a 10% discount to today. Either way, "
-               "pre-positioning is not edge; it's guessing. The discipline is to wait.")},
+               "after we see the number. If ADBE beats on AI ARR — software relief, we wait. If it misses on "
+               "AI cannibalisation — ADBE trades down toward $330s and the CSP gets assigned at the $385 strike, "
+               "owning shares at a discount. Pre-positioning is guessing. The discipline is to wait.")},
     ],
 
     "ideas_note": (
-        "<p>Two entry triggers are live today. The Oracle capital-protected note (idea 101) window opened "
-        "post-print last night: the ~$90-95bn annual capex commitment is the near-term overhang; the $638bn "
-        "RPO is the long-term thesis. The note structure holds both. The ECB decision is PENDING today "
-        "(idea 1 / MM-012: sell-the-fact on delivery) — the entry thesis fires once the hike is confirmed "
-        "and Lagarde's presser tone is heard. The Brent call spread (idea 11) has its $100 strike "
-        "only ~$6 away at ~$93-95. Adobe tonight is the gate for idea 102 CSP — do not pre-position. "
-        "No net-new ideas today: the 17 existing ideas cover every regime dimension.</p>"
+        "<p>Three live catalysts shape entry discipline today. (1) <strong>Oracle note (idea 101)</strong> — "
+        "window opened post-print; capex overhang is near-term noise against a $638bn RPO long-term thesis. "
+        "(2) <strong>Brent call spread (idea 11)</strong> — $100 strike is ~$5-6 from spot after Trump's "
+        "Kharg Island seizure threat; hold at current premium, do not chase with new premium. "
+        "(3) <strong>Adobe CSP (idea 102)</strong> — gate opens tonight post-print only, no pre-position. "
+        "<strong>Rates ideas (short 2Y / short 10Y):</strong> hot PPI (+6.5% YoY, BLS Jun 11) is a "
+        "genuine headwind — do NOT add size. Stops at 4.35% (2Y) and 4.65% (10Y) are now risk-live "
+        "ahead of FOMC Jun 16-17. No net-new ideas today: existing positions cover every regime dimension.</p>"
     ),
 
     "event_radar_note": (
-        "<p>Two of five catalysts are confirmed behind us: CPI Jun 10 (hot headline, soft core ✓) and Oracle "
-        "Jun 10 AH (capex panic selloff ✓). Three remain: ECB Jun 11 (PENDING TODAY — +25bp consensus, "
-        "sell-the-fact on delivery), Adobe after tonight's close (AI tax or tailwind — CSP entry gate opens "
-        "post-print), and Kevin Warsh's first FOMC dot plot June 16-17 (the biggest remaining macro event, "
-        "zero-cut vs pause-signal asymmetry). The book is pre-positioned for the FOMC via short-2Y and "
-        "the steepener; no action needed before the Adobe print.</p>"
+        "<p>Three of six catalysts are confirmed behind us: CPI Jun 10 (hot 4.2% headline ✓), Oracle Jun 10 AH "
+        "(capex panic selloff ✓), and PPI Jun 11 (HOT +1.1% MoM / +6.5% YoY — hawkish ✓). Three remain: "
+        "ECB Jun 11 (PENDING TODAY — +25bp consensus, sell-the-fact on delivery if Lagarde signals pause), "
+        "Adobe tonight's close (AI tax or tailwind — CSP entry gate opens post-print only), and "
+        "Kevin Warsh's first FOMC dot plot June 16-17 (now MORE hawkish given PPI heat — zero-cut vs "
+        "additional-hike asymmetry). The book's rates pre-positions are now facing headwind; stops are "
+        "risk-live. No additional action before the Adobe print.</p>"
     ),
 
     "burry_tell": (
@@ -1367,12 +1481,15 @@ full intrinsic ($300). Hold through FOMC — this is exactly what the hedge was 
     ),
 
     "book_aim": (
-        "Hold all positions, collect the confirms. The SPX put spread is in the money (+129%); the Brent call spread "
-        "is $6.50 from its $100 strike; the short-EUR/USD sell-the-fact is running; the rates pre-positions are "
-        "pointed at FOMC Jun 16-17. The aim for the rest of June: survive the FOMC with the book intact, "
-        "let the derivatives carry the P&L while the equity sleeve consolidates, and execute the Oracle note "
-        "and Adobe CSP entries post-print to compound the structural AI thesis without adding naked equity risk. "
-        "No new directional bets until after June 17."
+        "The dominant aim today: manage the honest tension between the oil and rates trades. "
+        "Kharg Island seizure threat upgrades Brent's right tail — the call spread's $100 strike is in range. "
+        "But hot PPI (+6.5% YoY) directly challenges the short-2Y and short-10Y thesis: the rates trades "
+        "entered on a soft-inflation read that PPI has now complicated. Do NOT add to rates positions. "
+        "Stops (4.35% / 4.65%) are risk-live. The structure survives if Warsh signals a pause at FOMC Jun 16-17 "
+        "despite PPI heat; the structure breaks if he hikes or signals further hikes. "
+        "For the rest of June: let the derivatives (Brent spread, SPX put spread) carry P&L, "
+        "execute the Oracle note and Adobe CSP post-print on their own entry triggers, "
+        "and do not open new directional bets until after June 17."
     ),
     "book_pnl": {
         "note": ("Open book P&L is the equal-weight average of the marked-to-live open positions; realised is the "
