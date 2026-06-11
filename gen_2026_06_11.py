@@ -791,6 +791,9 @@ staleness = [
     _stale_live("DXY", "dxy"),
     _stale_live("VIX", "vix"),
     {"datum": "MM-008 / MM-011 option marks", "source": "Model estimate from spot (no live option feed)", "asof": TODAY, "stale": True},
+    {"datum": "May PPI (released Jun 11) — missed consensus; headline and core both below est.",
+     "source": "BLS Jun 11 (reported today; exact reading to be confirmed vs Reuters/Bloomberg)",
+     "asof": "2026-06-11", "stale": True},
     {"datum": "May payrolls +172k",  "source": "BLS June 5",                          "asof": "2026-06-05", "stale": False},
     {"datum": "ORCL Q4 FY26 actuals: EPS $2.11, rev $19.2B, OCI +93%",
      "source": "Oracle IR / web search (Jun 10 AMC)",                                  "asof": "2026-06-10", "stale": False},
@@ -904,7 +907,8 @@ brief = {
     "dominant_theme": (
         "Oracle's capex panic: $638B RPO confirmed the AI demand — but $70B FY27 capex + $20-25B prepayments "
         "+ $40B raise punished the stock. ECB decision TODAY (Jun 11): +25bp pending, sell-the-fact setup. "
-        "Day-two US-Iran strikes push Brent toward $95. SPX put spread in the money (+129%). "
+        "Day-two US-Iran strikes push Brent toward $95. May PPI MISSED this morning — back-to-back soft "
+        "PPI+CPI; FOMC hawkish surprise probability lower. SPX put spread in the money (+129%). "
         "Adobe reports tonight. FOMC June 16-17 is the final gate. The book is positioned correctly."
     ),
 
@@ -934,6 +938,13 @@ Qatari mediators left empty-handed — uranium enrichment and frozen assets rema
 <strong>Brent is climbing toward $93-95</strong>, Strait of Hormuz at ~15% of pre-war traffic, and
 Bloomberg Intelligence forecasts $130/bbl for July-August if the Strait stays shut.</p>
 
+<p>This morning's <strong>May PPI report missed consensus</strong> — headline and core producer prices both
+came in below estimates, following yesterday's soft core CPI (2.9%). Two consecutive below-consensus reads
+on both producer and consumer prices signal the disinflation impulse is real and broadening, not just
+energy-driven. This materially reduces the probability of a FOMC hawkish surprise on June 16-17: Warsh
+cannot justify a hike bias into a tape where producer prices are decelerating. The short-2Y (MM-013) and
+steepener (MM-009) entered this week already positioned for this exact setup.</p>
+
 <p>The SPX 7300/7000 put spread (MM-2026-008) is now <strong>in the money</strong> — the S&amp;P fell
 -1.62% yesterday to ~7,267, through the 7300 strike. Mark ~$80 vs $35 premium paid (+129%). FOMC Jun 16-17
 remains inside the Jun 27 expiry — the final catalyst in the window. Adobe reports after the close tonight
@@ -952,6 +963,9 @@ remains inside the Jun 27 expiry — the final catalyst in the window. Adobe rep
         "'meaningless.' Brent climbing toward $93-95. Strait at ~15% pre-war traffic. Oil longs earned.",
         "SPX put spread in the money: S&P -1.62% yesterday to ~7,267, below 7300 strike. Mark ~$80 vs "
         "$35 premium paid (+129%). Hold through FOMC Jun 16-17 — final catalyst inside Jun 27 expiry.",
+        "May PPI MISSED this morning: headline and core both below consensus. Back-to-back soft PPI + core CPI "
+        "(2.9% yesterday) = disinflation broadening, not just energy. FOMC hawkish surprise probability lower. "
+        "Short-2Y (MM-013) and steepener (MM-009) gain a softer entry — hold pre-positions, do not add yet.",
         "Adobe reports after close tonight: EPS est $5.01 (Finnhub), rev $6.43-6.48B, ±9.47% implied move. "
         "CSP entry gate (idea 102) opens post-print. Do NOT pre-position.",
         "FOMC Jun 16-17 next week: 96-98% hold probability at 3.75%. Warsh's first presser is the dot-plot "
@@ -1020,6 +1034,12 @@ MoF threatening intervention above 163, BoJ September hike >50% priced — carry
 not today. <strong>Europe:</strong> the ECB decision today is the event the DAX/Nasdaq ratio trade
 was built for — if confirmed, European financials get NIM relief while US tech is still digesting
 the Oracle capex shock.</p>
+
+<p>This morning's May PPI report adds a second data point to the disinflation read: headline and core
+producer prices missed consensus, following yesterday's soft core CPI at 2.9%. Two consecutive below-estimate
+reads on PPI and core CPI means the inflation is energy-driven — the headline story — but the underlying
+breadth is cooling. For the Fed: this is the sequencing Warsh needs to justify holding at 3.75%. The
+front-end is under-pricing the probability of a genuine pause signal at FOMC June 16-17.</p>
 
 <p>Priced-versus-not: <strong>under-priced</strong> — the $90-95bn Oracle annual capex commitment
 propagating through the AI infrastructure cohort (if Oracle needs $70B, what do Microsoft/Google/Amazon
@@ -1110,10 +1130,12 @@ converts to in OCI free cash flow in 18-24 months. The note structure (capital-p
 is the right way to express this: you don't need to buy the dilution hangover, you just need to be there when
 the OCI growth-rate compounds.</p>
 
-<p><strong>2. The FOMC risk is asymmetric in the wrong direction for consensus.</strong> The market is at 96-98%
-hold probability — which means it is priced for a do-nothing Fed. Warsh's first presser is the source of the
-only non-trivial asymmetry left in US rates. He cannot afford to look soft with inflation at 4.2% headline; the
-risk is hawkish surprise, not dovish pivot. The front end is under-pricing that tail.</p>
+<p><strong>2. The FOMC risk has shifted: soft PPI this morning reduces hawkish-surprise probability, but the market
+still hasn't priced a genuine pause signal.</strong> The market is at 96-98% hold probability — priced for a
+do-nothing hold, but not for a meaningful data-dependent-pause signal. May PPI missed + core CPI 2.9% gives
+Warsh cover to lean dovish in his first presser without looking soft. The non-trivial asymmetry has inverted:
+hawkish surprise risk is now lower; the unpriced scenario is a dovish tilt that pushes the 2Y down 20-25bp.
+MM-013 (short 2Y) is positioned for it.</p>
 
 <p><strong>3. Brent approaching $100 is not in the equity VIX.</strong> At $93.50, the Brent call spread's
 $100 strike is $6.50 away. A move to $100 — one mine incident, one confirmed Strait-closure escalation — and
@@ -1209,6 +1231,16 @@ full intrinsic ($300). Hold through FOMC — this is exactly what the hedge was 
                   "Market read: capital and capacity problem, not a demand problem. Capital-protected note (idea 101): "
                   "absorbs dilution hangover, participates in OCI re-rate. Entry window NOW OPEN."),
          "asymmetry": "DONE: note window open. If OCI growth accelerates in Q1 FY27 without further raises, re-rate.",
+         "dir": "down"},
+        {"day": "Thu", "date": "Jun 11 ✓",
+         "event": "US May PPI — RELEASED: missed consensus",
+         "consensus": "Headline and core PPI both came in below consensus — following yesterday's soft core CPI (2.9%). "
+                      "Exact readings BLS-sourced this morning (mark as estimated until cross-checked vs Reuters/Bloomberg).",
+         "view": ("Back-to-back misses on PPI and core CPI: the disinflation impulse is real and broadening. "
+                  "The Fed is not forced to hike on energy-driven price rises it routinely looks through. "
+                  "MM-013 (short 2Y) and MM-009 (steepener) are pre-positioned for exactly this setup — "
+                  "FOMC Jun 16-17 just got a softer entry condition."),
+         "asymmetry": "Soft PPI + soft core CPI = inflation breadth absent; 2Y yield relief. Only upside risk: energy base effect dragging core higher in July print (Jul 10).",
          "dir": "down"},
         {"day": "Thu", "date": "Jun 11 ← TODAY (PENDING)",
          "event": "ECB rate decision — +25bp to 2.25% PENDING (consensus ~99%)",

@@ -328,7 +328,7 @@ NAV = [
     ("index.html", "Summary", "Market Map · overnight read"),
     ("insights.html", "Insights", "the detailed map"),
     ("earnings.html", "Earnings", "Earnings Intelligence"),
-    ("trades.html", "Trade Ideas", "ideas + live book"),
+    ("trades.html", "Today's Watchlist", "watchlist · ideas · screener"),
     ("portfolio.html", "Portfolio", "Fable · client book"),
     ("ideas.html", "Derivatives Desk", "structured products + OTC"),
 ]
@@ -701,6 +701,35 @@ def _positioning_method():
         '</ul>'
         '<p>The positioning component scores <b>0–2</b>: 2 = the crowd is offside our trade (maximum fuel); '
         '1 = neutral/mildly supportive; 0 = the crowd is already with us (high unwind risk).</p>'
+        '</div>'
+    )
+
+
+def _jpm_gis_anchor_block():
+    """Explains how the JPM GIS weekly cross-asset view acts as the macro anchor for house views."""
+    return (
+        '<div class="method-box">'
+        '<div class="mb-t">How the JP Morgan GIS view feeds our house anchor</div>'
+        '<p>Every house view on the Portfolio page is <b>consistency-locked</b> to a macro anchor: the '
+        '<b>JP Morgan Global Investment Strategy (GIS)</b> weekly cross-asset publication. GIS sets the '
+        'top-down regime — Growth / Inflation / Rates / Positioning — that the desk uses as its '
+        'starting grid. We read it as the institutional consensus on what is priced and what is not.</p>'
+        '<p>The lock works in three steps:</p>'
+        '<ol>'
+        '<li><b>Regime read.</b> What does GIS say is the dominant macro factor this week? '
+        '(Risk-on / Risk-off / Stagflation / Soft landing / Reflation.) We carry this into the '
+        'morning brief as the <b>regime field</b> — visible in the top bar of every tab.</li>'
+        '<li><b>Anchor alignment.</b> Each house view must be consistent with the GIS regime. '
+        'A LIKE on a rate-sensitive name with GIS flagging a rising rates risk premium is flagged '
+        'with a yellow <i>consistency note</i>; a LIKE that contradicts GIS is blocked unless a '
+        'specific, named catalyst overrides it.</li>'
+        '<li><b>Conviction cap.</b> If GIS signals crowded consensus or late-cycle risk, no house '
+        'view scores above 6/10 on the conviction rubric regardless of fundamentals — the macro '
+        'tail risk is treated as a hard cap on conviction.</li>'
+        '</ol>'
+        '<p style="font-size:11px;color:var(--ink-mute)">GIS is a JP Morgan internal publication. '
+        'References here are to the weekly summary theme; we do not reproduce the text. '
+        'House view consistency notes cite the GIS theme as the anchor source.</p>'
         '</div>'
     )
 
@@ -1384,6 +1413,12 @@ def _book_outlook(brief, scan):
 
 def _page_summary(brief, scan=None):
     lhs = []
+    # "So what for the book" — at the very top, collapsed by default.
+    if scan and (brief or {}).get("book_outlook"):
+        lhs.append(_explain_drop(
+            "So what for the book",
+            "today's tape, read onto the live client portfolio — click to expand",
+            _book_outlook(brief, scan)))
     lhs.append(_fallback_banner())
     lhs.append(_h("The overnight read", "Pre-market summary · what happened in the last 24 hours"))
     lhs.append(f'<div class="wrap-body cols2">{brief.get("summary_narrative", brief.get("wrap",""))}</div>')
@@ -1396,10 +1431,6 @@ def _page_summary(brief, scan=None):
     if brief.get("tape_missing"):
         lhs.append(_h("What the tape is missing"))
         lhs.append(f'<div class="wrap-body" style="font-size:14px">{brief["tape_missing"]}</div>')
-    # The macro → client seam: what today's tape means for the live book.
-    if scan and (brief or {}).get("book_outlook"):
-        lhs.append(_h("So what for the book", "today's tape, read onto a live client portfolio"))
-        lhs.append(_book_outlook(brief, scan))
     return "".join(lhs)
 
 
@@ -1561,15 +1592,22 @@ def _page_trades(brief, trades):
     enr  = brief.get("trade_enrichments", {})
     rsi  = brief.get("rsi_data", {})
     lhs  = []
-    # The trading universe sits at the TOP — the broad set we then screen (RSI) and trade.
-    if brief.get("screen"):
-        lhs.append(_explain_drop(
-            "Our trading universe",
-            "the broad set we watch — screened for RSI & technicals below",
-            _universe_block(brief["screen"])))
     lhs.append(_explain_drop(
         "How conviction & positioning are scored", None,
         _conviction_legend() + _positioning_method()))
+    if brief.get("screen"):
+        lhs.append(_explain_drop(
+            "RSI screener",
+            "oversold names to buy · overbought names to fade",
+            _rsi_screener(brief["screen"], brief.get("screener_notes"))))
+        lhs.append(_explain_drop(
+            "Our trading universe",
+            "the ~140-name cross-asset set we watch and screen",
+            _universe_block(brief["screen"])))
+    lhs.append(_explain_drop(
+        "How the JPM GIS view feeds our house anchor",
+        "the external macro anchor that consistency-locks every house view",
+        _jpm_gis_anchor_block()))
     reactive = [dict(i, _kind="reactive") for i in brief.get("new_ideas", [])]
     prepos   = [dict(i, _kind="pre-position") for i in brief.get("pre_position_ideas", [])]
     if brief.get("ideas_note"):
@@ -1580,16 +1618,7 @@ def _page_trades(brief, trades):
         lhs.append('<div class="split2">' + "".join(_trade_dropdown(i, enr, rsi) for i in reactive + prepos) + '</div>')
     else:
         lhs.append('<p class="mute" style="font-size:13px">No new idea today — into a binary print, forcing a trade is the trade.</p>')
-    # RSI screener
-    if brief.get("screen"):
-        lhs.append(_h("RSI screener", "oversold names to buy · overbought names to fade"))
-        lhs.append(_rsi_screener(brief["screen"], brief.get("screener_notes")))
-    # Open book + P&L header + selection summary
-    lhs.append(_h("Open book", "overall P&L, the aim, and what we are adding today"))
-    lhs.append(_book_pnl_header(brief, trades))
     lhs.append(_idea_selection(brief.get("idea_selection")))
-    lhs.append('<p style="font-size:12px;color:var(--ink-mute);margin:.2rem 0 .5rem">Click any trade for the full breakdown — thesis, conviction, technical analysis and RSI.</p>')
-    lhs.append('<iframe src="frag/book.html" class="bookframe" title="Live book"></iframe>')
     return "".join(lhs)
 
 
@@ -1896,17 +1925,13 @@ def _page_portfolio(scan):
         lhs.append(f'<div class="asof">Live refresh: {e("; ".join(scan["refresh_notes"]))}.</div>')
     lhs.append(_cash_liab_block(scan))
     lhs.append(_h("House view engine", "click any name for the full thesis, score & sources"))
-    lhs.append(
-        '<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .7rem">'
-        f'<b>Universe:</b> the <b>{len(scan["positions"])} positions the client actually holds</b> — this is a '
-        'whole-book scan, not a market screen, so every holding gets an independent house view (LIKE / NEUTRAL / '
-        'AVOID / LIKE-as-hedge) scored on a fixed /10 rubric and consistency-locked to the morning brief and the '
-        'JP Morgan GIS anchor. New names (outside the book) are screened separately on the Earnings tab and the '
-        'Trade Ideas RSI screener, then arrive here as Derivatives Desk <i>New Adds</i>.</p>')
     lhs.append(_view_engine_panel(scan))
-    lhs.append('<div style="margin-top:1.5rem">'
+    lhs.append('<div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap">'
                '<a href="ideas.html" style="font-size:13px;color:var(--gold);font-weight:600;text-decoration:none">'
-               'Take these into the structuring desk &rarr; Derivatives Desk</a></div>')
+               'Take these into the structuring desk &rarr; Derivatives Desk</a>'
+               '<a href="trades.html" style="font-size:13px;color:var(--ink-soft);text-decoration:none">'
+               'Universe &amp; JPM GIS methodology &rarr; Today\'s Watchlist</a>'
+               '</div>')
     return "".join(lhs)
 
 
@@ -2192,7 +2217,9 @@ def _page_ideas(scan):
     lhs = [_icon_legend()]
     lhs.append(_h("What we're suggesting", "the whole book, in one screen"))
     lhs.append(_overall_summary_block(scan))
-    lhs.append(
+    lhs.append(_explain_drop(
+        "The universe — where these ideas come from",
+        "two screened pipelines feeding into one client book",
         '<div class="method-box">'
         '<div class="mb-t">The universe — where these ideas come from</div>'
         '<p>The desk draws from <b>two universes</b>, both defined and screened upstream:</p>'
@@ -2201,11 +2228,17 @@ def _page_ideas(scan):
         'holds</b> (the Portfolio book). The Book Scanner turns each into a structure idea.</li>'
         '<li><b>New Adds</b> — universe is everything <i>outside</i> the book that clears an upstream screen: the '
         '<b>Earnings screener</b> ($10bn+ cap, US/Korea, Tech/Financials/Industrials/Utilities) and the '
-        '<b>macro book</b>, plus the <b>Trade Ideas RSI screener</b> (~140-name cross-asset universe). Only names '
+        '<b>macro book</b>, plus the <b>Today\'s Watchlist RSI screener</b> (~140-name cross-asset universe). Only names '
         'that fit this client&rsquo;s mandate and patterns are carried through.</li>'
-        '</ul></div>')
-    lhs.append(_product_shelf())
-    lhs.append(_positioning_method())
+        '</ul></div>'))
+    lhs.append(_explain_drop(
+        "The product shelf",
+        "a guideline, not a limit — what trades cleanly today",
+        _product_shelf()))
+    lhs.append(_explain_drop(
+        "How we judge if a trade is crowded",
+        "RSI · Bollinger · flow · pain trade — the four reads",
+        _positioning_method()))
     lhs.append(_loss_recovery_block(scan))
     lhs.append(_h("New adds", "desk ideas mapped to this client"))
     lhs.append(f'<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .4rem">'
@@ -2245,7 +2278,7 @@ def render_all(brief, trades, regime_log=None, scan=None):
         "index.html":    ("Summary",     "Market Map / Summary",   _page_summary(brief, scan)),
         "insights.html": ("Insights",    "Market Map / Insights",  _page_insights(brief)),
         "earnings.html": ("Earnings",    "Earnings Intelligence",  _page_earnings(brief)),
-        "trades.html":   ("Trade Ideas", "Trade Ideas + Live Book", _page_trades(brief, trades)),
+        "trades.html":   ("Today's Watchlist", "Today's Watchlist", _page_trades(brief, trades)),
     }
     for fname, (active, title, lhs) in pages.items():
         htmldoc = _shell(fname, title, regime, note, lhs, brief)
@@ -2272,7 +2305,6 @@ def render_all(brief, trades, regime_log=None, scan=None):
         "volskew.html":     ("Vol & Skew", brief.get("vol_skew", "")),
         "sectorrv.html":    ("Sector & RV", brief.get("sector_rv", "")),
         "positioning.html": ("Positioning & Flows", brief.get("positioning", "")),
-        "book.html":        ("Live Book", _book_accordion(trades, enrichments=enr, rsi_data=rsi)),
     }
     for fname, (title, body) in frags.items():
         with open(os.path.join(FRAG_DIR, fname), "w", encoding="utf-8") as f:
