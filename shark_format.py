@@ -196,6 +196,18 @@ details.trade-drop>summary .td-meta{display:flex;gap:6px;align-items:center;flex
 .rsi-crowded{color:var(--red);font-weight:700;letter-spacing:.04em}
 .rsi-neutral{color:var(--green);font-weight:700;letter-spacing:.04em}
 .rsi-na{color:var(--ink-mute);font-style:italic}
+/* ---- click-to-reveal explainer dropdowns ---- */
+details.explain-drop{border:.5px solid var(--line);border-left:3px solid var(--ink-mute);border-radius:var(--rad-lg);padding:.7rem 1.1rem;margin-bottom:1.2rem;background:var(--bg)}
+details.explain-drop[open]{border-left-color:var(--gold);background:#fff;padding-bottom:1rem}
+details.explain-drop>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+details.explain-drop>summary::-webkit-details-marker{display:none}
+details.explain-drop>summary .ed-h{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.3;color:var(--ink)}
+details.explain-drop>summary .ed-h .sh-sub{display:block;font-family:inherit;font-size:12px;font-weight:400;color:var(--ink-soft);letter-spacing:0;text-transform:none;margin-top:.15rem}
+details.explain-drop>summary .ed-cue{flex-shrink:0;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-size:0}
+details.explain-drop>summary .ed-cue::after{content:"show \25B8";font-size:10px}
+details.explain-drop[open]>summary .ed-cue::after{content:"hide \25BE"}
+details.explain-drop .ed-body{margin-top:.8rem}
+details.explain-drop .ed-body>*:last-child{margin-bottom:0}
 /* ---- conviction legend ---- */
 .conv-legend{background:var(--surface);border:.5px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--rad-lg);padding:1rem 1.2rem;margin-bottom:1.2rem}
 .conv-legend .cl-title{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
@@ -303,6 +315,18 @@ def _h(label, sub=None):
     """A real section heading — black, larger, looks like a heading."""
     sub_html = f'<span class="sh-sub">{e(sub)}</span>' if sub else ""
     return f'<h2 class="section-h">{e(label)}{sub_html}</h2>'
+
+
+def _explain_drop(label, sub, body, open=False):
+    """Wrap an explainer block in a click-to-reveal <details>; heading is the summary."""
+    sub_html = f'<span class="sh-sub">{e(sub)}</span>' if sub else ""
+    return (
+        f'<details class="explain-drop"{" open" if open else ""}>'
+        f'<summary><span class="ed-h">{e(label)}{sub_html}</span>'
+        f'<span class="ed-cue"></span></summary>'
+        f'<div class="ed-body">{body}</div>'
+        f'</details>'
+    )
 
 # --------------------------------------------------------------------------
 # TradingView live right rail (market-quotes widget — no key, live, all classes)
@@ -739,7 +763,12 @@ def _universe_block(screen):
         f'filter), which is how we land on the <b>{screen.get("scanned","~140")} names</b>:</p>'
         '<ul>'
         '<li><b>Liquidity &amp; tradability.</b> Heavily-traded, optionable names with clean price action — so the '
-        'technical signal is meaningful and you can actually act on it. No thin or erratic tickers.</li>'
+        'technical signal is meaningful and you can actually act on it. <b>"Heavily-traded"</b> means a 20-day '
+        'average dollar volume of <b>≳ $50m/day</b> (most core names trade $200m–$5bn/day) and ≥ ~1m shares/day, so a '
+        'desk-size clip fills without moving the tape. <b>"Clean price action"</b> means a continuous, gap-light '
+        '6-month daily history with a listed, two-sided options market (tight bid/ask, real open interest) — so the '
+        '50/100/200-day MAs, Bollinger Bands and RSI are computed on real prints, not thin or erratic ticks. '
+        'No thin or erratic tickers.</li>'
         '<li><b>Market cap ≥ ~$10bn</b> for the core list; the AI supply-chain sleeve is allowed down to '
         '<b>~$2–3bn</b> because that is where the optical / connectivity names (LITE, AXTI, CRDO, ALAB, SITM) sit.</li>'
         '<li><b>Geography:</b> US primary, plus major international via primary listings / US ADRs — Europe, UK, '
@@ -1385,11 +1414,13 @@ def _page_trades(brief, trades):
     lhs  = []
     # The trading universe sits at the TOP — the broad set we then screen (RSI) and trade.
     if brief.get("screen"):
-        lhs.append(_h("Our trading universe", "the broad set we watch — screened for RSI & technicals below"))
-        lhs.append(_universe_block(brief["screen"]))
-    lhs.append(_h("How conviction & positioning are scored"))
-    lhs.append(_conviction_legend())
-    lhs.append(_positioning_method())
+        lhs.append(_explain_drop(
+            "Our trading universe",
+            "the broad set we watch — screened for RSI & technicals below",
+            _universe_block(brief["screen"])))
+    lhs.append(_explain_drop(
+        "How conviction & positioning are scored", None,
+        _conviction_legend() + _positioning_method()))
     reactive = [dict(i, _kind="reactive") for i in brief.get("new_ideas", [])]
     prepos   = [dict(i, _kind="pre-position") for i in brief.get("pre_position_ideas", [])]
     if brief.get("ideas_note"):
