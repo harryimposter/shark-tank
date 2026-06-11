@@ -1276,7 +1276,59 @@ def _book_accordion(trades, enrichments=None, rsi_data=None):
 # --------------------------------------------------------------------------
 # Pages
 # --------------------------------------------------------------------------
-def _page_summary(brief):
+def _book_bridge(scan):
+    """The macro → client seam: translate today's tape into what it means for THIS book.
+    This is the personalisation-at-scale moment — same engine, any client's portfolio."""
+    if not scan:
+        return ""
+    m = scan.get("metrics", {})
+    ov = scan.get("overall_summary", {}) or {}
+    counts = scan.get("counts", {})
+    name = scan.get("client", {}).get("display_name", "the book")
+    total = m.get("total_eur")
+    npos = len(scan.get("positions", []))
+    largest = m.get("largest", {})
+    total_str = f"&euro;{total/1e6:.1f}m" if total else "&mdash;"
+    # headline metric tiles
+    tiles = (
+        f'<div class="pnl-tile"><div class="pl">Book NAV</div><div class="pv">{total_str}</div></div>'
+        f'<div class="pnl-tile"><div class="pl">Largest position</div><div class="pv">{e(largest.get("ticker","&mdash;"))} '
+        f'{largest.get("weight_pct","&mdash;")}%</div></div>'
+        f'<div class="pnl-tile"><div class="pl">USD on a EUR base</div><div class="pv">{m.get("usd_pct","&mdash;")}%</div></div>'
+        f'<div class="pnl-tile"><div class="pl">Idle cash</div><div class="pv">{m.get("cash_pct","&mdash;")}%</div></div>'
+    )
+    # top priority actions translated from today's tape onto this book
+    pts = ov.get("points", [])[:3]
+    actions = "".join(
+        f'<li><span class="tk in" style="background:var(--surface);color:var(--gold);border:.5px solid var(--gold)">'
+        f'{e(p.get("group",""))}</span><span>{p.get("text","")}</span></li>'
+        for p in pts
+    )
+    fired = counts.get("fired", 0)
+    cta = (
+        f'<a href="ideas.html" style="color:var(--gold);font-weight:600;text-decoration:none">'
+        f'{fired} derivative idea{"s" if fired != 1 else ""} fired on this book today &mdash; open the Derivatives Desk &#9656;</a>'
+        if fired else
+        '<a href="ideas.html" style="color:var(--gold);font-weight:600;text-decoration:none">Open the Derivatives Desk &#9656;</a>'
+    )
+    head = ov.get("headline", "")
+    return (
+        '<div class="select-box" style="border-left-color:var(--gold)">'
+        f'<div class="sb-t" style="color:var(--gold)">What this morning means for {e(name)}&rsquo;s book</div>'
+        '<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .7rem">'
+        'The same engine that read the tape above now reads a live client portfolio &mdash; '
+        'this is the macro turned into named, suitability-checked actions on one book. '
+        'Swap the client, the analysis re-runs. '
+        + (f'<b style="color:var(--ink)">Today: {e(head)}</b>' if head else '') +
+        '</p>'
+        f'<div class="pnl-head" style="margin:0 0 .8rem">{tiles}</div>'
+        f'<ul style="margin:0 0 .7rem">{actions}</ul>'
+        f'<div style="font-size:12.5px">{cta}</div>'
+        '</div>'
+    )
+
+
+def _page_summary(brief, scan=None):
     lhs = []
     lhs.append(_fallback_banner())
     lhs.append(_h("The overnight read", "Pre-market summary · what happened in the last 24 hours"))
@@ -1290,6 +1342,10 @@ def _page_summary(brief):
     if brief.get("tape_missing"):
         lhs.append(_h("What the tape is missing"))
         lhs.append(f'<div class="wrap-body" style="font-size:14px">{brief["tape_missing"]}</div>')
+    # The macro → client seam: what today's tape means for the live book.
+    if scan:
+        lhs.append(_h("So what for the book", "today's macro, mapped onto a live client portfolio"))
+        lhs.append(_book_bridge(scan))
     return "".join(lhs)
 
 
@@ -2128,7 +2184,7 @@ def render_all(brief, trades, regime_log=None, scan=None):
     note = brief.get("regime_note", "")
 
     pages = {
-        "index.html":    ("Summary",     "Market Map / Summary",   _page_summary(brief)),
+        "index.html":    ("Summary",     "Market Map / Summary",   _page_summary(brief, scan)),
         "insights.html": ("Insights",    "Market Map / Insights",  _page_insights(brief)),
         "earnings.html": ("Earnings",    "Earnings Intelligence",  _page_earnings(brief)),
         "trades.html":   ("Trade Ideas", "Trade Ideas + Live Book", _page_trades(brief, trades)),
