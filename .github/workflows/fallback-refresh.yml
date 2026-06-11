@@ -1,0 +1,92 @@
+name: Market Map data-only fallback refresh
+
+# Fallback for the local 6am-London full-refresh agent. If that agent ran today it
+# will have authored a new gen_2026_<today>.py; this workflow detects that and skips.
+# Otherwise it re-runs the latest existing generator in DATA-ONLY mode: live marks /
+# RSI / screener / book are refreshed, but the macro narrative is carried over. The
+# renderer stamps a "data-only fallback refresh" banner on the Summary page and makes
+# the coverage bar honest (driven by MARKETMAP_REFRESH_MODE=fallback).
+
+on:
+  schedule:
+    # 07:30 UTC Mon-Fri (= 08:30 London BST / 07:30 GMT) — ~1.5h after the local agent.
+    - cron: '30 7 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: market-map-refresh
+  cancel-in-progress: false
+
+jobs:
+  fallback:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Decide whether the full refresh already ran
+        id: guard
+        run: |
+          TODAY=$(TZ=Europe/London date +%Y_%m_%d)
+          if [ -f "gen_${TODAY}.py" ]; then
+            echo "Full refresh present (gen_${TODAY}.py exists) — skipping fallback."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No gen_${TODAY}.py — fallback will run."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run latest generator in data-only fallback mode
+        if: steps.guard.outputs.skip != 'true'
+        env:
+          MARKETMAP_REFRESH_MODE: fallback
+        run: |
+          LATEST=$(ls gen_2026_*.py | sort | tail -1)
+          FROM_DATE=$(echo "$LATEST" | sed -E 's/^gen_(2026_[0-9]{2}_[0-9]{2})\.py$/\1/; s/_/-/g')
+          echo "Latest generator: $LATEST (narrative from $FROM_DATE)"
+          echo "FROM_DATE=$FROM_DATE" >> "$GITHUB_ENV"
+          MARKETMAP_FALLBACK_FROM="$FROM_DATE" python "$LATEST"
+
+      - name: Sanity gate
+        if: steps.guard.outputs.skip != 'true'
+        run: |
+          fail=0
+          for f in index.html insights.html earnings.html trades.html portfolio.html ideas.html; do
+            if [ ! -f "$f" ]; then echo "MISSING: $f"; fail=1; fi
+          done
+          if [ -f trades.html ]; then
+            size=$(stat -c%s trades.html)
+            echo "trades.html = ${size} bytes"
+            if [ "$size" -lt 20480 ]; then echo "trades.html under 20KB — render looks broken"; fail=1; fi
+          else
+            fail=1
+          fi
+          if [ "$fail" -ne 0 ]; then
+            echo "Sanity gate FAILED — not committing."
+            exit 1
+          fi
+          echo "Sanity gate passed."
+
+      - name: Commit and push
+        if: steps.guard.outputs.skip != 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: data-only fallback refresh $(TZ=Europe/London date +%F) [narrative carried from ${FROM_DATE}]"
+          git pull --rebase origin main
+          git push
