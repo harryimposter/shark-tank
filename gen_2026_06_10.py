@@ -1023,6 +1023,54 @@ free cash flow turns positive. Watch the capex guide, not the EPS.</p>
 US-Iran strikes resumed. Own the tail while the Strait is shut.</p>
 """,
 
+    "book_outlook": {
+        "commentary": (
+            "The book is on <b>both sides of today's tape at once</b>. Its equity sleeve is semis-heavy — Micron, "
+            "Nvidia, AMD, Broadcom — sitting in the cross-hairs of the AI de-rating, and a hot 4.2% headline keeps "
+            "rate fear alive on exactly these high-multiple names. But the same book holds the right hedges for the "
+            "<b>other</b> story: gold and TotalEnergies are long the Hormuz/energy leg that drove the headline, and "
+            "the Treasury catches a bid as the soft +0.2% core pulls the 10Y to ~4.52%. So today is really a test of "
+            "whether the hedges offset the semis — and the <b>25.8% Micron concentration is the amplifier</b> on the "
+            "wrong side. Oracle after the close and the ECB tomorrow are the two gates that decide it."
+        ),
+        "outperform": [
+            {"name": "Xetra-Gold (4GLD)", "why": "Cleanest long in the book today — US-Iran strikes resumed and the "
+             "Strait is shut, while the soft core eased real rates (10Y ~4.52%). Geopolitical bid and rates relief "
+             "both point the same way."},
+            {"name": "TotalEnergies (TTE FP)", "why": "Brent holds ~$91 on the Hormuz blockade — and energy is ~60% of "
+             "the very CPI headline rattling everything else. The book's bear-case insurance is paying; do not trim."},
+            {"name": "US Treasury 1.25% 2031", "why": "The +0.2% core undershoot pulled the 10Y to ~4.52%, so duration "
+             "catches a mark-to-market lift. The underwater bond's best tape in weeks — and the window to roll it."},
+            {"name": "SAP (SAP GY)", "why": "European large-cap software, low beta to the US semis de-rate — the "
+             "book's most insulated equity today, though tomorrow's ECB is a cross-current for European names."},
+        ],
+        "underperform": [
+            {"name": "Micron (MU) — 25.8%", "why": "The book's defining risk, dead-centre of the AI/semis de-rating. A "
+             "hot headline keeps the rate bid against high-multiple names; if semis lead lower, this single position "
+             "is the biggest drag on NAV."},
+            {"name": "NVDA & AMD", "why": "Same de-rating complex, high beta to the AI-capex doubt that Oracle's print "
+             "tonight will sharpen. Expect them to track the semis tape, not the soft-core relief."},
+            {"name": "Broadcom (AVGO)", "why": "The most exposed name to tonight's Oracle read-through on AI capex and "
+             "backlog conversion — can gap either way on ORCL's capex guide. Event risk into the close."},
+            {"name": "LVMH (MC FP)", "why": "Luxury squeezed on both sides — a sticky 4.2% headline on the consumer and "
+             "an ECB hike tomorrow on the multiple. European discretionary is the wrong place to be today."},
+        ],
+        "watch": [
+            {"label": "Hedge the concentration", "text": "With semis on the back foot and the Oracle-tonight / "
+             "ECB-tomorrow binary, the Micron collar before 24-Jun is more urgent today; carry the book-level SPX put "
+             "spread through both events rather than lifting it."},
+            {"label": "Mind the FX", "text": "73.6% USD on a EUR base into the ECB tomorrow — a hawkish hike lifts EUR "
+             "and erodes the book's USD-heavy NAV in euro terms. Seagull the residual after the decision, sized off "
+             "the liability-netted exposure, not before."},
+            {"label": "Roll the bond", "text": "The soft core easing the 10Y is the window to swap the underwater "
+             "Treasury into a current coupon — the loss is already taken and the carry roughly triples at the same "
+             "credit. ECB tomorrow is the timing gate; don't pre-empt it."},
+            {"label": "Adds — software & power, not more semis", "text": "Nothing fresh into the Oracle/ECB binary. If "
+             "expressing AI, do it through software or power, never more silicon — and a cash-secured NVDA put at "
+             "support monetises the 10.4% idle cash and the de-rating vol in one trade."},
+        ],
+    },
+
     "consensus": """
 <p><strong>Consensus BID:</strong> a 4.2% headline is a hawkish print — it keeps the year-end hike alive, the
 Fed can't ease into a 4-handle, and the energy shock risks bleeding into the core next.</p>

@@ -208,6 +208,29 @@ details.explain-drop>summary .ed-cue::after{content:"show \25B8";font-size:10px}
 details.explain-drop[open]>summary .ed-cue::after{content:"hide \25BE"}
 details.explain-drop .ed-body{margin-top:.8rem}
 details.explain-drop .ed-body>*:last-child{margin-bottom:0}
+/* ---- book outlook (Summary 'so what for the book') ---- */
+.bo-ctx{font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 .6rem}
+.bo-commentary{font-size:13px;color:var(--ink-soft);line-height:1.65;margin:0 0 .9rem}
+.bo-commentary b{color:var(--ink);font-weight:600}
+.bo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 .6rem}
+@media(max-width:600px){.bo-grid{grid-template-columns:1fr}}
+.bo-col.up{border-left:2px solid var(--green);padding-left:.7rem}
+.bo-col.dn{border-left:2px solid var(--red);padding-left:.7rem}
+.bo-h{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin:0 0 .4rem}
+.bo-col.up .bo-h{color:var(--green)}
+.bo-col.dn .bo-h{color:var(--red)}
+.bo-list{list-style:none;margin:0;padding:0}
+.bo-list li{padding:.42rem 0;border-bottom:.5px dotted var(--line)}
+.bo-list li:last-child{border-bottom:none}
+.bo-name{display:block;font-size:12.5px;font-weight:600;color:var(--ink)}
+.bo-why{display:block;font-size:12px;color:var(--ink-soft);line-height:1.55;margin-top:.15rem}
+.bo-watch{border-top:.5px solid var(--line);padding-top:.7rem;margin-top:.2rem}
+.bo-watch .bo-h{color:var(--gold)}
+.bo-watch ul{margin:.3rem 0 0;padding-left:1.1rem}
+.bo-watch li{font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:.4rem}
+.bo-watch li b{color:var(--ink);font-weight:600}
+.bo-cta{font-size:12.5px;margin-top:.7rem}
+.bo-cta a{color:var(--gold);font-weight:600;text-decoration:none}
 /* ---- conviction legend ---- */
 .conv-legend{background:var(--surface);border:.5px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--rad-lg);padding:1rem 1.2rem;margin-bottom:1.2rem}
 .conv-legend .cl-title{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
@@ -1276,54 +1299,53 @@ def _book_accordion(trades, enrichments=None, rsi_data=None):
 # --------------------------------------------------------------------------
 # Pages
 # --------------------------------------------------------------------------
-def _book_bridge(scan):
-    """The macro → client seam: translate today's tape into what it means for THIS book.
-    This is the personalisation-at-scale moment — same engine, any client's portfolio."""
-    if not scan:
+def _book_outlook(brief, scan):
+    """Today-specific commentary on the live book: what the news means for it, what should
+    lead and lag today and why, and what else to weigh (hedges / adds / FX). Authored fresh
+    each refresh into brief['book_outlook']; this is the macro turned onto one portfolio."""
+    bo = (brief or {}).get("book_outlook") or {}
+    if not bo:
         return ""
-    m = scan.get("metrics", {})
-    ov = scan.get("overall_summary", {}) or {}
-    counts = scan.get("counts", {})
-    name = scan.get("client", {}).get("display_name", "the book")
-    total = m.get("total_eur")
-    npos = len(scan.get("positions", []))
+    m = (scan or {}).get("metrics", {})
+    name = (scan or {}).get("client", {}).get("display_name", "the book")
     largest = m.get("largest", {})
-    total_str = f"&euro;{total/1e6:.1f}m" if total else "&mdash;"
-    # headline metric tiles
-    tiles = (
-        f'<div class="pnl-tile"><div class="pl">Book NAV</div><div class="pv">{total_str}</div></div>'
-        f'<div class="pnl-tile"><div class="pl">Largest position</div><div class="pv">{e(largest.get("ticker","&mdash;"))} '
-        f'{largest.get("weight_pct","&mdash;")}%</div></div>'
-        f'<div class="pnl-tile"><div class="pl">USD on a EUR base</div><div class="pv">{m.get("usd_pct","&mdash;")}%</div></div>'
-        f'<div class="pnl-tile"><div class="pl">Idle cash</div><div class="pv">{m.get("cash_pct","&mdash;")}%</div></div>'
-    )
-    # top priority actions translated from today's tape onto this book
-    pts = ov.get("points", [])[:3]
-    actions = "".join(
-        f'<li><span class="tk in" style="background:var(--surface);color:var(--gold);border:.5px solid var(--gold)">'
-        f'{e(p.get("group",""))}</span><span>{p.get("text","")}</span></li>'
-        for p in pts
-    )
-    fired = counts.get("fired", 0)
-    cta = (
-        f'<a href="ideas.html" style="color:var(--gold);font-weight:600;text-decoration:none">'
-        f'{fired} derivative idea{"s" if fired != 1 else ""} fired on this book today &mdash; open the Derivatives Desk &#9656;</a>'
-        if fired else
-        '<a href="ideas.html" style="color:var(--gold);font-weight:600;text-decoration:none">Open the Derivatives Desk &#9656;</a>'
-    )
-    head = ov.get("headline", "")
+    total = m.get("total_eur")
+    ctx = []
+    if total:
+        ctx.append(f'&euro;{total/1e6:.1f}m NAV')
+    if largest.get("ticker"):
+        ctx.append(f'{e(largest.get("ticker"))} {largest.get("weight_pct","")}% top weight')
+    if m.get("usd_pct") is not None:
+        ctx.append(f'{m.get("usd_pct")}% USD on a EUR base')
+    ctx_html = f'<div class="bo-ctx">{" &middot; ".join(ctx)}</div>' if ctx else ""
+
+    def _col(items, cls, title):
+        rows = "".join(
+            f'<li><span class="bo-name">{e(it.get("name",""))}</span>'
+            f'<span class="bo-why">{it.get("why","")}</span></li>'
+            for it in items)
+        return (f'<div class="bo-col {cls}"><div class="bo-h">{title}</div>'
+                f'<ul class="bo-list">{rows}</ul></div>') if items else ""
+
+    over = _col(bo.get("outperform", []), "up", "Expected to do well today")
+    under = _col(bo.get("underperform", []), "dn", "Expected to lag today")
+    watch = ""
+    if bo.get("watch"):
+        w = "".join(f'<li><b>{e(x.get("label",""))}.</b> {x.get("text","")}</li>' for x in bo["watch"])
+        watch = ('<div class="bo-watch"><div class="bo-h">Also weigh today &mdash; hedging, adds, FX</div>'
+                 f'<ul>{w}</ul></div>')
+    fired = (scan or {}).get("counts", {}).get("fired", 0)
+    cta = (f'<div class="bo-cta"><a href="ideas.html">'
+           f'{fired} derivative idea{"s" if fired != 1 else ""} fired on this book today &mdash; '
+           'open the Derivatives Desk &#9656;</a></div>') if fired else \
+          '<div class="bo-cta"><a href="ideas.html">Open the Derivatives Desk &#9656;</a></div>'
+    comment = f'<div class="bo-commentary">{bo.get("commentary","")}</div>' if bo.get("commentary") else ""
     return (
         '<div class="select-box" style="border-left-color:var(--gold)">'
         f'<div class="sb-t" style="color:var(--gold)">What this morning means for {e(name)}&rsquo;s book</div>'
-        '<p style="font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 .7rem">'
-        'The same engine that read the tape above now reads a live client portfolio &mdash; '
-        'this is the macro turned into named, suitability-checked actions on one book. '
-        'Swap the client, the analysis re-runs. '
-        + (f'<b style="color:var(--ink)">Today: {e(head)}</b>' if head else '') +
-        '</p>'
-        f'<div class="pnl-head" style="margin:0 0 .8rem">{tiles}</div>'
-        f'<ul style="margin:0 0 .7rem">{actions}</ul>'
-        f'<div style="font-size:12.5px">{cta}</div>'
+        + ctx_html + comment
+        + '<div class="bo-grid">' + over + under + '</div>'
+        + watch + cta +
         '</div>'
     )
 
@@ -1343,9 +1365,9 @@ def _page_summary(brief, scan=None):
         lhs.append(_h("What the tape is missing"))
         lhs.append(f'<div class="wrap-body" style="font-size:14px">{brief["tape_missing"]}</div>')
     # The macro → client seam: what today's tape means for the live book.
-    if scan:
-        lhs.append(_h("So what for the book", "today's macro, mapped onto a live client portfolio"))
-        lhs.append(_book_bridge(scan))
+    if scan and (brief or {}).get("book_outlook"):
+        lhs.append(_h("So what for the book", "today's tape, read onto a live client portfolio"))
+        lhs.append(_book_outlook(brief, scan))
     return "".join(lhs)
 
 
