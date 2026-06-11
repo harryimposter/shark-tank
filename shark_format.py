@@ -706,14 +706,11 @@ def _screener_card(item, kind, note=None):
     )
 
 
-def _rsi_screener(screen, notes=None):
-    """Two-column RSI screener: oversold names to buy, overbought names to fade."""
+def _universe_block(screen):
+    """The trading universe — the broad, curated set we screen. Defined at the TOP of the
+    page; the RSI screener (and the conviction technicals) are filters applied to it."""
     if not screen:
         return ""
-    notes = notes or {}
-    under = screen.get("oversold", [])
-    over  = screen.get("overbought", [])
-    # full universe list, grouped by region then sector
     uni = screen.get("universe", [])
     uni_html = ""
     if uni:
@@ -730,21 +727,19 @@ def _rsi_screener(screen, notes=None):
             blocks.append(f'<div style="margin:.4rem 0"><b style="font-size:11px;color:var(--ink-mute);'
                           f'text-transform:uppercase;letter-spacing:.06em">{e(region)}</b>'
                           f'<div class="ta-grid" style="margin-top:.25rem">{chips}</div></div>')
-        uni_html = ('<details style="margin-top:.5rem"><summary style="cursor:pointer;font-size:12px;'
-                    f'font-weight:600;color:var(--gold)">Show the full scanned universe ({len(uni)} names) &#9656;</summary>'
+        uni_html = ('<details style="margin-top:.5rem" open><summary style="cursor:pointer;font-size:12px;'
+                    f'font-weight:600;color:var(--gold)">Show the full universe ({len(uni)} names) &#9656;</summary>'
                     f'<div style="margin-top:.4rem">{"".join(blocks)}</div></details>')
-    method = (
+    return (
         '<div class="method-box">'
-        '<div class="mb-t">What we screen for — how the universe is defined</div>'
-        f'<p>Each refresh we compute the <b>14-period RSI</b> (Wilder) on six months of daily closes for every name '
-        f'in the universe and split on the <b>absolute convention</b>: <b>RSI ≤ 30 = oversold</b> (left — set up to '
-        'go higher), <b>RSI ≥ 70 = overbought</b> (right — run too far, should sell off). No averaging.</p>'
-        '<p>The universe itself is not the whole market — it is a deliberately curated set built by applying these '
-        f'<b>inclusion rules</b> (the same way the Earnings tab uses its $10bn / US-Korea / sector filter), which '
-        f'is how we land on the <b>{screen.get("scanned","~140")} names</b> below:</p>'
+        '<div class="mb-t">How the universe is defined — what makes the cut</div>'
+        '<p>This is the broad, curated set of instruments the desk watches — the pool we then run the '
+        '<b>RSI screen</b> (below) and the per-trade technicals against. It is not the whole market; it is built by '
+        f'applying these <b>inclusion rules</b> (the same way the Earnings tab uses its $10bn / US-Korea / sector '
+        f'filter), which is how we land on the <b>{screen.get("scanned","~140")} names</b>:</p>'
         '<ul>'
         '<li><b>Liquidity &amp; tradability.</b> Heavily-traded, optionable names with clean price action — so the '
-        'RSI signal is meaningful and you can actually act on it. No thin or erratic tickers.</li>'
+        'technical signal is meaningful and you can actually act on it. No thin or erratic tickers.</li>'
         '<li><b>Market cap ≥ ~$10bn</b> for the core list; the AI supply-chain sleeve is allowed down to '
         '<b>~$2–3bn</b> because that is where the optical / connectivity names (LITE, AXTI, CRDO, ALAB, SITM) sit.</li>'
         '<li><b>Geography:</b> US primary, plus major international via primary listings / US ADRs — Europe, UK, '
@@ -759,8 +754,27 @@ def _rsi_screener(screen, notes=None):
         '</ul>'
         '<p style="font-size:11px;color:var(--ink-mute)">Curated in one place '
         '(<code>fetch_rsi.SCREEN_UNIVERSE</code>) — flag any name that fits the rules and it goes in. '
-        f'Universe scanned {screen.get("asof","")}; {screen.get("errors",0)} symbol(s) returned no data this run.</p>'
+        f'Universe as of {screen.get("asof","")}; {screen.get("errors",0)} symbol(s) returned no data this run.</p>'
         + uni_html +
+        '</div>'
+    )
+
+
+def _rsi_screener(screen, notes=None):
+    """The RSI screen applied to the universe: oversold names to buy, overbought to fade."""
+    if not screen:
+        return ""
+    notes = notes or {}
+    under = screen.get("oversold", [])
+    over  = screen.get("overbought", [])
+    method = (
+        '<div class="method-box">'
+        '<div class="mb-t">The screen — RSI applied to the universe above</div>'
+        '<p>We take the <b>universe defined at the top of this page</b> and, each refresh, compute the '
+        '<b>14-period RSI</b> (Wilder) on six months of daily closes for every name, splitting on the '
+        '<b>absolute convention</b>: <b>RSI ≤ 30 = oversold</b> (left — washed out, set up to go higher), '
+        '<b>RSI ≥ 70 = overbought</b> (right — run too far, should sell off), 30–70 = neutral and not shown. '
+        'No averaging. Each surfaced name carries its full technical picture and a systematic technical-conviction score.</p>'
         '</div>'
     )
     left = ('<div class="scr-col under"><h4>Oversold &mdash; names to go higher '
@@ -1369,6 +1383,10 @@ def _page_trades(brief, trades):
     enr  = brief.get("trade_enrichments", {})
     rsi  = brief.get("rsi_data", {})
     lhs  = []
+    # The trading universe sits at the TOP — the broad set we then screen (RSI) and trade.
+    if brief.get("screen"):
+        lhs.append(_h("Our trading universe", "the broad set we watch — screened for RSI & technicals below"))
+        lhs.append(_universe_block(brief["screen"]))
     lhs.append(_h("How conviction & positioning are scored"))
     lhs.append(_conviction_legend())
     lhs.append(_positioning_method())
