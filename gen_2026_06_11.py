@@ -832,11 +832,12 @@ earnings_ideas = [
         "mode": "POST-EARNINGS", "direction": "Neutral",
         "conviction_score": 6, "conviction_label": "High conviction post-print — capital-protected note NOW",
         "conviction_rationale": (
-            "Beat every fundamental metric: OCI +93% to $4.9bn, total Q4 revenue +21% to $19.2bn, "
-            "EPS $2.11 vs $1.97 est, FY26 revenue $67.4bn record. BUT: -10%+ on $20B equity+debt raise. "
-            "Dilution is the funding mechanism for OCI capex — not a sign of distress. "
-            "Capital-protected note (idea 101) is the right structure now: protect against dilution "
-            "overhang, participate in OCI re-rate. Enter today."
+            "Beat every fundamental metric: OCI +93% to $4.9bn, revenue +21% to $19.2bn, "
+            "EPS $2.11 vs $1.97 est, RPO surged to $638bn (from $553bn). BUT: -7 to -11% AH on "
+            "capex shock — FY26 capex $55.7bn (above ~$50bn guide), FY27 guided ~$70bn PLUS "
+            "$20-25bn component prepayments, funded by ~$40bn debt+equity raise (~$20bn share sale). "
+            "Market read: capital and capacity problem, not a demand problem. "
+            "Capital-protected note (idea 101) holds the OCI conviction while absorbing dilution. Enter today."
         ),
         "research_conflict": False,
         "pillars": {"asymmetry": 2, "consensus": 2, "catalyst": 1, "positioning": 1},
@@ -844,18 +845,21 @@ earnings_ideas = [
                               "catalyst": "sourced", "positioning": "sourced"},
         "key_bullets": [
             "BEAT: OCI +93% YoY to $4.9bn; Q4 total revenue +21% to $19.2bn; EPS $2.11 vs $1.97 est; "
-            "full-year $67.4bn (+17%, record); RPO $553bn converting at record pace.",
-            "REACTION: Stock -10%+ after hours on $20B equity+debt raise to fund AI infrastructure. "
-            "Dilution overhang vs the OCI thesis — hence the capital-protected structure.",
-            "STRUCTURE: Capital-protected note — 70-80% upside participation, full downside protection. "
-            "Enter post-print window (today/tomorrow). Idea 101 is now active.",
+            "RPO surged to $638bn (from $553bn last quarter) — demand confirmed.",
+            "CAPEX PANIC: FY26 capex $55.7bn (above ~$50bn guide); FY27 guided ~$70bn PLUS $20-25bn "
+            "component prepayments — total ~$90-95bn annual commitment. Funded by ~$40bn debt+equity "
+            "raise (~$20bn share sale). Stock -7 to -11% AH. Capital structure, not fundamentals.",
+            "STRUCTURE: Capital-protected note (idea 101) — 70-80% upside participation, full downside "
+            "protection. Enter the post-print window today. $638bn RPO is the floor thesis.",
         ],
-        "what_moves_it": ("OCI revenue recognition pace vs capital deployment costs of the $20B raise. "
-                          "Bull case: RPO converts faster than capex; bear case: dilution caps near-term price."),
-        "client_talking_point": ("Oracle proved the fundamentals — OCI +93%, record revenues, RPO converting. "
-                                 "The stock fell on dilution, not earnings. That is exactly what a capital-protected "
-                                 "note is designed for: participate in the cloud thesis, protected against the overhang. "
-                                 "The post-print window is open — enter the note today."),
+        "what_moves_it": ("OCI revenue recognition pace vs capital deployment costs of the ~$90-95bn annual "
+                          "capex commitment and $40bn raise. Bull: $638bn RPO converts faster than capex burns; "
+                          "bear: dilution and balance-sheet leverage cap near-term price recovery."),
+        "client_talking_point": ("Oracle proved the fundamentals — OCI +93%, $638bn RPO, record revenues. "
+                                 "The stock fell on a capital structure shock ($70bn+ FY27 capex / $40bn raise), "
+                                 "not on demand. That is precisely what a capital-protected note is built for: "
+                                 "participate in the OCI re-rate, fully protected against the dilution overhang. "
+                                 "Post-print window is open — enter the note today."),
     },
     {
         "ticker": "SAIL", "company": "SailPoint Inc",

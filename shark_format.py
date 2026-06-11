@@ -1419,9 +1419,11 @@ def _earnings_criteria():
         ("Positioning & sentiment (0–2)", "Short interest >10% of float or an extreme positioning setup? "
          "2 = extreme; 1 = notable lean; 0 = neutral/unavailable."),
     ]
-    tbl = ('<table><thead><tr><th>Pillar</th><th>What earns points</th></tr></thead><tbody>'
-           + "".join(f'<tr><td style="font-weight:600;white-space:nowrap;vertical-align:top">{e(k)}</td>'
-                     f'<td style="color:var(--ink-soft)">{e(v)}</td></tr>'
+    tbl = ('<table style="table-layout:fixed;width:100%"><thead><tr>'
+           '<th style="width:38%">Pillar</th><th>What earns points</th></tr></thead><tbody>'
+           + "".join(f'<tr><td style="font-weight:600;white-space:normal;vertical-align:top">{e(k)}</td>'
+                     f'<td style="color:var(--ink-soft);white-space:normal;text-align:left;'
+                     f'word-wrap:break-word">{e(v)}</td></tr>'
                      for k, v in rows)
            + "</tbody></table>")
     return (
