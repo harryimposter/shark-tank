@@ -1006,29 +1006,62 @@ CSP gate opens post-print; do not pre-position).</p>
 """,
 
     "takeaways": [
-        "CORRECTION — May PPI is HOT, NOT soft: +1.1% MoM / +6.5% YoY (BLS Jun 11) — largest 12-month "
-        "rise since Nov 2022. Stage-1 intermediate demand +12.3% YoY. Pipeline re-accelerating. Hawkish Fed "
-        "read. Warsh faces CPI 4.2% AND PPI 6.5% at FOMC Jun 16-17. Rates pre-positions (MM-013, MM-004) "
-        "honestly face headwinds — do NOT add; respect stops.",
-        "ESCALATION: Trump vowed Day-3 strikes + threatened to SEIZE KHARG ISLAND (~90% of Iran's crude). "
-        "Most oil-bullish statement since the war. Brent toward $95-100. Brent call spread $100 strike only "
-        "~$5-6 away. Counterweight: UAE-Iran first face-to-face meeting (de-escalation channel open). "
-        "Oil longs strongly earned — hold all.",
-        "SpaceX IPO priced: SPCX Nasdaq Jun 12 at $135/share, ~$1.77T valuation, ~$75B raise (Goldman lead) "
-        "— biggest IPO in history. Watch: $75B liquidity drain is cross-market headwind tomorrow. (CNBC)",
-        "Oracle CAPEX PANIC: Revenue ~$19.2B (slight beat), OCI +93%, Cloud +47%, RPO $638B. BUT FY26 capex "
-        "$55.7B (above guide), FY27 guided ~$70B + $20-25B prepayments. ~$40B raise (~$20B shares). Stock "
-        "-7-11% AH. Capital and capacity problem, not demand. Capital-protected note (idea 101) NOW OPEN.",
-        "ECB DELIVERED +25bp to 2.25% ✓ (Jun 11) — first hike in ~3 years; explicitly cited Iran-war inflation "
-        "(euro-area CPI 3.2% May). Lagarde: 'not pre-committing to a particular rate path' = pause signal confirmed. "
-        "Sell-the-fact underway: EUR/USD fading from ~1.15. Hot PPI adds USD-broadly-supportive overlay. "
-        "MM-012 dual tailwind confirmed. (Sources: CNBC, Bloomberg, Reuters, FXStreet.)",
-        "SPX put spread in the money: S&P -1.62% to ~7,267, below 7300 strike. Mark ~$80 vs $35 paid (+129%). "
-        "Hot PPI + SpaceX IPO drain = equity headwind. Hold through FOMC Jun 16-17 — final catalyst in window.",
-        "Adobe reports after close tonight: EPS est $5.01 (Finnhub), rev $6.43-6.48B, ±9.47% implied move. "
-        "CSP entry gate (idea 102) opens post-print. Do NOT pre-position.",
-        "FOMC Jun 16-17 next week: context has shifted hawkish on hot PPI. Warsh under pressure to lean "
-        "restrictive. MM-013 and MM-009 remain open as pre-positions but thesis is now contested — stops matter.",
+        "<strong>CORRECTION — May PPI is HOT:</strong> BLS released final-demand PPI at +1.1% MoM and +6.5% YoY on "
+        "June 11 — the largest 12-month rise since November 2022 — with stage-1 intermediate demand up +12.3% YoY. "
+        "The pipeline is re-accelerating, not clearing. This is explicitly hawkish: Warsh walks into FOMC June 16–17 "
+        "facing CPI at 4.2% headline <em>and</em> PPI at 6.5%, which makes a credibly dovish tilt very difficult. "
+        "The rates pre-positions (MM-013 short 2Y, MM-004 short 10Y) entered on a soft-inflation thesis that PPI "
+        "has now materially complicated — do not add to either; stops at 4.35% and 4.65% are now risk-live.",
+
+        "<strong>ECB delivered +25bp to 2.25%</strong> today (Jun 11) — the first hike in nearly three years — "
+        "explicitly citing Iran-war-driven inflation, with euro-area CPI at 3.2% in May. Lagarde's press conference "
+        "provided exactly the pause signal the sell-the-fact trade required: she said the ECB is 'not pre-committing "
+        "to a particular rate path,' removing the forward catalyst for EUR longs. EUR/USD is fading from ~1.15 "
+        "post-delivery, and hot PPI adds USD-broadly-supportive context on top — two confirmed tailwinds for "
+        "MM-012. (Sources: CNBC, Bloomberg, Reuters, FXStreet.)",
+
+        "<strong>Kharg Island escalation — most oil-bullish statement of the war:</strong> Trump vowed a third "
+        "consecutive night of strikes on Iran and threatened to physically seize Kharg Island, the terminal "
+        "handling roughly 90% of Iran's crude exports (~2.5-3M bbl/day). Even as a threat, this is unprecedented "
+        "and has pushed Brent toward $95–100. The Brent call spread's $100 strike is only ~$5–6 away. "
+        "The counterweight is the UAE–Iran first face-to-face meeting since the war began, which opens a "
+        "de-escalation channel and prevents the market pricing a straight-line seizure. The oil longs are "
+        "well-earned and should be held. (Bloomberg, Axios, CNBC; UAE–Iran: Bloomberg, Al Jazeera.)",
+
+        "<strong>Oracle capex panic (from Tuesday night's close):</strong> Revenue ~$19.2B was a slight beat, "
+        "OCI grew 93%, and RPO surged to $638B — the largest AI backlog in enterprise software history. "
+        "The demand story is unambiguously confirmed. What punished the stock 7–11% after hours was the "
+        "capital-structure arithmetic: FY26 capex at $55.7B above guide, FY27 guided to ~$70B plus $20–25B "
+        "in component prepayments, funded by a $40B raise including $20B in new equity. The capital-protected "
+        "note (idea 101) is the correct post-print instrument — 70–80% participation in the OCI re-rate with "
+        "100% capital protection against the dilution overhang. The window is open.",
+
+        "<strong>SpaceX IPO debuts tomorrow on Nasdaq (ticker SPCX):</strong> Priced at $135/share with a "
+        "~$1.77T valuation, raising ~$75B — the largest IPO in history by capital raised (Goldman lead, "
+        "Source: CNBC). The cross-market implication is not about SpaceX's fundamentals; it is that $75B "
+        "in new capital allocation is being funded from existing equity portfolios, disproportionately "
+        "concentrated in large-cap tech and AI. Expect marginal selling pressure in semiconductors and "
+        "cloud names tomorrow as institutional allocations are funded — not a fundamental short signal, "
+        "but a real one-session liquidity drain.",
+
+        "<strong>SPX put spread is in the money at +129%:</strong> The S&amp;P fell 1.62% to ~7,267 yesterday, "
+        "taking it through the 7,300 strike. The spread was entered at $35; the estimated mark is ~$80. "
+        "The key point is that the FOMC on June 16–17 — now a more hawkish event given PPI — remains inside "
+        "the June 27 expiry. Hot PPI and the SpaceX IPO liquidity drain both add to the equity headwind "
+        "into that date. Do not take early profit; the residual value is the FOMC tail.",
+
+        "<strong>Adobe reports after the close tonight</strong> with consensus EPS at $5.01 (Finnhub), "
+        "revenue guided $6.43–6.48B, and an implied move of ±9.47%. This is the cleanest remaining test "
+        "of whether generative AI is a software incumbent's tailwind or tax. The cash-secured put entry "
+        "gate (idea 102: $385 put) opens only after the print — there is no edge in pre-positioning; "
+        "the discipline is to wait and act on the outcome.",
+
+        "<strong>FOMC June 16–17 is the terminal gate — context has shifted hawkish:</strong> Coming into "
+        "last week the market assigned 96–98% probability to a hold with no hawkish signal. Hot PPI at "
+        "+6.5% YoY changes that calculus: Warsh faces CPI 4.2% plus PPI 6.5% in his first meeting as "
+        "chair and cannot credibly signal a dovish tilt. The non-trivial probability is now a hawkish "
+        "surprise — a hike bias or explicit 'further tightening' language. MM-013 and MM-009 remain "
+        "open as pre-positions but their thesis is contested. Stops matter.",
     ],
 
     "scenarios": [

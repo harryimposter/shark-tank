@@ -67,9 +67,9 @@ a{color:inherit}
 .wrap-body{font-family:var(--serif);font-size:16px;line-height:1.8}
 .wrap-body p{margin:0 0 1rem}.wrap-body strong{font-weight:700}
 .theme-line{border-left:2px solid var(--gold);padding:.6rem .9rem;background:var(--surface);border-radius:0 var(--rad) var(--rad) 0;margin:1rem 0;font-size:13px;font-weight:500;line-height:1.5}
-.takeaways{list-style:none;padding:0;margin:0}
-.takeaways li{position:relative;padding:.45rem 0 .45rem 1.2rem;border-bottom:.5px solid var(--line);font-size:14px;line-height:1.55}
-.takeaways li:before{content:"";position:absolute;left:0;top:.95rem;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.takeaways-prose{margin:0}
+.takeaway-p{font-size:13.5px;line-height:1.6;padding:.55rem 0;border-bottom:.5px solid var(--line);margin:0;color:var(--ink)}
+.takeaway-p:last-child{border-bottom:none}
 .scen-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:.5rem 0}
 @media(max-width:760px){.scen-grid{grid-template-columns:1fr}}
 .scen{border:.5px solid var(--line);border-top:2px solid var(--line);border-radius:var(--rad);padding:.9rem 1rem;background:var(--bg)}
@@ -219,16 +219,17 @@ details.explain-drop .ed-body>*:last-child{margin-bottom:0}
 .bo-h{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin:0 0 .4rem}
 .bo-col.up .bo-h{color:var(--green)}
 .bo-col.dn .bo-h{color:var(--red)}
-.bo-list{list-style:none;margin:0;padding:0}
-.bo-list li{padding:.42rem 0;border-bottom:.5px dotted var(--line)}
-.bo-list li:last-child{border-bottom:none}
+.bo-prose{margin:0}
+.bo-item{margin:0 0 .7rem;padding:.42rem 0;border-bottom:.5px dotted var(--line)}
+.bo-item:last-child{border-bottom:none;margin-bottom:0}
 .bo-name{display:block;font-size:12.5px;font-weight:600;color:var(--ink)}
 .bo-why{display:block;font-size:12px;color:var(--ink-soft);line-height:1.55;margin-top:.15rem}
 .bo-watch{border-top:.5px solid var(--line);padding-top:.7rem;margin-top:.2rem}
 .bo-watch .bo-h{color:var(--gold)}
-.bo-watch ul{margin:.3rem 0 0;padding-left:1.1rem}
-.bo-watch li{font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:.4rem}
-.bo-watch li b{color:var(--ink);font-weight:600}
+.bo-watch-prose{margin:.3rem 0 0}
+.bo-watch-item{font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:.55rem}
+.bo-watch-item:last-child{margin-bottom:0}
+.bo-watch-item b{color:var(--ink);font-weight:600}
 .bo-cta{font-size:12.5px;margin-top:.7rem}
 .bo-cta a{color:var(--gold);font-weight:600;text-decoration:none}
 /* ---- conviction legend ---- */
@@ -583,7 +584,9 @@ def _scenarios(scenarios):
 def _takeaways(items):
     if not items:
         return ""
-    return '<ul class="takeaways">' + "".join(f"<li>{e(x)}</li>" for x in items) + "</ul>"
+    return '<div class="takeaways-prose">' + "".join(
+        f'<p class="takeaway-p">{e(x)}</p>' for x in items
+    ) + "</div>"
 
 
 def _pips(score, total=10):
@@ -1382,19 +1385,21 @@ def _book_outlook(brief, scan):
 
     def _col(items, cls, title):
         rows = "".join(
-            f'<li><span class="bo-name">{e(it.get("name",""))}</span>'
-            f'<span class="bo-why">{it.get("why","")}</span></li>'
+            f'<p class="bo-item"><span class="bo-name">{e(it.get("name",""))}</span>'
+            f'<span class="bo-why">{it.get("why","")}</span></p>'
             for it in items)
         return (f'<div class="bo-col {cls}"><div class="bo-h">{title}</div>'
-                f'<ul class="bo-list">{rows}</ul></div>') if items else ""
+                f'<div class="bo-prose">{rows}</div></div>') if items else ""
 
     over = _col(bo.get("outperform", []), "up", "Expected to do well today")
     under = _col(bo.get("underperform", []), "dn", "Expected to lag today")
     watch = ""
     if bo.get("watch"):
-        w = "".join(f'<li><b>{e(x.get("label",""))}.</b> {x.get("text","")}</li>' for x in bo["watch"])
+        w = "".join(
+            f'<p class="bo-watch-item"><b>{e(x.get("label",""))}.</b> {x.get("text","")}</p>'
+            for x in bo["watch"])
         watch = ('<div class="bo-watch"><div class="bo-h">Also weigh today &mdash; hedging, adds, FX</div>'
-                 f'<ul>{w}</ul></div>')
+                 f'<div class="bo-watch-prose">{w}</div></div>')
     fired = (scan or {}).get("counts", {}).get("fired", 0)
     cta = (f'<div class="bo-cta"><a href="ideas.html">'
            f'{fired} derivative idea{"s" if fired != 1 else ""} fired on this book today &mdash; '
