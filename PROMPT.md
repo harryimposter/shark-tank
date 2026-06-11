@@ -2,7 +2,7 @@
 Paste this entire file as the contents of PROMPT.md in the market-map project folder in Claude Code. When you tell Claude Code "run the Market Map", it reads this file and executes everything below.
 ---
 ## FACT VERIFICATION — NON-NEGOTIABLE (governs every run)
-**FACT VERIFICATION:** Before stating any market event, earnings result, price, or macro outcome as fact in the brief, cross-check it across multiple reputable sources — Reuters, Wall Street Journal, Bloomberg, and Yahoo Finance. A claim may only be stated as fact if at least TWO of these sources agree. If fewer than two confirm it, either omit it or clearly mark it as unverified/pending (red source dot). **Never write a forward/near-dated event in past tense.** Do not infer or assume outcomes of events that have not yet occurred.
+**FACT VERIFICATION:** Before stating any market event, earnings result, price, or macro outcome as fact in the brief, cross-check it across multiple reputable sources — Reuters, Wall Street Journal, Bloomberg, Yahoo Finance, Seeking Alpha, and Barron's. A claim may only be stated as fact if at least TWO of these sources agree. If fewer than two confirm it, either omit it or clearly mark it as unverified/pending (red source dot). **Never write a forward/near-dated event in past tense.** Do not infer or assume outcomes of events that have not yet occurred.
 
 **Concrete rules that apply to every section:**
 - If an event (central bank decision, earnings print, data release) is scheduled for TODAY or in the future: write it as PENDING/upcoming, never as done/completed/announced — even if consensus is near-certainty.
