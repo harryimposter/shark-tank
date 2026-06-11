@@ -610,26 +610,30 @@ IDEA_ENRICHMENTS = {
     101: {
         "fundamental_thesis": (
             "Oracle Corporation (ORCL) — cloud infrastructure (OCI), database (Autonomous DB), "
-            "and enterprise applications. Key AI metric: remaining performance obligations (RPO) "
-            "$553bn (+325% YoY) — the largest confirmed AI backlog on screen. "
-            "OCI grew 84% YoY in Q3 to $4.9bn. Consensus EPS: $1.58 (Finnhub); Oracle's own "
-            "March guide: $1.96-2.00 — a wide gap implying a beat is already expected. "
-            "Live ORCL multiples: see Yahoo Finance data below. "
-            "Capital-protected note: full 100% protection means the print risk (gap-down if guide "
-            "misses whisper) is absorbed by the note structure. Trade-off: capped upside "
-            "(70-80% participation est.). The thesis is backlog conversion, not EPS."
+            "and enterprise applications. POST-PRINT: Q4 FY26 REPORTED (10-Jun AH). "
+            "ACTUAL: EPS $2.11 vs $1.97 consensus — beat. OCI revenue +93% YoY to $4.9bn. "
+            "Total revenue $19.2bn (record). RPO $553bn — the largest AI backlog on screen. "
+            "Then: $20bn capital raise announced → stock fell -10%+ AH. "
+            "THE THESIS: the dilution is the cost of funding the $553bn pipeline that has already been sold. "
+            "OCI growing 93% YoY is the AI-infrastructure thesis confirmed. The equity is penalised "
+            "for the near-term dilution math; the fundamental re-rate is 18-24 months away. "
+            "Capital-protected note (100% protection, 70-80% participation est.): absorbs the "
+            "dilution hangover, captures the OCI re-rate. The note structure is the correct vehicle — "
+            "not unprotected equity. Post-print window is NOW OPEN."
         ),
         "catalyst_text": (
-            "10-Jun ORCL Q4 FY26 earnings (after close) — ENTER POST-PRINT ONLY. "
-            "The Earnings desk: 'do not pre-position.' This note enters the day after the print. "
-            "Key catalyst WITHIN the note: OCI growth rate and capex guidance vs the whisper "
-            "($17.2bn FY26 guide). If the guide clears the whisper, the note's participation "
-            "captures the re-rate. If it disappoints (the AVGO parallel), capital protection absorbs it."
+            "10-Jun ORCL Q4 FY26 earnings — PRINTED AND CONFIRMED. "
+            "Post-print window is NOW OPEN (typically 5-10 sessions). "
+            "The entry gate has fired: OCI +93%, RPO $553bn confirmed, EPS beat. "
+            "The near-term headwind ($20B dilution) is exactly what the capital protection absorbs. "
+            "Key catalyst WITHIN the 6-month note: OCI revenue acceleration in Q1 FY27 (Sep report); "
+            "capex absorption of the $20bn raise; RPO conversion rate. "
+            "Sizing: up to ~EUR1.5m from idle USD cash. Do not wait — the post-print window is live."
         ),
         "sub_why": {
-            "setup":   "2/2 — OCI +84% YoY, RPO $553bn confirmed (Finnhub sourced); post-print entry correctly gates the note per the Earnings desk's call; setup verified.",
-            "pricing": "1/2 — ~70-80% upside participation estimated pending a live structure quote; capital protection premium depends on current rates and vol; direction correct, quantum estimated.",
-            "catalyst": "1/2 — 10-Jun print is the gate (enter post-print); 1/2 because the note's 6-month payoff window has multiple internal catalysts (OCI revs, capex guide) not yet known.",
+            "setup":   "2/2 — Q4 FY26 print confirmed: OCI +93%, EPS $2.11 vs $1.97, RPO $553bn (all sourced). Post-print entry is the correct gate per the Earnings desk. Setup fully verified.",
+            "pricing": "1/2 — ~70-80% upside participation estimated pending a live structure quote; $20bn dilution may temporarily lift option vol (affects note pricing); direction correct, quantum estimated.",
+            "catalyst": "2/2 — the print has fired and confirmed the thesis (OCI +93%, record revenues, beat). The 6-month payoff window opens now with clear internal catalysts (Q1 FY27 OCI revs, capex absorption).",
             "fit":     "2/2 — client has ZERO software/cloud exposure (all AI is hardware: MU/NVDA/AVGO/AMD); Oracle adds the OCI/cloud leg with full capital protection — direct mandate fit.",
         },
     },
@@ -638,7 +642,8 @@ IDEA_ENRICHMENTS = {
             "Adobe Inc (ADBE) — creative cloud (Photoshop, Illustrator, Premiere), digital "
             "experience (Experience Cloud), and generative AI (Firefly). Near 52-week low. "
             "Split sell-side: 19 buy / 22 hold / 4 sell — sentiment is washed out vs an AI "
-            "disruption overhang. Live ADBE multiples: see Yahoo Finance data below. "
+            "disruption overhang. Consensus EPS: $5.01 (Finnhub); implied move ±9.47%. "
+            "Live ADBE multiples: see Yahoo Finance data below. "
             "Core question: is Firefly additive to ARR (upsell to existing seats) or "
             "cannibalising Creative Cloud (AI as substitute)? Cash-secured put: the client "
             "is paid a premium to commit to buy ADBE at the 52-week low level. If ADBE "
@@ -646,16 +651,18 @@ IDEA_ENRICHMENTS = {
             "the client buys ADBE at (strike − premium) — discount accumulation with defined risk."
         ),
         "catalyst_text": (
-            "11-Jun ADBE Q2 FY26 earnings (after close) — ENTER POST-PRINT ONLY. "
-            "The pivotal question: guidance tone on net-new AI/Firefly monetisation — the guide, "
-            "not printed EPS, is what moves the stock at this valuation. A beaten-down stock near "
-            "the 52-week low means the downside from a bad guide may already be largely priced — "
-            "the asymmetry is on the upside from the beaten-down level."
+            "11-Jun ADBE Q2 FY26 earnings (after close TONIGHT) — ENTER POST-PRINT ONLY. "
+            "Implied move ±9.47% — the market is pricing a significant swing in either direction. "
+            "The pivotal question: guidance tone on net-new AI/Firefly ARR contribution — the guide, "
+            "not printed EPS, is what moves the stock at this valuation. "
+            "If beat + AI additive → ADBE rallies; CSP not filled, wait for better entry. "
+            "If miss / AI cannibalisation → ADBE down 8-12%; $385 CSP gets assigned at a "
+            "meaningful discount. Either way, DO NOT pre-position — the print fires tonight."
         ),
         "sub_why": {
-            "setup":   "1/2 — ADBE near 52-week low confirmed; split sell-side confirmed (Finnhub sourced); but specific CSP strike needs live verification after the 11-Jun print.",
-            "pricing": "1/2 — put premium at a beaten-down name estimated; IV at lows tends to be elevated (better CSP coupon) but requires a live quote.",
-            "catalyst": "1/2 — 11-Jun print is the gate (enter post-print); the guide on AI monetisation is the pivotal data point; catalyst is pending as of Jun 10.",
+            "setup":   "1/2 — ADBE near 52-week low confirmed; split sell-side confirmed (Finnhub sourced); but specific CSP strike needs live verification post-print tonight.",
+            "pricing": "1/2 — elevated IV into the print (±9.47% implied move) means the CSP premium will be enhanced; exact premium requires a live quote post-print; direction correct.",
+            "catalyst": "1/2 — 11-Jun print fires TONIGHT (enter post-print); the guide on AI monetisation is the pivotal data point; catalyst is pending as of Jun 11.",
             "fit":     "2/2 — client holds SAP (enterprise software confirmed); CSP = income while waiting to add a beaten-down quality software name at a discount; direct mandate fit.",
         },
     },
@@ -717,47 +724,50 @@ def _new_adds(metrics):
     structures). Sourced from the Earnings screener + the macro book. Tenor floors:
     equity structured products >=3m, OTC >=1m, rates structured products >=2y."""
     return [
-        _idea(101, "Oracle: 6-month capital-protected note (post-print entry)",
-              "New add - structured note", ["ORCL US"], 6,
-              {"setup": 2, "pricing": 1, "catalyst": 1, "fit": 2},
+        _idea(101, "Oracle: 6-month capital-protected note — POST-PRINT WINDOW OPEN",
+              "New add - structured note", ["ORCL US"], 7,
+              {"setup": 2, "pricing": 1, "catalyst": 2, "fit": 2},
               {"setup": "sourced", "pricing": "estimated", "catalyst": "sourced", "fit": "sourced"},
               "FIRE",
-              "A 6-month note with full capital protection and ~70-80% upside participation on Oracle, entered "
-              "AFTER the 10-Jun print to respect the Earnings desk's 'do not pre-position' call. Diversifies the "
-              "client's AI exposure away from pure semiconductors into cloud-infrastructure / OCI - the same theme, "
-              "a different leg of the build-out.",
-              "OCI growth and capex guidance clearing the whisper (not just the estimate). Capital protection means "
-              "the print risk is carried by the structure, not the client - the trade-off is capped upside.",
+              "A 6-month note with full capital protection and ~70-80% upside participation on Oracle. "
+              "POST-PRINT: EPS $2.11 beat ($1.97 est), OCI +93% YoY to $4.9bn, RPO $553bn confirmed. "
+              "Oracle then announced a $20bn capital raise — stock -10%+ AH. The note absorbs the dilution "
+              "hangover with 100% capital protection, participates in the OCI re-rate as the pipeline converts. "
+              "ENTRY WINDOW OPEN NOW — typically 5-10 sessions post-print.",
+              "OCI revenue acceleration in Q1 FY27 (Sep quarter) and capex absorption of the $20bn raise. "
+              "Capital protection carries the dilution overhang for the client — the trade-off is capped upside.",
               "The client is heavily AI but entirely through hardware (MU, NVDA, AVGO, AMD). Oracle adds the "
-              "software/cloud leg of the same conviction with downside protection - exactly the profile of a "
+              "software/cloud leg of the same conviction with downside protection — exactly the profile of a "
               "growth-with-protection client who already buys structures.",
-              ["Capital-protected note", "AI / cloud", "Post-print", "Diversify"],
+              ["Capital-protected note", "AI / cloud", "Post-print", "Dilution-protected"],
               section="new_add", asset_group="Equity", tenor="6 months (equity SP >= 3m floor)",
               sizing="~EUR1.5m from the idle USD cash",
-              impact="Broadens the AI bet from semis-only into software, with capital protection - adds conviction exposure while *reducing* the concentration risk profile.",
-              sources=[{"name": "Earnings screener (Finnhub)", "type": "in-house", "note": "ORCL - RPO $553bn, OCI +84%"},
+              impact="Broadens the AI bet from semis-only into cloud infrastructure, with capital protection — adds conviction exposure while reducing concentration risk. Entry gate OPEN.",
+              sources=[{"name": "Earnings screener (Finnhub)", "type": "in-house", "note": "ORCL Q4 FY26: EPS $2.11, OCI +93%, RPO $553bn"},
                        {"name": "Citrini Research", "type": "Substack/X", "note": "AI capex build-out"},
                        {"name": "JP Morgan GIS", "type": "house anchor", "note": "OW AI infrastructure"}],
-              origin="Earnings tab -> Oracle (Neutral into the print; this enters post-print, no contradiction)"),
-        _idea(102, "Adobe: 3-month cash-secured put at the lows (discount accumulation)",
+              origin="Earnings tab -> Oracle (post-print entry; dilution overhang = note structure opportunity)"),
+        _idea(102, "Adobe: 3-month cash-secured put — gate opens TONIGHT post-print",
               "New add - OTC / accumulator", ["ADBE US"], 5,
               {"setup": 1, "pricing": 1, "catalyst": 1, "fit": 2},
               {"setup": "sourced", "pricing": "estimated", "catalyst": "sourced", "fit": "sourced"},
               "FIRE",
               "Sell a 3-month cash-secured put on Adobe struck near the 52-week low - the client is paid a premium "
               "to commit to buy a washed-out software name at a discount, or keeps the premium if it never gets "
-              "there. Cash ring-fenced against assignment.",
-              "Whether generative-AI is additive to Adobe's ARR or a threat - the guide, not the EPS. Washed-out "
-              "sentiment (near 52wk low, split sell-side) is the asymmetry the premium is paid for.",
+              "there. Cash ring-fenced against assignment. "
+              "TIMING: Q2 FY26 print fires TONIGHT (11-Jun, after close). Do NOT pre-position — "
+              "the CSP entry gate opens post-print. EPS est $5.01 (Finnhub), implied move ±9.47%.",
+              "Whether generative-AI is additive to Adobe's ARR or a threat — the guide on AI/Firefly monetisation, "
+              "not the printed EPS, is what moves the stock. Elevated IV into the print means enhanced CSP premium.",
               "Fits the client's enterprise-software liking (they hold SAP) and their willingness to be paid to "
               "wait. A defined, income-generating way to start a position in a beaten-down quality name.",
               ["Cash-secured put", "Software", "Income", "Add-at-discount"],
               section="new_add", asset_group="Equity", tenor="3 months (OTC put, >= 1m floor)",
               sizing="~EUR1.0m cash ring-fenced",
-              impact="Adds a second, uncorrelated software name at a discount and converts idle cash into income - diversifies the equity sleeve away from the semis cluster.",
-              sources=[{"name": "Earnings screener (Finnhub)", "type": "in-house", "note": "ADBE near 52wk low, split coverage"},
+              impact="Adds a second, uncorrelated software name at a discount and converts idle cash into income — diversifies the equity sleeve away from the semis cluster. Gate opens tonight.",
+              sources=[{"name": "Earnings screener (Finnhub)", "type": "in-house", "note": "ADBE Q2 FY26 tonight; EPS est $5.01; implied move ±9.47%"},
                        {"name": "JP Morgan GIS", "type": "house anchor", "note": "European/quality software tilt"}],
-              origin="Earnings tab -> Adobe (the 'is AI a tax or tailwind for software' test)"),
+              origin="Earnings tab -> Adobe (the 'is AI a tax or tailwind for software' test — gate opens tonight)"),
         _idea(103, "EUR rates: 2-year steepener-linked capital-protected note",
               "New add - rates structured product", ["EUR rates"], 6,
               {"setup": 2, "pricing": 1, "catalyst": 1, "fit": 2},
