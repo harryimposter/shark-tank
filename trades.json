@@ -249,10 +249,16 @@
           "level": 1.64034,
           "pnl_pct": 0.28,
           "status": "open"
+        },
+        {
+          "date": "2026-06-16",
+          "level": 1.6427,
+          "pnl_pct": 0.14,
+          "status": "open"
         }
       ],
-      "current": 1.64034,
-      "current_pnl_pct": 0.28
+      "current": 1.6427,
+      "current_pnl_pct": 0.14
     },
     {
       "id": "MM-2026-004",
@@ -275,8 +281,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Brent −17% is a forward CPI cut the FedWatch distribution (67.8% no cuts in 2026) has not booked. Bonds already rallied 26bp off the 4.70% high; the disinflation impulse rolls headline lower into the autumn. Deliberately the opposite macro leg to the Brent longs — the book owns both sides of the MoU binary and gets paid on either resolution.",
-      "current": 4.437,
-      "current_pnl_pct": 0.07,
+      "current": 4.473,
+      "current_pnl_pct": -0.74,
       "history": [
         {
           "date": "2026-05-31",
@@ -499,6 +505,12 @@
           "level": 4.437,
           "pnl_pct": 0.07,
           "status": "open"
+        },
+        {
+          "date": "2026-06-16",
+          "level": 4.473,
+          "pnl_pct": -0.74,
+          "status": "open"
         }
       ]
     },
@@ -523,8 +535,8 @@
       "horizon": "months",
       "min_hold_days": 45,
       "thesis": "Pre-position into the 5 June payrolls / 16–17 June FOMC window. Gold has already decoupled from a 4.98% long bond, which means it is pricing both MoU tails at once. It wins if oil-disinflation forces a dovish Fed and real yields fall, AND it wins if the MoU fails and the geopolitical bid returns. It loses only on the narrow path of strong-growth + stable-oil + hawkish-Fed together. That is the asymmetry pre-positioning is built for; minimum 45-day hold, not an event-day scalp.",
-      "current": 4311.74,
-      "current_pnl_pct": -4.67,
+      "current": 4317.82,
+      "current_pnl_pct": -4.54,
       "history": [
         {
           "date": "2026-05-31",
@@ -747,6 +759,12 @@
           "level": 4311.74,
           "pnl_pct": -4.67,
           "status": "open"
+        },
+        {
+          "date": "2026-06-16",
+          "level": 4317.82,
+          "pnl_pct": -4.54,
+          "status": "open"
         }
       ],
       "stop_touched": true
@@ -772,8 +790,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "USDJPY at 159.37 with Finance Minister Katayama threatening intervention. BoJ September hike >50% priced vs Fed on hold. 3.63 pts downside to stop, 9.37 pts to target. Intervention is the backstop.",
-      "current": 160.074,
-      "current_pnl_pct": -0.44,
+      "current": 160.275,
+      "current_pnl_pct": -0.57,
       "history": [
         {
           "date": "2026-06-01",
@@ -984,6 +1002,12 @@
           "level": 160.074,
           "pnl_pct": -0.44,
           "status": "open"
+        },
+        {
+          "date": "2026-06-16",
+          "level": 160.275,
+          "pnl_pct": -0.57,
+          "status": "open"
         }
       ]
     },
@@ -1009,8 +1033,8 @@
       "horizon": "26 days",
       "min_hold_days": 0,
       "thesis": "VIX at 15.3 is cheap for 4 non-trivial events in 15 days: AVGO Jun 3, payrolls Jun 5, ECB Jun 11, FOMC Jun 16-17. 0.5% notional cost; 7x payoff if SPX draws down 6%. Insurance on a portfolio long AI equities.",
-      "current": 38.0,
-      "current_pnl_pct": 8.57,
+      "current": 30.0,
+      "current_pnl_pct": -14.29,
       "history": [
         {
           "date": "2026-06-01",
@@ -1215,6 +1239,12 @@
           "level": 38.0,
           "pnl_pct": 8.57,
           "status": "open"
+        },
+        {
+          "date": "2026-06-16",
+          "level": 30.0,
+          "pnl_pct": -14.29,
+          "status": "open"
         }
       ]
     },
@@ -1239,8 +1269,8 @@
       "horizon": "3 months",
       "min_hold_days": 45,
       "thesis": "2s10s at +15bp after 18-month inversion. Buy 2Y (own cut optionality) vs short 10Y (short fiscal supply risk). June 5 payrolls at 89k + Fed pause re-prices front-end. ECB hiking cycle lifts global long rates. Steepener delivers whether Fed cuts or back-end sells off on supply. Late-cycle steepeners outperform after prolonged inversions.",
-      "current": 0.404,
-      "current_pnl_pct": 169.33,
+      "current": 0.413,
+      "current_pnl_pct": 175.33,
       "history": [
         {
           "date": "2026-06-01",
@@ -1445,223 +1475,11 @@
           "level": 0.404,
           "pnl_pct": 169.33,
           "status": "open"
-        }
-      ]
-    },
-    {
-      "id": "MM-2026-010",
-      "opened": "2026-06-08",
-      "type": "reactive",
-      "asset_class": "Equity RV",
-      "trade": "Long DAX vs short Nasdaq Composite (ratio)",
-      "structure": "cross-region spread",
-      "entry": 0.9722,
-      "stop": 0.943,
-      "target": 1.03,
-      "conviction": 7,
-      "conviction_breakdown": {
-        "gap": 2,
-        "catalyst": 1,
-        "positioning": 2,
-        "confirmation": 1,
-        "stop_quality": 1
-      },
-      "horizon": "weeks",
-      "min_hold_days": 0,
-      "thesis": "Friday's selloff was a single-factor US event — AI concentration plus a hawkish payroll — and Europe decoupled outright (DAX +0.2% vs Nasdaq −4.2%). The ECB hikes Thursday into a financials-heavy index with no AI capex cycle to give back. Ratio entry 0.972 (DAX/Comp); the divergence has legs because it is structural, not sentiment.",
-      "current": 0.9516,
-      "current_pnl_pct": -2.12,
-      "history": [
-        {
-          "date": "2026-06-08",
-          "level": 0.9722,
-          "pnl_pct": 0.0,
-          "status": "open"
         },
         {
-          "date": "2026-06-09",
-          "level": 0.9493,
-          "pnl_pct": -2.36,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 0.9544,
-          "pnl_pct": -1.83,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 0.9436,
-          "pnl_pct": -2.94,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 0.9469,
-          "pnl_pct": -2.6,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 0.9605,
-          "pnl_pct": -1.2,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 0.9605,
-          "pnl_pct": -1.2,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 0.9612,
-          "pnl_pct": -1.13,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 0.9578,
-          "pnl_pct": -1.48,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 0.9592,
-          "pnl_pct": -1.34,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 0.9613,
-          "pnl_pct": -1.12,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 0.9613,
-          "pnl_pct": -1.12,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 0.9613,
-          "pnl_pct": -1.12,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 0.9613,
-          "pnl_pct": -1.12,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 0.9613,
-          "pnl_pct": -1.12,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 0.9613,
-          "pnl_pct": -1.12,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 0.9613,
-          "pnl_pct": -1.12,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 0.9613,
-          "pnl_pct": -1.12,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 0.9613,
-          "pnl_pct": -1.12,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 0.9613,
-          "pnl_pct": -1.12,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 0.9639,
-          "pnl_pct": -0.85,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 0.9641,
-          "pnl_pct": -0.83,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 0.9639,
-          "pnl_pct": -0.85,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 0.9636,
-          "pnl_pct": -0.88,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 0.9643,
-          "pnl_pct": -0.81,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 0.9576,
-          "pnl_pct": -1.5,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 0.9616,
-          "pnl_pct": -1.09,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 0.9548,
-          "pnl_pct": -1.79,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 0.954,
-          "pnl_pct": -1.87,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-12",
-          "level": 0.9516,
-          "pnl_pct": -2.12,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-15",
-          "level": 0.9516,
-          "pnl_pct": -2.12,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-15",
-          "level": 0.9516,
-          "pnl_pct": -2.12,
+          "date": "2026-06-16",
+          "level": 0.413,
+          "pnl_pct": 175.33,
           "status": "open"
         }
       ]
@@ -1687,8 +1505,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Thursday's 25bp ECB hike is 99% priced — the rate-differential tailwind for EUR is in the price, and a hawkish US repricing widened the gap the other way. Classic buy-rumour-sell-fact setup into a fully-priced central bank. Pairs cleanly with long DAX: a weaker euro flatters the exporters.",
-      "current": 1.16141,
-      "current_pnl_pct": -0.12,
+      "current": 1.15768,
+      "current_pnl_pct": 0.2,
       "history": [
         {
           "date": "2026-06-08",
@@ -1881,6 +1699,12 @@
           "level": 1.16141,
           "pnl_pct": -0.12,
           "status": "open"
+        },
+        {
+          "date": "2026-06-16",
+          "level": 1.15768,
+          "pnl_pct": 0.2,
+          "status": "open"
         }
       ]
     },
@@ -1905,8 +1729,8 @@
       "horizon": "into 16–17 Jun FOMC",
       "min_hold_days": 30,
       "thesis": "The market prices a ~70% hike by year-end on one 172k payroll with unemployment steady at 4.3%. The Fed does not hike into a labor market that is firm-but-not-overheating with a richly-valued equity tape just cracking. The 2-year at 4.16% — a 16-month high — has over-extrapolated a single number; the 17 June dot plot is the catalyst to reprice it. Pre-position, not an event scalp.",
-      "current": 4.033,
-      "current_pnl_pct": 3.1,
+      "current": 4.06,
+      "current_pnl_pct": 2.45,
       "history": [
         {
           "date": "2026-06-08",
@@ -2098,6 +1922,12 @@
           "date": "2026-06-15",
           "level": 4.033,
           "pnl_pct": 3.1,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-16",
+          "level": 4.06,
+          "pnl_pct": 2.45,
           "status": "open"
         }
       ]
@@ -2770,6 +2600,237 @@
         "pnl_pct": -63.33,
         "days_held": 7,
         "reason": "Peace deal deflated the Hormuz tail the call spread owned: with Brent ~$86 the $100 strike is $14 away and the catalyst is dead. Closed near the $1 discipline level to recover residual premium rather than ride a defined-risk position to zero."
+      }
+    },
+    {
+      "id": "MM-2026-010",
+      "opened": "2026-06-08",
+      "type": "reactive",
+      "asset_class": "Equity RV",
+      "trade": "Long DAX vs short Nasdaq Composite (ratio)",
+      "structure": "cross-region spread",
+      "entry": 0.9722,
+      "stop": 0.943,
+      "target": 1.03,
+      "conviction": 7,
+      "conviction_breakdown": {
+        "gap": 2,
+        "catalyst": 1,
+        "positioning": 2,
+        "confirmation": 1,
+        "stop_quality": 1
+      },
+      "horizon": "weeks",
+      "min_hold_days": 0,
+      "thesis": "Friday's selloff was a single-factor US event — AI concentration plus a hawkish payroll — and Europe decoupled outright (DAX +0.2% vs Nasdaq −4.2%). The ECB hikes Thursday into a financials-heavy index with no AI capex cycle to give back. Ratio entry 0.972 (DAX/Comp); the divergence has legs because it is structural, not sentiment.",
+      "current": 0.9329,
+      "current_pnl_pct": -4.04,
+      "history": [
+        {
+          "date": "2026-06-08",
+          "level": 0.9722,
+          "pnl_pct": 0.0,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-09",
+          "level": 0.9493,
+          "pnl_pct": -2.36,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 0.9544,
+          "pnl_pct": -1.83,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 0.9436,
+          "pnl_pct": -2.94,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 0.9469,
+          "pnl_pct": -2.6,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 0.9605,
+          "pnl_pct": -1.2,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 0.9605,
+          "pnl_pct": -1.2,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 0.9612,
+          "pnl_pct": -1.13,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 0.9578,
+          "pnl_pct": -1.48,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 0.9592,
+          "pnl_pct": -1.34,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 0.9613,
+          "pnl_pct": -1.12,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 0.9613,
+          "pnl_pct": -1.12,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 0.9613,
+          "pnl_pct": -1.12,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 0.9613,
+          "pnl_pct": -1.12,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 0.9613,
+          "pnl_pct": -1.12,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.9613,
+          "pnl_pct": -1.12,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.9613,
+          "pnl_pct": -1.12,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.9613,
+          "pnl_pct": -1.12,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.9613,
+          "pnl_pct": -1.12,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.9613,
+          "pnl_pct": -1.12,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.9639,
+          "pnl_pct": -0.85,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.9641,
+          "pnl_pct": -0.83,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.9639,
+          "pnl_pct": -0.85,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.9636,
+          "pnl_pct": -0.88,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.9643,
+          "pnl_pct": -0.81,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.9576,
+          "pnl_pct": -1.5,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.9616,
+          "pnl_pct": -1.09,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.9548,
+          "pnl_pct": -1.79,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 0.954,
+          "pnl_pct": -1.87,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-12",
+          "level": 0.9516,
+          "pnl_pct": -2.12,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-15",
+          "level": 0.9516,
+          "pnl_pct": -2.12,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-15",
+          "level": 0.9516,
+          "pnl_pct": -2.12,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-16",
+          "level": 0.9329,
+          "pnl_pct": -4.04,
+          "status": "stopped"
+        }
+      ],
+      "exit": {
+        "date": "2026-06-16",
+        "level": 0.9329,
+        "result": "STOPPED",
+        "pnl_pct": -4.04,
+        "days_held": 8
       }
     }
   ]

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shark Tank / Market Map — The 101 Document</title>
+<style>
+  :root{
+    --bg:#ffffff; --surface:#f7f7f5; --ink:#1a1a1a; --ink-soft:#4a4a4a;
+    --ink-mute:#8a8a8a; --gold:#b8960c; --red:#c0392b; --green:#1a7a45;
+    --blue:#2c5d8a; --line:rgba(0,0,0,0.1); --line2:rgba(0,0,0,0.18);
+    --radius:10px; --font:-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --serif:Georgia,"Times New Roman",serif; --mono:"SF Mono",Consolas,"Roboto Mono",monospace;
+  }
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.7; margin:0;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 1.5rem;}
+  /* layout */
+  .shell{display:grid; grid-template-columns:260px 1fr; gap:3rem; align-items:start; max-width:1180px; margin:0 auto; padding:0 1.5rem;}
+  nav.toc{position:sticky; top:0; max-height:100vh; overflow-y:auto; padding:2rem 0; font-size:13px; line-height:1.55;}
+  nav.toc h4{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-mute); margin:1.2rem 0 .4rem;}
+  nav.toc a{display:block; color:var(--ink-soft); text-decoration:none; padding:2px 0 2px 10px; border-left:2px solid transparent;}
+  nav.toc a:hover{color:var(--gold); border-left-color:var(--gold);}
+  main{min-width:0; padding:2rem 0 6rem;}
+  /* hero */
+  .hero{border-bottom:1px solid var(--line); padding-bottom:1.6rem; margin-bottom:2rem;}
+  .kicker{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); font-weight:600;}
+  h1{font-family:var(--serif); font-weight:400; font-size:2.6rem; line-height:1.15; margin:.5rem 0 .6rem;}
+  .sub{font-size:17px; color:var(--ink-soft); max-width:46em;}
+  .stamp{font-size:12px; color:var(--ink-mute); margin-top:1rem; letter-spacing:.04em;}
+  /* headings */
+  h2{font-family:var(--serif); font-weight:400; font-size:2rem; margin:3.2rem 0 .3rem; padding-top:1rem; border-top:3px solid var(--ink); line-height:1.2;}
+  h2 .num{color:var(--gold); font-size:1.3rem; vertical-align:.15em; margin-right:.5rem;}
+  h3{font-family:var(--serif); font-weight:400; font-size:1.4rem; margin:2.2rem 0 .5rem; color:var(--ink);}
+  h4{font-size:1.02rem; font-weight:600; margin:1.5rem 0 .3rem; color:var(--ink);}
+  p{margin:.7rem 0;}
+  a{color:var(--blue);}
+  ul,ol{margin:.6rem 0 .9rem; padding-left:1.3rem;}
+  li{margin:.35rem 0;}
+  strong{font-weight:600;}
+  code{font-family:var(--mono); font-size:.86em; background:var(--surface); padding:1px 5px; border-radius:4px; border:1px solid var(--line); color:#7a4d00;}
+  /* callouts */
+  .lead{font-size:18px; color:var(--ink); border-left:3px solid var(--gold); padding:.2rem 0 .2rem 1.1rem; margin:1rem 0 1.4rem; font-family:var(--serif);}
+  .box{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:1.1rem 1.3rem; margin:1.2rem 0;}
+  .box.gold{border-left:4px solid var(--gold);}
+  .box.green{border-left:4px solid var(--green);}
+  .box.red{border-left:4px solid var(--red);}
+  .box.blue{border-left:4px solid var(--blue);}
+  .box h4{margin-top:0;}
+  .tag{display:inline-block; font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; padding:2px 9px; border-radius:20px; background:var(--surface); border:1px solid var(--line2); color:var(--ink-soft); vertical-align:middle;}
+  .tag.g{color:var(--green); border-color:var(--green);}
+  .tag.r{color:var(--red); border-color:var(--red);}
+  .tag.gold{color:var(--gold); border-color:var(--gold);}
+  /* tables */
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:14px;}
+  th,td{text-align:left; padding:.55rem .7rem; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-mute); font-weight:600; border-bottom:1.5px solid var(--line2);}
+  td code{white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  .num-cell{font-variant-numeric:tabular-nums; white-space:nowrap;}
+  /* pipeline / steps */
+  .steps{counter-reset:step; margin:1.2rem 0;}
+  .step{position:relative; padding:.6rem 0 .9rem 3rem; border-left:2px solid var(--line); margin-left:1rem;}
+  .step::before{counter-increment:step; content:counter(step); position:absolute; left:-1rem; top:.5rem; width:2rem; height:2rem; background:var(--ink); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600;}
+  .step:last-child{border-left-color:transparent;}
+  .step b{display:block; font-size:15px;}
+  /* code block */
+  pre{background:#1a1a1a; color:#e8e8e8; padding:1rem 1.2rem; border-radius:var(--radius); overflow-x:auto; font-family:var(--mono); font-size:13px; line-height:1.55; margin:1rem 0;}
+  pre .c{color:#7fae6e;} pre .k{color:#d09b6a;} pre .s{color:#8fb9d4;}
+  /* misc */
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:1rem;}
+  @media(max-width:900px){ .shell{grid-template-columns:1fr;} nav.toc{position:static; max-height:none; border-bottom:1px solid var(--line);} .two{grid-template-columns:1fr;} h1{font-size:2rem;} }
+  .pill-row{display:flex; flex-wrap:wrap; gap:6px; margin:.6rem 0;}
+  .footnote{font-size:13px; color:var(--ink-mute); border-top:1px solid var(--line); margin-top:3rem; padding-top:1rem;}
+  .anchor{scroll-margin-top:1rem;}
+  .miss{color:var(--red); font-weight:600;}
+  .ok{color:var(--green); font-weight:600;}
+  hr{border:none; border-top:1px solid var(--line); margin:2rem 0;}
+  /* ---- print / PDF ---- */
+  @media print{
+    @page{ size:A4; margin:14mm 12mm; }
+    html,body{ font-size:10.5pt; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    nav.toc{ display:none; }
+    .shell{ display:block; max-width:none; padding:0; }
+    main{ padding:0; }
+    .hero{ padding:0 0 1rem; }
+    .wrap{ max-width:none; padding:0; }
+    h1{ font-size:24pt; }
+    h2{ font-size:16pt; break-after:avoid; break-before:page; border-top-width:2px; }
+    h2:first-of-type{ break-before:avoid; }
+    h3,h4{ break-after:avoid; }
+    h3{ font-size:13pt; } h4{ font-size:11pt; }
+    p,li{ orphans:3; widows:3; }
+    table,.box,.step,pre{ break-inside:avoid; }
+    table{ font-size:9pt; }
+    thead{ display:table-header-group; }
+    .box{ background:#f7f7f5 !important; }
+    a{ color:var(--ink); text-decoration:none; }
+    .two{ break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero wrap">
+  <div class="kicker">Internal 101 · How it was built · How it runs</div>
+  <h1>The Shark Tank Project</h1>
+  <p class="sub">A complete, plain-English walkthrough of the daily cross-asset “Market Map” brief — the machinery (Claude Code, the terminal, GitHub, Vercel), every data source, and the exact reasoning behind every tab: narrative, earnings, trade ideas, the client portfolio (“Fable”), and the derivatives desk. Written so that someone who has never opened a terminal can follow it end to end.</p>
+  <div class="stamp">Document generated 11 June 2026 · Repo: <code>harryimposter/shark-tank</code> · Live site: harinidesai.com</div>
+</div>
+
+<div class="shell">
+<nav class="toc">
+  <h4>Part 1 · The Machine</h4>
+  <a href="#p1-overview">1.0 The one big idea</a>
+  <a href="#p1-terminal">1.1 Terminal &amp; Claude Code</a>
+  <a href="#p1-where">1.2 Where the code lives</a>
+  <a href="#p1-github">1.3 GitHub</a>
+  <a href="#p1-vercel">1.4 Vercel &amp; deploy</a>
+  <a href="#p1-amend">1.5 Why we re-write code each day</a>
+  <a href="#p1-runs">1.6 Where it runs on a refresh</a>
+  <a href="#p1-pipeline">1.7 The full pipeline</a>
+  <h4>Part 2 · Data &amp; MCP</h4>
+  <a href="#p2-mcp">2.1 What MCP actually is</a>
+  <a href="#p2-sources">2.2 Every data source</a>
+  <a href="#p2-tv">2.3 The “TradingView” feed, honestly</a>
+  <a href="#p2-sweep">2.4 The 24-hour global sweep</a>
+  <h4>Part 3 · The Narrative</h4>
+  <a href="#p3-voice">3.1 The voice DNA</a>
+  <a href="#p3-layers">3.2 The 5-layer map</a>
+  <a href="#p3-bbb">3.3 Bull / Base / Bear &amp; probabilities</a>
+  <a href="#p3-burry">3.4 The Burry tell &amp; one chart</a>
+  <a href="#p3-deep">3.5 The deep dives</a>
+  <h4>Part 4 · Earnings</h4>
+  <a href="#p4">4.0 Earnings intelligence</a>
+  <h4>Part 5 · Trade Ideas + Book</h4>
+  <a href="#p5-conv">5.1 Conviction /13</a>
+  <a href="#p5-ta">5.2 RSI, MAs, Bollinger, Fib</a>
+  <a href="#p5-screen">5.3 The RSI screener</a>
+  <a href="#p5-book">5.4 Into-the-book selection</a>
+  <a href="#p5-stops">5.5 Stops, targets, horizon</a>
+  <h4>Part 6 · Fable (Portfolio)</h4>
+  <a href="#p6-story">6.1 Who Fable is</a>
+  <a href="#p6-house">6.2 The house-view engine</a>
+  <a href="#p6-iv">6.3 The IV / vol calc</a>
+  <h4>Part 7 · Derivatives Desk</h4>
+  <a href="#p7">7.0 The desk &amp; the shelf</a>
+  <h4>Reference</h4>
+  <a href="#ref-files">File map</a>
+  <a href="#ref-glossary">Glossary</a>
+  <a href="#ref-limits">Honesty &amp; limits</a>
+</nav>
+
+<main>
+
+<p class="lead">There is one idea that makes the whole project make sense, and everything else is detail hanging off it. Read this first.</p>
+
+<div class="box gold">
+<h4>The one big idea</h4>
+<p><strong>The “intelligence” in this product is Claude doing research and writing reasoning into a Python file. The Python file itself is dumb.</strong> It has no AI, no API key, no model call. When you ask for a refresh, <em>Claude</em> (the model, in Claude Code) does the web searching, forms the macro view, picks the trades, writes the words — and bakes all of that into a dated Python “generator.” That generator then pulls a handful of <em>live numbers</em> from the internet (prices, RSI, earnings) and renders six HTML pages. So the brief is part <strong>authored</strong> (the judgement, done by Claude each morning) and part <strong>computed</strong> (the live marks and technicals, done by the code at run time).</p>
+</div>
+
+<!-- ============================ PART 1 ============================ -->
+<h2 id="p1-overview" class="anchor"><span class="num">1</span>The Machine — Claude Code, terminal, GitHub, Vercel</h2>
+
+<h3 id="p1-terminal" class="anchor">1.1 The terminal and Claude Code, for someone who has never used either</h3>
+<p>A <strong>terminal</strong> (also “command line” or “shell”) is a text window where you type instructions to your computer instead of clicking buttons. On this machine it’s <strong>PowerShell</strong> on Windows. Instead of double-clicking a program, you type its name and press Enter.</p>
+<p><strong>Claude Code</strong> is Anthropic’s coding tool that runs <em>inside</em> that terminal. It is Claude (the AI) given the ability to read files on the computer, write and edit files, run commands, search the web, and use external tools. You talk to it in plain English (“run the Market Map”), and it carries out multi-step work: reading the spec, searching the news, writing code, running it, and pushing the result online.</p>
+<p>So in this project the terminal is just the room Claude Code works in. You are never typing cryptic commands yourself — you type an instruction in English, and Claude Code does the typing of real commands on your behalf.</p>
+
+<div class="box">
+<h4>The three things Claude Code does with the terminal here</h4>
+<ul>
+<li><strong>Reads &amp; writes files</strong> — it opens <code>PROMPT.md</code> (the spec), reads yesterday’s generator, and writes today’s.</li>
+<li><strong>Runs Python</strong> — it executes <code>python gen_2026_06_11.py</code>, which fetches live data and renders the HTML pages.</li>
+<li><strong>Runs git</strong> — it commits the new files and pushes them to GitHub, which triggers the website to update.</li>
+</ul>
+</div>
+
+<h3 id="p1-where" class="anchor">1.2 Where the code is stored</h3>
+<p>All the code lives in one folder on the local computer:</p>
+<p><code>C:\Users\harin\OneDrive\Desktop\Claude Code\Shark Tank\</code></p>
+<p>That folder is a <strong>git repository</strong> — a folder whose change-history is tracked. It contains the Python “engine” files, the data files (JSON), the spec (<code>PROMPT.md</code>), and the generated HTML pages. The code is <em>not</em> stored “in the terminal” — the terminal is only the tool used to act on the folder. The code sits on disk (and, because the folder is under OneDrive, it’s also mirrored to cloud storage as a side effect — but that’s incidental, not how it deploys).</p>
+
+<h3 id="p1-github" class="anchor">1.3 GitHub — the shared copy of the folder</h3>
+<p><strong>GitHub</strong> is a website that hosts a copy of that folder in the cloud (the “remote,” named <code>origin</code>, at <code>github.com/harryimposter/shark-tank</code>). Two things happen there:</p>
+<ul>
+<li><strong>It’s the source of truth the website reads from.</strong> When Claude “pushes” the new files to GitHub’s <code>main</code> branch, that’s what makes the website update.</li>
+<li><strong>It runs two scheduled robots (“GitHub Actions”)</strong> on its own servers — independent of your computer:
+  <ul>
+    <li><code>earnings-data.yml</code> — every weekday ~6am UTC it runs <code>fetch_earnings.py</code> against Finnhub and commits a fresh <code>earnings_data.md</code>. (This is why a morning refresh push sometimes has to <code>git rebase</code> first — the robot already committed.)</li>
+    <li><code>fallback-refresh.yml</code> — a safety net (see §1.6).</li>
+  </ul>
+</li>
+</ul>
+
+<h3 id="p1-vercel" class="anchor">1.4 Vercel — how the HTML becomes a live website</h3>
+<p><strong>Vercel</strong> (Netlify is configured as an equivalent backup) is a hosting service wired to the GitHub repo. The arrangement is the simplest possible: this is a <em>static site</em>. There is no build step, no server, no database.</p>
+<ul>
+<li><code>vercel.json</code> says: <code>buildCommand: null</code>, <code>outputDirectory: "."</code> — i.e. “don’t build anything; just serve the files in the folder as-is.”</li>
+<li><code>.vercelignore</code> excludes the Python files, <code>requirements.txt</code>, <code>run.sh</code> and <code>PROMPT.md</code> — so Vercel doesn’t mistake the generators for something to run. <strong>The Python never executes on Vercel.</strong> Only the finished HTML is served.</li>
+<li><code>index.html</code> is the home page (the Summary tab); the other tabs are plain files at <code>/insights.html</code>, <code>/earnings.html</code>, <code>/trades.html</code>, <code>/portfolio.html</code>, <code>/ideas.html</code>.</li>
+</ul>
+<p>The chain is: <strong>Claude writes HTML → push to GitHub <code>main</code> → Vercel detects the push → Vercel republishes the folder → harinidesai.com shows the new pages.</strong> This takes a few seconds and needs no action from you.</p>
+
+<h3 id="p1-amend" class="anchor">1.5 Why we “amend the code” every single refresh</h3>
+<p>This is the question that trips everyone up, and the answer follows straight from the one big idea.</p>
+<p>The rendered Python has <strong>no AI inside it</strong>. So the day’s judgement — the regime call, the wording, which four trades, the bull/base/bear, the deep-dive opinions — has to be <em>written down somewhere</em> the dumb renderer can read. That “somewhere” is a brand-new dated generator file, e.g. <code>gen_2026_06_10.py</code>, which contains a big Python dictionary called <code>brief</code> holding all of today’s prose and structured views.</p>
+<p>So “amending the code” is really <strong>Claude authoring today’s thinking into a new file</strong>. It is not editing a config — it is the act of writing the brief. Compare the two halves:</p>
+<table>
+<tr><th>Authored fresh each day (by Claude)</th><th>Computed at run time (by the code)</th></tr>
+<tr><td>Regime name &amp; the 800–1000 word wrap</td><td>Live index/FX/rates/commodity levels</td></tr>
+<tr><td>The 4 trade ideas + theses</td><td>RSI, moving averages, Bollinger, Fibonacci</td></tr>
+<tr><td>Bull/Base/Bear &amp; probabilities</td><td>The ~140-name RSI screener</td></tr>
+<tr><td>Deep-dive opinions, catalyst calendar</td><td>Client-book marks &amp; P&amp;L</td></tr>
+<tr><td>House views per holding, derivatives ideas</td><td>Implied/realized vol (Black–Scholes inversion)</td></tr>
+</table>
+<p>A new file is used (rather than editing yesterday’s) so the history is honest and auditable: every day’s call is frozen in its own file, and <code>trades.json</code> can grade past calls against what actually happened. The spec is explicit about this — “build on yesterday, don’t start cold”: today’s generator is literally written by reading yesterday’s.</p>
+
+<h3 id="p1-runs" class="anchor">1.6 Where it actually runs when we refresh</h3>
+<p>There are three execution paths, in order of preference:</p>
+<div class="box blue">
+<p><strong>(a) You, on demand.</strong> You say “run the Market Map.” Claude Code, on this Windows machine, does the full real refresh — web sweep, live marks, book scan — writes the pages and pushes. This is the gold-standard path.</p>
+<p><strong>(b) The local scheduled agent</strong> — <code>market-map-daily-refresh</code>, cron <code>0 6 * * 1-5</code> (~6am London, weekdays). It does the same genuine full refresh and auto-pushes, but only <strong>while the Claude app is open</strong> on the machine (it’s host-dependent, not a cloud server). It’s gated by sanity checks: it aborts the push if the generator errors, if zero symbols/zero screener names come back, if <code>trades.html</code> renders under 20 KB, or if any page is missing.</p>
+<p><strong>(c) The GitHub fallback</strong> — <code>fallback-refresh.yml</code>, 07:30 UTC weekdays, runs on GitHub’s servers. It first checks whether the local agent already wrote today’s <code>gen_2026_&lt;today&gt;.py</code>; if so it <em>skips</em>. If not (laptop was closed), it re-runs the latest generator in <strong>data-only mode</strong> (<code>MARKETMAP_REFRESH_MODE=fallback</code>): live marks/RSI/screener/book all refresh, but the <em>narrative carries over</em> from the last full day. In that mode the Summary page shows an amber “data-only fallback refresh” banner and the coverage bar drops the “web-sourced” claim and cites the carried date. It is sanity-gated the same way.</p>
+</div>
+<p>The key honesty point baked into the design: <strong>live numbers are always real</strong>, fetched at run time; the <em>narrative</em> is only as fresh as the last genuine web sweep, and the UI says which it is.</p>
+
+<h3 id="p1-pipeline" class="anchor">1.7 The full refresh pipeline, step by step</h3>
+<p>When the generator runs (<code>python gen_2026_06_11.py</code>), this is the exact sequence:</p>
+<div class="steps">
+<div class="step"><b>Load state</b> Read <code>trades.json</code> (the open/closed trade book) and <code>regime_log.json</code> (the dated history of regime banners).</div>
+<div class="step"><b>Fetch live levels</b> <code>live_levels.fetch()</code> hits TradingView’s public scanner endpoint for ~24 macro instruments (S&amp;P, Nasdaq, DAX, Nikkei, FTSE, EURUSD, USDJPY, DXY, US/Bund/Gilt yields, WTI, Brent, gold, VIX…). Derived spreads (Brent–WTI, 2s10s, DAX/Nasdaq) are computed here.</div>
+<div class="step"><b>Mark the book to market</b> Each open trade’s live level is mapped in; P&amp;L% is recomputed respecting direction (shorts profit when price falls); a dated row is appended to that trade’s history. Stops/targets are checked — but never closed before <code>min_hold_days</code>.</div>
+<div class="step"><b>RSI + technicals</b> <code>fetch_rsi.fetch_all()</code> pulls ~1 year of daily closes from Yahoo Finance for each open trade and each derivatives idea, computes 14-period Wilder RSI on the absolute 30/70 convention, plus 50/100/200-day MAs, 20-day Bollinger Bands, and Fibonacci retracements off the 6-month swing.</div>
+<div class="step"><b>RSI screener</b> <code>fetch_rsi.run_screener()</code> scans the curated ~140-name cross-asset universe, computes RSI for each, and splits out the oversold (≤30) and overbought (≥70) names.</div>
+<div class="step"><b>Client-book scan</b> <code>book_scanner.build_scan(brief)</code> marks Fable’s portfolio to live levels, attaches the per-name house views and the implied-vol snapshot, and builds the ranked derivatives-desk shelf and loss-recovery routes.</div>
+<div class="step"><b>Render</b> <code>book.build_html(...)</code> writes the legacy <code>output.html</code>; <code>shark_format.render_all(brief, trades, regime_log, scan=scan)</code> writes the six tab pages (<code>index/insights/earnings/trades/portfolio/ideas.html</code>) plus fragments in <code>frag/</code>.</div>
+<div class="step"><b>Persist &amp; deploy</b> <code>trades.json</code> and <code>regime_log.json</code> are saved with today’s marks. Then <code>git add -A &amp;&amp; git commit &amp;&amp; git push</code> → Vercel redeploys.</div>
+</div>
+
+<!-- ============================ PART 2 ============================ -->
+<h2 id="p2-mcp" class="anchor"><span class="num">2</span>Data sources &amp; the “TradingView MCP” question</h2>
+
+<h3>2.1 What MCP actually is</h3>
+<p><strong>MCP = Model Context Protocol.</strong> It’s an open standard (from Anthropic) for plugging external tools and data sources into an AI like Claude in a uniform way. Think of it as a universal adapter: instead of hand-coding a connection to each service, an “MCP server” advertises a set of tools (e.g. “get_quote”, “search_filings”), and Claude can call them as if they were built-in. In Claude Code you add one with a command like <code>claude mcp add ...</code>.</p>
+<div class="box red">
+<h4>Important correction: this project does <em>not</em> use a “TradingView MCP”</h4>
+<p>It’s worth being precise, because the design philosophy of the whole project is honesty about sources. <strong>There is no TradingView MCP server wired into the live product.</strong> The settings show one experiment — <code>claude mcp add --transport http financial-datasets …</code> — but the data path that actually runs every day is plain HTTP calls from standard-library Python. “TradingView” appears in the code and the page footers because of two real but non-MCP things, explained next.</p>
+</div>
+
+<h3 id="p2-sources" class="anchor">2.2 Every data source, and exactly what each one feeds</h3>
+<table>
+<tr><th>Source</th><th>How it’s accessed</th><th>What it feeds</th><th>Confidence</th></tr>
+<tr><td><strong>TradingView scanner</strong><br><code>scanner.tradingview.com/global/scan</code></td><td><code>live_levels.py</code>, direct <code>urllib</code> POST, no key, no browser</td><td>Live macro dashboard levels; live marks for the trade book &amp; the client portfolio’s liquid holdings</td><td>Live (non-US lines can be ~15-min delayed)</td></tr>
+<tr><td><strong>Yahoo Finance</strong><br><code>query1.finance.yahoo.com</code></td><td><code>fetch_rsi.py</code> (chart API) &amp; <code>fetch_ivol.py</code> (options chain, cookie+crumb)</td><td>RSI, 50/100/200 MAs, Bollinger, Fibonacci, the ~140-name screener, P/E &amp; EV/EBITDA, and implied/realized vol</td><td>Sourced (EOD/1-yr history)</td></tr>
+<tr><td><strong>Finnhub</strong><br><code>finnhub.io</code></td><td><code>fetch_earnings.py</code>, run by a GitHub Action at 6am, writes <code>earnings_data.md</code></td><td>Earnings calendar, consensus EPS, analyst recommendations, surprise history, growth metrics</td><td>Sourced (API key, server-side)</td></tr>
+<tr><td><strong>Web search</strong> (Claude’s tool)</td><td>Claude runs ≥16 searches across an allowlist (<code>sources.py</code>)</td><td>The entire narrative: overnight events, geopolitics, central banks, single-name surprises, the political read</td><td>Authored from cited sources</td></tr>
+<tr><td><strong>stooq.com</strong></td><td>Allowed in the spec as a price fallback</td><td>Backup live levels where TradingView doesn’t resolve</td><td>Live/EOD</td></tr>
+</table>
+<p>The <strong>source allowlist</strong> in <code>sources.py</code> is the discipline behind the narrative: wires (Reuters, Bloomberg, FT, WSJ, AP), officials (Fed, ECB, BoE, BoJ, BLS, BEA, Treasury, CFTC, IMF, OECD), exchanges (CME, Cboe, ICE), and named independents (Doomberg, Apollo/Slok, Fed Guy). Anything that appears <em>only</em> off-list is dropped; primary sources are cited by name inline, anything else needs a full citation in the page’s citations block.</p>
+
+<h3 id="p2-tv" class="anchor">2.3 The “TradingView” feed, explained honestly</h3>
+<p>“TradingView” shows up in three distinct ways — only the first is a data feed:</p>
+<ol>
+<li><strong>The scanner JSON endpoint (real data).</strong> <code>live_levels.py</code> POSTs a list of tickers (e.g. <code>ICEEUR:BRN1!</code> for Brent, <code>TVC:VIX</code>, <code>SP:SPX</code>) to TradingView’s public scanner and gets back <code>close</code>, <code>change</code>, <code>change_abs</code>. This is the same data behind TradingView’s own widgets, read “headlessly.” It’s an <em>unofficial</em> endpoint — robust today, but it could change, which is why the code falls back to file marks if the call fails.</li>
+<li><strong>The embedded quote widget (display only).</strong> Every tab embeds TradingView’s official <code>embed-widget-market-quotes.js</code> strip. That’s a cosmetic live-quotes ribbon rendered in the visitor’s browser; it carries no data into the brief.</li>
+<li><strong>The label “live levels via TradingView.”</strong> The page footers and a few house-view notes say marks are “via TradingView” — accurate, because path (1) is the source. (One house-view note even tags a refreshed LVMH mark “Live mark (TradingView).”)</li>
+</ol>
+<div class="box">
+<h4>So, mapping your mental model to reality</h4>
+<p>When you’ve said “TradingView MCP,” the thing doing that job is <strong><code>live_levels.py</code> calling the TradingView scanner directly</strong>. It behaves like an MCP would (gives Claude live market levels) but it’s a hard-coded HTTP client, not the MCP protocol. If we ever wanted a <em>true</em> MCP, we’d register a server and let Claude call it as a tool — and the natural candidate is the <code>financial-datasets</code> one already trialled in settings.</p>
+</div>
+
+<h3 id="p2-sweep" class="anchor">2.4 What we scan for — the 24-hour global sweep</h3>
+<p>Before a single word is written, the spec mandates a rolling <strong>NOW − 24h</strong> sweep (not a hardcoded date) with a hard floor of <strong>≥16 web searches</strong>, including at least one dedicated search per region, one geopolitical scan, and one single-name-surprise scan. The sweep must cover, every time:</p>
+<div class="two">
+<div class="box">
+<h4>Regions — all five</h4>
+<ul>
+<li><strong>Asia</strong> (China/HK + the rest)</li>
+<li><strong>Japan</strong></li>
+<li><strong>US</strong></li>
+<li><strong>Europe</strong> (euro area + DAX/CAC/periphery)</li>
+<li><strong>UK</strong></li>
+</ul>
+<p>One pass per region for its overnight session — what moved, why, and the local political angle. A move one region has made that the others haven’t priced <em>is the trade</em>.</p>
+</div>
+<div class="box">
+<h4>Asset classes — all of them</h4>
+<ul>
+<li>Equities (indices + leaders/laggards)</li>
+<li>FX</li>
+<li>Rates (front end, long end, curve)</li>
+<li>Credit (IG/HY spreads)</li>
+<li>Commodities (oil, gas, metals, gold)</li>
+<li>Vol / skew, funding / plumbing</li>
+<li>Crypto if it’s signalling</li>
+</ul>
+</div>
+</div>
+<p><strong>Four scans that are called out as non-negotiable</strong>, each with a “concrete lesson” attached so a past miss never repeats:</p>
+<ul>
+<li><strong>Geopolitics</strong> — military action, ceasefires, sanctions, elections, chokepoints (Hormuz/Suez/Taiwan). <em>Lesson: never again miss a US–Iran-strikes-type event.</em> If it broke in the window, it leads the brief.</li>
+<li><strong>Headline / political newsflow</strong> — Trump White House remarks, press-gaggle quotes, Truth Social posts, tariffs, executive orders, central-bank jawboning. These whipsaw the tape <em>intraday</em>, between scheduled events. <em>Lesson: the Jun-10 “we’re going to be attacking them very hard” line that whipsawed oil and equities.</em> Name the quote, the reaction, and the non-consensus read.</li>
+<li><strong>Single-name / corporate surprises</strong> — earnings, guidance, M&amp;A, supplier deals, CEO commentary. <em>Lesson: a single Jensen Huang sentence (Nvidia using SK Hynix chips) can move a whole supply chain.</em></li>
+<li><strong>Macro data + central banks</strong> — every print and every official comment from Fed/ECB/BoE/BoJ/PBoC in the window.</li>
+</ul>
+
+<!-- ============================ PART 3 ============================ -->
+<h2 id="p3-voice" class="anchor"><span class="num">3</span>The narrative — Summary &amp; Insights</h2>
+<p>The Summary tab is the “overnight read”; the Insights tab is the detailed map written as seamless prose. Both are authored by Claude during the refresh. Here is exactly how.</p>
+
+<h3>3.1 The voice DNA you set</h3>
+<p>The voice is codified in <code>PROMPT.md</code> as a strategist who has “done this job for 15 years, has a view on everything, is never neutral, writes to be right, not to be safe.” The mechanical rules:</p>
+<ul>
+<li><strong>Lead every section with a claim, not a status update.</strong> Not “markets fell” → “the dollar is telling a different story to equities and one of them is wrong.”</li>
+<li><strong>Banned words</strong>, stripped entirely: <em>could, may, potentially, appears to, seems to, suggests, somewhat, relatively, broadly, amid, against the backdrop of, in the wake of, market participants, investors are watching.</em> If a sentence needs one, it isn’t ready.</li>
+<li>Declarative, short sentences — then occasionally one long synthesising sentence tying three things together across asset classes.</li>
+<li><strong>Name names</strong> and levels. Never “watch X” without a specific level or threshold. Never an observation without a directional take.</li>
+<li>One analogy per output, maximum. No adverbs. No “in my view” (if you wrote it, you think it).</li>
+</ul>
+<p>And the seven “moves” — analytical patterns borrowed by name, while never copying anyone’s actual prose:</p>
+<table>
+<tr><th>Move</th><th>What it does</th><th>Where it lands</th></tr>
+<tr><td><strong>Campbell</strong></td><td>Decompose the headline number — show the anatomy that contradicts it. Always end on: so what, who’s wrong, what’s the trade.</td><td>The wrap; correlation breaks</td></tr>
+<tr><td><strong>Doomberg pivot</strong></td><td>Name the second-order effect consensus is missing, in one sentence.</td><td>Opening of the wrap, once</td></tr>
+<tr><td><strong>Pozsar mechanic</strong></td><td>Trace a move back to a balance sheet, a flow, a funding constraint. Plumbing beats narrative.</td><td>Funding &amp; plumbing, once</td></tr>
+<tr><td><strong>Papic constraint</strong></td><td>Name the political constraint behind the macro move; give the non-consensus read.</td><td>Every event with a political angle</td></tr>
+<tr><td><strong>Perkins regime-call</strong></td><td>Name the regime and commit — “late-cycle stagflation,” “liquidity melt-up.”</td><td>Top of the brief; the gold pill</td></tr>
+<tr><td><strong>Burry tell</strong></td><td>The one structural thing nobody is watching that matters in 6 months. No trade attached.</td><td>“What the tape is missing,” once</td></tr>
+<tr><td><strong>Klein discipline</strong></td><td>Every datum has a timestamp and a source; stale data is flagged.</td><td>Staleness check, throughout</td></tr>
+</table>
+
+<h3 id="p3-layers" class="anchor">3.2 The 5-layer map (how the detailed read is structured)</h3>
+<p>The wrap is built on a fixed 5-layer skeleton. On the Insights tab these are woven into seamless prose (no “Layer 1/2/3” labels); on the engine side they’re still the scaffold:</p>
+<ol>
+<li><strong>L1 — the dominant driver.</strong> The single thing explaining 60–70% of cross-asset moves today. Name the Perkins regime here.</li>
+<li><strong>L2 — the counter-intuitive hook.</strong> What consensus expected vs what actually happened.</li>
+<li><strong>L3 — the gap.</strong> Three buckets: (A) real-economy ground truth, (B) what’s priced, (C) the consensus narrative. The gap between them is where alpha lives — name it.</li>
+<li><strong>L4 — Bull / Base / Bear</strong> (see next).</li>
+<li><strong>L5 — priced vs not-priced map.</strong> 3–4 items on a spectrum from “mispriced the wrong way” to “fully priced.”</li>
+</ol>
+
+<h3 id="p3-bbb" class="anchor">3.3 Bull / Base / Bear and how probabilities are assigned</h3>
+<p>Three scenarios rendered as green/gold/red tiles, with <strong>probabilities that must sum to 100%</strong>. Each scenario must answer the same four questions so they’re comparable: what happens to <em>risk assets / rates / FX / commodities</em>.</p>
+<p>The probabilities are a <strong>judgement call by Claude</strong>, disciplined — not a formula — by:</p>
+<ul>
+<li><strong>What’s already priced</strong> (L5). If the market has fully priced an outcome, that outcome’s marginal probability of <em>moving</em> things is low; the mispriced tail gets more weight.</li>
+<li><strong>The positioning read</strong> — if the crowd is leaned hard one way, the “pain trade” (the other way) gets a fatter tail than naïve odds suggest.</li>
+<li><strong>Catalyst proximity</strong> — a binary event inside the window (a CPI print, an FOMC, a ceasefire deadline) widens the distribution and shifts weight toward the scenario that event resolves.</li>
+<li><strong>Consistency with the named regime</strong> — the base case has to be the regime continuing; bull/bear are the two ways it breaks.</li>
+</ul>
+<p>The honest framing: these are <em>subjective, defensible</em> odds, recomputed each day as the tape changes, not a back-tested model. The discipline is that they must sum to 100% and each leg must be falsifiable.</p>
+
+<h3 id="p3-burry" class="anchor">3.4 The Burry tell &amp; “today’s one chart that matters”</h3>
+<p><strong>The Burry tell</strong> is deliberately <em>not</em> a trade. It’s the one structural observation nobody is looking at that resolves in ~6 months — e.g. “the consumer is spending on services while goods inventories pile up; this resolves badly.” It’s chosen by asking, across the sweep, <em>what divergence is building quietly that the day’s headlines ignore</em>, and it’s placed once, in “what the tape is missing,” as a standalone callout on Insights.</p>
+<p><strong>Today’s one chart that matters</strong> names the single instrument/level the market is actually trading around that session and the threshold that flips the story — “the level that changes the narrative.” It’s picked as the cleanest pressure point where the day’s dominant driver (L1) gets confirmed or broken.</p>
+
+<h3 id="p3-deep" class="anchor">3.5 The deep dives — where the opinions come from, and how they become <em>our</em> view</h3>
+<p>These are the LHS analysis blocks. For each, the pattern is the same: pull the public proxy, label it honestly, give the read <em>and</em> the trade implication. None of these claim a paid data feed — they’re built from observable public signals plus Claude’s synthesis.</p>
+
+<h4>Consensus bid / offer</h4>
+<p>This is literally: <strong>state the single most consensus view in the market right now in one sentence, then the strongest argument against it in one sentence.</strong> “Consensus” is judged from the sweep — what every wire, strategist note and price action is leaning on (e.g. “the ceasefire holds and oil normalises”). Our value-add is the offer side: the one clean reason it’s wrong. We form it by asking which crowded view has the weakest load-bearing assumption.</p>
+
+<h4>Correlation regime</h4>
+<p>Flag the top 3–5 correlation <em>breaks</em> — across asset classes, sectors, and single names. For each: what broke, by how much, and <em>why</em>. The opinion: <strong>a correlation breakdown means the dominant driver just changed</strong> — so each break is read as evidence for or against the L1 regime call. We get the “by how much” from the live levels and the day’s moves; the “why” is the synthesis.</p>
+
+<h4>Vol &amp; skew</h4>
+<p>Public proxies, labelled as proxies (not a full surface — that needs a paid feed): VIX term structure (VIX9D / VIX / VIX3M — contango vs backwardation), the Cboe SKEW index, MOVE (rates vol), CVIX (FX vol) if available, put/call ratio, notable flow. Each gets a read <em>and</em> a trade implication, and the section ends with <strong>one</strong> options structure that fits today’s vol regime — strikes quoted in deltas/percentages, never invented absolute prices.</p>
+
+<h4>Sector &amp; RV</h4>
+<p>The 2 strongest and 2 weakest GICS sectors overnight, why, and whether the move is exhausted or has legs — plus one cross-sector or cross-region relative-value idea. The “exhausted vs legs” call leans on the same technical read used for trades (is the leader riding the upper Bollinger band / stretched above its MAs?).</p>
+
+<h4>Positioning &amp; flows</h4>
+<p>Where the crowd is: CFTC Commitments-of-Traders net length for FX/commodities (weekly), fund-flow commentary, and the named <strong>pain trade</strong>. This section feeds the “positioning” component of every trade’s conviction score (§5.1). The opinion is formed by combining the CoT/flow data with the absolute-RSI and Bollinger stretch — see the positioning definition in Part 5.</p>
+
+<h4>Funding &amp; plumbing</h4>
+<p>SOFR, cross-currency basis, repo, bill issuance, reserves, RRP. One line when calm, <strong>loud</strong> when stressed. This is the Pozsar layer made literal — tracing whether today’s move has a plumbing cause.</p>
+
+<h4>Catalyst calendar — how we screen it</h4>
+<p>Next 5 trading days. Per event: Day · Date · Event · Consensus · our one-line framework view · and the <strong>asymmetry</strong> (the trade if consensus is wrong, green/red). The screen is deliberately strict: <em>only genuine asymmetry makes the list.</em> An event where the outcome is fully priced and symmetric is dropped — we only keep events where being right on the non-consensus side pays materially more than being wrong costs. The earnings names are filtered separately (Part 4).</p>
+
+<!-- ============================ PART 4 ============================ -->
+<h2 id="p4" class="anchor"><span class="num">4</span>Earnings intelligence — what we screen, rank, and why</h2>
+
+<h4>The universe filter (applied silently, before scanning)</h4>
+<p>A name only qualifies if it clears <em>all</em> of:</p>
+<ul>
+<li><strong>Market cap ≥ $10bn</strong></li>
+<li><strong>Geography:</strong> US (primary) or South Korea (secondary)</li>
+<li><strong>Sector:</strong> Technology, Financials, Industrials, or Utilities only</li>
+<li><strong>Timing:</strong> reports within <strong>5 days pre</strong> or <strong>3 days post</strong></li>
+</ul>
+<p>This filter is enforced in two places: <code>fetch_earnings.py</code> (the Finnhub fetcher maps Finnhub’s industry strings to these sector buckets, checks the $10bn cap and the <code>{US, KR}</code> geography, and writes only qualifying names into <code>earnings_data.md</code>), and again in the spec when Claude reads that file.</p>
+
+<h4>The data source order</h4>
+<ol>
+<li><strong>Read <code>earnings_data.md</code> first</strong> — pre-fetched from Finnhub at 6am. Fields present here are tagged <span class="tag g">sourced</span>.</li>
+<li>Only where a field is marked “unavailable” do we supplement with targeted web search (implied move/straddle, short interest/float, post-earnings reaction), tagged <span class="tag">estimated</span>.</li>
+<li>If the file is missing/empty, fall back entirely to web search and tag everything estimated.</li>
+</ol>
+
+<h4>The 4-pillar conviction score (0–2 each, max 8)</h4>
+<table>
+<tr><th>Pillar</th><th>2 points</th><th>1</th><th>0</th></tr>
+<tr><td><strong>Asymmetry</strong></td><td>Implied move materially misprices the historical average, OR estimate dispersion unusually wide</td><td>Moderate signal</td><td>None / unavailable</td></tr>
+<tr><td><strong>Consensus</strong> (sell-side)</td><td>Majority buy, meaningful upside to PT, positive revisions</td><td>Mixed/neutral</td><td>Contradicts the idea / no coverage</td></tr>
+<tr><td><strong>Catalyst</strong></td><td>Pre: identifiable catalyst consensus hasn’t priced · Post: disproportionate reaction to print quality (oversold/overbought)</td><td>Plausible, not differentiated</td><td>No edge</td></tr>
+<tr><td><strong>Positioning</strong></td><td>Short interest &gt;10% of float, OR extreme positioning</td><td>Notable lean</td><td>Neutral / unavailable</td></tr>
+</table>
+
+<h4>How the label (the ranking) is assigned — first match wins</h4>
+<ul>
+<li><span class="tag g">High conviction</span> — score ≥6, no pillar = 0, <em>all</em> pillars sourced.</li>
+<li><span class="tag gold">High — data gap flagged</span> — score ≥6, no pillar = 0, but ≥1 pillar estimated/unverified.</li>
+<li><span class="tag">Medium</span> — score 4–5, OR any pillar = 0, OR consensus unverified.</li>
+<li><span class="tag r">Low</span> — score &lt;4 or ≥2 pillars = 0 → <strong>excluded, not rendered.</strong></li>
+</ul>
+<p>Two guardrails: (1) if the <em>consensus</em> pillar is unverified, conviction is capped at Medium no matter the score; (2) a High/High-gap label <em>requires</em> a one-sentence <code>conviction_rationale</code> explaining precisely why the asymmetry is real and attributable to the data — if it can’t be written cleanly, the name is downgraded. Never fabricate an EPS, PT or implied-move figure; missing = “unverified.” If consensus direction conflicts with the trade direction, the name carries <code>research_conflict: true</code>.</p>
+<p>On the Earnings tab itself we show: the criteria (above), a one-line summary of today’s ideas, <em>why these names</em> were picked out of the universe (the filter), and the sources — so the reader can audit the screen.</p>
+
+<!-- ============================ PART 5 ============================ -->
+<h2 id="p5-conv" class="anchor"><span class="num">5</span>Trade Ideas &amp; the Live Book</h2>
+
+<h3>5.1 Conviction scoring — the /13</h3>
+<p>Every trade idea (and every live-book line) carries a conviction score with three stacked parts:</p>
+<table>
+<tr><th>Part</th><th>Component</th><th>Max</th><th>Meaning</th></tr>
+<tr><td rowspan="5"><strong>Core /10</strong></td><td>Gap: price vs fundamentals</td><td>3</td><td>How wide is the mispricing?</td></tr>
+<tr><td>Catalyst proximity</td><td>2</td><td>Is there a specific near-term event?</td></tr>
+<tr><td>Positioning extremity</td><td>2</td><td>Is the crowd leaning the wrong way?</td></tr>
+<tr><td>Cross-asset confirmation</td><td>2</td><td>Do other markets corroborate?</td></tr>
+<tr><td>Stop quality</td><td>1</td><td>Is the stop a clean level, not a vibe?</td></tr>
+<tr><td><strong>Technical /2</strong></td><td>MAs + Bollinger + Fibonacci</td><td>2</td><td>Does the chart agree, and is the entry not chasing an exhausted band?</td></tr>
+<tr><td><strong>RSI /1</strong></td><td>Absolute 30/70</td><td>1</td><td>Is the position chasing an extreme? If so, flag and score 0.</td></tr>
+</table>
+<p>So trade ideas and the live book are scored <strong>/13</strong> (core 10 + TA 2 + RSI 1); the Derivatives Desk uses a base 8 + TA + RSI = <strong>/11</strong>. The TA and RSI parts are <strong>recomputed live every refresh</strong> from <code>fetch_rsi</code> and folded into the badge — they’re not decorative.</p>
+
+<h3 id="p5-ta" class="anchor">5.2 Exactly how RSI, moving averages, Bollinger and Fibonacci are used — and where they come from</h3>
+<p><strong>Where:</strong> all four are computed in <code>fetch_rsi.py</code> from ~1 year of daily closes pulled from Yahoo Finance (<code>query1.finance.yahoo.com/v8/finance/chart/&lt;ticker&gt;</code>). One year is chosen deliberately — it’s the minimum that supports a 200-day MA and a 6-month Fibonacci swing. No library; the maths is hand-rolled stdlib.</p>
+
+<h4>RSI — 14-period Wilder, absolute convention</h4>
+<p>Computed with proper Wilder smoothing over 14 periods. The reading is the <strong>classic absolute</strong> one, and this is a hard rule:</p>
+<ul>
+<li><strong>RSI ≥ 70 = overbought</strong> (extended)</li>
+<li><strong>RSI ≤ 30 = oversold</strong> (washed out)</li>
+<li><strong>30–70 = neutral</strong></li>
+</ul>
+<div class="box red"><p><strong>Never</strong> average RSI against a rolling mean or measure standard-deviations-from-a-mean. That earlier approach washed the signal out and was wrong. A position is “crowded against us” when the tape is overbought and we’re long, or oversold and we’re short — that flags the trade and scores the RSI component 0.</p></div>
+
+<h4>Moving averages — 50 / 100 / 200-day</h4>
+<p>Used for <strong>trend</strong>: price above all three = uptrend; below all three = downtrend; otherwise mixed. The 50-vs-200 relationship gives the <strong>golden cross</strong> (50 above 200, confirms medium-term uptrend) or <strong>death cross</strong> (50 below 200). The percentage distance of price from each MA is also reported — that’s the “stretch” read used for positioning.</p>
+
+<h4>Bollinger Bands — 20-period, ±2 SD</h4>
+<p>The key output is <strong>%B</strong> — where price sits between the lower band (0.0) and upper band (1.0). The rule for entry quality: a <em>long</em> wants %B in the lower half (≤0.55, not chasing); a <em>short</em> wants the upper half (≥0.45). Riding the upper band (%B ≥ 0.9) = stretched; hugging the lower band (≤0.1) = washed out. <strong>Bandwidth</strong> (band width ÷ mid) is the squeeze gauge — under ~8% means a low-vol coil about to expand (a crowded consensus about to break).</p>
+
+<h4>Fibonacci — retracements off the trailing 6-month swing</h4>
+<p>Take the high and low of the last ~126 sessions and lay 23.6% / 38.2% / 50% / 61.8% / 100% retracement levels across that range. The current price is matched to its nearest fib level. <strong>These levels are where the stop and target are hung</strong> — they’re the support/resistance the trade’s risk is defined against.</p>
+
+<h4>How they combine into the TA score (0–2)</h4>
+<ul>
+<li><strong>2</strong> = the trend agrees with the trade direction <em>and</em> the entry isn’t chasing an exhausted band.</li>
+<li><strong>1</strong> = mixed (trend agrees OR entry is good, or trend is mixed).</li>
+<li><strong>0</strong> = the chart contradicts the trade (trend against AND entry chasing).</li>
+</ul>
+<p>Each trade’s dropdown spells out, in plain English, exactly what each tool is saying for that name on that day — that text is generated, not hand-written.</p>
+
+<h4>How “crowded” / positioning is judged (the four inputs)</h4>
+<ol>
+<li>Absolute-RSI (30/70).</li>
+<li>MA stretch + Bollinger — far above the 50/100/200 and riding the upper band = extended/fade-prone; hugging the lower band below the MAs = sellers exhausted/squeeze-prone; a Bollinger squeeze = crowded low-vol consensus about to break.</li>
+<li>CFTC CoT net length / fund flows / options skew.</li>
+<li>The pain trade.</li>
+</ol>
+
+<h3 id="p5-screen" class="anchor">5.3 The RSI screener — universe and output</h3>
+<p>Every refresh, <code>run_screener()</code> scans a curated <strong>~140-name</strong> cross-asset universe (hard-coded in <code>SCREEN_UNIVERSE</code>), computes 14-period RSI for each, and surfaces two columns on the Trade Ideas tab: <strong>oversold (RSI ≤ 30, candidates to go higher)</strong> and <strong>overbought (RSI ≥ 70, candidates to sell off)</strong>, each with its full technical picture. The universe spans:</p>
+<div class="pill-row">
+<span class="tag">US semis &amp; semicap</span><span class="tag">AI optical / connectivity / infra</span><span class="tag">US software / internet</span><span class="tag">US financials</span><span class="tag">US healthcare</span><span class="tag">US industrials / energy / materials</span><span class="tag">US consumer / comms / utilities</span><span class="tag">Cross-asset ETFs (equity/rates/credit/gold)</span><span class="tag">Europe / UK</span><span class="tag">Asia / Japan / Korea</span>
+</div>
+<p>The list is editable in one place (<code>SCREEN_UNIVERSE</code> in <code>fetch_rsi.py</code>); there’s a smaller legacy ~50-name list kept alongside for reference. Names that fail to fetch are counted as errors, not faked.</p>
+
+<h3 id="p5-book" class="anchor">5.4 How a flagged idea gets into the book (and how that ties to “our book”)</h3>
+<p>The Trade Ideas tab generates four fresh ideas from today’s data (rules: span ≥2 asset classes; ≥1 RV/spread; ≥1 options/vol idea; if there aren’t four quality ideas, write fewer and say so — “forcing a trade is the trade”). The Live Book then shows a <strong>selection summary</strong>: which of today’s flagged ideas go <em>into</em> the book and why, and why the others do <em>not</em>. The discipline: <strong>everything in the book must trace to an idea in one of the ideas sections</strong> — nothing appears in the book that wasn’t argued for first.</p>
+<p>The decision to implement is driven by the conviction stack: higher /13 scores, a clean catalyst inside the horizon, cross-asset confirmation, and a non-crowded RSI/positioning read get implemented; ideas that are right in thesis but chasing an extreme (RSI flagged) or lacking a clean stop level are left as “idea, not yet in the book.”</p>
+
+<h3 id="p5-stops" class="anchor">5.5 Duration, stops, and taking profit — how each is decided</h3>
+<p>Each trade in <code>trades.json</code> carries a full schema. The relevant fields and the logic:</p>
+<table>
+<tr><th>Field</th><th>How it’s set</th></tr>
+<tr><td><code>horizon</code> (“days”/“weeks”/“months”)</td><td>From <strong>catalyst distance and trade type</strong>. A <em>reactive</em> trade keys off a near event (days/weeks); a <em>pre-position</em> trade is structural (months) and carries a <code>min_hold_days</code> floor (≥30, often 45) so it can’t be shaken out intraday.</td></tr>
+<tr><td><code>stop</code></td><td>A <strong>clean technical level, never a vibe</strong> — hung on a Fibonacci level or an MA/Bollinger edge from <code>fetch_rsi</code>. Stop quality is its own conviction point (1/10), so a trade with a fuzzy stop literally scores lower.</td></tr>
+<tr><td><code>target</code></td><td>The next major support/resistance in the trade’s direction (again a fib/MA level), giving a defined reward to size against the stop.</td></tr>
+<tr><td><code>min_hold_days</code></td><td>Protects structural trades: never close a pre-position trade before this has elapsed, even if the stop looks hit intraday (e.g. the gold stop was touched on 10-Jun but held under the 45-day rule).</td></tr>
+<tr><td><code>conviction_breakdown</code></td><td>The five core sub-scores, stored so the badge can be rebuilt and the call audited.</td></tr>
+<tr><td><code>history</code></td><td>A dated, mark-by-mark log of level &amp; P&amp;L — this is what makes the book self-grading.</td></tr>
+</table>
+<p><strong>Closing logic, every refresh:</strong> if the live mark hits the stop → move to closed, result <span class="tag r">STOPPED</span>. If it hits the target → closed, <span class="tag g">TARGET</span>. If today’s data <em>breaks the thesis</em> (independent of price) → close early, <span class="tag">DISCRETIONARY</span>, with a one-line reason. The scoreboard then reports total P&amp;L%, hit rate, closed-trade count and best trade — so the book grades itself honestly over time rather than quietly forgetting losers.</p>
+
+<!-- ============================ PART 6 ============================ -->
+<h2 id="p6-story" class="anchor"><span class="num">6</span>Fable — the client portfolio</h2>
+
+<h3>6.1 Who Fable is — read her like a story</h3>
+<p>On the website the client is <strong>Fable</strong> (the internal book file calls her “Aurora”). Here is her story, straight from <code>client-book-json-Aurora.json</code>:</p>
+<div class="box gold">
+<p>Fable is an <strong>EMEA private-bank client of five years</strong> (account opened June 2021), classified MiFID <strong>Professional</strong>. She’s <strong>growth-oriented but with income needs</strong>, and — crucially for the derivatives desk — <strong>comfortable with structured products and derivative overlays</strong>. Her base currency is the <strong>euro</strong>, but her book is <strong>72% in US dollars</strong> — a mismatch that matters every time the ECB moves. Total book ≈ <strong>€50.2m</strong>.</p>
+<p>Her defining position is <strong>Micron (MU)</strong>: a small ~2.5% starter from 2021 that rode the HBM/AI-memory supercycle into a <strong>10x gain</strong> and is now <strong>25.8% of the entire book</strong> — a concentration problem — with earnings on 24 June and option premium running rich into the print. She bought <strong>NVIDIA</strong> near the January-2026 highs and is down ~10%, caught in the rates-driven de-rate; <strong>Broadcom</strong>, bought into a late-May print, beat the estimate but missed the whisper and is <strong>−21%</strong>; <strong>LVMH</strong> is <strong>−20%</strong> on soft luxury demand. Against those, <strong>AMD</strong> is a +395% winner she half-wants to trim, <strong>SAP</strong> a +132% European-software winner, and <strong>TotalEnergies</strong> (+55%) and <strong>Xetra-Gold</strong> (+109%) sit as her energy and tail hedges.</p>
+<p>She took profit in Q1 and <strong>never redeployed the cash</strong>: <strong>€2.4m</strong> sitting idle in a current account and <strong>$3.0m</strong> of trim proceeds earning zero while T-bills pay 4%+. She has a real-world liability the desk nets against: a <strong>$38,500/month Miami mortgage to 2031</strong> — a natural short-USD position. Two of her bonds (a 2021 UST and a Siemens EUR IG) are underwater on <em>rates, not credit</em> — textbook bond-swap candidates, gated by CPI and the ECB.</p>
+</div>
+<p>The portfolio wasn’t generated randomly — it was constructed to be a <em>teaching book</em>: it deliberately contains a concentration problem (MU), a currency mismatch (EUR base / USD assets), winners to harvest income from (AMD, SAP), losers with different recovery routes (AVGO harvest, LVMH reverse-convertible, NVDA range-note), idle cash to deploy, and recognised hedges that should <em>not</em> be trimmed (gold, TTE). Every scanner rule has at least one position designed to trigger it (the <code>scanner_expected_triggers</code> tags on each holding).</p>
+
+<h3 id="p6-house" class="anchor">6.2 The house-view engine — how we form a view, and rate it</h3>
+<p>For each holding Claude forms its own view and <em>shows its work</em>, stored in <code>house_views.json</code>. A view is one of <strong>LIKE / NEUTRAL / LIKE-as-hedge / AVOID</strong>, with a conviction <strong>/10</strong> built on a fixed rubric:</p>
+<table>
+<tr><th>Rubric component</th><th>Max</th><th>What earns it</th></tr>
+<tr><td>Evidence</td><td>3</td><td>≥2 recent, sourced, name-specific data points (analyst actions, prints, flows). Fewer → the view caps at NEUTRAL/estimated.</td></tr>
+<tr><td>House alignment</td><td>3</td><td>Agreement with the JP Morgan GIS anchor + named authors + sell-side.</td></tr>
+<tr><td>Regime fit</td><td>2</td><td>Consistency with today’s brief regime (the live bear case).</td></tr>
+<tr><td>Valuation &amp; risk</td><td>2</td><td>The valuation/risk balance for the name.</td></tr>
+</table>
+<p><strong>The anchors that keep it honest:</strong></p>
+<ul>
+<li><strong>JP Morgan GIS</strong> (Global Investment Strategy) is the institutional house anchor every per-name view is checked against — mid-2026 read: overweight equities with a quality/AI-infrastructure tilt, neutral-to-short duration into sticky inflation, gold as a structural diversifier, cautious on consumer luxury.</li>
+<li><strong>Named author beats</strong> (thematic, not quotes): Citrini Research (AI capex/power/semis), Doomberg (energy supply-side), Michael Howell (global liquidity &amp; gold), Brent Donnelly (FX/positioning).</li>
+<li><strong>Consistency lock to the brief.</strong> The views are locked to the morning brief’s regime — the scanner <em>never contradicts the brief</em>. E.g. MU stays LIKE even though the brief’s live bear case is an AI de-rating, because hedging a 26% concentration is position management, not a view reversal.</li>
+<li><strong>Staleness:</strong> the whole view set has a <code>stale_after</code> date; views are re-formed, not assumed perpetual.</li>
+</ul>
+<h4>How “like / neutral / hate / hate-as-a-hedge” is decided</h4>
+<ul>
+<li><strong>LIKE</strong> — franchise intact + house/regime support + a defined add level. Unlocks the add-intent shelf (e.g. NVDA: range note or a cash-secured put at 195). But a LIKE on a <em>rich</em> winner means <em>overwrite for income, not chase</em> (SAP).</li>
+<li><strong>NEUTRAL</strong> — no near-term catalyst either way; opens income / staged-exit structures (overwrite, decumulator) but <em>not</em> accumulation (AMD after +395%; AVGO post-whisper-miss → harvest lane).</li>
+<li><strong>AVOID</strong> — thesis broken; converts to a clean harvest-and-rotate. (LVMH sits at NEUTRAL, one demand downgrade from AVOID.)</li>
+<li><strong>LIKE-as-hedge</strong> — held as <em>insurance</em>, so the normal “trim the winner” rule is <strong>suppressed</strong>. TotalEnergies (+55%) and gold (+109%) both trip the winner-trim rule on the raw numbers, but brief-consistency overrides it: “you don’t sell the fire insurance while the building is still smoking.” Gold is the <em>highest</em>-conviction view (8/10) precisely because it’s the lowest-conviction <em>directional</em> bet — it wins on both of the brief’s tails (a rate-cut path and a geopolitical re-escalation).</li>
+</ul>
+
+<h3 id="p6-iv" class="anchor">6.3 The Portfolio tab’s charts and the IV calculation</h3>
+<p>The Portfolio tab renders three allocation <strong>pie charts</strong> computed in <code>book_scanner.compute_allocations()</code>: by <strong>asset class</strong> (whole book incl. cash), by <strong>equity sector</strong> (equities only), and by <strong>region</strong> (by listing currency; gold ETC = Global). Plus the holdings table with live marks and the house-view engine output.</p>
+<p>The <strong>implied-vol explainer</strong> above the table is real maths, not a label. <code>fetch_ivol.py</code>:</p>
+<ul>
+<li>For US single names with listed options (MU, NVDA, AVGO, AMD, SPY): it pulls the option chain from Yahoo (stdlib cookie+crumb handshake), takes the ~360-day ATM contract, and <strong>solves for implied vol itself by inverting Black–Scholes</strong> on the bid/ask mid (bisection, 80 iterations) — because Yahoo’s own <code>impliedVolatility</code> field returns ~0 and can’t be trusted. It also computes the 90% put skew.</li>
+<li>For EU names with no Yahoo options (LVMH, SAP, TTE) and the gold ETC: it computes <strong>realized vol</strong> from a year of daily closes (63-day window, annualised) as an implied-vol proxy, with a percentile ranked against the trailing-year rolling distribution.</li>
+<li>The IV <em>percentile</em> stays “estimated” until the history file accumulates ~60 daily snapshots, after which it’s “sourced.” The snapshot is appended to <code>ivol_history.json</code> daily.</li>
+</ul>
+<p>This matters because the derivatives ideas lean on rich/cheap vol — and the desk wants a <em>computed, sourced</em> vol number, not a guess.</p>
+
+<!-- ============================ PART 7 ============================ -->
+<h2 id="p7" class="anchor"><span class="num">7</span>The Derivatives Desk</h2>
+<p>The desk turns the portfolio scan into a ranked shelf of structured-product and derivative ideas, each tagged by <strong>product type + objective</strong>, grouped by asset class. It’s built in <code>book_scanner.py</code>.</p>
+
+<h4>The goal of the desk for this book</h4>
+<p>The one-screen action plan (<code>_overall_summary</code>) states the objective every idea must serve: <strong>de-risk the concentration, put the idle cash to work, keep the hedges — and add AI exposure through software and power, not more semiconductors.</strong> Every idea is consistency-locked to the brief and to JP GIS; nothing contradicts the macro view or the per-name house views.</p>
+
+<h4>The shelf (what trades cleanly, by asset class)</h4>
+<table>
+<tr><th>Asset class</th><th>Income / participation</th><th>Hedging / other</th></tr>
+<tr><td><strong>Equities</strong></td><td>RevCon, FCN, Phoenix, digital review, autocall Market Plus, BREN, protected participation</td><td><strong>Equity OTC, full creative latitude:</strong> accumulators/decumulators, call/put spreads, risk reversals, prepaid variable forwards, total-return swaps, worst-of/dispersion, variance/vol</td></tr>
+<tr><td><strong>FX</strong></td><td>DCS (dual-currency / deposit) for income</td><td>Forwards, seagulls, puts, accumulators for hedging</td></tr>
+<tr><td><strong>Rates</strong></td><td colspan="2">Range accruals only</td></tr>
+</table>
+<div class="box"><p><strong>The shelf is a guideline, not a cage.</strong> If an idea genuinely needs a structure off-shelf (or off-piste OTC, where almost anything is possible), the desk still suggests it — and tags it “please check with your derivs team on feasibility.” The rule is: never hold back a good idea because it’s off-shelf; just flag the feasibility check.</p></div>
+
+<h4>How an idea is judged and ranked</h4>
+<p>Each idea (<code>_idea(...)</code>) carries a conviction sub-score across four keys — <strong>setup, pricing, catalyst, fit</strong> — each 0–2 with a <em>confidence</em> tag (sourced/estimated), plus the live TA + absolute-RSI for its underlier. Ideas are sorted into three tiers:</p>
+<ul>
+<li><span class="tag g">FIRE</span> — sourced, high-fit, ready to execute (e.g. the MU collar + SBL + post-print decumulator; the Oracle capital-protected note; the EUR 2y steepener note).</li>
+<li><span class="tag gold">WATCH</span> — good thesis but a key input (basket, IV) not yet sourced (e.g. the AI-power thematic note).</li>
+<li><span class="tag r">SUPPRESS</span> — conflicts with another idea or the house view (e.g. a DCS that would fight the FX hedge; trimming a recognised hedge).</li>
+</ul>
+<p><strong>Fit</strong> is the heaviest discriminator: an idea scores high only if it matches Fable’s actual pattern (AI/semis-heavy, software, large-cap quality, energy+gold hedges, US duration, structure-comfortable) <em>and</em> ideally <em>reduces</em> the concentration. That’s why “add AI” here means Oracle (cloud) and Adobe (software) and a power basket — same conviction, a different leg of the build-out — rather than more silicon. Tenor floors are enforced: equity structured products ≥3m, OTC ≥1m, rates structured products ≥2y.</p>
+
+<h4>Ideas specific to <em>this</em> book — worked examples</h4>
+<ul>
+<li><strong>The concentration (MU, 25.8%):</strong> a zero-cost collar (rich calls finance fat puts into the 24-Jun print) + a Lombard/SBL line against the collared stock, then — <em>after</em> the binary print — a decumulator sized ≤50% to exit above market. The decumulator is <em>timed, not killed</em>: decumulating with 2x gearing through a catalyst risks being forced to sell double into a +20% gap. An OTC <strong>prepaid variable forward</strong> on ~a third of the position is offered as the alternative.</li>
+<li><strong>The FX mismatch (72% USD on a EUR base):</strong> a T-bill ladder + FX forward strip, and a seagull on the residual after the ECB — sized off the <em>liability-netted</em> exposure (the Miami mortgage is a natural short-USD that nets down the hedge).</li>
+<li><strong>The idle cash:</strong> EUR deposit campaign + range accrual; USD T-bill ladder + a cash-secured NVDA put at 195 (get paid to wait at the level she’d add anyway).</li>
+</ul>
+
+<h4>Recovering losses — the explicit route per underwater name</h4>
+<p><code>_loss_recovery()</code> gives each loser a precise “how,” plus a faster structured-product/OTC-at-margin “accelerator” where it genuinely fits:</p>
+<table>
+<tr><th>Position</th><th>The route</th><th>The accelerator</th></tr>
+<tr><td><strong>AVGO</strong> (−21%)</td><td>Harvest the loss now (post-print IV crushed → tight replacement spreads) to bank tax against the eventual MU exit; re-enter the AI-ASIC thesis via a 12–18m buffered note; in ~30 days sell a reverse convertible once vol rebuilds.</td><td>Run the buffered note + an OTC accumulator at margin (discount average-down) to claw back the 21% faster — margin capped so a full obligation is always deliverable.</td></tr>
+<tr><td><strong>LVMH</strong> (−20%)</td><td>Sell a 6-month reverse convertible struck at the add level; steep luxury put skew fattens the coupon — paid to wait, and if assigned she owns more at a discount. FCN if the coupon must be certain.</td><td>Pair the RevCon coupon with a short OTC accumulator at margin to leg into the discount on a daily clip.</td></tr>
+<tr><td><strong>NVDA</strong> (−10%)</td><td>Sell a BREN / range note on the 195–235 consolidation — paid a coupon while it holds the range (paper loss → paid waiting).</td><td>Add a cash-secured put at 195 (not simultaneously with the BREN, per delta-netting) — premium offsets the drawdown and commits the add at support.</td></tr>
+<tr><td><strong>UST ’31 + Siemens ’30</strong></td><td>Switch both into current-coupon paper of the same credit — the loss is already taken; the switch banks it and ~triples the carry. CPI gates the UST leg; the ECB gates the EUR leg.</td><td>Not a margin/OTC candidate — the recovery <em>is</em> the carry pickup, banked cleanly via the switch.</td></tr>
+</table>
+
+<!-- ============================ REFERENCE ============================ -->
+<h2 id="ref-files" class="anchor"><span class="num">8</span>Reference — file map</h2>
+<table>
+<tr><th>File</th><th>Role</th></tr>
+<tr><td><code>PROMPT.md</code></td><td>The operating spec — the strategist system prompt, the 24h sweep rules, the voice DNA, the conviction rubric, every section, the <code>brief</code> schema. Claude reads this on “run the Market Map.”</td></tr>
+<tr><td><code>gen_2026_MM_DD.py</code></td><td>The dated generator — today’s authored <code>brief</code> dict + the orchestration that fetches live data and renders. A new one each day.</td></tr>
+<tr><td><code>live_levels.py</code></td><td>TradingView scanner client — live macro levels + book marks (the “TradingView feed”).</td></tr>
+<tr><td><code>fetch_rsi.py</code></td><td>RSI (absolute 30/70), 50/100/200 MAs, Bollinger, Fibonacci, valuation multiples, and the ~140-name screener — all from Yahoo Finance.</td></tr>
+<tr><td><code>fetch_ivol.py</code></td><td>ATM implied vol by Black–Scholes inversion on Yahoo option marks; realized-vol proxy for names without listed options. Writes <code>ivol_history.json</code>.</td></tr>
+<tr><td><code>fetch_earnings.py</code></td><td>Finnhub earnings fetcher — runs as a GitHub Action at 6am, writes <code>earnings_data.md</code>.</td></tr>
+<tr><td><code>book_scanner.py</code></td><td>Client-book engine — live marks, metrics, house-view attach, allocation pies, the ranked derivatives shelf, and loss-recovery routes.</td></tr>
+<tr><td><code>book.py</code> · <code>charts.py</code> · <code>shark_format.py</code> · <code>earnings.py</code></td><td>The renderers — trade-book persistence/scoreboard, inline-SVG charts, the six-tab Shark Tank formatter, and the earnings section.</td></tr>
+<tr><td><code>client-book-json-Aurora.json</code></td><td>Fable’s portfolio (positions, cash, liabilities, summary).</td></tr>
+<tr><td><code>house_views.json</code></td><td>Per-name views with conviction breakdowns, evidence, sources, brief-consistency notes.</td></tr>
+<tr><td><code>trades.json</code> · <code>regime_log.json</code></td><td>The self-grading trade book (open/closed + dated history) and the regime-banner log.</td></tr>
+<tr><td><code>sources.py</code></td><td>The trusted-source allowlist for the narrative.</td></tr>
+<tr><td><code>vercel.json</code> · <code>netlify.toml</code> · <code>.vercelignore</code></td><td>Static-site deploy config (no build step; Python excluded).</td></tr>
+<tr><td><code>.github/workflows/</code></td><td><code>earnings-data.yml</code> (6am Finnhub) and <code>fallback-refresh.yml</code> (07:30 UTC data-only safety net).</td></tr>
+<tr><td><code>index/insights/earnings/trades/portfolio/ideas.html</code></td><td>The six rendered tabs served by Vercel.</td></tr>
+</table>
+
+<h2 id="ref-glossary" class="anchor"><span class="num">9</span>Glossary</h2>
+<table>
+<tr><td><strong>Terminal / shell</strong></td><td>The text window for typing commands (here, PowerShell).</td></tr>
+<tr><td><strong>Claude Code</strong></td><td>Claude with the ability to read/write files, run commands, search the web, in the terminal.</td></tr>
+<tr><td><strong>Git / repository</strong></td><td>A folder whose change history is tracked; “commit” = save a snapshot, “push” = upload it to GitHub.</td></tr>
+<tr><td><strong>GitHub</strong></td><td>Cloud host for the repo + runner of scheduled Actions.</td></tr>
+<tr><td><strong>Vercel / Netlify</strong></td><td>Static hosting that republishes the HTML whenever GitHub updates.</td></tr>
+<tr><td><strong>MCP</strong></td><td>Model Context Protocol — a standard adapter for plugging tools/data into Claude. (Not used in the live data path here.)</td></tr>
+<tr><td><strong>RSI (absolute)</strong></td><td>14-period momentum gauge; ≥70 overbought, ≤30 oversold. Never averaged vs a mean.</td></tr>
+<tr><td><strong>Bollinger %B</strong></td><td>Where price sits between the bands (0 = lower, 1 = upper); the entry-stretch read.</td></tr>
+<tr><td><strong>Golden / death cross</strong></td><td>50-day MA crossing above / below the 200-day MA.</td></tr>
+<tr><td><strong>Fibonacci retracement</strong></td><td>23.6–61.8% levels across a swing high–low; where stops/targets are hung.</td></tr>
+<tr><td><strong>Implied vs realized vol</strong></td><td>Implied = solved from option prices (Black–Scholes inversion); realized = measured from past returns (the proxy when no options exist).</td></tr>
+<tr><td><strong>Collar / RevCon / FCN / BREN / decumulator / seagull</strong></td><td>Structured/OTC payoffs — see the desk shelf table (§7).</td></tr>
+<tr><td><strong>Pre-position vs reactive trade</strong></td><td>Structural (months, min-hold floor) vs tactical (days/weeks, off a near event).</td></tr>
+</table>
+
+<h2 id="ref-limits" class="anchor"><span class="num">10</span>Honesty &amp; limits — read this</h2>
+<div class="box red">
+<ul>
+<li><strong>The narrative is authored, the numbers are live.</strong> Marks, RSI, technicals, the screener, the book and vol are fetched real at run time. The macro story is only as fresh as the last genuine web sweep — and the UI says which (the fallback banner + coverage bar).</li>
+<li><strong>No “TradingView MCP.”</strong> Live levels come from TradingView’s public scanner endpoint called directly by <code>live_levels.py</code>; it’s unofficial and can change, with file-mark fallback.</li>
+<li><strong>Vol &amp; skew are public proxies</strong>, labelled as such — not a full options surface (that needs a paid feed).</li>
+<li><strong>Bonds keep yield-derived marks</strong> (no clean free bond price feed); some EU equity marks are indicative until the live refresh resolves.</li>
+<li><strong>Bull/Base/Bear probabilities are disciplined judgement, not a back-tested model</strong> — they must sum to 100% and each leg must be falsifiable.</li>
+<li><strong>Fable is a demo book.</strong> House-view author references are thematic characterisations, not quotes or real calls. JP GIS framing is illustrative. <em>Not investment advice.</em></li>
+</ul>
+</div>
+
+<p class="footnote">This 101 was assembled by reading the project’s own source — <code>PROMPT.md</code>, the generators, <code>live_levels.py</code>, <code>fetch_rsi.py</code>, <code>fetch_ivol.py</code>, <code>fetch_earnings.py</code>, <code>book_scanner.py</code>, <code>house_views.json</code>, <code>client-book-json-Aurora.json</code>, <code>trades.json</code>, the deploy config and the GitHub workflows — so every claim above traces to code that runs. Repo: <code>harryimposter/shark-tank</code>.</p>
+
+</main>
+</div>
+</body>
+</html>
