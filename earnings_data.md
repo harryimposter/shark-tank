@@ -1,7 +1,7 @@
 # Finnhub Earnings Data
-Generated: 2026-06-15 06:00 UTC
-Pre-earnings window:  2026-06-15 to 2026-06-20
-Post-earnings window: 2026-06-12 to 2026-06-15
+Generated: 2026-06-16 06:00 UTC
+Pre-earnings window:  2026-06-16 to 2026-06-21
+Post-earnings window: 2026-06-13 to 2026-06-16
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
@@ -10,7 +10,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-17
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $40.8bn
+- **Market cap:** $39.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.109
@@ -31,7 +31,7 @@ Source: Finnhub.io
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 19%
 - EPS growth YoY (TTM):     78.78%
-- 52-week high:             386.64
+- 52-week high:             398.89
 - 52-week low:              175.08
 - Short ratio:              unavailable
 - Short interest:           unavailable
