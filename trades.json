@@ -273,10 +273,16 @@
           "level": 1.6374,
           "pnl_pct": 0.46,
           "status": "open"
+        },
+        {
+          "date": "2026-06-19",
+          "level": 1.63567,
+          "pnl_pct": 0.57,
+          "status": "open"
         }
       ],
-      "current": 1.6374,
-      "current_pnl_pct": 0.46
+      "current": 1.63567,
+      "current_pnl_pct": 0.57
     },
     {
       "id": "MM-2026-004",
@@ -299,8 +305,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Brent −17% is a forward CPI cut the FedWatch distribution (67.8% no cuts in 2026) has not booked. Bonds already rallied 26bp off the 4.70% high; the disinflation impulse rolls headline lower into the autumn. Deliberately the opposite macro leg to the Brent longs — the book owns both sides of the MoU binary and gets paid on either resolution.",
-      "current": 4.445,
-      "current_pnl_pct": -0.11,
+      "current": 4.455,
+      "current_pnl_pct": -0.34,
       "history": [
         {
           "date": "2026-05-31",
@@ -547,6 +553,12 @@
           "level": 4.445,
           "pnl_pct": -0.11,
           "status": "open"
+        },
+        {
+          "date": "2026-06-19",
+          "level": 4.455,
+          "pnl_pct": -0.34,
+          "status": "open"
         }
       ]
     },
@@ -571,8 +583,8 @@
       "horizon": "months",
       "min_hold_days": 45,
       "thesis": "Pre-position into the 5 June payrolls / 16–17 June FOMC window. Gold has already decoupled from a 4.98% long bond, which means it is pricing both MoU tails at once. It wins if oil-disinflation forces a dovish Fed and real yields fall, AND it wins if the MoU fails and the geopolitical bid returns. It loses only on the narrow path of strong-growth + stable-oil + hawkish-Fed together. That is the asymmetry pre-positioning is built for; minimum 45-day hold, not an event-day scalp.",
-      "current": 4321.35,
-      "current_pnl_pct": -4.46,
+      "current": 4152.15,
+      "current_pnl_pct": -8.2,
       "history": [
         {
           "date": "2026-05-31",
@@ -819,6 +831,12 @@
           "level": 4321.35,
           "pnl_pct": -4.46,
           "status": "open"
+        },
+        {
+          "date": "2026-06-19",
+          "level": 4152.15,
+          "pnl_pct": -8.2,
+          "status": "stop_touched_min_hold"
         }
       ],
       "stop_touched": true
@@ -844,8 +862,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "USDJPY at 159.37 with Finance Minister Katayama threatening intervention. BoJ September hike >50% priced vs Fed on hold. 3.63 pts downside to stop, 9.37 pts to target. Intervention is the backstop.",
-      "current": 160.595,
-      "current_pnl_pct": -0.77,
+      "current": 161.329,
+      "current_pnl_pct": -1.23,
       "history": [
         {
           "date": "2026-06-01",
@@ -1079,6 +1097,12 @@
           "date": "2026-06-18",
           "level": 160.595,
           "pnl_pct": -0.77,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-19",
+          "level": 161.329,
+          "pnl_pct": -1.23,
           "status": "open"
         }
       ]
@@ -1335,6 +1359,12 @@
           "level": 60.0,
           "pnl_pct": 71.43,
           "status": "open"
+        },
+        {
+          "date": "2026-06-19",
+          "level": 60.0,
+          "pnl_pct": 71.43,
+          "status": "open"
         }
       ]
     },
@@ -1359,8 +1389,8 @@
       "horizon": "3 months",
       "min_hold_days": 45,
       "thesis": "2s10s at +15bp after 18-month inversion. Buy 2Y (own cut optionality) vs short 10Y (short fiscal supply risk). June 5 payrolls at 89k + Fed pause re-prices front-end. ECB hiking cycle lifts global long rates. Steepener delivers whether Fed cuts or back-end sells off on supply. Late-cycle steepeners outperform after prolonged inversions.",
-      "current": 0.283,
-      "current_pnl_pct": 88.67,
+      "current": 0.276,
+      "current_pnl_pct": 84.0,
       "history": [
         {
           "date": "2026-06-01",
@@ -1589,6 +1619,12 @@
           "level": 0.283,
           "pnl_pct": 88.67,
           "status": "open"
+        },
+        {
+          "date": "2026-06-19",
+          "level": 0.276,
+          "pnl_pct": 84.0,
+          "status": "open"
         }
       ]
     },
@@ -1613,8 +1649,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Thursday's 25bp ECB hike is 99% priced — the rate-differential tailwind for EUR is in the price, and a hawkish US repricing widened the gap the other way. Classic buy-rumour-sell-fact setup into a fully-priced central bank. Pairs cleanly with long DAX: a weaker euro flatters the exporters.",
-      "current": 1.15192,
-      "current_pnl_pct": 0.7,
+      "current": 1.14654,
+      "current_pnl_pct": 1.16,
       "history": [
         {
           "date": "2026-06-08",
@@ -1831,6 +1867,12 @@
           "level": 1.15192,
           "pnl_pct": 0.7,
           "status": "open"
+        },
+        {
+          "date": "2026-06-19",
+          "level": 1.14654,
+          "pnl_pct": 1.16,
+          "status": "open"
         }
       ]
     },
@@ -1855,8 +1897,8 @@
       "horizon": "into 16–17 Jun FOMC",
       "min_hold_days": 30,
       "thesis": "The market prices a ~70% hike by year-end on one 172k payroll with unemployment steady at 4.3%. The Fed does not hike into a labor market that is firm-but-not-overheating with a richly-valued equity tape just cracking. The 2-year at 4.16% — a 16-month high — has over-extrapolated a single number; the 17 June dot plot is the catalyst to reprice it. Pre-position, not an event scalp.",
-      "current": 4.162,
-      "current_pnl_pct": -0.0,
+      "current": 4.179,
+      "current_pnl_pct": -0.41,
       "history": [
         {
           "date": "2026-06-08",
@@ -2072,6 +2114,12 @@
           "date": "2026-06-18",
           "level": 4.162,
           "pnl_pct": -0.0,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-19",
+          "level": 4.179,
+          "pnl_pct": -0.41,
           "status": "open"
         }
       ]
