@@ -1,9 +1,40 @@
 # Finnhub Earnings Data
-Generated: 2026-06-19 06:00 UTC
-Pre-earnings window:  2026-06-19 to 2026-06-24
-Post-earnings window: 2026-06-16 to 2026-06-19
+Generated: 2026-06-22 06:00 UTC
+Pre-earnings window:  2026-06-22 to 2026-06-27
+Post-earnings window: 2026-06-19 to 2026-06-22
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
+
+## SNX — TD Synnex Corp
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-06-25
+- **Report timing:** BMO (before open)
+- **Sector:** Utilities
+- **Market cap:** $22.9bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     4.1636
+- Revenue estimate: 16971753271
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 14
+- Hold:           3
+- Sell/Strong sell: 0
+- Period:         2026-06-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 4.73 vs est 3.3399 (41.62%)
+- 2025 Q4: actual 3.83 vs est 3.7663 (1.69%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 10.39%
+- EPS growth YoY (TTM):     50.42%
+- 52-week high:             291.01
+- 52-week low:              123.28
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
 
 ## JEF — Jefferies Financial Group Inc
 - **Mode:** PRE-EARNINGS
@@ -129,71 +160,6 @@ Source: Finnhub.io
 - EPS growth YoY (TTM):     17.85%
 - 52-week high:             404.03
 - 52-week low:              216.1
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## FRVO — Fervo Energy Co
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-06-22
-- **Report timing:** BMO (before open)
-- **Sector:** Utilities
-- **Market cap:** $10.3bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     -0.0706
-- Revenue estimate: 489600
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: unavailable
-- Hold:           unavailable
-- Sell/Strong sell: unavailable
-- Period:         unavailable
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- unavailable
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): unavailable%
-- EPS growth YoY (TTM):     unavailable%
-- 52-week high:             42.65
-- 52-week low:              32.392
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## JBL — Jabil Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-06-17
-- **Report timing:** BMO (before open)
-- **Sector:** Utilities
-- **Market cap:** $39.2bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     3.1303
-- Revenue estimate: 8691311337
-- EPS actual:      3.16
-- Revenue actual:  8751000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 13
-- Hold:           4
-- Sell/Strong sell: 0
-- Period:         2026-06-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q3: actual 3.16 vs est 3.1303 (0.95%)
-- 2026 Q2: actual 2.69 vs est 2.5329 (6.2%)
-- 2026 Q1: actual 2.85 vs est 2.7267 (4.52%)
-- 2025 Q4: actual 3.29 vs est 2.9517 (11.46%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 19%
-- EPS growth YoY (TTM):     78.78%
-- 52-week high:             428.9322
-- 52-week low:              189.6
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
