@@ -1,7 +1,7 @@
 # Finnhub Earnings Data
-Generated: 2026-06-22 06:00 UTC
-Pre-earnings window:  2026-06-22 to 2026-06-27
-Post-earnings window: 2026-06-19 to 2026-06-22
+Generated: 2026-06-23 06:00 UTC
+Pre-earnings window:  2026-06-23 to 2026-06-28
+Post-earnings window: 2026-06-20 to 2026-06-23
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
@@ -10,7 +10,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-25
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $22.9bn
+- **Market cap:** $22.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     4.1636
@@ -41,7 +41,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-24
 - **Report timing:** AMC (after close)
 - **Sector:** Financials
-- **Market cap:** $12.7bn
+- **Market cap:** $12.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.0933
@@ -74,7 +74,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-24
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $1278.8bn
+- **Market cap:** $1366.1bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     20.6923
@@ -95,7 +95,7 @@ Source: Finnhub.io
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 85.55%
 - EPS growth YoY (TTM):     412.05%
-- 52-week high:             1149.43
+- 52-week high:             1213.56
 - 52-week low:              103.38
 - Short ratio:              unavailable
 - Short interest:           unavailable
@@ -107,7 +107,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-23
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $51.5bn
+- **Market cap:** $49.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.1644
@@ -137,7 +137,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-23
 - **Report timing:** AMC (after close)
 - **Sector:** Industrials
-- **Market cap:** $77.8bn
+- **Market cap:** $78.4bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     6.0169
@@ -160,6 +160,38 @@ Source: Finnhub.io
 - EPS growth YoY (TTM):     17.85%
 - 52-week high:             404.03
 - 52-week low:              216.1
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## FRVO — Fervo Energy Co
+- **Mode:** POST-EARNINGS
+- **Report date:** 2026-06-22
+- **Report timing:** BMO (before open)
+- **Sector:** Utilities
+- **Market cap:** $10.7bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     -0.0706
+- Revenue estimate: 489600
+- EPS actual:      -3.72
+- Revenue actual:  60000
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: unavailable
+- Hold:           unavailable
+- Sell/Strong sell: unavailable
+- Period:         unavailable
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual -3.72 vs est -0.0706 (-5169.12%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): unavailable%
+- EPS growth YoY (TTM):     unavailable%
+- 52-week high:             42.65
+- 52-week low:              32.392
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
