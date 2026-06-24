@@ -1,7 +1,7 @@
 # Finnhub Earnings Data
-Generated: 2026-06-23 06:00 UTC
-Pre-earnings window:  2026-06-23 to 2026-06-28
-Post-earnings window: 2026-06-20 to 2026-06-23
+Generated: 2026-06-24 06:00 UTC
+Pre-earnings window:  2026-06-24 to 2026-06-29
+Post-earnings window: 2026-06-21 to 2026-06-24
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
@@ -10,7 +10,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-25
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $22.8bn
+- **Market cap:** $23.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     4.1636
@@ -29,8 +29,8 @@ Source: Finnhub.io
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 10.39%
 - EPS growth YoY (TTM):     50.42%
-- 52-week high:             291.01
-- 52-week low:              123.28
+- 52-week high:             294.98
+- 52-week low:              123.84
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
@@ -41,7 +41,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-24
 - **Report timing:** AMC (after close)
 - **Sector:** Financials
-- **Market cap:** $12.8bn
+- **Market cap:** $12.4bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.0933
@@ -74,7 +74,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-24
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $1366.1bn
+- **Market cap:** $1186.1bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     20.6923
@@ -103,15 +103,17 @@ Source: Finnhub.io
 ---
 
 ## CBRS — Cerebras Systems Inc
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-06-23
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $49.3bn
+- **Market cap:** $49.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.1644
 - Revenue estimate: 185221361
+- EPS actual:      -0.04
+- Revenue actual:  193410000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: unavailable
@@ -120,7 +122,7 @@ Source: Finnhub.io
 - Period:         unavailable
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- unavailable
+- 2026 Q1: actual -0.04 vs est -0.1644 (75.67%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): unavailable%
@@ -133,15 +135,17 @@ Source: Finnhub.io
 ---
 
 ## FDX — FedEx Corp
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-06-23
 - **Report timing:** AMC (after close)
 - **Sector:** Industrials
-- **Market cap:** $78.4bn
+- **Market cap:** $75.7bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     6.0169
 - Revenue estimate: 24276403682
+- EPS actual:      6.31
+- Revenue actual:  25007000000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 21
@@ -150,48 +154,16 @@ Source: Finnhub.io
 - Period:         2026-06-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q4: actual 6.31 vs est 6.0169 (4.87%)
 - 2026 Q3: actual 5.25 vs est 4.1768 (25.69%)
 - 2026 Q2: actual 4.82 vs est 4.1462 (16.25%)
 - 2026 Q1: actual 3.83 vs est 3.6297 (5.52%)
-- 2025 Q4: actual 6.07 vs est 5.8715 (3.38%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 4.69%
 - EPS growth YoY (TTM):     17.85%
 - 52-week high:             404.03
 - 52-week low:              216.1
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## FRVO — Fervo Energy Co
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-06-22
-- **Report timing:** BMO (before open)
-- **Sector:** Utilities
-- **Market cap:** $10.7bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     -0.0706
-- Revenue estimate: 489600
-- EPS actual:      -3.72
-- Revenue actual:  60000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: unavailable
-- Hold:           unavailable
-- Sell/Strong sell: unavailable
-- Period:         unavailable
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual -3.72 vs est -0.0706 (-5169.12%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): unavailable%
-- EPS growth YoY (TTM):     unavailable%
-- 52-week high:             42.65
-- 52-week low:              32.392
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
