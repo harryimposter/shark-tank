@@ -291,10 +291,16 @@
           "level": 1.64472,
           "pnl_pct": 0.02,
           "status": "open"
+        },
+        {
+          "date": "2026-06-24",
+          "level": 1.64621,
+          "pnl_pct": -0.07,
+          "status": "open"
         }
       ],
-      "current": 1.64472,
-      "current_pnl_pct": 0.02
+      "current": 1.64621,
+      "current_pnl_pct": -0.07
     },
     {
       "id": "MM-2026-004",
@@ -317,8 +323,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Brent −17% is a forward CPI cut the FedWatch distribution (67.8% no cuts in 2026) has not booked. Bonds already rallied 26bp off the 4.70% high; the disinflation impulse rolls headline lower into the autumn. Deliberately the opposite macro leg to the Brent longs — the book owns both sides of the MoU binary and gets paid on either resolution.",
-      "current": 4.477,
-      "current_pnl_pct": -0.83,
+      "current": 4.406,
+      "current_pnl_pct": 0.77,
       "history": [
         {
           "date": "2026-05-31",
@@ -583,6 +589,12 @@
           "level": 4.477,
           "pnl_pct": -0.83,
           "status": "open"
+        },
+        {
+          "date": "2026-06-24",
+          "level": 4.406,
+          "pnl_pct": 0.77,
+          "status": "open"
         }
       ]
     },
@@ -607,8 +619,8 @@
       "horizon": "months",
       "min_hold_days": 45,
       "thesis": "Pre-position into the 5 June payrolls / 16–17 June FOMC window. Gold has already decoupled from a 4.98% long bond, which means it is pricing both MoU tails at once. It wins if oil-disinflation forces a dovish Fed and real yields fall, AND it wins if the MoU fails and the geopolitical bid returns. It loses only on the narrow path of strong-growth + stable-oil + hawkish-Fed together. That is the asymmetry pre-positioning is built for; minimum 45-day hold, not an event-day scalp.",
-      "current": 4142.58,
-      "current_pnl_pct": -8.41,
+      "current": 4003.55,
+      "current_pnl_pct": -11.48,
       "history": [
         {
           "date": "2026-05-31",
@@ -873,6 +885,12 @@
           "level": 4142.58,
           "pnl_pct": -8.41,
           "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-24",
+          "level": 4003.55,
+          "pnl_pct": -11.48,
+          "status": "stop_touched_min_hold"
         }
       ],
       "stop_touched": true
@@ -898,8 +916,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "USDJPY at 159.37 with Finance Minister Katayama threatening intervention. BoJ September hike >50% priced vs Fed on hold. 3.63 pts downside to stop, 9.37 pts to target. Intervention is the backstop.",
-      "current": 161.544,
-      "current_pnl_pct": -1.36,
+      "current": 161.756,
+      "current_pnl_pct": -1.5,
       "history": [
         {
           "date": "2026-06-01",
@@ -1151,6 +1169,12 @@
           "date": "2026-06-23",
           "level": 161.544,
           "pnl_pct": -1.36,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-24",
+          "level": 161.756,
+          "pnl_pct": -1.5,
           "status": "open"
         }
       ]
@@ -1425,6 +1449,12 @@
           "level": 60.0,
           "pnl_pct": 71.43,
           "status": "open"
+        },
+        {
+          "date": "2026-06-24",
+          "level": 60.0,
+          "pnl_pct": 71.43,
+          "status": "open"
         }
       ]
     },
@@ -1449,8 +1479,8 @@
       "horizon": "3 months",
       "min_hold_days": 45,
       "thesis": "2s10s at +15bp after 18-month inversion. Buy 2Y (own cut optionality) vs short 10Y (short fiscal supply risk). June 5 payrolls at 89k + Fed pause re-prices front-end. ECB hiking cycle lifts global long rates. Steepener delivers whether Fed cuts or back-end sells off on supply. Late-cycle steepeners outperform after prolonged inversions.",
-      "current": 0.296,
-      "current_pnl_pct": 97.33,
+      "current": 0.256,
+      "current_pnl_pct": 70.67,
       "history": [
         {
           "date": "2026-06-01",
@@ -1697,6 +1727,12 @@
           "level": 0.296,
           "pnl_pct": 97.33,
           "status": "open"
+        },
+        {
+          "date": "2026-06-24",
+          "level": 0.256,
+          "pnl_pct": 70.67,
+          "status": "open"
         }
       ]
     },
@@ -1721,8 +1757,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Thursday's 25bp ECB hike is 99% priced — the rate-differential tailwind for EUR is in the price, and a hawkish US repricing widened the gap the other way. Classic buy-rumour-sell-fact setup into a fully-priced central bank. Pairs cleanly with long DAX: a weaker euro flatters the exporters.",
-      "current": 1.13831,
-      "current_pnl_pct": 1.87,
+      "current": 1.13501,
+      "current_pnl_pct": 2.15,
       "history": [
         {
           "date": "2026-06-08",
@@ -1957,6 +1993,12 @@
           "level": 1.13831,
           "pnl_pct": 1.87,
           "status": "open"
+        },
+        {
+          "date": "2026-06-24",
+          "level": 1.13501,
+          "pnl_pct": 2.15,
+          "status": "open"
         }
       ]
     },
@@ -1981,8 +2023,8 @@
       "horizon": "into 16–17 Jun FOMC",
       "min_hold_days": 30,
       "thesis": "The market prices a ~70% hike by year-end on one 172k payroll with unemployment steady at 4.3%. The Fed does not hike into a labor market that is firm-but-not-overheating with a richly-valued equity tape just cracking. The 2-year at 4.16% — a 16-month high — has over-extrapolated a single number; the 17 June dot plot is the catalyst to reprice it. Pre-position, not an event scalp.",
-      "current": 4.181,
-      "current_pnl_pct": -0.46,
+      "current": 4.15,
+      "current_pnl_pct": 0.29,
       "history": [
         {
           "date": "2026-06-08",
@@ -2216,6 +2258,12 @@
           "date": "2026-06-23",
           "level": 4.181,
           "pnl_pct": -0.46,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-24",
+          "level": 4.15,
+          "pnl_pct": 0.29,
           "status": "open"
         }
       ]
