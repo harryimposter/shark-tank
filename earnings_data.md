@@ -1,20 +1,22 @@
 # Finnhub Earnings Data
-Generated: 2026-06-24 06:00 UTC
-Pre-earnings window:  2026-06-24 to 2026-06-29
-Post-earnings window: 2026-06-21 to 2026-06-24
+Generated: 2026-06-25 06:00 UTC
+Pre-earnings window:  2026-06-25 to 2026-06-30
+Post-earnings window: 2026-06-22 to 2026-06-25
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
 ## SNX — TD Synnex Corp
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-06-25
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $23.3bn
+- **Market cap:** $22.8bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     4.1636
+- EPS estimate:     4.182
 - Revenue estimate: 16971753271
+- EPS actual:      4.85
+- Revenue actual:  19574810000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 14
@@ -23,29 +25,32 @@ Source: Finnhub.io
 - Period:         2026-06-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q2: actual 4.85 vs est 4.182 (15.97%)
 - 2026 Q1: actual 4.73 vs est 3.3399 (41.62%)
 - 2025 Q4: actual 3.83 vs est 3.7663 (1.69%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 10.39%
 - EPS growth YoY (TTM):     50.42%
-- 52-week high:             294.98
-- 52-week low:              123.84
+- 52-week high:             296.47
+- 52-week low:              128.01
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
 ---
 
 ## JEF — Jefferies Financial Group Inc
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-06-24
 - **Report timing:** AMC (after close)
 - **Sector:** Financials
-- **Market cap:** $12.4bn
+- **Market cap:** $11.8bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.0933
-- Revenue estimate: 2189859275
+- EPS estimate:     1.1676
+- Revenue estimate: 2322262700
+- EPS actual:      1.03
+- Revenue actual:  2206450000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 7
@@ -54,10 +59,10 @@ Source: Finnhub.io
 - Period:         2026-06-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q2: actual 1.03 vs est 1.1676 (-11.78%)
 - 2026 Q1: actual 0.7 vs est 0.9656 (-27.51%)
 - 2025 Q4: actual 0.96 vs est 0.9511 (0.94%)
 - 2025 Q3: actual 1.01 vs est 0.808 (25%)
-- 2025 Q2: actual 0.4 vs est 0.4444 (-9.99%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 7.53%
@@ -70,15 +75,17 @@ Source: Finnhub.io
 ---
 
 ## MU — Micron Technology Inc
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-06-24
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $1186.1bn
+- **Market cap:** $1182.4bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     20.6923
-- Revenue estimate: 35879744512
+- EPS estimate:     21.4019
+- Revenue estimate: 36923508824
+- EPS actual:      25.11
+- Revenue actual:  41456000000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 51
@@ -87,10 +94,10 @@ Source: Finnhub.io
 - Period:         2026-06-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q3: actual 25.11 vs est 21.4019 (17.33%)
 - 2026 Q2: actual 12.2 vs est 9.5849 (27.28%)
 - 2026 Q1: actual 4.78 vs est 4.072 (17.39%)
 - 2025 Q4: actual 3.03 vs est 2.9461 (2.85%)
-- 2025 Q3: actual 1.91 vs est 1.649 (15.83%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 85.55%
@@ -107,13 +114,13 @@ Source: Finnhub.io
 - **Report date:** 2026-06-23
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $49.8bn
+- **Market cap:** $40.0bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.1644
 - Revenue estimate: 185221361
 - EPS actual:      -0.04
-- Revenue actual:  193410000
+- Revenue actual:  191348000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: unavailable
@@ -139,11 +146,11 @@ Source: Finnhub.io
 - **Report date:** 2026-06-23
 - **Report timing:** AMC (after close)
 - **Sector:** Industrials
-- **Market cap:** $75.7bn
+- **Market cap:** $75.6bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     6.0169
-- Revenue estimate: 24276403682
+- EPS estimate:     6.0224
+- Revenue estimate: 24280759307
 - EPS actual:      6.31
 - Revenue actual:  25007000000
 
@@ -154,7 +161,7 @@ Source: Finnhub.io
 - Period:         2026-06-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q4: actual 6.31 vs est 6.0169 (4.87%)
+- 2026 Q4: actual 6.31 vs est 6.0224 (4.78%)
 - 2026 Q3: actual 5.25 vs est 4.1768 (25.69%)
 - 2026 Q2: actual 4.82 vs est 4.1462 (16.25%)
 - 2026 Q1: actual 3.83 vs est 3.6297 (5.52%)
