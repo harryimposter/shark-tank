@@ -303,10 +303,16 @@
           "level": 1.64442,
           "pnl_pct": 0.04,
           "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 1.65057,
+          "pnl_pct": -0.34,
+          "status": "open"
         }
       ],
-      "current": 1.64442,
-      "current_pnl_pct": 0.04
+      "current": 1.65057,
+      "current_pnl_pct": -0.34
     },
     {
       "id": "MM-2026-004",
@@ -329,8 +335,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Brent −17% is a forward CPI cut the FedWatch distribution (67.8% no cuts in 2026) has not booked. Bonds already rallied 26bp off the 4.70% high; the disinflation impulse rolls headline lower into the autumn. Deliberately the opposite macro leg to the Brent longs — the book owns both sides of the MoU binary and gets paid on either resolution.",
-      "current": 4.378,
-      "current_pnl_pct": 1.4,
+      "current": 4.371,
+      "current_pnl_pct": 1.55,
       "history": [
         {
           "date": "2026-05-31",
@@ -607,6 +613,12 @@
           "level": 4.378,
           "pnl_pct": 1.4,
           "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 4.371,
+          "pnl_pct": 1.55,
+          "status": "open"
         }
       ]
     },
@@ -631,8 +643,8 @@
       "horizon": "months",
       "min_hold_days": 45,
       "thesis": "Pre-position into the 5 June payrolls / 16–17 June FOMC window. Gold has already decoupled from a 4.98% long bond, which means it is pricing both MoU tails at once. It wins if oil-disinflation forces a dovish Fed and real yields fall, AND it wins if the MoU fails and the geopolitical bid returns. It loses only on the narrow path of strong-growth + stable-oil + hawkish-Fed together. That is the asymmetry pre-positioning is built for; minimum 45-day hold, not an event-day scalp.",
-      "current": 4035.54,
-      "current_pnl_pct": -10.78,
+      "current": 4015.7,
+      "current_pnl_pct": -11.22,
       "history": [
         {
           "date": "2026-05-31",
@@ -909,6 +921,12 @@
           "level": 4035.54,
           "pnl_pct": -10.78,
           "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 4015.7,
+          "pnl_pct": -11.22,
+          "status": "stop_touched_min_hold"
         }
       ],
       "stop_touched": true
@@ -934,8 +952,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "USDJPY at 159.37 with Finance Minister Katayama threatening intervention. BoJ September hike >50% priced vs Fed on hold. 3.63 pts downside to stop, 9.37 pts to target. Intervention is the backstop.",
-      "current": 161.711,
-      "current_pnl_pct": -1.47,
+      "current": 161.604,
+      "current_pnl_pct": -1.4,
       "history": [
         {
           "date": "2026-06-01",
@@ -1200,290 +1218,11 @@
           "level": 161.711,
           "pnl_pct": -1.47,
           "status": "open"
-        }
-      ]
-    },
-    {
-      "id": "MM-2026-008",
-      "opened": "2026-06-01",
-      "type": "reactive",
-      "asset_class": "Derivatives",
-      "trade": "Buy SPX Jun-27 7300/7000 put spread (hedge)",
-      "structure": "put spread",
-      "is_option_spread": true,
-      "entry": 35.0,
-      "stop": 0.0,
-      "target": 265.0,
-      "conviction": 7,
-      "conviction_breakdown": {
-        "gap": 2,
-        "catalyst": 2,
-        "positioning": 2,
-        "confirmation": 0,
-        "stop_quality": 1
-      },
-      "horizon": "26 days",
-      "min_hold_days": 0,
-      "thesis": "VIX at 15.3 is cheap for 4 non-trivial events in 15 days: AVGO Jun 3, payrolls Jun 5, ECB Jun 11, FOMC Jun 16-17. 0.5% notional cost; 7x payoff if SPX draws down 6%. Insurance on a portfolio long AI equities.",
-      "current": 60.0,
-      "current_pnl_pct": 71.43,
-      "history": [
-        {
-          "date": "2026-06-01",
-          "level": 35.0,
-          "pnl_pct": 0.0,
-          "status": "open"
         },
         {
-          "date": "2026-06-01",
-          "level": 35.0,
-          "pnl_pct": 0.0,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-08",
-          "level": 80.0,
-          "pnl_pct": 128.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-09",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 45.0,
-          "pnl_pct": 28.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 80.0,
-          "pnl_pct": 128.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 80.0,
-          "pnl_pct": 128.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 80.0,
-          "pnl_pct": 128.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 80.0,
-          "pnl_pct": 128.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 80.0,
-          "pnl_pct": 128.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 80.0,
-          "pnl_pct": 128.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 80.0,
-          "pnl_pct": 128.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 80.0,
-          "pnl_pct": 128.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 80.0,
-          "pnl_pct": 128.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-12",
-          "level": 80.0,
-          "pnl_pct": 128.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-15",
-          "level": 38.0,
-          "pnl_pct": 8.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-15",
-          "level": 38.0,
-          "pnl_pct": 8.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-16",
-          "level": 30.0,
-          "pnl_pct": -14.29,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-17",
-          "level": 34.0,
-          "pnl_pct": -2.86,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-18",
-          "level": 60.0,
-          "pnl_pct": 71.43,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-18",
-          "level": 60.0,
-          "pnl_pct": 71.43,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-19",
-          "level": 60.0,
-          "pnl_pct": 71.43,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-22",
-          "level": 60.0,
-          "pnl_pct": 71.43,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-23",
-          "level": 60.0,
-          "pnl_pct": 71.43,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-24",
-          "level": 60.0,
-          "pnl_pct": 71.43,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-25",
-          "level": 60.0,
-          "pnl_pct": 71.43,
+          "date": "2026-06-26",
+          "level": 161.604,
+          "pnl_pct": -1.4,
           "status": "open"
         }
       ]
@@ -1509,8 +1248,8 @@
       "horizon": "3 months",
       "min_hold_days": 45,
       "thesis": "2s10s at +15bp after 18-month inversion. Buy 2Y (own cut optionality) vs short 10Y (short fiscal supply risk). June 5 payrolls at 89k + Fed pause re-prices front-end. ECB hiking cycle lifts global long rates. Steepener delivers whether Fed cuts or back-end sells off on supply. Late-cycle steepeners outperform after prolonged inversions.",
-      "current": 0.274,
-      "current_pnl_pct": 82.67,
+      "current": 0.281,
+      "current_pnl_pct": 87.33,
       "history": [
         {
           "date": "2026-06-01",
@@ -1769,6 +1508,12 @@
           "level": 0.274,
           "pnl_pct": 82.67,
           "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 0.281,
+          "pnl_pct": 87.33,
+          "status": "open"
         }
       ]
     },
@@ -1793,8 +1538,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Thursday's 25bp ECB hike is 99% priced — the rate-differential tailwind for EUR is in the price, and a hawkish US repricing widened the gap the other way. Classic buy-rumour-sell-fact setup into a fully-priced central bank. Pairs cleanly with long DAX: a weaker euro flatters the exporters.",
-      "current": 1.13815,
-      "current_pnl_pct": 1.88,
+      "current": 1.13777,
+      "current_pnl_pct": 1.92,
       "history": [
         {
           "date": "2026-06-08",
@@ -2041,6 +1786,12 @@
           "level": 1.13815,
           "pnl_pct": 1.88,
           "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 1.13777,
+          "pnl_pct": 1.92,
+          "status": "open"
         }
       ]
     },
@@ -2065,8 +1816,8 @@
       "horizon": "into 16–17 Jun FOMC",
       "min_hold_days": 30,
       "thesis": "The market prices a ~70% hike by year-end on one 172k payroll with unemployment steady at 4.3%. The Fed does not hike into a labor market that is firm-but-not-overheating with a richly-valued equity tape just cracking. The 2-year at 4.16% — a 16-month high — has over-extrapolated a single number; the 17 June dot plot is the catalyst to reprice it. Pre-position, not an event scalp.",
-      "current": 4.104,
-      "current_pnl_pct": 1.39,
+      "current": 4.09,
+      "current_pnl_pct": 1.73,
       "history": [
         {
           "date": "2026-06-08",
@@ -2312,6 +2063,12 @@
           "date": "2026-06-25",
           "level": 4.104,
           "pnl_pct": 1.39,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 4.09,
+          "pnl_pct": 1.73,
           "status": "open"
         }
       ]
@@ -3215,6 +2972,305 @@
         "result": "STOPPED",
         "pnl_pct": -4.04,
         "days_held": 8
+      }
+    },
+    {
+      "id": "MM-2026-008",
+      "opened": "2026-06-01",
+      "type": "reactive",
+      "asset_class": "Derivatives",
+      "trade": "Buy SPX Jun-27 7300/7000 put spread (hedge)",
+      "structure": "put spread",
+      "is_option_spread": true,
+      "entry": 35.0,
+      "stop": 0.0,
+      "target": 265.0,
+      "conviction": 7,
+      "conviction_breakdown": {
+        "gap": 2,
+        "catalyst": 2,
+        "positioning": 2,
+        "confirmation": 0,
+        "stop_quality": 1
+      },
+      "horizon": "26 days",
+      "min_hold_days": 0,
+      "thesis": "VIX at 15.3 is cheap for 4 non-trivial events in 15 days: AVGO Jun 3, payrolls Jun 5, ECB Jun 11, FOMC Jun 16-17. 0.5% notional cost; 7x payoff if SPX draws down 6%. Insurance on a portfolio long AI equities.",
+      "current": 45.0,
+      "current_pnl_pct": 28.57,
+      "history": [
+        {
+          "date": "2026-06-01",
+          "level": 35.0,
+          "pnl_pct": 0.0,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-01",
+          "level": 35.0,
+          "pnl_pct": 0.0,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-08",
+          "level": 80.0,
+          "pnl_pct": 128.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-09",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 80.0,
+          "pnl_pct": 128.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 80.0,
+          "pnl_pct": 128.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 80.0,
+          "pnl_pct": 128.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 80.0,
+          "pnl_pct": 128.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 80.0,
+          "pnl_pct": 128.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 80.0,
+          "pnl_pct": 128.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 80.0,
+          "pnl_pct": 128.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 80.0,
+          "pnl_pct": 128.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 80.0,
+          "pnl_pct": 128.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-12",
+          "level": 80.0,
+          "pnl_pct": 128.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-15",
+          "level": 38.0,
+          "pnl_pct": 8.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-15",
+          "level": 38.0,
+          "pnl_pct": 8.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-16",
+          "level": 30.0,
+          "pnl_pct": -14.29,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-17",
+          "level": 34.0,
+          "pnl_pct": -2.86,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-18",
+          "level": 60.0,
+          "pnl_pct": 71.43,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-18",
+          "level": 60.0,
+          "pnl_pct": 71.43,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-19",
+          "level": 60.0,
+          "pnl_pct": 71.43,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-22",
+          "level": 60.0,
+          "pnl_pct": 71.43,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-23",
+          "level": 60.0,
+          "pnl_pct": 71.43,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-24",
+          "level": 60.0,
+          "pnl_pct": 71.43,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-25",
+          "level": 60.0,
+          "pnl_pct": 71.43,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 45.0,
+          "pnl_pct": 28.57,
+          "status": "discretionary"
+        }
+      ],
+      "exit": {
+        "date": "2026-06-26",
+        "level": 45.0,
+        "result": "DISCRETIONARY",
+        "pnl_pct": 28.57,
+        "days_held": 25,
+        "reason": "BANKED into Jun-27 expiry. The FOMC-tail hedge did its job — peak ~$60 (+71%) as Warsh's hawkish dots dropped the S&P toward the strike and VIX re-rated to 18.4. With the Micron blowout ripping the tape back above the strike zone premarket (ES +0.78%) and one session to expiry, the residual is theta — harvested at ~$45 (+~29% from the ~$35 entry) rather than risk it bleeding to zero over the weekend. The replacement downside is the fresh Aug SPX put spread (MM-030)."
       }
     }
   ]
