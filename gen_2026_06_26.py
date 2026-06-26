@@ -6,7 +6,7 @@ THE NEXT CHAPTER vs the Jun 18 (post-Warsh) run: the hawkish-dots regime got a N
 reason to be right — and it isn't oil. The AI memory supercycle became a consumer-price shock.
 - MICRON BLEW OUT (Jun 24 AMC). FY-Q3 revenue $41.456bn (vs ~$36.9bn est), adj EPS $25.11 (vs
   $21.40, +17%). CEO Mehrotra: HBM/memory tightness "locked in to persist beyond calendar 2027."
-  The book's LARGEST position (~25.8%) printed a blowout — the AI-memory bull thesis confirmed.
+  The book's LARGEST position (~32.2%) printed a blowout — the AI-memory bull thesis confirmed.
   Semis surged after-hours; Jun 26 premarket ripped (ES +0.78%, NQ +2.15%). (TheStreet, CNBC.)
 - THE SAME SHORTAGE HIT CONSUMERS. Thu Jun 25: Apple raised Mac/iPad up to +$300 (MacBook Air
   $1,099->$1,299; Mac Studio M3 Ultra $3,999->$5,299; iPad Air $599->$749); Microsoft put Xbox
@@ -34,7 +34,7 @@ reason to be right — and it isn't oil. The AI memory supercycle became a consu
 - TODAY: May PCE (released) + final-June UMich; quarter/half-end Mon Jun 29-Tue Jun 30; ISM Mfg
   Jul 1; June PAYROLLS Jul 2-3 (first labour read in the guidance vacuum); EU tariff deadline Jul 4.
 - BOOK ACTION: MM-008 SPX put spread expires Jun 27 — BANKED today (~+29% from entry; FOMC tail
-  did its job, S&P rallying away from the strike on Micron). Collar the 25.8% Micron AFTER the
+  did its job, S&P rallying away from the strike on Micron). Collar the 32.2% Micron AFTER the
   blowout (lock the gain). Gold long held on min-hold to ~Jul 15, deeply offside.
 
 Run:  python gen_2026_06_26.py
@@ -57,6 +57,13 @@ regime_log = book.load_json(book.REGIME_PATH, [])
 book.step("Fetching live levels (TradingView)")
 snap = live_levels.fetch()
 book.log(f"resolved {len(snap)} symbols")
+# Fallback: the TradingView feed intermittently drops the cash S&P / Dow lines. Inject the
+# web-verified Jun-25 closes (corroborated TheStreet + CNBC) so the dashboard headline indices
+# never render "unverified". Only set if the live feed did not resolve them.
+if "spx" not in snap:
+    snap["spx"] = {"close": 7357.49, "chg_pct": -0.01, "chg_abs": -0.74}
+if "dji" not in snap:
+    snap["dji"] = {"close": 51920.62, "chg_pct": 0.14, "chg_abs": 72.0}
 levels = live_levels.trade_levels(snap)
 # Option spreads have no live feed — mark from spot.
 # SPX 7300/7000 put spread (MM-008): EXPIRES Jun 27. The FOMC tail it was held for PAID (peak ~$60,
@@ -99,8 +106,8 @@ book.log(f'  scanned {screen["scanned"]} · {len(screen["oversold"])} oversold �
 # genuinely have one (keyed by ticker). Live names without a note get a templated read.
 SCREENER_NOTES = {
     "MU":   "The blowout landed: FY-Q3 revenue $41.5bn and adjusted EPS $25.11 (vs $21.40) with the CEO calling memory "
-            "tightness 'locked in beyond 2027.' MU is the Fable book's LARGEST position (~25.8%) and the AI-memory "
-            "thesis is now confirmed, not contested — but a confirmed catalyst on a quarter of the book is the moment "
+            "tightness 'locked in beyond 2027.' MU is the Fable book's LARGEST position (~32.2%) and the AI-memory "
+            "thesis is now confirmed, not contested — but a confirmed catalyst on a third of the book is the moment "
             "to COLLAR and lock the gain (rich post-print calls finance the puts), not to chase an OVERBOUGHT print. "
             "The fresh expression is the memory-vs-OEM RV (MM-028): own the pricing power, short who pays for it.",
     "NVDA": "The Mag7 fell on its OWN supply chain's pricing power — every HBM wafer Micron sells into NVDA's GPUs is a "
@@ -263,31 +270,32 @@ TRADE_ENRICHMENTS = {
             "inflation/stagflation fears."
         ),
         "fundamental_thesis": (
-            "Did exactly what it was flagged to do. The real-rates engine reversed on the hawkish dots — gold fell ~2% "
-            "to ~$4,275 as the 2Y hit a one-year high and DXY broke 100, the 'first hedge to give back' call — but it "
-            "tested toward the $4,250 stop, held, and the second engine (safe-haven / dollar-debasement) caught it: it "
-            "bounced above $4,300 Thursday on the Iran-deal headlines. The position is offside from the $4,523 entry "
-            "(~-4%) but above stop and inside its 45-day min-hold to ~Jul 15. The two engines now pull in opposite "
-            "directions — a hawkish-rate headwind against an Iran-durability and structural-EM-buying bid. Held, not added."
+            "The casualty. Both engines drained at once and gold broke $4,000 for the first time since November — now "
+            "~$4,015, down ~29% from the January $5,608 peak and ~-11% from the $4,523 entry. The real-rates engine "
+            "lost to a hawkish Fed and a 13-month-high dollar; the safe-haven engine lost to the Iran de-escalation; "
+            "and $2bn of May ETF outflows confirm the spec long is leaving. The price is BELOW the $4,250 stop, but "
+            "the 45-day min-hold (to ~Jul 15) keeps a pre-position structural trade open through the drawdown — the "
+            "rule that protects against a wash-out bottom is the rule taking the pain here. NOT an add; the route back "
+            "is the defined-risk GLD put-spread hedge (MM-029), not averaging down a falling knife."
         ),
         "catalysts": [
-            "Hawkish Fed / 2Y at one-year high — the real-rates headwind, the force against gold now",
-            "Iran-deal durability — a slip (Israel) is the safe-haven bid that caught the bounce",
-            "DXY >100 — a dollar headwind to USD-priced gold",
-            "EM central-bank Q2 purchases (China, India, Turkey — structural buyers under the price)",
+            "Hawkish Fed + DXY 13-month high — the real-rates / dollar headwind, the dominant force against gold",
+            "Iran de-escalation — the safe-haven premium that has drained out (a fracture is the only upside tail)",
+            "$2bn May gold-ETF outflows — the spec long unwinding under the price",
+            "EM / central-bank physical buying (China, India, Turkey) — the structural floor being tested now",
         ],
         "risks": (
-            "A second hawkish data surprise (a hot claims/Philly Fed in the guidance vacuum) sends real yields higher "
-            "and breaks the $4,250 stop; the MoU signs cleanly and the last safe-haven premium drains. Stop $4,250 "
-            "(45-day min-hold keeps it open to ~Jul 15)."
+            "The silicon-inflation does NOT translate into a real-rates relief and the metals rout extends below "
+            "$3,900; the dollar pushes higher; ETF outflows accelerate. The min-hold keeps it open to ~Jul 15 — the "
+            "stop is breached, the rule is what holds it; hedge via MM-029."
         ),
         "breakdown_why": {
-            "gap":          "1/3 — the real-rates engine reversed; the mispricing is now the dollar-debasement / "
-                            "central-bank-bid floor under a hawkish-rate selloff, a narrower gap than a week ago.",
-            "catalyst":     "1/2 — the FOMC catalyst passed against the position; the Iran tail is the remaining one.",
-            "positioning":  "1/2 — positioning is not extreme; the spec long thinned on the give-back.",
-            "confirmation": "1/2 — it held the stop and bounced, but the trend broke this week.",
-            "stop_quality": "1/1 — $4,250 is a defined level; the min-hold rule is the discipline mechanism.",
+            "gap":          "1/3 — the real-rates and safe-haven engines both reversed; only the central-bank / "
+                            "debasement floor remains, a much narrower mispricing than at entry.",
+            "catalyst":     "0/2 — no near-term catalyst favours the long; the Iran tail is the only one, and it faded.",
+            "positioning":  "1/2 — the spec long is unwinding (ETF outflows); positioning is cleaner but not yet capitulatory.",
+            "confirmation": "0/2 — the trend broke $4,000 decisively; the chart contradicts the long.",
+            "stop_quality": "1/1 — $4,250 is a defined level (now breached); the min-hold rule is the discipline holding it.",
         },
     },
     "MM-2026-007": {
@@ -364,30 +372,30 @@ TRADE_ENRICHMENTS = {
             "/ 10Y 4.50%, spread ~+28bp. The 2Y is Fed-driven; the 10Y is supply/term-premium-driven."
         ),
         "fundamental_thesis": (
-            "Gave back, but still the best structural position in the book. The hawkish dots bear-FLATTENED the curve — "
-            "the 2Y rocketed +16bp while the 10Y rose only +7bp — so the spread compressed to ~+28bp from ~+41bp, "
-            "cutting the open gain from ~+157% to ~+85% (entry +15bp off an 18-month inversion). The flattening is "
-            "the hawkish-repricing risk the trade always carried. But the medium-term thesis is, if anything, "
-            "reinforced: a Fed that hikes into an oil-disinflation eventually has to reverse, which re-steepens via the "
-            "front end, and the guidance vacuum keeps a widening term premium under the back end. Min-hold to ~Jul 16; "
-            "target +60bp; held, not added."
+            "The best position in the book, and re-steepening. The spread has widened back toward ~+28bp as the front "
+            "end (2Y to ~4.09%) rallied harder than the back end on the energy-disinflation bid — the open gain sits "
+            "near +85% off the +15bp entry (an 18-month inversion). The medium-term thesis is intact and reinforced: a "
+            "Fed pricing a hike into a goods-and-energy disinflation eventually reverses, which re-steepens through the "
+            "front end, while the guidance vacuum keeps a term premium under the back end. The silicon-inflation is the "
+            "two-sided risk — if core goods re-accelerate, the front end backs up and flattens it again. Min-hold to "
+            "~Jul 16; target +60bp; held, trail the stop up, not added."
         ),
         "catalysts": [
-            "Guidance-vacuum term premium — keeps the 10Y elevated, steepening pressure on the back end",
-            "Oil sub-$80 + soft data — eventually fades the front-end hike pricing and re-steepens",
-            "Treasury supply at the back end — long-end auctions selling off = steepens",
-            "A Fed policy error (hiking into disinflation) — the medium-term re-steepening catalyst",
+            "Front-end rally on the energy/goods disinflation — the re-steepening engine working now",
+            "June payrolls Jul 2-3 — a soft labour print fades the hike pricing and steepens further",
+            "Guidance-vacuum term premium + Treasury supply — keeps the back end heavy = steepens",
+            "Silicon-push core-goods inflation — the risk that re-flattens via a front-end back-up",
         ],
         "risks": (
-            "The hawkish repricing keeps bear-flattening the curve as the front end prices the Sep hike; a global "
-            "safe-haven bid flattens via the long end; a Fed hike inverts the front. Stop: spread below -10bp."
+            "The DRAM-driven goods inflation reprices a Sep hike and the front end backs up, bear-flattening the curve "
+            "again; a global safe-haven bid flattens via the long end. Stop: spread below -10bp (now ~+28bp)."
         ),
         "breakdown_why": {
             "gap":          "2/3 — the curve is still structurally underpriced vs the late-cycle mean off an 18-month "
-                            "inversion, even after the hawkish flattening.",
-            "catalyst":     "1/2 — the near-term FOMC catalyst flattened it; the re-steepening catalysts are slower-burn.",
-            "positioning":  "1/2 — front-end positioning is now MORE hawkish post-Warsh; squeeze fuel builds for later.",
-            "confirmation": "1/2 — the spread held well positive (~+28bp) through the flattening; a give-back, not a break.",
+                            "inversion; the re-steepening has room to the +60bp target.",
+            "catalyst":     "2/2 — payrolls Jul 2-3 is a live, dated front-end catalyst; the energy disinflation is steepening it now.",
+            "positioning":  "1/2 — front-end positioning is still hawkish post-Warsh; the rally is squeezing it.",
+            "confirmation": "2/2 — the spread widened back to ~+28bp on the front-end rally; the re-steepen is confirming.",
             "stop_quality": "1/1 — a negative spread is a clean, well-defined failure threshold.",
         },
     },
@@ -397,29 +405,29 @@ TRADE_ENRICHMENTS = {
             "growth, risk sentiment (USD safe-haven), the oil price, and speculative positioning."
         ),
         "fundamental_thesis": (
-            "Vindicated. The most-contested leg for two weeks finally paid: a hawkish Fed that penciled a hike against "
-            "a paused ECB broke the rate-path asymmetry the trade was built on, DXY ripped through 100 to ~100.5, and "
-            "EUR/USD sliced ~60 pips through 1.1550 toward 1.1500. The thesis has gone from contested to confirmed, and "
-            "the dollar breakout above the figure is a fresh technical regime, not a one-day spike. It pairs cleanly "
-            "with the book's European-equity tilt. Hold and let it run toward 1.13; the fresh defined-risk way to add "
-            "downside is the EUR/USD put spread (MM-024). Respect the (now-distant) 1.182 stop."
+            "Vindicated and extending. EUR/USD is ~1.138 with DXY at a 13-month high near 101.4 — the dollar breakout "
+            "that started on Warsh's hawkish dots has become a durable regime, not a one-day spike. The rate-path "
+            "asymmetry (a Fed pricing a hike vs a paused ECB) is reinforced by the AI-led capital pulling money into "
+            "US assets and out of crypto and gold. It pairs cleanly with the book's European-equity tilt and hedges "
+            "the ~72% USD sleeve. Hold toward 1.13; the defined-risk way to add downside is the EUR/USD put spread "
+            "(MM-024). The two-sided risk is the July 4 EU-tariff deadline — a deal is EUR-supportive. Stop 1.182, distant."
         ),
         "catalysts": [
-            "Hawkish Fed (penciled hike) vs paused ECB — the rate-path asymmetry now firmly favours the dollar",
-            "DXY breaking 100 — a fresh technical dollar regime, not a fade",
+            "Hawkish Fed vs paused ECB + 13-month-high dollar — the rate-path asymmetry firmly dollar-positive",
+            "AI-led US capital concentration — the second engine pulling the dollar higher (out of BTC/gold)",
             "Spec positioning unwind — EUR longs near multi-year highs are the squeeze fuel",
-            "Iran deal / risk-on — the offsetting EUR-supportive force to watch",
+            "EU-US tariff deal by July 4 — the offsetting EUR-supportive force to watch",
         ],
         "risks": (
-            "A clean Iran signing and broad risk-on lifts EUR; US data rolls over hard and the hawkish-Fed dollar "
-            "fades; an ECB official re-opens the hike door. Stop 1.182 (now ~3 figures away)."
+            "A clean EU-US tariff deal and broad risk-on lifts EUR; US data rolls over hard and the dollar fades; an "
+            "ECB official re-opens the hike door. Stop 1.182 (now ~4 figures away)."
         ),
         "breakdown_why": {
-            "gap":          "2/3 — the rate-path asymmetry the trade priced finally widened; the dollar broke 100 and "
-                            "the mispricing is resolving in the position's favour.",
-            "catalyst":     "2/2 — the FOMC delivered the dated catalyst and it paid; the dollar-breakout is confirmed.",
+            "gap":          "2/3 — the rate-path asymmetry the trade priced has widened further; the dollar holds its "
+                            "break and the mispricing keeps resolving in the position's favour toward 1.13.",
+            "catalyst":     "2/2 — the dollar regime is confirmed; the July 4 tariff deadline is the next dated catalyst.",
             "positioning":  "1/2 — EUR spec longs near multi-year highs provide further unwind fuel.",
-            "confirmation": "2/2 — EUR/USD broke 1.1550 and DXY broke 100 on the dots; confirmed.",
+            "confirmation": "2/2 — EUR/USD holds below 1.14 and DXY at a 13-month high; confirmed.",
             "stop_quality": "1/1 — 1.182 is a clean prior high; the position has a wide cushion now.",
         },
     },
@@ -430,165 +438,169 @@ TRADE_ENRICHMENTS = {
             "curve."
         ),
         "fundamental_thesis": (
-            "The trade the Fed shot at — and the overnight tape caught. The whole thesis was that the front end "
-            "over-priced a 2026 hike; Warsh's SEP penciled one in and the 2Y spiked +16bp to a one-year-high 4.216% at "
-            "the close. But it eased back to ~4.16%, essentially the 4.162% entry, overnight — the position is roughly "
-            "flat, not the loss the dots implied, and that fade is itself the first evidence for the trade. The Fed "
-            "explicitly contradicted the view; the reason to hold rather than fold is the oil-disinflation — Brent at "
-            "$78 argues the Fed's raised 3.6% inflation forecast is too high, and a Sep hike priced into a falling-oil "
-            "disinflation is exactly the kind of pricing that unwinds. Min-hold to ~Jul 8; stop 4.35%. Do NOT add "
-            "ahead of the dust settling."
+            "The trade the Fed shot at — and the tape caught. The thesis was that the front end over-priced a 2026 "
+            "hike; Warsh penciled one and the 2Y spiked to 4.216%, but it has since rallied all the way back to "
+            "~4.09% — through the 4.162% entry — so the position is now GREEN. The fade is the thesis confirming: even "
+            "into a hot May PCE and 68% Sep-hike odds, the bond market is pricing the energy disinflation and the "
+            "goods slowdown over the dots. The contrarian case (a Sep hike priced into a falling-oil, slowing-goods "
+            "tape unwinds) is paying. The live offset is the silicon-inflation (MM-027) that could yet validate the "
+            "hike. Min-hold to ~Jul 8; stop 4.35%, now ~26bp away. Harvest, do NOT add into payrolls."
         ),
         "catalysts": [
-            "Oil sub-$80 (Brent ~$78) — the disinflation that argues the Fed's 3.6% forecast is too high",
-            "Jobless claims + Philly Fed Jun 18 — soft prints rebuild the no-further-hike case",
+            "Energy/commodity disinflation (Brent $74, gold sub-$4k) — argues the Fed's hawkish path is too high",
+            "June payrolls Jul 2-3 — a soft labour print prices OUT the Sep hike and extends the rally",
             "The Sep meeting — where the penciled hike gets confirmed or priced out",
-            "Any labour re-acceleration — the risk that confirms the hawkish dots",
+            "Silicon-push core-goods inflation / a hot payroll — the risk that confirms the hawkish dots",
         ],
         "risks": (
-            "The Sep hike gets more fully priced and the 2Y runs to the 4.35% stop; the MoU fractures and inflation "
-            "expectations snap back; the labour data re-accelerates. Stop 4.35%; min-hold to ~Jul 8."
+            "The DRAM-driven goods inflation re-accelerates core and a hot payroll Jul 2-3 fully prices the Sep hike, "
+            "sending the 2Y to the 4.35% stop. Stop 4.35% (now ~4.09%, ~26bp away); min-hold to ~Jul 8."
         ),
         "breakdown_why": {
-            "gap":          "2/3 — the oil-disinflation re-widens the gap between the 2Y and the justified hike "
-                            "probability, but the Fed just leaned hard the other way.",
-            "catalyst":     "1/2 — the FOMC catalyst passed against the trade; the data catalysts are second-order now.",
-            "positioning":  "2/2 — the market is now MAXIMALLY positioned for the hawkish Warsh; squeeze fuel on any soft print.",
-            "confirmation": "1/2 — the 2Y spiked to a one-year high on the dots, then eased back to ~entry overnight; a first confirming fade.",
-            "stop_quality": "1/1 — 4.35% is a clear technical level; ~19bp of risk.",
+            "gap":          "2/3 — the energy disinflation re-widens the gap between the 2Y and the justified hike "
+                            "probability, but the silicon-inflation is the partial offset.",
+            "catalyst":     "2/2 — payrolls Jul 2-3 is the dated, decisive front-end catalyst; the FOMC has passed.",
+            "positioning":  "2/2 — the market is maximally positioned for the hawkish Warsh; squeeze fuel on any soft print.",
+            "confirmation": "2/2 — the 2Y rallied THROUGH the entry on a hot PCE; the contrarian thesis is confirming.",
+            "stop_quality": "1/1 — 4.35% is a clear technical level; ~26bp of risk.",
         },
     },
     # ── New ideas generated today (cards only; book entry per idea_selection) ────
-    "MM-2026-023": {
+    "MM-2026-027": {
         "instrument": (
-            "Long rates volatility — a 2-month long-bond (TLT) straddle or a payer/receiver strangle on "
-            "the 10Y (proxy: long MOVE). Defined-risk long realised/implied rate vol. Pays if the term "
-            "premium re-widens and yields move in either direction; max loss is the premium."
+            "Long US 2-year inflation breakevens — buy 2Y TIPS / sell the 2Y nominal (or long a short-dated "
+            "breakeven swap). Pays if realised + expected inflation runs above what the front-end nominal "
+            "prices. The market reads the oil collapse as pure disinflation; this owns the silicon-push it misses."
         ),
         "fundamental_thesis": (
-            "The cleanest expression of the Warsh regime is in the bond market, not equities. Forward guidance is "
-            "mechanically a term-premium compressor — it tells the market the path of the funding rate. Warsh just "
-            "dropped his own dot, shortened the statement and stood up a balance-sheet task force, which removes that "
-            "anchor and hands the term premium back to the market. The 10Y backing up to 4.499% on a 'hold' is the "
-            "first evidence; MOVE is the cleaner read on it than VIX. A long-bond straddle owns the re-widening in "
-            "either direction — a hawkish over-tightening that lifts yields, or the policy-error reversal that rallies "
-            "them — with defined premium. Rate vol, not equity vol, is where the guidance vacuum gets paid."
+            "The marquee idea: the composition of inflation just flipped and the breakeven curve has not noticed. The "
+            "tape is trading Brent at $74 and gold sub-$4,000 as a clean disinflation, pulling front-end breakevens "
+            "down — but the May PCE that printed 4.1% / 3.4% core is being replaced, not ended, as an inflation engine. "
+            "DRAM is up 98% this year, Apple and Microsoft just repriced consumer hardware 15-25%, and that goods "
+            "inflation feeds core PCE for quarters because the AI build-out that causes it has a multi-year lead time. "
+            "Long 2Y breakevens owns the silicon-push the market is mistaking for disappearing inflation, and it is "
+            "the inflation hedge a book long both duration (MM-004/013) and the AI complex otherwise lacks."
         ),
         "catalysts": [
-            "The guidance vacuum itself — no forward path = a structurally wider, more volatile term premium",
-            "Jobless claims + Philly Fed today — each print now a discrete rate-vol event",
-            "Treasury supply / the balance-sheet task force — the QT/issuance overhang",
-            "The Sep meeting — hike-confirm or hike-unwind, both move the long end",
+            "May PCE 4.1% / 3.4% core (released) — the hot reading the breakeven curve is fading too quickly",
+            "DRAM +98% / consumer-hardware price hikes — the forward core-goods inflation feeding through H2",
+            "June payrolls + ISM prices-paid (Jul 1-3) — the next dated reads on goods/services inflation",
+            "A second oil leg lower — the offsetting force that keeps headline breakevens capped near-term",
         ],
         "risks": (
-            "Yields settle into a tight range and realised rate vol fades; the term premium stays anchored despite the "
-            "guidance change; the straddle decays. Max loss is the defined premium."
+            "The energy disinflation dominates and headline breakevens fall faster than core goods rise; a demand "
+            "shock (the -11% PC / -13% phone slowdown) turns the goods story into deflation; the carry bleeds. "
+            "Stop: 2Y breakeven 20bp below entry."
         ),
         "breakdown_why": {
-            "gap":          "2/3 — MOVE does not yet price a permanent guidance-vacuum term-premium re-rating.",
-            "catalyst":     "2/2 — the guidance change is done and dated; the data prints are live, near-term.",
-            "positioning":  "2/2 — the market is positioned for a calm range; maximum room for a rate-vol re-rate.",
-            "confirmation": "1/2 — the 10Y backed up on a hold (first evidence); the regime is one session old.",
+            "gap":          "3/3 — the market prices the oil collapse as disinflation and ignores the silicon-push; the "
+                            "mispricing between the breakeven curve and the DRAM-driven goods inflation is wide.",
+            "catalyst":     "2/2 — May PCE is on the tape today; payrolls/ISM prices land Jul 1-3 — dated and live.",
+            "positioning":  "1/2 — breakevens sit near cycle lows as the crowd shorts inflation on oil; some squeeze fuel.",
+            "confirmation": "1/2 — the hot PCE confirms the level, but oil clouds the near-term breakeven read.",
+            "stop_quality": "1/1 — a 20bp breakeven stop is a clean, defined level.",
+        },
+    },
+    "MM-2026-028": {
+        "instrument": (
+            "Equity RV — long the memory/Micron complex (SOXX or MU) vs SHORT a PC/handset-OEM basket "
+            "(Dell, HP, and the hardware sleeve of XLK). A ratio that rises when the memory-makers' pricing "
+            "power outruns the box-makers who eat the DRAM cost. The book already holds the long leg via MU."
+        ),
+        "fundamental_thesis": (
+            "The DRAM supercycle is a margin transfer, and the market is only pricing one side of it. Micron just "
+            "printed a record quarter on memory tightness 'locked in beyond 2027'; the same shortage forced Apple to "
+            "raise the MacBook $200 and Microsoft the Xbox $150, into a year where PC shipments fall 11% and phones "
+            "13%. The memory-makers capture the price; the OEMs eat the input cost AND the volume decline. The book is "
+            "already long the winners (MU, ~32.2%), so the un-owned, fresh leg is the SHORT — Dell, HP and the "
+            "hardware OEMs that cannot fully pass the cost through. Express it as the RV to stay concentration-neutral "
+            "to the index: long who sets the price, short who pays it."
+        ),
+        "catalysts": [
+            "Micron's 'tightness beyond 2027' guide — confirms the memory-maker pricing power (the long leg)",
+            "Apple/Microsoft hardware price hikes + 15-20% OEM contract resets — the OEM margin squeeze (the short)",
+            "PC -11% / smartphone -13% 2026 shipment forecasts — the volume decline compounding the cost hit",
+            "Q2 OEM earnings (July) — confirmation the input-cost hit is landing on the box-makers' margins",
+        ],
+        "risks": (
+            "The OEMs pass the cost through cleanly and protect margin; a demand recovery lifts hardware volumes; the "
+            "memory cycle rolls over faster than guided and the long leg de-rates. Stop: ratio -4% from entry."
+        ),
+        "breakdown_why": {
+            "gap":          "2/3 — the margin-transfer divergence is real and freshly evidenced, but partly visible in "
+                            "the memory-maker re-rate already.",
+            "catalyst":     "1/2 — the price hikes are dated; the margin impact shows up gradually over Q2 OEM prints.",
+            "positioning":  "2/2 — the crowd is long the AI/memory winners and under-short the OEM casualties.",
+            "confirmation": "1/2 — Micron's blowout and the AAPL/MSFT hikes wrote the first leg; one confirming move.",
+            "stop_quality": "1/1 — a fixed ratio stop (-4%) is a clean, defined failure threshold.",
+        },
+    },
+    "MM-2026-029": {
+        "instrument": (
+            "Buy a 3-month GLD (gold) 3,800/3,500 put spread — defined-risk downside on gold. Buy the 3,800 "
+            "put, sell the 3,500 put. Owns the post-$4,000 continuation with capped premium AND hedges the "
+            "book's underwater gold long (MM-005 / Xetra-Gold). Max loss is the premium."
+        ),
+        "fundamental_thesis": (
+            "Gold broke $4,000 for the first time since November and the structure that broke it is intact: a hawkish "
+            "Fed, a 13-month-high dollar, the Iran de-escalation draining the haven bid, and $2bn of May ETF outflows. "
+            "The book is long gold (MM-005) and the Fable book's Xetra-Gold and cannot add to a falling knife on a "
+            "min-hold — so the disciplined move is to own the CONTINUATION with defined risk, which simultaneously "
+            "hedges the underwater long. A put spread struck below the broken figure pays if the metals rout extends "
+            "toward $3,800-3,500 while capping the cost, the cleanest way to be both long the position and short the "
+            "tail until the min-hold elapses ~Jul 15."
+        ),
+        "catalysts": [
+            "Gold broke $4,000 (Jun 23) — a technical break that tends to extend on momentum + ETF outflows",
+            "13-month-high dollar + hawkish Fed real rates — the macro engine still pointing gold lower",
+            "$2bn May gold-ETF outflows — the spec long unwinding under the price",
+            "A hot payroll Jul 2-3 / firmer real yields — the catalyst that extends the rout",
+        ],
+        "risks": (
+            "A risk-off shock or an Iran-deal fracture revives the haven bid and gold bounces off $4,000; central-bank "
+            "physical buying defends the level; the spread decays. Max loss is the premium."
+        ),
+        "breakdown_why": {
+            "gap":          "2/3 — the broken $4,000 figure + drained twin engines argue for continuation; the "
+                            "central-bank floor is the partial offset.",
+            "catalyst":     "1/2 — the break is dated; payrolls Jul 2-3 is the next discrete real-rates catalyst.",
+            "positioning":  "1/2 — ETF outflows show the spec long leaving, but not yet capitulatory.",
+            "confirmation": "1/2 — the sub-$4,000 break is the confirming move; momentum is one leg old.",
             "stop_quality": "1/1 — defined-risk; the premium is the max loss.",
         },
     },
-    "MM-2026-024": {
+    "MM-2026-030": {
         "instrument": (
-            "Buy a 3-month EUR/USD 1.14/1.12 put spread — defined-risk short EUR / long USD downside. "
-            "Buy the 1.14 put, sell the 1.12 put. Owns the post-Warsh dollar breakout below 100 (DXY) "
-            "with limited premium; max loss is the premium. Complements the spot short MM-012."
+            "Buy an August SPX 7,000/6,600 put spread — the replacement index hedge after MM-008 expires Jun 27. "
+            "Buy the 7,000 put, sell the 6,600 put. Defined-risk downside into the Sep-hike + payrolls + "
+            "AI-inflation tail. Max loss is the premium; the portfolio overlay on a book long AI equities."
         ),
         "fundamental_thesis": (
-            "The dollar broke a figure for the first time since the early Iran war. A hawkish Fed that penciled a hike "
-            "against a paused ECB widened the rate-path asymmetry the EUR/USD short was built on, DXY ripped through "
-            "100 to ~100.5, and EUR/USD sliced through 1.1550. A put spread owns the continuation toward 1.13 with "
-            "defined premium and positive convexity — the same view as the spot short (MM-012) but with capped risk "
-            "into a known two-sided tail (a clean Iran signing is the EUR-supportive risk-on offset). The structure "
-            "is the disciplined way to ADD dollar length after a breakout rather than chase spot at the figure."
+            "The book just banked the FOMC-tail put spread (MM-008) into expiry, and the reasons to carry index "
+            "downside did not expire with it. The S&P sits near 7,357 with the Mag7 already cracking on its own "
+            "supply-chain pricing power; a guidance-less Fed runs into June payrolls Jul 2-3, a quarter-end "
+            "rebalance, and the July 4 EU-tariff deadline, into a tape that has priced the AI rebound as a one-way "
+            "Micron-led melt-up. An August 7,000/6,600 put spread re-establishes the cheap convexity the book wants "
+            "on a 32.2%-Micron, AI-heavy concentration — struck below spot so it costs little, structured for the "
+            "discrete-event vol the guidance vacuum keeps manufacturing, not a chase of at-the-money premium."
         ),
         "catalysts": [
-            "Hawkish Fed vs paused ECB — the rate-path asymmetry now firmly dollar-positive",
-            "DXY breaking 100 — a fresh technical regime that tends to extend",
-            "US data in the guidance vacuum — a firm print extends the dollar",
-            "Iran signing / risk-on — the EUR-supportive offset the defined risk caps",
+            "June payrolls Jul 2-3 — the first labour read in the guidance vacuum, a discrete equity-vol event",
+            "Quarter/half-end rebalance (Jun 29-30) — pension de-risking after a strong Q2 equity run",
+            "July 4 EU-tariff deadline — a re-escalation is a fresh cost-push + risk-off catalyst",
+            "AI-inflation tail — the memory-cost overhang on the Mag7 the index is not pricing",
         ],
         "risks": (
-            "A clean Iran signing sparks broad risk-on and lifts EUR; US data rolls over and the dollar fades the "
-            "breakout; the spread decays. Max loss is the premium."
+            "The Micron-led melt-up extends and the S&P grinds higher into a calm month-end; vol stays crushed and the "
+            "spread decays; payrolls land benign. Max loss is the premium — defined risk."
         ),
         "breakdown_why": {
-            "gap":          "2/3 — the dollar broke 100 and the rate asymmetry widened; the move has room to 1.13.",
-            "catalyst":     "2/2 — the FOMC delivered the catalyst; the dollar regime is fresh and dated.",
-            "positioning":  "2/2 — EUR spec longs near multi-year highs are the unwind fuel.",
-            "confirmation": "2/2 — DXY broke 100, EUR/USD broke 1.1550; confirmed.",
+            "gap":          "2/3 — the index prices the AI rebound as one-way while the Mag7's own input-cost overhang "
+                            "and a guidance-less Fed argue for two-sided risk.",
+            "catalyst":     "2/2 — payrolls Jul 2-3 and the tariff deadline are dated and inside the structure's life.",
+            "positioning":  "1/2 — sentiment re-embraced risk on Micron; complacency is rebuilding, room to fade.",
+            "confirmation": "0/2 — the tape is rallying premarket; no confirming down-leg yet — this is a fresh hedge.",
             "stop_quality": "1/1 — defined-risk; the premium is the max loss.",
-        },
-    },
-    "MM-2026-025": {
-        "instrument": (
-            "Long XLF (financials) / short XLK (technology) — a sector relative-value ratio expressing "
-            "the rotation a hawkish, no-cuts, higher-for-longer Fed drives. Rises when financials "
-            "outperform long-duration tech."
-        ),
-        "fundamental_thesis": (
-            "A higher-for-longer Fed with the cut bias stripped and a 2Y at a one-year high is a sector-rotation "
-            "engine: it lifts financial net-interest margins while it compresses the long-duration tech multiple "
-            "through a higher discount rate. Wednesday wrote the first leg — the Dow fell less than the Nasdaq, and "
-            "Microsoft, Meta, Alphabet and Amazon led the losses while financials held up better. This is the "
-            "rate-regime version of the breadth RV (MM-022): where RSP/QQQ trades concentration, XLF/XLK trades the "
-            "rate sensitivity directly. Long the margin beneficiary, short the multiple casualty — low beta to the "
-            "index level, high beta to the higher-for-longer repricing."
-        ),
-        "catalysts": [
-            "Hawkish Fed, no cuts, 2Y at a one-year high — the NIM tailwind for financials, multiple headwind for tech",
-            "The guidance vacuum — a higher, more volatile rate path that favours rate-sensitive value",
-            "Q2 bank earnings (July) — confirmation the NIM read is translating",
-            "AI-capex / debt overhang — the structural drag on the tech leg",
-        ],
-        "risks": (
-            "A dovish data surprise re-rates tech multiples and the rotation reverses; a credit/growth scare hits "
-            "financials harder than tech; the AI melt-up resumes. Stop: ratio -3% from entry."
-        ),
-        "breakdown_why": {
-            "gap":          "2/3 — the rate-regime divergence between NIM-geared financials and multiple-geared tech "
-                            "is real and freshly widened by the hawkish SEP.",
-            "catalyst":     "1/2 — the rotation is in motion but the broadening is a gradual, multi-session move.",
-            "positioning":  "2/2 — the long-duration-tech long is the most crowded, most rate-sensitive theme in the index.",
-            "confirmation": "1/2 — Wednesday's Dow-over-Nasdaq, tech-led-losses split started it; one confirming leg.",
-            "stop_quality": "1/1 — a fixed ratio stop (-3%) is a clean, defined failure threshold.",
-        },
-    },
-    "MM-2026-026": {
-        "instrument": (
-            "Long Gilts (UK 10-year) — receive UK 10Y / long the long-Gilt future. A rates trade tied to "
-            "today's BoE decision and the soft UK CPI. Pays if Gilt yields fall on a dovish-leaning hold."
-        ),
-        "fundamental_thesis": (
-            "The UK is the one major where the data is undercutting the hawks the same week the US Fed empowered them. "
-            "May CPI came in at 2.8% — unchanged and BELOW the 3.0% consensus, with services and housing softening — "
-            "which weakens the case of the BoE's hawkish dissenters (Pill, Greene) heading into today's noon decision. "
-            "A near-unanimous hold at 3.75% with a soft-CPI, dovish-leaning tone pulls Gilt yields down even as US "
-            "yields back up on Warsh, a clean rate-divergence trade. The asymmetry: the market half-prices the hawkish "
-            "dissent risk, so a hold that leans on the soft print is the under-positioned outcome. Defined catalyst, "
-            "today; a hawkish surprise (more dissents, sticky-services language) is the stop."
-        ),
-        "catalysts": [
-            "BoE decision 12:00 GMT today — a hold at 3.75% is near-unanimous (Reuters poll 65/65)",
-            "Soft UK May CPI (2.8%, below 3.0%) — undercuts the Pill/Greene hawkish-dissent case",
-            "Bailey press conference 12:30 GMT — the tone/vote-split read",
-            "US-UK rate divergence — Gilts rally as US yields back up on Warsh",
-        ],
-        "risks": (
-            "Two-plus hawkish dissents and sticky-services language reprice the BoE hawkish; the transport-led CPI "
-            "components (fuel +6.8%) dominate the tone; a global rate-vol spillover from the US lifts Gilts. Stop: "
-            "UK 10Y +15bp from entry."
-        ),
-        "breakdown_why": {
-            "gap":          "2/3 — the soft CPI vs the half-priced hawkish-dissent risk is a real, dated mispricing.",
-            "catalyst":     "2/2 — the BoE decision and presser are today, direct, Gilt-relevant events.",
-            "positioning":  "1/2 — the market half-prices the dissent risk; modest squeeze fuel on a dovish hold.",
-            "confirmation": "1/2 — the soft CPI is the confirming data; the decision is still pending.",
-            "stop_quality": "1/1 — a +15bp yield stop is a clean, defined level.",
         },
     },
 }
@@ -650,14 +662,14 @@ rates_levels = [
 
 # Per-trade open-book notes (shown in the "yesterday, graded" table).
 NOTES = {
-    "MM-2026-001": "Quiet leg. ECB pause behind it, no forward EUR catalyst; a hawkish-Fed risk-off pressures the commodity AUD too, so the cross is a wash and grinds from ~1.643. Stop 1.662. Hold.",
-    "MM-2026-004": "RESCUED OVERNIGHT. The 10Y backed up to 4.499% at the close, then EASED to ~4.45% — back near the 4.44% entry, ~flat — as the tape began fading the hawkish overshoot. The contrarian case (oil $78 says the Fed's 3.6% forecast is too high) is getting its first confirmation; the front end is cleaner. Do NOT add. Stop 4.65%.",
-    "MM-2026-005": "DID WHAT IT WAS FLAGGED TO DO. Real-rates engine reversed on the hawkish dots (gold -2% to ~$4,275 — 'first hedge to give back'), tested toward the $4,250 stop, HELD, and bounced >$4,300 on Iran. Offside from the $4,523 entry but above stop. Min-hold to ~Jul 15.",
-    "MM-2026-007": "PINNED, NOT PUNISHED. The hawkish Fed widened the differential yet USDJPY held ~160.3 at the MoF line — the short is ~flat, frustrated by crushed carry. Needs vol to break it (a guidance-less Fed is now more likely to). Stop 163.00; defined-risk expression MM-021.",
-    "MM-2026-008": "THE CALL OF THE DAY. The FOMC tail it was held for PAID — S&P to ~7,420 (91pts closer to 7,300) + VIX to 18.44 marked it ~$60 from ~$34 (~+70%). The catalyst passed but a hawkish, no-cuts Fed keeps the de-rating live. Hold the residual convexity into Jun-27 expiry.",
-    "MM-2026-009": "GAVE BACK, STILL THE BEST STRUCTURAL POSITION. Hawkish dots bear-FLATTENED the curve (2Y +16bp vs 10Y +7bp) — spread to ~+28bp from ~+41bp, gain ~+85% from ~+157%. A Fed hiking into an oil-disinflation eventually re-steepens. Min-hold ~Jul 16; stop -10bp.",
-    "MM-2026-012": "VINDICATED. The most-contested leg finally paid — a hawkish Fed vs a paused ECB broke the asymmetry, DXY ripped through 100 to ~100.5, EUR/USD sliced through 1.1550. A fresh dollar regime. Hold toward 1.13; add downside via MM-024. Stop 1.182 (distant).",
-    "MM-2026-013": "THE TRADE THE FED SHOT AT — AND THE OVERNIGHT TAPE CAUGHT. The SEP penciled the 2026 hike the trade faded and the 2Y spiked to a one-year-high 4.216% at the close, but it EASED back to ~4.16% (≈the 4.162% entry) overnight — the position is roughly FLAT, not the loss the dots implied. Held on the oil-disinflation contrarian case (Brent $78 vs the Fed's 3.6%), now with a first confirming fade. Min-hold ~Jul 8; do NOT add. Stop 4.35%.",
+    "MM-2026-001": "DRIFTED OFFSIDE. The Micron-led risk-on rebuilt the commodity-AUD bid even as broad metals collapsed (gold sub-$4k), pushing the cross to ~1.651 — toward the 1.662 stop, not the 1.61 target. Edge has thinned; trim into strength. Stop 1.662 (~11 pips). Tight leash.",
+    "MM-2026-004": "RESCUED, NOW GREEN. The 10Y rallied to ~4.37% from the 4.499% post-FOMC spike — through the 4.44% entry — as the bond market trades the energy disinflation (Brent $74, gold sub-$4k) and the goods slowdown OVER the hot PCE. Contrarian thesis confirming. Harvest, don't press. Stop 4.65% (~28bp).",
+    "MM-2026-005": "THE CASUALTY. Gold BROKE $4,000 (first since Nov), now ~$4,015 — ~-11% from entry, ~-29% from the Jan peak. Both engines drained (hawkish Fed + 13-mo-high dollar + Iran de-escalation + $2bn ETF outflows). BELOW the $4,250 stop but the min-hold (to ~Jul 15) holds it. Hedge via MM-029; NOT an add.",
+    "MM-2026-007": "OFFSIDE, PRESSING THE LINE. USDJPY drifted to ~161.6 past the old 160 pin as the 13-mo-high dollar dragged it up and crushed carry kept the yen unloved. ~-1.5%. Needs a vol shock (payrolls Jul 2-3) to break it. Stop 163.00 (~1.4 pts); defined-risk expression MM-021.",
+    "MM-2026-008": "BANKED into Jun-27 expiry at ~$45 (~+29% from the ~$35 entry). The FOMC-tail hedge did its job — peak ~$60 (+71%). With Micron ripping the tape above the strike zone and one session left, harvested the residual rather than risk it bleeding to zero over the weekend. Replaced by MM-030.",
+    "MM-2026-009": "THE BEST POSITION, RE-STEEPENING. The front end (2Y ~4.09%) rallied harder than the back end on the disinflation bid — spread back toward ~+28bp, gain ~+85% off the +15bp entry. A Fed pricing a hike into a disinflation eventually re-steepens. Min-hold ~Jul 16; trail the stop; stop -10bp.",
+    "MM-2026-012": "VINDICATED, EXTENDING. ~1.138 with DXY at a 13-month high near 101.4 — the dollar breakout has become a durable regime, reinforced by AI-led capital pulling out of crypto/gold into US assets. Hold toward 1.13; add downside via MM-024. Two-sided risk is the Jul 4 EU-tariff deadline. Stop 1.182 (distant).",
+    "MM-2026-013": "RESCUED, NOW GREEN. The 2Y rallied all the way back to ~4.09% — through the 4.162% entry — even into a hot May PCE and 68% Sep-hike odds, as the bond market prices the energy/goods disinflation over the dots. The trade the Fed shot at is paying. Harvest, don't add into payrolls. Min-hold ~Jul 8; stop 4.35% (~26bp).",
 }
 
 # Notes for the closed ledger (keyed by id; falls back to the exit reason).
@@ -735,42 +747,79 @@ staleness = [
     _stale_live("EURAUD", "euraud"),
     _stale_live("DXY", "dxy"),
     _stale_live("VIX", "vix"),
-    {"datum": "MM-008 option mark (model est. from spot — ~$60, S&P ~7,420 + VIX 18.4 lifted it from ~$34)", "source": "Model estimate (no live option feed)", "asof": TODAY, "stale": True},
-    {"datum": "FOMC Jun 17: HELD 3.50-3.75% unanimous; 2026 median dot ~3.8% (from 3.4%) — 9 hike/8 hold/1 cut; cuts trimmed 2->1; inflation raised to 3.6%/3.3%; Warsh the only one of 19 not to submit a dot; statement shortened, cut-bias stripped; 5 task forces.",
-     "source": "Federal Reserve + CNBC + NPR + Yahoo Finance (corroborated)", "asof": "2026-06-17", "stale": False},
-    {"datum": "Wed Jun 17 US close: Dow 51,492.55 (-0.98%, -507.12); S&P 7,420.10 (-1.21%); Nasdaq 26,021.66 (-1.34%); tech led (MSFT/META/GOOGL/AMZN red)",
-     "source": "TheStreet + CNBC (corroborated)", "asof": "2026-06-17", "stale": False},
-    {"datum": "2Y +16bp to 4.216% (1-year high); 10Y +7bp to 4.499%; 2s10s bear-flattened to ~+28bp",
-     "source": "CNBC (corroborated)", "asof": "2026-06-17", "stale": False},
-    {"datum": "DXY broke 100 to ~100.5 (highest since early Iran war); EUR/USD -~60pips through 1.1550 toward 1.1500",
-     "source": "FXStreet (corroborated)", "asof": "2026-06-17", "stale": False},
-    {"datum": "Gold -~2% to ~$4,275 Jun 17 (real-rates engine reversed), held the $4,250 stop, bounced >$4,300 Jun 18 on Iran",
-     "source": "Trading Economics + FXStreet (corroborated)", "asof": "2026-06-18", "stale": False},
-    {"datum": "VIX +12.4% to 18.44 Jun 17 (from 16.41) — the vol re-rating the brief priced; MOVE firmer (est. ~108)",
-     "source": "CBOE (corroborated)", "asof": "2026-06-17", "stale": False},
-    {"datum": "Brent ~$78 (lowest since March) / WTI sub-$76 — war premium draining + a surging dollar weighing on crude",
-     "source": "Trading Economics + NPR (corroborated)", "asof": "2026-06-18", "stale": False},
-    {"datum": "USD/JPY ~160.3 — pinned at the MoF line despite the hawkish-Fed differential widening",
-     "source": "Trading Economics (corroborated)", "asof": "2026-06-18", "stale": False},
-    {"datum": "Iran deal: Trump DECLARED it 'complete' (Truth Social: 'let the oil flow'), authorized toll-free Hormuz reopening + Navy-blockade removal; digital MOU signed — but ships NOT yet sailing (NPR); formal multilateral signing PENDING Fri Jun 19 (Switzerland). 60-day toll-free Hormuz; nuclear to a 60-day negotiation.",
-     "source": "CBS News + NBC News + NPR + The Hill (corroborated)", "asof": "2026-06-18", "stale": False},
-    {"datum": "UK May CPI 2.8% (unchanged, BELOW 3.0% consensus; monthly +0.2%); transport +6.8% (fuel) the hawkish offset; services/housing softening",
-     "source": "ONS (Office for National Statistics)", "asof": "2026-06-17", "stale": False},
-    {"datum": "BoE decision TODAY Jun 18 12:00 GMT — hold at 3.75% near-unanimous (Reuters poll 65/65); watch Pill/Greene hawkish dissents vs the soft CPI; Bailey presser 12:30. PENDING.",
-     "source": "Bank of England + Reuters + ING", "asof": TODAY, "stale": False},
-    {"datum": "Asia Jun 18: Hang Seng / Nikkei sold off on the Fed's hawkish tone",
-     "source": "FXEmpire", "asof": "2026-06-18", "stale": False},
-    {"datum": "JBL (Jabil) reported Jun 17 BMO: EPS 3.16 vs 3.109 est (+1.64% beat), rev $8.751B vs $8.636B est; 13 buy/4 hold/0 sell",
-     "source": "Finnhub (earnings_data.md, sourced)", "asof": "2026-06-17", "stale": False},
-    {"datum": "Note: Fri Jun 19 is Juneteenth — US equity/bond markets CLOSED (same day as the MoU signing; trades Mon Jun 22)",
-     "source": "NYSE holiday calendar", "asof": TODAY, "stale": False},
-    {"datum": "SOFR ~3.62%", "source": "NY Fed (rail)", "asof": "2026-06-17", "stale": True},
+    {"datum": "MM-008 option mark: BANKED into Jun-27 expiry at ~$45 (model est. from spot; +~29% from ~$35 entry, peak ~$60)", "source": "Model estimate (no live option feed)", "asof": TODAY, "stale": True},
+    {"datum": "Micron FY-Q3 (Jun 24 AMC): revenue $41.456B (vs ~$36.9B est); adj EPS $25.11 vs $21.40 (+17.3%); CEO 'tightness locked in beyond 2027'; 51 buy/3 hold/1 sell",
+     "source": "TheStreet + CNBC + Finnhub (corroborated)", "asof": "2026-06-24", "stale": False},
+    {"datum": "Apple/Microsoft price hikes (Jun 25): Apple Mac/iPad up to +$300 (MacBook Air $1,099->$1,299); MSFT Xbox +$100-150 from Aug 1; both cite AI-DRAM shortage; memory +98% in 2026; data centres ~70% of world output",
+     "source": "Euronews + Al Jazeera + CBS + CBC (corroborated)", "asof": "2026-06-25", "stale": False},
+    {"datum": "Thu Jun 25 US close: Dow 51,920.62 (+0.14%); S&P 7,357.49 (-0.01%); Nasdaq 25,358.60 (-0.46%, 4th down day) — Apple/Microsoft led the Mag7 lower; Jun 26 premkt ES +0.78%, NQ +2.15%",
+     "source": "TheStreet + CNBC (corroborated)", "asof": "2026-06-25", "stale": False},
+    {"datum": "May PCE: headline 4.1% (highest since Apr 2023), core 3.4% (since Oct 2023), m/m +0.4%/+0.3%, in line — Iran-war-gasoline-driven backward May reading",
+     "source": "BEA + CBS + CNBC + Trading Economics (corroborated)", "asof": "2026-06-25", "stale": False},
+    {"datum": "Yields FELL despite the hot PCE: 2Y ~4.09% (from 4.22% Jun 18), 10Y ~4.37% (from 4.50%), 2s10s ~+28bp re-steepening — the disinflation/safe-haven bid",
+     "source": "CNBC + TradingView (corroborated)", "asof": TODAY, "stale": False},
+    {"datum": "Gold BROKE $4,000 (Jun 23, first since Nov), now ~$4,015 — -29% from the Jan $5,608 peak; hawkish Fed + 13-mo-high dollar + Iran de-escalation + $2bn May ETF outflows",
+     "source": "Bloomberg + Yahoo Finance + CNBC (corroborated)", "asof": "2026-06-25", "stale": False},
+    {"datum": "Sep hike odds ~68-70% (from 29% a week ago); BofA sees 3 hikes to 4.25-4.5%; JPM dissents (on hold); 17 of 18 see inflation risk to upside",
+     "source": "Fortune + TradingKey + Yahoo Finance (corroborated)", "asof": "2026-06-25", "stale": False},
+    {"datum": "Brent ~$74.7 (+~2% Jun 25) / WTI ~$70 — US-Iran Geneva talks ABRUPTLY POSTPONED (Jun 19) on the nuclear file; Hormuz flows fastest since the war; Saudi/Qatar resuming exports",
+     "source": "CNBC + Al Jazeera (corroborated)", "asof": "2026-06-25", "stale": False},
+    {"datum": "DXY ~101.4 (13-month high); EUR/USD ~1.138; Bitcoin broke <$60k (~$59,334), lowest since 2024 — money rotating out of crypto/gold into AI equity",
+     "source": "FXStreet + Yahoo Finance (corroborated)", "asof": "2026-06-25", "stale": False},
+    {"datum": "DRAM/memory: data centres ~70% of world memory in 2026 (vs 20-30% in 2022); DRAM ~doubled since early 2025; consumer RAM +110% Q1; PC shipments -11.3%, smartphones -12.9%; Dell/HP/Lenovo 15-20% hikes",
+     "source": "IEEE Spectrum + IDC + TrendForce (corroborated)", "asof": "2026-06-25", "stale": False},
+    {"datum": "Europe Jun 25: DAX +1.03% to ~24,995; FTSE ~10,530. Japan: Nikkei off its 72,831 (Jun 22) peak; BoJ at 1.00%, June Summary of Opinions favoured continued hikes",
+     "source": "Trading Economics + Yahoo Finance (corroborated)", "asof": "2026-06-25", "stale": False},
+    {"datum": "Tariffs: Trump's deadline for the EU to ratify or autos->25% is Jul 4; Bessent flags tariffs could return to prior levels early July; Section 301 China deadlines Jun 24-Aug 22. PENDING.",
+     "source": "CNN + Congress.gov + Reuters", "asof": TODAY, "stale": False},
+    {"datum": "FedEx (Jun 23 AMC): EPS 6.31 vs 6.02 (+4.78%); JEF (Jun 24) 1.03 vs 1.17 (miss); SNX (Jun 25) 4.85 vs 4.18 (beat)",
+     "source": "Finnhub (earnings_data.md, sourced)", "asof": "2026-06-25", "stale": False},
+    {"datum": "Ahead: May PCE + UMich TODAY; quarter/half-end Jun 29-30 + China PMI; ISM Mfg Jul 1; June PAYROLLS Jul 2-3; EU-tariff deadline Jul 4. PENDING.",
+     "source": "BLS + ISM + market calendar", "asof": TODAY, "stale": False},
+    {"datum": "SOFR ~3.62%", "source": "NY Fed (rail)", "asof": "2026-06-25", "stale": True},
 ]
 
 earnings_ideas = [
     {
-        "ticker": "JBL", "company": "Jabil Inc",
-        "report_date": "2026-06-17", "report_timing": "BMO",
+        "ticker": "MU", "company": "Micron Technology Inc",
+        "report_date": "2026-06-24", "report_timing": "AMC",
+        "mode": "POST-EARNINGS", "direction": "Neutral",
+        "conviction_score": 6, "conviction_label": "High — data gap flagged",
+        "conviction_rationale": ("The asymmetry is real and attributable to the data: a +17.3% EPS beat with a CEO "
+                                 "guide of memory tightness 'locked in beyond 2027' confirms the supercycle — but the "
+                                 "stock reaction/implied move are unverified and the book is already a 32.2% holder, so "
+                                 "the actionable edge is to MANAGE the concentration (collar), capping the label at "
+                                 "High-gap and the direction at Neutral rather than a fresh add."),
+        "research_conflict": False,
+        "pillars": {"asymmetry": 2, "consensus": 2, "catalyst": 2, "positioning": 0},
+        "pillar_confidence": {"asymmetry": "sourced", "consensus": "sourced",
+                              "catalyst": "sourced", "positioning": "unverified"},
+        "reaction_tag": "OVERBOUGHT",
+        "eps_actual": 25.11, "eps_estimate": 21.40, "eps_surprise_pct": 17.34,
+        "stock_reaction_pct": None, "implied_upside_to_pt": None,
+        "key_bullets": [
+            "Reported Jun 24 AMC: revenue $41.456B (vs ~$36.9B est) and adjusted EPS $25.11 vs $21.40 (+17.3%), the "
+            "fourth straight large beat; CEO Mehrotra: memory tightness 'locked in to persist beyond calendar 2027.' "
+            "Finnhub/TheStreet-sourced.",
+            "The supercycle is confirmed, not contested — HBM sold out into the AI build-out, with semis surging "
+            "after-hours and the Jun 26 premarket ripping (NQ +2.15%). Sell side 51 buy / 3 hold / 1 sell.",
+            "But the same DRAM shortage repriced consumer hardware (Apple +$300, MSFT +$150) — MU is both the supercycle "
+            "winner and the cause of a cost-push. The book holds 32.2%; stock reaction / implied move unverified, so "
+            "the positioning pillar scores 0 and the play is to collar, not chase.",
+        ],
+        "what_moves_it": ("Now it is concentration management, not the print. A confirmed blowout on a 32.2% book "
+                          "position means the risk question dominates: post-print IVol is rich, the cheapest moment to "
+                          "collar and bank the supercycle gain. Bull: tightness beyond 2027 extends the run; bear: an "
+                          "AI-capex wobble or the silicon-inflation backlash hits a third of the book at once."),
+        "client_talking_point": ("Micron blew out — EPS $25.11 vs $21.40, tightness locked in beyond 2027 — and it's "
+                                 "the book's biggest position. The move now isn't to add; it's to collar it and bank "
+                                 "the gain while option premiums are rich. The same shortage that gave Micron a record "
+                                 "quarter is the one raising MacBook and Xbox prices — a third of the book on one name "
+                                 "into that story is a risk question first."),
+    },
+    {
+        "ticker": "FDX", "company": "FedEx Corp",
+        "report_date": "2026-06-23", "report_timing": "AMC",
         "mode": "POST-EARNINGS", "direction": "Neutral",
         "conviction_score": 4, "conviction_label": "Medium conviction",
         "conviction_rationale": None,
@@ -779,26 +828,25 @@ earnings_ideas = [
         "pillar_confidence": {"asymmetry": "sourced", "consensus": "sourced",
                               "catalyst": "estimated", "positioning": "unverified"},
         "reaction_tag": "FAIRLY PRICED",
-        "eps_actual": 3.16, "eps_estimate": 3.109, "eps_surprise_pct": 1.64,
+        "eps_actual": 6.31, "eps_estimate": 6.02, "eps_surprise_pct": 4.78,
         "stock_reaction_pct": None, "implied_upside_to_pt": None,
         "key_bullets": [
-            "Reported Jun 17 BMO: EPS 3.16 vs 3.109 consensus (+1.64% beat) on revenue $8.751B vs $8.636B est — a "
-            "modest, fifth straight beat (prior four: 6.2%, 4.52%, 11.46%, 9.3%). Finnhub-sourced.",
-            "The read-through held: the Intelligent-Infrastructure / AI-data-center segment cleared the number the "
-            "morning before the hawkish Fed, evidence the build-out demand survived the early-June semis de-risk. "
-            "Sell side 13 buy / 4 hold / 0 sell (period 2026-06-01).",
-            "But the print is now overshadowed by the macro: a +1.64% beat is a small asymmetry, and the reaction was "
-            "swamped by the FOMC repricing (a higher discount rate compresses the whole AI-infra cohort). Stock "
-            "reaction and short interest unverified — positioning pillar scores 0.",
+            "Reported Jun 23 AMC: EPS 6.31 vs 6.022 consensus (+4.78% beat) on revenue $25.0B vs $24.3B est — the "
+            "global-freight read on goods demand. Finnhub-sourced; sell side 21 buy / 10 hold / 2 sell.",
+            "Constructive: the goods cycle is not collapsing even as PC/phone volumes slide on the memory shortage — a "
+            "modest beat that argues against an imminent goods-demand cliff.",
+            "But a +4.78% beat into a tape already trading the energy/goods disinflation is no fresh asymmetry, and the "
+            "tariff/cost picture (Jul 4 EU deadline) clouds the forward read. Stock reaction / short interest "
+            "unverified — positioning pillar scores 0.",
         ],
-        "what_moves_it": ("Now it is the rate path, not the print. A modest beat into a hawkish-Fed tape means the "
-                          "multiple, not the quarter, drives the stock — a higher-for-longer discount rate caps the "
-                          "AI-infrastructure re-rating the clean guide would otherwise earn. Bull: the build-out read "
-                          "carries the cohort; bear: rates compress it regardless of the beat."),
-        "client_talking_point": ("Jabil beat again — its fifth straight, EPS 3.16 vs 3.11 — and the AI-infrastructure "
-                                 "read held, which is the constructive signal under the noise. But it printed into a "
-                                 "hawkish Fed that just penciled a hike, so the rate path is now doing more to the "
-                                 "stock than the quarter. We are neutral: good company, wrong week for a small beat."),
+        "what_moves_it": ("The forward goods-demand and tariff guide, not the beat. FedEx is the bellwether on whether "
+                          "the consumer/goods cycle is slowing into higher-for-longer; a soft forward tone reinforces "
+                          "the disinflation read the rate longs ride, a firm one argues the goods slowdown is memory- "
+                          "specific, not broad."),
+        "client_talking_point": ("FedEx beat — EPS 6.31 vs 6.02 — which says the goods economy isn't falling off a "
+                                 "cliff even with PC and phone volumes sliding on the chip shortage. But it's a modest "
+                                 "beat into a tape already pricing disinflation, so we're neutral: a useful read on the "
+                                 "cycle, not a fresh trade."),
     },
 ]
 
@@ -815,694 +863,709 @@ brief = {
     "idea_rsi_data": idea_rsi_data,
 
     "dominant_theme": (
-        "HE DID BOTH. Warsh's first FOMC resolved into the one outcome almost no one positioned for: a HAWKISH SEP "
-        "(2026 median dot ~3.8% from 3.4%, 9 of 18 see a hike, cuts trimmed 2->1, inflation raised to 3.6%/3.3%) AND "
-        "a dismantled framework (he alone of 19 submitted no dot, the statement was shortened, the cut bias stripped, "
-        "five task forces stood up). The tape repriced hawkish: S&P -1.21% to 7,420, Nasdaq -1.34%, the 2Y +16bp to a "
-        "one-year-high 4.216%, DXY through 100, gold -2% then a bounce on Iran, VIX +12% to 18.44. The book's calls "
-        "graded out: long vol (MM-020) and the put spread (MM-008) won, gold gave back exactly as flagged, the short "
-        "EUR/USD finally paid, and the discipline of not adding into the print kept the duration give-back to a "
-        "give-back. Now the collision: a Fed that just raised its inflation forecast to 3.6% in the same week Brent "
-        "broke $78 on the Iran deal. Today is the first test of a guidance-less Fed — the BoE holds into a soft UK "
-        "CPI, and every US print is now its own vol event. Friday is Juneteenth; the Iran signing trades Monday."
+        "THE AI TRADE BECAME THE INFLATION TRADE. Micron's blowout (FY-Q3 EPS $25.11 vs $21.40, rev $41.5bn, tightness "
+        "'locked in beyond 2027') and the consumer price shock that landed the same 48 hours — Apple +$300 on Macs/"
+        "iPads, Microsoft +$100-150 on Xbox, both blaming the AI-DRAM shortage (memory +98% in 2026, data centres eat "
+        "~70% of world output) — are the SAME event. The Mag7 fell on its own supply chain's pricing power: Nasdaq "
+        "-0.46% to 25,358.60, S&P flat at 7,357.49, Dow +0.14% to 51,920.62. May PCE printed hot (4.1%/3.4% core), but "
+        "it is a backward May reading on Iran-war gasoline — energy has since collapsed (Brent $74, gold broke $4,000, "
+        "-29% from the Jan peak). The composition of inflation flipped: energy push reversing, silicon push beginning. "
+        "Yet yields FELL (2Y to 4.09%, 10Y to 4.37%) — the bond market trades the disinflation over the dots, rescuing "
+        "the rate longs (steepener ~+85%). The dollar at a 13-month high vindicates short EUR/USD; gold is the casualty "
+        "(~-11%); the SPX put spread is banked into expiry. Today PCE + UMich; payrolls Jul 2-3 is the next test."
     ),
 
     "summary_narrative": """
-<p>The event the entire tape was built around resolved, and the new chair did the one thing almost no one was
-positioned for: <strong>both</strong>. The FOMC held at 3.50&ndash;3.75% unanimously, but the projections turned
-hawkish &mdash; the 2026 median dot jumped to roughly <strong>3.8% from 3.4%</strong> in March, nine of eighteen
-officials now see a hike this year, the 2026 cut count was trimmed from two to one, and the inflation forecast was
-<strong>raised to 3.6% headline and 3.3% core</strong> from 2.7%. And Warsh dismantled the framework around it: he
-was the only one of nineteen officials not to submit a dot, the statement was sharply shortened with the cut-bias
-language stripped, and he stood up five task forces to overhaul communications and the balance sheet. A Fed that is
-hawkish and opaque at once. (Federal Reserve, CNBC, NPR.)</p>
+<p>The AI bull story and the inflation story stopped being two stories. Micron printed a blowout after the close on
+Wednesday &mdash; fiscal-Q3 revenue of <strong>$41.5bn</strong> and adjusted EPS of <strong>$25.11</strong> against
+a $21.40 estimate, with CEO Sanjay Mehrotra telling the Street memory tightness is &ldquo;locked in to persist beyond
+calendar 2027.&rdquo; The same forty-eight hours, Apple raised Mac and iPad prices by up to <strong>$300</strong> and
+Microsoft put the Xbox up <strong>$100&ndash;150</strong>, and both named the cause outright: the AI-data-center DRAM
+shortage, with memory prices up 98% this year as the hyperscaler build-out now consumes roughly seventy percent of
+the world's memory output. The boom printing Micron's record quarter is the same shortage forcing a $200 MacBook
+price rise. (TheStreet, CNBC, Euronews, Al Jazeera.)</p>
 
-<p>The tape repriced hard. The Dow fell 0.98% to 51,492.55, the S&amp;P 500 dropped 1.21% to 7,420.10, and the
-Nasdaq Composite fell 1.34% to 26,021.66 &mdash; tech led the losses, with Microsoft, Meta, Alphabet and Amazon all
-red, as a higher-for-longer path compressed the long-duration multiple. The 2Y yield <strong>rocketed sixteen basis
-points to 4.216%</strong>, its highest in over a year; the 10Y rose seven to 4.499%; the curve bear-flattened to
-roughly +28bp. The dollar broke a figure &mdash; DXY ripped through <strong>100</strong> to ~100.5, its highest
-since the early days of the Iran war, and EUR/USD sliced sixty pips through 1.1550 toward 1.1500. (TheStreet,
-FXStreet.)</p>
+<p>So the Mag7 fell on its own supply chain's pricing power. The Nasdaq slipped <strong>0.46% to 25,358.60</strong>,
+the S&amp;P closed essentially flat at <strong>7,357.49</strong>, and the Dow rose 0.14% to 51,920.62 &mdash; Apple
+and Microsoft led the decline even as Micron's results lit the broader semis tape (the futures ripped overnight, ES
++0.78%, NQ +2.15%). Decompose the May PCE that frames the macro: headline <strong>4.1%</strong>, the highest since
+April 2023, core <strong>3.4%</strong>, the highest since October 2023. The consensus reads it as broad validation
+of Warsh's hawkish dots. The anatomy says it is a backward-looking May number built on the Iran-war gasoline spike,
+and energy has since collapsed &mdash; Brent sits at $74 and gold broke $4,000 for the first time since November,
+down 29% from its January peak. (CBS, CNBC, Bloomberg.)</p>
 
-<p>The book's own calls graded out exactly as written. The long-vol idea (MM-020) and the SPX put spread (MM-008)
-were the winners as VIX jumped 12% to <strong>18.44</strong>; gold did precisely what it was flagged to do &mdash;
-reversed 2% on the hawkish dots as &ldquo;the first hedge to give back,&rdquo; tested toward its $4,250 stop, held,
-and bounced above $4,300 Thursday on the Iran headlines; the duration longs and the steepener gave back, but the
-discipline of not adding into the print kept the damage to a give-back, not a loss. The most-contested leg &mdash;
-short EUR/USD &mdash; finally paid as the dollar broke 100. (CBOE, Trading Economics.)</p>
+<p>The composition of inflation just flipped under the headline. The energy push is reversing hard while a silicon
+push is only beginning &mdash; and one of those is a relative-price shock the Fed cannot cut its way out of, because
+hiking rates does not make HBM wafers. That is why the bond market and the Fed are now openly disagreeing: despite a
+hot PCE and September-hike odds near <strong>68%</strong> (from 29% a week ago), the 2Y eased to ~4.09% and the 10Y
+to ~4.37%, with the tape trading the energy disinflation and the goods slowdown (PC shipments down 11%, smartphones
+down 13% on the same shortage) over the dots. (Trading Economics, Fortune, CNBC.)</p>
 
-<p>Oil kept falling into all of it. Brent fell toward <strong>$78</strong>, its lowest since March, and WTI below
-$76, as Trump declared the Iran deal &ldquo;complete,&rdquo; posted &ldquo;let the oil flow,&rdquo; and authorized
-the toll-free reopening of Hormuz and the removal of the Navy blockade &mdash; yet the ships are not actually
-sailing, and the formal multilateral signing is still <strong>pending Friday</strong> in Switzerland. That is the
-collision that defines the next forty-eight hours: a Fed that just raised its inflation forecast to 3.6% in the same
-week oil broke $78 on a peace deal. One of them is wrong about the next six months. (CBS News, NBC News, NPR.)</p>
+<p>The book caught the disagreement on the right side. The duration longs (MM-004/013) are green for the first time
+in weeks and the 2s10s steepener (MM-009) sits near <strong>+85%</strong>; the dollar at a 13-month high vindicated
+the short EUR/USD (MM-012). The casualties are on the disinflation side: the gold long (MM-005) broke $4,000 and sits
+~-11%, held on its min-hold to ~July 15, and the SPX put spread (MM-008) that paid the FOMC tail is banked into
+tomorrow's expiry at roughly +29%. The posture is two-sided and re-pointed: harvest the rate winners rather than
+press them, hedge the underwater gold with defined risk, and own the silicon-inflation the market is mistaking for
+disappearing inflation.</p>
 
-<p>Today is the first test of a Fed with no guidance. The Bank of England holds at noon London into a soft UK CPI
-(May 2.8%, below the 3.0% consensus), and US jobless claims and the Philly Fed land into a market that now treats
-every print as its own volatility event &mdash; the structurally higher vol floor is no longer a forecast, it printed
-at 18.44. The posture stays two-sided: the winners are banked or held, the duration longs are flagged offside but
-inside their stops and min-holds, and the fresh ideas own the new regime &mdash; rate vol, the dollar breakout, the
-financials-over-tech rotation &mdash; not a fight with it. Friday is Juneteenth; US markets are closed, so the Iran
-signing trades Monday.</p>
+<p>The week ahead is the test. May PCE is on the tape today alongside the final-June sentiment read; then a
+quarter-and-half-end on Monday and Tuesday with the pension-rebalance flows that follow a strong Q2 equity run, ISM
+manufacturing on Wednesday, and June payrolls on July 2&ndash;3 &mdash; the first labour read in the guidance vacuum,
+days before the July 4 EU-tariff deadline. The regime is no longer &ldquo;higher-for-longer because Warsh says so.&rdquo;
+It is higher-for-longer because the boom everyone is long just became the thing keeping core goods sticky.</p>
 """,
 
     "takeaways": [
-        "<strong>Warsh did both &mdash; hawkish dots AND no guidance.</strong> The FOMC held 3.50-3.75% unanimously, "
-        "but the SEP turned hawkish: the 2026 median dot jumped to ~3.8% (from 3.4%), 9 of 18 see a hike, cuts were "
-        "trimmed 2->1, and inflation forecasts were raised to 3.6%/3.3%. Warsh alone of 19 submitted no dot, shortened "
-        "the statement, stripped the cut bias, and launched 5 task forces. (Fed, CNBC, NPR.)",
+        "<strong>The AI trade became the inflation trade.</strong> Micron's blowout (FY-Q3 EPS $25.11 vs $21.40, "
+        "tightness 'locked in beyond 2027') and the consumer price shock that landed the same 48 hours &mdash; Apple "
+        "+$300 on Macs/iPads, Microsoft +$100-150 on Xbox, both blaming the AI-DRAM shortage &mdash; are the same "
+        "event. Memory prices are up 98% in 2026; data centres eat ~70% of world output. (TheStreet, CNBC, Euronews.)",
 
-        "<strong>The tape repriced hawkish across every asset.</strong> S&amp;P -1.21% to 7,420.10, Nasdaq -1.34% to "
-        "26,021.66 (tech led: MSFT/META/GOOGL/AMZN red); the 2Y +16bp to a one-year-high 4.216%; the 10Y to 4.499%; "
-        "the curve bear-flattened to ~+28bp; DXY broke 100 to ~100.5. The hawkish-dots bear case the brief flagged at "
-        "20% is what printed. (TheStreet, FXStreet.)",
+        "<strong>The Mag7 fell on its own supply chain's pricing power.</strong> Nasdaq -0.46% to 25,358.60, S&amp;P "
+        "flat at 7,357.49, Dow +0.14% to 51,920.62, with Apple and Microsoft leading the decline &mdash; even as "
+        "Micron's print lit the broader semis tape and the futures ripped overnight (ES +0.78%, NQ +2.15%). The cohort "
+        "is both the cause of the shortage and a victim of its cost. (TheStreet, CNBC.)",
 
-        "<strong>The book's calls graded out.</strong> Long vol (MM-020) and the SPX put spread (MM-008, ~+70% to "
-        "~$60) were the winners as VIX jumped 12% to 18.44. Gold reversed 2% to ~$4,275 exactly as flagged ('first "
-        "hedge to give back'), held the $4,250 stop, and bounced on Iran. Short EUR/USD (MM-012) finally paid. The "
-        "duration give-back was contained by not adding into the print. (CBOE.)",
+        "<strong>Decompose the hot PCE.</strong> May PCE printed 4.1% headline (highest since Apr 2023) and 3.4% core "
+        "(since Oct 2023) &mdash; but it is a backward May reading driven by Iran-war gasoline, and energy has since "
+        "collapsed (Brent $74, gold broke $4,000, -29% from the Jan peak). The inflation composition flipped: energy "
+        "push reversing, silicon push beginning. The latter is the one the Fed can't cut its way out of. (CBS, CNBC.)",
 
-        "<strong>The collision: a 3.6% inflation forecast vs $78 oil.</strong> The Fed raised its inflation outlook to "
-        "3.6% the same week Brent broke $78 on the Iran deal. The bond market sold off on the dots; the oil tape says "
-        "the Fed is tightening into a disinflation. One of them is wrong about the next six months &mdash; and that is "
-        "the live tension in the duration longs (MM-013/004), held on the oil-disinflation contrarian case. (Trading "
-        "Economics, NPR.)",
+        "<strong>The bond market is fighting the Fed &mdash; and the book is on its side.</strong> Despite the hot PCE "
+        "and 68% Sep-hike odds (from 29%), the 2Y eased to ~4.09% and the 10Y to ~4.37%, trading the energy/goods "
+        "disinflation over the dots. That rescued the rate longs: the 2s10s steepener (MM-009) ~+85%, and the duration "
+        "longs (MM-004/013) are green for the first time in weeks. Harvest, don't press. (CNBC, Fortune.)",
 
-        "<strong>The guidance vacuum is the structural trade.</strong> A Fed with no forward path hands the term "
-        "premium back to the market &mdash; the 10Y backed up on a 'hold,' and rate vol (MOVE) is the cleaner read "
-        "than equity vol. Every data point is now its own catalyst. The fresh expression is long rates vol (MM-023); "
-        "the Burry tell of a permanently higher vol floor just printed at 18.44.",
+        "<strong>Gold is the casualty; the dollar is the winner.</strong> Gold broke $4,000 (first since November) on "
+        "a hawkish Fed, a 13-month-high dollar, the Iran de-escalation and $2bn of May ETF outflows &mdash; the book's "
+        "long (MM-005) sits ~-11%, held on its min-hold. The same dollar regime vindicated short EUR/USD (MM-012); "
+        "money is rotating out of crypto (BTC sub-$60k) and metals into AI equity. (Bloomberg, Yahoo.)",
 
-        "<strong>The dollar broke 100 &mdash; a fresh regime.</strong> DXY through the figure to ~100.5 (highest since "
-        "the early Iran war) on the hawkish Fed vs a paused ECB is a technical breakout, not a spike. Short EUR/USD "
-        "(MM-012) is vindicated; the defined-risk way to add is a EUR/USD 1.14/1.12 put spread (MM-024). A higher-for-"
-        "longer Fed also rotates financials over long-duration tech (MM-025).",
+        "<strong>The silicon-inflation is the unpriced trade.</strong> The market reads the oil collapse as clean "
+        "disinflation and is pulling front-end breakevens down &mdash; but DRAM +98% and a 15-25% consumer-hardware "
+        "repricing feed core goods for quarters. Long 2Y breakevens (MM-027) owns the inflation the curve is mistaking "
+        "for disappearing; it is the inflation hedge a book long both duration and the AI complex otherwise lacks.",
 
-        "<strong>The Iran peace is declared, not signed.</strong> Trump called the deal 'complete' and authorized "
-        "Hormuz's toll-free reopening, but the ships are not sailing and the formal signing is pending Friday in "
-        "Switzerland &mdash; on Juneteenth, with US markets closed. Israel remains the live wildcard. The asymmetry of "
-        "a deal that slips &mdash; Brent back toward $90+ &mdash; is large, unpriced, and trapped behind the holiday "
-        "until Monday. (CBS, NBC, NPR.)",
+        "<strong>The book banked the FOMC hedge and re-set the downside.</strong> The SPX put spread (MM-008) that "
+        "paid the FOMC tail is banked into tomorrow's expiry (~+29%); the replacement is a fresh August 7,000/6,600 "
+        "put spread (MM-030) for the payrolls + quarter-end + AI-inflation tail. The other priority: collar the 32.2% "
+        "Micron AFTER the blowout to lock the gain, rather than ride a third of the book naked into the next print.",
     ],
 
     "scenarios": [
         {"kind": "bull", "label": "Bull", "pct": "30%",
-         "headline": "The hawkish repricing was a one-day overshoot — soft data + oil pull it back",
-         "body": "Today's jobless claims/Philly Fed come soft, the Iran deal holds, and the market fades the "
-                 "hawkish-dot overshoot: the 2Y eases back from 4.22%, the dollar consolidates below 100.5, gold "
-                 "extends its Iran bounce, and equities stabilise as the rotation broadens (RSP/financials lead). The "
-                 "duration longs (MM-013/009) recover and the oil-disinflation argues the Fed's 3.6% forecast was the "
-                 "overshoot. Risk up (broad) · rates down · dollar soft · oil down · gold up."},
+         "headline": "Energy disinflation wins — the bond market is right, the front end rallies on",
+         "body": "The silicon-inflation proves slow and narrow, the energy/goods disinflation dominates, and a soft "
+                 "June payroll (Jul 2-3) prices OUT the Sep hike: the 2Y extends below 4.05%, the curve re-steepens "
+                 "toward +40bp (MM-009/004/013 keep working), the dollar consolidates off its 13-month high, and the "
+                 "AI rebound broadens beyond memory. Gold stabilises near $4,000 as real yields ease. Risk up · rates "
+                 "down · dollar soft · oil soft · gold base."},
         {"kind": "base", "label": "Base", "pct": "50%",
-         "headline": "Higher-for-longer holds — rate vol elevated, dollar firm, rotation continues",
-         "body": "The hawkish repricing sticks: the 2Y holds ~4.15-4.25%, the dollar consolidates its break of 100, "
-                 "rate vol (MOVE) stays bid in the guidance vacuum, and the rotation out of long-duration tech into "
-                 "financials grinds on (MM-025/022). Each data print is a discrete vol event; equities chop sideways "
-                 "with a lower ceiling. Gold's two engines offset. Risk mixed · rates steady-to-firm · dollar firm · "
-                 "oil soft · gold flat · VIX/MOVE elevated."},
+         "headline": "The bifurcation holds — sticky core goods, soft energy, range-bound rates",
+         "body": "The composition split persists: energy and metals keep disinflating (Brent ~$74, gold sub-$4k) while "
+                 "DRAM-driven core goods stay sticky, leaving the 2Y range-bound ~4.05-4.20% and the Fed pinned at a "
+                 "hawkish hold without the data to hike cleanly. Breakevens grind up on the silicon-push (MM-027), the "
+                 "dollar stays firm, and equities chop with the AI complex bid but the broad index capped by the "
+                 "memory-cost overhang. Risk mixed · rates steady · dollar firm · oil soft · breakevens up."},
         {"kind": "bear", "label": "Bear", "pct": "20%",
-         "headline": "The hawkish repricing extends OR the Iran deal fractures pre-signing",
-         "body": "Hot claims/Philly Fed or hawkish Fed-speak confirm the hike and the 2Y runs to the 4.35% stop, the "
-                 "dollar accelerates, AI multiples compress further and the S&amp;P retraces toward 7,200-7,000 where "
-                 "the put spreads (MM-008) pay; AND/OR Israel fractures the deal before Friday and Brent snaps back "
-                 "toward $90+, reversing the disinflation read into a hawkish-Fed-plus-oil-spike squeeze. Risk down · "
-                 "rates up · dollar up · oil up · gold mixed."},
+         "headline": "The silicon-inflation validates the hike — core re-accelerates, the front end backs up",
+         "body": "The 15-25% hardware repricing and DRAM +98% bleed into core PCE, a hot June payroll fully prices the "
+                 "Sep hike, and the 2Y runs to the 4.35% stop (pressuring MM-013): the curve bear-flattens, AI "
+                 "multiples compress on the higher discount rate AND the input-cost squeeze, and the S&amp;P retraces "
+                 "toward 7,000 where the fresh put spread (MM-030) pays. A July 4 EU-tariff re-escalation adds a second "
+                 "cost-push. Risk down · rates up · dollar up · breakevens up."},
     ],
 
     "insights_layers": """
-<p>The dominant driver this morning is a single repricing: the market spent two weeks debating whether the dots would
-arrive, and the new chair delivered hawkish dots and then dismantled the framework that produces them. A unanimous
-hold became a hawkish event because the projections did the work &mdash; the 2026 median dot up to roughly 3.8%, the
-inflation forecast lifted to 3.6%, the cut bias stripped &mdash; and the 2Y rocketing to a one-year high is the
-market pricing a September hike it did not believe a week ago. The non-consensus read is that the more important
-change is the one with no number on it: a Fed that no longer pre-commits a path is a structurally higher-vol Fed, and
-the cleanest expression of that is not a rates direction but rate volatility itself (MM-023).</p>
+<p>The dominant driver this morning is a relative-price shock the market is still filing under two separate headlines.
+Micron's record quarter and the Apple/Microsoft hardware price hikes are the same event: the AI build-out now consumes
+roughly seventy percent of the world's memory output, DRAM is up 98% this year, and that shortage is simultaneously
+printing Micron's $25 EPS and forcing a $200 MacBook price rise. The non-consensus read is that the AI trade has
+quietly become an inflation trade &mdash; the boom everyone is long is the thing keeping core goods sticky &mdash; and
+the cleanest expression is not a chase of the leaders but ownership of the inflation the curve is mistaking for
+disappearing (long 2Y breakevens, MM-027).</p>
 
-<p>The counter-intuitive hook is the collision the same week produced. The Fed raised its inflation forecast to 3.6%
-&mdash; its most hawkish signal &mdash; in the very days Brent broke $78 on a peace deal, the most disinflationary
-macro force on the board. Consensus is treating the hawkish Fed as the new regime and selling duration into it;
-twenty-four hours of falling oil says the Fed is tightening into a disinflation it has not yet acknowledged. The
-headline says higher-for-longer; the oil tape says the 3.6% number is backward-looking. One of them is wrong about
-the next two quarters, and that gap is exactly why the duration longs are held, not folded, even offside.</p>
+<p>The counter-intuitive hook is the composition flip hiding inside a hot number. May PCE printed 4.1% headline and
+3.4% core, and the consensus reads it as broad validation of Warsh's hawkish dots. But that is a backward-looking May
+reading driven by the Iran-war gasoline spike, and energy has since collapsed &mdash; Brent $74, gold through $4,000.
+The inflation impulse is not ending; it is changing source, from an energy push that is reversing to a silicon push
+that is only beginning. The first is disinflationary from here; the second is the one monetary policy cannot fix,
+because a higher funds rate does not add HBM capacity.</p>
 
 <p>Now the gap between real economy, what is priced, and the consensus narrative. <strong>Real economy:</strong>
-Brent at $78, a soft UK CPI at 2.8%, gold holding its floor, the AI-capex cycle funded increasingly by debt.
-<strong>What is priced:</strong> a 2Y at a one-year high pricing a September hike, a dollar through 100, and a VIX
-re-rated to 18.4 that now respects event risk. <strong>Consensus narrative:</strong> &lsquo;Warsh is a hawk and the
-Fed is higher-for-longer, full stop.&rsquo; The gap &mdash; and the alpha &mdash; is that the consensus has fully
-embraced the hawkish level and is ignoring the guidance vacuum and the oil-disinflation, both of which argue the next
-surprise is a higher-vol, lower-conviction Fed, not a linear hiking cycle.</p>
+Brent at $74, gold sub-$4,000, PC shipments down 11% and smartphones down 13% on the memory shortage, DRAM up 98%, a
+record memory quarter. <strong>What is priced:</strong> a 2Y at ~4.09% that rallied even on a hot PCE, a dollar at a
+13-month high, September-hike odds near 68%, and front-end breakevens reading the oil collapse as clean disinflation.
+<strong>Consensus narrative:</strong> &lsquo;the Micron blowout is an AI-bull all-clear and the PCE validates the
+Fed.&rsquo; The gap &mdash; and the alpha &mdash; is that both readings miss the silicon-inflation: the AI complex is
+both the bull case and the cost-push, and the curve is not pricing the second.</p>
 
-<p>Go around the world. <strong>US:</strong> the repricing led everything &mdash; yields, dollar, and a tech-led
-equity de-rating. <strong>Japan:</strong> the BoJ hiked to 1% last week and the yen still sits pinned at 160, now
-braced against a wider hawkish-Fed differential &mdash; the carry coil tighter, not looser (MM-021).
-<strong>Asia:</strong> Hang Seng and the Nikkei sold off on the Fed's hawkish tone, importing the US repricing.
-<strong>UK:</strong> the one place the data is undercutting the hawks &mdash; May CPI at 2.8%, below consensus, into
-a BoE that holds today, a clean rate-divergence trade (MM-026).</p>
+<p>Go around the world. <strong>US:</strong> the bifurcation led everything &mdash; a memory-led semis bounce against
+a hardware-led Mag7 fade, yields lower on the disinflation bid. <strong>Japan:</strong> the Nikkei sits off its
+72,831 peak with the BoJ at 1% and its June Summary of Opinions favouring MORE hikes, yet the yen stays soft near 161
+as the 13-month-high dollar dominates the carry (MM-007/021). <strong>Asia/China:</strong> the memory shortage is a
+China-tech input-cost problem too, with the June PMI (Jun 30) the next read. <strong>Europe:</strong> the DAX rose
+1.03% to ~24,995 as exporters take the weaker euro, into the July 4 US-EU tariff deadline.</p>
 
-<p>The political angle the market is under-weighting runs on two fault lines. On the Fed, the constraint is the
-Trump-Warsh relationship: the President said a hike &ldquo;would be wrong&rdquo; the day before, and a new chair
-penciled one in and dropped his own dot to establish independence &mdash; a hawkish-by-design debut that makes the
-Fed a political vol source into 2026, not a settled one. On Iran, the binding constraint remains Jerusalem and the
-gap between declaration and reality: Trump says &ldquo;let the oil flow,&rdquo; but the ships are not sailing, the
-signing is Friday, and Israel can still break it &mdash; the oil market has front-run a signature a third party has
-not given.</p>
+<p>The political angle the market is under-weighting runs on two fault lines. The Papic constraint is that the AI
+memory shortage makes the Fed's hawkish hold politically DURABLE: a 15-25% jump in consumer-hardware prices is a
+visible, kitchen-table price shock, so easing into it would look like monetising the capex boom &mdash; the hold is
+no longer just Warsh's independence play, it is cover against a tangible cost-of-living story. The second fault line
+is trade: Trump's tariff engine (the EU has until July 4 to ratify or autos go to 25%, with Section 301 China
+deadlines running) layers a second cost-push onto the silicon one, exactly when the Fed has no slack to absorb it.</p>
 
-<p>Priced-versus-not. <strong>Under-priced:</strong> the guidance-vacuum rate-vol re-rating (MOVE); the oil-
-disinflation that contradicts the Fed's 3.6%; the Iran-slippage tail trapped behind the holiday. <strong>Fairly
-priced:</strong> the hawkish level itself (2Y at a one-year high); the dollar break of 100; the BoE hold.
-<strong>Fully priced:</strong> the straight-line peace move in oil (Brent $78 has front-run an unsigned deal).
-<strong>Over-priced (at risk):</strong> the consensus that higher-for-longer is now a settled, linear regime &mdash;
-when the chair just made the Fed less predictable, not more.</p>
+<p>Priced-versus-not. <strong>Under-priced:</strong> the silicon-push core-goods inflation (front-end breakevens,
+MM-027); the OEM margin squeeze from the DRAM cost (MM-028). <strong>Fairly priced:</strong> the dollar at a 13-month
+high; the energy disinflation in the front end; the memory-maker re-rating. <strong>Fully priced:</strong> the May
+PCE as a forward signal (it is a backward, peak-energy reading). <strong>Over-priced (at risk):</strong> the consensus
+that the Micron blowout is a clean AI all-clear &mdash; when the same shortage just repriced the Mag7's own cost base.</p>
 """,
 
     "wrap": """
-<p>The second-order effect consensus is missing this morning is not in the hawkish dots everyone is now trading. It
-is that the hawkish dots and the dismantled guidance are the same event, and only one of them has a number on it. The
-market has spent the night repricing a September hike &mdash; the 2Y at a one-year high, the dollar through a figure,
-gold knocked off its perch. All of that is the level. The change with no level is the one that lasts: a chair who
-dropped his own dot, shortened the statement, stripped the bias and stood up a task force on communications has told
-you the Fed will say less from here. A Fed that says less is not a hawkish Fed or a dovish one. It is a louder one,
-and the bond market heard it first &mdash; the ten-year backed up on a hold.</p>
+<p>The second-order effect consensus is missing this morning is hiding in plain sight, in two headlines everyone is
+reading as opposites. Micron blew out and its stock is being bought as the AI all-clear; Apple and Microsoft raised
+prices and their stocks were sold as a margin worry. They are the same event. The AI build-out eats seventy percent
+of the world's memory, DRAM is up ninety-eight percent this year, and the shortage that is printing Micron's
+twenty-five-dollar quarter is the identical shortage adding two hundred dollars to a MacBook. The AI trade just became
+an inflation trade, and the bond market is the only place that has half-noticed.</p>
 
-<p>Start with what graded out, because the discipline is the story. The brief went into the meeting with one
-instruction: own the variance, not the number, and do not add directional macro into the print. The long-vol idea and
-the put spread were the winners as the VIX jumped twelve percent; the short-euro leg that had been contested for two
-weeks finally paid as the dollar broke a hundred; and gold did the exact thing it was flagged to do &mdash; reversed
-on the hawkish dots as the first hedge to give back, tested its stop, held, and caught a bid on the Iran headlines.
-The positions that hurt &mdash; the front-end long, the ten-year, the steepener &mdash; gave back rather than broke,
-because none of them were added the day of the event. A bad outcome on a disciplined book is a give-back. The same
-outcome on a chased book is a stop-out.</p>
+<p>Decompose the number the Fed will lean on. May PCE printed four-point-one, the hottest since 2023, and the tape
+filed it as proof Warsh is right to hold hawkish. Pull it apart and it is a May reading driven by Iran-war gasoline,
+and the gasoline is gone &mdash; Brent is at seventy-four, gold has broken four thousand, the entire energy and metals
+complex is disinflating hard. What is left underneath is not nothing; it is a different engine. The price pressure is
+migrating from energy, which the Fed can wait out, to silicon, which it cannot, because no quantity of rate hikes
+manufactures an HBM wafer. So what, who is wrong, what is the trade: the consensus that reads cheaper oil as the
+inflation story ending is wrong, the curve that is pulling breakevens down with it is the thing to fade, and the trade
+is to own the front-end inflation the market is mistaking for disappearing.</p>
 
-<p>Then the collision that defines the next two days. The Fed raised its inflation forecast to three-point-six in the
-same week Brent broke seventy-eight dollars on a peace deal. Those two facts cannot both describe the next two
-quarters. Either the oil-disinflation is real and the Fed is tightening into it &mdash; a policy error the front end
-eventually reverses &mdash; or the inflation the Fed sees is sticky enough that cheaper oil is a rounding error. The
-duration longs are the expression of the first view, and they are held offside precisely because the oil tape is
-screaming the Fed's number is backward-looking. That is a contrarian bet against a fresh hawkish print, and it is
-sized as one: held, flagged, not added, inside its stops and its min-holds.</p>
+<p>Trace it to a balance sheet, because that is where this lives. The flow is hyperscaler capex &mdash; Microsoft,
+Google, Meta, Amazon &mdash; increasingly debt-funded, bidding seventy percent of global memory output and starving
+every device that competes for the same wafer. That is not a demand story that a recession washes out; it is a
+multi-year supply reallocation with a relative-price shock attached, memory up while everything memory-dependent
+re-prices. And it meets a bond market the Fed has handed back to itself: the same week the dots said higher, the
+ten-year rallied to four-thirty-seven, because the marginal buyer is trading the energy disinflation and the
+goods-volume collapse &mdash; PCs down eleven percent, phones down thirteen &mdash; over a forecast it does not
+believe. The book is positioned on the bond market's side of that argument, and it is paying.</p>
 
-<p>The fresh ideas all come from the new regime rather than a fight with it. If a guidance-less Fed re-widens the
-term premium, the cleanest trade is long rates volatility, not a rates direction &mdash; own the MOVE, not the
-ten-year. If the dollar broke a hundred on a real rate-path asymmetry, the disciplined way to add is a defined-risk
-euro put spread, not chasing spot at the figure. And if the Fed is higher-for-longer with the cut bias gone, the
-rotation is mechanical: financials earn the wider margin while long-duration tech pays the higher discount rate, so
-long the banks against the chips. The one place the data leans the other way is Britain, where a soft inflation print
-into a hold today is a clean reason to own gilts as US yields back up.</p>
+<p>The Burry tell sits one layer deeper than the trade. For two years the consensus has held that AI is structurally
+deflationary &mdash; cheaper cognition, automated everything. The next eighteen months are going to argue the
+opposite at the checkout: the capex super-cycle is cannibalising the consumer-electronics supply chain, and it shows
+up as either margin destruction at the box-makers or sticky core-goods inflation that traps the Fed, probably both.
+The thing nobody is pricing is that the most disinflationary technology of the decade is, in its build-out phase, an
+inflation machine. That is the structural observation; the tradeable edges off it are long breakevens, short the OEM
+casualties, and a healthy respect for how durable a hawkish hold becomes once the price shock is on a kitchen-table
+receipt.</p>
 
-<p>So the posture into the back half of the week is the same two-sided discipline, re-pointed at the resolved event.
-The winners are banked or held with their stops trailed up; the offside duration is held on a falsifiable thesis with
-a hard stop; the new ideas own the vol regime, the dollar breakout, the rotation, and the UK divergence. The tape has
-priced a hawkish Fed as a settled fact, a clean peace in oil, and a vol that re-rated once and stops. The brief's
-read is that the hawkish Fed just made itself less predictable, the peace is a declaration a third party can break,
-and eighteen-and-a-half is a floor, not a ceiling. Friday is Juneteenth, the desk is dark, and the next chapter is
-written Monday.</p>
+<p>So the posture into quarter-end is two-sided and re-pointed. The rate winners &mdash; the steepener near
+plus-eighty-five, the duration longs green at last &mdash; get harvested and their stops trailed, not pressed, because
+the silicon-inflation is the live thing that flattens them. The gold long is the casualty, held on its rule through a
+broken four thousand, and hedged with defined risk rather than averaged down. The FOMC put spread is banked into its
+expiry and replaced with a fresh August one for the payrolls-and-tariff tail. And the new money goes where the gap is:
+long the inflation the curve denies, short the OEMs the memory cost is squeezing. The tape has priced the Micron print
+as an all-clear. The brief's read is that the all-clear and the price shock are the same telegram, and only one line
+of it has been read.</p>
 """,
 
     "correlation_regime": """
-<p><strong>1. Stocks and bonds re-coupled to the downside &mdash; the hawkish-Fed regime.</strong> Equities fell and
-yields rose together as the SEP turned hawkish &mdash; the classic higher-discount-rate correlation that dominates
-when the Fed, not growth, is the driver. The dominant driver is now unambiguously the rate path: a 2Y at a one-year
-high pulled the long-duration multiple down (Nasdaq -1.34%, tech leading). The trade that respects this is financials
-over tech (MM-025) and long rate vol (MM-023), not a dip-buy.</p>
+<p><strong>1. Equities and yields decoupled &mdash; the bond market broke ranks with the Fed.</strong> The hot PCE
+and a 68%-priced September hike should have lifted yields; instead the 2Y rallied to ~4.09% and the 10Y to ~4.37%
+even as equities chopped. The break tells you the dominant driver is no longer the dots but the disinflation/growth
+read underneath them &mdash; cheaper energy, collapsing goods volumes. The trade that respects it is the steepener and
+the duration longs (MM-009/004/013), held and harvested, not a fight with the front-end rally.</p>
 
-<p><strong>2. Gold's two engines decoupled inside one day.</strong> Gold fell 2% on the hawkish dots (real-rates
-engine) then bounced above $4,300 on the Iran headlines (safe-haven / dollar-debasement engine) &mdash; the same
-asset trading two different stories twelve hours apart. The break tells you gold is no longer a clean real-rates
-short or a clean haven long; it is a two-sided hold (MM-005), which is exactly why it is sized as a min-hold position
-rather than a conviction add here.</p>
+<p><strong>2. The AI complex split from itself &mdash; memory up, hardware down.</strong> The single most important
+correlation break is intra-tech: Micron and the memory makers ripped on the supercycle while Apple and Microsoft &mdash;
+the box-makers that buy the memory &mdash; led the Mag7 lower on the cost of it. The same shortage is a tailwind for
+the suppliers and a margin headwind for the assemblers. That is a dominant-driver change inside the index, and it is
+the entire basis of the memory-vs-OEM RV (MM-028).</p>
 
-<p><strong>3. The dollar decoupled from oil's direction.</strong> Normally a falling oil price (disinflation) and a
-hawkish dollar pull rates the same way; Wednesday they split &mdash; the dollar ripped on the Fed while oil fell on
-Iran, two disinflationary forces pointing at the same destination from opposite drivers. The 'good' read is that both
-argue the Fed's 3.6% inflation forecast is too high; the dollar break of 100 (MM-012/024) and the duration longs
-(MM-013) are the two sides of the same disinflation, even as one is working and one is offside.</p>
+<p><strong>3. Gold decoupled from its own safe-haven reflex.</strong> A hot inflation print would normally bid gold;
+instead it broke $4,000, because the real-rates and dollar engine overwhelmed the inflation-hedge engine and the Iran
+de-escalation drained the haven bid &mdash; with $2bn of May ETF outflows confirming the spec long is leaving. Gold is
+trading as a real-rates short, not an inflation hedge; that is why the book's long (MM-005) is the casualty and the
+disciplined add is the defined-risk put-spread hedge (MM-029), not an average-down.</p>
 """,
 
     "vol_skew": """
-<p><strong>The vol re-rating printed &mdash; and rate vol is the cleaner expression than equity vol now.</strong> VIX
-jumped 12.4% to 18.44 on the hawkish FOMC (from 16.41), and the term structure flattened toward backwardation at the
-front as event risk was finally respected (est. VIX9D ~18.0 · VIX ~18.4 · VIX3M ~19.5 · VIX6M ~20.5). The long-vol
-idea (MM-020) and the SPX put spread (MM-008) paid into it. But the structural read points to the bond market: a
-guidance-less Fed re-widens the term premium and lifts MOVE (est. ~108, firmer) more durably than VIX, because the
-guidance Warsh dismantled was a rates tool, not an equity one. The trade implication: rotate the vol length from
-equity toward rates &mdash; own a long-bond (TLT) straddle or long MOVE (MM-023). The one options structure that fits
-today's regime is a defined-risk EUR/USD 1.14/1.12 put spread (MM-024): it owns the dollar breakout below 100 with a
-known max loss, struck for continuation rather than a chase at the figure. If the hawkish repricing proves a one-day
-overshoot, equity vol mean-reverts lower &mdash; but rate vol stays bid as long as the Fed gives no path.</p>
+<p><strong>Vol eased as the Micron print drained the event premium &mdash; but the tails are mispriced for the wrong
+reason.</strong> VIX sits ~18.9, off the 18.44 FOMC spike but elevated, and the term structure has re-steepened into
+contango as the immediate catalyst (the print) passed (est. VIX9D ~17.5 · VIX ~18.9 · VIX3M ~19.5 · VIX6M ~20.0).
+MOVE has eased toward ~104 as the front-end rally calmed the rates tape. The market is pricing the AI rebound as a
+one-way melt-up into a quiet quarter-end &mdash; but June payrolls (Jul 2-3) land in the guidance vacuum, the July 4
+EU-tariff deadline is a discrete cost-push risk, and the Mag7's own input-cost overhang is not in index vol. The trade
+implication: re-establish cheap, defined-risk downside now that the banked MM-008 has expired &mdash; an August SPX
+7,000/6,600 put spread (MM-030) struck below spot, structured for the discrete-event vol the guidance vacuum keeps
+manufacturing rather than a chase of at-the-money premium. The complementary structure is the defined-risk GLD put
+spread (MM-029), which owns the broken-$4,000 continuation while hedging the underwater bullion long. If the melt-up
+extends, both decay cheaply; if either tail fires, the convexity is owned, not chased.</p>
 """,
 
     "sector_rv": """
-<p><strong>Leading (Wed Jun 17):</strong> financials and rate-sensitive value (the Dow fell least, -0.98%);
-transports/airlines on sub-$78 fuel; the Dow's relative outperformance the first leg of the higher-for-longer
-rotation. <strong>Lagging:</strong> mega-cap / long-duration tech (Nasdaq -1.34%, Microsoft/Meta/Alphabet/Amazon all
-red) as the higher discount rate compressed the multiple; gold miners on the bullion give-back; the broad Nasdaq.
-<strong>Today's watch:</strong> the BoE 12:00 GMT (UK financials/Gilts) and US claims/Philly Fed &mdash; each a
-discrete vol event in the guidance vacuum. FedEx (Jun 23) and Micron (Jun 24) are next.</p>
+<p><strong>Leading (Thu Jun 25 / overnight):</strong> the memory/semis complex on the Micron blowout (the futures
+ripped, NQ +2.15%); financials and rate-sensitive value as the curve re-steepens; the Dow (+0.14%) over the Nasdaq.
+<strong>Lagging:</strong> the consumer-hardware Mag7 &mdash; Apple and Microsoft led the decline as the AI-DRAM cost
+hit their own box-economics; gold miners as bullion broke $4,000; the broad energy complex on Brent $74; crypto as
+BTC broke $60k. <strong>Today/next:</strong> May PCE + final-June UMich today; quarter-end rebalance Mon-Tue; ISM Jul
+1; June payrolls Jul 2-3 &mdash; each a discrete event into the guidance vacuum.</p>
 
-<p><strong>RV:</strong> The cleanest fresh sector RV is long XLF (financials) / short XLK (tech) (MM-025) &mdash; a
-hawkish, no-cuts Fed lifts net-interest margins while it compresses the long-duration multiple, the rate-regime
-version of the breadth RV (MM-022, long RSP / short QQQ) that traded the concentration. Both are low beta to the
-index level and high beta to the higher-for-longer repricing. The transports-vs-energy RV (MM-019) remains live as
-Brent at $78 plus a surging dollar reprices the two sectors in opposite directions.</p>
+<p><strong>RV:</strong> The cleanest fresh sector RV is the memory-vs-OEM split the Micron print exposed: long the
+memory/Micron complex (which the book already holds) vs SHORT the PC/handset OEMs &mdash; Dell, HP and the hardware
+sleeve &mdash; that eat the DRAM cost and the -11%/-13% volume decline (MM-028). It pairs with the standing
+financials-over-tech rotation (MM-025): a no-cuts, higher-for-longer Fed lifts net-interest margins while the
+long-duration AI multiple carries both a higher discount rate AND the memory-cost overhang. Both are low beta to the
+index, high beta to the silicon-inflation regime.</p>
 """,
 
     "positioning": """
-<p><strong>The crowd just got the hawkish level it feared &mdash; and is now maximally positioned for it.</strong>
-Post-Warsh, fast money is short duration, long dollar, and short long-duration tech, all expressions of
-higher-for-longer. The 2Y at a one-year high and the dollar through 100 mean the consensus has converged hard on the
-hawkish read &mdash; which makes the pain trade a SOFT data print today (claims/Philly Fed) that unwinds the overshoot
-and squeezes the fresh duration shorts, exactly the contrarian setup the offside front-end long (MM-013) is built to
-catch. In equities, the rotation out of mega-cap tech into financials is early; the pain trade is a continued
-broadening that strands the index-tracking longs in the wrong names (MM-022/025). In FX, the yen carry trade stayed
-crowded long-USD even through a BoJ hike, now braced against a wider differential at the MoF line (MM-021). The single
-position the re-rated VIX is still wrong on is short rate vol into a chair who just removed the Fed's forward path
-&mdash; that is where the term premium does the squeezing (MM-023).</p>
+<p><strong>The crowd just re-embraced the AI complex on the Micron print &mdash; and is leaning the wrong way on two
+things.</strong> Sentiment flipped risk-on overnight (the futures ripped on memory), so the pain trade in equities is
+a continued narrowing into the memory winners that strands the index in the consumer-hardware names the same shortage
+is squeezing (MM-028). In rates, fast money is still net-short duration post-Warsh, so the pain trade is the
+front-end rally extending on a soft June payroll (Jul 2-3) &mdash; exactly the squeeze the rescued duration longs
+(MM-004/013) are positioned to ride. In FX, the yen carry stayed crowded long-USD through a BoJ at 1%, braced against
+the 13-month-high dollar at the MoF line (MM-007/021). The cleanest under-positioned trade is front-end inflation:
+breakevens sit near cycle lows as the crowd shorts inflation on the oil collapse, blind to the silicon-push (MM-027).
+The pain trade everywhere is the same &mdash; a market that read the energy disinflation as the whole inflation story.</p>
 """,
 
     "funding": """
-<p>SOFR near 3.62% &mdash; unchanged; a unanimous hold does not move the funding rate.
-<strong>The Pozsar mechanic:</strong> the plumbing signal that matters is the one Warsh just changed. Forward
-guidance is, mechanically, a term-premium compressor &mdash; it tells the market the path of the funding rate, which
-anchors the long end. By dropping his dot, shortening the statement and standing up a balance-sheet task force, Warsh
-removed that anchor, and the 10Y backing up to 4.499% on a hold is the term premium widening not because inflation
-rose but because the Fed stopped pre-committing the path. That is the mechanism behind a higher MOVE without a higher
-policy rate, and it is why rate vol (MM-023) is the cleaner read on this regime than equity vol. The balance-sheet
-task force is the one to watch next: any signal on the pace of QT or the reserve floor feeds directly into bill
-supply and the term premium. Watch the long end and the MOVE index on every data print now &mdash; in a guidance
-vacuum, the bond market reprices the path itself, one number at a time.</p>
+<p>SOFR near 3.62% &mdash; unchanged; the hold does not move the funding rate.
+<strong>The Pozsar mechanic:</strong> trace the inflation everyone is debating back to a flow, and it is on the
+hyperscalers' balance sheets. Microsoft, Google, Meta and Amazon are funding the AI build-out increasingly with debt,
+and that capex bids roughly seventy percent of global memory output &mdash; a real-economy supply reallocation that
+shows up as a relative-price shock, memory up while every memory-dependent good re-prices. The funding angle that
+matters next is the collision of that issuance with a less-anchored long end: the term premium widened post-Warsh, and
+a wave of hyperscaler IG supply to fund capex meets a bond market with no forward-guidance anchor. Watch IG issuance
+and the 10Y together &mdash; the same capex that is the equity bull case is also a Treasury-market supply-and-term-
+premium story. The balance-sheet task-force signal on QT/reserves feeds the same plumbing. The cleanest read is that
+the AI cycle is now a macro funding flow, not just an equity theme.</p>
 """,
 
     "tape_missing": """
-<p><strong>The tape is pricing the hawkish level and ignoring the guidance vacuum.</strong> The market has fully
-embraced higher-for-longer &mdash; 2Y at a one-year high, dollar through 100 &mdash; but is treating it as a settled,
-linear regime. The change that lasts is that Warsh removed the Fed's forward path: every CPI, payroll and claims print
-is now a discrete catalyst, and the term premium does the repricing one number at a time. The immediate read is
-neither hawkish nor dovish &mdash; it is higher rate vol. MOVE (est. ~108) is barely pricing it. Long rates vol
-(MM-023) is the instrument.</p>
+<p><strong>The tape is reading the oil collapse as the end of inflation and missing the silicon-push that replaces
+it.</strong> Front-end breakevens are falling with Brent, but DRAM is up 98% this year and a 15-25% consumer-hardware
+repricing feeds core goods for quarters. The composition of inflation flipped from an energy push that is reversing to
+a silicon push that is only beginning &mdash; and the curve is not pricing the second. The falsifiable level: 2Y
+breakevens through their cycle low says the market is doubling down on the disinflation read; long breakevens (MM-027)
+is the instrument that pays if core goods stay sticky into Q3.</p>
 
-<p><strong>Just behind it: the Fed raised its inflation forecast into a falling-oil disinflation.</strong> The SEP
-lifted 2026 inflation to 3.6% the same week Brent broke $78 on the Iran deal. Either cheaper oil feeds through and the
-Fed is tightening into a disinflation it has not acknowledged &mdash; the front end reverses &mdash; or the inflation
-is sticky enough that oil is noise. The duration longs (MM-013/004) are the falsifiable expression of the first view;
-the level that proves it wrong is the 2Y through 4.35%. And the peace itself is a declaration, not a signature:
-Trump says &ldquo;let the oil flow,&rdquo; but the ships are not sailing, the signing is Friday, and Israel can break
-it &mdash; a three-day headline gap behind a market holiday.</p>
+<p><strong>Just behind it: the bond market is right and the Fed is fighting last quarter's war.</strong> The hot May
+PCE (4.1%) is a backward, peak-energy reading, and the 2Y rallying to ~4.09% on it says the marginal buyer agrees.
+Either the energy/goods disinflation dominates and the Fed is tightening into it &mdash; the front end keeps rallying
+(MM-004/013/009) &mdash; or the silicon-inflation validates the hike and the 2Y backs up to 4.35%. That level is the
+falsifiable line; June payrolls (Jul 2-3) is the test. The two-sided structure of the book owns both ends of it.</p>
 
-<p><strong>The Burry tell &mdash; the structural thing that just stopped being a forecast.</strong> For fifteen years
-the Fed's primary shock absorber was forward guidance: the promise to telegraph the path, which compressed the term
-premium and turned the central bank into a calendar-anchored backstop. Yesterday a chair who has attacked guidance for
-a decade began removing it &mdash; he dropped his own dot, shortened the statement, and stood up a communications task
-force. The structural consequence is no longer a thesis; the first evidence printed: the 10Y backed up on a hold and
-the VIX re-rated 12% to a level it had not held all cycle. Over the next two-to-three quarters this resolves as a
-permanently higher vol floor &mdash; a world where a hot CPI or a soft payroll moves markets the way it did before
-2009, because the Fed no longer pre-commits to absorb it. The equity market, with an index still concentrated in
-seven names that just led the losses, is the least prepared for that regime. It is the reason to be structurally long
-volatility &mdash; and increasingly rate volatility (MM-023) over equity volatility &mdash; as the regime announces
-itself.</p>
+<p><strong>The Burry tell &mdash; the structural thing that just stopped being a forecast.</strong> For two years the
+consensus has held that AI is structurally deflationary: cheaper cognition, automation, falling unit costs. The next
+eighteen months will argue the opposite at the checkout. The build-out phase of the most disinflationary technology of
+the decade is an inflation machine &mdash; it cannibalises the consumer-electronics supply chain, with every HBM wafer
+for a GPU a wafer denied to a laptop or a phone (shipments down 11% and 13% this year). The first evidence is no
+longer a thesis: Apple and Microsoft just raised hardware prices 15-25% and named the AI-DRAM shortage as the cause,
+and the May PCE underneath the energy is sticky. Over the next two-to-three quarters this resolves as either margin
+destruction at the box-makers or a core-goods inflation that traps the Fed &mdash; probably both. The equity index,
+still concentrated in the seven names that are both the cause and the victims of the shortage, is the least prepared
+for the world where the AI trade and the inflation trade are the same trade.</p>
 """,
 
     "book_outlook": {
         "commentary": (
-            "Yesterday's repricing ran straight through the Fable book's two-sided structure &mdash; and the hedges did "
-            "their job. The book's <b>US AI-semis concentration (Micron ~25.8%, plus NVDA/AVGO/AMD)</b> took the brunt "
-            "of the hawkish de-rating: a higher-for-longer rate path with the cut bias stripped compresses the "
-            "long-duration multiple, and the Nasdaq -1.34% (MSFT/META/GOOGL/AMZN leading) is the cohort the book is "
-            "levered to. That is why a 25.8% single-name weight into <b>Micron earnings Jun 24</b> &mdash; six sessions "
-            "after a Fed that raised its inflation forecast &mdash; is the book's defining risk to manage NOW, not its "
-            "edge. The disinflation/real-rates side cut the other way: <b>Xetra-Gold (4GLD)</b> gave back ~2% on the "
-            "hawkish dots before the Iran bounce caught it, and the <b>US Treasury 1.25% 2031</b> and <b>Siemens EUR "
-            "IG</b> bonds sold as the 2Y hit a one-year high and the 10Y backed up &mdash; duration losses, not credit. "
-            "But the book has genuine winners in the new regime: <b>SAP</b> and quality European software outrun the "
-            "US semis stack as rates rise, and the EUR-base book's heavy <b>USD sleeve (~72%)</b> just gained as DXY "
-            "broke 100. <b>TotalEnergies (TTE)</b> keeps bleeding as Brent breaks $78. The dominant action: collar the "
-            "Micron concentration before the print, and finally hedge the USD sleeve into a dollar that has broken out "
-            "&mdash; a higher-for-longer Fed is the regime the book's concentration is least suited to."
+            "The book's defining holding just printed the quarter of the cycle &mdash; and the right move is to lock it, "
+            "not celebrate it. <b>Micron (~32.2% of the book)</b> blew out (FY-Q3 EPS $25.11 vs $21.40, tightness "
+            "'locked in beyond 2027'), confirming the AI-memory supercycle the book is levered to and putting the "
+            "single-name gain at a fresh high. But a third of the book riding on one name AFTER its catalyst has "
+            "fired, into a tape where the same DRAM shortage just repriced consumer hardware, is the moment to COLLAR "
+            "and bank the gain &mdash; rich post-print calls finance protective puts for near-zero cost. The new regime "
+            "cuts two ways through the rest of the book. The duration sleeve was RESCUED: the <b>US Treasury 1.25% "
+            "2031</b> and <b>Siemens EUR IG</b> bonds rallied as the 2Y eased to ~4.09% and the 10Y to ~4.37% on the "
+            "disinflation bid &mdash; the loss-harvest window is closing, not opening. <b>Xetra-Gold (4GLD)</b> is now "
+            "the casualty, broken below $4,000 as the real-rates and dollar engine overwhelmed the haven bid &mdash; "
+            "the tail hedge is the drawdown. The EUR-base book's heavy <b>USD sleeve (~72%)</b> keeps gaining as the "
+            "dollar holds a 13-month high, and <b>SAP</b> / quality software carries none of the memory-cost overhang "
+            "now weighing the box-makers. <b>TotalEnergies (TTE)</b> bleeds on Brent $74. The dominant action: collar "
+            "Micron to bank the blowout, hedge the underwater gold with defined risk, and own the silicon-inflation "
+            "the book's own AI concentration is creating."
         ),
         "outperform": [
+            {"name": "Micron (~32.2%) — the blowout, now lock it", "why": "The FY-Q3 beat (EPS $25.11 vs $21.40) and "
+             "the 'tightness beyond 2027' guide confirmed the supercycle and lifted the book's largest position to a "
+             "fresh high. It leads today &mdash; but the play is to collar and bank the gain after the catalyst, not "
+             "ride a third of the book naked into the next print."},
             {"name": "USD cash sleeve / USD assets (~72% of the book)", "why": "The EUR-base book is ~72% USD and the "
-             "dollar just broke 100 to a multi-month high on the hawkish Fed &mdash; the FX translation is a tailwind "
-             "for the first time in weeks. The book is structurally long the asset that won yesterday."},
-            {"name": "SAP / European software", "why": "A higher-for-longer Fed re-rates quality, cash-generative "
-             "software over speculative long-duration US semis; SAP (+132%) carries none of the AI-multiple "
-             "compression that hit the NVDA/AVGO/MU stack, and pairs with the financials-over-tech rotation (MM-025)."},
-            {"name": "Xetra-Gold (4GLD) — the bounce, not the dots", "why": "Gold gave back on the hawkish dots but "
-             "the Iran-durability / dollar-debasement engine caught it above $4,300; as the book's tail hedge it held "
-             "its floor and remains the one position that is both a hedge and a long-term winner."},
+             "dollar holds a 13-month high as AI-led capital concentrates in US assets (out of crypto and gold) &mdash; "
+             "the FX translation keeps adding. The book is structurally long the currency that is winning."},
+            {"name": "The bond sleeve (UST 1.25% 2031, Siemens EUR IG)", "why": "RESCUED &mdash; both rallied as the 2Y "
+             "eased to ~4.09% and the 10Y to ~4.37% on the energy/goods disinflation bid, even through a hot PCE. The "
+             "duration drawdown reversed; this is the leg the rate longs (MM-004/013) mirror."},
         ],
         "underperform": [
-            {"name": "US AI-semis (Micron 25.8%, NVDA/AVGO/AMD)", "why": "Took the brunt of the hawkish de-rating &mdash; "
-             "a higher discount rate compresses the long-duration multiple, and the cohort led the Nasdaq's -1.34%. "
-             "Into MU earnings Jun 24, the 25.8% concentration is the risk to collar, not the conviction to add."},
-            {"name": "The bond sleeve (UST 1.25% 2031, Siemens EUR IG)", "why": "Both sold as the 2Y hit a one-year "
-             "high and the 10Y backed up on the hawkish SEP and the guidance-vacuum term-premium widening &mdash; "
-             "duration losses, not credit. The bond-swap entry improves, but a hawkish surprise is the better harvest."},
-            {"name": "TotalEnergies (TTE)", "why": "The energy hedge keeps rolling over as Brent breaks $78 (lowest "
-             "since March) on the Iran deal, with a surging dollar a second drag on USD-priced crude. The clean weekly "
-             "drag on the book."},
+            {"name": "Xetra-Gold (4GLD)", "why": "The casualty &mdash; gold broke $4,000 (first since November), -29% "
+             "from the January peak, as a hawkish Fed, a 13-month-high dollar, the Iran de-escalation and ETF outflows "
+             "drained both engines. The tail hedge is now the book's clean weekly drag; hedge it via MM-029, do not add."},
+            {"name": "Consumer-hardware exposure (via SPY / the Mag7)", "why": "Apple and Microsoft led the Mag7 lower "
+             "as the AI-DRAM shortage repriced their own box-economics &mdash; the book's index exposure carries the "
+             "memory-cost overhang on the assemblers. The memory-vs-OEM RV (MM-028) is the hedge to the assembler leg."},
+            {"name": "TotalEnergies (TTE)", "why": "The energy hedge keeps rolling over as Brent sits at ~$74 on the "
+             "Iran normalisation, with a 13-month-high dollar a second drag on USD-priced crude. The disinflation half "
+             "of the regime is a clean drag on the position."},
         ],
         "watch": [
-            {"label": "Collar the 25.8% Micron concentration NOW — the print is six sessions out and rates just rose",
-             "text": "MU at 25.8% into earnings Jun 24, with IVol elevated and a higher discount rate freshly "
-             "compressing the AI-memory multiple, is the most urgent action on the book. A collar (rich calls finance "
-             "fat puts) caps the print risk for near-zero cost; the SPX put spread (MM-008, which just paid ~+70%) is "
-             "the index overlay. Do not wait."},
-            {"label": "Hedge the USD sleeve INTO the breakout — but the dollar just turned in the book's favour",
-             "text": "The EUR-base book is ~72% USD and DXY just broke 100. The translation is a tailwind today, but a "
-             "fresh dollar regime is exactly when to put on a cheap seagull/collar to lock some of the gain before the "
-             "Iran-signing risk-on (the EUR-supportive offset). The EUR/USD put spread logic (MM-024) is the book "
-             "version."},
-            {"label": "The bond sleeve: a guidance-less Fed means the swap timing is now data-by-data", "text": "The "
-             "UST 2031 and Siemens IG both sold on the hawkish dots, improving the loss-harvest entry. But in a "
-             "guidance vacuum every print moves the long end &mdash; do not swap into a single data day; ladder the "
-             "harvest across the next two prints (claims today, then PCE) and roll into current coupons on a "
-             "yield-up spike, not a rally."},
+            {"label": "Collar the 32.2% Micron AFTER the blowout — lock the gain while IVol is rich",
+             "text": "MU just printed its catalyst, and post-print implied vol is elevated &mdash; the cheapest moment "
+             "to collar a third of the book. Rich calls finance protective puts for near-zero cost, banking the "
+             "supercycle gain while keeping defined upside. The fresh August SPX put spread (MM-030) is the index "
+             "overlay now that the FOMC-tail spread (MM-008) is banked. Do not ride 32.2% naked into the next print."},
+            {"label": "The bond sleeve: the harvest window is CLOSING — the duration rallied back",
+             "text": "The UST 2031 and Siemens IG rallied as yields fell on the disinflation bid, so the loss-harvest "
+             "entry has improved AWAY, not toward. Do not chase the swap into a rally; if you intend to roll into "
+             "current coupons, wait for a yield-up spike on a hot payroll (Jul 2-3) or the silicon-inflation, not this "
+             "rally. The rate longs (MM-004/013) say hold the duration here."},
+            {"label": "Add the inflation hedge the book lacks — long front-end breakevens (MM-027)",
+             "text": "The book is long both duration and the AI complex, and is structurally short the one risk its own "
+             "concentration creates: silicon-driven goods inflation. Front-end breakevens near cycle lows are the cheap "
+             "way to own it &mdash; an inflation hedge that pays if the DRAM-driven core-goods stickiness validates the "
+             "Fed, exactly the scenario that would hurt the duration longs. Pair it with the gold put-spread (MM-029)."},
         ],
     },
 
     "consensus": """
-<p><strong>Consensus BID:</strong> Warsh is a hawk, the dots prove it, and the Fed is now unambiguously
-higher-for-longer &mdash; sell duration, buy the dollar, fade rate-sensitive equities, and treat the September hike as
-the base case. The 2Y at a one-year high and the dollar through 100 are the start of a linear repricing toward a Fed
-that hikes again this year.</p>
+<p><strong>Consensus BID:</strong> the Micron blowout is the AI all-clear &mdash; the supercycle is confirmed,
+tightness runs beyond 2027, buy the memory complex and the broader AI trade; the May PCE validates a hawkish Fed, so
+the macro is higher-for-longer but the AI engine is intact. Read the print as a clean growth signal and the dip in the
+Mag7 as a buyable wobble.</p>
 
-<p><strong>The strongest argument against &mdash; the OFFER:</strong> the consensus has embraced the hawkish level and
-ignored the two things that make it unstable &mdash; the guidance vacuum and the oil-disinflation. A Fed with no
-forward path is not a more hawkish Fed, it is a less predictable one, so the next surprise is higher rate vol, not a
-cleaner hiking cycle. And a 3.6% inflation forecast set the same week oil broke $78 is a number the tape is already
-contradicting. The crowded side is short duration into a guidance-less Fed on a backward-looking inflation print; the
-cheaper side is long rate vol and a falsifiable contrarian duration long.</p>
+<p><strong>The strongest argument against &mdash; the OFFER:</strong> the same print is a cost-push, not just a growth
+signal. The shortage that gave Micron $25 of EPS is the shortage that just put Apple's MacBook up $200 and is feeding
+core goods while the curve prices the oil collapse as clean disinflation. The crowded side is long the AI complex as a
+one-way bull and short front-end inflation on cheaper energy &mdash; blind to the silicon-push the AI boom itself is
+creating. The cheaper side is long breakevens (MM-027), short the OEM casualties (MM-028), and on the bond market's
+side of its disagreement with the Fed.</p>
 """,
 
     "one_chart": """
-<p class="theme">The 2Y is the chart &mdash; it spiked to a one-year-high 4.216% on the dots, then eased to ~4.16% overnight. Which one holds?</p>
-<p>The single thing the market watches today is whether the 2Y holds its hawkish break. It rocketed to 4.216% at
-Wednesday's close &mdash; pricing a September hike the market did not believe a week ago &mdash; but it has already
-eased back toward ~4.16% (the front-end long's entry) overnight as the tape begins fading the overshoot, the first
-data-supported hint the duration longs' contrarian thesis has legs. A soft jobless-claims or Philly-Fed print extends
-that fade and squeezes the fresh duration shorts; a hot print sends the 2Y back toward the 4.35% level where the
-front-end long (MM-013) stops and the September hike becomes the base case. But the deeper signal is the 10Y and the MOVE
-index: in the guidance vacuum, watch whether the term premium keeps widening on data &mdash; a 10Y that backs up on a
-SOFT print is the tell that the guidance Warsh removed, not the inflation he forecast, is now driving the long end.
-Own the binary in rate vol (MM-023), not a rates direction, until the data resolves it.</p>
+<p class="theme">DRAM is the chart &mdash; memory prices are up 98% in 2026, and the curve is pricing inflation as if oil is the only input.</p>
+<p>The single thing the market should watch is the divergence between the memory-price line and the front-end breakeven
+line. DRAM is up 98% this year, Apple and Microsoft just passed 15-25% of it to consumers, and yet 2Y breakevens are
+falling with Brent as if the energy collapse is the whole inflation story. Those two lines cannot both be right about
+the next two quarters: either the silicon-push feeds core goods and breakevens are too low (long them, MM-027), or the
+goods-volume collapse (-11% PCs, -13% phones) turns the shortage into demand destruction and the energy disinflation
+wins outright (the rate longs MM-004/013/009 keep paying). The level that resolves it is the 2Y &mdash; a rally
+through 4.05% on June payrolls (Jul 2-3) says the disinflation wins; a back-up to 4.35% says the silicon-inflation
+validated the hike. Own both ends: long breakevens for the inflation the curve denies, the duration longs for the
+disinflation it is finally pricing.</p>
 """,
 
     "catalyst_calendar": [
-        {"day": "Wed", "date": "Jun 17 ✓",
-         "event": "Warsh's first FOMC — hawkish dots AND dismantled guidance; the tape repriced hawkish",
-         "consensus": "Held 3.50-3.75% unanimous; 2026 median dot ~3.8% (from 3.4%), 9 hike/8 hold/1 cut, cuts trimmed "
-                      "2->1, inflation raised to 3.6%/3.3%; Warsh alone of 19 submitted no dot, shortened the "
-                      "statement, stripped the cut bias, launched 5 task forces. S&P -1.21% to 7,420; 2Y +16bp to "
-                      "4.216%; DXY through 100; VIX +12% to 18.44. Sources: Fed, CNBC, NPR, TheStreet, FXStreet.",
-         "view": ("The hawkish-dots bear case (20%) printed AND the guidance vacuum opened — both at once. The book's "
-                  "long vol (MM-020) and put spread (MM-008) won; short EUR/USD (MM-012) paid; gold gave back as "
-                  "flagged; duration gave back but the no-add discipline held."),
-         "asymmetry": "Resolved as a hawkish-AND-opaque Fed. The lasting change is the guidance vacuum (higher rate "
-                      "vol), not the level — own MOVE over the 10Y (MM-023).",
+        {"day": "Wed", "date": "Jun 24 ✓",
+         "event": "Micron (MU) FY-Q3 — BLOWOUT (after close)",
+         "consensus": "Reported AMC: revenue $41.5bn (vs ~$36.9bn est), adjusted EPS $25.11 (vs $21.40, +17%); CEO "
+                      "Mehrotra called memory tightness 'locked in to persist beyond calendar 2027.' The book's LARGEST "
+                      "position (~32.2%). Semis surged after-hours. Sources: TheStreet, CNBC, Finnhub.",
+         "view": ("The supercycle confirmed — but it is also the cost-push. The same shortage that drove the beat just "
+                  "repriced Apple/Microsoft hardware. The book's 32.2% concentration printed a fresh high; the action "
+                  "is to COLLAR and bank, not ride it naked into the next print."),
+         "asymmetry": "The blowout validated the long but exposed the second-order inflation: long memory pricing power, "
+                      "short the OEM casualties (MM-028); own the silicon-inflation the curve denies (MM-027).",
+         "dir": "up"},
+        {"day": "Thu", "date": "Jun 25 ✓",
+         "event": "Apple/Microsoft consumer price hikes + the Mag7 fade",
+         "consensus": "Apple raised Mac/iPad up to +$300 (MacBook Air $1,099->$1,299), Microsoft put Xbox +$100-150 "
+                      "from Aug 1, both citing the AI-DRAM shortage (memory +98% YTD). Nasdaq -0.46% to 25,358.60, "
+                      "S&P flat 7,357.49, Dow +0.14% to 51,920.62. Sources: Euronews, Al Jazeera, CBS, TheStreet.",
+         "view": ("The tell of the new regime: the AI build-out leaked into the CPI basket and the Mag7 fell on its own "
+                  "supply chain's pricing power. The AI trade became the inflation trade."),
+         "asymmetry": "Confirms the silicon-push the front-end breakeven curve is not pricing — long 2Y breakevens "
+                      "(MM-027) is the under-positioned expression.",
          "dir": "down"},
-        {"day": "Thu", "date": "Jun 18 — TODAY",
-         "event": "Bank of England decision (12:00 GMT) + US jobless claims / Philly Fed",
-         "consensus": "BoE expected to HOLD Bank Rate at 3.75% (Reuters poll 65/65); watch Pill/Greene hawkish "
-                      "dissents vs the soft May CPI (2.8%, below 3.0%). Bailey presser 12:30 GMT. US weekly jobless "
-                      "claims + Philadelphia Fed manufacturing. Sources: Bank of England, ONS, Reuters.",
-         "view": "First test of a guidance-less Fed: each US print is now a discrete vol event. A soft claims/Philly "
-                 "Fed unwinds the hawkish overshoot and squeezes duration shorts; a hot print confirms the hike. The "
-                 "BoE hold into a soft CPI is the clean rate-divergence trade (long Gilts, MM-026).",
-         "asymmetry": "A soft US data print squeezes the fresh short-duration crowd (MM-013). A near-unanimous "
-                      "dovish-leaning BoE hold pulls Gilts down as US yields back up — MM-026.",
+        {"day": "Fri", "date": "Jun 26 — TODAY",
+         "event": "May PCE (on the tape) + final-June UMich sentiment & inflation expectations",
+         "consensus": "May PCE printed 4.1% headline (highest since Apr 2023) / 3.4% core (since Oct 2023), m/m +0.4% / "
+                      "+0.3%, in line — an Iran-war-gasoline-driven May reading. Final-June UMich 5-10y inflation "
+                      "expectations the watch. Sources: BEA, CBS, CNBC, University of Michigan.",
+         "view": "Decompose it: a backward, peak-energy reading even as Brent sits at $74. The bond market already "
+                 "trades the disinflation over it (2Y ~4.09%). Watch UMich long-run expectations for the silicon-push.",
+         "asymmetry": "A jump in UMich long-run inflation expectations is the first survey evidence of the silicon-push "
+                      "(bullish breakevens, MM-027); a soft read keeps the disinflation duration longs working.",
          "dir": "flat"},
-        {"day": "Fri", "date": "Jun 19",
-         "event": "US-Iran MoU formal signing (Switzerland) — US markets CLOSED (Juneteenth)",
-         "consensus": "Formal multilateral signing scheduled in Switzerland after Trump declared the deal 'complete' "
-                      "and authorized the toll-free Hormuz reopening; ships not yet sailing. Strait toll-free 60 days. "
-                      "US equity/bond markets closed for Juneteenth. Sources: CBS, NBC, NPR, Swiss FDFA.",
-         "view": ("PENDING. A clean signing = oil holds $75-80, disinflation confirmed. The live risk is Israel — the "
-                  "binding constraint is Jerusalem, not Tehran, and 'complete' is a declaration a third party has not "
-                  "signed. US markets are closed, so the tape cannot react until Monday — a three-day headline gap."),
-         "asymmetry": "Clean signing = lower-for-longer oil. Israel breaks it / it slips = Brent back toward $90+, the "
-                      "disinflation read reverses into a hawkish-Fed-plus-oil-spike squeeze. Large, unpriced, behind a holiday.",
-         "dir": "down"},
-        {"day": "Mon", "date": "Jun 22",
-         "event": "US markets reopen — the Iran signing + two-day headline gap trade at once",
-         "consensus": "First US session after Juneteenth and the scheduled Iran signing; the weekend's Middle East "
-                      "headlines and any signing/slippage repriced in one open. Source: market calendar.",
-         "view": "The compression trade: three days of Iran headlines with no price discovery resolve at Monday's "
-                 "open. A clean deal gaps oil lower and risk higher; a fracture gaps Brent toward $90 and reverses the "
-                 "disinflation read into the hawkish Fed.",
-         "asymmetry": "Gap risk both ways behind a closed-market weekend — the cheapest convexity is owned, not chased "
-                      "(the held put spread MM-008, the rate-vol straddle MM-023).",
+        {"day": "Mon-Tue", "date": "Jun 29-30",
+         "event": "Quarter / half-year-end — rebalancing flows + China June PMI (Jun 30)",
+         "consensus": "Half-year-end after a strong Q2 equity run; model/pension rebalancing tends to sell equities and "
+                      "buy bonds into the close. China June PMI Jun 30 — the read on the memory-shortage's other side "
+                      "(China-tech input costs). Sources: market calendar, NBS.",
+         "view": "A mechanical, non-fundamental flow: a rebalance that sells the Q2 winners (semis) and buys duration "
+                 "reinforces the front-end rally (MM-009/004/013) into month-end. A soft China PMI is a global-goods tell.",
+         "asymmetry": "The rebalance is a tailwind to the rate longs and a headwind to the just-bounced semis — a "
+                      "reason not to chase the Micron-led melt-up into the close.",
          "dir": "flat"},
-        {"day": "Tue", "date": "Jun 23",
-         "event": "FedEx (FDX) earnings — after close",
-         "consensus": "FedEx reports AMC — the global-freight read on goods demand and the tariff/cost picture into a "
-                      "hawkish-Fed, sub-$78-oil tape. Source: company calendar.",
-         "view": "The bellwether on whether the consumer/goods cycle is slowing into the higher-for-longer rate path — "
-                 "a soft guide reinforces the disinflation read the duration longs need.",
-         "asymmetry": "A weak FedEx guide is a forward-disinflation signal that helps the offside front-end long "
-                      "(MM-013); a strong one validates the Fed's hawkish hold.",
+        {"day": "Wed", "date": "Jul 1",
+         "event": "ISM Manufacturing (June) + JOLTS",
+         "consensus": "June ISM Manufacturing (incl. prices-paid) and JOLTS job openings — the first hard reads on the "
+                      "goods cycle and labour demand post-Micron. ISM prices-paid is the cleanest read on whether the "
+                      "DRAM cost is bleeding into broad goods. Source: ISM, BLS.",
+         "view": "ISM prices-paid is the silicon-inflation thermometer: a jump corroborates the cost-push (MM-027); a "
+                 "soft new-orders/JOLTS print reinforces the goods-slowdown disinflation the duration longs ride.",
+         "asymmetry": "Hot prices-paid + soft orders is the worst mix for the Fed (stagflationary) and the bull case for "
+                      "long breakevens against the rate longs.",
          "dir": "flat"},
-        {"day": "Wed", "date": "Jun 24",
-         "event": "Micron (MU) FY Q3 — after close (BOOK-CRITICAL)",
-         "consensus": "Reports Jun 24 AMC. The book's LARGEST position (~25.8%) and the HBM/AI-memory bellwether; "
-                      "IVol elevated, now into a higher-discount-rate tape. GS PT doubled to 900 into the print. "
-                      "Source: company calendar / Finnhub.",
-         "view": "Two-sided and book-defining: HBM sold out into the supercycle is the bull, but a 25.8% weight into a "
-                 "high-IVol print the week after a hawkish Fed is a risk-management problem first. Collar before the event.",
-         "asymmetry": "A beat-and-raise extends the supercycle; a guide wobble on a 25.8% concentration into a "
-                      "rate-compressed multiple is the book's largest single-name drawdown risk. The collar is the trade.",
+        {"day": "Thu-Fri", "date": "Jul 2-3",
+         "event": "June PAYROLLS — the first labour read in the guidance vacuum (book-critical)",
+         "consensus": "June non-farm payrolls (likely Jul 2 ahead of the Jul 3-4 holiday). The decisive input to the "
+                      "September-hike pricing (~68%), and the first major labour print since Warsh removed forward "
+                      "guidance — each number now its own vol event. Source: BLS.",
+         "view": "The level that resolves the book's central binary: a soft print prices OUT the Sep hike, the 2Y rallies "
+                 "through 4.05% and the rate longs (MM-004/013/009) extend; a hot print backs the 2Y to the 4.35% stop.",
+         "asymmetry": "A soft payroll squeezes the crowded short-duration trade (MM-013 pays); a hot one validates the "
+                      "hike and the silicon-inflation, pressuring the rate longs and paying the SPX put spread (MM-030).",
+         "dir": "flat"},
+        {"day": "Sat", "date": "Jul 4",
+         "event": "EU-US trade deadline — autos to 25% if the EU does not ratify",
+         "consensus": "Trump's deadline for the EU to ratify the trade deal or face autos/trucks tariffs to 25%; "
+                      "Bessent has flagged tariffs could return to prior levels by early July. A second cost-push onto "
+                      "the silicon one. Sources: CNN, Congress.gov, Reuters.",
+         "view": "A re-escalation is a fresh tariff cost-push exactly when the Fed has no slack to absorb the "
+                 "silicon-inflation — risk-off and EUR-supportive (the two-sided risk to short EUR/USD MM-012/024).",
+         "asymmetry": "A deal is risk-on + EUR-supportive (caps the dollar trade); a re-escalation is a second cost-push "
+                      "that compounds the silicon-inflation and pays the index put spread (MM-030).",
          "dir": "flat"},
     ],
 
     "what_changes_mind": """
 <ul>
-<li><strong>MM-2026-001 · Short EURAUD:</strong> close above 1.660. At ~1.643; stop 1.662. Quiet leg — a hawkish-Fed risk-off pressures the commodity AUD too, so the cross is a wash and grinds. Hold.</li>
-<li><strong>MM-2026-004 · Short US 10Y yield:</strong> stop 4.65%. At ~4.45% — backed up to 4.499% at the close, then eased back near the 4.44% entry (~flat) as the overshoot faded. The contrarian oil-disinflation case got its first confirmation; the front end is cleaner. Do NOT add. Hold.</li>
-<li><strong>MM-2026-005 · Long gold:</strong> min hold to ~Jul 15; stop $4,250. At ~$4,300. Real-rates engine reversed on the dots (-2% to ~$4,275, 'first hedge to give back'), HELD the stop, bounced on Iran. Two-sided hold. Hold.</li>
-<li><strong>MM-2026-007 · Short USDJPY:</strong> stop 163.00. At ~160.3. PINNED at the MoF line despite the hawkish-Fed differential widening — ~flat, frustrated by crushed carry. Needs vol to break it (now likelier in the guidance vacuum). Defined-risk expression MM-021. Hold.</li>
-<li><strong>MM-2026-008 · SPX put spread:</strong> S&P ~7,420 → marked ~$60 (~+70%). THE CALL OF THE DAY — the FOMC tail paid. The catalyst passed but a hawkish, no-cuts Fed keeps the de-rating live; hold the residual convexity into Jun-27 expiry.</li>
-<li><strong>MM-2026-009 · 2s10s steepener:</strong> min hold to ~Jul 16; stop -10bp. At ~+28bp (gave back from ~+41bp); target +60bp. Bear-flattened on the hawkish dots but still ~+85%. A Fed hiking into disinflation eventually re-steepens. Hold.</li>
-<li><strong>MM-2026-012 · Short EURUSD:</strong> stop 1.182. At ~1.150. VINDICATED — the dollar broke 100 on the hawkish Fed vs a paused ECB. A fresh regime. Hold toward 1.13; add downside via MM-024.</li>
-<li><strong>MM-2026-013 · Short US 2Y yield:</strong> stop 4.35%; min hold to ~Jul 8. At ~4.16% — the trade the Fed shot at (penciled the 2026 hike it faded); the 2Y spiked to 4.216% at the close then eased to ~the 4.162% entry overnight, so ~FLAT. Held on the oil-disinflation contrarian case (Brent $78 vs the Fed's 3.6%); first confirming fade. Do NOT add. Hold.</li>
+<li><strong>MM-2026-001 · Short EURAUD:</strong> close above 1.662 (the stop). At ~1.651 — drifted offside as the Micron-led risk-on rebuilt the AUD bid; edge thinned, ~11 pips of room. Trim into strength; tight leash.</li>
+<li><strong>MM-2026-004 · Short US 10Y yield:</strong> stop 4.65%. At ~4.37% — RESCUED, now green; the bond market trades the energy/goods disinflation over the hot PCE. The silicon-inflation (MM-027) is the offset. Harvest, don't press.</li>
+<li><strong>MM-2026-005 · Long gold:</strong> min hold to ~Jul 15; stop $4,250 (breached). At ~$4,015 — BROKE $4,000, the casualty (~-11%), both engines drained. The min-hold rule holds it; hedge via MM-029, NOT an add.</li>
+<li><strong>MM-2026-007 · Short USDJPY:</strong> stop 163.00. At ~161.6 — offside, past the old 160 pin as the 13-month-high dollar dragged it up. Needs a vol shock (payrolls Jul 2-3) to break it. Defined-risk expression MM-021. Tight leash.</li>
+<li><strong>MM-2026-008 · SPX put spread:</strong> BANKED into Jun-27 expiry at ~$45 (~+29%). The FOMC-tail hedge did its job (peak ~$60). Replaced by the fresh August 7,000/6,600 put spread (MM-030).</li>
+<li><strong>MM-2026-009 · 2s10s steepener:</strong> min hold to ~Jul 16; stop -10bp. At ~+28bp, RE-STEEPENING on the front-end rally; ~+85%; target +60bp. The silicon-inflation re-flattens it — that's the risk. Trail the stop; hold.</li>
+<li><strong>MM-2026-012 · Short EURUSD:</strong> stop 1.182 (distant). At ~1.138. VINDICATED — DXY at a 13-month high, a durable dollar regime. Hold toward 1.13; add downside via MM-024. Two-sided risk: the Jul 4 EU-tariff deadline.</li>
+<li><strong>MM-2026-013 · Short US 2Y yield:</strong> stop 4.35%; min hold to ~Jul 8. At ~4.09% — RESCUED, now green; rallied through the 4.162% entry even on a hot PCE as the bond market fights the dots. June payrolls Jul 2-3 is the test. Harvest, don't add.</li>
 </ul>
 """,
 
     "client_ammo": [
-        {"q": "What actually happened at Warsh's first Fed meeting?",
-         "a": ("He did both of the things the market thought were alternatives. The projections turned hawkish &mdash; "
-               "the 2026 dot rose to about 3.8%, nine of eighteen officials now see a hike, and the inflation forecast "
-               "was raised to 3.6%. And he dismantled the guidance around it: he was the only official not to submit a "
-               "dot, he shortened the statement, stripped the bias to cuts, and set up five task forces. A hawkish Fed "
-               "that also went quiet. Yields and the dollar jumped; stocks fell.")},
-        {"q": "Did the book get hurt?",
-         "a": ("The hedges paid and the discipline held. Our long-volatility idea and the S&P put spread were the "
-               "winners as the VIX jumped 12% &mdash; the put spread is up about 70%. The short-euro position finally "
-               "paid as the dollar broke 100. Gold gave back exactly as we flagged it would, but held its stop. The "
-               "duration positions are offside, but because we didn't add into the meeting, it's a give-back, not a "
-               "stop-out.")},
-        {"q": "The Fed turned hawkish but oil is at $78 — which one matters?",
-         "a": ("That's the whole question. The Fed raised its inflation forecast to 3.6% the same week Brent broke $78 "
-               "on the Iran deal &mdash; those can't both describe the next six months. Either cheaper oil feeds "
-               "through and the Fed is tightening into a disinflation it has to reverse, or inflation is sticky enough "
-               "that oil is noise. We're holding our duration longs on the first view, but sized as a contrarian bet "
-               "with a hard stop, not a conviction add.")},
-        {"q": "Should we do anything about Micron before the 24th?",
-         "a": ("Yes &mdash; collar it. Micron is 25.8% of the book into earnings June 24, and a higher-for-longer Fed "
-               "just compressed the AI-memory multiple through a higher discount rate, on top of already-rich option "
-               "premiums. A collar uses those rich calls to finance protective puts for near-zero cost, capping the "
-               "print's downside while keeping the upside we like. A quarter of the book on one name into a "
-               "high-volatility print is a risk question first.")},
-        {"q": "Is the Iran deal done?",
-         "a": ("Declared, not signed. Trump called it 'complete' and authorized reopening the Strait, but the ships "
-               "aren't actually sailing and the formal signing is Friday in Switzerland &mdash; on Juneteenth, when US "
-               "markets are closed. The binding constraint is Israel, not Iran. So we've surrendered the oil longs but "
-               "aren't chasing crude lower into a signature a third party can still break &mdash; and anything that "
-               "happens Friday can't trade until Monday.")},
+        {"q": "Micron blew out — why isn't this just a clean buy signal?",
+         "a": ("Because the same thing that gave Micron a record quarter just raised the price of a MacBook. The AI "
+               "build-out now eats about seventy percent of the world's memory, DRAM is up ninety-eight percent this "
+               "year, and that shortage is both Micron's windfall and a cost-push: Apple and Microsoft hiked hardware "
+               "prices fifteen to twenty-five percent and named it as the cause. The AI trade has quietly become an "
+               "inflation trade. We own the winner but we're collaring it to bank the gain, not chasing it.")},
+        {"q": "PCE came in hot at 4.1% — does that mean the Fed is right to stay hawkish?",
+         "a": ("It's a backward-looking May number built on the Iran-war gasoline spike, and gasoline is gone &mdash; "
+               "oil's at $74 and gold just broke $4,000. The inflation isn't ending, it's changing source: from energy, "
+               "which is collapsing, to silicon, which is only starting. The bond market gets it &mdash; yields fell "
+               "even on the hot print. We're positioned with the bond market: our rate trades are green and the "
+               "steepener's up about eighty-five percent.")},
+        {"q": "Why did the Mag7 fall if the AI news was good?",
+         "a": ("Apple and Microsoft are the ones who buy the memory, not sell it &mdash; so the shortage that lifts "
+               "Micron squeezes their margins, and their stocks led the decline. That split, memory up and "
+               "box-makers down, is the cleanest trade out of this: long the memory makers' pricing power, short the "
+               "hardware names paying for it. The book already owns the long side via Micron; the fresh leg is the "
+               "short.")},
+        {"q": "What should we do about Micron now?",
+         "a": ("Collar it &mdash; now, after the print, while the option premiums are still rich. Micron is a third of "
+               "the book and its catalyst has fired; riding that concentration naked into the next quarter is a risk "
+               "question, not a conviction. Selling the rich calls to finance protective puts banks the supercycle gain "
+               "for near-zero cost while keeping defined upside. The biggest position should not be the biggest "
+               "unmanaged risk.")},
+        {"q": "Is gold a buy down here after breaking $4,000?",
+         "a": ("Not yet, and we're not adding to ours. Gold's trading as a real-rates short, not an inflation hedge &mdash; "
+               "a hawkish Fed, a thirteen-month-high dollar, the Iran calm and two billion of ETF outflows all pulled "
+               "the same way. We hold our position on its rule, but the disciplined move is a defined-risk put spread "
+               "that owns the continuation lower and hedges the underwater long, not catching a falling knife.")},
         {"q": "What's the cleanest new trade out of all this?",
-         "a": ("Long rate volatility. The biggest change isn't the hawkish dots &mdash; it's that Warsh removed the "
-               "Fed's forward guidance, which is the tool that kept the bond market calm. With no path, every data "
-               "point reprices the long end, and rate volatility (the MOVE index) re-rates higher more durably than "
-               "stock volatility. We'd rather own that than guess the next rate move.")},
+         "a": ("Owning the inflation the market thinks is disappearing. Everyone is reading cheaper oil as the end of "
+               "inflation and pricing the front end accordingly &mdash; but the silicon-driven goods inflation is only "
+               "beginning, and it's the one the Fed can't fix with rate hikes. We'd rather be long that, and short the "
+               "hardware makers the memory cost is squeezing, than guess the next move in oil.")},
     ],
 
     "ideas_note": (
-        "<p>The event resolved hawkish-and-opaque, so the fresh ideas own the new regime rather than fight it. "
-        "<strong>Long rates vol (MM-023)</strong> &mdash; a 2-month long-bond (TLT) straddle / long MOVE; the "
-        "guidance vacuum re-widens the term premium, and rate vol is the cleaner expression than the equity VIX that "
-        "already re-rated. <strong>EUR/USD 1.14/1.12 put spread (MM-024)</strong> &mdash; the disciplined, "
-        "defined-risk way to add to the vindicated dollar breakout (DXY through 100) without chasing spot at the "
-        "figure. <strong>Long XLF / short XLK (MM-025)</strong> &mdash; a higher-for-longer, no-cuts Fed lifts "
-        "financial margins while it compresses the long-duration tech multiple; the rate-regime version of the "
-        "breadth RV. <strong>Long Gilts (MM-026)</strong> &mdash; the one major where the data undercuts the hawks: "
-        "a soft UK CPI (2.8%) into a BoE hold today is a clean rate-divergence trade as US yields back up. The "
-        "winners (MM-008, MM-012, MM-020) are banked or held with trailed stops; the offside duration (MM-013/004/009) "
-        "is held on a falsifiable thesis, not added.</p>"
+        "<p>The Micron blowout and the consumer price shock are the same event, so the fresh ideas trade the "
+        "silicon-inflation the market is still filing under two headlines. <strong>Long 2Y breakevens (MM-027)</strong> "
+        "&mdash; the marquee: the curve reads the oil collapse as clean disinflation and is missing the DRAM-driven "
+        "core-goods stickiness; this owns the inflation a book long both duration and the AI complex otherwise lacks. "
+        "<strong>Long memory vs short the OEMs (MM-028)</strong> &mdash; the supercycle is a margin transfer; the book "
+        "holds the winners (MU), so the fresh leg is shorting Dell/HP, the box-makers eating the cost and the volume "
+        "decline. <strong>GLD 3,800/3,500 put spread (MM-029)</strong> &mdash; defined-risk downside that hedges the "
+        "underwater gold long after the $4,000 break. <strong>August SPX 7,000/6,600 put spread (MM-030)</strong> "
+        "&mdash; the replacement index hedge after MM-008 was banked, for the payrolls + quarter-end + tariff tail. "
+        "The rate winners (MM-009/004/013) are harvested and trailed; the offside legs (gold, USDJPY, EURAUD) are held "
+        "on tight leashes or hedged, not added.</p>"
     ),
 
     "event_radar_note": (
-        "<p>Warsh did both: a hawkish SEP (2026 dot ~3.8%, a hike penciled, cuts trimmed, inflation raised to 3.6%) "
-        "AND a dismantled framework (no personal dot, a shorter statement, the cut bias stripped, five task forces). "
-        "The tape repriced hawkish &mdash; S&P -1.21%, 2Y +16bp to a one-year high, DXY through 100, VIX +12% to "
-        "18.44 &mdash; and the book's long vol (MM-020), put spread (MM-008) and short EUR/USD (MM-012) won. Ahead: "
-        "the BoE + US claims/Philly Fed TODAY (the first test of a guidance-less Fed), the Iran signing Fri Jun 19 "
-        "(Juneteenth — US closed, trades Monday; Israel the live wildcard), FedEx Jun 23, and book-critical Micron "
-        "Jun 24. The fresh ideas own the regime: rate vol, the dollar breakout, financials-over-tech, and the UK "
-        "divergence. No chase of the hawkish level; own its instability.</p>"
+        "<p>The AI trade became the inflation trade: Micron blew out (EPS $25.11 vs $21.40, tightness 'beyond 2027') "
+        "and the SAME DRAM shortage repriced Apple/Microsoft hardware 15-25% &mdash; the Mag7 fell on its own supply "
+        "chain (Nasdaq -0.46%, S&P flat). May PCE printed hot (4.1%) but on backward Iran-war gasoline, even as Brent "
+        "$74 and gold broke $4,000. Yet yields FELL (2Y 4.09%, 10Y 4.37%) &mdash; the bond market trades the "
+        "disinflation over the dots, rescuing the rate longs (steepener ~+85%). Ahead: May PCE + UMich TODAY; "
+        "quarter/half-end Jun 29-30; ISM Jul 1; June PAYROLLS Jul 2-3 (the first labour read in the guidance vacuum); "
+        "the EU-tariff deadline Jul 4. The fresh ideas own the silicon-inflation: long breakevens, long memory / short "
+        "the OEMs, a gold put-spread hedge, and a fresh index put spread. Collar the 32.2% Micron after the blowout.</p>"
     ),
 
     "burry_tell": (
-        "For fifteen years the Fed's primary shock absorber was forward guidance &mdash; the promise to telegraph the "
-        "path of the funding rate, which compressed the term premium and made the central bank a calendar-anchored "
-        "backstop. Yesterday a chair who has argued against guidance for a decade began removing it: he dropped his "
-        "own dot, sharply shortened the statement, stripped the cut-bias language, and stood up a task force on "
-        "communications and another on the balance sheet. The structural thing nobody is pricing is no longer a "
-        "forecast &mdash; the first evidence printed. The 10Y backed up on a unanimous hold, and the VIX re-rated 12% "
-        "to a level it had not held all cycle. Over the next two-to-three quarters this resolves as a permanently "
-        "higher vol floor: a world where a hot CPI or a soft payroll moves markets the way it did before 2009, "
-        "because the Fed no longer pre-commits to absorb it. Rate volatility, not equity volatility, is where it shows "
-        "up first &mdash; the guidance Warsh removed was a rates tool. The equity market, with an index still "
-        "concentrated in seven names that just led the losses, is the least prepared for the regime. It is the reason "
-        "to be structurally long volatility, and increasingly rate vol (MM-023) over equity vol, as it announces itself."
+        "For two years the consensus has held that AI is structurally deflationary &mdash; cheaper cognition, "
+        "automation everywhere, falling unit costs. The next eighteen months are going to argue the opposite at the "
+        "checkout, and this week is the first evidence. The build-out phase of the most disinflationary technology of "
+        "the decade is, mechanically, an inflation machine: the data centres now consume roughly seventy percent of "
+        "the world's memory output, every HBM wafer for an Nvidia GPU is a wafer denied to a laptop or a phone "
+        "(shipments down eleven and thirteen percent this year), and DRAM is up ninety-eight percent. The structural "
+        "thing nobody is pricing is no longer a forecast: Apple and Microsoft just raised hardware prices fifteen to "
+        "twenty-five percent and named the AI shortage as the cause, and the core PCE underneath the collapsing energy "
+        "is sticky. Over the next two-to-three quarters this resolves as either margin destruction at the box-makers or "
+        "a core-goods inflation that traps the Fed &mdash; probably both. The equity index, still concentrated in the "
+        "seven names that are simultaneously the cause and the victims of the shortage, is the least prepared for the "
+        "world where the AI trade and the inflation trade are the same trade. Long front-end breakevens (MM-027) and "
+        "short the OEM casualties (MM-028) are the way to own it before the consensus re-labels it."
     ),
 
     "earnings_summary": (
-        "Jabil (JBL): POST-EARNINGS (reported Jun 17 BMO) — beat again, its fifth straight: EPS 3.16 vs 3.109 "
-        "consensus (+1.64%) on revenue $8.751B vs $8.636B est (Finnhub-sourced); sell side 13 buy / 4 hold / 0 sell. "
-        "The AI-infrastructure read-through held, the constructive signal under the noise. But the print is FAIRLY "
-        "PRICED, not a fresh idea: a modest +1.64% beat reported into a hawkish Fed that just penciled a hike, where a "
-        "higher discount rate is doing more to the AI-infra cohort than the quarter did. Stock reaction and short "
-        "interest unverified. Neutral — good company, wrong week for a small beat. FedEx is Jun 23; Micron (the book's "
-        "25.8% position) is Jun 24 AMC and is carried in Trade Ideas / the book outlook, not here."
+        "Micron (MU): POST-EARNINGS (reported Jun 24 AMC) — the BLOWOUT and the book's defining name. FY-Q3 revenue "
+        "$41.456B (vs ~$36.9B est) and adjusted EPS $25.11 vs $21.40 (+17.3%, Finnhub-sourced), with the CEO calling "
+        "memory tightness 'locked in beyond 2027'; sell side 51 buy / 3 hold / 1 sell. OVERBOUGHT reaction risk: the "
+        "supercycle is confirmed, but the book already owns a 32.2% weight — the play is NEUTRAL/manage (collar to bank "
+        "the gain), not chase. FedEx (FDX): POST-EARNINGS (Jun 23 AMC) — EPS 6.31 vs 6.02 (+4.78% beat), the "
+        "global-freight read; FAIRLY PRICED, a constructive goods-cycle signal but no fresh asymmetry into the "
+        "disinflation tape. JEF (Jun 24) MISSED (1.03 vs 1.17) and SNX (Jun 25) beat — both noted, neither a fresh idea."
     ),
     "earnings_why": (
-        "Jabil is the one name that cleared the universe filter inside the window — a ~$40bn-cap US name that reported "
-        "Jun 17 BMO (inside the 3-day-post window). It is rendered POST-EARNINGS: the +1.64% beat and the "
-        "recommendation split are Finnhub-sourced, but the stock reaction and short interest are unverified, so the "
-        "positioning pillar scores 0 and the label is capped at Medium. The signal worth keeping is qualitative — the "
-        "AI-infrastructure guide held the morning before the hawkish Fed, evidence the build-out demand survived the "
-        "early-June semis de-risk — but the FOMC repricing swamped the print. Excluded this morning: FedEx (reports "
-        "Jun 23, just outside the window), Micron (Jun 24 AMC — carried in the book outlook as the 25.8% concentration "
-        "risk), and names outside the Tech/Financials/Industrials/Utilities universe."
+        "The post-earnings window (Jun 23-26) brought four qualifying names; two carry signal. Micron is rendered "
+        "POST-EARNINGS as the marquee: the +17.3% EPS beat and the 51/3/1 recommendation split are Finnhub-sourced, "
+        "but because the stock has already re-rated and the book is a 32.2% holder, the trade is to manage the "
+        "concentration (collar), not add — so it is carried in the book outlook and Trade Ideas as much as here. FedEx "
+        "cleared the Industrials filter (Jun 23 AMC, +4.78% beat): a constructive read that the goods cycle is not "
+        "collapsing, but a modest beat into a tape already trading the disinflation, so FAIRLY PRICED. Jefferies "
+        "(Financials, Jun 24) missed at 1.03 vs 1.17 and TD Synnex (Jun 25) beat at 4.85 vs 4.18 — both inside the "
+        "window, neither a differentiated idea. Excluded: names outside the Tech/Financials/Industrials/Utilities, "
+        ">$10bn, US/Korea universe."
     ),
 
     "book_aim": (
-        "Two-sided and re-pointed at a resolved event. The FOMC binary graded out: the hedges (long vol MM-020, the "
-        "SPX put spread MM-008 at ~+70%) and the short EUR/USD (MM-012) paid, gold gave back as flagged and held its "
-        "stop, and the offside duration longs (MM-013/004) and the steepener (MM-009) gave back but were protected by "
-        "the no-add discipline into the print. For the rest of June: bank or trail the winners; hold the offside "
-        "duration on its falsifiable oil-disinflation thesis with hard stops (4.35% / 4.65% / -10bp), not as a "
-        "conviction add; and rotate the book's risk into the new regime via the fresh ideas — long rate vol (MM-023), "
-        "the dollar breakout (MM-024), financials-over-tech (MM-025), and the UK divergence (MM-026). The two "
-        "house-keeping priorities are unchanged and now more urgent: collar the 25.8% Micron concentration before the "
-        "Jun 24 print, and finally hedge the ~72% USD sleeve into a dollar that has broken out. Open no new bet that "
-        "merely chases the hawkish level — own its instability, not its direction."
+        "Two-sided and on the right side of the bond market's disagreement with the Fed. The rate book is the winner: "
+        "the 2s10s steepener (MM-009) ~+85% and the duration longs (MM-004/013) green for the first time in weeks as "
+        "yields fell on the energy/goods disinflation even through a hot PCE; the short EUR/USD (MM-012) is vindicated "
+        "by a 13-month-high dollar; the SPX put spread (MM-008) is banked into expiry (~+29%). The casualties are on "
+        "the disinflation side — gold (MM-005) broke $4,000 and is held on its min-hold, hedged not added. For the "
+        "rest of June and into payrolls: harvest and trail the rate winners (do NOT press them — the silicon-inflation "
+        "is the live two-sided risk); hold the offside legs on tight leashes or defined-risk hedges; and rotate fresh "
+        "risk into the silicon-inflation the market is mispricing — long 2Y breakevens (MM-027), long memory / short "
+        "the OEMs (MM-028), a GLD put-spread hedge (MM-029), and a fresh August SPX put spread (MM-030). The urgent "
+        "house-keeping: collar the 32.2% Micron AFTER the blowout to lock the gain. Own the silicon-inflation, not the "
+        "energy headline."
     ),
     "book_pnl": {
         "note": ("Open book P&L is the equal-weight average of the marked-to-live open positions; realised is the "
-                 "average of closed trades. Position-level marks are live (TradingView); the one option line "
-                 "(MM-008) is a model estimate from spot (~$60 post-FOMC).")
+                 "average of closed trades. Position-level marks are live (TradingView); the option line (MM-008) was "
+                 "banked at a ~$45 model estimate into its Jun-27 expiry (+~29%).")
     },
     "idea_selection": [
-        {"label": "Long rates vol — own the guidance vacuum (MM-023)", "in": True,
-         "text": ("Warsh removed the Fed's forward path; the term premium now reprices on every data point, and the "
-                  "10Y backing up on a hold is the first evidence. A 2-month long-bond (TLT) straddle or long MOVE "
-                  "owns the re-widening in either direction with defined premium. The cleanest expression of the new "
-                  "regime — rate vol, not equity vol, is where the guidance vacuum gets paid.")},
-        {"label": "EUR/USD 1.14/1.12 put spread — add the dollar breakout (MM-024)", "in": True,
-         "text": ("The dollar broke 100 for the first time since the early Iran war on the hawkish Fed vs a paused "
-                  "ECB. A defined-risk put spread owns the continuation toward 1.13 with capped premium — the "
-                  "disciplined way to add to the vindicated spot short (MM-012) without chasing at the figure, into a "
-                  "known two-sided Iran tail.")},
-        {"label": "Long XLF / short XLK — the rate-regime rotation (MM-025)", "in": True,
-         "text": ("A higher-for-longer, no-cuts Fed lifts financial net-interest margins while it compresses the "
-                  "long-duration tech multiple; Wednesday's Dow-over-Nasdaq, tech-led-losses split is the first leg. "
-                  "The rate-sensitivity version of the breadth RV (MM-022). Size on the ratio; stop -3%.")},
-        {"label": "Long Gilts — the UK divergence (MM-026)", "in": True,
-         "text": ("The one major where the data undercuts the hawks: UK May CPI at 2.8% (below 3.0%) into a "
-                  "near-unanimous BoE hold today pulls Gilt yields down as US yields back up on Warsh. A clean, dated "
-                  "rate-divergence trade; stop UK 10Y +15bp.")},
-        {"label": "Offside duration (MM-013/004/009) — held, not added", "in": False,
-         "text": ("The trades the Fed shot at. Held on the falsifiable oil-disinflation thesis (Brent $78 vs the "
-                  "Fed's raised 3.6% forecast), inside their stops (4.35% / 4.65% / -10bp) and min-holds. Do NOT add "
-                  "into a fresh hawkish print — let the data resolve it.")},
-        {"label": "No idea that merely chases the hawkish level", "in": False,
-         "text": ("The consensus has fully embraced higher-for-longer. Shorting more duration here is the crowded "
-                  "side into a guidance-less Fed where a soft print squeezes. The four fresh ideas own the regime's "
-                  "instability (rate vol, dollar, rotation, UK) rather than its direction.")},
+        {"label": "Long 2Y inflation breakevens — own the silicon-push (MM-027)", "in": True,
+         "text": ("The marquee idea. The curve reads the oil collapse as clean disinflation and is pulling front-end "
+                  "breakevens down — but DRAM +98% and a 15-25% consumer-hardware repricing feed core goods for "
+                  "quarters. Long 2Y breakevens owns the inflation the market is mistaking for disappearing, and it is "
+                  "the inflation hedge a book long both duration and the AI complex otherwise lacks. Stop: -20bp.")},
+        {"label": "Long memory vs short PC/handset OEMs (MM-028)", "in": True,
+         "text": ("The DRAM supercycle is a margin transfer: Micron captures the price, Dell/HP eat the input cost and "
+                  "the -11%/-13% volume decline. The book already owns the long leg via MU, so the fresh, "
+                  "concentration-neutral expression is the SHORT — the box-makers who cannot fully pass the cost "
+                  "through. Long who sets the price, short who pays it; stop ratio -4%.")},
+        {"label": "GLD 3,800/3,500 put spread — hedge the broken-$4k gold long (MM-029)", "in": True,
+         "text": ("Gold broke $4,000 with the real-rates and dollar engine intact and the haven bid drained. The book "
+                  "is long gold on a min-hold and cannot add to a falling knife — so the disciplined move is to own "
+                  "the continuation with defined risk, which simultaneously hedges the underwater long (MM-005 / "
+                  "Xetra-Gold). Defined premium; max loss capped.")},
+        {"label": "August SPX 7,000/6,600 put spread — re-set the index hedge (MM-030)", "in": True,
+         "text": ("The FOMC-tail spread (MM-008) is banked into expiry; the reasons to carry index downside did not "
+                  "expire with it. June payrolls (Jul 2-3), the quarter-end rebalance, the July 4 tariff deadline and "
+                  "the Mag7's own memory-cost overhang are the tail, into a tape pricing the Micron rebound as one-way. "
+                  "Struck below spot for cheap convexity; defined risk.")},
+        {"label": "Rate winners (MM-009/004/013) — harvest and trail, don't press", "in": False,
+         "text": ("The steepener ~+85% and the duration longs green on the disinflation bid. Held and trailed, not "
+                  "added: the silicon-inflation (MM-027) is the live two-sided risk that re-flattens the curve and "
+                  "backs the front end up. Let June payrolls resolve it; the breakeven long is the hedge to this leg.")},
+        {"label": "No idea that merely chases the Micron melt-up", "in": False,
+         "text": ("The consensus is buying the AI complex as a one-way all-clear. Adding more long-memory beta here, "
+                  "into a 32.2% MU book, is the crowded side. The fresh ideas own the regime's second-order "
+                  "inflation (breakevens, the OEM short) rather than the first-order growth headline.")},
     ],
     "screen": screen,
     "screener_notes": SCREENER_NOTES,
 
     "vix_term": [
-        {"label": "VIX9D", "value": 18.0},
-        {"label": "VIX",   "value": 18.44},
+        {"label": "VIX9D", "value": 17.5},
+        {"label": "VIX",   "value": round(_g("vix") or 18.9, 2)},
         {"label": "VIX3M", "value": 19.5},
-        {"label": "VIX6M", "value": 20.5},
+        {"label": "VIX6M", "value": 20.0},
     ],
     "yield_curve_pts": [
-        {"label": "2Y",  "value": round(_g("us02y") or 4.22, 3)},
-        {"label": "5Y",  "value": 4.35},
-        {"label": "10Y", "value": round(_g("us10y") or 4.50, 3)},
-        {"label": "30Y", "value": round(_g("us30y") or 5.00, 3)},
+        {"label": "2Y",  "value": round(_g("us02y") or 4.09, 3)},
+        {"label": "5Y",  "value": 4.22},
+        {"label": "10Y", "value": round(_g("us10y") or 4.37, 3)},
+        {"label": "30Y", "value": round(_g("us30y") or 4.85, 3)},
     ],
 
     "new_ideas": [
         {
-            "id": "MM-2026-023", "trade": "Long rates vol — 2M long-bond (TLT) straddle / long MOVE",
-            "asset_class": "Rates (vol)", "structure": "straddle / vol",
-            "entry": "~1.2% premium", "stop": "—", "target": "~2-3x on a term-premium re-rating",
-            "conviction": 7,
-            "conviction_breakdown": {"gap": 2, "catalyst": 2, "positioning": 2, "confirmation": 1, "stop_quality": 1},
-            "horizon": "to mid-Aug", "min_hold_days": 0,
-            "thesis": ("Forward guidance is mechanically a term-premium compressor, and Warsh just removed it — he "
-                       "dropped his own dot, shortened the statement, and stood up a balance-sheet task force. The "
-                       "10Y backing up to 4.499% on a unanimous hold is the first evidence the term premium is "
-                       "re-widening, and MOVE is the cleaner read on it than VIX. A long-bond straddle owns the "
-                       "re-rating in either direction — a hawkish over-tightening or the policy-error reversal — with "
-                       "defined premium. Rate vol, not equity vol, is where the guidance vacuum gets paid."),
+            "id": "MM-2026-027", "trade": "Long US 2Y inflation breakevens (own the silicon-push)",
+            "asset_class": "Rates (inflation)", "structure": "TIPS vs nominal / breakeven",
+            "entry": "2Y breakeven ~spot", "stop": "-20bp", "target": "+40bp",
+            "conviction": 8,
+            "conviction_breakdown": {"gap": 3, "catalyst": 2, "positioning": 1, "confirmation": 1, "stop_quality": 1},
+            "horizon": "to early Sep", "min_hold_days": 0,
+            "thesis": ("The marquee idea: the composition of inflation just flipped and the breakeven curve has not "
+                       "noticed. The tape trades Brent $74 and gold sub-$4,000 as clean disinflation, pulling "
+                       "front-end breakevens down — but the May PCE that printed 4.1% / 3.4% core is being replaced, "
+                       "not ended, as an inflation engine. DRAM is up 98%, Apple and Microsoft just repriced consumer "
+                       "hardware 15-25%, and that goods inflation feeds core PCE for quarters because the AI build-out "
+                       "causing it has a multi-year lead time. Long 2Y breakevens owns the silicon-push the market is "
+                       "mistaking for disappearing inflation — the hedge a book long both duration and the AI complex "
+                       "otherwise lacks."),
         },
         {
-            "id": "MM-2026-024", "trade": "Buy 3M EUR/USD 1.14/1.12 put spread (own the dollar breakout)",
-            "asset_class": "FX (options)", "structure": "put spread",
-            "entry": "~0.7% premium", "stop": "—", "target": "~4x at 1.12",
-            "conviction": 7,
-            "conviction_breakdown": {"gap": 2, "catalyst": 2, "positioning": 2, "confirmation": 2, "stop_quality": 1},
-            "horizon": "3 months", "min_hold_days": 0,
-            "thesis": ("The dollar broke a figure for the first time since the early Iran war: a hawkish Fed that "
-                       "penciled a hike against a paused ECB widened the rate-path asymmetry, DXY ripped through 100 "
-                       "to ~100.5, and EUR/USD sliced through 1.1550. A put spread owns the continuation toward 1.13 "
-                       "with defined premium and positive convexity — the disciplined way to add to the vindicated "
-                       "spot short (MM-012) without chasing at the figure, into a known two-sided tail (a clean Iran "
-                       "signing is the EUR-supportive offset the defined risk caps)."),
-        },
-        {
-            "id": "MM-2026-025", "trade": "Long XLF (financials) vs short XLK (technology)",
-            "asset_class": "Equity RV", "structure": "cross-sector ratio",
-            "entry": "spot ratio", "stop": "ratio -3%", "target": "ratio +6%",
+            "id": "MM-2026-028", "trade": "Long memory (SOXX/MU) vs short PC/handset OEMs (Dell, HP)",
+            "asset_class": "Equity RV", "structure": "cross-industry ratio",
+            "entry": "spot ratio", "stop": "ratio -4%", "target": "ratio +8%",
             "conviction": 6,
             "conviction_breakdown": {"gap": 2, "catalyst": 1, "positioning": 2, "confirmation": 1, "stop_quality": 1},
-            "horizon": "weeks", "min_hold_days": 0,
-            "thesis": ("A higher-for-longer Fed with the cut bias stripped and a 2Y at a one-year high is a sector-"
-                       "rotation engine: it lifts financial net-interest margins while it compresses the long-duration "
-                       "tech multiple through a higher discount rate. Wednesday wrote the first leg — the Dow fell "
-                       "less than the Nasdaq, and Microsoft, Meta, Alphabet and Amazon led the losses. This is the "
-                       "rate-sensitivity version of the breadth RV (MM-022): long the margin beneficiary, short the "
-                       "multiple casualty — low beta to the index level, high beta to the higher-for-longer repricing."),
+            "horizon": "weeks-months", "min_hold_days": 0,
+            "thesis": ("The DRAM supercycle is a margin transfer, and the market is pricing one side of it. Micron "
+                       "printed a record quarter on tightness 'locked in beyond 2027'; the same shortage forced Apple "
+                       "to raise the MacBook $200 and Microsoft the Xbox $150, into a year where PC shipments fall 11% "
+                       "and phones 13%. The memory-makers capture the price; the OEMs eat the input cost AND the "
+                       "volume decline. The book already owns the winners (MU, ~32.2%), so the fresh, "
+                       "concentration-neutral leg is the SHORT — Dell, HP and the hardware OEMs that cannot fully pass "
+                       "the cost through. Long who sets the price, short who pays it."),
         },
         {
-            "id": "MM-2026-026", "trade": "Long Gilts (UK 10Y) into the BoE hold (UK rate divergence)",
-            "asset_class": "Rates (UK)", "structure": "outright duration",
-            "entry": "UK 10Y ~4.75%", "stop": "UK 10Y +15bp", "target": "UK 10Y -25bp",
+            "id": "MM-2026-029", "trade": "Buy 3M GLD 3,800/3,500 put spread (hedge the gold long)",
+            "asset_class": "Commodity (options)", "structure": "put spread",
+            "entry": "~0.8% premium", "stop": "—", "target": "~4x at 3,500",
             "conviction": 6,
-            "conviction_breakdown": {"gap": 2, "catalyst": 2, "positioning": 1, "confirmation": 1, "stop_quality": 1},
-            "horizon": "2-4 weeks", "min_hold_days": 0,
-            "thesis": ("The UK is the one major where the data undercuts the hawks the same week the US Fed empowered "
-                       "them. May CPI came in at 2.8% — unchanged and below the 3.0% consensus, with services and "
-                       "housing softening — which weakens the case of the BoE's hawkish dissenters (Pill, Greene) "
-                       "into today's noon hold. A near-unanimous hold leaning on the soft print pulls Gilt yields "
-                       "down even as US yields back up on Warsh — a clean rate-divergence trade. The half-priced "
-                       "hawkish-dissent risk is the under-positioned offset; a hawkish surprise is the stop."),
+            "conviction_breakdown": {"gap": 2, "catalyst": 1, "positioning": 1, "confirmation": 1, "stop_quality": 1},
+            "horizon": "3 months", "min_hold_days": 0,
+            "thesis": ("Gold broke $4,000 for the first time since November and the structure that broke it is intact: "
+                       "a hawkish Fed, a 13-month-high dollar, the Iran de-escalation draining the haven bid, and $2bn "
+                       "of May ETF outflows. The book is long gold (MM-005) and the Fable book's Xetra-Gold and cannot "
+                       "add to a falling knife on a min-hold — so the disciplined move is to own the CONTINUATION with "
+                       "defined risk, which simultaneously hedges the underwater long. A put spread struck below the "
+                       "broken figure pays toward $3,800-3,500 while capping the cost — both long the position and "
+                       "short the tail until the min-hold elapses ~Jul 15."),
+        },
+        {
+            "id": "MM-2026-030", "trade": "Buy Aug SPX 7,000/6,600 put spread (re-set the index hedge)",
+            "asset_class": "Equity (options)", "structure": "put spread",
+            "entry": "~0.6% premium", "stop": "—", "target": "~5x at 6,600",
+            "conviction": 6,
+            "conviction_breakdown": {"gap": 2, "catalyst": 2, "positioning": 1, "confirmation": 0, "stop_quality": 1},
+            "horizon": "to mid-Aug", "min_hold_days": 0,
+            "thesis": ("The book just banked the FOMC-tail put spread (MM-008) into expiry, and the reasons to carry "
+                       "index downside did not expire with it. The S&P sits near 7,357 with the Mag7 already cracking "
+                       "on its own supply-chain pricing power; a guidance-less Fed runs into June payrolls Jul 2-3, a "
+                       "quarter-end rebalance, and the July 4 EU-tariff deadline, into a tape pricing the AI rebound as "
+                       "a one-way Micron-led melt-up. An August 7,000/6,600 put spread re-establishes cheap convexity "
+                       "on a 32.2%-Micron, AI-heavy concentration — struck below spot for the discrete-event vol the "
+                       "guidance vacuum keeps manufacturing, not a chase of at-the-money premium."),
         },
     ],
     "pre_position_ideas": [],

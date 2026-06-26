@@ -309,10 +309,22 @@
           "level": 1.65057,
           "pnl_pct": -0.34,
           "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 1.65038,
+          "pnl_pct": -0.33,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 1.65082,
+          "pnl_pct": -0.35,
+          "status": "open"
         }
       ],
-      "current": 1.65057,
-      "current_pnl_pct": -0.34
+      "current": 1.65082,
+      "current_pnl_pct": -0.35
     },
     {
       "id": "MM-2026-004",
@@ -335,8 +347,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Brent −17% is a forward CPI cut the FedWatch distribution (67.8% no cuts in 2026) has not booked. Bonds already rallied 26bp off the 4.70% high; the disinflation impulse rolls headline lower into the autumn. Deliberately the opposite macro leg to the Brent longs — the book owns both sides of the MoU binary and gets paid on either resolution.",
-      "current": 4.371,
-      "current_pnl_pct": 1.55,
+      "current": 4.38,
+      "current_pnl_pct": 1.35,
       "history": [
         {
           "date": "2026-05-31",
@@ -619,6 +631,18 @@
           "level": 4.371,
           "pnl_pct": 1.55,
           "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 4.38,
+          "pnl_pct": 1.35,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 4.38,
+          "pnl_pct": 1.35,
+          "status": "open"
         }
       ]
     },
@@ -643,8 +667,8 @@
       "horizon": "months",
       "min_hold_days": 45,
       "thesis": "Pre-position into the 5 June payrolls / 16–17 June FOMC window. Gold has already decoupled from a 4.98% long bond, which means it is pricing both MoU tails at once. It wins if oil-disinflation forces a dovish Fed and real yields fall, AND it wins if the MoU fails and the geopolitical bid returns. It loses only on the narrow path of strong-growth + stable-oil + hawkish-Fed together. That is the asymmetry pre-positioning is built for; minimum 45-day hold, not an event-day scalp.",
-      "current": 4015.7,
-      "current_pnl_pct": -11.22,
+      "current": 4012.75,
+      "current_pnl_pct": -11.28,
       "history": [
         {
           "date": "2026-05-31",
@@ -927,6 +951,18 @@
           "level": 4015.7,
           "pnl_pct": -11.22,
           "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 4011.44,
+          "pnl_pct": -11.31,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 4012.75,
+          "pnl_pct": -11.28,
+          "status": "stop_touched_min_hold"
         }
       ],
       "stop_touched": true
@@ -952,8 +988,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "USDJPY at 159.37 with Finance Minister Katayama threatening intervention. BoJ September hike >50% priced vs Fed on hold. 3.63 pts downside to stop, 9.37 pts to target. Intervention is the backstop.",
-      "current": 161.604,
-      "current_pnl_pct": -1.4,
+      "current": 161.573,
+      "current_pnl_pct": -1.38,
       "history": [
         {
           "date": "2026-06-01",
@@ -1224,6 +1260,18 @@
           "level": 161.604,
           "pnl_pct": -1.4,
           "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 161.585,
+          "pnl_pct": -1.39,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 161.573,
+          "pnl_pct": -1.38,
+          "status": "open"
         }
       ]
     },
@@ -1248,8 +1296,8 @@
       "horizon": "3 months",
       "min_hold_days": 45,
       "thesis": "2s10s at +15bp after 18-month inversion. Buy 2Y (own cut optionality) vs short 10Y (short fiscal supply risk). June 5 payrolls at 89k + Fed pause re-prices front-end. ECB hiking cycle lifts global long rates. Steepener delivers whether Fed cuts or back-end sells off on supply. Late-cycle steepeners outperform after prolonged inversions.",
-      "current": 0.281,
-      "current_pnl_pct": 87.33,
+      "current": 0.284,
+      "current_pnl_pct": 89.33,
       "history": [
         {
           "date": "2026-06-01",
@@ -1514,6 +1562,18 @@
           "level": 0.281,
           "pnl_pct": 87.33,
           "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 0.284,
+          "pnl_pct": 89.33,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 0.284,
+          "pnl_pct": 89.33,
+          "status": "open"
         }
       ]
     },
@@ -1538,8 +1598,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Thursday's 25bp ECB hike is 99% priced — the rate-differential tailwind for EUR is in the price, and a hawkish US repricing widened the gap the other way. Classic buy-rumour-sell-fact setup into a fully-priced central bank. Pairs cleanly with long DAX: a weaker euro flatters the exporters.",
-      "current": 1.13777,
-      "current_pnl_pct": 1.92,
+      "current": 1.13789,
+      "current_pnl_pct": 1.91,
       "history": [
         {
           "date": "2026-06-08",
@@ -1792,6 +1852,18 @@
           "level": 1.13777,
           "pnl_pct": 1.92,
           "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 1.1379,
+          "pnl_pct": 1.91,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 1.13789,
+          "pnl_pct": 1.91,
+          "status": "open"
         }
       ]
     },
@@ -1816,8 +1888,8 @@
       "horizon": "into 16–17 Jun FOMC",
       "min_hold_days": 30,
       "thesis": "The market prices a ~70% hike by year-end on one 172k payroll with unemployment steady at 4.3%. The Fed does not hike into a labor market that is firm-but-not-overheating with a richly-valued equity tape just cracking. The 2-year at 4.16% — a 16-month high — has over-extrapolated a single number; the 17 June dot plot is the catalyst to reprice it. Pre-position, not an event scalp.",
-      "current": 4.09,
-      "current_pnl_pct": 1.73,
+      "current": 4.096,
+      "current_pnl_pct": 1.59,
       "history": [
         {
           "date": "2026-06-08",
@@ -2069,6 +2141,18 @@
           "date": "2026-06-26",
           "level": 4.09,
           "pnl_pct": 1.73,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 4.096,
+          "pnl_pct": 1.59,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 4.096,
+          "pnl_pct": 1.59,
           "status": "open"
         }
       ]
