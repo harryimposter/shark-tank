@@ -1,16 +1,51 @@
 # Finnhub Earnings Data
-Generated: 2026-06-25 06:00 UTC
-Pre-earnings window:  2026-06-25 to 2026-06-30
-Post-earnings window: 2026-06-22 to 2026-06-25
+Generated: 2026-06-26 06:00 UTC
+Pre-earnings window:  2026-06-26 to 2026-07-01
+Post-earnings window: 2026-06-23 to 2026-06-26
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
+
+## AYI — Acuity Inc
+- **Mode:** POST-EARNINGS
+- **Report date:** 2026-06-25
+- **Report timing:** BMO (before open)
+- **Sector:** Utilities
+- **Market cap:** $10.9bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     5.2376
+- Revenue estimate: 1189138791
+- EPS actual:      5.31
+- Revenue actual:  1198000000
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 9
+- Hold:           4
+- Sell/Strong sell: 0
+- Period:         2026-06-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q3: actual 5.31 vs est 5.2376 (1.38%)
+- 2026 Q2: actual 4.14 vs est 4.0387 (2.51%)
+- 2026 Q1: actual 4.69 vs est 4.6365 (1.15%)
+- 2025 Q4: actual 5.2 vs est 4.8868 (6.41%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 15.89%
+- EPS growth YoY (TTM):     3.37%
+- 52-week high:             380.17
+- 52-week low:              257.04
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
 
 ## SNX — TD Synnex Corp
 - **Mode:** POST-EARNINGS
 - **Report date:** 2026-06-25
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $22.8bn
+- **Market cap:** $22.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     4.182
@@ -33,7 +68,7 @@ Source: Finnhub.io
 - Revenue growth YoY (TTM): 10.39%
 - EPS growth YoY (TTM):     50.42%
 - 52-week high:             296.47
-- 52-week low:              128.01
+- 52-week low:              133.71
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
@@ -44,7 +79,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-24
 - **Report timing:** AMC (after close)
 - **Sector:** Financials
-- **Market cap:** $11.8bn
+- **Market cap:** $10.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.1676
@@ -79,7 +114,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-24
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $1182.4bn
+- **Market cap:** $1368.6bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     21.4019
@@ -102,7 +137,7 @@ Source: Finnhub.io
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 85.55%
 - EPS growth YoY (TTM):     412.05%
-- 52-week high:             1213.56
+- 52-week high:             1255
 - 52-week low:              103.38
 - Short ratio:              unavailable
 - Short interest:           unavailable
@@ -114,7 +149,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-23
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $40.0bn
+- **Market cap:** $37.0bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.1644
@@ -135,7 +170,7 @@ Source: Finnhub.io
 - Revenue growth YoY (TTM): unavailable%
 - EPS growth YoY (TTM):     unavailable%
 - 52-week high:             386.34
-- 52-week low:              196.73
+- 52-week low:              181.56
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
@@ -146,7 +181,7 @@ Source: Finnhub.io
 - **Report date:** 2026-06-23
 - **Report timing:** AMC (after close)
 - **Sector:** Industrials
-- **Market cap:** $75.6bn
+- **Market cap:** $78.6bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     6.0224
