@@ -636,6 +636,44 @@ def sec(num, title, body, wide=False):
     return f'<section class="{cls}"{style}>{head}{body}</section>'
 
 
+# --------------------------------------------------------------------------
+# Dark mode for the legacy output.html — the base CSS is fully variable-driven,
+# so dark is a token flip. A fixed toggle sits top-right; the pre-paint script
+# applies a saved choice before first paint. Shares the 'mm-theme' localStorage
+# key with the Shark Tank pages, so the choice carries across the whole site.
+# --------------------------------------------------------------------------
+THEME_PREPAINT = (
+    "<script>(function(){try{var t=localStorage.getItem('mm-theme');"
+    "if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>"
+)
+
+BOOK_DARK = """
+[data-theme=dark]{--bg:#14161a;--paper:#1e222a;--ink:#e6e7e4;--ink-soft:#a7adb6;--ink-mute:#7c828c;
+--gold:#d7b64a;--red:#e56a5c;--green:#42b978;--line:rgba(255,255,255,.14)}
+.book-theme-toggle{position:fixed;top:12px;right:14px;z-index:100;cursor:pointer;border:1px solid var(--line);
+background:var(--paper);color:var(--ink);border-radius:20px;height:30px;min-width:38px;padding:0 10px;font-size:15px;
+line-height:1;display:inline-flex;align-items:center;justify-content:center;font-family:-apple-system,sans-serif}
+.book-theme-toggle:hover{border-color:var(--gold)}
+.book-theme-toggle .ti-moon{display:none}
+[data-theme=dark] .book-theme-toggle .ti-sun{display:none}
+[data-theme=dark] .book-theme-toggle .ti-moon{display:inline}
+"""
+
+BOOK_THEME_JS = (
+    "<script>function __mmToggle(){var d=document.documentElement;"
+    "if(d.getAttribute('data-theme')==='dark'){d.removeAttribute('data-theme');"
+    "try{localStorage.setItem('mm-theme','light')}catch(e){}}"
+    "else{d.setAttribute('data-theme','dark');"
+    "try{localStorage.setItem('mm-theme','dark')}catch(e){}}}</script>"
+)
+
+BOOK_TOGGLE_BTN = (
+    "<button class='book-theme-toggle' onclick='__mmToggle()' aria-label='toggle dark mode' "
+    "title='Toggle dark / light'><span class='ti-sun'>&#9728;</span>"
+    "<span class='ti-moon'>&#9790;</span></button>"
+)
+
+
 def build_html(brief, trades, regime_log):
     d = brief
     reactive = [render_trade_card(i) for i in d.get("new_ideas", [])]
@@ -724,6 +762,7 @@ def build_html(brief, trades, regime_log):
     return (
         "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>"
         "<meta name='viewport' content='width=device-width,initial-scale=1'>"
-        f"<title>Market Map · {e(TODAY)}</title><style>{CSS}</style></head>"
-        f"<body>{body}</body></html>"
+        + THEME_PREPAINT
+        + f"<title>Market Map · {e(TODAY)}</title><style>{CSS}{BOOK_DARK}</style></head>"
+        + f"<body>{BOOK_TOGGLE_BTN}{body}{BOOK_THEME_JS}</body></html>"
     )

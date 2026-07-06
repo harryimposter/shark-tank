@@ -456,6 +456,44 @@ def _rhs(brief):
     return "".join(parts)
 
 
+# --------------------------------------------------------------------------
+# Dark mode — variable-override theme, applied via <html data-theme=dark>.
+# Light mode is unchanged (the base :root). The pre-paint script runs in <head>
+# before first paint so a saved dark choice never flashes light. Persisted in
+# localStorage under 'mm-theme' (shared across every page + same-origin frags).
+# --------------------------------------------------------------------------
+THEME_PREPAINT = (
+    "<script>(function(){try{var t=localStorage.getItem('mm-theme');"
+    "if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>"
+)
+
+DARK_CSS = """
+[data-theme=dark]{--bg:#14161a;--surface:#1e222a;--ink:#e6e7e4;--ink-soft:#a7adb6;--ink-mute:#7c828c;
+--gold:#d7b64a;--red:#e56a5c;--green:#42b978;--line:rgba(255,255,255,.13)}
+[data-theme=dark] .topbar{background:rgba(20,22,26,.9)}
+[data-theme=dark] .scrim{background:rgba(0,0,0,.55)}
+[data-theme=dark] .menu{box-shadow:2px 0 24px rgba(0,0,0,.5)}
+[data-theme=dark] .section-h{color:var(--ink)}
+[data-theme=dark] details.trade-drop[open],[data-theme=dark] details.explain-drop[open],[data-theme=dark] details.idea-d[open]{background:var(--surface)}
+[data-theme=dark] .sumpts li .gchip,[data-theme=dark] .srcchip,[data-theme=dark] .select-box .tk.out{background:var(--surface)}
+[data-theme=dark] .tier.fire,[data-theme=dark] .select-box .tk.in{color:#14161a}
+[data-theme=dark] .tv-wrap,[data-theme=dark] .iframe-2col iframe,[data-theme=dark] .bookframe{background:var(--surface)}
+.theme-toggle{cursor:pointer;border:.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:20px;height:28px;min-width:36px;padding:0 9px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;line-height:1;margin-left:10px}
+.theme-toggle:hover{border-color:var(--gold)}
+.theme-toggle .ti-moon{display:none}
+[data-theme=dark] .theme-toggle .ti-sun{display:none}
+[data-theme=dark] .theme-toggle .ti-moon{display:inline}
+"""
+
+THEME_JS = (
+    "<script>function toggleTheme(){var d=document.documentElement;"
+    "if(d.getAttribute('data-theme')==='dark'){d.removeAttribute('data-theme');"
+    "try{localStorage.setItem('mm-theme','light')}catch(e){}}"
+    "else{d.setAttribute('data-theme','dark');"
+    "try{localStorage.setItem('mm-theme','dark')}catch(e){}}}</script>"
+)
+
+
 def _menu(active):
     links = []
     for href, label, _sub in NAV:
@@ -474,6 +512,9 @@ def _topbar(active):
         '<button class="burger" onclick="openMenu()" aria-label="menu"><span></span><span></span><span></span></button>'
         '<div class="brand">Market Map <b>· Shark Tank</b></div>'
         f'<div class="navwrap">{e(dict((h,l) for h,l,_ in NAV).get(active,""))}</div>'
+        '<button class="theme-toggle" onclick="toggleTheme()" aria-label="toggle dark mode" '
+        'title="Toggle dark / light"><span class="ti-sun">&#9728;</span>'
+        '<span class="ti-moon">&#9790;</span></button>'
         '</div>'
     )
 
@@ -552,14 +593,15 @@ def _shell(active, title, regime, regime_note, lhs_html, brief, masthead_html=No
     return (
         "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>"
         "<meta name='viewport' content='width=device-width,initial-scale=1'>"
-        f"<title>{e(title)} · Shark Tank Market Map</title><style>{CSS}</style></head><body>"
+        + THEME_PREPAINT
+        + f"<title>{e(title)} · Shark Tank Market Map</title><style>{CSS}{DARK_CSS}</style></head><body>"
         + _menu(active) + _topbar(active)
         + '<div class="page">' + masthead + _coverage_bar()
         + '<div class="two-col"><div class="lhs">' + lhs_html + '</div>'
         + '<div class="rhs">' + _rhs(brief) + '</div></div>'
         + '<div class="foot">Shark Tank format · live levels via TradingView · '
           'earnings via Finnhub · book self-graded. Not investment advice.</div>'
-        + '</div>' + MENU_JS + "</body></html>"
+        + '</div>' + MENU_JS + THEME_JS + "</body></html>"
     )
 
 
@@ -1221,11 +1263,29 @@ summary::-webkit-details-marker{display:none}
 .det-thesis{font-size:12px;color:#6b6b6b;margin-top:.5rem;line-height:1.55}
 """
 
+# Dark variant for the iframe fragments (FRAG_CSS uses literal colors, so override
+# each rule explicitly). Same 'mm-theme' localStorage key + same-origin, so the
+# frames follow the parent page's choice.
+FRAG_DARK = """
+[data-theme=dark] body{background:#14161a;color:#e6e7e4}
+[data-theme=dark] h3{color:#7c828c;border-bottom-color:rgba(255,255,255,.13)}
+[data-theme=dark] .g{color:#42b978}[data-theme=dark] .r{color:#e56a5c}[data-theme=dark] .gold{color:#d7b64a}
+[data-theme=dark] .amm{border-bottom-color:rgba(255,255,255,.09)}
+[data-theme=dark] .amm .a{color:#a7adb6}
+[data-theme=dark] details{border-color:rgba(255,255,255,.14);background:#1a1d23}
+[data-theme=dark] details[open]{background:#1e222a}
+[data-theme=dark] .det-row{border-bottom-color:rgba(255,255,255,.1)}
+[data-theme=dark] .det-k{color:#7c828c}
+[data-theme=dark] .pill{border-color:rgba(255,255,255,.18);color:#a7adb6}
+[data-theme=dark] .det-thesis{color:#a7adb6}
+"""
+
 
 def _frag_doc(title, body):
     return (f"<!DOCTYPE html><html><head><meta charset='utf-8'>"
             f"<meta name='viewport' content='width=device-width,initial-scale=1'>"
-            f"<style>{FRAG_CSS}</style></head><body><h3>{e(title)}</h3>{body}</body></html>")
+            f"{THEME_PREPAINT}"
+            f"<style>{FRAG_CSS}{FRAG_DARK}</style></head><body><h3>{e(title)}</h3>{body}</body></html>")
 
 
 def _client_ammo_body(rows):
