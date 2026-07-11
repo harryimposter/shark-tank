@@ -1,0 +1,43 @@
+# Daily Email — ready to send
+
+**To:** harini.desai@jpmorgan.com
+**Subject:** Claude's Daily — Friday 26 June
+
+---
+
+## Plain-text body
+
+CLAUDE'S DAILY — Friday, 26 June 2026
+
+Today's story: it's a memory-chip market now ("RAMageddon")
+
+Thursday split the tape in two along a single fault line — the AI-driven memory shortage. The makers are minting money; the device makers that buy memory are getting squeezed. That bifurcation, not the Fed, is the dominant equity narrative.
+
+Where we closed (Thu 25 June): Nasdaq -0.46% to 25,358.60, S&P 500 -0.01% to 7,357.49, Dow +0.14% to 51,920.62. A flat headline hiding violent dispersion. Micron blew the doors off — FQ3 adj EPS $25.11 vs ~$20.5 est, revenue $41.46B vs $35.7B, stock +14.6% after hours, with 16 long-term supply agreements (~$22B committed) locking in data-center demand. Apple cratered -6.1%, its worst day in over a year (~$265B wiped), after raising prices across 14 Mac/iPad categories blaming the RAM shortage and tariffs; AI data centers are set to consume ~70% of global memory output in 2026. Core PCE (May) printed 3.4% y/y / +0.3% m/m — in line, but the hottest since Oct 2023, with spending up a strong +0.7%. The Fed stays hawkish post-Warsh: ~80% priced for a December hike, ~63% for September. Dollar at a one-year high, gold below $4,000 (-5%+ on the week), oil back to pre-conflict levels on US-Iran peace progress. Today's futures point risk-on: S&P +0.7%, Nasdaq +1.9%.
+
+5 POINTS FOR TODAY
+
+1. The memory super-cycle is the macro trade. Micron and Apple are the same story from opposite ends. Watch whether the bid broadens across the DRAM/HBM/AI-supply complex (SK Hynix, Samsung, Qualcomm +4% yesterday) or stays narrow.
+
+2. Quarter-end flows dominate, not fundamentals. Today carries the largest options expiration on record plus pension rebalancing — top-100 US pensions are 110% funded (highest since 2001), so de-gliding is a mechanical source of equity selling / bond buying into the close. Expect flow-driven noise.
+
+3. In-line PCE is relief, but the Fed door stays shut. The 2-year is the tell; a December hike is ~80% priced. Sticky 3.4% inflation with strong spending keeps cuts off the table for some time.
+
+4. Dollar / gold / oil all sing the hawkish tune. USD at a one-year high is stretched; gold sub-$4,000 and oil at pre-conflict levels reflect the same higher-real-yield + easing-geopolitics combo.
+
+5. Dispersion over direction. A flat index masks a violent rotation — AI/memory ripping, megacap-consumer (Apple) bleeding. Single-stock risk, not beta, is where the action is.
+
+BULL / BASE / BEAR — TODAY'S SESSION
+
+Bull (~30%). Micron's blowout broadens into a full memory/AI risk-on; Nasdaq futures (+1.9%) hold, in-line PCE relief plus quarter-end buying from underweights pushes the S&P back toward 7,400 and Apple's drag gets absorbed.
+
+Base (~45%). Rotation, not a trend. Semis/AI green, Apple and consumer-megacap red, indices modestly higher but churny as opex and pension flows dominate. Low conviction into the weekend.
+
+Bear (~25%). Pension de-glide selling plus Apple/Big-Tech weight overwhelm the Micron pop; a hawkish-Fed grind lifts the 2-year and the dollar squeezes multinationals; the S&P fades red into month-end.
+
+IDEA: TRADE THE BIFURCATION, NOT THE INDEX
+
+The cleanest expression of "RAMageddon" is relative value — long the memory/AI supply chain versus short the memory-consuming device makers whose margins are visibly compressing (Apple's price hikes are the tell: they're passing on a cost they can't absorb). Micron's locked-in supply contracts make the supply-side cash flows unusually visible, while the squeeze on device gross margins is only starting to be priced. A pairs/relative structure sidesteps the index-level noise from today's record opex and pension rebalancing — you're isolating the dispersion, not betting on direction. For a derivatives expression, call spreads on the memory/semi complex funded partly by the rich vol in single-name device makers captures the same theme with defined risk into an event-heavy, flow-dominated tape. Caveat: with the dollar at a one-year high and a December hike ~80% priced, the macro tailwind for "long anything" is thin — keep it relative.
+
+---
+Note: quarter-end opex/pension flows and the Friday session are in progress as written. PCE, Micron and Apple are confirmed results. Fed hike odds are market-implied, not decisions. Sources: Yahoo Finance, CNBC, CBS News, Investing.com, Al Jazeera (each fact cross-checked).

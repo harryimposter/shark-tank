@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Live Desk · Terminal</title><style>
+:root{--bg:#0d0f12;--surface:#15181d;--surface2:#1b1f26;--ink:#e8e8e6;--ink-soft:#a4a7ad;--ink-mute:#6b6f78;
+--gold:#d4af37;--red:#e0533d;--green:#3fb872;--line:rgba(255,255,255,.08);--rad:8px;--rad-lg:12px;
+--font:-apple-system,"Helvetica Neue",sans-serif;--serif:Georgia,"Times New Roman",serif;
+--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+/* ---- topbar ---- */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(13,15,18,.94);backdrop-filter:blur(8px);border-bottom:.5px solid var(--line);display:flex;align-items:center;gap:18px;padding:.55rem 1.2rem;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-size:17px;font-weight:400;white-space:nowrap}
+.brand b{color:var(--gold);font-weight:400}
+.tabs{display:flex;gap:4px}
+.tabbtn{cursor:pointer;border:none;background:none;color:var(--ink-soft);font-family:var(--font);font-size:13px;font-weight:500;letter-spacing:.02em;padding:.45rem .9rem;border-radius:var(--rad);display:flex;align-items:center;gap:7px}
+.tabbtn:hover{background:var(--surface2);color:var(--ink)}
+.tabbtn.active{background:var(--surface2);color:var(--gold)}
+.tabbtn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8}
+.statusbar{margin-left:auto;display:flex;align-items:center;gap:14px}
+.reset-btn{cursor:pointer;border:.5px solid var(--line);background:var(--surface);color:var(--ink-soft);font-size:11px;padding:.4rem .7rem;border-radius:var(--rad)}
+.reset-btn:hover{border-color:var(--gold);color:var(--gold)}
+.clock{font-family:var(--mono);font-size:12px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.live-dot{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
+.live-dot i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(63,184,114,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,184,114,.5)}70%{box-shadow:0 0 0 7px rgba(63,184,114,0)}100%{box-shadow:0 0 0 0 rgba(63,184,114,0)}}
+/* ---- panels ---- */
+.tabpanel{display:none;padding:14px}
+.tabpanel.active{display:block}
+.tape{margin:-14px -14px 14px;border-bottom:.5px solid var(--line)}
+.cell{background:var(--bg);border:.5px solid var(--line);border-radius:var(--rad);display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.cell-h{flex:0 0 auto;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-mute);padding:.5rem .8rem;border-bottom:.5px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--surface)}
+.cell-h b{color:var(--ink-soft);font-weight:600}
+.hdr-tools{display:flex;align-items:center;gap:9px}
+.cell-tag{color:var(--ink-mute)}
+.ed-btn{cursor:pointer;border:.5px solid var(--line);background:transparent;color:var(--ink-mute);font-size:11px;line-height:1;padding:.25rem .5rem;border-radius:6px}
+.ed-btn:hover{border-color:var(--gold);color:var(--gold)}
+.ed-btn.on{border-color:var(--gold);color:var(--gold);background:rgba(212,175,55,.08)}
+.cell-body{flex:1 1 auto;min-height:0;position:relative;overflow:auto}
+.cell-body .tradingview-widget-container,.cell-body .tradingview-widget-container__widget{height:100%}
+/* yields grid */
+.ygrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);height:100%}
+.ytile{background:var(--bg);min-height:88px}
+.ytile .tradingview-widget-container,.ytile .tradingview-widget-container__widget{height:100%}
+/* chip rail (click→chart, edit→add/remove) */
+.chiprail{flex:0 0 auto;border-top:.5px solid var(--line);background:var(--surface);padding:.45rem .6rem;display:flex;gap:6px;align-items:center;overflow-x:auto;white-space:nowrap}
+.chip{cursor:pointer;border:.5px solid var(--line);background:var(--surface2);color:var(--ink-soft);font-family:var(--mono);font-size:11px;padding:.28rem .6rem;border-radius:20px;flex:0 0 auto}
+.chip:hover{border-color:var(--gold);color:var(--gold)}
+.chiprail.editing .chip{border-color:rgba(224,83,61,.5)}
+.chiprail.editing .chip:hover{border-color:var(--red);color:var(--red)}
+.chip i{font-style:normal;color:var(--red);font-weight:700;margin-left:4px}
+.addsym{flex:0 0 auto;background:var(--bg);border:.5px dashed var(--gold);border-radius:20px;color:var(--ink);font-family:var(--mono);font-size:11px;padding:.28rem .6rem;outline:none;min-width:230px}
+.addsym::placeholder{color:var(--ink-mute);font-family:var(--font)}
+/* ---- dashboard grid ---- */
+.dash{display:grid;grid-template-columns:1fr 1fr 370px;grid-template-rows:316px 316px 316px;gap:14px;
+  grid-template-areas:"eq fx news" "cm rt news" "cal rt news"}
+.cell.eq{grid-area:eq}.cell.fx{grid-area:fx}.cell.cm{grid-area:cm}.cell.rt{grid-area:rt}
+.cell.cal{grid-area:cal}.cell.news{grid-area:news}
+@media(max-width:1100px){
+  .dash{grid-template-columns:1fr;grid-template-rows:none;grid-template-areas:none}
+  .cell.eq,.cell.fx,.cell.cm,.cell.cal{grid-area:auto;height:340px}
+  .cell.rt{grid-area:auto;height:540px}
+  .cell.news{grid-area:auto;height:480px}
+}
+/* ---- live search ---- */
+.searchbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.searchbox{display:flex;align-items:center;gap:8px;background:var(--surface);border:.5px solid var(--line);border-radius:var(--rad);padding:.55rem .8rem;flex:1 1 340px;max-width:520px}
+.searchbox svg{width:16px;height:16px;stroke:var(--ink-mute);fill:none;stroke-width:1.8;flex:0 0 auto}
+.searchbox input{flex:1 1 auto;background:none;border:none;outline:none;color:var(--ink);font-family:var(--mono);font-size:15px;letter-spacing:.04em;text-transform:uppercase}
+.searchbox input::placeholder{color:var(--ink-mute);text-transform:none;letter-spacing:0;font-family:var(--font)}
+.goBtn{cursor:pointer;border:none;background:var(--gold);color:#1a1a1a;font-weight:600;font-size:13px;padding:.6rem 1.1rem;border-radius:var(--rad)}
+.goBtn:hover{filter:brightness(1.08)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.qchip{cursor:pointer;border:.5px solid var(--line);background:var(--surface);color:var(--ink-soft);font-family:var(--mono);font-size:12px;padding:.4rem .7rem;border-radius:20px}
+.qchip:hover{border-color:var(--gold);color:var(--gold)}
+.nowsym{font-size:11px;color:var(--ink-mute);margin-bottom:10px;letter-spacing:.04em}
+.nowsym b{color:var(--ink-soft);font-family:var(--mono)}
+#tvchart{height:calc(100vh - 210px);min-height:460px;border:.5px solid var(--line);border-radius:var(--rad);overflow:hidden}
+/* ---- chart modal ---- */
+.modal{display:none;position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.62);backdrop-filter:blur(3px);padding:3vh 3vw}
+.modal.open{display:block}
+.modal-card{height:94vh;background:var(--bg);border:.5px solid var(--line);border-radius:var(--rad-lg);display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.modal-h{flex:0 0 auto;display:flex;justify-content:space-between;align-items:center;padding:.7rem 1rem;border-bottom:.5px solid var(--line);background:var(--surface);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
+.modal-h b{color:var(--gold);font-family:var(--mono);font-size:13px}
+.modal-h button{cursor:pointer;border:.5px solid var(--line);background:transparent;color:var(--ink-soft);font-size:12px;padding:.4rem .8rem;border-radius:var(--rad)}
+.modal-h button:hover{border-color:var(--red);color:var(--red)}
+#modalChart{flex:1 1 auto;min-height:0}
+</style></head><body>
+
+<div class="topbar">
+  <div class="brand">Live Desk <b>· Terminal</b></div>
+  <div class="tabs">
+    <button class="tabbtn active" id="tb-dash" onclick="showTab('dash')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Dashboard</button>
+    <button class="tabbtn" id="tb-search" onclick="showTab('search')">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+      Live Search</button>
+  </div>
+  <div class="statusbar">
+    <button class="reset-btn" onclick="resetLayout()" title="Restore default symbols">↺ Reset</button>
+    <span class="clock" id="clock">--:--:--</span><span class="live-dot"><i></i> Live</span>
+  </div>
+</div>
+
+<!-- ===================== TAB 1 · DASHBOARD ===================== -->
+<div class="tabpanel active" id="tab-dash">
+
+  <!-- ticker tape -->
+  <div class="tape">
+    <div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {"symbols":[{"proName":"CAPITALCOM:US500","title":"S&P 500"},{"proName":"CAPITALCOM:US100","title":"Nasdaq 100"},{"proName":"NASDAQ:SMH","title":"Semis"},{"proName":"FX:EURUSD","title":"EUR/USD"},{"proName":"FX:GBPUSD","title":"GBP/USD"},{"proName":"FX:USDJPY","title":"USD/JPY"},{"proName":"CAPITALCOM:DXY","title":"DXY"},{"proName":"TVC:UKOIL","title":"Brent"},{"proName":"TVC:USOIL","title":"WTI"},{"proName":"TVC:GOLD","title":"Gold"},{"proName":"BINANCE:BTCUSDT","title":"Bitcoin"}],"showSymbolLogo":false,"isTransparent":true,"displayMode":"adaptive","colorTheme":"dark","locale":"en"}
+    </script></div>
+  </div>
+
+  <div class="dash">
+    <div class="cell eq" id="cell-equities">
+      <div class="cell-h"><span class="cell-title"></span><span class="hdr-tools"><span class="cell-tag"></span><button class="ed-btn" id="ed-equities" onclick="toggleEdit('equities')">✎ edit</button></span></div>
+      <div class="cell-body"></div><div class="chiprail" id="chips-equities"></div>
+    </div>
+    <div class="cell fx" id="cell-fx">
+      <div class="cell-h"><span class="cell-title"></span><span class="hdr-tools"><span class="cell-tag"></span><button class="ed-btn" id="ed-fx" onclick="toggleEdit('fx')">✎ edit</button></span></div>
+      <div class="cell-body"></div><div class="chiprail" id="chips-fx"></div>
+    </div>
+    <div class="cell cm" id="cell-commodities">
+      <div class="cell-h"><span class="cell-title"></span><span class="hdr-tools"><span class="cell-tag"></span><button class="ed-btn" id="ed-commodities" onclick="toggleEdit('commodities')">✎ edit</button></span></div>
+      <div class="cell-body"></div><div class="chiprail" id="chips-commodities"></div>
+    </div>
+    <div class="cell rt" id="cell-rates">
+      <div class="cell-h"><span class="cell-title"></span><span class="hdr-tools"><span class="cell-tag"></span><button class="ed-btn" id="ed-rates" onclick="toggleEdit('rates')">✎ edit</button></span></div>
+      <div class="cell-body"></div><div class="chiprail" id="chips-rates"></div>
+    </div>
+
+    <!-- TOP STORIES (right) -->
+    <div class="cell news">
+      <div class="cell-h"><span>Top stories · <b>markets &amp; macro</b></span><span class="cell-tag">streaming</span></div>
+      <div class="cell-body">
+        <div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+        {"feedMode":"market","market":"index","isTransparent":true,"displayMode":"regular","width":"100%","height":"100%","colorTheme":"dark","locale":"en"}
+        </script></div>
+      </div>
+    </div>
+
+    <!-- ECONOMIC CALENDAR (aligned under commodities) -->
+    <div class="cell cal">
+      <div class="cell-h"><span>Economic calendar · <b>this week</b></span><span class="cell-tag">US · EU · UK · JP · CN</span></div>
+      <div class="cell-body">
+        <div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+        {"colorTheme":"dark","isTransparent":true,"width":"100%","height":"100%","locale":"en","importanceFilter":"0,1","countryFilter":"us,eu,gb,jp,cn"}
+        </script></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TAB 2 · LIVE SEARCH ===================== -->
+<div class="tabpanel" id="tab-search">
+  <form class="searchbar" onsubmit="return doSearch();">
+    <div class="searchbox">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+      <input id="symInput" placeholder="Search any ticker — AAPL, NVDA, TSLA, BTCUSD, EURUSD, CL1!…" autocomplete="off" spellcheck="false">
+    </div>
+    <button type="submit" class="goBtn">Plot</button>
+    <div class="chips">
+      <span class="qchip" onclick="plot('NASDAQ:NVDA')">NVDA</span>
+      <span class="qchip" onclick="plot('NASDAQ:AAPL')">AAPL</span>
+      <span class="qchip" onclick="plot('NASDAQ:MU')">MU</span>
+      <span class="qchip" onclick="plot('SP:SPX')">SPX</span>
+      <span class="qchip" onclick="plot('TVC:UKOIL')">Brent</span>
+      <span class="qchip" onclick="plot('TVC:GOLD')">Gold</span>
+      <span class="qchip" onclick="plot('FX:EURUSD')">EUR/USD</span>
+      <span class="qchip" onclick="plot('BINANCE:BTCUSDT')">BTC</span>
+    </div>
+  </form>
+  <div class="nowsym">Now plotting: <b id="nowSym">—</b> · use the chart's own search box (top-left) for exchange-specific symbols</div>
+  <div id="tvchart"></div>
+</div>
+
+<!-- chart modal -->
+<div class="modal" id="modal">
+  <div class="modal-card">
+    <div class="modal-h"><span>Chart · <b id="modalSym">—</b></span><button onclick="closeChart()">✕ Close</button></div>
+    <div id="modalChart"></div>
+  </div>
+</div>
+
+<script src="https://s3.tradingview.com/tv.js"></script>
+<script>
+var QUOTES='https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js';
+var MINI='https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+
+/* ---- default section config (symbol = [ticker, displayName]) ---- */
+var DEFAULTS={
+  equities:{label:"Equities",sub:"indices &amp; vol",tag:"24h CFD",kind:"quotes",symbols:[
+    ["CAPITALCOM:US500","S&P 500"],["CAPITALCOM:US100","Nasdaq 100"],["CAPITALCOM:US30","Dow Jones"],
+    ["AMEX:IWM","Russell 2000 (IWM)"],["NASDAQ:SMH","Semis (SMH)"],["CAPITALCOM:DE40","DAX"],
+    ["CAPITALCOM:UK100","FTSE 100"],["CAPITALCOM:J225","Nikkei 225"],["CBOE:VIX","VIX"]]},
+  fx:{label:"FX",sub:"majors",tag:"live",kind:"quotes",symbols:[
+    ["CAPITALCOM:DXY","Dollar Index"],["FX:EURUSD","EUR/USD"],["FX:GBPUSD","GBP/USD"],["FX:USDJPY","USD/JPY"],
+    ["FX:AUDUSD","AUD/USD"],["FX:USDCAD","USD/CAD"],["FX:USDCHF","USD/CHF"],["FX:USDCNH","USD/CNH"],["FX:EURGBP","EUR/GBP"]]},
+  commodities:{label:"Commodities",sub:"energy, metals, crypto",tag:"live",kind:"quotes",symbols:[
+    ["TVC:USOIL","WTI Crude"],["TVC:UKOIL","Brent Crude"],["NYMEX:NG1!","Nat Gas"],["TVC:GOLD","Gold"],
+    ["TVC:SILVER","Silver"],["CAPITALCOM:COPPER","Copper"],["BINANCE:BTCUSDT","Bitcoin"],["BINANCE:ETHUSDT","Ethereum"]]},
+  rates:{label:"Rates",sub:"sovereign yields",tag:"yield · live",kind:"yields",symbols:[
+    ["TVC:US02Y","US 2Y"],["TVC:US05Y","US 5Y"],["TVC:US10Y","US 10Y"],["TVC:US30Y","US 30Y"],
+    ["TVC:DE10Y","Germany 10Y"],["TVC:GB10Y","UK 10Y"],["TVC:JP10Y","Japan 10Y"],["TVC:CN10Y","China 10Y"]]}
+};
+var KEYS=["equities","fx","commodities","rates"];
+var editState={};
+
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function loadCfg(){try{var s=localStorage.getItem('deskCfg');if(s){var c=JSON.parse(s);for(var i=0;i<KEYS.length;i++){if(!c[KEYS[i]])c[KEYS[i]]=clone(DEFAULTS[KEYS[i]]);}return c;}}catch(e){}return clone(DEFAULTS);}
+function saveCfg(){try{localStorage.setItem('deskCfg',JSON.stringify(CFG));}catch(e){}}
+var CFG=loadCfg();
+
+function injectWidget(host,src,cfg){
+  var c=document.createElement('div');c.className='tradingview-widget-container';c.style.height='100%';
+  var w=document.createElement('div');w.className='tradingview-widget-container__widget';w.style.height='100%';
+  c.appendChild(w);
+  var s=document.createElement('script');s.type='text/javascript';s.async=true;s.src=src;s.text=JSON.stringify(cfg);
+  c.appendChild(s);host.appendChild(c);
+}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/'/g,'&#39;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function buildSection(key){
+  var sec=CFG[key],cell=document.getElementById('cell-'+key);
+  cell.querySelector('.cell-title').innerHTML=sec.label+' · <b>'+sec.sub+'</b>';
+  cell.querySelector('.cell-tag').textContent=sec.tag||'';
+  var body=cell.querySelector('.cell-body');body.innerHTML='';
+  if(sec.kind==='yields'){
+    var host=document.createElement('div');host.id='yieldchart';host.style.height='100%';
+    body.appendChild(host);
+    var syms=sec.symbols.map(function(s){return s[0];});
+    if(typeof TradingView==='undefined'){host.innerHTML='<div style="padding:1rem;color:#6b6f78">Chart library blocked — check network/ad-blocker.</div>';}
+    else{new TradingView.widget({autosize:true,symbol:syms[0],interval:"D",timezone:"Etc/UTC",theme:"dark",style:"3",locale:"en",
+      toolbar_bg:"#0d0f12",enable_publishing:false,allow_symbol_change:true,withdateranges:true,details:true,hide_side_toolbar:false,
+      watchlist:syms,container_id:"yieldchart"});}
+  }else{
+    injectWidget(body,QUOTES,{width:'100%',height:'100%',colorTheme:'dark',isTransparent:true,locale:'en',showSymbolLogo:false,
+      symbolsGroups:[{name:sec.label,symbols:sec.symbols.map(function(s){return {name:s[0],displayName:s[1]};})}]});
+  }
+  buildChips(key);
+}
+function buildChips(key){
+  var sec=CFG[key],rail=document.getElementById('chips-'+key),editing=!!editState[key];
+  rail.classList.toggle('editing',editing);
+  var html='';
+  sec.symbols.forEach(function(s,i){
+    var act=editing?("removeSymbol('"+key+"',"+i+")"):("openChart('"+esc(s[0])+"')");
+    html+='<span class="chip" onclick="'+act+'" title="'+esc(s[0])+'">'+esc(s[1])+(editing?' <i>&times;</i>':'')+'</span>';
+  });
+  if(editing){
+    html+='<input class="addsym" id="add-'+key+'" placeholder="add ticker, e.g. NASDAQ:AAPL|Apple — Enter to add" '
+        +'onkeydown="if(event.key===&#39;Enter&#39;){event.preventDefault();addSymbol(&#39;'+key+'&#39;,this.value);}">';
+  }
+  rail.innerHTML=html;
+  if(editing){var inp=document.getElementById('add-'+key);if(inp)inp.focus();}
+}
+function toggleEdit(key){
+  editState[key]=!editState[key];
+  document.getElementById('ed-'+key).classList.toggle('on',!!editState[key]);
+  document.getElementById('ed-'+key).textContent=editState[key]?'✓ done':'✎ edit';
+  buildChips(key);
+}
+function addSymbol(key,raw){
+  raw=(raw||'').trim();if(!raw)return;
+  var p=raw.split('|'),tk=p[0].trim().toUpperCase(),nm=(p[1]||p[0]).trim();
+  CFG[key].symbols.push([tk,nm]);saveCfg();buildSection(key);
+}
+function removeSymbol(key,i){CFG[key].symbols.splice(i,1);saveCfg();buildSection(key);}
+function resetLayout(){if(!confirm('Reset all sections to the default symbols?'))return;try{localStorage.removeItem('deskCfg');}catch(e){}CFG=clone(DEFAULTS);editState={};KEYS.forEach(function(k){document.getElementById('ed-'+k).classList.remove('on');document.getElementById('ed-'+k).textContent='✎ edit';buildSection(k);});}
+
+/* ---- chart modal (click an underlying) ---- */
+function tvChart(container,sym){
+  if(typeof TradingView==='undefined'){container.innerHTML='<div style="padding:1rem;color:#6b6f78">Chart library blocked — check network/ad-blocker.</div>';return;}
+  new TradingView.widget({autosize:true,symbol:sym,interval:"D",timezone:"Etc/UTC",theme:"dark",style:"1",locale:"en",
+    toolbar_bg:"#0d0f12",enable_publishing:false,allow_symbol_change:true,hide_side_toolbar:false,withdateranges:true,
+    details:true,hotlist:true,container_id:container.id,studies:["STD;RSI"]});
+}
+function openChart(sym){
+  document.getElementById('modal').classList.add('open');
+  document.getElementById('modalSym').textContent=sym;
+  var h=document.getElementById('modalChart');h.innerHTML='';tvChart(h,sym);
+}
+function closeChart(){document.getElementById('modal').classList.remove('open');document.getElementById('modalChart').innerHTML='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeChart();});
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeChart();});
+
+/* ---- live search tab ---- */
+var searchInited=false,currentSym='NASDAQ:NVDA';
+function showTab(name){
+  var dash=name==='dash';
+  document.getElementById('tab-dash').classList.toggle('active',dash);
+  document.getElementById('tab-search').classList.toggle('active',!dash);
+  document.getElementById('tb-dash').classList.toggle('active',dash);
+  document.getElementById('tb-search').classList.toggle('active',!dash);
+  if(!dash && !searchInited){searchInited=true;plot(currentSym);}
+}
+function plot(sym){
+  if(!sym)return;currentSym=sym;
+  document.getElementById('nowSym').textContent=sym;
+  var i=document.getElementById('symInput');if(i)i.value=sym;
+  var host=document.getElementById('tvchart');host.innerHTML='';tvChart(host,sym);
+}
+function doSearch(){var v=(document.getElementById('symInput').value||'').trim().toUpperCase();if(v)plot(v);return false;}
+
+/* ---- clock ---- */
+(function(){var el=document.getElementById('clock');function tick(){var d=new Date();el.textContent=d.toLocaleTimeString('en-GB',{hour12:false})+' '+(Intl.DateTimeFormat().resolvedOptions().timeZone.split('/').pop()||'');}tick();setInterval(tick,1000);})();
+
+/* ---- init ---- */
+KEYS.forEach(buildSection);
+</script>
+</body></html>
