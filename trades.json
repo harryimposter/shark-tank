@@ -405,10 +405,16 @@
           "level": 1.64258,
           "pnl_pct": 0.15,
           "status": "open"
+        },
+        {
+          "date": "2026-07-15",
+          "level": 1.63468,
+          "pnl_pct": 0.63,
+          "status": "open"
         }
       ],
-      "current": 1.64258,
-      "current_pnl_pct": 0.15
+      "current": 1.63468,
+      "current_pnl_pct": 0.63
     },
     {
       "id": "MM-2026-004",
@@ -431,8 +437,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Brent −17% is a forward CPI cut the FedWatch distribution (67.8% no cuts in 2026) has not booked. Bonds already rallied 26bp off the 4.70% high; the disinflation impulse rolls headline lower into the autumn. Deliberately the opposite macro leg to the Brent longs — the book owns both sides of the MoU binary and gets paid on either resolution.",
-      "current": 4.618,
-      "current_pnl_pct": -4.01,
+      "current": 4.602,
+      "current_pnl_pct": -3.65,
       "history": [
         {
           "date": "2026-05-31",
@@ -811,413 +817,14 @@
           "level": 4.618,
           "pnl_pct": -4.01,
           "status": "open"
+        },
+        {
+          "date": "2026-07-15",
+          "level": 4.602,
+          "pnl_pct": -3.65,
+          "status": "open"
         }
       ]
-    },
-    {
-      "id": "MM-2026-005",
-      "opened": "2026-05-31",
-      "type": "pre-position",
-      "asset_class": "Commodity",
-      "trade": "Long gold into the June Fed window",
-      "structure": "outright",
-      "entry": 4523.0,
-      "stop": 4250.0,
-      "target": 5100.0,
-      "conviction": 6,
-      "conviction_breakdown": {
-        "gap": 2,
-        "catalyst": 2,
-        "positioning": 1,
-        "confirmation": 0,
-        "stop_quality": 1
-      },
-      "horizon": "months",
-      "min_hold_days": 45,
-      "thesis": "Pre-position into the 5 June payrolls / 16–17 June FOMC window. Gold has already decoupled from a 4.98% long bond, which means it is pricing both MoU tails at once. It wins if oil-disinflation forces a dovish Fed and real yields fall, AND it wins if the MoU fails and the geopolitical bid returns. It loses only on the narrow path of strong-growth + stable-oil + hawkish-Fed together. That is the asymmetry pre-positioning is built for; minimum 45-day hold, not an event-day scalp.",
-      "current": 4030.27,
-      "current_pnl_pct": -10.89,
-      "history": [
-        {
-          "date": "2026-05-31",
-          "level": 4523.0,
-          "pnl_pct": 0.0,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-01",
-          "level": 4550.0,
-          "pnl_pct": 0.6,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-01",
-          "level": 4541.8,
-          "pnl_pct": 0.42,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-01",
-          "level": 4541.8,
-          "pnl_pct": 0.42,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-01",
-          "level": 4541.8,
-          "pnl_pct": 0.42,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-08",
-          "level": 4350.0,
-          "pnl_pct": -3.82,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-09",
-          "level": 4342.23,
-          "pnl_pct": -4.0,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 4200.36,
-          "pnl_pct": -7.13,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 4140.41,
-          "pnl_pct": -8.46,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 4152.72,
-          "pnl_pct": -8.19,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 4086.18,
-          "pnl_pct": -9.66,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 4086.02,
-          "pnl_pct": -9.66,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 4084.25,
-          "pnl_pct": -9.7,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 4085.43,
-          "pnl_pct": -9.67,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 4079.61,
-          "pnl_pct": -9.8,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 4074.55,
-          "pnl_pct": -9.91,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 4071.64,
-          "pnl_pct": -9.98,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 4071.64,
-          "pnl_pct": -9.98,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 4071.64,
-          "pnl_pct": -9.98,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 4071.64,
-          "pnl_pct": -9.98,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 4072.14,
-          "pnl_pct": -9.97,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 4076.3,
-          "pnl_pct": -9.88,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 4080.61,
-          "pnl_pct": -9.78,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 4083.14,
-          "pnl_pct": -9.72,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 4082.39,
-          "pnl_pct": -9.74,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 4088.83,
-          "pnl_pct": -9.6,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 4089.55,
-          "pnl_pct": -9.58,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 4088.52,
-          "pnl_pct": -9.61,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 4084.79,
-          "pnl_pct": -9.69,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 4075.34,
-          "pnl_pct": -9.9,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 4075.56,
-          "pnl_pct": -9.89,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 4082.51,
-          "pnl_pct": -9.74,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 4100.51,
-          "pnl_pct": -9.34,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 4081.39,
-          "pnl_pct": -9.76,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-12",
-          "level": 4218.25,
-          "pnl_pct": -6.74,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-15",
-          "level": 4310.49,
-          "pnl_pct": -4.7,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-15",
-          "level": 4311.74,
-          "pnl_pct": -4.67,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-16",
-          "level": 4317.82,
-          "pnl_pct": -4.54,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-17",
-          "level": 4327.58,
-          "pnl_pct": -4.32,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-18",
-          "level": 4320.75,
-          "pnl_pct": -4.47,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-18",
-          "level": 4321.35,
-          "pnl_pct": -4.46,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-19",
-          "level": 4152.15,
-          "pnl_pct": -8.2,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-22",
-          "level": 4186.62,
-          "pnl_pct": -7.44,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-23",
-          "level": 4142.58,
-          "pnl_pct": -8.41,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-24",
-          "level": 4003.55,
-          "pnl_pct": -11.48,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-25",
-          "level": 4035.54,
-          "pnl_pct": -10.78,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-26",
-          "level": 4015.7,
-          "pnl_pct": -11.22,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-26",
-          "level": 4011.44,
-          "pnl_pct": -11.31,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-26",
-          "level": 4012.75,
-          "pnl_pct": -11.28,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-06-29",
-          "level": 4048.21,
-          "pnl_pct": -10.5,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-07-01",
-          "level": 4076.79,
-          "pnl_pct": -9.87,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-07-02",
-          "level": 4062.91,
-          "pnl_pct": -10.17,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-07-03",
-          "level": 4180.32,
-          "pnl_pct": -7.58,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-07-06",
-          "level": 4152.89,
-          "pnl_pct": -8.18,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-07-06",
-          "level": 4164.96,
-          "pnl_pct": -7.92,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-07-07",
-          "level": 4135.59,
-          "pnl_pct": -8.57,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-07-08",
-          "level": 4046.9,
-          "pnl_pct": -10.53,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-07-09",
-          "level": 4103.74,
-          "pnl_pct": -9.27,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-07-10",
-          "level": 4106.9,
-          "pnl_pct": -9.2,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-07-11",
-          "level": 4120.4,
-          "pnl_pct": -8.9,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-07-13",
-          "level": 4061.69,
-          "pnl_pct": -10.2,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-07-14",
-          "level": 4029.02,
-          "pnl_pct": -10.92,
-          "status": "stop_touched_min_hold"
-        },
-        {
-          "date": "2026-07-14",
-          "level": 4030.27,
-          "pnl_pct": -10.89,
-          "status": "stop_touched_min_hold"
-        }
-      ],
-      "stop_touched": true
     },
     {
       "id": "MM-2026-007",
@@ -1240,8 +847,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "USDJPY at 159.37 with Finance Minister Katayama threatening intervention. BoJ September hike >50% priced vs Fed on hold. 3.63 pts downside to stop, 9.37 pts to target. Intervention is the backstop.",
-      "current": 162.278,
-      "current_pnl_pct": -1.82,
+      "current": 162.31,
+      "current_pnl_pct": -1.84,
       "history": [
         {
           "date": "2026-06-01",
@@ -1608,6 +1215,12 @@
           "level": 162.278,
           "pnl_pct": -1.82,
           "status": "open"
+        },
+        {
+          "date": "2026-07-15",
+          "level": 162.31,
+          "pnl_pct": -1.84,
+          "status": "open"
         }
       ]
     },
@@ -1632,8 +1245,8 @@
       "horizon": "3 months",
       "min_hold_days": 45,
       "thesis": "2s10s at +15bp after 18-month inversion. Buy 2Y (own cut optionality) vs short 10Y (short fiscal supply risk). June 5 payrolls at 89k + Fed pause re-prices front-end. ECB hiking cycle lifts global long rates. Steepener delivers whether Fed cuts or back-end sells off on supply. Late-cycle steepeners outperform after prolonged inversions.",
-      "current": 0.338,
-      "current_pnl_pct": 125.33,
+      "current": 0.398,
+      "current_pnl_pct": 165.33,
       "history": [
         {
           "date": "2026-06-01",
@@ -1994,6 +1607,12 @@
           "level": 0.338,
           "pnl_pct": 125.33,
           "status": "open"
+        },
+        {
+          "date": "2026-07-15",
+          "level": 0.398,
+          "pnl_pct": 165.33,
+          "status": "open"
         }
       ]
     },
@@ -2018,8 +1637,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Thursday's 25bp ECB hike is 99% priced — the rate-differential tailwind for EUR is in the price, and a hawkish US repricing widened the gap the other way. Classic buy-rumour-sell-fact setup into a fully-priced central bank. Pairs cleanly with long DAX: a weaker euro flatters the exporters.",
-      "current": 1.13954,
-      "current_pnl_pct": 1.76,
+      "current": 1.14226,
+      "current_pnl_pct": 1.53,
       "history": [
         {
           "date": "2026-06-08",
@@ -2368,6 +1987,12 @@
           "level": 1.13954,
           "pnl_pct": 1.76,
           "status": "open"
+        },
+        {
+          "date": "2026-07-15",
+          "level": 1.14226,
+          "pnl_pct": 1.53,
+          "status": "open"
         }
       ]
     },
@@ -2392,8 +2017,8 @@
       "horizon": "into 16–17 Jun FOMC",
       "min_hold_days": 30,
       "thesis": "The market prices a ~70% hike by year-end on one 172k payroll with unemployment steady at 4.3%. The Fed does not hike into a labor market that is firm-but-not-overheating with a richly-valued equity tape just cracking. The 2-year at 4.16% — a 16-month high — has over-extrapolated a single number; the 17 June dot plot is the catalyst to reprice it. Pre-position, not an event scalp.",
-      "current": 4.28,
-      "current_pnl_pct": -2.84,
+      "current": 4.204,
+      "current_pnl_pct": -1.01,
       "history": [
         {
           "date": "2026-06-08",
@@ -2741,6 +2366,12 @@
           "date": "2026-07-14",
           "level": 4.28,
           "pnl_pct": -2.84,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-15",
+          "level": 4.204,
+          "pnl_pct": -1.01,
           "status": "open"
         }
       ]
@@ -3943,6 +3574,424 @@
         "pnl_pct": 28.57,
         "days_held": 25,
         "reason": "BANKED into Jun-27 expiry. The FOMC-tail hedge did its job — peak ~$60 (+71%) as Warsh's hawkish dots dropped the S&P toward the strike and VIX re-rated to 18.4. With the Micron blowout ripping the tape back above the strike zone premarket (ES +0.78%) and one session to expiry, the residual is theta — harvested at ~$45 (+~29% from the ~$35 entry) rather than risk it bleeding to zero over the weekend. The replacement downside is the fresh Aug SPX put spread (MM-030)."
+      }
+    },
+    {
+      "id": "MM-2026-005",
+      "opened": "2026-05-31",
+      "type": "pre-position",
+      "asset_class": "Commodity",
+      "trade": "Long gold into the June Fed window",
+      "structure": "outright",
+      "entry": 4523.0,
+      "stop": 4250.0,
+      "target": 5100.0,
+      "conviction": 6,
+      "conviction_breakdown": {
+        "gap": 2,
+        "catalyst": 2,
+        "positioning": 1,
+        "confirmation": 0,
+        "stop_quality": 1
+      },
+      "horizon": "months",
+      "min_hold_days": 45,
+      "thesis": "Pre-position into the 5 June payrolls / 16–17 June FOMC window. Gold has already decoupled from a 4.98% long bond, which means it is pricing both MoU tails at once. It wins if oil-disinflation forces a dovish Fed and real yields fall, AND it wins if the MoU fails and the geopolitical bid returns. It loses only on the narrow path of strong-growth + stable-oil + hawkish-Fed together. That is the asymmetry pre-positioning is built for; minimum 45-day hold, not an event-day scalp.",
+      "current": 4028.12,
+      "current_pnl_pct": -10.94,
+      "history": [
+        {
+          "date": "2026-05-31",
+          "level": 4523.0,
+          "pnl_pct": 0.0,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-01",
+          "level": 4550.0,
+          "pnl_pct": 0.6,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-01",
+          "level": 4541.8,
+          "pnl_pct": 0.42,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-01",
+          "level": 4541.8,
+          "pnl_pct": 0.42,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-01",
+          "level": 4541.8,
+          "pnl_pct": 0.42,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-08",
+          "level": 4350.0,
+          "pnl_pct": -3.82,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-09",
+          "level": 4342.23,
+          "pnl_pct": -4.0,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 4200.36,
+          "pnl_pct": -7.13,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 4140.41,
+          "pnl_pct": -8.46,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 4152.72,
+          "pnl_pct": -8.19,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 4086.18,
+          "pnl_pct": -9.66,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 4086.02,
+          "pnl_pct": -9.66,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 4084.25,
+          "pnl_pct": -9.7,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 4085.43,
+          "pnl_pct": -9.67,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 4079.61,
+          "pnl_pct": -9.8,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 4074.55,
+          "pnl_pct": -9.91,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 4071.64,
+          "pnl_pct": -9.98,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 4071.64,
+          "pnl_pct": -9.98,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 4071.64,
+          "pnl_pct": -9.98,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 4071.64,
+          "pnl_pct": -9.98,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4072.14,
+          "pnl_pct": -9.97,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4076.3,
+          "pnl_pct": -9.88,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4080.61,
+          "pnl_pct": -9.78,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4083.14,
+          "pnl_pct": -9.72,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4082.39,
+          "pnl_pct": -9.74,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4088.83,
+          "pnl_pct": -9.6,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4089.55,
+          "pnl_pct": -9.58,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4088.52,
+          "pnl_pct": -9.61,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4084.79,
+          "pnl_pct": -9.69,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4075.34,
+          "pnl_pct": -9.9,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4075.56,
+          "pnl_pct": -9.89,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4082.51,
+          "pnl_pct": -9.74,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4100.51,
+          "pnl_pct": -9.34,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 4081.39,
+          "pnl_pct": -9.76,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-12",
+          "level": 4218.25,
+          "pnl_pct": -6.74,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-15",
+          "level": 4310.49,
+          "pnl_pct": -4.7,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-15",
+          "level": 4311.74,
+          "pnl_pct": -4.67,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-16",
+          "level": 4317.82,
+          "pnl_pct": -4.54,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-17",
+          "level": 4327.58,
+          "pnl_pct": -4.32,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-18",
+          "level": 4320.75,
+          "pnl_pct": -4.47,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-18",
+          "level": 4321.35,
+          "pnl_pct": -4.46,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-19",
+          "level": 4152.15,
+          "pnl_pct": -8.2,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-22",
+          "level": 4186.62,
+          "pnl_pct": -7.44,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-23",
+          "level": 4142.58,
+          "pnl_pct": -8.41,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-24",
+          "level": 4003.55,
+          "pnl_pct": -11.48,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-25",
+          "level": 4035.54,
+          "pnl_pct": -10.78,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 4015.7,
+          "pnl_pct": -11.22,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 4011.44,
+          "pnl_pct": -11.31,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 4012.75,
+          "pnl_pct": -11.28,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-06-29",
+          "level": 4048.21,
+          "pnl_pct": -10.5,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-07-01",
+          "level": 4076.79,
+          "pnl_pct": -9.87,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-07-02",
+          "level": 4062.91,
+          "pnl_pct": -10.17,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-07-03",
+          "level": 4180.32,
+          "pnl_pct": -7.58,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-07-06",
+          "level": 4152.89,
+          "pnl_pct": -8.18,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-07-06",
+          "level": 4164.96,
+          "pnl_pct": -7.92,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-07-07",
+          "level": 4135.59,
+          "pnl_pct": -8.57,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-07-08",
+          "level": 4046.9,
+          "pnl_pct": -10.53,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-07-09",
+          "level": 4103.74,
+          "pnl_pct": -9.27,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-07-10",
+          "level": 4106.9,
+          "pnl_pct": -9.2,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-07-11",
+          "level": 4120.4,
+          "pnl_pct": -8.9,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-07-13",
+          "level": 4061.69,
+          "pnl_pct": -10.2,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-07-14",
+          "level": 4029.02,
+          "pnl_pct": -10.92,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-07-14",
+          "level": 4030.27,
+          "pnl_pct": -10.89,
+          "status": "stop_touched_min_hold"
+        },
+        {
+          "date": "2026-07-15",
+          "level": 4028.12,
+          "pnl_pct": -10.94,
+          "status": "stopped"
+        }
+      ],
+      "stop_touched": true,
+      "exit": {
+        "date": "2026-07-15",
+        "level": 4028.12,
+        "result": "STOPPED",
+        "pnl_pct": -10.94,
+        "days_held": 45
       }
     }
   ]
