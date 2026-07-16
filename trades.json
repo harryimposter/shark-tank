@@ -411,10 +411,16 @@
           "level": 1.63468,
           "pnl_pct": 0.63,
           "status": "open"
+        },
+        {
+          "date": "2026-07-16",
+          "level": 1.6377,
+          "pnl_pct": 0.44,
+          "status": "open"
         }
       ],
-      "current": 1.63468,
-      "current_pnl_pct": 0.63
+      "current": 1.6377,
+      "current_pnl_pct": 0.44
     },
     {
       "id": "MM-2026-004",
@@ -437,8 +443,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Brent −17% is a forward CPI cut the FedWatch distribution (67.8% no cuts in 2026) has not booked. Bonds already rallied 26bp off the 4.70% high; the disinflation impulse rolls headline lower into the autumn. Deliberately the opposite macro leg to the Brent longs — the book owns both sides of the MoU binary and gets paid on either resolution.",
-      "current": 4.602,
-      "current_pnl_pct": -3.65,
+      "current": 4.573,
+      "current_pnl_pct": -3.0,
       "history": [
         {
           "date": "2026-05-31",
@@ -823,6 +829,12 @@
           "level": 4.602,
           "pnl_pct": -3.65,
           "status": "open"
+        },
+        {
+          "date": "2026-07-16",
+          "level": 4.573,
+          "pnl_pct": -3.0,
+          "status": "open"
         }
       ]
     },
@@ -847,8 +859,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "USDJPY at 159.37 with Finance Minister Katayama threatening intervention. BoJ September hike >50% priced vs Fed on hold. 3.63 pts downside to stop, 9.37 pts to target. Intervention is the backstop.",
-      "current": 162.31,
-      "current_pnl_pct": -1.84,
+      "current": 162.177,
+      "current_pnl_pct": -1.76,
       "history": [
         {
           "date": "2026-06-01",
@@ -1221,6 +1233,12 @@
           "level": 162.31,
           "pnl_pct": -1.84,
           "status": "open"
+        },
+        {
+          "date": "2026-07-16",
+          "level": 162.177,
+          "pnl_pct": -1.76,
+          "status": "open"
         }
       ]
     },
@@ -1245,8 +1263,8 @@
       "horizon": "3 months",
       "min_hold_days": 45,
       "thesis": "2s10s at +15bp after 18-month inversion. Buy 2Y (own cut optionality) vs short 10Y (short fiscal supply risk). June 5 payrolls at 89k + Fed pause re-prices front-end. ECB hiking cycle lifts global long rates. Steepener delivers whether Fed cuts or back-end sells off on supply. Late-cycle steepeners outperform after prolonged inversions.",
-      "current": 0.398,
-      "current_pnl_pct": 165.33,
+      "current": 0.415,
+      "current_pnl_pct": 176.67,
       "history": [
         {
           "date": "2026-06-01",
@@ -1613,6 +1631,12 @@
           "level": 0.398,
           "pnl_pct": 165.33,
           "status": "open"
+        },
+        {
+          "date": "2026-07-16",
+          "level": 0.415,
+          "pnl_pct": 176.67,
+          "status": "open"
         }
       ]
     },
@@ -1637,8 +1661,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Thursday's 25bp ECB hike is 99% priced — the rate-differential tailwind for EUR is in the price, and a hawkish US repricing widened the gap the other way. Classic buy-rumour-sell-fact setup into a fully-priced central bank. Pairs cleanly with long DAX: a weaker euro flatters the exporters.",
-      "current": 1.14226,
-      "current_pnl_pct": 1.53,
+      "current": 1.14614,
+      "current_pnl_pct": 1.19,
       "history": [
         {
           "date": "2026-06-08",
@@ -1993,6 +2017,12 @@
           "level": 1.14226,
           "pnl_pct": 1.53,
           "status": "open"
+        },
+        {
+          "date": "2026-07-16",
+          "level": 1.14614,
+          "pnl_pct": 1.19,
+          "status": "open"
         }
       ]
     },
@@ -2017,8 +2047,8 @@
       "horizon": "into 16–17 Jun FOMC",
       "min_hold_days": 30,
       "thesis": "The market prices a ~70% hike by year-end on one 172k payroll with unemployment steady at 4.3%. The Fed does not hike into a labor market that is firm-but-not-overheating with a richly-valued equity tape just cracking. The 2-year at 4.16% — a 16-month high — has over-extrapolated a single number; the 17 June dot plot is the catalyst to reprice it. Pre-position, not an event scalp.",
-      "current": 4.204,
-      "current_pnl_pct": -1.01,
+      "current": 4.158,
+      "current_pnl_pct": 0.1,
       "history": [
         {
           "date": "2026-06-08",
@@ -2372,6 +2402,12 @@
           "date": "2026-07-15",
           "level": 4.204,
           "pnl_pct": -1.01,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-16",
+          "level": 4.158,
+          "pnl_pct": 0.1,
           "status": "open"
         }
       ]
