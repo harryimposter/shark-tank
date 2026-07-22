@@ -435,10 +435,16 @@
           "level": 1.62628,
           "pnl_pct": 1.14,
           "status": "open"
+        },
+        {
+          "date": "2026-07-22",
+          "level": 1.63076,
+          "pnl_pct": 0.87,
+          "status": "open"
         }
       ],
-      "current": 1.62628,
-      "current_pnl_pct": 1.14
+      "current": 1.63076,
+      "current_pnl_pct": 0.87
     },
     {
       "id": "MM-2026-004",
@@ -461,8 +467,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Brent −17% is a forward CPI cut the FedWatch distribution (67.8% no cuts in 2026) has not booked. Bonds already rallied 26bp off the 4.70% high; the disinflation impulse rolls headline lower into the autumn. Deliberately the opposite macro leg to the Brent longs — the book owns both sides of the MoU binary and gets paid on either resolution.",
-      "current": 4.598,
-      "current_pnl_pct": -3.56,
+      "current": 4.634,
+      "current_pnl_pct": -4.37,
       "history": [
         {
           "date": "2026-05-31",
@@ -871,427 +877,11 @@
           "level": 4.598,
           "pnl_pct": -3.56,
           "status": "open"
-        }
-      ]
-    },
-    {
-      "id": "MM-2026-007",
-      "opened": "2026-06-01",
-      "type": "reactive",
-      "asset_class": "FX",
-      "trade": "Short USDJPY",
-      "structure": "spot",
-      "entry": 159.37,
-      "stop": 163.0,
-      "target": 150.0,
-      "conviction": 7,
-      "conviction_breakdown": {
-        "gap": 2,
-        "catalyst": 2,
-        "positioning": 1,
-        "confirmation": 1,
-        "stop_quality": 1
-      },
-      "horizon": "weeks",
-      "min_hold_days": 0,
-      "thesis": "USDJPY at 159.37 with Finance Minister Katayama threatening intervention. BoJ September hike >50% priced vs Fed on hold. 3.63 pts downside to stop, 9.37 pts to target. Intervention is the backstop.",
-      "current": 162.657,
-      "current_pnl_pct": -2.06,
-      "history": [
-        {
-          "date": "2026-06-01",
-          "level": 159.37,
-          "pnl_pct": 0.0,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-01",
-          "level": 159.37,
-          "pnl_pct": -0.0,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-01",
-          "level": 159.37,
-          "pnl_pct": -0.0,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-08",
-          "level": 160.32,
-          "pnl_pct": -0.6,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-09",
-          "level": 160.139,
-          "pnl_pct": -0.48,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 160.367,
-          "pnl_pct": -0.63,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 160.468,
-          "pnl_pct": -0.69,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 160.432,
-          "pnl_pct": -0.67,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 160.513,
-          "pnl_pct": -0.72,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 160.514,
-          "pnl_pct": -0.72,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 160.513,
-          "pnl_pct": -0.72,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 160.52,
-          "pnl_pct": -0.72,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 160.54,
-          "pnl_pct": -0.73,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 160.544,
-          "pnl_pct": -0.74,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 160.461,
-          "pnl_pct": -0.68,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 160.482,
-          "pnl_pct": -0.7,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 160.482,
-          "pnl_pct": -0.7,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-10",
-          "level": 160.483,
-          "pnl_pct": -0.7,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 160.531,
-          "pnl_pct": -0.73,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 160.531,
-          "pnl_pct": -0.73,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 160.516,
-          "pnl_pct": -0.72,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 160.506,
-          "pnl_pct": -0.71,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 160.505,
-          "pnl_pct": -0.71,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 160.547,
-          "pnl_pct": -0.74,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 160.527,
-          "pnl_pct": -0.73,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 160.523,
-          "pnl_pct": -0.72,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 160.518,
-          "pnl_pct": -0.72,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 160.532,
-          "pnl_pct": -0.73,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 160.543,
-          "pnl_pct": -0.74,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 160.485,
-          "pnl_pct": -0.7,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 160.545,
-          "pnl_pct": -0.74,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-11",
-          "level": 160.524,
-          "pnl_pct": -0.72,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-12",
-          "level": 160.202,
-          "pnl_pct": -0.52,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-15",
-          "level": 160.049,
-          "pnl_pct": -0.43,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-15",
-          "level": 160.074,
-          "pnl_pct": -0.44,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-16",
-          "level": 160.275,
-          "pnl_pct": -0.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-17",
-          "level": 160.282,
-          "pnl_pct": -0.57,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-18",
-          "level": 160.593,
-          "pnl_pct": -0.77,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-18",
-          "level": 160.595,
-          "pnl_pct": -0.77,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-19",
-          "level": 161.329,
-          "pnl_pct": -1.23,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-22",
-          "level": 161.649,
-          "pnl_pct": -1.43,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-23",
-          "level": 161.544,
-          "pnl_pct": -1.36,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-24",
-          "level": 161.756,
-          "pnl_pct": -1.5,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-25",
-          "level": 161.711,
-          "pnl_pct": -1.47,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-26",
-          "level": 161.604,
-          "pnl_pct": -1.4,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-26",
-          "level": 161.585,
-          "pnl_pct": -1.39,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-26",
-          "level": 161.573,
-          "pnl_pct": -1.38,
-          "status": "open"
-        },
-        {
-          "date": "2026-06-29",
-          "level": 161.803,
-          "pnl_pct": -1.53,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-01",
-          "level": 162.449,
-          "pnl_pct": -1.93,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-02",
-          "level": 161.321,
-          "pnl_pct": -1.22,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-03",
-          "level": 161.129,
-          "pnl_pct": -1.1,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-06",
-          "level": 162.318,
-          "pnl_pct": -1.85,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-06",
-          "level": 162.08,
-          "pnl_pct": -1.7,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-07",
-          "level": 161.907,
-          "pnl_pct": -1.59,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-08",
-          "level": 162.411,
-          "pnl_pct": -1.91,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-09",
-          "level": 162.424,
-          "pnl_pct": -1.92,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-10",
-          "level": 161.739,
-          "pnl_pct": -1.49,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-11",
-          "level": 161.663,
-          "pnl_pct": -1.44,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-13",
-          "level": 162.279,
-          "pnl_pct": -1.83,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-14",
-          "level": 162.289,
-          "pnl_pct": -1.83,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-14",
-          "level": 162.278,
-          "pnl_pct": -1.82,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-15",
-          "level": 162.31,
-          "pnl_pct": -1.84,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-16",
-          "level": 162.177,
-          "pnl_pct": -1.76,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-17",
-          "level": 162.428,
-          "pnl_pct": -1.92,
-          "status": "open"
-        },
-        {
-          "date": "2026-07-20",
-          "level": 162.395,
-          "pnl_pct": -1.9,
-          "status": "open"
         },
         {
-          "date": "2026-07-21",
-          "level": 162.657,
-          "pnl_pct": -2.06,
+          "date": "2026-07-22",
+          "level": 4.634,
+          "pnl_pct": -4.37,
           "status": "open"
         }
       ]
@@ -1317,8 +907,8 @@
       "horizon": "3 months",
       "min_hold_days": 45,
       "thesis": "2s10s at +15bp after 18-month inversion. Buy 2Y (own cut optionality) vs short 10Y (short fiscal supply risk). June 5 payrolls at 89k + Fed pause re-prices front-end. ECB hiking cycle lifts global long rates. Steepener delivers whether Fed cuts or back-end sells off on supply. Late-cycle steepeners outperform after prolonged inversions.",
-      "current": 0.394,
-      "current_pnl_pct": 162.67,
+      "current": 0.374,
+      "current_pnl_pct": 149.33,
       "history": [
         {
           "date": "2026-06-01",
@@ -1709,6 +1299,12 @@
           "level": 0.394,
           "pnl_pct": 162.67,
           "status": "open"
+        },
+        {
+          "date": "2026-07-22",
+          "level": 0.374,
+          "pnl_pct": 149.33,
+          "status": "open"
         }
       ]
     },
@@ -1733,8 +1329,8 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Thursday's 25bp ECB hike is 99% priced — the rate-differential tailwind for EUR is in the price, and a hawkish US repricing widened the gap the other way. Classic buy-rumour-sell-fact setup into a fully-priced central bank. Pairs cleanly with long DAX: a weaker euro flatters the exporters.",
-      "current": 1.14238,
-      "current_pnl_pct": 1.52,
+      "current": 1.14043,
+      "current_pnl_pct": 1.69,
       "history": [
         {
           "date": "2026-06-08",
@@ -2113,6 +1709,12 @@
           "level": 1.14238,
           "pnl_pct": 1.52,
           "status": "open"
+        },
+        {
+          "date": "2026-07-22",
+          "level": 1.14043,
+          "pnl_pct": 1.69,
+          "status": "open"
         }
       ]
     },
@@ -2137,8 +1739,8 @@
       "horizon": "into 16–17 Jun FOMC",
       "min_hold_days": 30,
       "thesis": "The market prices a ~70% hike by year-end on one 172k payroll with unemployment steady at 4.3%. The Fed does not hike into a labor market that is firm-but-not-overheating with a richly-valued equity tape just cracking. The 2-year at 4.16% — a 16-month high — has over-extrapolated a single number; the 17 June dot plot is the catalyst to reprice it. Pre-position, not an event scalp.",
-      "current": 4.204,
-      "current_pnl_pct": -1.01,
+      "current": 4.26,
+      "current_pnl_pct": -2.35,
       "history": [
         {
           "date": "2026-06-08",
@@ -2516,6 +2118,12 @@
           "date": "2026-07-21",
           "level": 4.204,
           "pnl_pct": -1.01,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-22",
+          "level": 4.26,
+          "pnl_pct": -2.35,
           "status": "open"
         }
       ]
@@ -4136,6 +3744,441 @@
         "result": "STOPPED",
         "pnl_pct": -10.94,
         "days_held": 45
+      }
+    },
+    {
+      "id": "MM-2026-007",
+      "opened": "2026-06-01",
+      "type": "reactive",
+      "asset_class": "FX",
+      "trade": "Short USDJPY",
+      "structure": "spot",
+      "entry": 159.37,
+      "stop": 163.0,
+      "target": 150.0,
+      "conviction": 7,
+      "conviction_breakdown": {
+        "gap": 2,
+        "catalyst": 2,
+        "positioning": 1,
+        "confirmation": 1,
+        "stop_quality": 1
+      },
+      "horizon": "weeks",
+      "min_hold_days": 0,
+      "thesis": "USDJPY at 159.37 with Finance Minister Katayama threatening intervention. BoJ September hike >50% priced vs Fed on hold. 3.63 pts downside to stop, 9.37 pts to target. Intervention is the backstop.",
+      "current": 163.038,
+      "current_pnl_pct": -2.3,
+      "history": [
+        {
+          "date": "2026-06-01",
+          "level": 159.37,
+          "pnl_pct": 0.0,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-01",
+          "level": 159.37,
+          "pnl_pct": -0.0,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-01",
+          "level": 159.37,
+          "pnl_pct": -0.0,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-08",
+          "level": 160.32,
+          "pnl_pct": -0.6,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-09",
+          "level": 160.139,
+          "pnl_pct": -0.48,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 160.367,
+          "pnl_pct": -0.63,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 160.468,
+          "pnl_pct": -0.69,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 160.432,
+          "pnl_pct": -0.67,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 160.513,
+          "pnl_pct": -0.72,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 160.514,
+          "pnl_pct": -0.72,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 160.513,
+          "pnl_pct": -0.72,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 160.52,
+          "pnl_pct": -0.72,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 160.54,
+          "pnl_pct": -0.73,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 160.544,
+          "pnl_pct": -0.74,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 160.461,
+          "pnl_pct": -0.68,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 160.482,
+          "pnl_pct": -0.7,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 160.482,
+          "pnl_pct": -0.7,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-10",
+          "level": 160.483,
+          "pnl_pct": -0.7,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 160.531,
+          "pnl_pct": -0.73,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 160.531,
+          "pnl_pct": -0.73,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 160.516,
+          "pnl_pct": -0.72,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 160.506,
+          "pnl_pct": -0.71,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 160.505,
+          "pnl_pct": -0.71,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 160.547,
+          "pnl_pct": -0.74,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 160.527,
+          "pnl_pct": -0.73,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 160.523,
+          "pnl_pct": -0.72,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 160.518,
+          "pnl_pct": -0.72,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 160.532,
+          "pnl_pct": -0.73,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 160.543,
+          "pnl_pct": -0.74,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 160.485,
+          "pnl_pct": -0.7,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 160.545,
+          "pnl_pct": -0.74,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-11",
+          "level": 160.524,
+          "pnl_pct": -0.72,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-12",
+          "level": 160.202,
+          "pnl_pct": -0.52,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-15",
+          "level": 160.049,
+          "pnl_pct": -0.43,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-15",
+          "level": 160.074,
+          "pnl_pct": -0.44,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-16",
+          "level": 160.275,
+          "pnl_pct": -0.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-17",
+          "level": 160.282,
+          "pnl_pct": -0.57,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-18",
+          "level": 160.593,
+          "pnl_pct": -0.77,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-18",
+          "level": 160.595,
+          "pnl_pct": -0.77,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-19",
+          "level": 161.329,
+          "pnl_pct": -1.23,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-22",
+          "level": 161.649,
+          "pnl_pct": -1.43,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-23",
+          "level": 161.544,
+          "pnl_pct": -1.36,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-24",
+          "level": 161.756,
+          "pnl_pct": -1.5,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-25",
+          "level": 161.711,
+          "pnl_pct": -1.47,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 161.604,
+          "pnl_pct": -1.4,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 161.585,
+          "pnl_pct": -1.39,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-26",
+          "level": 161.573,
+          "pnl_pct": -1.38,
+          "status": "open"
+        },
+        {
+          "date": "2026-06-29",
+          "level": 161.803,
+          "pnl_pct": -1.53,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-01",
+          "level": 162.449,
+          "pnl_pct": -1.93,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-02",
+          "level": 161.321,
+          "pnl_pct": -1.22,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-03",
+          "level": 161.129,
+          "pnl_pct": -1.1,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-06",
+          "level": 162.318,
+          "pnl_pct": -1.85,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-06",
+          "level": 162.08,
+          "pnl_pct": -1.7,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-07",
+          "level": 161.907,
+          "pnl_pct": -1.59,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-08",
+          "level": 162.411,
+          "pnl_pct": -1.91,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-09",
+          "level": 162.424,
+          "pnl_pct": -1.92,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-10",
+          "level": 161.739,
+          "pnl_pct": -1.49,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-11",
+          "level": 161.663,
+          "pnl_pct": -1.44,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-13",
+          "level": 162.279,
+          "pnl_pct": -1.83,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-14",
+          "level": 162.289,
+          "pnl_pct": -1.83,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-14",
+          "level": 162.278,
+          "pnl_pct": -1.82,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-15",
+          "level": 162.31,
+          "pnl_pct": -1.84,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-16",
+          "level": 162.177,
+          "pnl_pct": -1.76,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-17",
+          "level": 162.428,
+          "pnl_pct": -1.92,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-20",
+          "level": 162.395,
+          "pnl_pct": -1.9,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-21",
+          "level": 162.657,
+          "pnl_pct": -2.06,
+          "status": "open"
+        },
+        {
+          "date": "2026-07-22",
+          "level": 163.038,
+          "pnl_pct": -2.3,
+          "status": "stopped"
+        }
+      ],
+      "exit": {
+        "date": "2026-07-22",
+        "level": 163.038,
+        "result": "STOPPED",
+        "pnl_pct": -2.3,
+        "days_held": 51
       }
     }
   ]
