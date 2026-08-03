@@ -1,19 +1,1039 @@
 # Finnhub Earnings Data
-Generated: 2026-07-31 06:00 UTC
-Pre-earnings window:  2026-07-31 to 2026-08-05
-Post-earnings window: 2026-07-28 to 2026-07-31
+Generated: 2026-08-03 06:00 UTC
+Pre-earnings window:  2026-08-03 to 2026-08-08
+Post-earnings window: 2026-07-31 to 2026-08-03
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
+
+## PPL — PPL Corp
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-07
+- **Report timing:** BMO (before open)
+- **Sector:** Utilities
+- **Market cap:** $26.5bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     0.3473
+- Revenue estimate: 2212137350
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 16
+- Hold:           5
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 0.63 vs est 0.6226 (1.19%)
+- 2025 Q4: actual 0.41 vs est 0.4188 (-2.1%)
+- 2025 Q3: actual 0.48 vs est 0.4643 (3.38%)
+- 2025 Q2: actual 0.32 vs est 0.386 (-17.1%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): -58.81%
+- EPS growth YoY (TTM):     21.18%
+- 52-week high:             40.11
+- 52-week low:              33.17
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## VST — Vistra Corp
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-07
+- **Report timing:** BMO (before open)
+- **Sector:** Utilities
+- **Market cap:** $49.7bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     1.7989
+- Revenue estimate: 5631959808
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 22
+- Hold:           2
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 2.87 vs est 1.3526 (112.18%)
+- 2025 Q4: actual 0.54 vs est 2.3689 (-77.2%)
+- 2025 Q3: actual 1.75 vs est 2.1248 (-17.64%)
+- 2025 Q2: actual 0.71 vs est 1.2342 (-42.47%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 15.68%
+- EPS growth YoY (TTM):     -5.4%
+- 52-week high:             219.82
+- 52-week low:              132.66
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## AFL — Aflac Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** AMC (after close)
+- **Sector:** Financials
+- **Market cap:** $64.9bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     1.7854
+- Revenue estimate: 4203934948
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 3
+- Hold:           12
+- Sell/Strong sell: 8
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 1.75 vs est 1.8298 (-4.36%)
+- 2025 Q4: actual 1.57 vs est 1.7117 (-8.28%)
+- 2025 Q3: actual 2.49 vs est 1.7934 (38.84%)
+- 2025 Q2: actual 1.78 vs est 1.7165 (3.7%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 7.25%
+- EPS growth YoY (TTM):     37.55%
+- 52-week high:             130.22
+- 52-week low:              96.95
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## AIG — American International Group Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** AMC (after close)
+- **Sector:** Financials
+- **Market cap:** $41.7bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     1.9428
+- Revenue estimate: 7357165391
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 12
+- Hold:           15
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 2.11 vs est 1.9164 (10.1%)
+- 2025 Q4: actual 1.96 vs est 1.9189 (2.14%)
+- 2025 Q3: actual 2.2 vs est 1.7288 (27.26%)
+- 2025 Q2: actual 1.81 vs est 1.6142 (12.13%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): -2.31%
+- EPS growth YoY (TTM):     unavailable%
+- 52-week high:             87.29
+- 52-week low:              71.25
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## AKAM — Akamai Technologies Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** AMC (after close)
+- **Sector:** Technology
+- **Market cap:** $16.7bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     1.6052
+- Revenue estimate: 1113562029
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 20
+- Hold:           11
+- Sell/Strong sell: 2
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 1.61 vs est 1.6328 (-1.4%)
+- 2025 Q4: actual 1.84 vs est 1.7902 (2.78%)
+- 2025 Q3: actual 1.86 vs est 1.6712 (11.3%)
+- 2025 Q2: actual 1.73 vs est 1.5834 (9.26%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 6.15%
+- EPS growth YoY (TTM):     0.15%
+- 52-week high:             165.45
+- 52-week low:              69.78
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## AMRZ — Amrize AG
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** AMC (after close)
+- **Sector:** Industrials
+- **Market cap:** $27.0bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     0.9587
+- Revenue estimate: 3428532262
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 19
+- Hold:           7
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual -0.21 vs est -0.136 (-54.41%)
+- 2025 Q4: actual 0.54 vs est 0.6598 (-18.16%)
+- 2025 Q3: actual 0.98 vs est 1.0387 (-5.65%)
+- 2025 Q2: actual 0.78 vs est 1.173 (-33.5%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): unavailable%
+- EPS growth YoY (TTM):     unavailable%
+- 52-week high:             65.94
+- 52-week low:              44.12
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## ARW — Arrow Electronics Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** AMC (after close)
+- **Sector:** Utilities
+- **Market cap:** $11.1bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     4.5046
+- Revenue estimate: 9659687975
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 5
+- Hold:           4
+- Sell/Strong sell: 1
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 5.22 vs est 2.881 (81.19%)
+- 2025 Q4: actual 4.39 vs est 3.6012 (21.9%)
+- 2025 Q3: actual 2.41 vs est 2.3295 (3.46%)
+- 2025 Q2: actual 2.43 vs est 2.0947 (16.01%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 20.49%
+- EPS growth YoY (TTM):     91.43%
+- 52-week high:             237.3328
+- 52-week low:              101.79
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## ATI — ATI Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** BMO (before open)
+- **Sector:** Industrials
+- **Market cap:** $25.6bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     1.0488
+- Revenue estimate: 1229910663
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 14
+- Hold:           1
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 1 vs est 0.8899 (12.37%)
+- 2025 Q4: actual 0.93 vs est 0.8907 (4.41%)
+- 2025 Q3: actual 0.85 vs est 0.7449 (14.11%)
+- 2025 Q2: actual 0.74 vs est 0.7225 (2.42%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 2.93%
+- EPS growth YoY (TTM):     10.68%
+- 52-week high:             205.31
+- 52-week low:              70.42
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## BMRN — BioMarin Pharmaceutical Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** AMC (after close)
+- **Sector:** Technology
+- **Market cap:** $11.6bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     0.7016
+- Revenue estimate: 945445864
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 27
+- Hold:           7
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 0.54 vs est 0.7656 (-29.47%)
+- 2025 Q4: actual -0.24 vs est 0.637 (-137.68%)
+- 2025 Q3: actual -0.16 vs est 0.3793 (-142.18%)
+- 2025 Q2: actual 1.23 vs est 0.8516 (44.43%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 9.9%
+- EPS growth YoY (TTM):     -49.03%
+- 52-week high:             66.28
+- 52-week low:              49.26
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## BSY — Bentley Systems, Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** BMO (before open)
+- **Sector:** Technology
+- **Market cap:** $10.8bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     0.3192
+- Revenue estimate: 416342917
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 16
+- Hold:           5
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 0.38 vs est 0.3588 (5.91%)
+- 2025 Q4: actual 0.27 vs est 0.2633 (2.54%)
+- 2025 Q3: actual 0.27 vs est 0.277 (-2.53%)
+- 2025 Q2: actual 0.32 vs est 0.2871 (11.46%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 12.23%
+- EPS growth YoY (TTM):     11.73%
+- 52-week high:             58.643
+- 52-week low:              28.0768
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## CEG — Constellation Energy Corp
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** BMO (before open)
+- **Sector:** Utilities
+- **Market cap:** $94.4bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     2.4459
+- Revenue estimate: 8030296213
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 24
+- Hold:           5
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 2.74 vs est 2.5928 (5.68%)
+- 2025 Q4: actual 2.3 vs est 2.2473 (2.35%)
+- 2025 Q3: actual 3.04 vs est 3.1499 (-3.49%)
+- 2025 Q2: actual 1.91 vs est 1.859 (2.74%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 23.44%
+- EPS growth YoY (TTM):     21.44%
+- 52-week high:             412.7
+- 52-week low:              228.63
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## DDOG — Datadog Inc (Pre-Reincorporation)
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** BMO (before open)
+- **Sector:** Technology
+- **Market cap:** $95.4bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     0.6019
+- Revenue estimate: 1098967706
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 53
+- Hold:           2
+- Sell/Strong sell: 1
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 0.6 vs est 0.5179 (15.85%)
+- 2025 Q4: actual 0.59 vs est 0.5657 (4.3%)
+- 2025 Q3: actual 0.55 vs est 0.4747 (15.86%)
+- 2025 Q2: actual 0.46 vs est 0.4263 (7.91%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 29.54%
+- EPS growth YoY (TTM):     -17.93%
+- 52-week high:             278.7584
+- 52-week low:              98.01
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## ED — Consolidated Edison Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** AMC (after close)
+- **Sector:** Utilities
+- **Market cap:** $40.1bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     0.7754
+- Revenue estimate: 3706277840
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 2
+- Hold:           12
+- Sell/Strong sell: 12
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 2.18 vs est 2.3426 (-6.94%)
+- 2025 Q4: actual 0.89 vs est 0.9757 (-8.78%)
+- 2025 Q3: actual 1.9 vs est 1.7943 (5.89%)
+- 2025 Q2: actual 0.67 vs est 0.6596 (1.58%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 9.08%
+- EPS growth YoY (TTM):     9.59%
+- 52-week high:             116.23
+- 52-week low:              94.96
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## EVRG — Evergy Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** BMO (before open)
+- **Sector:** Utilities
+- **Market cap:** $19.1bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     0.8461
+- Revenue estimate: 1404049788
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 13
+- Hold:           7
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 0.69 vs est 0.6598 (4.58%)
+- 2025 Q4: actual 0.42 vs est 0.5779 (-27.32%)
+- 2025 Q3: actual 2.03 vs est 2.0971 (-3.2%)
+- 2025 Q2: actual 0.82 vs est 0.832 (-1.44%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): -42.62%
+- EPS growth YoY (TTM):     -0.74%
+- 52-week high:             88.62
+- 52-week low:              69.54
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## FISV — Fiserv Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** BMO (before open)
+- **Sector:** Financials
+- **Market cap:** $28.8bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     1.9486
+- Revenue estimate: 5139483261
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 14
+- Hold:           26
+- Sell/Strong sell: 2
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 1.79 vs est 1.6028 (11.68%)
+- 2025 Q4: actual 1.99 vs est 1.935 (2.84%)
+- 2025 Q3: actual 2.04 vs est 2.6953 (-24.31%)
+- 2025 Q2: actual 2.47 vs est 2.4793 (-0.38%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 1.87%
+- EPS growth YoY (TTM):     4.26%
+- 52-week high:             141.38
+- 52-week low:              47.04
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## GEN — Gen Digital Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** AMC (after close)
+- **Sector:** Technology
+- **Market cap:** $16.4bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     0.6963
+- Revenue estimate: 1325014667
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 10
+- Hold:           6
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q4: actual 0.67 vs est 0.6568 (2.01%)
+- 2026 Q3: actual 0.64 vs est 0.6378 (0.34%)
+- 2026 Q2: actual 0.62 vs est 0.616 (0.65%)
+- 2026 Q1: actual 0.64 vs est 0.6052 (5.75%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 27.06%
+- EPS growth YoY (TTM):     53.45%
+- 52-week high:             32.22
+- 52-week low:              17.78
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## HWM — Howmet Aerospace Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** BMO (before open)
+- **Sector:** Industrials
+- **Market cap:** $112.9bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     1.2582
+- Revenue estimate: 2452371728
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 23
+- Hold:           5
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 1.22 vs est 1.1186 (9.06%)
+- 2025 Q4: actual 1.05 vs est 0.9753 (7.66%)
+- 2025 Q3: actual 0.95 vs est 0.9152 (3.8%)
+- 2025 Q2: actual 0.91 vs est 0.8807 (3.33%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 14.24%
+- EPS growth YoY (TTM):     40.24%
+- 52-week high:             295.28
+- 52-week low:              169.45
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## ITT — ITT Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** BMO (before open)
+- **Sector:** Industrials
+- **Market cap:** $17.5bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     1.9651
+- Revenue estimate: 1402750155
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 15
+- Hold:           4
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 1.98 vs est 1.7648 (12.19%)
+- 2025 Q4: actual 1.85 vs est 1.8002 (2.77%)
+- 2025 Q3: actual 1.78 vs est 1.6847 (5.66%)
+- 2025 Q2: actual 1.64 vs est 1.6282 (0.72%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 16.63%
+- EPS growth YoY (TTM):     -9.75%
+- 52-week high:             225.26
+- 52-week low:              157.67
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## MCHP — Microchip Technology Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** AMC (after close)
+- **Sector:** Technology
+- **Market cap:** $40.3bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     0.7077
+- Revenue estimate: 1487440500
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 25
+- Hold:           7
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q4: actual 0.57 vs est 0.5154 (10.59%)
+- 2026 Q3: actual 0.44 vs est 0.4201 (4.74%)
+- 2026 Q2: actual 0.35 vs est 0.3412 (2.58%)
+- 2026 Q1: actual 0.27 vs est 0.2415 (11.8%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 7.08%
+- EPS growth YoY (TTM):     unavailable%
+- 52-week high:             105.91
+- 52-week low:              48.52
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## MTSI — MACOM Technology Solutions Holdings Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** BMO (before open)
+- **Sector:** Technology
+- **Market cap:** $19.2bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     1.3726
+- Revenue estimate: 342096565
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 18
+- Hold:           4
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q2: actual 1.09 vs est 1.0948 (-0.44%)
+- 2026 Q1: actual 1.02 vs est 1.0036 (1.63%)
+- 2025 Q4: actual 0.94 vs est 0.9475 (-0.79%)
+- 2025 Q3: actual 0.9 vs est 0.9144 (-1.57%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 27.05%
+- EPS growth YoY (TTM):     unavailable%
+- 52-week high:             418.9
+- 52-week low:              118.16
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## NET — Cloudflare Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** AMC (after close)
+- **Sector:** Technology
+- **Market cap:** $99.1bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     0.2724
+- Revenue estimate: 672155363
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 29
+- Hold:           9
+- Sell/Strong sell: 2
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 0.25 vs est 0.2355 (6.16%)
+- 2025 Q4: actual 0.28 vs est 0.2734 (2.41%)
+- 2025 Q3: actual 0.27 vs est 0.2364 (14.21%)
+- 2025 Q2: actual 0.21 vs est 0.1853 (13.33%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 31.55%
+- EPS growth YoY (TTM):     unavailable%
+- 52-week high:             293.8
+- 52-week low:              158.83
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## NTRA — Natera Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** AMC (after close)
+- **Sector:** Technology
+- **Market cap:** $38.3bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     -0.5036
+- Revenue estimate: 673900576
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 26
+- Hold:           4
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual -0.6 vs est -0.5471 (-9.67%)
+- 2025 Q4: actual 0.36 vs est -0.5208 (169.12%)
+- 2025 Q3: actual -0.64 vs est -0.3805 (-68.2%)
+- 2025 Q2: actual -0.74 vs est -0.6283 (-17.78%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 36.59%
+- EPS growth YoY (TTM):     unavailable%
+- 52-week high:             288.04
+- 52-week low:              131.8106
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## ONTO — Onto Innovation Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** AMC (after close)
+- **Sector:** Technology
+- **Market cap:** $12.9bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     1.7249
+- Revenue estimate: 331749777
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 15
+- Hold:           2
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 1.42 vs est 1.4436 (-1.63%)
+- 2025 Q4: actual 1.26 vs est 1.3075 (-3.63%)
+- 2025 Q3: actual 0.92 vs est 0.8859 (3.85%)
+- 2025 Q2: actual 1.25 vs est 1.2961 (-3.56%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 0.54%
+- EPS growth YoY (TTM):     -51.21%
+- 52-week high:             386.46
+- 52-week low:              89.4
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## PH — Parker-Hannifin Corp
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** BMO (before open)
+- **Sector:** Industrials
+- **Market cap:** $123.1bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     8.5185
+- Revenue estimate: 5739304828
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 27
+- Hold:           7
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q3: actual 8.17 vs est 8.0662 (1.29%)
+- 2026 Q2: actual 7.65 vs est 7.3862 (3.57%)
+- 2026 Q1: actual 7.22 vs est 6.8247 (5.79%)
+- 2025 Q4: actual 7.69 vs est 7.3172 (5.09%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 6.03%
+- EPS growth YoY (TTM):     4.29%
+- 52-week high:             1034.96
+- 52-week low:              692.02
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## RGA — Reinsurance Group of America Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** AMC (after close)
+- **Sector:** Financials
+- **Market cap:** $15.5bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     6.5825
+- Revenue estimate: 6742812318
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 9
+- Hold:           5
+- Sell/Strong sell: 1
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 6.97 vs est 6.1049 (14.17%)
+- 2025 Q4: actual 7.75 vs est 5.8053 (33.5%)
+- 2025 Q3: actual 6.37 vs est 5.8467 (8.95%)
+- 2025 Q2: actual 4.72 vs est 5.6263 (-16.11%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 18.6%
+- EPS growth YoY (TTM):     55.89%
+- 52-week high:             245
+- 52-week low:              165.52
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## RKT — Rocket Companies Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** AMC (after close)
+- **Sector:** Financials
+- **Market cap:** $36.5bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     0.1683
+- Revenue estimate: 2846667001
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 11
+- Hold:           11
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 0.15 vs est 0.1194 (25.63%)
+- 2025 Q4: actual 0.11 vs est 0.0875 (25.71%)
+- 2025 Q3: actual 0.07 vs est 0.0465 (50.54%)
+- 2025 Q2: actual 0.04 vs est 0.0273 (46.52%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 75.31%
+- EPS growth YoY (TTM):     266.46%
+- 52-week high:             24.36
+- 52-week low:              12.17
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## SRE — Sempra
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** BMO (before open)
+- **Sector:** Utilities
+- **Market cap:** $57.9bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     1.0688
+- Revenue estimate: 3219616097
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 18
+- Hold:           6
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 1.51 vs est 1.531 (-1.37%)
+- 2025 Q4: actual 1.28 vs est 1.1828 (8.22%)
+- 2025 Q3: actual 1.11 vs est 0.9212 (20.5%)
+- 2000 Q3: actual 0.7 vs est 0.505 (38.61%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 0.05%
+- EPS growth YoY (TTM):     -35.22%
+- 52-week high:             101.04
+- 52-week low:              78.97
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## TRMB — Trimble Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** 
+- **Sector:** Technology
+- **Market cap:** $13.2bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     0.8171
+- Revenue estimate: 970947486
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 20
+- Hold:           1
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 0.79 vs est 0.7319 (7.94%)
+- 2025 Q4: actual 1 vs est 0.9811 (1.93%)
+- 2025 Q3: actual 0.81 vs est 0.7326 (10.57%)
+- 2025 Q2: actual 0.71 vs est 0.6378 (11.32%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 5.74%
+- EPS growth YoY (TTM):     126.96%
+- 52-week high:             87.5
+- 52-week low:              47.92
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## TWLO — Twilio Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** AMC (after close)
+- **Sector:** Technology
+- **Market cap:** $30.0bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     1.345
+- Revenue estimate: 1458060205
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 29
+- Hold:           6
+- Sell/Strong sell: 1
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 1.5 vs est 1.2983 (15.54%)
+- 2025 Q4: actual 1.33 vs est 1.2611 (5.46%)
+- 2025 Q3: actual 1.25 vs est 1.1057 (13.05%)
+- 2025 Q2: actual 1.19 vs est 1.0674 (11.49%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 15.67%
+- EPS growth YoY (TTM):     unavailable%
+- 52-week high:             238.4799
+- 52-week low:              91.84
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## U — Unity Software Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** BMO (before open)
+- **Sector:** Technology
+- **Market cap:** $13.8bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     -0.0875
+- Revenue estimate: 525222582
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 25
+- Hold:           10
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual -0.16 vs est -0.2407 (33.53%)
+- 2025 Q4: actual -0.21 vs est -0.2351 (10.68%)
+- 2025 Q3: actual -0.3 vs est -0.2356 (-27.33%)
+- 2025 Q2: actual -0.261 vs est -0.272 (4.04%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 7.55%
+- EPS growth YoY (TTM):     unavailable%
+- 52-week high:             52.15
+- 52-week low:              16.78
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## WBHC — Wilson Bank Holding Co
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-06
+- **Report timing:** 
+- **Sector:** Financials
+- **Market cap:** $18.4bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     unavailable
+- Revenue estimate: unavailable
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: unavailable
+- Hold:           unavailable
+- Sell/Strong sell: unavailable
+- Period:         unavailable
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- unavailable
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): unavailable%
+- EPS growth YoY (TTM):     33.08%
+- 52-week high:             1500
+- 52-week low:              76.01
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
 
 ## ALL — Allstate Corp
 - **Mode:** PRE-EARNINGS
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Financials
-- **Market cap:** $68.3bn
+- **Market cap:** $68.0bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     6.1512
+- EPS estimate:     6.1822
 - Revenue estimate: 15814243336
 
 ### Analyst recommendations (Finnhub — sourced)
@@ -43,11 +1063,11 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $135.7bn
+- **Market cap:** $133.0bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     3.7601
-- Revenue estimate: 1954549353
+- EPS estimate:     3.7574
+- Revenue estimate: 1954568644
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 32
@@ -65,7 +1085,7 @@ Source: Finnhub.io
 - Revenue growth YoY (TTM): 40%
 - EPS growth YoY (TTM):     110.27%
 - 52-week high:             745.61
-- 52-week low:              358.55
+- 52-week low:              359
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
@@ -76,7 +1096,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Utilities
-- **Market cap:** $29.1bn
+- **Market cap:** $28.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.3652
@@ -109,7 +1129,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Industrials
-- **Market cap:** $42.3bn
+- **Market cap:** $42.5bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.8865
@@ -142,7 +1162,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** BMO (before open)
 - **Sector:** Financials
-- **Market cap:** $76.6bn
+- **Market cap:** $77.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.4463
@@ -175,7 +1195,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $18.6bn
+- **Market cap:** $18.9bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     2.8275
@@ -196,7 +1216,7 @@ Source: Finnhub.io
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 7.41%
 - EPS growth YoY (TTM):     1.78%
-- 52-week high:             182.74
+- 52-week high:             179.27
 - 52-week low:              97.12
 - Short ratio:              unavailable
 - Short interest:           unavailable
@@ -208,11 +1228,11 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** BMO (before open)
 - **Sector:** Financials
-- **Market cap:** $16.3bn
+- **Market cap:** $16.6bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.9403
-- Revenue estimate: 907208550
+- EPS estimate:     0.9424
+- Revenue estimate: 911740550
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 15
@@ -241,11 +1261,11 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Utilities
-- **Market cap:** $10.4bn
+- **Market cap:** $10.9bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.433
-- Revenue estimate: 298357782
+- EPS estimate:     0.4327
+- Revenue estimate: 298396379
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 22
@@ -263,7 +1283,7 @@ Source: Finnhub.io
 - Revenue growth YoY (TTM): 13.81%
 - EPS growth YoY (TTM):     23.54%
 - 52-week high:             72.88
-- 52-week low:              33.45
+- 52-week low:              34.6
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
@@ -274,10 +1294,10 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Financials
-- **Market cap:** $25.5bn
+- **Market cap:** $25.0bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     6.6987
+- EPS estimate:     6.7073
 - Revenue estimate: 1325385215
 
 ### Analyst recommendations (Finnhub — sourced)
@@ -307,7 +1327,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** BMO (before open)
 - **Sector:** Technology
-- **Market cap:** $16.0bn
+- **Market cap:** $15.6bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.2161
@@ -328,7 +1348,7 @@ Source: Finnhub.io
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 51.46%
 - EPS growth YoY (TTM):     unavailable%
-- 52-week high:             193.3344
+- 52-week high:             189.92
 - 52-week low:              49.9
 - Short ratio:              unavailable
 - Short interest:           unavailable
@@ -340,7 +1360,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Industrials
-- **Market cap:** $26.5bn
+- **Market cap:** $26.7bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.7255
@@ -373,7 +1393,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** BMO (before open)
 - **Sector:** Technology
-- **Market cap:** $12.8bn
+- **Market cap:** $12.9bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.4586
@@ -394,7 +1414,7 @@ Source: Finnhub.io
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 18.82%
 - EPS growth YoY (TTM):     -66.41%
-- 52-week high:             54.67
+- 52-week high:             54.01
 - 52-week low:              31.635
 - Short ratio:              unavailable
 - Short interest:           unavailable
@@ -406,7 +1426,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $14.1bn
+- **Market cap:** $13.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.8017
@@ -439,7 +1459,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $12.6bn
+- **Market cap:** $12.9bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.0412
@@ -472,10 +1492,10 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Financials
-- **Market cap:** $14.0bn
+- **Market cap:** $13.9bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.347
+- EPS estimate:     1.3234
 - Revenue estimate: 3808225200
 
 ### Analyst recommendations (Finnhub — sourced)
@@ -508,8 +1528,8 @@ Source: Finnhub.io
 - **Market cap:** $27.4bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.4453
-- Revenue estimate: 1780652220
+- EPS estimate:     0.4468
+- Revenue estimate: 1782289763
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 16
@@ -538,7 +1558,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** BMO (before open)
 - **Sector:** Financials
-- **Market cap:** $23.8bn
+- **Market cap:** $23.0bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.4818
@@ -571,7 +1591,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** 
 - **Sector:** Technology
-- **Market cap:** $10.3bn
+- **Market cap:** $10.7bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.068
@@ -604,7 +1624,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Industrials
-- **Market cap:** $64.7bn
+- **Market cap:** $65.5bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     2.1482
@@ -634,7 +1654,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $11.9bn
+- **Market cap:** $12.2bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.0767
@@ -655,7 +1675,7 @@ Source: Finnhub.io
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 21.06%
 - EPS growth YoY (TTM):     unavailable%
-- 52-week high:             550.13
+- 52-week high:             541.525
 - 52-week low:              169.63
 - Short ratio:              unavailable
 - Short interest:           unavailable
@@ -667,10 +1687,10 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** 
 - **Sector:** Technology
-- **Market cap:** $22.0bn
+- **Market cap:** $21.4bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     -0.8057
+- EPS estimate:     -0.7997
 - Revenue estimate: 400337984
 
 ### Analyst recommendations (Finnhub — sourced)
@@ -700,11 +1720,11 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $13.4bn
+- **Market cap:** $13.6bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     -0.2938
-- Revenue estimate: 66659448
+- EPS estimate:     -0.2912
+- Revenue estimate: 66673136
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 16
@@ -733,7 +1753,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Financials
-- **Market cap:** $62.5bn
+- **Market cap:** $61.9bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     2.3159
@@ -766,7 +1786,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $19.8bn
+- **Market cap:** $20.1bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.0172
@@ -799,7 +1819,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $71.5bn
+- **Market cap:** $72.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.8899
@@ -832,10 +1852,10 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $21.6bn
+- **Market cap:** $21.3bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.1672
+- EPS estimate:     0.1635
 - Revenue estimate: 1377024098
 
 ### Analyst recommendations (Finnhub — sourced)
@@ -855,39 +1875,6 @@ Source: Finnhub.io
 - EPS growth YoY (TTM):     7.94%
 - 52-week high:             49.21
 - 52-week low:              38.45
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## PRI — Primerica Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-08-05
-- **Report timing:** AMC (after close)
-- **Sector:** Financials
-- **Market cap:** $10.1bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     6.0784
-- Revenue estimate: 875054405
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 7
-- Hold:           6
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 5.96 vs est 5.5332 (7.71%)
-- 2025 Q4: actual 6.13 vs est 5.7334 (6.92%)
-- 2025 Q3: actual 6.33 vs est 5.5961 (13.11%)
-- 2025 Q2: actual 5.46 vs est 5.2611 (3.78%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 5.96%
-- EPS growth YoY (TTM):     26.15%
-- 52-week high:             326.6653
-- 52-week low:              230.09
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
@@ -931,7 +1918,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $13.5bn
+- **Market cap:** $13.7bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     2.6095
@@ -959,12 +1946,45 @@ Source: Finnhub.io
 
 ---
 
+## RVMD — Revolution Medicines Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-05
+- **Report timing:** AMC (after close)
+- **Sector:** Technology
+- **Market cap:** $39.9bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     -2.0173
+- Revenue estimate: 16702204
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 27
+- Hold:           2
+- Sell/Strong sell: 0
+- Period:         2026-07-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual -2.29 vs est -1.876 (-22.07%)
+- 2025 Q4: actual -1.86 vs est -1.6123 (-15.36%)
+- 2025 Q3: actual -1.61 vs est -1.4473 (-11.24%)
+- 2025 Q2: actual -1.31 vs est -1.1614 (-12.79%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): unavailable%
+- EPS growth YoY (TTM):     unavailable%
+- 52-week high:             194.56
+- 52-week low:              34
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
 ## SITM — SiTime Corp
 - **Mode:** PRE-EARNINGS
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $13.9bn
+- **Market cap:** $14.1bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.9921
@@ -997,7 +2017,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $189.5bn
+- **Market cap:** $179.9bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     35.1395
@@ -1034,7 +2054,7 @@ Source: Finnhub.io
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.1727
-- Revenue estimate: 722632103
+- Revenue estimate: 722292117
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 13
@@ -1063,11 +2083,11 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Utilities
-- **Market cap:** $15.1bn
+- **Market cap:** $15.2bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     3.3532
-- Revenue estimate: 817515210
+- EPS estimate:     3.0877
+- Revenue estimate: 822990591
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 20
@@ -1129,7 +2149,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** BMO (before open)
 - **Sector:** Technology
-- **Market cap:** $22.3bn
+- **Market cap:** $22.0bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     6.969
@@ -1162,11 +2182,11 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $150.9bn
+- **Market cap:** $183.7bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.3281
-- Revenue estimate: 3728629019
+- Revenue estimate: 3728679519
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 23
@@ -1184,7 +2204,7 @@ Source: Finnhub.io
 - Revenue growth YoY (TTM): 32.04%
 - EPS growth YoY (TTM):     269.21%
 - 52-week high:             799.87
-- 52-week low:              69.3
+- 52-week low:              73.14
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
@@ -1195,7 +2215,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Industrials
-- **Market cap:** $11.3bn
+- **Market cap:** $11.5bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.3654
@@ -1223,49 +2243,16 @@ Source: Finnhub.io
 
 ---
 
-## WULF — Terawulf Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-08-05
-- **Report timing:** BMO (before open)
-- **Sector:** Technology
-- **Market cap:** $13.9bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     -0.2299
-- Revenue estimate: 47319840
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 22
-- Hold:           1
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual -0.92 vs est -0.1825 (-404.11%)
-- 2025 Q4: actual -0.29 vs est -0.1392 (-108.33%)
-- 2025 Q3: actual -0.08 vs est -0.0575 (-39.13%)
-- 2025 Q2: actual -0.05 vs est -0.0656 (23.78%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 27.3%
-- EPS growth YoY (TTM):     unavailable%
-- 52-week high:             29.84
-- 52-week low:              4.64
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
 ## XYZ — Block Inc
 - **Mode:** PRE-EARNINGS
 - **Report date:** 2026-08-05
 - **Report timing:** AMC (after close)
 - **Sector:** Financials
-- **Market cap:** $44.4bn
+- **Market cap:** $49.2bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.8751
-- Revenue estimate: 6549253049
+- Revenue estimate: 6549900197
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 41
@@ -1327,7 +2314,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Financials
-- **Market cap:** $14.0bn
+- **Market cap:** $13.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     5.2343
@@ -1349,7 +2336,7 @@ Source: Finnhub.io
 - Revenue growth YoY (TTM): 9.05%
 - EPS growth YoY (TTM):     54.03%
 - 52-week high:             284.64
-- 52-week low:              183.39
+- 52-week low:              184.15
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
@@ -1360,7 +2347,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $51.4bn
+- **Market cap:** $53.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.7049
@@ -1393,11 +2380,11 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $791.5bn
+- **Market cap:** $776.4bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.6291
-- Revenue estimate: 11390910623
+- EPS estimate:     1.631
+- Revenue estimate: 11396426778
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 48
@@ -1426,7 +2413,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $55.0bn
+- **Market cap:** $55.4bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     2.0129
@@ -1447,8 +2434,8 @@ Source: Finnhub.io
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 9.52%
 - EPS growth YoY (TTM):     8.4%
-- 52-week high:             244.71
-- 52-week low:              175.61
+- 52-week high:             244.97
+- 52-week low:              179.24
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
@@ -1459,11 +2446,11 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $209.2bn
+- **Market cap:** $207.9bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     5.7269
-- Revenue estimate: 9613147161
+- EPS estimate:     5.7281
+- Revenue estimate: 9609525845
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 21
@@ -1492,7 +2479,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $215.3bn
+- **Market cap:** $227.1bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.9026
@@ -1525,10 +2512,10 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Financials
-- **Market cap:** $69.3bn
+- **Market cap:** $72.4bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     2.1934
+- EPS estimate:     2.1957
 - Revenue estimate: 5746626795
 
 ### Analyst recommendations (Finnhub — sourced)
@@ -1558,7 +2545,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $12.3bn
+- **Market cap:** $11.9bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -1.3464
@@ -1586,49 +2573,16 @@ Source: Finnhub.io
 
 ---
 
-## BMRN — BioMarin Pharmaceutical Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-08-04
-- **Report timing:** AMC (after close)
-- **Sector:** Technology
-- **Market cap:** $11.7bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.7016
-- Revenue estimate: 945445864
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 27
-- Hold:           7
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 0.54 vs est 0.7656 (-29.47%)
-- 2025 Q4: actual -0.24 vs est 0.637 (-137.68%)
-- 2025 Q3: actual -0.16 vs est 0.3793 (-142.18%)
-- 2025 Q2: actual 1.23 vs est 0.8516 (44.43%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 9.9%
-- EPS growth YoY (TTM):     -49.03%
-- 52-week high:             66.28
-- 52-week low:              49.26
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
 ## CAT — Caterpillar Inc
 - **Mode:** PRE-EARNINGS
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Industrials
-- **Market cap:** $372.7bn
+- **Market cap:** $375.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     6.2595
-- Revenue estimate: 19528614286
+- Revenue estimate: 19530045113
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 19
@@ -1657,11 +2611,11 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Industrials
-- **Market cap:** $87.3bn
+- **Market cap:** $87.5bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     7.3011
-- Revenue estimate: 9415582448
+- EPS estimate:     7.305
+- Revenue estimate: 9422964952
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 18
@@ -1690,7 +2644,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Financials
-- **Market cap:** $14.2bn
+- **Market cap:** $13.9bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.0899
@@ -1723,11 +2677,11 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Technology
-- **Market cap:** $14.1bn
+- **Market cap:** $13.7bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.2623
-- Revenue estimate: 283623036
+- EPS estimate:     0.263
+- Revenue estimate: 284282639
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 17
@@ -1756,7 +2710,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $98.4bn
+- **Market cap:** $97.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.318
@@ -1789,7 +2743,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Utilities
-- **Market cap:** $83.3bn
+- **Market cap:** $83.9bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.6931
@@ -1822,11 +2776,11 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Technology
-- **Market cap:** $17.9bn
+- **Market cap:** $18.2bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.8356
-- Revenue estimate: 851406576
+- EPS estimate:     0.8376
+- Revenue estimate: 852242976
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 12
@@ -1855,11 +2809,11 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Financials
-- **Market cap:** $13.3bn
+- **Market cap:** $13.0bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.678
-- Revenue estimate: 3943040000
+- EPS estimate:     1.6769
+- Revenue estimate: 3942703336
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 17
@@ -1921,7 +2875,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Industrials
-- **Market cap:** $21.8bn
+- **Market cap:** $22.0bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.72
@@ -1954,7 +2908,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Financials
-- **Market cap:** $23.8bn
+- **Market cap:** $23.1bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.4874
@@ -1975,7 +2929,7 @@ Source: Finnhub.io
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 12.24%
 - EPS growth YoY (TTM):     246.69%
-- 52-week high:             82.07
+- 52-week high:             80.99
 - 52-week low:              37.42
 - Short ratio:              unavailable
 - Short interest:           unavailable
@@ -1987,11 +2941,11 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $163.0bn
+- **Market cap:** $161.7bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     -7.3856
-- Revenue estimate: 7539469046
+- EPS estimate:     -7.3797
+- Revenue estimate: 7547858658
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 30
@@ -2020,7 +2974,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Technology
-- **Market cap:** $10.2bn
+- **Market cap:** $10.1bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.8652
@@ -2041,7 +2995,7 @@ Source: Finnhub.io
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 2.3%
 - EPS growth YoY (TTM):     -37.06%
-- 52-week high:             352.08
+- 52-week high:             345.5
 - 52-week low:              124.25
 - Short ratio:              unavailable
 - Short interest:           unavailable
@@ -2053,7 +3007,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $17.1bn
+- **Market cap:** $17.0bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.4528
@@ -2081,39 +3035,6 @@ Source: Finnhub.io
 
 ---
 
-## MCHP — Microchip Technology Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-08-04
-- **Report timing:** AMC (after close)
-- **Sector:** Technology
-- **Market cap:** $40.7bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.7077
-- Revenue estimate: 1487440500
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 25
-- Hold:           7
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q4: actual 0.57 vs est 0.5154 (10.59%)
-- 2026 Q3: actual 0.44 vs est 0.4201 (4.74%)
-- 2026 Q2: actual 0.35 vs est 0.3412 (2.58%)
-- 2026 Q1: actual 0.27 vs est 0.2415 (11.8%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 7.08%
-- EPS growth YoY (TTM):     unavailable%
-- 52-week high:             105.91
-- 52-week low:              48.52
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
 ## NRG — NRG Energy Inc
 - **Mode:** PRE-EARNINGS
 - **Report date:** 2026-08-04
@@ -2122,8 +3043,8 @@ Source: Finnhub.io
 - **Market cap:** $28.3bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.7281
-- Revenue estimate: 7710647646
+- EPS estimate:     1.7374
+- Revenue estimate: 7418428214
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 17
@@ -2152,10 +3073,10 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $38.6bn
+- **Market cap:** $38.2bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.808
+- EPS estimate:     0.8074
 - Revenue estimate: 2743252627
 
 ### Analyst recommendations (Finnhub — sourced)
@@ -2185,7 +3106,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $12.3bn
+- **Market cap:** $12.2bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.48
@@ -2218,7 +3139,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Financials
-- **Market cap:** $42.6bn
+- **Market cap:** $42.4bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.5432
@@ -2251,7 +3172,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Technology
-- **Market cap:** $27.3bn
+- **Market cap:** $27.5bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.0951
@@ -2283,7 +3204,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $52.4bn
+- **Market cap:** $53.4bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.4092
@@ -2316,10 +3237,10 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $1488.6bn
+- **Market cap:** $1437.8bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     -0.2538
+- EPS estimate:     -0.2635
 - Revenue estimate: 7072528999
 
 ### Analyst recommendations (Finnhub — sourced)
@@ -2346,7 +3267,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Industrials
-- **Market cap:** $69.9bn
+- **Market cap:** $70.2bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     10.404
@@ -2366,7 +3287,7 @@ Source: Finnhub.io
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 13.29%
 - EPS growth YoY (TTM):     9.24%
-- 52-week high:             1623.83
+- 52-week high:             1620.58
 - 52-week low:              1123.61
 - Short ratio:              unavailable
 - Short interest:           unavailable
@@ -2378,10 +3299,10 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Financials
-- **Market cap:** $19.1bn
+- **Market cap:** $18.7bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.2053
+- EPS estimate:     0.2063
 - Revenue estimate: 1908699643
 
 ### Analyst recommendations (Finnhub — sourced)
@@ -2411,7 +3332,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Financials
-- **Market cap:** $16.4bn
+- **Market cap:** $16.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.6066
@@ -2444,7 +3365,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $10.7bn
+- **Market cap:** $10.5bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.3086
@@ -2466,7 +3387,7 @@ Source: Finnhub.io
 - Revenue growth YoY (TTM): 2.67%
 - EPS growth YoY (TTM):     unavailable%
 - 52-week high:             93.0299
-- 52-week low:              14.63
+- 52-week low:              15.27
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
@@ -2477,7 +3398,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** AMC (after close)
 - **Sector:** Utilities
-- **Market cap:** $10.8bn
+- **Market cap:** $11.4bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.3791
@@ -2510,11 +3431,11 @@ Source: Finnhub.io
 - **Report date:** 2026-08-04
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $11.3bn
+- **Market cap:** $13.7bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     4.4473
-- Revenue estimate: 1527505712
+- EPS estimate:     4.4449
+- Revenue estimate: 1526564303
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 19
@@ -2543,7 +3464,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-03
 - **Report timing:** AMC (after close)
 - **Sector:** Utilities
-- **Market cap:** $10.4bn
+- **Market cap:** $11.0bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     2.2447
@@ -2566,2241 +3487,6 @@ Source: Finnhub.io
 - EPS growth YoY (TTM):     145.32%
 - 52-week high:             397.44
 - 52-week low:              128.4
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## BRK.A — Berkshire Hathaway Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-08-03
-- **Report timing:** 
-- **Sector:** Financials
-- **Market cap:** $989.6bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     7594.5732
-- Revenue estimate: 95355913370
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 1
-- Hold:           3
-- Sell/Strong sell: 6
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 7889.445 vs est 8078.5176 (-2.34%)
-- 2025 Q4: actual 7093.185 vs est 8431.7647 (-15.88%)
-- 2025 Q3: actual 9376.15 vs est 8945.8442 (4.81%)
-- 2025 Q2: actual 7759.58 vs est 7744.8172 (0.19%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 1.11%
-- EPS growth YoY (TTM):     -10.46%
-- 52-week high:             775000
-- 52-week low:              685150
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## BWXT — BWX Technologies Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-08-03
-- **Report timing:** AMC (after close)
-- **Sector:** Industrials
-- **Market cap:** $15.2bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.0654
-- Revenue estimate: 920686761
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 17
-- Hold:           4
-- Sell/Strong sell: 1
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 1.12 vs est 0.9443 (18.61%)
-- 2025 Q4: actual 1.08 vs est 0.9016 (19.79%)
-- 2025 Q3: actual 1 vs est 0.8747 (14.32%)
-- 2025 Q2: actual 1.02 vs est 0.8089 (26.1%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 21.37%
-- EPS growth YoY (TTM):     19.57%
-- 52-week high:             241.82
-- 52-week low:              143.07
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## CNA — CNA Financial Corp
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-08-03
-- **Report timing:** BMO (before open)
-- **Sector:** Financials
-- **Market cap:** $14.4bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.0858
-- Revenue estimate: unavailable
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 1
-- Hold:           4
-- Sell/Strong sell: 6
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 0.83 vs est 1.2625 (-34.26%)
-- 2025 Q4: actual 1.16 vs est 1.3534 (-14.29%)
-- 2025 Q3: actual 1.5 vs est 1.3332 (12.51%)
-- 2025 Q2: actual 1.23 vs est 0.9747 (26.19%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 4.05%
-- EPS growth YoY (TTM):     35.92%
-- 52-week high:             55.71
-- 52-week low:              41.53
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## KRYS — Krystal Biotech Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-08-03
-- **Report timing:** BMO (before open)
-- **Sector:** Technology
-- **Market cap:** $10.8bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.7207
-- Revenue estimate: 124455096
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 16
-- Hold:           2
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 1.83 vs est 1.4486 (26.33%)
-- 2025 Q4: actual 1.7 vs est 1.4367 (18.33%)
-- 2025 Q3: actual 2.66 vs est 1.1073 (140.22%)
-- 2025 Q2: actual 1.29 vs est 1.1503 (12.14%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 25.15%
-- EPS growth YoY (TTM):     80.24%
-- 52-week high:             382.535
-- 52-week low:              130.5
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## L — Loews Corp
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-08-03
-- **Report timing:** BMO (before open)
-- **Sector:** Financials
-- **Market cap:** $23.9bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     unavailable
-- Revenue estimate: unavailable
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 0
-- Hold:           3
-- Sell/Strong sell: 4
-- Period:         2023-01-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 1.63 vs est unavailable
-- 2025 Q4: actual 1.94 vs est unavailable
-- 2025 Q3: actual 2.43 vs est unavailable
-- 2025 Q2: actual 1.87 vs est unavailable
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 4.1%
-- EPS growth YoY (TTM):     29.32%
-- 52-week high:             121.01
-- 52-week low:              89.32
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## ON — ON Semiconductor Corp
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-08-03
-- **Report timing:** AMC (after close)
-- **Sector:** Technology
-- **Market cap:** $32.6bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.7363
-- Revenue estimate: 1635763126
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 19
-- Hold:           20
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 0.64 vs est 0.6198 (3.26%)
-- 2025 Q4: actual 0.64 vs est 0.6414 (-0.22%)
-- 2025 Q3: actual 0.63 vs est 0.6076 (3.69%)
-- 2025 Q2: actual 0.53 vs est 0.5492 (-3.5%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): -9.04%
-- EPS growth YoY (TTM):     -2.89%
-- 52-week high:             134.92
-- 52-week low:              44.56
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## PLTR — Palantir Technologies Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-08-03
-- **Report timing:** AMC (after close)
-- **Sector:** Technology
-- **Market cap:** $293.1bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.3544
-- Revenue estimate: 1840805587
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 26
-- Hold:           11
-- Sell/Strong sell: 2
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 0.33 vs est 0.2849 (15.83%)
-- 2025 Q4: actual 0.25 vs est 0.2348 (6.47%)
-- 2025 Q3: actual 0.21 vs est 0.1718 (22.24%)
-- 2025 Q2: actual 0.16 vs est 0.1405 (13.88%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 67.71%
-- EPS growth YoY (TTM):     287.77%
-- 52-week high:             207.52
-- 52-week low:              106.37
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## STRL — Sterling Infrastructure Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-08-03
-- **Report timing:** AMC (after close)
-- **Sector:** Industrials
-- **Market cap:** $17.8bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     4.7133
-- Revenue estimate: 1009571397
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 14
-- Hold:           1
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 3.09 vs est 2.0517 (50.61%)
-- 2025 Q4: actual 2.81 vs est 2.2736 (23.59%)
-- 2025 Q3: actual 2.97 vs est 2.5316 (17.32%)
-- 2025 Q2: actual 2.31 vs est 2.0094 (14.96%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 36.96%
-- EPS growth YoY (TTM):     30.57%
-- 52-week high:             1005.6802
-- 52-week low:              244.02
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## VRTX — Vertex Pharmaceuticals Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-08-03
-- **Report timing:** AMC (after close)
-- **Sector:** Technology
-- **Market cap:** $122.3bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     4.8226
-- Revenue estimate: 3296376921
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 33
-- Hold:           6
-- Sell/Strong sell: 1
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 4.47 vs est 4.3964 (1.67%)
-- 2025 Q4: actual 5.03 vs est 5.1744 (-2.79%)
-- 2025 Q3: actual 4.8 vs est 4.6547 (3.12%)
-- 2025 Q2: actual 4.52 vs est 4.3693 (3.45%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 10.08%
-- EPS growth YoY (TTM):     unavailable%
-- 52-week high:             533.67
-- 52-week low:              362.5
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## ABBV — AbbVie Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-07-31
-- **Report timing:** BMO (before open)
-- **Sector:** Technology
-- **Market cap:** $454.8bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     3.6746
-- Revenue estimate: 17096737905
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 31
-- Hold:           8
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 2.65 vs est 2.6452 (0.18%)
-- 2025 Q4: actual 2.71 vs est 2.7053 (0.17%)
-- 2025 Q3: actual 1.86 vs est 1.8103 (2.75%)
-- 2025 Q2: actual 2.97 vs est 2.9421 (0.95%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 9.5%
-- EPS growth YoY (TTM):     -13.47%
-- 52-week high:             267.47
-- 52-week low:              187.62
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## ARES — Ares Management Corp
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-07-31
-- **Report timing:** BMO (before open)
-- **Sector:** Financials
-- **Market cap:** $27.6bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.3203
-- Revenue estimate: 1223691756
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 17
-- Hold:           6
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 1.24 vs est 1.3633 (-9.04%)
-- 2025 Q4: actual 1.45 vs est 1.7264 (-16.01%)
-- 2025 Q3: actual 1.19 vs est 1.1792 (0.92%)
-- 2025 Q2: actual 1.03 vs est 1.1073 (-6.98%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 38.51%
-- EPS growth YoY (TTM):     29.77%
-- 52-week high:             195.26
-- 52-week low:              95.8
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## BEN — Franklin Resources Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-07-31
-- **Report timing:** BMO (before open)
-- **Sector:** Financials
-- **Market cap:** $17.2bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.6781
-- Revenue estimate: 1779183427
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 6
-- Hold:           8
-- Sell/Strong sell: 2
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 0.71 vs est 0.5558 (27.74%)
-- 2026 Q1: actual 0.7 vs est 0.5589 (25.25%)
-- 2025 Q4: actual 0.67 vs est 0.5824 (15.04%)
-- 2025 Q3: actual 0.49 vs est 0.4987 (-1.74%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 3.82%
-- EPS growth YoY (TTM):     81.91%
-- 52-week high:             34.92
-- 52-week low:              21.11
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## CBOE — Cboe Global Markets Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-07-31
-- **Report timing:** BMO (before open)
-- **Sector:** Financials
-- **Market cap:** $31.0bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     3.5476
-- Revenue estimate: 726211746
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 9
-- Hold:           12
-- Sell/Strong sell: 3
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 3.7 vs est 3.3552 (10.28%)
-- 2025 Q4: actual 3.06 vs est 2.9964 (2.12%)
-- 2025 Q3: actual 2.67 vs est 2.5778 (3.58%)
-- 2025 Q2: actual 2.46 vs est 2.4696 (-0.39%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 10.61%
-- EPS growth YoY (TTM):     53.49%
-- 52-week high:             371.18
-- 52-week low:              227.15
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## D — Dominion Energy Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-07-31
-- **Report timing:** BMO (before open)
-- **Sector:** Utilities
-- **Market cap:** $61.3bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.6887
-- Revenue estimate: 4123808826
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 7
-- Hold:           16
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 0.95 vs est 0.9287 (2.29%)
-- 2025 Q4: actual 0.68 vs est 0.6814 (-0.21%)
-- 2025 Q3: actual 1.06 vs est 0.9677 (9.54%)
-- 2025 Q2: actual 0.75 vs est 0.6908 (8.57%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 19.38%
-- EPS growth YoY (TTM):     27.02%
-- 52-week high:             72.99
-- 52-week low:              55.85
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## IESC — IES Holdings Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-07-31
-- **Report timing:** BMO (before open)
-- **Sector:** Industrials
-- **Market cap:** $11.4bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     4.9266
-- Revenue estimate: 1101600000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 0
-- Hold:           3
-- Sell/Strong sell: 3
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 5.44 vs est 4.029 (35.02%)
-- 2026 Q1: actual 3.71 vs est 3.8964 (-4.78%)
-- 2025 Q4: actual 3.77 vs est 3.1722 (18.84%)
-- 2025 Q3: actual 3.81 vs est 3.621 (5.22%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 49.91%
-- EPS growth YoY (TTM):     105.69%
-- 52-week high:             803.9999
-- 52-week low:              309.51
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## MOG.A — Moog Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-07-31
-- **Report timing:** BMO (before open)
-- **Sector:** Industrials
-- **Market cap:** $13.2bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     2.7398
-- Revenue estimate: 1109459350
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 10
-- Hold:           2
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 2.64 vs est 2.4342 (8.45%)
-- 2026 Q1: actual 2.63 vs est 2.2797 (15.37%)
-- 2025 Q4: actual 2.56 vs est 2.29 (11.79%)
-- 2025 Q3: actual 2.37 vs est 2.2196 (6.78%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 15.99%
-- EPS growth YoY (TTM):     49.27%
-- 52-week high:             430.515
-- 52-week low:              185.615
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## MRNA — Moderna Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-07-31
-- **Report timing:** BMO (before open)
-- **Sector:** Technology
-- **Market cap:** $23.0bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     -2.1213
-- Revenue estimate: 106077337
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 4
-- Hold:           19
-- Sell/Strong sell: 7
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual -3.4 vs est -4.0402 (15.85%)
-- 2025 Q4: actual -2.11 vs est -2.6953 (21.72%)
-- 2025 Q3: actual -0.51 vs est -2.1494 (76.27%)
-- 2025 Q2: actual -2.13 vs est -3.0257 (29.6%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): -29.97%
-- EPS growth YoY (TTM):     unavailable%
-- 52-week high:             85.6
-- 52-week low:              22.28
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## RBC — RBC Bearings Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-07-31
-- **Report timing:** BMO (before open)
-- **Sector:** Industrials
-- **Market cap:** $17.8bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     3.46
-- Revenue estimate: 514327521
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 9
-- Hold:           3
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q4: actual 3.62 vs est 3.3532 (7.96%)
-- 2026 Q3: actual 3.04 vs est 2.8911 (5.15%)
-- 2026 Q2: actual 2.88 vs est 2.7616 (4.29%)
-- 2026 Q1: actual 2.84 vs est 2.7708 (2.5%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 14.34%
-- EPS growth YoY (TTM):     12.19%
-- 52-week high:             667.6861
-- 52-week low:              364.5
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## TROW — T Rowe Price Group Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-07-31
-- **Report timing:** BMO (before open)
-- **Sector:** Financials
-- **Market cap:** $25.6bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     2.5511
-- Revenue estimate: 1920059393
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 0
-- Hold:           11
-- Sell/Strong sell: 8
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q1: actual 2.52 vs est 2.4007 (4.97%)
-- 2025 Q4: actual 2.44 vs est 2.5177 (-3.09%)
-- 2025 Q3: actual 2.81 vs est 2.5623 (9.67%)
-- 2025 Q2: actual 2.24 vs est 2.1772 (2.88%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 4.23%
-- EPS growth YoY (TTM):     5.66%
-- 52-week high:             122
-- 52-week low:              85.22
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## AAPL — Apple Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Technology
-- **Market cap:** $4897.2bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.9271
-- Revenue estimate: 110813711563
-- EPS actual:      1.91
-- Revenue actual:  109417000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 36
-- Hold:           16
-- Sell/Strong sell: 2
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q3: actual 1.91 vs est 1.9271 (-0.89%)
-- 2026 Q2: actual 2.01 vs est 1.9884 (1.09%)
-- 2026 Q1: actual 2.84 vs est 2.7257 (4.19%)
-- 2025 Q4: actual 1.85 vs est 1.8075 (2.35%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 12.76%
-- EPS growth YoY (TTM):     29.01%
-- 52-week high:             344.5699
-- 52-week low:              201.5
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## AEE — Ameren Corp
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Utilities
-- **Market cap:** $30.1bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.0976
-- Revenue estimate: 2295058228
-- EPS actual:      1.13
-- Revenue actual:  2092000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 13
-- Hold:           9
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 1.13 vs est 1.0976 (2.95%)
-- 2026 Q1: actual 1.28 vs est 1.1927 (7.32%)
-- 2025 Q4: actual 0.78 vs est 0.7803 (-0.04%)
-- 2025 Q3: actual 2.17 vs est 2.1282 (1.96%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 12.32%
-- EPS growth YoY (TTM):     23.5%
-- 52-week high:             118.32
-- 52-week low:              96.57
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## AEP — American Electric Power Company Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Utilities
-- **Market cap:** $69.5bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.5103
-- Revenue estimate: 5394764813
-- EPS actual:      1.36
-- Revenue actual:  5445000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 16
-- Hold:           12
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 1.36 vs est 1.5103 (-9.95%)
-- 2026 Q1: actual 1.64 vs est 1.585 (3.47%)
-- 2025 Q4: actual 1.19 vs est 1.1596 (2.62%)
-- 2025 Q3: actual 1.8 vs est 1.8257 (-1.41%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 11.38%
-- EPS growth YoY (TTM):     30.6%
-- 52-week high:             140.58
-- 52-week low:              105.7
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## AJG — Arthur J. Gallagher & Co.
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Financials
-- **Market cap:** $65.9bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     2.8452
-- Revenue estimate: 4049066618
-- EPS actual:      2.84
-- Revenue actual:  3955000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 23
-- Hold:           6
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 2.84 vs est 2.8452 (-0.18%)
-- 2026 Q1: actual 4.47 vs est 4.472 (-0.04%)
-- 2025 Q4: actual 2.38 vs est 2.3727 (0.31%)
-- 2025 Q3: actual 2.32 vs est 2.5704 (-9.74%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 24.5%
-- EPS growth YoY (TTM):     -4.74%
-- 52-week high:             313.55
-- 52-week low:              190.75
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## ALNY — Alnylam Pharmaceuticals Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Technology
-- **Market cap:** $27.4bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.5858
-- Revenue estimate: 1349889654
-- EPS actual:      1.84
-- Revenue actual:  1290950000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 29
-- Hold:           9
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 1.84 vs est 1.5858 (16.03%)
-- 2026 Q1: actual 1.51 vs est 0.9815 (53.85%)
-- 2025 Q4: actual 0.82 vs est 1.1465 (-28.48%)
-- 2025 Q3: actual 2.11 vs est 0.7613 (177.16%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 82.57%
-- EPS growth YoY (TTM):     unavailable%
-- 52-week high:             495.55
-- 52-week low:              197.81
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## APG — APi Group Corp
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Industrials
-- **Market cap:** $17.1bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.4385
-- Revenue estimate: 2226577784
-- EPS actual:      0.44
-- Revenue actual:  2254000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 13
-- Hold:           1
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 0.44 vs est 0.4385 (0.34%)
-- 2026 Q1: actual 0.32 vs est 0.307 (4.23%)
-- 2025 Q4: actual 0.44 vs est 0.4176 (5.36%)
-- 2025 Q3: actual 0.41 vs est 0.4 (2.5%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 14.55%
-- EPS growth YoY (TTM):     14.97%
-- 52-week high:             49.99
-- 52-week low:              33.4
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## CFR — Cullen/Frost Bankers Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Financials
-- **Market cap:** $10.3bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     2.5732
-- Revenue estimate: 593069778
-- EPS actual:      2.7
-- Revenue actual:  598350000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 9
-- Hold:           7
-- Sell/Strong sell: 3
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 2.7 vs est 2.5732 (4.93%)
-- 2026 Q1: actual 2.65 vs est 2.4946 (6.23%)
-- 2025 Q4: actual 2.56 vs est 2.4769 (3.35%)
-- 2025 Q3: actual 2.67 vs est 2.4063 (10.96%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 75.94571%
-- EPS growth YoY (TTM):     -8.23%
-- 52-week high:             169.09
-- 52-week low:              119
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## COIN — Coinbase Global Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Financials
-- **Market cap:** $42.2bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     -0.1151
-- Revenue estimate: 1342382597
-- EPS actual:      -0.39
-- Revenue actual:  1220070000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 30
-- Hold:           11
-- Sell/Strong sell: 3
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual -0.39 vs est -0.1151 (-238.84%)
-- 2026 Q1: actual -1.49 vs est 0.3241 (-559.73%)
-- 2025 Q4: actual -2.49 vs est 0.5931 (-519.83%)
-- 2025 Q3: actual 1.5 vs est 1.0786 (39.07%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): -5.76%
-- EPS growth YoY (TTM):     -50.57%
-- 52-week high:             402.16
-- 52-week low:              139.18
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## CRS — Carpenter Technology Corp
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Industrials
-- **Market cap:** $25.0bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     3.1142
-- Revenue estimate: 872000336
-- EPS actual:      3.23
-- Revenue actual:  851000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 12
-- Hold:           3
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q4: actual 3.23 vs est 3.1142 (3.72%)
-- 2026 Q3: actual 2.77 vs est 2.6613 (4.08%)
-- 2026 Q2: actual 2.33 vs est 2.2604 (3.08%)
-- 2026 Q1: actual 2.43 vs est 2.1897 (10.97%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 3.72%
-- EPS growth YoY (TTM):     34.75%
-- 52-week high:             625.985
-- 52-week low:              228
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## DRS — Leonardo DRS Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Industrials
-- **Market cap:** $12.2bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.2761
-- Revenue estimate: 911166197
-- EPS actual:      0.35
-- Revenue actual:  913000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 12
-- Hold:           3
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 0.35 vs est 0.2761 (26.77%)
-- 2026 Q1: actual 0.26 vs est 0.2065 (25.91%)
-- 2025 Q4: actual 0.42 vs est 0.3747 (12.09%)
-- 2025 Q3: actual 0.29 vs est 0.2817 (2.95%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 10.46%
-- EPS growth YoY (TTM):     23.93%
-- 52-week high:             50.59
-- 52-week low:              32.43
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## EIX — Edison International
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Utilities
-- **Market cap:** $30.3bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.1743
-- Revenue estimate: 4857173658
-- EPS actual:      1.54
-- Revenue actual:  4357000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 10
-- Hold:           8
-- Sell/Strong sell: 4
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 1.54 vs est 1.1743 (31.14%)
-- 2026 Q1: actual 1.42 vs est 1.3256 (7.12%)
-- 2025 Q4: actual 1.86 vs est 1.4727 (26.3%)
-- 2025 Q3: actual 2.34 vs est 2.1972 (6.5%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 13.16%
-- EPS growth YoY (TTM):     26.96%
-- 52-week high:             81.62
-- 52-week low:              51.01
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## EME — EMCOR Group Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Industrials
-- **Market cap:** $35.7bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     7.2954
-- Revenue estimate: 4756142217
-- EPS actual:      9.06
-- Revenue actual:  5154890000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 10
-- Hold:           4
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 9.06 vs est 7.2954 (24.19%)
-- 2026 Q1: actual 6.84 vs est 5.9546 (14.87%)
-- 2025 Q4: actual 9.68 vs est 6.7484 (43.44%)
-- 2025 Q3: actual 6.57 vs est 6.6063 (-0.55%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 18.31%
-- EPS growth YoY (TTM):     31.7%
-- 52-week high:             951.96
-- 52-week low:              564.92
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## ERIE — Erie Indemnity Co
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Financials
-- **Market cap:** $10.9bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     3.4435
-- Revenue estimate: 1110300600
-- EPS actual:      3.45
-- Revenue actual:  1089800000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 6
-- Hold:           2
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 3.45 vs est 3.4435 (0.19%)
-- 2026 Q1: actual 2.88 vs est 3.1212 (-7.73%)
-- 2025 Q4: actual 1.21 vs est 1.6218 (-25.39%)
-- 2025 Q3: actual 3.5 vs est 3.4374 (1.82%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 4.76%
-- EPS growth YoY (TTM):     0.65%
-- 52-week high:             380.67
-- 52-week low:              204.6301
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## ES — Eversource Energy
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Utilities
-- **Market cap:** $27.8bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.9384
-- Revenue estimate: 3109851632
-- EPS actual:      0.87
-- Revenue actual:  2903190000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 13
-- Hold:           9
-- Sell/Strong sell: 3
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 0.87 vs est 0.9384 (-7.29%)
-- 2026 Q1: actual 1.61 vs est 1.6493 (-2.38%)
-- 2025 Q4: actual 1.12 vs est 1.1485 (-2.48%)
-- 2025 Q3: actual 0.98 vs est 1.1649 (-15.87%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 9.83%
-- EPS growth YoY (TTM):     101.84%
-- 52-week high:             76.57
-- 52-week low:              61.53
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## EXC — Exelon Corp
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Utilities
-- **Market cap:** $46.6bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.4419
-- Revenue estimate: 5693910097
-- EPS actual:      0.43
-- Revenue actual:  5967000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 7
-- Hold:           18
-- Sell/Strong sell: 2
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 0.43 vs est 0.4419 (-2.69%)
-- 2026 Q1: actual 0.91 vs est 0.894 (1.79%)
-- 2025 Q4: actual 0.59 vs est 0.5525 (6.79%)
-- 2025 Q3: actual 0.86 vs est 0.7846 (9.61%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 4.58%
-- EPS growth YoY (TTM):     1.35%
-- 52-week high:             50.65
-- 52-week low:              42.58
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## FSLR — First Solar Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Technology
-- **Market cap:** $22.1bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     2.8925
-- Revenue estimate: 1083067110
-- EPS actual:      3.92
-- Revenue actual:  1056190000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 30
-- Hold:           15
-- Sell/Strong sell: 3
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 3.92 vs est 2.8925 (35.52%)
-- 2026 Q1: actual 3.22 vs est 2.9285 (9.95%)
-- 2025 Q4: actual 4.84 vs est 5.257 (-7.93%)
-- 2025 Q3: actual 4.24 vs est 4.3382 (-2.26%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 27.3%
-- EPS growth YoY (TTM):     31.57%
-- 52-week high:             320.95
-- 52-week low:              171.99
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## GDDY — GoDaddy Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Technology
-- **Market cap:** $13.2bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.7199
-- Revenue estimate: 1320468876
-- EPS actual:      1.83
-- Revenue actual:  1298000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 14
-- Hold:           10
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 1.83 vs est 1.7199 (6.4%)
-- 2026 Q1: actual 1.6 vs est 1.5804 (1.24%)
-- 2025 Q4: actual 1.8 vs est 1.6101 (11.79%)
-- 2025 Q3: actual 1.51 vs est 1.4913 (1.25%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 7.83%
-- EPS growth YoY (TTM):     21.35%
-- 52-week high:             165.935
-- 52-week low:              71.59
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## HII — Huntington Ingalls Industries Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Industrials
-- **Market cap:** $12.6bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     3.84
-- Revenue estimate: 3195262361
-- EPS actual:      5.27
-- Revenue actual:  3418000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 9
-- Hold:           8
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 5.27 vs est 3.84 (37.24%)
-- 2026 Q1: actual 3.79 vs est 3.757 (0.88%)
-- 2025 Q4: actual 4.04 vs est 3.9203 (3.05%)
-- 2025 Q3: actual 3.68 vs est 3.3902 (8.55%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 12.08%
-- EPS growth YoY (TTM):     10.82%
-- 52-week high:             460
-- 52-week low:              256.45
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## ICE — Intercontinental Exchange Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Financials
-- **Market cap:** $87.7bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.8567
-- Revenue estimate: 2652947183
-- EPS actual:      1.9
-- Revenue actual:  2666000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 19
-- Hold:           2
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 1.9 vs est 1.8567 (2.33%)
-- 2026 Q1: actual 2.35 vs est 2.2837 (2.9%)
-- 2025 Q4: actual 1.71 vs est 1.689 (1.24%)
-- 2025 Q3: actual 1.71 vs est 1.6226 (5.39%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 7.29%
-- EPS growth YoY (TTM):     42.18%
-- 52-week high:             189.35
-- 52-week low:              121.79
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## IR — Ingersoll Rand Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Industrials
-- **Market cap:** $33.0bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.8495
-- Revenue estimate: 2017648202
-- EPS actual:      0.86
-- Revenue actual:  2048800000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 13
-- Hold:           10
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 0.86 vs est 0.8495 (1.24%)
-- 2026 Q1: actual 0.77 vs est 0.7626 (0.97%)
-- 2025 Q4: actual 0.96 vs est 0.9304 (3.18%)
-- 2025 Q3: actual 0.86 vs est 0.886 (-2.93%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 6.86%
-- EPS growth YoY (TTM):     -26.22%
-- 52-week high:             100.96
-- 52-week low:              68.07
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## KKR — KKR & Co Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Financials
-- **Market cap:** $90.7bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.4263
-- Revenue estimate: 2594612482
-- EPS actual:      1.63
-- Revenue actual:  1725930000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 23
-- Hold:           3
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 1.63 vs est 1.4263 (14.28%)
-- 2026 Q1: actual 1.39 vs est 1.3043 (6.57%)
-- 2025 Q4: actual 1.3 vs est 1.1742 (10.71%)
-- 2025 Q3: actual 1.41 vs est 1.3092 (7.7%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 32.63%
-- EPS growth YoY (TTM):     33.54%
-- 52-week high:             153.5
-- 52-week low:              82.67
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## LECO — Lincoln Electric Holdings Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Industrials
-- **Market cap:** $13.7bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     2.8652
-- Revenue estimate: 1191322392
-- EPS actual:      2.93
-- Revenue actual:  1219660000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 11
-- Hold:           5
-- Sell/Strong sell: 2
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 2.93 vs est 2.8652 (2.26%)
-- 2026 Q1: actual 2.5 vs est 2.4953 (0.19%)
-- 2025 Q4: actual 2.65 vs est 2.5935 (2.18%)
-- 2025 Q3: actual 2.47 vs est 2.4721 (-0.08%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 7.89%
-- EPS growth YoY (TTM):     19.5%
-- 52-week high:             310
-- 52-week low:              216.22
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## LNT — Alliant Energy Corp
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Utilities
-- **Market cap:** $18.3bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.6162
-- Revenue estimate: 905907885
-- EPS actual:      0.65
-- Revenue actual:  971000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 12
-- Hold:           6
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 0.65 vs est 0.6162 (5.49%)
-- 2026 Q1: actual 0.82 vs est 0.8122 (0.96%)
-- 2025 Q4: actual 0.6 vs est 0.5906 (1.59%)
-- 2025 Q3: actual 1.12 vs est 1.2024 (-6.85%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 9.02%
-- EPS growth YoY (TTM):     9.76%
-- 52-week high:             78.81
-- 52-week low:              63.28
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## LPLA — LPL Financial Holdings Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Financials
-- **Market cap:** $27.1bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     5.51
-- Revenue estimate: 5143357905
-- EPS actual:      5.84
-- Revenue actual:  5049240000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 18
-- Hold:           4
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 5.84 vs est 5.51 (5.99%)
-- 2026 Q1: actual 5.6 vs est 5.5963 (0.07%)
-- 2025 Q4: actual 5.23 vs est 5.0313 (3.95%)
-- 2025 Q3: actual 5.2 vs est 4.5744 (13.68%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 38.08%
-- EPS growth YoY (TTM):     -22.46%
-- 52-week high:             403.575
-- 52-week low:              260.15
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## MA — Mastercard Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Financials
-- **Market cap:** $510.1bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     4.9086
-- Revenue estimate: 9340343891
-- EPS actual:      5.04
-- Revenue actual:  9277000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 47
-- Hold:           5
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 5.04 vs est 4.9086 (2.68%)
-- 2026 Q1: actual 4.6 vs est 4.5329 (1.48%)
-- 2025 Q4: actual 4.76 vs est 4.3756 (8.79%)
-- 2025 Q3: actual 4.38 vs est 4.4492 (-1.56%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 16.75%
-- EPS growth YoY (TTM):     21.21%
-- 52-week high:             601.77
-- 52-week low:              464.52
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## MDGL — Madrigal Pharmaceuticals Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Technology
-- **Market cap:** $11.4bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     -2.6543
-- Revenue estimate: 359562750
-- EPS actual:      -1.99
-- Revenue actual:  364250000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 20
-- Hold:           3
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual -1.99 vs est -2.6543 (25.03%)
-- 2026 Q1: actual -3.25 vs est -4.1098 (20.92%)
-- 2025 Q4: actual -2.57 vs est -0.6872 (-273.98%)
-- 2025 Q3: actual -4.96 vs est -2.1232 (-133.61%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 256.82%
-- EPS growth YoY (TTM):     unavailable%
-- 52-week high:             615
-- 52-week low:              286.44
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## MLM — Martin Marietta Materials Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Industrials
-- **Market cap:** $32.4bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     4.7933
-- Revenue estimate: 1885218328
-- EPS actual:      5
-- Revenue actual:  1947000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 17
-- Hold:           12
-- Sell/Strong sell: 1
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 5 vs est 4.7933 (4.31%)
-- 2026 Q1: actual 1.93 vs est 1.9333 (-0.17%)
-- 2025 Q4: actual 4.62 vs est 4.6915 (-1.52%)
-- 2025 Q3: actual 6.85 vs est 6.7782 (1.06%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): -1.28%
-- EPS growth YoY (TTM):     141.46%
-- 52-week high:             710.97
-- 52-week low:              525.38
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## MPWR — Monolithic Power Systems Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Technology
-- **Market cap:** $64.7bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     5.9836
-- Revenue estimate: 920546073
-- EPS actual:      6.5
-- Revenue actual:  980640000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 20
-- Hold:           4
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 6.5 vs est 5.9836 (8.63%)
-- 2026 Q1: actual 5.1 vs est 4.9932 (2.14%)
-- 2025 Q4: actual 4.79 vs est 4.8187 (-0.6%)
-- 2025 Q3: actual 4.73 vs est 4.7302 (-0.0%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 23.9%
-- EPS growth YoY (TTM):     -62.85%
-- 52-week high:             1714.0898
-- 52-week low:              706
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## MSTR — Strategy Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Technology
-- **Market cap:** $34.3bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     -2.8962
-- Revenue estimate: 125364487
-- EPS actual:      -24.45
-- Revenue actual:  122370000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 22
-- Hold:           3
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual -24.45 vs est -2.8962 (-744.21%)
-- 2026 Q1: actual -38.25 vs est -4.3945 (-770.41%)
-- 2025 Q4: actual -42.93 vs est 3.0277 (-1517.91%)
-- 2025 Q3: actual 8.42 vs est 8.3144 (1.27%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 6.79%
-- EPS growth YoY (TTM):     unavailable%
-- 52-week high:             414.36
-- 52-week low:              81.81
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## MTZ — MasTec Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Industrials
-- **Market cap:** $25.6bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     2.2528
-- Revenue estimate: 4347568957
-- EPS actual:      2.22
-- Revenue actual:  4373550000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 24
-- Hold:           2
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 2.22 vs est 2.2528 (-1.46%)
-- 2026 Q1: actual 1.39 vs est 1.0005 (38.93%)
-- 2025 Q4: actual 2.07 vs est 1.965 (5.34%)
-- 2025 Q3: actual 2.48 vs est 2.3255 (6.64%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 22.59%
-- EPS growth YoY (TTM):     111.21%
-- 52-week high:             441.43
-- 52-week low:              160.08
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## NBIX — Neurocrine Biosciences Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Technology
-- **Market cap:** $18.7bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.3601
-- Revenue estimate: 900075050
-- EPS actual:      2.85
-- Revenue actual:  959000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 32
-- Hold:           5
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 2.85 vs est 1.3601 (109.54%)
-- 2026 Q1: actual 1.91 vs est 1.1978 (59.46%)
-- 2025 Q4: actual 1.48 vs est 1.9194 (-22.89%)
-- 2025 Q3: actual 2.04 vs est 1.6177 (26.11%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 28.59%
-- EPS growth YoY (TTM):     120.33%
-- 52-week high:             186.12
-- 52-week low:              122.14
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## NXT — Nextpower Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Utilities
-- **Market cap:** $14.7bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.0643
-- Revenue estimate: 945887119
-- EPS actual:      1.2
-- Revenue actual:  935170000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 25
-- Hold:           8
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2027 Q1: actual 1.2 vs est 1.0643 (12.75%)
-- 2026 Q4: actual 1.05 vs est 0.9279 (13.16%)
-- 2026 Q3: actual 1.1 vs est 0.9406 (16.95%)
-- 2026 Q2: actual 1.19 vs est 1.0151 (17.23%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 20.28%
-- EPS growth YoY (TTM):     12.42%
-- 52-week high:             163.13
-- 52-week low:              52.61
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## OWL — Blue Owl Capital Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Financials
-- **Market cap:** $15.8bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.2182
-- Revenue estimate: 701491460
-- EPS actual:      0.22
-- Revenue actual:  693560000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 14
-- Hold:           6
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 0.22 vs est 0.2182 (0.82%)
-- 2026 Q1: actual 0.19 vs est 0.1831 (3.77%)
-- 2025 Q4: actual 0.24 vs est 0.2263 (6.05%)
-- 2025 Q3: actual 0.22 vs est 0.2243 (-1.92%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 19.26%
-- EPS growth YoY (TTM):     0.23%
-- 52-week high:             20.58
-- 52-week low:              7.95
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## PWR — Quanta Services Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Industrials
-- **Market cap:** $98.7bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     3.3328
-- Revenue estimate: 8699105164
-- EPS actual:      4.24
-- Revenue actual:  9557000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 26
-- Hold:           10
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 4.24 vs est 3.3328 (27.22%)
-- 2026 Q1: actual 2.68 vs est 2.082 (28.72%)
-- 2025 Q4: actual 3.16 vs est 3.0544 (3.46%)
-- 2025 Q3: actual 3.33 vs est 3.2901 (1.21%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 21.09%
-- EPS growth YoY (TTM):     17.81%
-- 52-week high:             788.75
-- 52-week low:              363.01
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## REGN — Regeneron Pharmaceuticals Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Technology
-- **Market cap:** $77.4bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     10.528
-- Revenue estimate: 3891689691
-- EPS actual:      14.29
-- Revenue actual:  4290700000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 27
-- Hold:           11
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 14.29 vs est 10.528 (35.73%)
-- 2026 Q1: actual 9.47 vs est 9.116 (3.88%)
-- 2025 Q4: actual 11.44 vs est 10.8277 (5.65%)
-- 2025 Q3: actual 11.83 vs est 9.78 (20.96%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 5.92%
-- EPS growth YoY (TTM):     4.4%
-- 52-week high:             821.11
-- 52-week low:              541
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## RYAN — Ryan Specialty Holdings Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** AMC (after close)
-- **Sector:** Financials
-- **Market cap:** $11.6bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.6122
-- Revenue estimate: 890416140
-- EPS actual:      0.74
-- Revenue actual:  916650000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 15
-- Hold:           10
-- Sell/Strong sell: 1
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 0.74 vs est 0.6122 (20.88%)
-- 2026 Q1: actual 0.47 vs est 0.4463 (5.31%)
-- 2025 Q4: actual 0.45 vs est 0.5074 (-11.31%)
-- 2025 Q3: actual 0.47 vs est 0.4763 (-1.32%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 18.93%
-- EPS growth YoY (TTM):     161.66%
-- 52-week high:             61.85
-- 52-week low:              29.28
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## SO — Southern Co
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Utilities
-- **Market cap:** $106.3bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.0312
-- Revenue estimate: 7451477732
-- EPS actual:      1.13
-- Revenue actual:  6977000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 14
-- Hold:           18
-- Sell/Strong sell: 1
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 1.13 vs est 1.0312 (9.58%)
-- 2026 Q1: actual 1.32 vs est 1.2464 (5.91%)
-- 2025 Q4: actual 0.55 vs est 0.5908 (-6.91%)
-- 2025 Q3: actual 1.6 vs est 1.5519 (3.1%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 8.74%
-- EPS growth YoY (TTM):     -6.31%
-- 52-week high:             100.84
-- 52-week low:              83.8
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## TW — Tradeweb Markets Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Financials
-- **Market cap:** $23.1bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.9776
-- Revenue estimate: 579290076
-- EPS actual:      0.97
-- Revenue actual:  558950000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 14
-- Hold:           8
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 0.97 vs est 0.9776 (-0.78%)
-- 2026 Q1: actual 1.08 vs est 1.103 (-2.09%)
-- 2025 Q4: actual 0.87 vs est 0.87
-- 2025 Q3: actual 0.87 vs est 0.8538 (1.9%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 18.26%
-- EPS growth YoY (TTM):     66.42%
-- 52-week high:             147.49
-- 52-week low:              91.42
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## XEL — Xcel Energy Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-30
-- **Report timing:** BMO (before open)
-- **Sector:** Utilities
-- **Market cap:** $49.3bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.7892
-- Revenue estimate: 3559062532
-- EPS actual:      0.93
-- Revenue actual:  3119000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 22
-- Hold:           2
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 0.93 vs est 0.7892 (17.84%)
-- 2026 Q1: actual 0.91 vs est 0.9116 (-0.18%)
-- 2025 Q4: actual 0.95 vs est 0.9712 (-2.18%)
-- 2025 Q3: actual 1.24 vs est 1.3329 (-6.97%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 7.97%
-- EPS growth YoY (TTM):     2.41%
-- 52-week high:             84.23
-- 52-week low:              69.16
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## APH — Amphenol Corp
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-29
-- **Report timing:** BMO (before open)
-- **Sector:** Utilities
-- **Market cap:** $196.6bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.194
-- Revenue estimate: 8321554377
-- EPS actual:      1.35
-- Revenue actual:  8758100000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 20
-- Hold:           4
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 1.35 vs est 1.194 (13.07%)
-- 2026 Q1: actual 1.06 vs est 0.9526 (11.27%)
-- 2025 Q4: actual 0.97 vs est 0.9431 (2.85%)
-- 2025 Q3: actual 0.93 vs est 0.804 (15.67%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 54.4%
-- EPS growth YoY (TTM):     68.64%
-- 52-week high:             178.52
-- 52-week low:              102.76
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## ARCC — Ares Capital Corp
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-29
-- **Report timing:** BMO (before open)
-- **Sector:** Financials
-- **Market cap:** $13.5bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.4826
-- Revenue estimate: 790110492
-- EPS actual:      0.47
-- Revenue actual:  768000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 16
-- Hold:           4
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 0.47 vs est 0.4826 (-2.61%)
-- 2026 Q1: actual 0.47 vs est 0.4899 (-4.06%)
-- 2025 Q4: actual 0.5 vs est 0.508 (-1.57%)
-- 2025 Q3: actual 0.5 vs est 0.5122 (-2.38%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 2.05%
-- EPS growth YoY (TTM):     -20.43%
-- 52-week high:             22.935
-- 52-week low:              17.4
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## ARXS — Arxis Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-29
-- **Report timing:** AMC (after close)
-- **Sector:** Industrials
-- **Market cap:** $20.1bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.0292
-- Revenue estimate: 484149456
-- EPS actual:      0.28
-- Revenue actual:  500730000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 14
-- Hold:           2
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 0.28 vs est 0.0292 (858.9%)
-- 2026 Q1: actual 0.13 vs est 0.108 (20.37%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): unavailable%
-- EPS growth YoY (TTM):     unavailable%
-- 52-week high:             48.68
-- 52-week low:              33.15
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## AUR — Aurora Innovation Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-29
-- **Report timing:** AMC (after close)
-- **Sector:** Technology
-- **Market cap:** $12.5bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     -0.119
-- Revenue estimate: 1625473
-- EPS actual:      -0.14
-- Revenue actual:  2000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 10
-- Hold:           6
-- Sell/Strong sell: 0
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual -0.14 vs est -0.119 (-17.65%)
-- 2026 Q1: actual -0.11 vs est -0.1178 (6.62%)
-- 2025 Q4: actual -0.11 vs est -0.1187 (7.33%)
-- 2025 Q3: actual -0.11 vs est -0.1229 (10.5%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): unavailable%
-- EPS growth YoY (TTM):     unavailable%
-- 52-week high:             8.565
-- 52-week low:              3.6
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## AWK — American Water Works Co Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-29
-- **Report timing:** AMC (after close)
-- **Sector:** Utilities
-- **Market cap:** $27.2bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.5573
-- Revenue estimate: 1357273350
-- EPS actual:      1.61
-- Revenue actual:  1355000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 6
-- Hold:           11
-- Sell/Strong sell: 1
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 1.61 vs est 1.5573 (3.38%)
-- 2026 Q1: actual 1.01 vs est 1.1132 (-9.27%)
-- 2025 Q4: actual 1.221 vs est 1.2651 (-3.49%)
-- 2025 Q3: actual 1.94 vs est 1.8963 (2.3%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 8.1%
-- EPS growth YoY (TTM):     2.89%
-- 52-week high:             147.87
-- 52-week low:              120.57
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## BIIB — Biogen Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-29
-- **Report timing:** BMO (before open)
-- **Sector:** Technology
-- **Market cap:** $30.7bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     3.0512
-- Revenue estimate: 2503005356
-- EPS actual:      3.6
-- Revenue actual:  2736000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 28
-- Hold:           15
-- Sell/Strong sell: 1
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 3.6 vs est 3.0512 (17.99%)
-- 2026 Q1: actual 3.57 vs est 2.8258 (26.34%)
-- 2025 Q4: actual 1.99 vs est 1.6464 (20.87%)
-- 2025 Q3: actual 4.81 vs est 3.9595 (21.48%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 1.23%
-- EPS growth YoY (TTM):     -8.05%
-- 52-week high:             219.72
-- 52-week low:              124.56
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## CHRW — CH Robinson Worldwide Inc
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-07-29
-- **Report timing:** AMC (after close)
-- **Sector:** Industrials
-- **Market cap:** $17.3bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.555
-- Revenue estimate: 4425258219
-- EPS actual:      1.61
-- Revenue actual:  4934100000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 21
-- Hold:           9
-- Sell/Strong sell: 1
-- Period:         2026-07-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q2: actual 1.61 vs est 1.555 (3.54%)
-- 2026 Q1: actual 1.35 vs est 1.2639 (6.81%)
-- 2025 Q4: actual 1.23 vs est 1.1428 (7.63%)
-- 2025 Q3: actual 1.4 vs est 1.3258 (5.6%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): -6.68%
-- EPS growth YoY (TTM):     17.99%
-- 52-week high:             210.33
-- 52-week low:              96.89
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
