@@ -1,7 +1,7 @@
 # Finnhub Earnings Data
-Generated: 2026-08-11 06:00 UTC
-Pre-earnings window:  2026-08-11 to 2026-08-16
-Post-earnings window: 2026-08-08 to 2026-08-11
+Generated: 2026-08-12 06:00 UTC
+Pre-earnings window:  2026-08-12 to 2026-08-17
+Post-earnings window: 2026-08-09 to 2026-08-12
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
@@ -10,7 +10,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-13
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $414.5bn
+- **Market cap:** $417.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.4544
@@ -43,7 +43,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-13
 - **Report timing:** BMO (before open)
 - **Sector:** Financials
-- **Market cap:** $14.9bn
+- **Market cap:** $15.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.1223
@@ -73,7 +73,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-12
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $63.8bn
+- **Market cap:** $65.1bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.175
@@ -103,7 +103,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-12
 - **Report timing:** AMC (after close)
 - **Sector:** Utilities
-- **Market cap:** $63.6bn
+- **Market cap:** $64.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.6474
@@ -136,7 +136,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-12
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $483.1bn
+- **Market cap:** $474.7bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.1937
@@ -164,16 +164,51 @@ Source: Finnhub.io
 
 ---
 
-## CRWV — CoreWeave Inc
+## TRMB — Trimble Inc
 - **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-12
+- **Report timing:** BMO (before open)
+- **Sector:** Technology
+- **Market cap:** $13.5bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     0.8171
+- Revenue estimate: 970947486
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 20
+- Hold:           1
+- Sell/Strong sell: 0
+- Period:         2026-08-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q1: actual 0.79 vs est 0.7319 (7.94%)
+- 2025 Q4: actual 1 vs est 0.9811 (1.93%)
+- 2025 Q3: actual 0.81 vs est 0.7326 (10.57%)
+- 2025 Q2: actual 0.71 vs est 0.6378 (11.32%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 5.74%
+- EPS growth YoY (TTM):     126.96%
+- 52-week high:             84.64
+- 52-week low:              47.92
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## CRWV — CoreWeave Inc
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-08-11
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $48.1bn
+- **Market cap:** $49.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -1.24
 - Revenue estimate: 2611110688
+- EPS actual:      -1.03
+- Revenue actual:  2575000000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 31
@@ -182,10 +217,10 @@ Source: Finnhub.io
 - Period:         2026-08-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q2: actual -1.03 vs est -1.24 (16.94%)
 - 2026 Q1: actual -1.12 vs est -0.9157 (-22.31%)
 - 2025 Q4: actual -0.56 vs est -0.5036 (-11.2%)
 - 2025 Q3: actual -0.08 vs est -0.376 (78.72%)
-- 2025 Q2: actual -0.27 vs est -0.2148 (-25.7%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): unavailable%
@@ -198,15 +233,17 @@ Source: Finnhub.io
 ---
 
 ## LITE — Lumentum Holdings Inc
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-08-11
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $63.3bn
+- **Market cap:** $63.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.0312
 - Revenue estimate: 1007650288
+- EPS actual:      3.23
+- Revenue actual:  1006300000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 28
@@ -215,10 +252,10 @@ Source: Finnhub.io
 - Period:         2026-08-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q4: actual 3.23 vs est 3.0312 (6.56%)
 - 2026 Q3: actual 2.37 vs est 2.3335 (1.56%)
 - 2026 Q2: actual 1.67 vs est 1.4224 (17.41%)
 - 2026 Q1: actual 1.1 vs est 1.0486 (4.9%)
-- 2025 Q4: actual 0.88 vs est 0.8169 (7.72%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 68.98%
@@ -231,15 +268,17 @@ Source: Finnhub.io
 ---
 
 ## QNT — Quantinuum Inc
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-08-11
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $14.8bn
+- **Market cap:** $14.6bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.2617
 - Revenue estimate: 7673475
+- EPS actual:      -0.28
+- Revenue actual:  8000000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 15
@@ -248,7 +287,7 @@ Source: Finnhub.io
 - Period:         2026-08-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- unavailable
+- 2026 Q2: actual -0.28 vs est -0.2617 (-6.99%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): unavailable%
@@ -261,7 +300,7 @@ Source: Finnhub.io
 ---
 
 ## SMCI — Super Micro Computer Inc
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-08-11
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
@@ -270,6 +309,8 @@ Source: Finnhub.io
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.9767
 - Revenue estimate: 11782281660
+- EPS actual:      1.7
+- Revenue actual:  11119780000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 10
@@ -278,10 +319,10 @@ Source: Finnhub.io
 - Period:         2026-08-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q4: actual 1.7 vs est 0.9767 (74.06%)
 - 2026 Q3: actual 0.84 vs est 0.6349 (32.3%)
 - 2026 Q2: actual 0.69 vs est 0.4976 (38.67%)
 - 2026 Q1: actual 0.35 vs est 0.4112 (-14.88%)
-- 2025 Q4: actual 0.41 vs est 0.4476 (-8.4%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 56.24%
@@ -333,7 +374,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-10
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $26.7bn
+- **Market cap:** $27.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.2856
@@ -368,7 +409,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-10
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $16.6bn
+- **Market cap:** $16.4bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.5951
@@ -392,7 +433,7 @@ Source: Finnhub.io
 - Revenue growth YoY (TTM): 355.17%
 - EPS growth YoY (TTM):     unavailable%
 - 52-week high:             93.415
-- 52-week low:              45.395
+- 52-week low:              46.285
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
