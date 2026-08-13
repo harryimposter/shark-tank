@@ -93,6 +93,7 @@ def trade_levels(snap):
     if g("dax") is not None and g("ixic") is not None:  lv["MM-2026-010"] = round(g("dax") / g("ixic"), 4)
     if g("eurusd") is not None:                         lv["MM-2026-012"] = round(g("eurusd"), 5)
     if g("us02y") is not None:                          lv["MM-2026-013"] = round(g("us02y"), 3)
+    if g("us10y") is not None:                          lv["MM-2026-014"] = round(g("us10y"), 3)
     return lv
 
 

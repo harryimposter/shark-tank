@@ -2071,6 +2071,38 @@
           "status": "open"
         }
       ]
+    },
+    {
+      "id": "MM-2026-014",
+      "opened": "2026-08-13",
+      "type": "pre-position",
+      "asset_class": "Rates",
+      "trade": "USD 2y range accrual on 10Y CMT (coupon accrues while the 10Y fixing holds below 4.80%)",
+      "structure": "range accrual (2y USD note, 10Y CMT reference)",
+      "entry": 4.672,
+      "stop": 4.8,
+      "target": 4.3,
+      "conviction": 7,
+      "conviction_breakdown": {
+        "gap": 2,
+        "catalyst": 1,
+        "positioning": 2,
+        "confirmation": 1,
+        "stop_quality": 1
+      },
+      "horizon": "2y note, reviewed quarterly",
+      "min_hold_days": 45,
+      "thesis": "The 10Y sits at ~4.67% — the top of its 2026 range — pushed there by fiscal supply while the book's own steepener (MM-009, 2s10s +50bp) says the front end does the moving from here. A 2y range accrual on 10Y CMT monetises elevated rates vol as daily coupon: it pays for every fixing below 4.80%, so the trade earns the range without needing a duration call to be right on timing. The 4.80% bound is the clean line — a decisive break above it means the fiscal-supply tail is live and the structure stops out; anything else, the carry compounds.",
+      "current": 4.672,
+      "current_pnl_pct": 0.0,
+      "history": [
+        {
+          "date": "2026-08-13",
+          "level": 4.672,
+          "pnl_pct": 0.0,
+          "status": "open"
+        }
+      ]
     }
   ],
   "closed": [

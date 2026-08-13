@@ -45,6 +45,7 @@ TRADE_TICKERS = {
     "MM-2026-011": ("BZ=F",      "long",   "Brent crude underlying for call spread (BZ=F)"),
     "MM-2026-012": ("EURUSD=X",  "short",  "EUR/USD (EURUSD=X); short EUR"),
     "MM-2026-013": ("^IRX",      "short",  "13-week T-bill rate as 2Y proxy (^IRX)"),
+    "MM-2026-014": ("^TNX",      "short",  "US 10Y yield (^TNX); range accrual accrues while the fixing holds below 4.80%"),
 }
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; research/1.0)"}
