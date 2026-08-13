@@ -1,16 +1,82 @@
 # Finnhub Earnings Data
-Generated: 2026-08-12 06:00 UTC
-Pre-earnings window:  2026-08-12 to 2026-08-17
-Post-earnings window: 2026-08-09 to 2026-08-12
+Generated: 2026-08-13 06:00 UTC
+Pre-earnings window:  2026-08-13 to 2026-08-18
+Post-earnings window: 2026-08-10 to 2026-08-13
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
+
+## JKHY — Jack Henry & Associates Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-18
+- **Report timing:** AMC (after close)
+- **Sector:** Financials
+- **Market cap:** $10.8bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     1.4743
+- Revenue estimate: 642048098
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 16
+- Hold:           5
+- Sell/Strong sell: 1
+- Period:         2026-08-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q3: actual 1.71 vs est 1.4885 (14.88%)
+- 2026 Q2: actual 1.72 vs est 1.4607 (17.75%)
+- 2026 Q1: actual 1.97 vs est 1.7451 (12.89%)
+- 2025 Q4: actual 1.75 vs est 1.6095 (8.73%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 8.44%
+- EPS growth YoY (TTM):     21.74%
+- 52-week high:             193.39
+- 52-week low:              121.04
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## KEYS — Keysight Technologies Inc
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-08-18
+- **Report timing:** AMC (after close)
+- **Sector:** Utilities
+- **Market cap:** $60.6bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     2.5248
+- Revenue estimate: 1772093940
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 16
+- Hold:           3
+- Sell/Strong sell: 0
+- Period:         2026-08-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q2: actual 2.87 vs est 2.3674 (21.23%)
+- 2026 Q1: actual 2.17 vs est 2.0352 (6.62%)
+- 2025 Q4: actual 1.91 vs est 1.8695 (2.17%)
+- 2025 Q3: actual 1.72 vs est 1.7041 (0.93%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 19.19%
+- EPS growth YoY (TTM):     43.01%
+- 52-week high:             374.9629
+- 52-week low:              152.846
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
 
 ## AMAT — Applied Materials Inc
 - **Mode:** PRE-EARNINGS
 - **Report date:** 2026-08-13
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $417.3bn
+- **Market cap:** $435.2bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.4544
@@ -43,7 +109,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-13
 - **Report timing:** BMO (before open)
 - **Sector:** Financials
-- **Market cap:** $15.8bn
+- **Market cap:** $15.5bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.1223
@@ -69,15 +135,17 @@ Source: Finnhub.io
 ---
 
 ## CBRS — Cerebras Systems Inc
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-08-12
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $65.1bn
+- **Market cap:** $72.7bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.175
 - Revenue estimate: 198086488
+- EPS actual:      -0.04
+- Revenue actual:  209870000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 15
@@ -86,6 +154,7 @@ Source: Finnhub.io
 - Period:         2026-08-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q2: actual -0.04 vs est -0.175 (77.14%)
 - 2026 Q1: actual -0.04 vs est -0.1644 (75.67%)
 
 ### Growth & technicals (Finnhub — sourced)
@@ -99,15 +168,17 @@ Source: Finnhub.io
 ---
 
 ## COHR — Coherent Corp
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-08-12
 - **Report timing:** AMC (after close)
 - **Sector:** Utilities
-- **Market cap:** $64.3bn
+- **Market cap:** $69.6bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.6474
 - Revenue estimate: 2025408135
+- EPS actual:      1.74
+- Revenue actual:  2045500000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 23
@@ -116,10 +187,10 @@ Source: Finnhub.io
 - Period:         2026-08-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q4: actual 1.74 vs est 1.6474 (5.62%)
 - 2026 Q3: actual 1.41 vs est 1.4251 (-1.06%)
 - 2026 Q2: actual 1.29 vs est 1.2318 (4.72%)
 - 2026 Q1: actual 1.16 vs est 1.0623 (9.2%)
-- 2025 Q4: actual 1 vs est 0.9322 (7.27%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 18%
@@ -132,15 +203,17 @@ Source: Finnhub.io
 ---
 
 ## CSCO — Cisco Systems Inc
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-08-12
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $474.7bn
+- **Market cap:** $488.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.1937
 - Revenue estimate: 17159212935
+- EPS actual:      1.22
+- Revenue actual:  17252000000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 23
@@ -149,10 +222,10 @@ Source: Finnhub.io
 - Period:         2026-08-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q4: actual 1.22 vs est 1.1937 (2.2%)
 - 2026 Q3: actual 1.06 vs est 1.0559 (0.39%)
 - 2026 Q2: actual 1.04 vs est 1.0422 (-0.21%)
 - 2026 Q1: actual 1 vs est 1.0013 (-0.13%)
-- 2025 Q4: actual 0.99 vs est 0.995 (-0.5%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 9.21%
@@ -165,15 +238,17 @@ Source: Finnhub.io
 ---
 
 ## TRMB — Trimble Inc
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-08-12
 - **Report timing:** BMO (before open)
 - **Sector:** Technology
-- **Market cap:** $13.5bn
+- **Market cap:** $13.1bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.8171
 - Revenue estimate: 970947486
+- EPS actual:      0.86
+- Revenue actual:  972000000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 20
@@ -182,15 +257,15 @@ Source: Finnhub.io
 - Period:         2026-08-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q2: actual 0.86 vs est 0.8171 (5.25%)
 - 2026 Q1: actual 0.79 vs est 0.7319 (7.94%)
 - 2025 Q4: actual 1 vs est 0.9811 (1.93%)
 - 2025 Q3: actual 0.81 vs est 0.7326 (10.57%)
-- 2025 Q2: actual 0.71 vs est 0.6378 (11.32%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 5.74%
 - EPS growth YoY (TTM):     126.96%
-- 52-week high:             84.64
+- 52-week high:             84.55
 - 52-week low:              47.92
 - Short ratio:              unavailable
 - Short interest:           unavailable
@@ -202,7 +277,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-11
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $49.3bn
+- **Market cap:** $58.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -1.24
@@ -237,7 +312,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-11
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $63.8bn
+- **Market cap:** $72.5bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.0312
@@ -272,7 +347,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-11
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $14.6bn
+- **Market cap:** $18.7bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.2617
@@ -304,7 +379,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-11
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $20.4bn
+- **Market cap:** $24.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.9767
@@ -363,7 +438,7 @@ Source: Finnhub.io
 - Revenue growth YoY (TTM): unavailable%
 - EPS growth YoY (TTM):     unavailable%
 - 52-week high:             134.88
-- 52-week low:              34.34
+- 52-week low:              34.395
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
@@ -374,7 +449,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-10
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $27.8bn
+- **Market cap:** $28.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.2856
@@ -433,7 +508,7 @@ Source: Finnhub.io
 - Revenue growth YoY (TTM): 355.17%
 - EPS growth YoY (TTM):     unavailable%
 - 52-week high:             93.415
-- 52-week low:              46.285
+- 52-week low:              46.81
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
@@ -444,7 +519,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-10
 - **Report timing:** AMC (after close)
 - **Sector:** Industrials
-- **Market cap:** $47.9bn
+- **Market cap:** $48.6bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.0765
