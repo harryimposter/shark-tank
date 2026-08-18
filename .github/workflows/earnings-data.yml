@@ -1,9 +1,13 @@
 name: Fetch Finnhub earnings data
 
+# SCHEDULE DISABLED (2026-08-18): this fed the daily Market Map / Shark Tank refresh,
+# which was turned off by request — only Open Book still refreshes daily. Runs on
+# manual dispatch only. To re-enable, restore the `schedule:` block below:
+#   schedule:
+#     # 6am UTC Mon–Fri  (= 7am BST in summer, 6am GMT in winter)
+#     - cron: '0 6 * * 1-5'
+
 on:
-  schedule:
-    # 6am UTC Mon–Fri  (= 7am BST in summer, 6am GMT in winter)
-    - cron: '0 6 * * 1-5'
   workflow_dispatch:
 
 permissions:

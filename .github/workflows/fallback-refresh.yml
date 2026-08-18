@@ -6,11 +6,15 @@ name: Market Map data-only fallback refresh
 # RSI / screener / book are refreshed, but the macro narrative is carried over. The
 # renderer stamps a "data-only fallback refresh" banner on the Summary page and makes
 # the coverage bar honest (driven by MARKETMAP_REFRESH_MODE=fallback).
+#
+# SCHEDULE DISABLED (2026-08-18): the daily Market Map / Shark Tank refresh was turned
+# off by request — only Open Book still refreshes daily. This workflow now runs on
+# manual dispatch only. To re-enable, restore the `schedule:` block below:
+#   schedule:
+#     # 07:30 UTC Mon-Fri (= 08:30 London BST / 07:30 GMT) — ~1.5h after the local agent.
+#     - cron: '30 7 * * 1-5'
 
 on:
-  schedule:
-    # 07:30 UTC Mon-Fri (= 08:30 London BST / 07:30 GMT) — ~1.5h after the local agent.
-    - cron: '30 7 * * 1-5'
   workflow_dispatch:
 
 permissions:
