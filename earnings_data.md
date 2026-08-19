@@ -1,7 +1,7 @@
 # Finnhub Earnings Data
-Generated: 2026-08-18 06:00 UTC
-Pre-earnings window:  2026-08-18 to 2026-08-23
-Post-earnings window: 2026-08-15 to 2026-08-18
+Generated: 2026-08-19 06:00 UTC
+Pre-earnings window:  2026-08-19 to 2026-08-24
+Post-earnings window: 2026-08-16 to 2026-08-19
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
@@ -43,7 +43,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-20
 - **Report timing:** BMO (before open)
 - **Sector:** Industrials
-- **Market cap:** $161.9bn
+- **Market cap:** $158.9bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     4.8353
@@ -76,7 +76,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-19
 - **Report timing:** BMO (before open)
 - **Sector:** Technology
-- **Market cap:** $190.1bn
+- **Market cap:** $183.5bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.3681
@@ -109,7 +109,7 @@ Source: Finnhub.io
 - **Report date:** 2026-08-19
 - **Report timing:** AMC (after close)
 - **Sector:** Industrials
-- **Market cap:** $17.3bn
+- **Market cap:** $16.9bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.1657
@@ -138,15 +138,17 @@ Source: Finnhub.io
 ---
 
 ## JKHY — Jack Henry & Associates Inc
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-08-18
 - **Report timing:** AMC (after close)
 - **Sector:** Financials
-- **Market cap:** $10.6bn
+- **Market cap:** $10.9bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.4743
 - Revenue estimate: 642048098
+- EPS actual:      1.57
+- Revenue actual:  644020000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 16
@@ -155,10 +157,10 @@ Source: Finnhub.io
 - Period:         2026-08-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q4: actual 1.57 vs est 1.4743 (6.49%)
 - 2026 Q3: actual 1.71 vs est 1.4885 (14.88%)
 - 2026 Q2: actual 1.72 vs est 1.4607 (17.75%)
 - 2026 Q1: actual 1.97 vs est 1.7451 (12.89%)
-- 2025 Q4: actual 1.75 vs est 1.6095 (8.73%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 8.44%
@@ -171,15 +173,17 @@ Source: Finnhub.io
 ---
 
 ## KEYS — Keysight Technologies Inc
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-08-18
 - **Report timing:** AMC (after close)
 - **Sector:** Utilities
-- **Market cap:** $61.7bn
+- **Market cap:** $58.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     2.5248
 - Revenue estimate: 1772093940
+- EPS actual:      3.07
+- Revenue actual:  1846000000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 16
@@ -188,10 +192,10 @@ Source: Finnhub.io
 - Period:         2026-08-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q3: actual 3.07 vs est 2.5248 (21.59%)
 - 2026 Q2: actual 2.87 vs est 2.3674 (21.23%)
 - 2026 Q1: actual 2.17 vs est 2.0352 (6.62%)
 - 2025 Q4: actual 1.91 vs est 1.8695 (2.17%)
-- 2025 Q3: actual 1.72 vs est 1.7041 (0.93%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 19.19%
