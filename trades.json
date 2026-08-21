@@ -567,10 +567,16 @@
           "level": 1.64122,
           "pnl_pct": 0.23,
           "status": "open"
+        },
+        {
+          "date": "2026-08-21",
+          "level": 1.63504,
+          "pnl_pct": 0.61,
+          "status": "open"
         }
       ],
-      "current": 1.64122,
-      "current_pnl_pct": 0.23
+      "current": 1.63504,
+      "current_pnl_pct": 0.61
     },
     {
       "id": "MM-2026-009",
@@ -593,8 +599,8 @@
       "horizon": "3 months",
       "min_hold_days": 45,
       "thesis": "2s10s at +15bp after 18-month inversion. Buy 2Y (own cut optionality) vs short 10Y (short fiscal supply risk). June 5 payrolls at 89k + Fed pause re-prices front-end. ECB hiking cycle lifts global long rates. Steepener delivers whether Fed cuts or back-end sells off on supply. Late-cycle steepeners outperform after prolonged inversions.",
-      "current": 0.488,
-      "current_pnl_pct": 225.33,
+      "current": 0.519,
+      "current_pnl_pct": 246.0,
       "history": [
         {
           "date": "2026-06-01",
@@ -1117,6 +1123,12 @@
           "level": 0.488,
           "pnl_pct": 225.33,
           "status": "open"
+        },
+        {
+          "date": "2026-08-21",
+          "level": 0.519,
+          "pnl_pct": 246.0,
+          "status": "open"
         }
       ]
     },
@@ -1141,7 +1153,7 @@
       "horizon": "weeks",
       "min_hold_days": 0,
       "thesis": "Thursday's 25bp ECB hike is 99% priced — the rate-differential tailwind for EUR is in the price, and a hawkish US repricing widened the gap the other way. Classic buy-rumour-sell-fact setup into a fully-priced central bank. Pairs cleanly with long DAX: a weaker euro flatters the exporters.",
-      "current": 1.16918,
+      "current": 1.16921,
       "current_pnl_pct": -0.79,
       "history": [
         {
@@ -1653,6 +1665,12 @@
           "level": 1.16918,
           "pnl_pct": -0.79,
           "status": "open"
+        },
+        {
+          "date": "2026-08-21",
+          "level": 1.16921,
+          "pnl_pct": -0.79,
+          "status": "open"
         }
       ]
     },
@@ -1677,8 +1695,8 @@
       "horizon": "into 16–17 Jun FOMC",
       "min_hold_days": 30,
       "thesis": "The market prices a ~70% hike by year-end on one 172k payroll with unemployment steady at 4.3%. The Fed does not hike into a labor market that is firm-but-not-overheating with a richly-valued equity tape just cracking. The 2-year at 4.16% — a 16-month high — has over-extrapolated a single number; the 17 June dot plot is the catalyst to reprice it. Pre-position, not an event scalp.",
-      "current": 4.168,
-      "current_pnl_pct": -0.14,
+      "current": 4.185,
+      "current_pnl_pct": -0.55,
       "history": [
         {
           "date": "2026-06-08",
@@ -2188,6 +2206,12 @@
           "date": "2026-08-20",
           "level": 4.168,
           "pnl_pct": -0.14,
+          "status": "open"
+        },
+        {
+          "date": "2026-08-21",
+          "level": 4.185,
+          "pnl_pct": -0.55,
           "status": "open"
         }
       ]
