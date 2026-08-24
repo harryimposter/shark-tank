@@ -8,7 +8,16 @@
 
 ---
 
-> **Format note.** This file mirrors what is actually sent. The house structure is:
+> **THE WEEKLY IS AN HTML EMAIL, NOT PLAIN TEXT.** Send `weekly_email.html` as the
+> `htmlBody`, with the markdown below as the plain-text alternative. The house design:
+> serif masthead "Claude's Weekly" (Georgia, 42px, regular weight), gold kicker
+> `#b8960c` in letterspaced caps ("MARKETS · WEEK ENDING <date>"), a thin rule, then
+> grey letterspaced small-caps section headers `#999` over 16.5px/1.65 sans body.
+> Numbered points carry a **bold lead-in label** ("Rates: …", "Equities: …", "FX: …").
+> Sources and housekeeping run smaller (14px) in `#666`. Normal hyphenation and em
+> dashes throughout — this is not the un-hyphenated style of the old w/e 3 July copy.
+>
+> **Structure.** This file mirrors what is actually sent:
 > Last Week's Wrap (six dense paragraphs, specific levels and named sources) → 5 Points
 > Looking Ahead → Bull / Base / Bear → **The Book — Honest Scoreboard** → Focus Idea →
 > As of date and key sources → **Housekeeping**. The scoreboard and housekeeping sections
