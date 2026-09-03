@@ -1,7 +1,7 @@
 # Finnhub Earnings Data
-Generated: 2026-09-02 06:00 UTC
-Pre-earnings window:  2026-09-02 to 2026-09-07
-Post-earnings window: 2026-08-30 to 2026-09-02
+Generated: 2026-09-03 06:00 UTC
+Pre-earnings window:  2026-09-03 to 2026-09-08
+Post-earnings window: 2026-08-31 to 2026-09-03
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
@@ -10,7 +10,7 @@ Source: Finnhub.io
 - **Report date:** 2026-09-03
 - **Report timing:** BMO (before open)
 - **Sector:** Technology
-- **Market cap:** $51.0bn
+- **Market cap:** $50.1bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.7587
@@ -32,7 +32,7 @@ Source: Finnhub.io
 - Revenue growth YoY (TTM): 30.59%
 - EPS growth YoY (TTM):     319.19%
 - 52-week high:             637.51
-- 52-week low:              90
+- 52-week low:              92.46
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
@@ -43,7 +43,7 @@ Source: Finnhub.io
 - **Report date:** 2026-09-03
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $12.3bn
+- **Market cap:** $12.5bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.1075
@@ -76,7 +76,7 @@ Source: Finnhub.io
 - **Report date:** 2026-09-03
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $16.7bn
+- **Market cap:** $16.0bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.9607
@@ -109,7 +109,7 @@ Source: Finnhub.io
 - **Report date:** 2026-09-03
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $22.8bn
+- **Market cap:** $21.5bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.1614
@@ -171,15 +171,17 @@ Source: Finnhub.io
 ---
 
 ## AVGO — Broadcom Inc
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-09-02
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $1758.8bn
+- **Market cap:** $1747.2bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.3013
 - Revenue estimate: 29949335931
+- EPS actual:      3.32
+- Revenue actual:  29591000000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 52
@@ -188,31 +190,33 @@ Source: Finnhub.io
 - Period:         2026-09-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q3: actual 3.32 vs est 3.3013 (0.57%)
 - 2026 Q2: actual 2.44 vs est 2.4458 (-0.24%)
 - 2026 Q1: actual 2.05 vs est 2.068 (-0.87%)
 - 2025 Q4: actual 1.95 vs est 1.8996 (2.65%)
-- 2025 Q3: actual 1.69 vs est 1.6816 (0.5%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 32.29%
 - EPS growth YoY (TTM):     125.78%
 - 52-week high:             495
-- 52-week low:              287.17
+- 52-week low:              289.96
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
 ---
 
 ## HPE — Hewlett Packard Enterprise Co
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-09-02
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $67.4bn
+- **Market cap:** $68.6bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.939
 - Revenue estimate: 12012105740
+- EPS actual:      1.11
+- Revenue actual:  12213000000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 19
@@ -221,10 +225,10 @@ Source: Finnhub.io
 - Period:         2026-09-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q3: actual 1.11 vs est 0.939 (18.21%)
 - 2026 Q2: actual 0.79 vs est 0.5396 (46.4%)
 - 2026 Q1: actual 0.65 vs est 0.5946 (9.32%)
 - 2025 Q4: actual 0.62 vs est 0.5881 (5.42%)
-- 2025 Q3: actual 0.44 vs est 0.4349 (1.17%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 22.58%
@@ -237,15 +241,17 @@ Source: Finnhub.io
 ---
 
 ## NTAP — NetApp Inc
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-09-02
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $35.9bn
+- **Market cap:** $35.5bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     2.1613
 - Revenue estimate: 1874397706
+- EPS actual:      2.58
+- Revenue actual:  2025000000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 13
@@ -254,10 +260,10 @@ Source: Finnhub.io
 - Period:         2026-09-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2027 Q1: actual 2.58 vs est 2.1613 (19.37%)
 - 2026 Q4: actual 2.43 vs est 2.3122 (5.09%)
 - 2026 Q3: actual 2.12 vs est 2.1063 (0.65%)
 - 2026 Q2: actual 2.05 vs est 1.9234 (6.58%)
-- 2026 Q1: actual 1.55 vs est 1.5681 (-1.15%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 5.37%
@@ -270,15 +276,17 @@ Source: Finnhub.io
 ---
 
 ## SNOW — Snowflake Inc
-- **Mode:** PRE-EARNINGS
+- **Mode:** POST-EARNINGS
 - **Report date:** 2026-09-02
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $110.8bn
+- **Market cap:** $106.0bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.4552
 - Revenue estimate: 1512000855
+- EPS actual:      0.62
+- Revenue actual:  1546790000
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 51
@@ -287,10 +295,10 @@ Source: Finnhub.io
 - Period:         2026-09-01
 
 ### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2027 Q2: actual 0.62 vs est 0.4552 (36.2%)
 - 2027 Q1: actual 0.39 vs est 0.3246 (20.15%)
 - 2026 Q4: actual 0.32 vs est 0.2768 (15.61%)
 - 2026 Q3: actual 0.35 vs est 0.3164 (10.62%)
-- 2026 Q2: actual 0.35 vs est 0.2709 (29.2%)
 
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 31.07%
@@ -302,12 +310,47 @@ Source: Finnhub.io
 
 ---
 
+## DELL — Dell Technologies Inc
+- **Mode:** POST-EARNINGS
+- **Report date:** 2026-09-01
+- **Report timing:** AMC (after close)
+- **Sector:** Technology
+- **Market cap:** $319.1bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     5.012
+- Revenue estimate: 45852452985
+- EPS actual:      7.04
+- Revenue actual:  46971000000
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 25
+- Hold:           10
+- Sell/Strong sell: 0
+- Period:         2026-09-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2027 Q2: actual 7.04 vs est 5.012 (40.46%)
+- 2027 Q1: actual 4.86 vs est 2.9985 (62.08%)
+- 2026 Q4: actual 3.89 vs est 3.5982 (8.11%)
+- 2026 Q3: actual 2.59 vs est 2.5215 (2.72%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 38.57%
+- EPS growth YoY (TTM):     92.08%
+- 52-week high:             514
+- 52-week low:              110.22
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
 ## MDB — MongoDB Inc
 - **Mode:** POST-EARNINGS
 - **Report date:** 2026-09-01
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $34.9bn
+- **Market cap:** $30.2bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.6221
@@ -342,7 +385,7 @@ Source: Finnhub.io
 - **Report date:** 2026-09-01
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $295.1bn
+- **Market cap:** $267.7bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.9959
