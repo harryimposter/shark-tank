@@ -1,7 +1,7 @@
 # Finnhub Earnings Data
-Generated: 2026-09-07 06:00 UTC
-Pre-earnings window:  2026-09-07 to 2026-09-12
-Post-earnings window: 2026-09-04 to 2026-09-07
+Generated: 2026-09-08 06:00 UTC
+Pre-earnings window:  2026-09-08 to 2026-09-13
+Post-earnings window: 2026-09-05 to 2026-09-08
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
