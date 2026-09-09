@@ -1,7 +1,7 @@
 # Finnhub Earnings Data
-Generated: 2026-09-08 06:00 UTC
-Pre-earnings window:  2026-09-08 to 2026-09-13
-Post-earnings window: 2026-09-05 to 2026-09-08
+Generated: 2026-09-09 06:00 UTC
+Pre-earnings window:  2026-09-09 to 2026-09-14
+Post-earnings window: 2026-09-06 to 2026-09-09
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
@@ -10,7 +10,7 @@ Source: Finnhub.io
 - **Report date:** 2026-09-10
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $105.9bn
+- **Market cap:** $102.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     6.1999
@@ -43,7 +43,7 @@ Source: Finnhub.io
 - **Report date:** 2026-09-10
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $457.4bn
+- **Market cap:** $468.1bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.7766
@@ -76,7 +76,7 @@ Source: Finnhub.io
 - **Report date:** 2026-09-09
 - **Report timing:** BMO (before open)
 - **Sector:** Technology
-- **Market cap:** $10.7bn
+- **Market cap:** $10.1bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.0812
