@@ -1,7 +1,7 @@
 # Finnhub Earnings Data
-Generated: 2026-09-09 06:00 UTC
-Pre-earnings window:  2026-09-09 to 2026-09-14
-Post-earnings window: 2026-09-06 to 2026-09-09
+Generated: 2026-09-10 06:00 UTC
+Pre-earnings window:  2026-09-10 to 2026-09-15
+Post-earnings window: 2026-09-07 to 2026-09-10
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
@@ -10,7 +10,7 @@ Source: Finnhub.io
 - **Report date:** 2026-09-10
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $102.3bn
+- **Market cap:** $101.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     6.1999
@@ -43,7 +43,7 @@ Source: Finnhub.io
 - **Report date:** 2026-09-10
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $468.1bn
+- **Market cap:** $465.6bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.7766
@@ -66,39 +66,6 @@ Source: Finnhub.io
 - EPS growth YoY (TTM):     34.97%
 - 52-week high:             345.72
 - 52-week low:              114.5
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## SAIL — SailPoint Inc
-- **Mode:** PRE-EARNINGS
-- **Report date:** 2026-09-09
-- **Report timing:** BMO (before open)
-- **Sector:** Technology
-- **Market cap:** $10.1bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.0812
-- Revenue estimate: 316451940
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 24
-- Hold:           6
-- Sell/Strong sell: 1
-- Period:         2026-09-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2027 Q1: actual 0.05 vs est 0.0451 (10.86%)
-- 2026 Q4: actual 0.08 vs est 0.0811 (-1.36%)
-- 2026 Q3: actual 0.08 vs est 0.0606 (32.01%)
-- 2026 Q2: actual 0.07 vs est 0.0432 (62.04%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 23.96%
-- EPS growth YoY (TTM):     unavailable%
-- 52-week high:             24
-- 52-week low:              10.3
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
