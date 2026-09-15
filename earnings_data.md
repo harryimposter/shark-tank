@@ -1,7 +1,7 @@
 # Finnhub Earnings Data
-Generated: 2026-09-14 06:00 UTC
-Pre-earnings window:  2026-09-14 to 2026-09-19
-Post-earnings window: 2026-09-11 to 2026-09-14
+Generated: 2026-09-15 06:00 UTC
+Pre-earnings window:  2026-09-15 to 2026-09-20
+Post-earnings window: 2026-09-12 to 2026-09-15
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
@@ -10,7 +10,7 @@ Source: Finnhub.io
 - **Report date:** 2026-09-16
 - **Report timing:** 
 - **Sector:** Industrials
-- **Market cap:** $73.8bn
+- **Market cap:** $74.0bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     4.0486
