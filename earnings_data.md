@@ -1,7 +1,7 @@
 # Finnhub Earnings Data
-Generated: 2026-09-15 06:00 UTC
-Pre-earnings window:  2026-09-15 to 2026-09-20
-Post-earnings window: 2026-09-12 to 2026-09-15
+Generated: 2026-09-16 06:00 UTC
+Pre-earnings window:  2026-09-16 to 2026-09-21
+Post-earnings window: 2026-09-13 to 2026-09-16
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
@@ -10,7 +10,7 @@ Source: Finnhub.io
 - **Report date:** 2026-09-16
 - **Report timing:** 
 - **Sector:** Industrials
-- **Market cap:** $74.0bn
+- **Market cap:** $73.0bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     4.0486
@@ -32,7 +32,7 @@ Source: Finnhub.io
 - Revenue growth YoY (TTM): 7.73%
 - EPS growth YoY (TTM):     9.81%
 - 52-week high:             345.37
-- 52-week low:              179.15
+- 52-week low:              180.8
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
