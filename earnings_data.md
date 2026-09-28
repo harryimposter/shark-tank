@@ -1,7 +1,7 @@
 # Finnhub Earnings Data
-Generated: 2026-09-25 06:00 UTC
-Pre-earnings window:  2026-09-25 to 2026-09-30
-Post-earnings window: 2026-09-22 to 2026-09-25
+Generated: 2026-09-28 06:00 UTC
+Pre-earnings window:  2026-09-28 to 2026-10-03
+Post-earnings window: 2026-09-25 to 2026-09-28
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
@@ -10,7 +10,7 @@ Source: Finnhub.io
 - **Report date:** 2026-09-30
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $32.6bn
+- **Market cap:** $33.2bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     4.0999
@@ -43,7 +43,7 @@ Source: Finnhub.io
 - **Report date:** 2026-09-30
 - **Report timing:** 
 - **Sector:** Financials
-- **Market cap:** $10.7bn
+- **Market cap:** $11.0bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     0.9353
@@ -64,7 +64,7 @@ Source: Finnhub.io
 ### Growth & technicals (Finnhub — sourced)
 - Revenue growth YoY (TTM): 13.75%
 - EPS growth YoY (TTM):     31%
-- 52-week high:             71.04
+- 52-week high:             69.93
 - 52-week low:              35.53
 - Short ratio:              unavailable
 - Short interest:           unavailable
@@ -76,7 +76,7 @@ Source: Finnhub.io
 - **Report date:** 2026-09-30
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $1220.3bn
+- **Market cap:** $1222.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     32.3202
@@ -99,41 +99,6 @@ Source: Finnhub.io
 - EPS growth YoY (TTM):     700.71%
 - 52-week high:             1255
 - 52-week low:              154.65
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## SNX — TD Synnex Corp
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-09-24
-- **Report timing:** BMO (before open)
-- **Sector:** Utilities
-- **Market cap:** $20.7bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     4.7493
-- Revenue estimate: 19097616411
-- EPS actual:      5.68
-- Revenue actual:  21558410000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 14
-- Hold:           3
-- Sell/Strong sell: 0
-- Period:         2026-09-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q3: actual 5.68 vs est 4.7493 (19.6%)
-- 2026 Q2: actual 4.85 vs est 4.182 (15.97%)
-- 2026 Q1: actual 4.73 vs est 3.3399 (41.62%)
-- 2025 Q4: actual 3.83 vs est 3.7663 (1.69%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 16.26%
-- EPS growth YoY (TTM):     63.4%
-- 52-week high:             298.7699
-- 52-week low:              142.22
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
