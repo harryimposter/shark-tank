@@ -1,16 +1,49 @@
 # Finnhub Earnings Data
-Generated: 2026-11-11 06:00 UTC
-Pre-earnings window:  2026-11-11 to 2026-11-16
-Post-earnings window: 2026-11-08 to 2026-11-11
+Generated: 2026-11-12 06:00 UTC
+Pre-earnings window:  2026-11-12 to 2026-11-17
+Post-earnings window: 2026-11-09 to 2026-11-12
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
+
+## NVDA — NVIDIA Corporation
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-11-17
+- **Report timing:** AMC (after close)
+- **Sector:** Technology
+- **Market cap:** $4186.9bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     2.5263
+- Revenue estimate: 111356225808
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 66
+- Hold:           2
+- Sell/Strong sell: 1
+- Period:         2026-11-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2027 Q2: actual 2.22 vs est 2.1384 (3.82%)
+- 2027 Q1: actual 1.87 vs est 1.7922 (4.34%)
+- 2026 Q4: actual 1.62 vs est 1.5634 (3.62%)
+- 2026 Q3: actual 1.3 vs est 1.2746 (1.99%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 83.38%
+- EPS growth YoY (TTM):     125.15%
+- 52-week high:             243.37
+- 52-week low:              164.27
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
 
 ## AMAT — Applied Materials Inc
 - **Mode:** PRE-EARNINGS
 - **Report date:** 2026-11-12
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $295.6bn
+- **Market cap:** $313.5bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     4.1345
@@ -43,7 +76,7 @@ Source: Finnhub.io
 - **Report date:** 2026-11-12
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $21.0bn
+- **Market cap:** $22.6bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.1446
@@ -74,7 +107,7 @@ Source: Finnhub.io
 - **Report date:** 2026-11-12
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $386.4bn
+- **Market cap:** $396.7bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.3514
@@ -96,7 +129,7 @@ Source: Finnhub.io
 - Revenue growth YoY (TTM): 11.77%
 - EPS growth YoY (TTM):     30.78%
 - 52-week high:             130.3656
-- 52-week low:              70.54
+- 52-week low:              71.1
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
@@ -107,7 +140,7 @@ Source: Finnhub.io
 - **Report date:** 2026-11-10
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $26.9bn
+- **Market cap:** $33.5bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -1.1816
@@ -142,7 +175,7 @@ Source: Finnhub.io
 - **Report date:** 2026-11-10
 - **Report timing:** BMO (before open)
 - **Sector:** Industrials
-- **Market cap:** $67.7bn
+- **Market cap:** $68.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     12.3286
@@ -172,47 +205,12 @@ Source: Finnhub.io
 
 ---
 
-## AMG — Affiliated Managers Group, Inc.
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-11-09
-- **Report timing:** BMO (before open)
-- **Sector:** Financials
-- **Market cap:** $10.4bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     8.8737
-- Revenue estimate: 661631557
-- EPS actual:      9.5
-- Revenue actual:  595200000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 9
-- Hold:           1
-- Sell/Strong sell: 0
-- Period:         2026-11-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q3: actual 9.5 vs est 8.8737 (7.06%)
-- 2026 Q2: actual 8.29 vs est 7.9984 (3.65%)
-- 2026 Q1: actual 8.23 vs est 8.1537 (0.94%)
-- 2025 Q4: actual 9.48 vs est 8.925 (6.22%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 11.81%
-- EPS growth YoY (TTM):     121.28%
-- 52-week high:             400.125
-- 52-week low:              246.11
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
 ## ASTS — AST SpaceMobile, Inc.
 - **Mode:** POST-EARNINGS
 - **Report date:** 2026-11-09
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $13.1bn
+- **Market cap:** $14.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.4114
@@ -247,7 +245,7 @@ Source: Finnhub.io
 - **Report date:** 2026-11-09
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $94.9bn
+- **Market cap:** $97.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.8857
@@ -268,8 +266,8 @@ Source: Finnhub.io
 - 2025 Q4: actual 2.3 vs est 2.2473 (2.35%)
 
 ### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 25.98%
-- EPS growth YoY (TTM):     7.2%
+- Revenue growth YoY (TTM): 37.88%
+- EPS growth YoY (TTM):     43.01%
 - 52-week high:             380.78
 - 52-week low:              228.63
 - Short ratio:              unavailable
@@ -282,7 +280,7 @@ Source: Finnhub.io
 - **Report date:** 2026-11-09
 - **Report timing:** BMO (before open)
 - **Sector:** Financials
-- **Market cap:** $90.5bn
+- **Market cap:** $89.3bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     1.6044
@@ -317,7 +315,7 @@ Source: Finnhub.io
 - **Report date:** 2026-11-09
 - **Report timing:** BMO (before open)
 - **Sector:** Utilities
-- **Market cap:** $20.4bn
+- **Market cap:** $20.5bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.3634
@@ -347,12 +345,47 @@ Source: Finnhub.io
 
 ---
 
+## ONTO — Onto Innovation Inc.
+- **Mode:** POST-EARNINGS
+- **Report date:** 2026-11-09
+- **Report timing:** AMC (after close)
+- **Sector:** Technology
+- **Market cap:** $10.6bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     2.3503
+- Revenue estimate: 399856595
+- EPS actual:      2.44
+- Revenue actual:  409750000
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 18
+- Hold:           1
+- Sell/Strong sell: 0
+- Period:         2026-11-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q3: actual 2.44 vs est 2.3503 (3.82%)
+- 2026 Q2: actual 1.93 vs est 1.717 (12.41%)
+- 2026 Q1: actual 1.42 vs est 1.4436 (-1.63%)
+- 2025 Q4: actual 1.26 vs est 1.3075 (-3.63%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 8.08%
+- EPS growth YoY (TTM):     -33.87%
+- 52-week high:             386.46
+- 52-week low:              121.575
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
 ## RKLB — Rocket Lab Corp
 - **Mode:** POST-EARNINGS
 - **Report date:** 2026-11-09
 - **Report timing:** AMC (after close)
 - **Sector:** Industrials
-- **Market cap:** $37.5bn
+- **Market cap:** $41.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     -0.0714
@@ -373,7 +406,7 @@ Source: Finnhub.io
 - 2025 Q4: actual -0.09 vs est -0.0942 (4.46%)
 
 ### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 52.53%
+- Revenue growth YoY (TTM): 59.03%
 - EPS growth YoY (TTM):     unavailable%
 - 52-week high:             150.9999
 - 52-week low:              37.57
