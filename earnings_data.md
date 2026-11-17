@@ -1,7 +1,7 @@
 # Finnhub Earnings Data
-Generated: 2026-11-16 06:00 UTC
-Pre-earnings window:  2026-11-16 to 2026-11-21
-Post-earnings window: 2026-11-13 to 2026-11-16
+Generated: 2026-11-17 06:00 UTC
+Pre-earnings window:  2026-11-17 to 2026-11-22
+Post-earnings window: 2026-11-14 to 2026-11-17
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
 
@@ -10,7 +10,7 @@ Source: Finnhub.io
 - **Report date:** 2026-11-20
 - **Report timing:** BMO (before open)
 - **Sector:** Industrials
-- **Market cap:** $10.8bn
+- **Market cap:** $10.4bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     2.7724
@@ -43,11 +43,11 @@ Source: Finnhub.io
 - **Report date:** 2026-11-19
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $91.3bn
+- **Market cap:** $92.3bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     2.7081
-- Revenue estimate: 4391111189
+- EPS estimate:     2.7497
+- Revenue estimate: 4391554665
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 24
@@ -76,11 +76,11 @@ Source: Finnhub.io
 - **Report date:** 2026-11-19
 - **Report timing:** AMC (after close)
 - **Sector:** Utilities
-- **Market cap:** $50.7bn
+- **Market cap:** $48.6bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     3.439
-- Revenue estimate: 1984719396
+- EPS estimate:     3.4385
+- Revenue estimate: 1984841460
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 17
@@ -109,11 +109,11 @@ Source: Finnhub.io
 - **Report date:** 2026-11-18
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $36.0bn
+- **Market cap:** $34.5bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.7865
-- Revenue estimate: 1358392497
+- EPS estimate:     0.7871
+- Revenue estimate: 1358374504
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 23
@@ -142,11 +142,11 @@ Source: Finnhub.io
 - **Report date:** 2026-11-18
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $263.8bn
+- **Market cap:** $258.8bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.9908
-- Revenue estimate: 3373102566
+- EPS estimate:     0.9907
+- Revenue estimate: 3373089754
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 48
@@ -208,11 +208,11 @@ Source: Finnhub.io
 - **Report date:** 2026-11-17
 - **Report timing:** AMC (after close)
 - **Sector:** Technology
-- **Market cap:** $3924.7bn
+- **Market cap:** $3763.0bn
 
 ### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     2.5225
-- Revenue estimate: 111202869991
+- EPS estimate:     2.525
+- Revenue estimate: 111282164311
 
 ### Analyst recommendations (Finnhub — sourced)
 - Buy/Strong buy: 66
