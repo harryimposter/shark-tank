@@ -21,8 +21,8 @@
       "horizon": "3 months",
       "min_hold_days": 45,
       "thesis": "2s10s at +15bp after 18-month inversion. Buy 2Y (own cut optionality) vs short 10Y (short fiscal supply risk). June 5 payrolls at 89k + Fed pause re-prices front-end. ECB hiking cycle lifts global long rates. Steepener delivers whether Fed cuts or back-end sells off on supply. Late-cycle steepeners outperform after prolonged inversions.",
-      "current": 0.214,
-      "current_pnl_pct": 42.67,
+      "current": 0.237,
+      "current_pnl_pct": 58.0,
       "history": [
         {
           "date": "2026-06-01",
@@ -958,6 +958,12 @@
           "date": "2026-11-26",
           "level": 0.214,
           "pnl_pct": 42.67,
+          "status": "open"
+        },
+        {
+          "date": "2026-11-27",
+          "level": 0.237,
+          "pnl_pct": 58.0,
           "status": "open"
         }
       ]
