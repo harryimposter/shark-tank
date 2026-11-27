@@ -1,9 +1,141 @@
 # Finnhub Earnings Data
-Generated: 2026-11-26 06:00 UTC
-Pre-earnings window:  2026-11-26 to 2026-12-01
-Post-earnings window: 2026-11-23 to 2026-11-26
+Generated: 2026-11-27 06:00 UTC
+Pre-earnings window:  2026-11-27 to 2026-12-02
+Post-earnings window: 2026-11-24 to 2026-11-27
 Universe: large cap (>$10bn) · US + Korea · Tech / Financials / Industrials / Utilities
 Source: Finnhub.io
+
+## CRM — Salesforce, Inc.
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-12-02
+- **Report timing:** AMC (after close)
+- **Sector:** Technology
+- **Market cap:** $162.3bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     3.4717
+- Revenue estimate: 11570800208
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 41
+- Hold:           14
+- Sell/Strong sell: 1
+- Period:         2026-11-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2027 Q2: actual 5.9 vs est 3.3065 (78.44%)
+- 2027 Q1: actual 3.88 vs est 3.1482 (23.25%)
+- 2026 Q4: actual 3.81 vs est 3.0752 (23.89%)
+- 2026 Q3: actual 3.25 vs est 2.8867 (12.59%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 11.23%
+- EPS growth YoY (TTM):     59.27%
+- 52-week high:             269.11
+- 52-week low:              146.32
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## NTSK — Netskope, Inc.
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-12-02
+- **Report timing:** AMC (after close)
+- **Sector:** Technology
+- **Market cap:** $10.8bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     -0.0344
+- Revenue estimate: 232734022
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 22
+- Hold:           3
+- Sell/Strong sell: 0
+- Period:         2026-11-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2027 Q2: actual -0.03 vs est -0.0688 (56.4%)
+- 2026 Q1: actual -0.06 vs est unavailable
+- 2027 Q1: actual -0.06 vs est -0.0714 (15.97%)
+- 2025 Q4: actual -0.04 vs est unavailable
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): unavailable%
+- EPS growth YoY (TTM):     unavailable%
+- 52-week high:             27.094
+- 52-week low:              7.665
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## SNOW — Snowflake Inc.
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-12-02
+- **Report timing:** AMC (after close)
+- **Sector:** Technology
+- **Market cap:** $94.5bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     0.6092
+- Revenue estimate: 1685591616
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 50
+- Hold:           6
+- Sell/Strong sell: 1
+- Period:         2026-11-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2027 Q2: actual 0.62 vs est 0.4552 (36.2%)
+- 2027 Q1: actual 0.39 vs est 0.3246 (20.15%)
+- 2026 Q4: actual 0.32 vs est 0.2768 (15.61%)
+- 2026 Q3: actual 0.35 vs est 0.3164 (10.62%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 32.04%
+- EPS growth YoY (TTM):     unavailable%
+- 52-week high:             384.56
+- 52-week low:              118.3
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
+
+## ZS — Zscaler, Inc.
+- **Mode:** PRE-EARNINGS
+- **Report date:** 2026-12-02
+- **Report timing:** 
+- **Sector:** Technology
+- **Market cap:** $38.8bn
+
+### Consensus estimates (Finnhub — sourced)
+- EPS estimate:     1.1944
+- Revenue estimate: 965816528
+
+### Analyst recommendations (Finnhub — sourced)
+- Buy/Strong buy: 46
+- Hold:           12
+- Sell/Strong sell: 0
+- Period:         2026-11-01
+
+### Earnings surprise history — last 4 quarters (Finnhub — sourced)
+- 2026 Q4: actual 1.19 vs est 1.1177 (6.47%)
+- 2026 Q3: actual 1.08 vs est 1.0389 (3.96%)
+- 2026 Q2: actual 1.01 vs est 0.9238 (9.33%)
+- 2026 Q1: actual 0.96 vs est 0.8856 (8.4%)
+
+### Growth & technicals (Finnhub — sourced)
+- Revenue growth YoY (TTM): 25.42%
+- EPS growth YoY (TTM):     unavailable%
+- 52-week high:             291.8
+- 52-week low:              114.625
+- Short ratio:              unavailable
+- Short interest:           unavailable
+
+---
 
 ## CRWD — CrowdStrike Holdings, Inc.
 - **Mode:** PRE-EARNINGS
@@ -243,7 +375,7 @@ Source: Finnhub.io
 - **Report date:** 2026-11-24
 - **Report timing:** BMO (before open)
 - **Sector:** Technology
-- **Market cap:** $161.4bn
+- **Market cap:** $160.8bn
 
 ### Consensus estimates (Finnhub — sourced)
 - EPS estimate:     3.9221
@@ -443,111 +575,6 @@ Source: Finnhub.io
 - EPS growth YoY (TTM):     107.96%
 - 52-week high:             236.8
 - 52-week low:              110.36
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## HPE — Hewlett Packard Enterprise Company
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-11-23
-- **Report timing:** AMC (after close)
-- **Sector:** Technology
-- **Market cap:** $53.7bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.2998
-- Revenue estimate: 14641233901
-- EPS actual:      1.43
-- Revenue actual:  14547000000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 18
-- Hold:           10
-- Sell/Strong sell: 0
-- Period:         2026-11-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q4: actual 1.43 vs est 1.2998 (10.02%)
-- 2026 Q3: actual 1.11 vs est 0.9406 (18.01%)
-- 2026 Q2: actual 0.79 vs est 0.5396 (46.4%)
-- 2026 Q1: actual 0.65 vs est 0.5946 (9.32%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 36.28%
-- EPS growth YoY (TTM):     unavailable%
-- 52-week high:             73.56
-- 52-week low:              19.84
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## SYM — Symbotic Inc.
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-11-23
-- **Report timing:** AMC (after close)
-- **Sector:** Industrials
-- **Market cap:** $23.0bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     0.155
-- Revenue estimate: 782046817
-- EPS actual:      0.17
-- Revenue actual:  777610000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 14
-- Hold:           6
-- Sell/Strong sell: 3
-- Period:         2026-11-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2026 Q4: actual 0.17 vs est 0.155 (9.68%)
-- 2026 Q3: actual -0.05 vs est 0.1727 (-128.95%)
-- 2026 Q2: actual 0.03 vs est 0.1479 (-79.72%)
-- 2026 Q1: actual 0.07 vs est 0.126 (-44.44%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 24.83%
-- EPS growth YoY (TTM):     unavailable%
-- 52-week high:             87.88
-- 52-week low:              30.325
-- Short ratio:              unavailable
-- Short interest:           unavailable
-
----
-
-## ZM — Zoom Communications, Inc.
-- **Mode:** POST-EARNINGS
-- **Report date:** 2026-11-23
-- **Report timing:** AMC (after close)
-- **Sector:** Technology
-- **Market cap:** $27.9bn
-
-### Consensus estimates (Finnhub — sourced)
-- EPS estimate:     1.5301
-- Revenue estimate: 1319878771
-- EPS actual:      1.59
-- Revenue actual:  1290640000
-
-### Analyst recommendations (Finnhub — sourced)
-- Buy/Strong buy: 25
-- Hold:           13
-- Sell/Strong sell: 1
-- Period:         2026-11-01
-
-### Earnings surprise history — last 4 quarters (Finnhub — sourced)
-- 2027 Q3: actual 1.59 vs est 1.5301 (3.91%)
-- 2027 Q2: actual 1.55 vs est 1.5213 (1.89%)
-- 2027 Q1: actual 1.55 vs est 1.4601 (6.16%)
-- 2026 Q4: actual 1.44 vs est 1.5328 (-6.05%)
-
-### Growth & technicals (Finnhub — sourced)
-- Revenue growth YoY (TTM): 5.16%
-- EPS growth YoY (TTM):     91.06%
-- 52-week high:             114.74
-- 52-week low:              70.7
 - Short ratio:              unavailable
 - Short interest:           unavailable
 
